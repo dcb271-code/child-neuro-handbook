@@ -1,0 +1,130 @@
+[
+  {
+    "name": "Development",
+    "slug": "development",
+    "icon": "🧠",
+    "color": "bg-blue-100 text-blue-800 border-blue-200",
+    "tocCount": 7,
+    "imageCount": 1
+  },
+  {
+    "name": "Epilepsy",
+    "slug": "epilepsy",
+    "icon": "⚡",
+    "color": "bg-purple-100 text-purple-800 border-purple-200",
+    "tocCount": 44,
+    "imageCount": 51
+  },
+  {
+    "name": "Headaches",
+    "slug": "headaches",
+    "icon": "🤕",
+    "color": "bg-orange-100 text-orange-800 border-orange-200",
+    "tocCount": 15,
+    "imageCount": 4
+  },
+  {
+    "name": "Infectious Disease",
+    "slug": "infectious-disease",
+    "icon": "🦠",
+    "color": "bg-red-100 text-red-800 border-red-200",
+    "tocCount": 7,
+    "imageCount": 0
+  },
+  {
+    "name": "Movement Disorders",
+    "slug": "movement-disorders",
+    "icon": "🔄",
+    "color": "bg-green-100 text-green-800 border-green-200",
+    "tocCount": 9,
+    "imageCount": 2
+  },
+  {
+    "name": "Neuro Exam",
+    "slug": "neuro-exam",
+    "icon": "🩺",
+    "color": "bg-teal-100 text-teal-800 border-teal-200",
+    "tocCount": 5,
+    "imageCount": 0
+  },
+  {
+    "name": "Neuro-Ophthalmology",
+    "slug": "neuro-ophthalmology",
+    "icon": "👁️",
+    "color": "bg-cyan-100 text-cyan-800 border-cyan-200",
+    "tocCount": 3,
+    "imageCount": 0
+  },
+  {
+    "name": "Neurocritical Care",
+    "slug": "neurocritical-care",
+    "icon": "🏥",
+    "color": "bg-rose-100 text-rose-800 border-rose-200",
+    "tocCount": 6,
+    "imageCount": 6
+  },
+  {
+    "name": "Neurogenetics and Neurometabolics",
+    "slug": "neurogenetics-and-neurometabolics",
+    "icon": "🧬",
+    "color": "bg-indigo-100 text-indigo-800 border-indigo-200",
+    "tocCount": 12,
+    "imageCount": 4
+  },
+  {
+    "name": "Neuroradiology",
+    "slug": "neuroradiology",
+    "icon": "🔬",
+    "color": "bg-slate-100 text-slate-800 border-slate-200",
+    "tocCount": 16,
+    "imageCount": 0
+  },
+  {
+    "name": "Other Topics",
+    "slug": "other-topics",
+    "icon": "📋",
+    "color": "bg-gray-100 text-gray-800 border-gray-200",
+    "tocCount": 9,
+    "imageCount": 5
+  },
+  {
+    "name": "Paroxysms",
+    "slug": "paroxysms",
+    "icon": "💥",
+    "color": "bg-yellow-100 text-yellow-800 border-yellow-200",
+    "tocCount": 3,
+    "imageCount": 6
+  },
+  {
+    "name": "Pediatric Normal Values",
+    "slug": "pediatric-normal-values",
+    "icon": "📊",
+    "color": "bg-lime-100 text-lime-800 border-lime-200",
+    "tocCount": 4,
+    "imageCount": 7
+  },
+  {
+    "name": "Psychiatry",
+    "slug": "psychiatry",
+    "icon": "💭",
+    "color": "bg-pink-100 text-pink-800 border-pink-200",
+    "tocCount": 5,
+    "imageCount": 3
+  },
+  {
+    "name": "Sleep",
+    "slug": "sleep",
+    "icon": "😴",
+    "color": "bg-violet-100 text-violet-800 border-violet-200",
+    "tocCount": 9,
+    "imageCount": 1
+  },
+  {
+    "name": "Stroke",
+    "slug": "stroke",
+    "icon": "🫀",
+    "color": "bg-amber-100 text-amber-800 border-amber-200",
+    "tocCount": 15,
+    "imageCount": 6
+  }
+]

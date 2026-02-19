@@ -1,0 +1,91 @@
+{
+  "name": "Neuroradiology",
+  "slug": "neuroradiology",
+  "icon": "🔬",
+  "color": "bg-slate-100 text-slate-800 border-slate-200",
+  "toc": [
+    {
+      "level": 1,
+      "text": "Reading MRIs",
+      "id": "reading-mris"
+    },
+    {
+      "level": 2,
+      "text": "General Reporting Structure",
+      "id": "general-reporting-structure"
+    },
+    {
+      "level": 2,
+      "text": "Side-by-Side Sequence Review",
+      "id": "side-by-side-sequence-review"
+    },
+    {
+      "level": 2,
+      "text": "Sagittal T1 + Axial T1 (Review Structure/Anatomy)",
+      "id": "sagittal-t1-axial-t1-review-structure-anatomy"
+    },
+    {
+      "level": 2,
+      "text": "Axial T2 + Axial FLAIR",
+      "id": "axial-t2-axial-flair"
+    },
+    {
+      "level": 2,
+      "text": "DWI + ADC",
+      "id": "dwi-adc"
+    },
+    {
+      "level": 2,
+      "text": "SWI",
+      "id": "swi"
+    },
+    {
+      "level": 2,
+      "text": "Coronal T1/T2",
+      "id": "coronal-t1-t2"
+    },
+    {
+      "level": 2,
+      "text": "MRA",
+      "id": "mra"
+    },
+    {
+      "level": 2,
+      "text": "MRA",
+      "id": "mra-2"
+    },
+    {
+      "level": 2,
+      "text": "Regional Review Strategy",
+      "id": "regional-review-strategy"
+    },
+    {
+      "level": 2,
+      "text": "1. Supratentorial Compartment",
+      "id": "1-supratentorial-compartment"
+    },
+    {
+      "level": 2,
+      "text": "2. Infratentorial Compartment",
+      "id": "2-infratentorial-compartment"
+    },
+    {
+      "level": 2,
+      "text": "3. Extra-axial Spaces",
+      "id": "3-extra-axial-spaces"
+    },
+    {
+      "level": 2,
+      "text": "4. Vascular Structures",
+      "id": "4-vascular-structures"
+    },
+    {
+      "level": 2,
+      "text": "5. Skull Base and Adjacent Structures",
+      "id": "5-skull-base-and-adjacent-structures"
+    }
+  ],
+  "html": "<h1 id=\"reading-mris\">Reading MRIs</h1><p>&nbsp;</p><h2 id=\"general-reporting-structure\"><strong>General Reporting Structure</strong></h2><ul><li>Ventricles and CSF spaces</li><li>Brain parenchyma</li><li>White matter</li><li>Gray matter structures</li><li>Extra-axial spaces</li><li>Vascular structures</li><li>Skull base and cranial nerves</li><li>Sinuses and mastoids</li></ul><p>&nbsp;</p><p>&nbsp;</p><h2 id=\"side-by-side-sequence-review\"><strong>Side-by-Side Sequence Review</strong></h2><h2 id=\"sagittal-t1-axial-t1-review-structure-anatomy\"><strong>Sagittal T1 + Axial T1 (Review Structure/Anatomy)</strong></h2><p><strong>Sagittal T1 - Focus on midline structures:</strong></p><ul><li>Corpus callosum integrity</li><li>Brainstem morphology</li><li>Cerebellar vermis and tonsils (Chiari)</li><li>Pituitary/pineal glands</li><li>Ventricles (third, fourth, aqueduct)</li><li>Craniovertebral junction</li></ul><p><strong>Axial T1 - Focus on parenchyma and ventricles:</strong></p><ul><li>Gray-white differentiation</li><li>Ventricle size and symmetry</li><li>Basal ganglia and thalami</li><li>Cortical surface/atrophy</li><li>Extra-axial spaces</li><li>Vascular flow voids</li></ul><p>&nbsp;</p><h2 id=\"axial-t2-axial-flair\"><strong>Axial T2 + Axial FLAIR</strong></h2><p><strong>Axial T2 - Focus on signal abnormalities:</strong></p><ul><li>White matter signal</li><li>CSF spaces and ventricles</li><li>Basal ganglia and thalami</li><li>Brainstem signal</li><li>Vascular structures</li><li>Sinuses and mastoids</li></ul><p><strong>Axial FLAIR - Focus on pathologic hyperintensities:</strong></p><ul><li>White matter lesions (periventricular, deep, subcortical)</li><li>Cortical/subcortical junction</li><li>Periventricular rims</li><li>Subarachnoid spaces (rule out SAH)</li><li>Parenchymal lesions</li></ul><p>&nbsp;</p><p>&nbsp;</p><h2 id=\"dwi-adc\"><strong>DWI + ADC</strong></h2><p><strong>DWI/ADC - Focus on restricted diffusion:</strong></p><ul><li>Acute infarction (high DWI, low ADC)</li><li>Subacute/chronic infarcts (T2 shine-through)</li><li>Abscesses and cellular tumors</li><li>Epidermoid cysts</li><li>Susceptibility artifacts</li></ul><p>&nbsp;</p><h2 id=\"swi\"><strong>SWI</strong></h2><p><strong>SWI/GRE - Focus on blood products:</strong></p><ul><li>Microhemorrhages</li><li>Vascular malformations</li><li>Hemorrhagic transformation</li><li>Calcifications</li><li>Iron deposition</li><li>Venous anatomy</li></ul><p>&nbsp;</p><h2 id=\"coronal-t1-t2\"><strong>Coronal T1/T2  </strong></h2><p><strong>Coronal T1/T2 - Focus on temporal structures:</strong></p><ul><li>Hippocampi symmetry and signal</li><li>Temporal lobes (mesial temporal sclerosis)</li><li>Pituitary and cavernous sinuses</li><li>Orbits and optic nerves</li><li>Ventricular morphology</li></ul><p>&nbsp;</p><h2 id=\"mra\"><strong>MRA </strong></h2><h2 id=\"mra-2\"><strong>MRA </strong></h2><ul><li>Circle of Willis completeness</li><li>Major vessel patency (ICA, vertebral, basilar)</li><li>Cerebral artery branches</li><li>Aneurysms</li><li>Vascular malformations</li></ul><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><h2 id=\"regional-review-strategy\"><strong>Regional Review Strategy</strong></h2><h2 id=\"1-supratentorial-compartment\"><strong>1. Supratentorial Compartment</strong></h2><ul><li>Cerebral hemispheres symmetry</li><li>Ventricle size and configuration</li><li>White matter signal abnormalities</li><li>Gray matter morphology</li><li>Basal ganglia and thalami</li><li>Corpus callosum</li></ul><h2 id=\"2-infratentorial-compartment\"><strong>2. Infratentorial Compartment</strong></h2><ul><li>Cerebellar hemispheres</li><li>Cerebellar peduncles</li><li>Brainstem (midbrain, pons, medulla)</li><li>Fourth ventricle</li><li>Cisternal spaces</li></ul><h2 id=\"3-extra-axial-spaces\"><strong>3. Extra-axial Spaces</strong></h2><ul><li>Subdural spaces</li><li>Subarachnoid spaces</li><li>Basal cisterns</li><li>Epidural spaces</li></ul><h2 id=\"4-vascular-structures\"><strong>4. Vascular Structures</strong></h2><ul><li>Major arterial flow voids</li><li>Dural venous sinuses</li><li>Superficial and deep veins</li><li>Enhancement patterns (if contrast given)</li></ul><h2 id=\"5-skull-base-and-adjacent-structures\"><strong>5. Skull Base and Adjacent Structures</strong></h2><ul><li>Craniovertebral junction</li><li>Skull base foramina</li><li>Cranial nerves</li><li>Sinuses and mastoids</li></ul>",
+  "imageCount": 0,
+  "chunkCount": 12
+}

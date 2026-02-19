@@ -1,0 +1,31 @@
+{
+  "name": "Pediatric Normal Values",
+  "slug": "pediatric-normal-values",
+  "icon": "📊",
+  "color": "bg-lime-100 text-lime-800 border-lime-200",
+  "toc": [
+    {
+      "level": 4,
+      "text": "Head Circumference Charts",
+      "id": "head-circumference-charts"
+    },
+    {
+      "level": 4,
+      "text": "Head Circumference Charts",
+      "id": "head-circumference-charts-2"
+    },
+    {
+      "level": 4,
+      "text": "Pediatric Blood Pressure Charts",
+      "id": "pediatric-blood-pressure-charts"
+    },
+    {
+      "level": 4,
+      "text": "Pediatric Blood Pressure Charts",
+      "id": "pediatric-blood-pressure-charts-2"
+    }
+  ],
+  "html": "<h4 id=\"head-circumference-charts\">Head Circumference Charts</h4><p>&nbsp;</p><h4 id=\"head-circumference-charts-2\">Head Circumference Charts</h4><p><em>From Cincinnati Children’s Hospital.  </em></p><p><strong>General rule of thumb: birth – 35cm, 1 yr – 45cm, adult – 55cm          OR</strong></p><p><strong>Birth 35cm    3 mo 40 cm    9 mo 45 cm    3 yr 50 cm     9 yr 55 cm</strong></p><p><strong>Boys</strong></p><p><img src=\"/images/pediatric-normal-values/img-1.jpg\" alt=\"\" class=\"max-w-full rounded-lg my-4 mx-auto block\"></p><p><strong>Girls</strong></p><p>&nbsp;</p><div class=\"table-wrap\"><table><tbody><tr><td><p>&nbsp;</p></td><td><p>&nbsp;</p></td></tr><tr><td><p><img src=\"/images/pediatric-normal-values/img-2.jpg\" alt=\"\" class=\"max-w-full rounded-lg my-4 mx-auto block\"></p></td><td><p>&nbsp;</p></td></tr></tbody></table></div><p>&nbsp;</p><p>&nbsp;</p><p><img src=\"/images/pediatric-normal-values/img-3.gif\" alt=\"\" class=\"max-w-full rounded-lg my-4 mx-auto block\"></p><p>&nbsp;</p><p>&nbsp;</p><p>From &lt;<a href=\"https://childrenscolorado-my.sharepoint.com/personal/adam_finney_childrenscolorado_org/Documents/ChildNeurologyResidentHandbook_FINAL.docx\"><em>https://childrenscolorado-my.sharepoint.com/personal/adam_finney_childrenscolorado_org/Documents/ChildNeurologyResidentHandbook_FINAL.docx</em></a>&gt; </p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><h4 id=\"pediatric-blood-pressure-charts\">Pediatric Blood Pressure Charts </h4><p>&nbsp;</p><h4 id=\"pediatric-blood-pressure-charts-2\">Pediatric Blood Pressure Charts</h4><p><img src=\"/images/pediatric-normal-values/img-4.gif\" alt=\"\" class=\"max-w-full rounded-lg my-4 mx-auto block\"></p><p>&nbsp;</p><p><img src=\"/images/pediatric-normal-values/img-5.gif\" alt=\"\" class=\"max-w-full rounded-lg my-4 mx-auto block\"></p><p>&nbsp;</p><p><img src=\"/images/pediatric-normal-values/img-6.gif\" alt=\"\" class=\"max-w-full rounded-lg my-4 mx-auto block\"></p><p>&nbsp;</p><p><img src=\"/images/pediatric-normal-values/img-7.gif\" alt=\"\" class=\"max-w-full rounded-lg my-4 mx-auto block\"></p><p>&nbsp;</p><p>&nbsp;</p><p>From &lt;<a href=\"https://childrenscolorado-my.sharepoint.com/personal/adam_finney_childrenscolorado_org/Documents/ChildNeurologyResidentHandbook_FINAL.docx\"><em>https://childrenscolorado-my.sharepoint.com/personal/adam_finney_childrenscolorado_org/Documents/ChildNeurologyResidentHandbook_FINAL.docx</em></a>&gt; </p><p>&nbsp;</p>",
+  "imageCount": 7,
+  "chunkCount": 2
+}

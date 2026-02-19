@@ -1,0 +1,129 @@
+import { notFound } from 'next/navigation';
+import fs from 'fs';
+import path from 'path';
+import indexData from '@/src/data/index.json';
+import TableOfContents from '@/components/TableOfContents';
+import SectionContent from '@/components/SectionContent';
+
+type TocEntry = { level: number; text: string; id: string };
+
+type SectionData = {
+  name: string;
+  slug: string;
+  icon: string;
+  color: string;
+  toc: TocEntry[];
+  html: string;
+  imageCount: number;
+  chunkCount: number;
+};
+
+type IndexEntry = { name: string; slug: string; icon: string; color: string };
+
+const index = indexData as IndexEntry[];
+
+export function generateStaticParams() {
+  return index.map(s => ({ section: s.slug }));
+}
+
+function getSectionData(slug: string): SectionData | null {
+  const p = path.join(process.cwd(), 'src', 'data', `${slug}.json`);
+  if (!fs.existsSync(p)) return null;
+  return JSON.parse(fs.readFileSync(p, 'utf-8')) as SectionData;
+}
+
+const accentMap: Record<string, string> = {
+  epilepsy:                            '#7c3aed',
+  development:                         '#2563eb',
+  headaches:                           '#ea580c',
+  'infectious-disease':                '#dc2626',
+  'movement-disorders':                '#16a34a',
+  'neuro-exam':                        '#0d9488',
+  'neurocritical-care':                '#e11d48',
+  'neurogenetics-and-neurometabolics': '#4f46e5',
+  'neuro-ophthalmology':               '#0891b2',
+  neuroradiology:                      '#475569',
+  'other-topics':                      '#6b7280',
+  paroxysms:                           '#d97706',
+  'pediatric-normal-values':           '#65a30d',
+  psychiatry:                          '#db2777',
+  sleep:                               '#7c3aed',
+  stroke:                              '#b45309',
+};
+
+export default function SectionPage({ params }: { params: { section: string } }) {
+  const data = getSectionData(params.section);
+  if (!data) notFound();
+
+  const idx  = index.findIndex(s => s.slug === params.section);
+  const prev = idx > 0 ? index[idx - 1] : null;
+  const next = idx < index.length - 1 ? index[idx + 1] : null;
+  const accent = accentMap[params.section] ?? '#475569';
+
+  return (
+    <div>
+      {/* Breadcrumb */}
+      <nav className="text-xs text-slate-400 mb-6 flex items-center gap-1.5">
+        <a href="/" className="hover:text-blue-600 text-slate-500 transition-colors">Home</a>
+        <span>›</span>
+        <span className="text-slate-700 font-medium">{data.name}</span>
+      </nav>
+
+      {/* Section title card */}
+      <div className="bg-white rounded-xl border border-slate-200 shadow-sm mb-6 overflow-hidden flex">
+        <div className="w-1.5 shrink-0" style={{ backgroundColor: accent }} />
+        <div className="px-6 py-5">
+          <h1 className="text-xl font-bold text-slate-900 tracking-tight">{data.name}</h1>
+          <p className="text-xs text-slate-400 mt-1">
+            {data.toc.length} topics
+            {data.imageCount > 0 ? ` · ${data.imageCount} figures` : ''}
+          </p>
+        </div>
+      </div>
+
+      {/* Body: TOC sidebar + content */}
+      <div className="flex gap-6 items-start">
+        {/* Sticky TOC */}
+        {data.toc.length > 0 && (
+          <aside className="hidden xl:block w-52 shrink-0 sticky top-20 self-start bg-white border border-slate-200 rounded-xl shadow-sm py-4 max-h-[calc(100vh-6rem)] overflow-y-auto">
+            <TableOfContents toc={data.toc} />
+          </aside>
+        )}
+
+        {/* Main article */}
+        <article className="flex-1 min-w-0 bg-white rounded-xl border border-slate-200 shadow-sm px-8 py-7">
+          <SectionContent html={data.html} />
+
+          {/* Prev / Next */}
+          <div className="mt-10 pt-6 border-t border-slate-100 flex justify-between gap-4 flex-wrap">
+            {prev ? (
+              <a href={`/${prev.slug}/`}
+                className="group flex items-center gap-2 text-sm text-slate-500 hover:text-blue-700 transition-colors">
+                <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+                <div>
+                  <div className="text-xs text-slate-400">Previous</div>
+                  <div className="font-medium group-hover:text-blue-700">{prev.name}</div>
+                </div>
+              </a>
+            ) : <div />}
+
+            {next ? (
+              <a href={`/${next.slug}/`}
+                className="group flex items-center gap-2 text-sm text-slate-500 hover:text-blue-700 transition-colors text-right">
+                <div>
+                  <div className="text-xs text-slate-400 text-right">Next</div>
+                  <div className="font-medium group-hover:text-blue-700">{next.name}</div>
+                </div>
+                <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            ) : <div />}
+          </div>
+        </article>
+      </div>
+    </div>
+  );
+}

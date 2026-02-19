@@ -1,0 +1,9 @@
+node_modules/
+.next/
+out/
+*.log
+.DS_Store
+Thumbs.db
+
+# The source .docx files are local only.
+# To regenerate src/data/ and public/images/, run: node scripts/extract.mjs
