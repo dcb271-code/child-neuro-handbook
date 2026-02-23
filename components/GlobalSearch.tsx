@@ -127,7 +127,7 @@ export default function GlobalSearch() {
 
       {/* Dropdown */}
       {open && query.trim().length >= 2 && (
-        <div style={{
+        <div className="search-dropdown" style={{
           position: 'absolute',
           top: '100%',
           left: 0,
@@ -155,9 +155,10 @@ export default function GlobalSearch() {
               <a key={i} href={href} onClick={() => { setOpen(false); setQuery(''); }}
                 style={{
                   display: 'block',
-                  padding: '12px 16px',
+                  padding: '14px 16px',
                   borderBottom: i < results.length - 1 ? '1px solid #f1f5f9' : 'none',
                   textDecoration: 'none',
+                  minHeight: '44px',
                 }}>
                 <div style={{ fontWeight: 600, fontSize: '13px', color: '#1e293b', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                   {item.heading}

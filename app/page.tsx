@@ -38,8 +38,8 @@ export default function Home() {
   return (
     <div>
       {/* Page header */}
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold text-slate-900 tracking-tight mb-1">
+      <div className="mb-6 sm:mb-8">
+        <h1 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight mb-1">
           Clinical Reference
         </h1>
         <p className="text-slate-500 text-sm">
@@ -48,21 +48,21 @@ export default function Home() {
       </div>
 
       {/* Section grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
         {sections.map((s) => {
           const accent = accentMap[s.slug] ?? '#475569';
           return (
             <a
               key={s.slug}
               href={`/${s.slug}/`}
-              className="group bg-white rounded-xl border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all duration-150 overflow-hidden flex"
+              className="group bg-white rounded-xl border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all duration-150 overflow-hidden flex min-h-[60px] active:bg-slate-50"
             >
               {/* Accent bar */}
-              <div className="w-1 shrink-0 rounded-l-xl" style={{ backgroundColor: accent }} />
+              <div className="w-1.5 shrink-0 rounded-l-xl" style={{ backgroundColor: accent }} />
 
               {/* Card body */}
-              <div className="flex-1 px-5 py-4">
-                <div className="font-semibold text-slate-800 group-hover:text-blue-700 transition-colors leading-snug mb-2">
+              <div className="flex-1 px-4 sm:px-5 py-3.5 sm:py-4 flex flex-col justify-center">
+                <div className="font-semibold text-slate-800 group-hover:text-blue-700 transition-colors leading-snug mb-1">
                   {s.name}
                 </div>
                 <div className="flex items-center gap-3 text-xs text-slate-400">
