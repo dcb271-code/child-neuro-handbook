@@ -80,22 +80,67 @@
   -webkit-overflow-scrolling: touch;
 }
 .doc-content table {
-  @apply w-full text-xs border-collapse;
-  min-width: 400px; /* force scroll on narrow screens rather than wrapping weirdly */
+  /* Do NOT use w-full: that forces the table to 100% of its container and
+     prevents overflow/scroll even when columns can't fit.
+     With table-layout:auto the browser sizes each column to its content
+     minimum (respecting white-space:nowrap on headers), and the total table
+     width will exceed the container on narrow screens — triggering scroll. */
+  @apply text-xs border-collapse;
+  width: 100%; /* fills container when content fits; overflowed when it doesn't */
 }
+
+/* ── Fix: .doc-content p / li apply text-sm (14px) which overrides
+   the table's text-xs (12px) for any <p> inside a cell, inflating
+   cell size and causing premature column wrapping. ── */
+.doc-content table p,
+.doc-content table li {
+  font-size: inherit;   /* use the table's text-xs, not the global text-sm */
+  margin: 2px 0;
+  line-height: 1.5;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+.doc-content table ul,
+.doc-content table ol {
+  margin: 4px 0;
+  padding-left: 1rem;
+}
+
 .doc-content th {
   @apply bg-slate-100 font-semibold text-left px-3 sm:px-4 py-2 sm:py-2.5 border-b border-slate-200 text-slate-700;
-  white-space: nowrap;
+  white-space: nowrap;  /* header text never wraps — drives natural column min-width */
+  min-width: 90px;      /* floor so short headers still get a usable column */
 }
+/* Ensure inline elements inside <th> also don't wrap or inflate font size */
+.doc-content th p,
+.doc-content th strong {
+  white-space: nowrap;
+  font-size: inherit;
+  margin: 0;
+}
+
+/* First column (medication/item name) — always readable, never squished */
+.doc-content th:first-child,
+.doc-content td:first-child {
+  min-width: 130px;
+}
+
 .doc-content td {
   @apply px-3 sm:px-4 py-2 sm:py-2.5 border-b border-slate-100 text-slate-700;
   word-break: break-word;
+  overflow-wrap: break-word;
+  vertical-align: top;
+}
+
+/* Alternating row shading for readability */
+.doc-content tbody tr:nth-child(even) td {
+  background-color: #f8fafc; /* slate-50 */
 }
 .doc-content tr:last-child td {
   @apply border-b-0;
 }
 .doc-content tr:hover td {
-  @apply bg-slate-50;
+  background-color: #eff6ff; /* blue-50 — visible over both row bg colors */
 }
 
 /* Figures / figure captions */
