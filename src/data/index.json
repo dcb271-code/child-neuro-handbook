@@ -48,6 +48,14 @@
     "imageCount": 1
   },
   {
+    "name": "Neurogenetics and Neurometabolics",
+    "slug": "neurogenetics-and-neurometabolics",
+    "icon": "🧬",
+    "color": "bg-indigo-100 text-indigo-800 border-indigo-200",
+    "tocCount": 12,
+    "imageCount": 4
+  },
+  {
     "name": "Neuroimmunology",
     "slug": "neuroimmunology",
     "icon": "🛡️",
@@ -134,13 +142,5 @@
     "color": "bg-gray-100 text-gray-800 border-gray-200",
     "tocCount": 9,
     "imageCount": 5
-  },
-  {
-    "name": "Neurogenetics and Neurometabolics",
-    "slug": "neurogenetics-and-neurometabolics",
-    "icon": "🧬",
-    "color": "bg-indigo-100 text-indigo-800 border-indigo-200",
-    "tocCount": 12,
-    "imageCount": 4
   }
 ]
