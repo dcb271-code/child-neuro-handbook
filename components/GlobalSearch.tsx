@@ -78,11 +78,11 @@ export default function GlobalSearch() {
       <div style={{
         display: 'flex',
         alignItems: 'center',
-        background: 'rgba(255,255,255,0.12)',
+        background: 'rgba(255,255,255,0.20)',
         borderRadius: '8px',
         padding: '6px 12px',
         gap: '8px',
-        border: '1px solid rgba(255,255,255,0.15)',
+        border: '1px solid rgba(255,255,255,0.28)',
       }}>
         {/* Search icon */}
         <svg width="16" height="16" fill="none" stroke="rgba(147,197,253,1)"

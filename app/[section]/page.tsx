@@ -42,6 +42,7 @@ const accentMap: Record<string, string> = {
   'neuro-exam':                        '#0d9488',
   'neurocritical-care':                '#e11d48',
   'neurogenetics-and-neurometabolics': '#4f46e5',
+  neuroimmunology:                     '#0284c7',
   'neuro-ophthalmology':               '#0891b2',
   neuroradiology:                      '#475569',
   'other-topics':                      '#6b7280',
@@ -50,6 +51,7 @@ const accentMap: Record<string, string> = {
   psychiatry:                          '#db2777',
   sleep:                               '#7c3aed',
   stroke:                              '#b45309',
+  'neuro-on-call':                     '#dc2626',
 };
 
 export default function SectionPage({ params }: { params: { section: string } }) {

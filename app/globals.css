@@ -4,16 +4,22 @@
 
 @layer base {
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-    @apply bg-slate-50 text-slate-900;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    background-color: #F8F9FA;
+    @apply text-slate-900;
     /* Prevent horizontal overflow on mobile */
     overflow-x: hidden;
   }
 
   /* Ensure all images and media don't overflow */
-  img, video, iframe, embed, object {
+  img, video, iframe, embed {
     max-width: 100%;
     height: auto;
+  }
+
+  /* object elements (PDF embeds) keep their explicit height */
+  object {
+    max-width: 100%;
   }
 }
 
