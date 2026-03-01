@@ -55,28 +55,30 @@ export default function Home() {
         </p>
       </div>
 
-      {/* On-Call quick access banner */}
-      <a
-        href="/neuro-on-call/"
-        className="group mb-5 sm:mb-6 flex items-center gap-3 sm:gap-4 rounded-xl border-2 border-red-200 dark:border-red-800 hover:border-red-400 dark:hover:border-red-600 bg-red-50 dark:bg-red-950/50 hover:bg-red-100 dark:hover:bg-red-950 transition-all duration-200 px-4 sm:px-5 py-3.5 sm:py-4 shadow-sm hover:shadow-md"
-      >
-        <span className="text-2xl" role="img" aria-label="phone">📞</span>
-        <div className="flex-1 min-w-0">
-          <div className="font-bold text-red-700 dark:text-red-400 text-base sm:text-lg group-hover:text-red-800 dark:group-hover:text-red-300 transition-colors">
-            Neuro On-Call
-          </div>
-          <div className="text-xs text-red-500/80 dark:text-red-400/70 mt-0.5">
-            Status epilepticus, seizure meds, stroke, headache protocols
-          </div>
-        </div>
-        <svg className="w-5 h-5 text-red-300 dark:text-red-600 group-hover:text-red-500 dark:group-hover:text-red-400 transition-colors shrink-0"
-          fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-        </svg>
-      </a>
-
       {/* Section grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+        {/* On-Call quick access — first card, spans full width on mobile */}
+        <a
+          href="/neuro-on-call/"
+          className="group sm:col-span-2 lg:col-span-3 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 bg-white dark:bg-slate-800/80 hover:shadow-md transition-all duration-200 overflow-hidden flex min-h-[56px]"
+        >
+          <div className="w-1 shrink-0 bg-red-500 dark:bg-red-600" />
+          <div className="flex-1 flex items-center gap-4 px-4 sm:px-5 py-3">
+            <div className="flex-1 min-w-0">
+              <div className="font-semibold text-slate-800 dark:text-slate-100 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors text-sm sm:text-base">
+                Neuro On-Call
+              </div>
+              <div className="text-xs text-slate-400 dark:text-slate-500 mt-0.5">
+                Status epilepticus &middot; seizure meds &middot; stroke &middot; headache protocols
+              </div>
+            </div>
+            <svg className="w-4 h-4 text-slate-300 dark:text-slate-600 group-hover:text-red-400 transition-colors shrink-0"
+              fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+        </a>
+
         {sections.map((s) => {
           const accent = accentMap[s.slug] ?? '#475569';
           return (

@@ -76,7 +76,7 @@ export default function SectionPage({ params }: { params: { section: string } })
 
       {/* Section title card */}
       <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm mb-4 overflow-hidden flex">
-        <div className="w-1.5 shrink-0" style={{ backgroundColor: accent }} />
+        <div className="w-1 shrink-0" style={{ backgroundColor: accent }} />
         <div className="px-4 sm:px-6 py-4 sm:py-5">
           <h1 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white tracking-tight">{data.name}</h1>
           <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">
