@@ -1,13 +1,5 @@
 [
   {
-    "name": "Neuro On-Call Quick References",
-    "slug": "neuro-on-call",
-    "icon": "🚨",
-    "color": "bg-rose-100 text-rose-800 border-rose-200",
-    "tocCount": 5,
-    "imageCount": 11
-  },
-  {
     "name": "Epilepsy",
     "slug": "epilepsy",
     "icon": "⚡",
@@ -142,5 +134,13 @@
     "color": "bg-gray-100 text-gray-800 border-gray-200",
     "tocCount": 9,
     "imageCount": 5
+  },
+  {
+    "name": "Neuro On-Call Quick References",
+    "slug": "neuro-on-call",
+    "icon": "🚨",
+    "color": "bg-rose-100 text-rose-800 border-rose-200",
+    "tocCount": 5,
+    "imageCount": 11
   }
 ]

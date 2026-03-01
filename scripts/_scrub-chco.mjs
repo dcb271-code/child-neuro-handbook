@@ -5,6 +5,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import * as cheerio from 'cheerio';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -69,15 +70,24 @@ saveJson(ni.path, ni.data);
 console.log('\nother-topics.json:');
 const ot = loadJson('other-topics.json');
 
-// Remove all SharePoint URL paragraphs (pattern: <p>From &lt;<a href="https://childrenscolorado-...">...</a>&gt; </p>)
-const sharePointRegex = /<p>From &lt;<a href="https:\/\/childrenscolorado[^"]*">[^<]*(?:<[^>]+>[^<]*)*<\/a>&gt;\s*<\/p>/g;
-const spMatches = ot.data.html.match(sharePointRegex);
-if (spMatches) {
-  ot.data.html = ot.data.html.replace(sharePointRegex, '');
-  totalFixes += spMatches.length;
-  console.log(`  ✓ Removed ${spMatches.length} SharePoint URL citations`);
-} else {
-  console.log('  ✗ No SharePoint URLs found');
+// Remove SharePoint URL paragraphs using cheerio (safe DOM-based removal)
+{
+  const $ot = cheerio.load(ot.data.html, { decodeEntities: false });
+  let spCount = 0;
+  $ot('p').each(function () {
+    const text = $ot(this).text().trim();
+    if (/^From\s+<?\s*https:\/\/childrenscolorado/.test(text)) {
+      $ot(this).remove();
+      spCount++;
+    }
+  });
+  if (spCount > 0) {
+    ot.data.html = $ot('body').html() || ot.data.html;
+    totalFixes += spCount;
+    console.log(`  ✓ Removed ${spCount} SharePoint URL citations`);
+  } else {
+    console.log('  ✗ No SharePoint URLs found');
+  }
 }
 
 // Replace Colorado-specific legislation reference
@@ -99,13 +109,23 @@ saveJson(ot.path, ot.data);
 // ── pediatric-normal-values.json ──
 console.log('\npediatric-normal-values.json:');
 const pnv = loadJson('pediatric-normal-values.json');
-const pnvSpMatches = pnv.data.html.match(sharePointRegex);
-if (pnvSpMatches) {
-  pnv.data.html = pnv.data.html.replace(sharePointRegex, '');
-  totalFixes += pnvSpMatches.length;
-  console.log(`  ✓ Removed ${pnvSpMatches.length} SharePoint URL citations`);
-} else {
-  console.log('  ✗ No SharePoint URLs found');
+{
+  const $pnv = cheerio.load(pnv.data.html, { decodeEntities: false });
+  let pnvSpCount = 0;
+  $pnv('p').each(function () {
+    const text = $pnv(this).text().trim();
+    if (/^From\s+<?\s*https:\/\/childrenscolorado/.test(text)) {
+      $pnv(this).remove();
+      pnvSpCount++;
+    }
+  });
+  if (pnvSpCount > 0) {
+    pnv.data.html = $pnv('body').html() || pnv.data.html;
+    totalFixes += pnvSpCount;
+    console.log(`  ✓ Removed ${pnvSpCount} SharePoint URL citations`);
+  } else {
+    console.log('  ✗ No SharePoint URLs found');
+  }
 }
 saveJson(pnv.path, pnv.data);
 

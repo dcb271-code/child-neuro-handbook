@@ -92,7 +92,9 @@ function stripSpacerParagraphs($) {
     const text = $p.text().trim();
     const html = $p.html() || '';
     // Match empty, whitespace-only, or &nbsp;-only paragraphs
+    // But preserve paragraphs that contain images or other media
     if (text === '' || text === '\u00a0' || /^(\s|&nbsp;)*$/i.test(html)) {
+      if ($p.find('img, object, iframe, video, audio, svg').length > 0) return;
       $p.remove();
       count++;
     }
