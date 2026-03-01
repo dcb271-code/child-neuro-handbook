@@ -1342,5 +1342,159 @@
     "heading": "Duchenne Muscular Dystrophy (DMD)",
     "id": "duchenne-muscular-dystrophy-dmd",
     "text": "DMD is an X-linked recessive disorder caused by mutations of the dystrophin gene that result in absent or insufficient functional dystrophin protein. Results in progressive muscular weakness, loss of ambulation, respiratory impairment, and cardiomyopathy.     Neuromuscular Management of DMD:    Common comorbid conditions: GI: GERD, constipation, swallowing dysfunction. Need osmotic laxatives, retrograde enemas. Ranitidine or PPIs.Nutrition: obesity usually while on steroids. Underweight due to poor intake. Pulmonary: Complications include respiratory muscle fatigue, mucus plugging, atelectasis"
+  },
+  {
+    "section": "headaches",
+    "sectionName": "Headaches",
+    "heading": "Emergent Headache Evaluation",
+    "id": "emergent-headache-evaluation",
+    "text": ""
+  },
+  {
+    "section": "headaches",
+    "sectionName": "Headaches",
+    "heading": "Thunderclap Headache",
+    "id": "thunderclap-headache",
+    "text": "Definition: Severe headache reaching maximum intensity within 60 seconds (\"worst headache of my life\"). Must rule out subarachnoid hemorrhage (SAH):\n\nStep 1: Non-contrast CT head — sensitivity ~98% within 6 hours of onset, drops to ~93% at 24h and ~50% by day 5\nStep 2: If CT negative and within 2 weeks of onset → lumbar puncture looking for xanthochromia (send tube 4 for spectrophotometry) and elevated RBCs that do not clear\nStep 3: If LP also negative → consider CTA or MRA to evaluate for unrup"
+  },
+  {
+    "section": "headaches",
+    "sectionName": "Headaches",
+    "heading": "Headache Red Flags — \"SNOOP\" Mnemonic",
+    "id": "headache-red-flags-snoop",
+    "text": "S — Systemic symptoms (fever, weight loss, rash) or Secondary risk factors (immunocompromised, malignancy, coagulopathy)\nN — Neurologic signs (papilledema, focal deficits, altered mental status, meningismus)\nO — Onset sudden (thunderclap) or recent onset in child < 5 years\nO — Other associated features: positional (worse lying down → IIH; worse standing → low-pressure), nocturnal or early morning awakening headaches, triggered by Valsalva/cough/exertion\nP — Prior headache history: new headache t"
+  },
+  {
+    "section": "headaches",
+    "sectionName": "Headaches",
+    "heading": "When to Image a Pediatric Headache",
+    "id": "when-to-image-pediatric-headache",
+    "text": "Urgent imaging (CT head) indicated if: Thunderclap onset\nFocal neurologic deficits\nPapilledema or loss of venous pulsations on fundoscopy\nAltered mental status or worsening GCS\nSigns of increased ICP: vomiting (especially AM), personality change, head tilt\nPost-traumatic with \"red flag\" features\nVP shunt concern MRI brain (outpatient) consider if: Headache always same side\nHeadache wakes from sleep or present on awakening\nProgressive headache over weeks with new neurologic findings\nAge < 5 with "
+  },
+  {
+    "section": "headaches",
+    "sectionName": "Headaches",
+    "heading": "IIH Workup Essentials",
+    "id": "idiopathic-intracranial-hypertension-workup",
+    "text": "Opening pressure thresholds (LP in lateral decubitus): Normal: < 20 cmH₂O (children) or < 25 cmH₂O (adolescents/obese)\nElevated: ≥ 25 cmH₂O (≥ 28 cmH₂O if obese/sedated)\nEnsure child is calm, legs extended — crying can double pressure readings"
+  },
+  {
+    "section": "neuro-ophthalmology",
+    "sectionName": "Neuro-Ophthalmology",
+    "heading": "Anisocoria Evaluation",
+    "id": "anisocoria-evaluation",
+    "text": ""
+  },
+  {
+    "section": "neuro-ophthalmology",
+    "sectionName": "Neuro-Ophthalmology",
+    "heading": "Approach to Unequal Pupils",
+    "id": "anisocoria-approach",
+    "text": "Key question: Which pupil is abnormal — the large one or the small one? EMERGENCY: Large pupil + ptosis + eye \"down and out\" = CN III palsy until proven otherwise. In a post-operative or head-injured patient, this may indicate uncal herniation requiring emergent neurosurgical evaluation."
+  },
+  {
+    "section": "neuro-ophthalmology",
+    "sectionName": "Neuro-Ophthalmology",
+    "heading": "Step 1: Examine in Light vs Dark",
+    "id": "anisocoria-in-light-vs-dark",
+    "text": "Anisocoria greater in light (large pupil doesn't constrict) → problem is with the large pupil\n  \n  CN III palsy (check for ptosis, eye movement limitation)\n  Pharmacologic mydriasis (topical atropine/cyclopentolate — won't constrict to 1% pilocarpine)\n  Traumatic mydriasis (iris sphincter damage)\n  Tonic pupil (Adie) — vermiform movements, slow constriction, constricts to dilute 0.1% pilocarpine (denervation supersensitivity)\n  \n\nAnisocoria greater in dark (small pupil doesn't dilate) → problem "
+  },
+  {
+    "section": "neuro-ophthalmology",
+    "sectionName": "Neuro-Ophthalmology",
+    "heading": "Horner Syndrome Workup",
+    "id": "horner-syndrome-workup",
+    "text": "Confirm: Topical 4% cocaine or 0.5% apraclonidine — Horner pupil fails to dilate with cocaine (or reverses with apraclonidine). Localize: Central (1st order): Stroke, demyelination, tumor — MRI brain + cervical spine\nPreganglionic (2nd order): Pancoast tumor, neuroblastoma (pediatric!), carotid dissection — CT/MRI chest + neck\nPostganglionic (3rd order): Carotid dissection, cavernous sinus lesion — MRA head/neck Pediatric Horner: Must rule out neuroblastoma (obtain urine catecholamines — HVA, VM"
+  },
+  {
+    "section": "neuro-ophthalmology",
+    "sectionName": "Neuro-Ophthalmology",
+    "heading": "CN III Palsy — Surgical vs Medical",
+    "id": "cn-iii-palsy-evaluation",
+    "text": "\"Surgical\" (pupil-involving): Mydriasis + ptosis + limited adduction/elevation/depression → concern for posterior communicating artery (PComm) aneurysm compression. Urgent CTA/MRA.\n\"Medical\" (pupil-sparing): Ptosis + eye movement limitation but normal pupil → microvascular (diabetes, hypertension). More common in adults; rare in children.\nIn children: Pupil-sparing distinction is less reliable. Any CN III palsy in a child warrants imaging."
+  },
+  {
+    "section": "epilepsy",
+    "sectionName": "Epilepsy",
+    "heading": "Valproic Acid (VPA) Toxicity",
+    "id": "valproic-acid-toxicity",
+    "text": ""
+  },
+  {
+    "section": "epilepsy",
+    "sectionName": "Epilepsy",
+    "heading": "VPA-Induced Hyperammonemic Encephalopathy",
+    "id": "vpa-hyperammonemic-encephalopathy",
+    "text": "Can occur even with therapeutic VPA levels. Suspect in any patient on VPA with acute confusion, lethargy, vomiting, or worsening seizures."
+  },
+  {
+    "section": "epilepsy",
+    "sectionName": "Epilepsy",
+    "heading": "Recognition",
+    "id": "vpa-toxicity-recognition",
+    "text": "Check ammonia level in any encephalopathic patient on valproic acid — even if VPA level is \"therapeutic.\"\n\nAmmonia > 80 µmol/L — clinically significant\nAmmonia > 100 µmol/L — concerning, likely symptomatic\nAmmonia > 200 µmol/L — critical, risk of cerebral edema\n\nAlso check: hepatic function panel (AST, ALT, total/direct bilirubin), VPA level, CBC with platelets, lipase"
+  },
+  {
+    "section": "epilepsy",
+    "sectionName": "Epilepsy",
+    "heading": "L-Carnitine Treatment Protocol",
+    "id": "l-carnitine-protocol",
+    "text": "Indication: VPA-induced hyperammonemia with encephalopathy, VPA overdose, or hepatotoxicity.\nIV Levocarnitine (Carnitor):\n\nLoading dose: 100 mg/kg IV (max 6 g) over 30 minutes\nMaintenance: 50 mg/kg IV (max 3 g) every 8 hours\nContinue until ammonia normalizes and mental status improves\nTransition to oral: 50-100 mg/kg/day divided TID (max 3 g/day)\n\nAdditional management:\n\nHold VPA immediately\nConsider lactulose if ammonia critically elevated (> 200 µmol/L)\nMonitor ammonia every 4-6 hours until tr"
+  },
+  {
+    "section": "epilepsy",
+    "sectionName": "Epilepsy",
+    "heading": "VPA Overdose",
+    "id": "vpa-overdose-management",
+    "text": "VPA level > 150 mg/L: Significant toxicity likely — L-carnitine, supportive care\nVPA level > 300 mg/L: Severe — consider hemodialysis (VPA is protein-bound at therapeutic levels but saturation occurs at high concentrations, making dialysis more effective)\nVPA level > 850 mg/L: Life-threatening — hemodialysis strongly recommended\nActivated charcoal if within 1-2 hours of ingestion (VPA is well-absorbed)\nNo specific antidote — L-carnitine is the primary treatment adjunct"
+  },
+  {
+    "section": "neuromuscular",
+    "sectionName": "Neuromuscular",
+    "heading": "GBS — Acute Workup & Management Protocol",
+    "id": "gbs-acute-workup",
+    "text": ""
+  },
+  {
+    "section": "neuromuscular",
+    "sectionName": "Neuromuscular",
+    "heading": "Diagnostic Workup",
+    "id": "gbs-diagnosis",
+    "text": "Lumbar Puncture:\n\nClassic finding: albuminocytologic dissociation (elevated protein, normal WBC < 10/µL)\nCSF protein may be normal in the first week — sensitivity improves after day 7\nIf WBC > 50/µL → reconsider diagnosis (think infectious, HIV, Lyme, CMV)\n\nNCS/EMG:\n\nMay be normal in first 1-2 weeks\nOptimal timing: 2-3 weeks after symptom onset\nEarly findings: prolonged F-waves, prolonged distal latencies, absent H-reflexes\nHelps classify subtype: AIDP (demyelinating, most common) vs AMAN/AMSAN "
+  },
+  {
+    "section": "neuromuscular",
+    "sectionName": "Neuromuscular",
+    "heading": "Respiratory Monitoring — \"20/30/40 Rule\"",
+    "id": "gbs-respiratory-monitoring",
+    "text": "Monitor FVC (forced vital capacity) every 4-6 hours in all GBS patients:\n\nFVC < 20 mL/kg → consider ICU transfer / intubation\nNIF (MIP) < -30 cmH₂O → respiratory muscles weakening\nFVC declining > 30% from baseline → rapid progression, prepare for intubation\n\nOther intubation indicators: inability to count to 20 in one breath, paradoxical abdominal breathing, oxygen desaturation, inability to lift head off bed\nDo NOT rely on pulse oximetry alone — desaturation is a LATE finding in neuromuscular r"
+  },
+  {
+    "section": "neuromuscular",
+    "sectionName": "Neuromuscular",
+    "heading": "Treatment Protocol",
+    "id": "gbs-treatment-protocol",
+    "text": "IVIG (first-line in pediatrics):\n\nDose: 2 g/kg total, given over 2-5 days (e.g., 0.4 g/kg/day × 5 days)\nCheck IgA level before first dose (IgA deficiency → anaphylaxis risk)\nMonitor for adverse effects: headache, aseptic meningitis, renal dysfunction, thrombosis\n\nPlasmapheresis (PLEX):\n\nAlternative to IVIG — equally effective in severe cases\nTypically 5 exchanges over 1-2 weeks\nPreferred if IVIG contraindicated or patient not improving\nDo NOT give IVIG after PLEX (PLEX removes the IVIG)\n\nSteroid"
+  },
+  {
+    "section": "paroxysms",
+    "sectionName": "Paroxysms",
+    "heading": "Neonatal Jitteriness vs Seizures",
+    "id": "neonatal-jitteriness-vs-seizures",
+    "text": "One of the most common consult questions in the nursery/NICU. Key clinical features distinguish jitteriness (benign) from seizures (requires workup). Feature\nJitteriness\nSeizure\n\n\n\n\nMovement type\nTremor (equal amplitude, frequency in both directions)\nClonic (fast phase in one direction, slow return)\n\n\nStimulus-sensitive\nYes — provoked or worsened by stimulation\nNo — occurs spontaneously\n\n\nSuppressible with flexion/restraint\nYes — stops when limb is gently held\nNo — continues despite restraint\n\n\n"
+  },
+  {
+    "section": "paroxysms",
+    "sectionName": "Paroxysms",
+    "heading": "Common Causes of Neonatal Jitteriness",
+    "id": "neonatal-jitteriness-causes",
+    "text": "Hypoglycemia (check glucose!)\nHypocalcemia\nNeonatal drug withdrawal (maternal SSRI, opioids)\nHypothermia\nSepsis (can also cause seizures — low threshold to work up)\nIdiopathic / benign neonatal jitteriness (diagnosis of exclusion)"
+  },
+  {
+    "section": "paroxysms",
+    "sectionName": "Paroxysms",
+    "heading": "If Seizure Suspected — Initial Workup",
+    "id": "neonatal-seizure-workup",
+    "text": "Stat labs: Glucose, BMP (calcium, magnesium, sodium), blood gas, lactate\nInfection workup: CBC, blood culture, consider LP (CSF studies + HSV PCR)\nEEG: Continuous video EEG monitoring if seizure confirmed or ongoing suspicion\nImaging: Head ultrasound (bedside), MRI brain when stable\nConsider: Urine organic acids, serum amino acids, ammonia if metabolic etiology suspected\nFirst-line treatment: Phenobarbital 20 mg/kg IV loading dose"
   }
 ]

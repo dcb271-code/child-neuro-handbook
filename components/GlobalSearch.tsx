@@ -105,7 +105,7 @@ export default function GlobalSearch() {
             border: 'none',
             outline: 'none',
             color: 'white',
-            fontSize: '13px',
+            fontSize: '16px',
             minWidth: 0,
           }}
           className="search-input-placeholder"
@@ -127,24 +127,18 @@ export default function GlobalSearch() {
 
       {/* Dropdown */}
       {open && query.trim().length >= 2 && (
-        <div className="search-dropdown" style={{
+        <div className="search-dropdown bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-[0_20px_60px_rgba(0,0,0,0.15)] overflow-hidden z-[100]" style={{
           position: 'absolute',
           top: '100%',
           left: 0,
           right: 0,
           marginTop: '4px',
-          background: 'white',
-          border: '1px solid #e2e8f0',
-          borderRadius: '12px',
-          boxShadow: '0 20px 60px rgba(0,0,0,0.15)',
-          overflow: 'hidden',
-          zIndex: 100,
         }}>
           {loading && (
-            <div style={{ padding: '12px 16px', fontSize: '12px', color: '#94a3b8' }}>Searching…</div>
+            <div className="text-slate-400 dark:text-slate-500" style={{ padding: '12px 16px', fontSize: '12px' }}>Searching…</div>
           )}
           {!loading && results.length === 0 && (
-            <div style={{ padding: '16px', fontSize: '13px', color: '#64748b', textAlign: 'center' }}>
+            <div className="text-slate-500 dark:text-slate-400" style={{ padding: '16px', fontSize: '13px', textAlign: 'center' }}>
               No results for &quot;{query}&quot;
             </div>
           )}
@@ -153,20 +147,19 @@ export default function GlobalSearch() {
             const href = `/${item.section}/${item.id ? '#' + item.id : ''}`;
             return (
               <a key={i} href={href} onClick={() => { setOpen(false); setQuery(''); }}
+                className="block no-underline hover:bg-slate-50 dark:hover:bg-slate-700 border-b border-slate-100 dark:border-slate-700 last:border-b-0"
                 style={{
-                  display: 'block',
                   padding: '14px 16px',
-                  borderBottom: i < results.length - 1 ? '1px solid #f1f5f9' : 'none',
                   textDecoration: 'none',
                   minHeight: '44px',
                 }}>
-                <div style={{ fontWeight: 600, fontSize: '13px', color: '#1e293b', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                <div className="text-slate-900 dark:text-white" style={{ fontWeight: 600, fontSize: '13px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                   {item.heading}
                 </div>
-                <div style={{ fontSize: '11px', color: '#3b82f6', marginTop: '2px' }}>
+                <div className="text-blue-600 dark:text-blue-400" style={{ fontSize: '11px', marginTop: '2px' }}>
                   {item.sectionName}
                 </div>
-                <div style={{ fontSize: '11px', color: '#94a3b8', marginTop: '3px',
+                <div className="text-slate-400 dark:text-slate-500" style={{ fontSize: '11px', marginTop: '3px',
                   display: '-webkit-box', WebkitLineClamp: 1, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
                   {item.text.slice(0, 110).replace(/\s+/g, ' ')}
                 </div>

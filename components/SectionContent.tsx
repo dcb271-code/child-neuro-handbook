@@ -5,11 +5,19 @@ import { useRef, useEffect } from 'react';
 export default function SectionContent({ html }: { html: string }) {
   const ref = useRef<HTMLDivElement>(null);
 
-  // After render, find PDF embeds and add fullscreen buttons
   useEffect(() => {
     const container = ref.current;
     if (!container) return;
 
+    // Add lazy loading to all images
+    const imgs = container.querySelectorAll('img');
+    imgs.forEach((img) => {
+      if (!img.hasAttribute('loading')) {
+        img.setAttribute('loading', 'lazy');
+      }
+    });
+
+    // Add fullscreen buttons to PDF embeds
     const pdfEmbeds = container.querySelectorAll('object.pdf-embed');
     pdfEmbeds.forEach((obj) => {
       const parent = obj.parentElement;
@@ -24,7 +32,6 @@ export default function SectionContent({ html }: { html: string }) {
         }
       });
 
-      // Insert button after the object element
       obj.after(btn);
     });
   }, [html]);

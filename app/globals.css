@@ -5,10 +5,8 @@
 @layer base {
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-    background-color: #F8F9FA;
-    @apply text-slate-900;
-    /* Prevent horizontal overflow on mobile */
     overflow-x: hidden;
+    transition: background-color 0.2s, color 0.2s;
   }
 
   /* Ensure all images and media don't overflow */
@@ -21,6 +19,14 @@
   object {
     max-width: 100%;
   }
+}
+
+/* ── Homepage card tint (light mode only) ── */
+.home-card {
+  background-color: var(--accent-tint);
+}
+.dark .home-card {
+  background-color: rgba(30, 41, 59, 0.5); /* slate-800/50 */
 }
 
 /* ── Document content ──────────────────────────────── */
@@ -74,19 +80,52 @@
   @apply text-xs bg-slate-100 text-slate-800 p-3 rounded-lg overflow-x-auto my-3;
 }
 
+/* ── Dark mode — document content ── */
+.dark .doc-content h1 {
+  @apply text-white border-slate-700;
+}
+.dark .doc-content h2 {
+  @apply text-slate-100;
+}
+.dark .doc-content h3 {
+  @apply text-slate-200;
+}
+.dark .doc-content h4 {
+  @apply text-slate-300;
+}
+.dark .doc-content p {
+  @apply text-slate-300;
+}
+.dark .doc-content li {
+  @apply text-slate-300;
+}
+.dark .doc-content strong {
+  @apply text-white;
+}
+.dark .doc-content img {
+  @apply border-slate-600;
+}
+.dark .doc-content a {
+  @apply text-blue-400;
+}
+.dark .doc-content code {
+  @apply bg-slate-700 text-slate-200;
+}
+.dark .doc-content pre {
+  @apply bg-slate-700 text-slate-200;
+}
+
 /* Tables — always scroll horizontally on mobile */
 .table-wrap {
   @apply overflow-x-auto my-4 sm:my-6 rounded-lg border border-slate-200 shadow-sm;
   -webkit-overflow-scrolling: touch;
 }
+.dark .table-wrap {
+  @apply border-slate-700;
+}
 .doc-content table {
-  /* Do NOT use w-full: that forces the table to 100% of its container and
-     prevents overflow/scroll even when columns can't fit.
-     With table-layout:auto the browser sizes each column to its content
-     minimum (respecting white-space:nowrap on headers), and the total table
-     width will exceed the container on narrow screens — triggering scroll. */
   @apply text-xs border-collapse;
-  width: 100%; /* fills container when content fits; overflowed when it doesn't */
+  width: 100%;
 }
 
 /* ── Fix: .doc-content p / li apply text-sm (14px) which overrides
@@ -94,7 +133,7 @@
    cell size and causing premature column wrapping. ── */
 .doc-content table p,
 .doc-content table li {
-  font-size: inherit;   /* use the table's text-xs, not the global text-sm */
+  font-size: inherit;
   margin: 2px 0;
   line-height: 1.5;
   word-break: break-word;
@@ -108,8 +147,11 @@
 
 .doc-content th {
   @apply bg-slate-100 font-semibold text-left px-3 sm:px-4 py-2 sm:py-2.5 border-b border-slate-200 text-slate-700;
-  white-space: nowrap;  /* header text never wraps — drives natural column min-width */
-  min-width: 90px;      /* floor so short headers still get a usable column */
+  white-space: nowrap;
+  min-width: 90px;
+}
+.dark .doc-content th {
+  @apply bg-slate-700 border-slate-600 text-slate-200;
 }
 /* Ensure inline elements inside <th> also don't wrap or inflate font size */
 .doc-content th p,
@@ -119,36 +161,52 @@
   margin: 0;
 }
 
-/* First column min-width — readable medication/item names (sticky rules below) */
-
 .doc-content td {
   @apply px-3 sm:px-4 py-2 sm:py-2.5 border-b border-slate-100 text-slate-700;
   word-break: break-word;
   overflow-wrap: break-word;
   vertical-align: top;
 }
+.dark .doc-content td {
+  @apply border-slate-700 text-slate-300;
+}
 
 /* Alternating row shading for readability */
 .doc-content tbody tr:nth-child(even) td {
   background-color: #f8fafc; /* slate-50 */
 }
+.dark .doc-content tbody tr:nth-child(even) td {
+  background-color: rgba(30, 41, 59, 0.5); /* slate-800/50 */
+}
 .doc-content tr:last-child td {
   @apply border-b-0;
 }
 .doc-content tr:hover td {
-  background-color: #eff6ff; /* blue-50 — visible over both row bg colors */
+  background-color: #eff6ff; /* blue-50 */
+}
+.dark .doc-content tr:hover td {
+  background-color: rgba(30, 58, 138, 0.2); /* blue-900/20 */
 }
 
 /* ── Callout boxes (converted from 1-column tables) ── */
 .doc-content .callout-box {
   @apply my-4 sm:my-6 p-4 sm:p-5 rounded-lg border border-blue-200 bg-blue-50/60;
 }
+.dark .doc-content .callout-box {
+  @apply border-blue-800 bg-blue-950/30;
+}
 .doc-content .callout-box p {
   @apply text-sm text-slate-700 leading-relaxed;
   margin: 4px 0;
 }
+.dark .doc-content .callout-box p {
+  @apply text-slate-300;
+}
 .doc-content .callout-box strong {
   @apply text-slate-800;
+}
+.dark .doc-content .callout-box strong {
+  @apply text-white;
 }
 .doc-content .callout-box ul,
 .doc-content .callout-box ol {
@@ -182,6 +240,9 @@
   opacity: 1;
   transition: opacity 0.2s;
 }
+.dark .table-wrap::after {
+  background: linear-gradient(to right, transparent, rgba(15,23,42,0.85));
+}
 
 .doc-content th:first-child,
 .doc-content td:first-child {
@@ -191,17 +252,29 @@
   min-width: 130px;
 }
 .doc-content th:first-child {
-  background-color: #f1f5f9; /* slate-100 — matches th bg */
-  z-index: 2; /* above td sticky cells */
+  background-color: #f1f5f9; /* slate-100 */
+  z-index: 2;
+}
+.dark .doc-content th:first-child {
+  background-color: #334155; /* slate-700 */
 }
 .doc-content td:first-child {
   background-color: #ffffff;
 }
+.dark .doc-content td:first-child {
+  background-color: #1e293b; /* slate-800 */
+}
 .doc-content tbody tr:nth-child(even) td:first-child {
-  background-color: #f8fafc; /* slate-50 — matches striped row */
+  background-color: #f8fafc; /* slate-50 */
+}
+.dark .doc-content tbody tr:nth-child(even) td:first-child {
+  background-color: rgba(30, 41, 59, 0.5);
 }
 .doc-content tr:hover td:first-child {
-  background-color: #eff6ff; /* blue-50 — matches hover row */
+  background-color: #eff6ff; /* blue-50 */
+}
+.dark .doc-content tr:hover td:first-child {
+  background-color: rgba(30, 58, 138, 0.2);
 }
 /* Subtle shadow on right edge of sticky column */
 .doc-content th:first-child::after,
@@ -215,6 +288,10 @@
   background: linear-gradient(to right, rgba(0,0,0,0.06), transparent);
   pointer-events: none;
 }
+.dark .doc-content th:first-child::after,
+.dark .doc-content td:first-child::after {
+  background: linear-gradient(to right, rgba(0,0,0,0.2), transparent);
+}
 
 /* Figures / figure captions */
 .doc-content figure {
@@ -226,16 +303,12 @@
   @apply text-xs text-slate-500 text-center mt-2 italic;
 }
 
-/* ── Scroll offset for anchored headings ─────────────────
-   On desktop: only the sticky header (56px) sits above content.
-   On mobile (below xl=1280px): sticky header (56px) + pill nav (~44px) stack.
-   scroll-margin-top pushes the heading down so it isn't hidden behind those bars.
-   ─────────────────────────────────────────────────────── */
+/* ── Scroll offset for anchored headings ── */
 .doc-content h1[id],
 .doc-content h2[id],
 .doc-content h3[id],
 .doc-content h4[id] {
-  scroll-margin-top: 72px; /* desktop: header + breathing room */
+  scroll-margin-top: 72px;
 }
 
 @media (max-width: 1279px) {
@@ -243,17 +316,17 @@
   .doc-content h2[id],
   .doc-content h3[id],
   .doc-content h4[id] {
-    scroll-margin-top: 112px; /* mobile: header (56px) + pill nav (44px) + gap */
+    scroll-margin-top: 112px;
   }
 }
 
 /* ── Pill nav scroll container — hide scrollbar on all engines ── */
 .pill-nav-scroll {
-  scrollbar-width: none;       /* Firefox */
-  -ms-overflow-style: none;    /* IE / old Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 .pill-nav-scroll::-webkit-scrollbar {
-  display: none;               /* Chrome / Safari / mobile WebKit */
+  display: none;
 }
 
 /* Header search input placeholder */
@@ -264,13 +337,18 @@
 /* TOC active state */
 .toc-link {
   @apply block py-1.5 px-3 text-xs text-slate-500 hover:text-blue-700 hover:bg-blue-50 rounded-md transition-colors leading-snug;
-  /* Minimum touch target */
   min-height: 32px;
   display: flex;
   align-items: center;
 }
 .toc-link.active {
   @apply text-blue-700 font-semibold bg-blue-50;
+}
+.dark .toc-link {
+  @apply text-slate-400 hover:text-blue-400 hover:bg-slate-700;
+}
+.dark .toc-link.active {
+  @apply text-blue-400 font-semibold bg-slate-700;
 }
 
 /* ── Search dropdown — full width on small screens ──── */
@@ -285,28 +363,27 @@
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     border-radius: 12px;
-    /* shadow already set inline */
   }
 }
 
 /* ── Mobile-specific doc-content adjustments ─────────── */
 @media (max-width: 639px) {
-  /* First h1 in article needs less top margin since article already has padding */
   .doc-content h1:first-child {
     margin-top: 0;
   }
 
-  /* Tighten up spacing on mobile */
   .doc-content ul,
   .doc-content ol {
     padding-left: 1.25rem;
   }
 
-  /* Make blockquotes readable */
   .doc-content blockquote {
     margin-left: 0;
     padding-left: 0.75rem;
     border-left: 3px solid #cbd5e1;
+  }
+  .dark .doc-content blockquote {
+    border-left-color: #475569;
   }
 }
 
@@ -314,12 +391,18 @@
 .doc-content details {
   @apply my-4 rounded-lg border border-slate-200 bg-white overflow-hidden;
 }
+.dark .doc-content details {
+  @apply border-slate-700 bg-slate-800;
+}
 .doc-content details > summary {
   @apply px-4 py-3 text-sm font-semibold text-slate-700 cursor-pointer select-none;
   list-style: none;
   display: flex;
   align-items: center;
   gap: 8px;
+}
+.dark .doc-content details > summary {
+  @apply text-slate-200;
 }
 .doc-content details > summary::-webkit-details-marker {
   display: none;
@@ -341,6 +424,9 @@
 .doc-content details > summary:hover {
   @apply bg-slate-50;
 }
+.dark .doc-content details > summary:hover {
+  @apply bg-slate-700;
+}
 .doc-content details > :not(summary) {
   @apply px-4 pb-3;
 }
@@ -354,4 +440,48 @@
 }
 .pdf-fullscreen-btn:hover {
   @apply bg-blue-50 rounded;
+}
+.dark .pdf-fullscreen-btn {
+  @apply text-slate-400 hover:text-blue-400;
+}
+.dark .pdf-fullscreen-btn:hover {
+  @apply bg-slate-700;
+}
+
+/* ── Dark mode search dropdown ── */
+.dark .search-dropdown {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+/* ── Clinical content: red flag boxes ── */
+.doc-content .red-flag-box {
+  @apply my-4 sm:my-6 p-4 sm:p-5 rounded-lg border-2 border-red-200 bg-red-50/60;
+}
+.dark .doc-content .red-flag-box {
+  @apply border-red-800 bg-red-950/30;
+}
+.doc-content .red-flag-box p,
+.doc-content .red-flag-box li {
+  @apply text-slate-700;
+}
+.dark .doc-content .red-flag-box p,
+.dark .doc-content .red-flag-box li {
+  @apply text-slate-300;
+}
+
+/* ── Clinical content: protocol boxes ── */
+.doc-content .protocol-box {
+  @apply my-4 sm:my-6 p-4 sm:p-5 rounded-lg border border-emerald-200 bg-emerald-50/60;
+}
+.dark .doc-content .protocol-box {
+  @apply border-emerald-800 bg-emerald-950/30;
+}
+.doc-content .protocol-box p,
+.doc-content .protocol-box li {
+  @apply text-slate-700;
+}
+.dark .doc-content .protocol-box p,
+.dark .doc-content .protocol-box li {
+  @apply text-slate-300;
 }

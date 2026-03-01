@@ -4,7 +4,7 @@
     "slug": "epilepsy",
     "icon": "⚡",
     "color": "bg-purple-100 text-purple-800 border-purple-200",
-    "tocCount": 44,
+    "tocCount": 51,
     "imageCount": 51
   },
   {
@@ -12,7 +12,7 @@
     "slug": "paroxysms",
     "icon": "💥",
     "color": "bg-yellow-100 text-yellow-800 border-yellow-200",
-    "tocCount": 3,
+    "tocCount": 6,
     "imageCount": 6
   },
   {
@@ -28,7 +28,7 @@
     "slug": "headaches",
     "icon": "🤕",
     "color": "bg-orange-100 text-orange-800 border-orange-200",
-    "tocCount": 15,
+    "tocCount": 20,
     "imageCount": 4
   },
   {
@@ -92,7 +92,7 @@
     "slug": "neuro-ophthalmology",
     "icon": "👁️",
     "color": "bg-cyan-100 text-cyan-800 border-cyan-200",
-    "tocCount": 3,
+    "tocCount": 8,
     "imageCount": 0
   },
   {
@@ -140,15 +140,15 @@
     "slug": "neuro-on-call",
     "icon": "🚨",
     "color": "bg-rose-100 text-rose-800 border-rose-200",
-    "tocCount": 5,
-    "imageCount": 11
+    "tocCount": 6,
+    "imageCount": 8
   },
   {
     "name": "Neuromuscular",
     "slug": "neuromuscular",
     "icon": "💪",
     "color": "bg-emerald-100 text-emerald-800 border-emerald-200",
-    "tocCount": 4,
+    "tocCount": 8,
     "imageCount": 3
   }
 ]

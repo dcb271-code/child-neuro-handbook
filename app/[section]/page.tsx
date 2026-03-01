@@ -68,18 +68,18 @@ export default function SectionPage({ params }: { params: { section: string } })
   return (
     <div>
       {/* Breadcrumb */}
-      <nav className="text-xs text-slate-400 mb-4 sm:mb-6 flex items-center gap-1.5 min-h-[44px] sm:min-h-0 py-2 sm:py-0">
-        <a href="/" className="hover:text-blue-600 text-slate-500 transition-colors py-2 pr-1">Home</a>
+      <nav className="text-xs text-slate-400 dark:text-slate-500 mb-4 sm:mb-6 flex items-center gap-1.5 min-h-[44px] sm:min-h-0 py-2 sm:py-0">
+        <a href="/" className="hover:text-blue-600 dark:hover:text-blue-400 text-slate-500 dark:text-slate-400 transition-colors py-2 pr-1">Home</a>
         <span>›</span>
-        <span className="text-slate-700 font-medium truncate">{data.name}</span>
+        <span className="text-slate-700 dark:text-slate-200 font-medium truncate">{data.name}</span>
       </nav>
 
       {/* Section title card */}
-      <div className="bg-white rounded-xl border border-slate-200 shadow-sm mb-4 overflow-hidden flex">
+      <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm mb-4 overflow-hidden flex">
         <div className="w-1.5 shrink-0" style={{ backgroundColor: accent }} />
         <div className="px-4 sm:px-6 py-4 sm:py-5">
-          <h1 className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight">{data.name}</h1>
-          <p className="text-xs text-slate-400 mt-1">
+          <h1 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white tracking-tight">{data.name}</h1>
+          <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">
             {data.toc.length} topics
             {data.imageCount > 0 ? ` · ${data.imageCount} figures` : ''}
           </p>
@@ -93,37 +93,37 @@ export default function SectionPage({ params }: { params: { section: string } })
       <div className="flex gap-6 items-start">
         {/* Sticky TOC (desktop only) */}
         {data.toc.length > 0 && (
-          <aside className="hidden xl:block w-52 shrink-0 sticky top-20 self-start bg-white border border-slate-200 rounded-xl shadow-sm py-4 max-h-[calc(100vh-6rem)] overflow-y-auto">
+          <aside className="hidden xl:block w-52 shrink-0 sticky top-20 self-start bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm py-4 max-h-[calc(100vh-6rem)] overflow-y-auto">
             <TableOfContents toc={data.toc} />
           </aside>
         )}
 
         {/* Main article */}
-        <article className="flex-1 min-w-0 bg-white rounded-xl border border-slate-200 shadow-sm px-4 sm:px-8 py-5 sm:py-7">
+        <article className="flex-1 min-w-0 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm px-4 sm:px-8 py-5 sm:py-7">
           <SectionContent html={data.html} />
           <ImageLightbox />
 
           {/* Prev / Next */}
-          <div className="mt-8 sm:mt-10 pt-5 sm:pt-6 border-t border-slate-100 flex justify-between gap-4 flex-wrap">
+          <div className="mt-8 sm:mt-10 pt-5 sm:pt-6 border-t border-slate-100 dark:border-slate-700 flex justify-between gap-4 flex-wrap">
             {prev ? (
               <a href={`/${prev.slug}/`}
-                className="group flex items-center gap-2 text-sm text-slate-500 hover:text-blue-700 transition-colors min-h-[44px]">
+                className="group flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 hover:text-blue-700 dark:hover:text-blue-400 transition-colors min-h-[44px]">
                 <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
                 <div>
-                  <div className="text-xs text-slate-400">Previous</div>
-                  <div className="font-medium group-hover:text-blue-700">{prev.name}</div>
+                  <div className="text-xs text-slate-400 dark:text-slate-500">Previous</div>
+                  <div className="font-medium group-hover:text-blue-700 dark:group-hover:text-blue-400">{prev.name}</div>
                 </div>
               </a>
             ) : <div />}
 
             {next ? (
               <a href={`/${next.slug}/`}
-                className="group flex items-center gap-2 text-sm text-slate-500 hover:text-blue-700 transition-colors text-right min-h-[44px]">
+                className="group flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 hover:text-blue-700 dark:hover:text-blue-400 transition-colors text-right min-h-[44px]">
                 <div>
-                  <div className="text-xs text-slate-400 text-right">Next</div>
-                  <div className="font-medium group-hover:text-blue-700">{next.name}</div>
+                  <div className="text-xs text-slate-400 dark:text-slate-500 text-right">Next</div>
+                  <div className="font-medium group-hover:text-blue-700 dark:group-hover:text-blue-400">{next.name}</div>
                 </div>
                 <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

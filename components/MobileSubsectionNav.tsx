@@ -60,7 +60,7 @@ export default function MobileSubsectionNav({ toc, accent }: Props) {
   if (pills.length < 2) return null;
 
   return (
-    <div className="xl:hidden sticky top-14 z-30 -mx-4 sm:-mx-6 bg-white border-b border-slate-200 shadow-sm">
+    <div className="xl:hidden sticky top-14 z-30 -mx-4 sm:-mx-6 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 shadow-sm">
       <div
         ref={scrollRef}
         className="pill-nav-scroll overflow-x-auto"
@@ -84,7 +84,7 @@ export default function MobileSubsectionNav({ toc, accent }: Props) {
                   'flex items-center h-[34px]',
                   isActive
                     ? 'shadow-sm'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200 active:bg-slate-300',
+                    : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 active:bg-slate-300 dark:active:bg-slate-600',
                 ].join(' ')}
                 onClick={() => setActive(pill.id)}
               >

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import GlobalSearch from '@/components/GlobalSearch';
+import DarkModeToggle from '@/components/DarkModeToggle';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' });
 
@@ -17,8 +18,11 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={inter.className}>
-      <body className="min-h-screen">
+    <html lang="en" className={inter.className} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var d=localStorage.getItem('dark-mode');if(d==='true'||(d===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})()` }} />
+      </head>
+      <body className="min-h-screen bg-[#F8F9FA] dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors">
         {/* Top navigation bar */}
         <header
           className="sticky top-0 z-40 shadow-md"
@@ -38,6 +42,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="flex-1 min-w-0">
               <GlobalSearch />
             </div>
+
+            {/* Dark mode toggle */}
+            <DarkModeToggle />
           </div>
         </header>
 
