@@ -119,11 +119,7 @@
   margin: 0;
 }
 
-/* First column (medication/item name) — always readable, never squished */
-.doc-content th:first-child,
-.doc-content td:first-child {
-  min-width: 130px;
-}
+/* First column min-width — readable medication/item names (sticky rules below) */
 
 .doc-content td {
   @apply px-3 sm:px-4 py-2 sm:py-2.5 border-b border-slate-100 text-slate-700;
@@ -141,6 +137,83 @@
 }
 .doc-content tr:hover td {
   background-color: #eff6ff; /* blue-50 — visible over both row bg colors */
+}
+
+/* ── Callout boxes (converted from 1-column tables) ── */
+.doc-content .callout-box {
+  @apply my-4 sm:my-6 p-4 sm:p-5 rounded-lg border border-blue-200 bg-blue-50/60;
+}
+.doc-content .callout-box p {
+  @apply text-sm text-slate-700 leading-relaxed;
+  margin: 4px 0;
+}
+.doc-content .callout-box strong {
+  @apply text-slate-800;
+}
+.doc-content .callout-box ul,
+.doc-content .callout-box ol {
+  @apply my-2;
+}
+
+/* ── Responsive PDF embeds ── */
+.doc-content .pdf-embed {
+  width: 100%;
+  height: 80vh;
+  min-height: 400px;
+  max-height: 900px;
+  border-radius: 8px;
+}
+
+/* ── Sticky first column for wide tables ── */
+.table-wrap {
+  position: relative;
+}
+/* Scroll-hint gradient on right edge */
+.table-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 24px;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.85));
+  pointer-events: none;
+  border-radius: 0 8px 8px 0;
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+.doc-content th:first-child,
+.doc-content td:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  min-width: 130px;
+}
+.doc-content th:first-child {
+  background-color: #f1f5f9; /* slate-100 — matches th bg */
+  z-index: 2; /* above td sticky cells */
+}
+.doc-content td:first-child {
+  background-color: #ffffff;
+}
+.doc-content tbody tr:nth-child(even) td:first-child {
+  background-color: #f8fafc; /* slate-50 — matches striped row */
+}
+.doc-content tr:hover td:first-child {
+  background-color: #eff6ff; /* blue-50 — matches hover row */
+}
+/* Subtle shadow on right edge of sticky column */
+.doc-content th:first-child::after,
+.doc-content td:first-child::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -4px;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(to right, rgba(0,0,0,0.06), transparent);
+  pointer-events: none;
 }
 
 /* Figures / figure captions */
@@ -235,4 +308,50 @@
     padding-left: 0.75rem;
     border-left: 3px solid #cbd5e1;
   }
+}
+
+/* ── Collapsible sections (details/summary) ──────────── */
+.doc-content details {
+  @apply my-4 rounded-lg border border-slate-200 bg-white overflow-hidden;
+}
+.doc-content details > summary {
+  @apply px-4 py-3 text-sm font-semibold text-slate-700 cursor-pointer select-none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.doc-content details > summary::-webkit-details-marker {
+  display: none;
+}
+.doc-content details > summary::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid #64748b;
+  border-bottom: 2px solid #64748b;
+  transform: rotate(-45deg);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+.doc-content details[open] > summary::before {
+  transform: rotate(45deg);
+}
+.doc-content details > summary:hover {
+  @apply bg-slate-50;
+}
+.doc-content details > :not(summary) {
+  @apply px-4 pb-3;
+}
+
+/* ── PDF fullscreen button ── */
+.pdf-fullscreen-btn {
+  @apply inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-blue-600 transition-colors cursor-pointer mt-2;
+  background: none;
+  border: none;
+  padding: 4px 8px;
+}
+.pdf-fullscreen-btn:hover {
+  @apply bg-blue-50 rounded;
 }

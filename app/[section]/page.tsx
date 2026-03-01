@@ -5,6 +5,7 @@ import indexData from '@/src/data/index.json';
 import TableOfContents from '@/components/TableOfContents';
 import MobileSubsectionNav from '@/components/MobileSubsectionNav';
 import SectionContent from '@/components/SectionContent';
+import ImageLightbox from '@/components/ImageLightbox';
 
 type TocEntry = { level: number; text: string; id: string };
 
@@ -99,6 +100,7 @@ export default function SectionPage({ params }: { params: { section: string } })
         {/* Main article */}
         <article className="flex-1 min-w-0 bg-white rounded-xl border border-slate-200 shadow-sm px-4 sm:px-8 py-5 sm:py-7">
           <SectionContent html={data.html} />
+          <ImageLightbox />
 
           {/* Prev / Next */}
           <div className="mt-8 sm:mt-10 pt-5 sm:pt-6 border-t border-slate-100 flex justify-between gap-4 flex-wrap">

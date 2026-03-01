@@ -6,7 +6,8 @@
     "extract": "node scripts/extract.mjs",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "cleanup": "node scripts/cleanup-html.mjs"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.19",
