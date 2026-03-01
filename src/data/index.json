@@ -142,5 +142,13 @@
     "color": "bg-rose-100 text-rose-800 border-rose-200",
     "tocCount": 5,
     "imageCount": 11
+  },
+  {
+    "name": "Neuromuscular",
+    "slug": "neuromuscular",
+    "icon": "💪",
+    "color": "bg-emerald-100 text-emerald-800 border-emerald-200",
+    "tocCount": 4,
+    "imageCount": 3
   }
 ]

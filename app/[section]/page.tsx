@@ -53,6 +53,7 @@ const accentMap: Record<string, string> = {
   sleep:                               '#7c3aed',
   stroke:                              '#b45309',
   'neuro-on-call':                     '#dc2626',
+  neuromuscular:                       '#059669',
 };
 
 export default function SectionPage({ params }: { params: { section: string } }) {

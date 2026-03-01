@@ -1314,5 +1314,33 @@
     "heading": "Pediatric LVO Escalation Pathway",
     "id": "lvo-escalation",
     "text": "Emergency escalation for suspected pediatric large vessel occlusion requiring endovascular intervention. Step 1: Call anesthesia — Age <12 Peds anesthesia, Age >12 adult anesthesia at NCMC. Step 2: Outside hospitals transfer center — Cincinnati Children's (513) 636-9937, University of Kentucky (859) 257-5522, Riley (317) 963-3333, Vanderbilt (615) 936-4444, Nationwide (614) 722-2000."
+  },
+  {
+    "section": "neuromuscular",
+    "sectionName": "NeuroMuscular",
+    "heading": "Guillain-Barre Syndrome (GBS)",
+    "id": "guillain-barre-syndrome-gbs",
+    "text": "Autoimmune demyelinating polyradiculopathyVariantsAxonalMiller Fisher (ataxia, ophthalmoplegia, and areflexia)Presents with tingling, weakness, sensory ataxia½ will have antecedent viral illness. GI illness think-- campylobacter½ individuals will have bilateral facial weaknessWeakness progresses rapidly with nadir at 2 weeks for 50% of pts, 3 weeks for 80%, and rest by 4 weeks   DDX: tick paralysis, cord trauma/ischemia, transverse myelitis viral myositis, botulism, poliomyelitis, diphtheria, porphyria, myasthenia, hypophosphatemia and kalemia, intoxications, lyme, acute HIV   Work Up: conside"
+  },
+  {
+    "section": "neuromuscular",
+    "sectionName": "NeuroMuscular",
+    "heading": "Neonatal Hypotonia Etiology and Exam",
+    "id": "neonatal-hypotonia-etiology-and-exam",
+    "text": "Causes of Neonatal Hypotonia  Central (most common)HIEIntracranial hemorrhageCerebral malformationChromosomal abnl 21, Prader WilliCongenital infections (TORCHES)Acquired infectionsPeroxisomal disordersDrug effects (benzodiazepines)Spinal CordBirth traumaSyringomyeliaAnterior Horn CellSpinal muscular atrophyNeuromuscular-junctionMyasthenia gravis (transient or congenital)Infantile botulismMuscleMuscular dystrophy (inc congenital myotonic dystrophy)Congenital myopathies (eg. Central core disease)PeripheralHereditary motor and sensory neuropathiesMetabolic myopathiesAcid maltase deficiency (Pomp"
+  },
+  {
+    "section": "neuromuscular",
+    "sectionName": "NeuroMuscular",
+    "heading": "Spinal Muscular Atrophy (SMA)",
+    "id": "spinal-muscular-atrophy-sma",
+    "text": "SMA is characterized by degeneration of the anterior horn cells in the spinal cord and motor nuclei in the lower brainstem, which results in progressive muscle weakness and atrophy. The diagnosis of SMA should be suspected for any infant with unexplained weakness or hypotonia. Molecular genetic testing with targeted mutation analysis can confirm the diagnosis of SMA by detection of homozygous deletions of exons 7 of the SMN1 gene.  TypeAge of onsetRequires respiratory support at birthAble to sitAble to standAble to walkLife expectancyPredicted SMN2 copy number0PrenatalYesNoNoNo<6 months11<6 mo"
+  },
+  {
+    "section": "neuromuscular",
+    "sectionName": "NeuroMuscular",
+    "heading": "Duchenne Muscular Dystrophy (DMD)",
+    "id": "duchenne-muscular-dystrophy-dmd",
+    "text": "DMD is an X-linked recessive disorder caused by mutations of the dystrophin gene that result in absent or insufficient functional dystrophin protein. Results in progressive muscular weakness, loss of ambulation, respiratory impairment, and cardiomyopathy.     Neuromuscular Management of DMD:    Common comorbid conditions: GI: GERD, constipation, swallowing dysfunction. Need osmotic laxatives, retrograde enemas. Ranitidine or PPIs.Nutrition: obesity usually while on steroids. Underweight due to poor intake. Pulmonary: Complications include respiratory muscle fatigue, mucus plugging, atelectasis"
   }
 ]
