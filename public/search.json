@@ -72,13 +72,6 @@
   {
     "section": "epilepsy",
     "sectionName": "Epilepsy",
-    "heading": "STATUS EPILEPTICUS IN CHILDREN OLDER THAN 28 DAYS",
-    "id": "status-epilepticus-in-children-older-than-28-days",
-    "text": "Updated 7/2023 H. Gilbert"
-  },
-  {
-    "section": "epilepsy",
-    "sectionName": "Epilepsy",
     "heading": "First-Line Agents",
     "id": "first-line-agents",
     "text": "·       Benzodiazepines are most effective when administered within the first 5-10 minutes of seizure activity, before GABA receptors have internalized.  Choose ONE of the following options:·       Lorazepam IV: 0.1 mg/kg (max 4 mg) administered over 2 minutes.  A second dose can be administered if the seizure persists beyond 3-5 mins after the first dose.·       Diazepam IV: 0.15-0.2 mg/kg (max 10 mg) administered over 2 minutes.  A second dose can be administered if the seizure persists beyond 3-5 mins after the first dose.·       If IV access is not available, choose ONE of the following op"
@@ -158,7 +151,7 @@
     "sectionName": "Epilepsy",
     "heading": "Home Rescue for prolonged seizure:",
     "id": "home-rescue-for-prolonged-seizure",
-    "text": "Rectal diazepam (Diastat)Intranasal midazolam, prefilled (Nayzilam)Intranasal diazepam, prefilled (Valtoco)   Weight in kgIntranasal midazolam 0.2-0.3 mg/kg Dose = volumeFor school/ seizure action plan3–5 kg1 mg = 0.2 mL total0.1 mL per nostrilDiastat: use Diastat dosing chart6-9 kg2 mg = 0.4 mL total0.2 mL per nostrilDiastat: use Diastat dosing chart10–15 kg3 mg = 0.6 mL total0.3 mL per nostrilDiastat: use Diastat dosing chart16-26 kg5 mg = 1 mL total0.5 mL per nostrilMay prescribe midazolam at 1mL total27–32 kg8 mg = 1.6 mL total0.8 mL per nostrilDiastat: use Diastat dosing chart>=33kg10 mg "
+    "text": "Rectal diazepam (Diastat)Intranasal midazolam, prefilled (Nayzilam)Intranasal diazepam, prefilled (Valtoco)   Weight in kgIntranasal midazolam 0.2-0.3 mg/kg Dose = volumeFor school/ seizure action plan3–5 kg1 mg = 0.2 mL total0.1 mL per nostrilDiastat: use Diastat dosing chart6-9 kg2 mg = 0.4 mL total0.2 mL per nostrilDiastat: use Diastat dosing chart10–15 kg3 mg = 0.6 mL total0.3 mL per nostrilDiastat: use Diastat dosing chart16-26 kg5 mg = 1 mL total0.5 mL per nostrilMay prescribe midazolam at 1mL total27–32 kg8 mg = 1.6 mL total0.8 mL per nostrilDiastat: use Diastat dosing chart>=33kg10 mg"
   },
   {
     "section": "epilepsy",
@@ -221,14 +214,14 @@
     "sectionName": "Epilepsy",
     "heading": "Febrile Seizures",
     "id": "febrile-seizures",
-    "text": "Definition:  Seizure accompanied by fever (temperature ≥ 100.4°F or 38°C by any method withing surrounding 24hr period), without intracranial / central nervous system infection, that occurs in infants and children 6 - 60 months of age.  Epidemiology:  2-5% of children, 90% within first 3 years Simple febrile seizure: Brief <15 minutes and generalized Complex febrile seizure: Duration >15 minutes OR more than 1 seizure in 24 hours OR focal features; 20-30% of cases NB: with re: multiple within 24 hours (evidence suggests outcomes are similar to simple febrile sz - 'simple febrile sz flurry')   "
+    "text": "Definition:  Seizure accompanied by fever (temperature ≥ 100.4°F or 38°C by any method withing surrounding 24hr period), without intracranial / central nervous system infection, that occurs in infants and children 6 - 60 months of age.  Epidemiology:  2-5% of children, 90% within first 3 years Simple febrile seizure: Brief <15 minutes and generalized Complex febrile seizure: Duration >15 minutes OR more than 1 seizure in 24 hours OR focal features; 20-30% of cases NB: with re: multiple within 24 hours (evidence suggests outcomes are similar to simple febrile sz - 'simple febrile sz flurry')"
   },
   {
     "section": "epilepsy",
     "sectionName": "Epilepsy",
     "heading": "Treatments:",
     "id": "treatments",
-    "text": "Simple febrile seizure:  Geared towards underlying illness, (common with Roseola, Shigella, Varicella) Aggressive antipyretic therapy has not been shown to decrease risk of febrile seizures, as seizure is related to rate of temperature change, and frequently occurs before fever is documented Some old efficacy data for ppx ASMs, but risks generally > benefits (Ped. ’99; 103:1307). For complex febrile seizures marked by clusters, consider rescue medication Does not generally need EEG or imagingStill consider LP if c/f meningitis (NB: meningeal signs are difficult to observe in infants/toddlers) "
+    "text": "Simple febrile seizure:  Geared towards underlying illness, (common with Roseola, Shigella, Varicella) Aggressive antipyretic therapy has not been shown to decrease risk of febrile seizures, as seizure is related to rate of temperature change, and frequently occurs before fever is documented Some old efficacy data for ppx ASMs, but risks generally > benefits (Ped. ’99; 103:1307). For complex febrile seizures marked by clusters, consider rescue medication Does not generally need EEG or imagingStill consider LP if c/f meningitis (NB: meningeal signs are difficult to observe in infants/toddlers)"
   },
   {
     "section": "epilepsy",
@@ -270,7 +263,7 @@
     "sectionName": "Epilepsy",
     "heading": "Seizure Semiology",
     "id": "seizure-semiology",
-    "text": "Seizures  Seizures result from abnormal excessive rhythmic neurologic electrical activity. This abnormal activity can occur in both hemispheres (generalized seizure) or within one hemisphere (focal seizure), which may spread to the entire brain. Generalized tonic-clonic seizures – motions of which consist of a tonic phase with muscle stiffening, followed by a clonic phase with rhythmic muscle contractions. Focal seizures more often occur in the setting of cerebral insult. Unlike generalized seizures, symptoms of focal seizures vary according to the anatomic location of the abnormal electrical "
+    "text": "Seizures  Seizures result from abnormal excessive rhythmic neurologic electrical activity. This abnormal activity can occur in both hemispheres (generalized seizure) or within one hemisphere (focal seizure), which may spread to the entire brain. Generalized tonic-clonic seizures – motions of which consist of a tonic phase with muscle stiffening, followed by a clonic phase with rhythmic muscle contractions. Focal seizures more often occur in the setting of cerebral insult. Unlike generalized seizures, symptoms of focal seizures vary according to the anatomic location of the abnormal electrical"
   },
   {
     "section": "epilepsy",
@@ -291,7 +284,7 @@
     "sectionName": "Epilepsy",
     "heading": "EEG Tips",
     "id": "eeg-tips",
-    "text": "Template:   Patient Name:    DOB: Conditions # of EEG channels: EKG channel: y/n # of Eye channels: LFF: HEF: Notch: Sensitivity: Timebase: State: awake/drowsy/sleep   Posterior Rhythm (Hz): Symmetry: Organization:   Activations: Hyperventilation: present/not present? symmetric/asymmetric? (was there \"build up\" or slowing and increase in amplitude with high quality HV?) Photic stimulation: (at what frequencies did the posterior rhythm appear to track with the photic stim rate? Was there photic response after 20 hz?)   Sleep: present/not present? Architecture normal/not normal? N1 slow rolling "
+    "text": "Template:   Patient Name:    DOB: Conditions # of EEG channels: EKG channel: y/n # of Eye channels: LFF: HEF: Notch: Sensitivity: Timebase: State: awake/drowsy/sleep   Posterior Rhythm (Hz): Symmetry: Organization:   Activations: Hyperventilation: present/not present? symmetric/asymmetric? (was there \"build up\" or slowing and increase in amplitude with high quality HV?) Photic stimulation: (at what frequencies did the posterior rhythm appear to track with the photic stim rate? Was there photic response after 20 hz?)   Sleep: present/not present? Architecture normal/not normal? N1 slow rolling"
   },
   {
     "section": "epilepsy",
@@ -326,14 +319,14 @@
     "sectionName": "Infectious Disease",
     "heading": "CSF Profiles and MEP",
     "id": "csf-profiles-and-mep",
-    "text": "Normal by Age:  WBCProteinGlucoseOP (cmH2O)Neonates    Preterm0-25 115 (65-150)50 (24-63) mg/dL55-105 % serum Term0-2290 (20-170)52 (34-119) mg/dL44-128 % serum0-8Children0-55-30 50-75 (2/3 serum)0-8 (<2 yrs)1-25 (>=2 yrs)Adults0-520-4045-90 (2/3 serum)6-25   CSF Profile in Certain Infections:  WBCDiffProteinGlucoseOPOtherBacterial100-5000PMNs50-100 (nl to high)lowHighPartially treated – cells usu high <48 hours after tx, PMNs initially, may change to monos, glucose may normalizeViral10-100Lymphs (can be PMNs in the first 24-48 hrs)40-80 (nl to high)nlNl-midly high Fungal20-500PMNs earl, then "
+    "text": "Normal by Age:  WBCProteinGlucoseOP (cmH2O)Neonates    Preterm0-25 115 (65-150)50 (24-63) mg/dL55-105 % serum Term0-2290 (20-170)52 (34-119) mg/dL44-128 % serum0-8Children0-55-30 50-75 (2/3 serum)0-8 (<2 yrs)1-25 (>=2 yrs)Adults0-520-4045-90 (2/3 serum)6-25   CSF Profile in Certain Infections:  WBCDiffProteinGlucoseOPOtherBacterial100-5000PMNs50-100 (nl to high)lowHighPartially treated – cells usu high <48 hours after tx, PMNs initially, may change to monos, glucose may normalizeViral10-100Lymphs (can be PMNs in the first 24-48 hrs)40-80 (nl to high)nlNl-midly high Fungal20-500PMNs earl, then"
   },
   {
     "section": "infectious-disease",
     "sectionName": "Infectious Disease",
     "heading": "Bacterial Meningitis",
     "id": "bacterial-meningitis",
-    "text": "Clinical presentation: FeversSeizures (this can be the only initial symptom at presentation in neonates and infants <12 month – AAP says to strongly consider LP for even simple febrile seizure if poorly vaccinated and 6-12 mo)Meningismus (nuchal rigidity, photophobia, headache, can test Brudzinski’s – involuntary lifting of legs with neck flexion, Kernig’s – hip and thigh flexed at 90 degrees results in painful extension at the knee) – only 5-30% sensitive, but 95-100% specific. Unreliable/less sensitive in infants.Etiology by age: NeonateGBS, enteric GNegs (e.coli), listeria, 1 mo to 23 moN. "
+    "text": "Clinical presentation: FeversSeizures (this can be the only initial symptom at presentation in neonates and infants <12 month – AAP says to strongly consider LP for even simple febrile seizure if poorly vaccinated and 6-12 mo)Meningismus (nuchal rigidity, photophobia, headache, can test Brudzinski’s – involuntary lifting of legs with neck flexion, Kernig’s – hip and thigh flexed at 90 degrees results in painful extension at the knee) – only 5-30% sensitive, but 95-100% specific. Unreliable/less sensitive in infants.Etiology by age: NeonateGBS, enteric GNegs (e.coli), listeria, 1 mo to 23 moN."
   },
   {
     "section": "infectious-disease",
@@ -368,7 +361,7 @@
     "sectionName": "Infectious Disease",
     "heading": "COVID-19 and Neurologic Sequelae",
     "id": "covid-19-and-neurologic-sequelae",
-    "text": "Multisystem Inflammatory Syndrome in Children (MIS-C): · An individual aged <21 years presenting with fever*, laboratory evidence of inflammation**, and evidence of clinically severe illness requiring hospitalization, with multisystem (>2) organ involvement (cardiac, renal, respiratory, hematologic, gastrointestinal, dermatologic or neurological); AND · No alternative plausible diagnoses; AND · Positive for current or recent SARS-CoV-2 infection by RT-PCR, serology, or antigen test; or exposure to a suspected or confirmed COVID-19 case within the 4 weeks prior to the onset of symptoms. *Fever "
+    "text": "Multisystem Inflammatory Syndrome in Children (MIS-C): · An individual aged <21 years presenting with fever*, laboratory evidence of inflammation**, and evidence of clinically severe illness requiring hospitalization, with multisystem (>2) organ involvement (cardiac, renal, respiratory, hematologic, gastrointestinal, dermatologic or neurological); AND · No alternative plausible diagnoses; AND · Positive for current or recent SARS-CoV-2 infection by RT-PCR, serology, or antigen test; or exposure to a suspected or confirmed COVID-19 case within the 4 weeks prior to the onset of symptoms. *Fever"
   },
   {
     "section": "movement-disorders",
@@ -438,7 +431,7 @@
     "sectionName": "Neuro Exam",
     "heading": "General Physical",
     "id": "general-physical",
-    "text": "1. Height, weight, blood pressure, and head circumference. -Rule of thumb for head circumference is the 3 & 9 rule. AGEHC cmNewborn353 month 409 month453 yo509 yo55 2. General appearance, including dysmorphology. 3. Skin exam: neurocutaneous lesions (ash leaf spots (TS), cafe au lait spots (NF), angiomas (SW), axillary freckling (?), adenoma sebaceum (?), or shagreen patches (?). 4. Location of the hair whorl (can signify presence of cerebral malformations) and appearance of palmar creases (which genetic syndrome?) 5. Quality of scalp hair, eyebrows, and nails. Friable, kinky hair may signify "
+    "text": "1. Height, weight, blood pressure, and head circumference. -Rule of thumb for head circumference is the 3 & 9 rule. AGEHC cmNewborn353 month 409 month453 yo509 yo55 2. General appearance, including dysmorphology. 3. Skin exam: neurocutaneous lesions (ash leaf spots (TS), cafe au lait spots (NF), angiomas (SW), axillary freckling (?), adenoma sebaceum (?), or shagreen patches (?). 4. Location of the hair whorl (can signify presence of cerebral malformations) and appearance of palmar creases (which genetic syndrome?) 5. Quality of scalp hair, eyebrows, and nails. Friable, kinky hair may signify"
   },
   {
     "section": "neuro-exam",
@@ -494,7 +487,7 @@
     "sectionName": "Neurocritical Care",
     "heading": "Pupillometry",
     "id": "pupillometry",
-    "text": "Pupillometer (NPI) is a non-invasive device that uses an infrared camera that integrates a calibrated light stimulation of fixed intensity and duration allowing for a rapid and precise measure (0.05 mm limit) of the pupil size and of a series of dynamic pupillary variables.NPI ranges from 0-5 (0.1 decimal increments)NPI represents a proprietary scalar index (pupil size, percentage pupillary constriction, latency, constriction velocity, and dilation velocity).Pathological NPI values are defined as less than 3Lower NPI values suggest higher ICPChanges in NPI trends can represent ICP changes and "
+    "text": "Pupillometer (NPI) is a non-invasive device that uses an infrared camera that integrates a calibrated light stimulation of fixed intensity and duration allowing for a rapid and precise measure (0.05 mm limit) of the pupil size and of a series of dynamic pupillary variables.NPI ranges from 0-5 (0.1 decimal increments)NPI represents a proprietary scalar index (pupil size, percentage pupillary constriction, latency, constriction velocity, and dilation velocity).Pathological NPI values are defined as less than 3Lower NPI values suggest higher ICPChanges in NPI trends can represent ICP changes and"
   },
   {
     "section": "neurocritical-care",
@@ -578,7 +571,7 @@
     "sectionName": "Neurogenetics and Neurometabolics",
     "heading": "Workup of Leukodystrophies/Leukoencephalopathies",
     "id": "workup-of-leukodystrophies-leukoencephalopathies",
-    "text": "Blood CSF Cellular elementsLymphocyte granulation: MLD-MSD,  Anemias: Mito d/o  Cellular elementsElevated in AGSVLCFAElevated in X-ALD  Total proteinElevated in Krabbe, MLDLysosomal Enzyme activitiesArylsulfatase A low in MLDGalacto-cerebrosidase low in KrabbeFucosidase low in Fucsidosis  AsialotransferrinsElevated in VWMDLactateElevated in LBSL  5-MTHFLow in Folate rec defectAsialotransferrinsElevated in CDG (d/o glycosylation)  LactateElevated in LBSLCholestanolElevated in CTX  InterferonAGSDNA preparationFrequently useful  GlyineElevated in GLYUrine Biopsies SulfatidesElevated in MLD  Skin "
+    "text": "Blood CSF Cellular elementsLymphocyte granulation: MLD-MSD,  Anemias: Mito d/o  Cellular elementsElevated in AGSVLCFAElevated in X-ALD  Total proteinElevated in Krabbe, MLDLysosomal Enzyme activitiesArylsulfatase A low in MLDGalacto-cerebrosidase low in KrabbeFucosidase low in Fucsidosis  AsialotransferrinsElevated in VWMDLactateElevated in LBSL  5-MTHFLow in Folate rec defectAsialotransferrinsElevated in CDG (d/o glycosylation)  LactateElevated in LBSLCholestanolElevated in CTX  InterferonAGSDNA preparationFrequently useful  GlyineElevated in GLYUrine Biopsies SulfatidesElevated in MLD  Skin"
   },
   {
     "section": "neurogenetics-and-neurometabolics",
@@ -725,7 +718,7 @@
     "sectionName": "Paroxysms",
     "heading": "Seizure Mimics",
     "id": "seizure-mimics",
-    "text": "Seizure Mimics in Adults Studies indicate that approximately 20% of patients presenting for evaluation of seizure are misdiagnosed as having epilepsy. Conditions most commonly mistaken for epileptiform seizure activity include syncope and psychogenic non-epileptic seizures.  Syncope: Syncope is a LOC due to decreased cerebral perfusion, resulting in loss of postural tone, with rapid return to mental status baseline. Syncope may be cardiac, orthostatic, or neurocardiogenic (vasovagal) in origin. Psychogenic Non-Epileptic Spell/Episode (PNES):  PNES, a condition characterized by the presence of "
+    "text": "Seizure Mimics in Adults Studies indicate that approximately 20% of patients presenting for evaluation of seizure are misdiagnosed as having epilepsy. Conditions most commonly mistaken for epileptiform seizure activity include syncope and psychogenic non-epileptic seizures.  Syncope: Syncope is a LOC due to decreased cerebral perfusion, resulting in loss of postural tone, with rapid return to mental status baseline. Syncope may be cardiac, orthostatic, or neurocardiogenic (vasovagal) in origin. Psychogenic Non-Epileptic Spell/Episode (PNES):  PNES, a condition characterized by the presence of"
   },
   {
     "section": "pediatric-normal-values",
@@ -767,7 +760,7 @@
     "sectionName": "Psychiatry",
     "heading": "Catatonia",
     "id": "catatonia",
-    "text": "Definition: behavioral syndrome marked by an inability to move normally, which can occur in the context of many underlying psychiatric and general medical disorders    Observed Signs of Catatonia: FeatureDescription and examplesImmobilityHypokinetic or akinetic behavior that is not influenced by external stimuli.StuporDecreased alertness, hypoactivity, and diminished responses to voice and painful stimuli.ExcitementImpulsive, frantic, and stereotypic behavior that may include sudden outbursts of talking, singing, dancing, and tearing of clothes. Patients may be irritable and damage objects or "
+    "text": "Definition: behavioral syndrome marked by an inability to move normally, which can occur in the context of many underlying psychiatric and general medical disorders    Observed Signs of Catatonia: FeatureDescription and examplesImmobilityHypokinetic or akinetic behavior that is not influenced by external stimuli.StuporDecreased alertness, hypoactivity, and diminished responses to voice and painful stimuli.ExcitementImpulsive, frantic, and stereotypic behavior that may include sudden outbursts of talking, singing, dancing, and tearing of clothes. Patients may be irritable and damage objects or"
   },
   {
     "section": "psychiatry",
@@ -788,14 +781,14 @@
     "sectionName": "Sleep",
     "heading": "Insomnia",
     "id": "insomnia",
-    "text": "Diagnostic Criteria for Insomnia (must have one from A - F)   Criteria A Difficulty initiating sleepDifficulty maintaining sleepWaking up earlier than desiredResistance to going to bed on appropriate schedule Difficulty sleeping without parent or caregiver intervention Criteria B Fatigue/malaiseAttention, concentration or memory impairmentImpaired social, family, occupational, or academic performanceMood disturbance/irritabilityDaytime sleepinessBehavioral problems Proneness for errors/accidents Criteria C The reported sleep/wake complaints cannot be explained purely by inadequate opportunity "
+    "text": "Diagnostic Criteria for Insomnia (must have one from A - F)   Criteria A Difficulty initiating sleepDifficulty maintaining sleepWaking up earlier than desiredResistance to going to bed on appropriate schedule Difficulty sleeping without parent or caregiver intervention Criteria B Fatigue/malaiseAttention, concentration or memory impairmentImpaired social, family, occupational, or academic performanceMood disturbance/irritabilityDaytime sleepinessBehavioral problems Proneness for errors/accidents Criteria C The reported sleep/wake complaints cannot be explained purely by inadequate opportunity"
   },
   {
     "section": "sleep",
     "sectionName": "Sleep",
     "heading": "Insomnia Treatment",
     "id": "insomnia-treatment",
-    "text": "Behavioral strategies should always be first line! Make sure clocks are not visible during the night, as watching the time can increase anxiety and cause the brain to wake up more to think about the time. Spend most of the time you are in bed asleep rather than awake.  Retraining \"Sleep Associations\" Stimulus Control: If you are unable to fall asleep [or fall back to sleep] after approximately 20-30 minutes (use your best estimate, do not check the time), you should get out of bed and engage in a relaxing activity (reading, meditation - no screens or bright light) for approximately 20 minutes "
+    "text": "Behavioral strategies should always be first line! Make sure clocks are not visible during the night, as watching the time can increase anxiety and cause the brain to wake up more to think about the time. Spend most of the time you are in bed asleep rather than awake.  Retraining \"Sleep Associations\" Stimulus Control: If you are unable to fall asleep [or fall back to sleep] after approximately 20-30 minutes (use your best estimate, do not check the time), you should get out of bed and engage in a relaxing activity (reading, meditation - no screens or bright light) for approximately 20 minutes"
   },
   {
     "section": "sleep",
@@ -970,7 +963,7 @@
     "sectionName": "Neuroimmunology",
     "heading": "Treatment:",
     "id": "treatment-4",
-    "text": "Acute Flares:Ensure not a pseudo flare: Look-for infectious causes, stress-related triggers (symptoms usually the same as prior flares, and lasting <24 hours)IV methylprednisolone 30mg/kg/day (max 1g) q24 hours for 3-5 days; no taperCan sometimes be arranged through the infusion center instead of admission, or may use very high dose oral pred (up to 1250mg/day, not for first dose or severe presentation, sometimes difficult to do – 25 pills)GI prophylaxisChronic/Disease Modifying Therapies (DMTs)Vit D supplementation (goal levels 40-80)Many different DMTs available, the ones given here are the "
+    "text": "Acute Flares:Ensure not a pseudo flare: Look-for infectious causes, stress-related triggers (symptoms usually the same as prior flares, and lasting <24 hours)IV methylprednisolone 30mg/kg/day (max 1g) q24 hours for 3-5 days; no taperCan sometimes be arranged through the infusion center instead of admission, or may use very high dose oral pred (up to 1250mg/day, not for first dose or severe presentation, sometimes difficult to do – 25 pills)GI prophylaxisChronic/Disease Modifying Therapies (DMTs)Vit D supplementation (goal levels 40-80)Many different DMTs available, the ones given here are the"
   },
   {
     "section": "neuroimmunology",
