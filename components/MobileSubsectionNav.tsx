@@ -60,7 +60,7 @@ export default function MobileSubsectionNav({ toc, accent }: Props) {
   if (pills.length < 2) return null;
 
   return (
-    <div className="xl:hidden sticky top-14 z-30 -mx-4 sm:-mx-6 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 shadow-sm">
+    <div className="xl:hidden sticky top-14 z-30 -mx-4 sm:-mx-6 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 shadow-sm pill-nav-container">
       <div
         ref={scrollRef}
         className="pill-nav-scroll overflow-x-auto"

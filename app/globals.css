@@ -302,6 +302,9 @@
 .doc-content figcaption {
   @apply text-xs text-slate-500 text-center mt-2 italic;
 }
+.dark .doc-content figcaption {
+  @apply text-slate-400;
+}
 
 /* ── Scroll offset for anchored headings ── */
 .doc-content h1[id],
@@ -327,6 +330,24 @@
 }
 .pill-nav-scroll::-webkit-scrollbar {
   display: none;
+}
+/* Scroll-hint fade on right edge of pill nav */
+.pill-nav-container {
+  position: relative;
+}
+.pill-nav-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 32px;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.9));
+  pointer-events: none;
+  z-index: 1;
+}
+.dark .pill-nav-container::after {
+  background: linear-gradient(to right, transparent, rgba(15,23,42,0.9));
 }
 
 /* Header search input placeholder */
@@ -417,6 +438,10 @@
   transform: rotate(-45deg);
   transition: transform 0.2s ease;
   flex-shrink: 0;
+}
+.dark .doc-content details > summary::before {
+  border-right-color: #94a3b8;
+  border-bottom-color: #94a3b8;
 }
 .doc-content details[open] > summary::before {
   transform: rotate(45deg);

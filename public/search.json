@@ -1010,13 +1010,6 @@
   {
     "section": "stroke",
     "sectionName": "Stroke",
-    "heading": "Hemorrhagic Stroke",
-    "id": "hemorrhagic-stroke-2",
-    "text": "Differential diagnosis: Vascular malformation (AVM, cavernous hemangioma, aneurysm, venous malformation), brain tumor, trauma/dissection, hematologic dysfunction related to liver disease, sepsis or primary hematologic disorder Workup: For hemorrhagic strokes w/o vascular malformation, consider checking PT, PTT, Factor XIII, platelet function and consider COL4A1 testing if personal hx congenital cataracts/glaucoma or family hx of congenital cataracts, cerebral palsy or hemorrhagic stroke  Potentially helpful resources to reference: Hunt and Hess grading system: tool to gauge clinical severity a"
-  },
-  {
-    "section": "stroke",
-    "sectionName": "Stroke",
     "heading": "Intraventricular Hemorrhage: Grading",
     "id": "intraventricular-hemorrhage-grading",
     "text": "Image Source: https://www.childrensmn.org"
@@ -1104,13 +1097,6 @@
     "heading": "Work-up for Cerebellar Dysfunction",
     "id": "work-up-for-cerebellar-dysfunction",
     "text": "Acute: CT scan, Utox, CMPConsider MRI/MRA if concern for stroke or vascular lesionConsider LP if encephalopathic and neg scan, or suspect infectious or inflammatory etiologyMIBG scan, urine HVA and VMA, and chest/abd/pelvis CT +/- contrast if suspect paraneoplastic (such as opsoclonus myoclonus ataxia secondary to neuroblastoma), LP and serum paraneoplastic panelsRecurrentMRI, MRA, MRSConsider LP for CSF glucose if MRI normalAdditional genetic and metabolic testing based on results of above and clinical featuresChronicMRI +/- MRA, MRSVitamin E levelConsider LP pending MRI result, to check gluc"
-  },
-  {
-    "section": "movement-disorders",
-    "sectionName": "Movement Disorders",
-    "heading": "Dystonia",
-    "id": "dystonia-2",
-    "text": "An abnormal twisting posture of one or more body part caused by the contraction of muscles which contract and extend a joint at the same time. Most children with dystonia are quite strong in the dystonic limbs. It is usually increased by action (such as writing, walking or running), with stress, mental activities but may also be present at rest when severe. Can be seen with one specific e.g. writer’s crampSensory trick: something a person does to help improve or resolve the dystonia like touching the extremity, putting a popsicle stick in mouth (example of a sensory trick in a child who had ne"
   },
   {
     "section": "movement-disorders",
@@ -1496,5 +1482,33 @@
     "heading": "If Seizure Suspected — Initial Workup",
     "id": "neonatal-seizure-workup",
     "text": "Stat labs: Glucose, BMP (calcium, magnesium, sodium), blood gas, lactate\nInfection workup: CBC, blood culture, consider LP (CSF studies + HSV PCR)\nEEG: Continuous video EEG monitoring if seizure confirmed or ongoing suspicion\nImaging: Head ultrasound (bedside), MRI brain when stable\nConsider: Urine organic acids, serum amino acids, ammonia if metabolic etiology suspected\nFirst-line treatment: Phenobarbital 20 mg/kg IV loading dose"
+  },
+  {
+    "section": "neurocritical-care",
+    "sectionName": "Neurocritical Care",
+    "heading": "Step 1: Immediate Measures",
+    "id": "icp-step-1",
+    "text": "Notify neurosurgery — NSGY typically aids in ICP management\nOptimize sedation and pain control\nHead of bed elevated to 30°, head and neck midline (optimize venous drainage)\nHyperventilate to PaCO₂ 32-35 mmHg (temporary bridge only — do not maintain)\nIf EVD/ICP drain present: unclamp, set at 15 mmHg, notify NSGY\nSee Pupillometry section for noninvasive ICP trending (NPI < 3 = pathological)"
+  },
+  {
+    "section": "neurocritical-care",
+    "sectionName": "Neurocritical Care",
+    "heading": "Step 2: First-Line — Hypertonic Saline",
+    "id": "icp-step-2",
+    "text": "3% Hypertonic Saline (HTS) — 0.5 mEq/mL Na⁺\n\nDose: 5 mL/kg IV bolus via peripheral IV or central line\nMay repeat if ICP remains elevated\nHold if serum Na⁺ ≥ 165 mmol/L\nMonitor serum sodium every 4-6 hours"
+  },
+  {
+    "section": "neurocritical-care",
+    "sectionName": "Neurocritical Care",
+    "heading": "Step 3: Second-Line — Mannitol",
+    "id": "icp-step-3",
+    "text": "Use if fluid overloaded or not responsive to HTS:\n\nDose: Mannitol 0.5-1 g/kg IV bolus\nHold if serum osmolarity ≥ 340 mOsm/kg\nMay repeat after 15 minutes if ICP remains elevated\nMonitor serum osmolarity, electrolytes, and volume status"
+  },
+  {
+    "section": "neurocritical-care",
+    "sectionName": "Neurocritical Care",
+    "heading": "Step 4: Refractory ICP",
+    "id": "icp-step-4",
+    "text": "If ICP remains elevated despite Steps 1-3:\n\nNeuromuscular blockade (eliminates shivering, coughing, ventilator dyssynchrony)\nDeep sedation:\n  \n  Ketamine + midazolam infusion, OR\n  Pentobarbital coma — titrate to burst suppression on cEEG\n  \n\nTherapeutic hypothermia to 32-34°C\nNeurosurgical intervention: decompressive craniectomy, hemicraniectomy"
   }
 ]

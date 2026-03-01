@@ -32,7 +32,7 @@ export default function TableOfContents({ toc }: { toc: TocEntry[] }) {
 
   return (
     <nav aria-label="Table of contents">
-      <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-2 px-3">
+      <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-2 px-3">
         On this page
       </p>
       <ul className="space-y-0.5">

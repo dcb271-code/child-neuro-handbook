@@ -95,7 +95,7 @@ export default function GlobalSearch() {
         <input
           ref={inputRef}
           type="text"
-          placeholder="Search topics, drugs, diagnoses…"
+          placeholder="Search: seizures, lamotrigine, stroke…"
           value={query}
           onChange={e => { setQuery(e.target.value); setOpen(true); }}
           onFocus={() => setOpen(true)}
