@@ -79,7 +79,7 @@ export default function Home() {
           </div>
         </a>
 
-        {sections.map((s) => {
+        {sections.filter(s => s.slug !== 'neuro-on-call').map((s) => {
           const accent = accentMap[s.slug] ?? '#475569';
           return (
             <a
