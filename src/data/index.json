@@ -72,6 +72,14 @@
     "imageCount": 6
   },
   {
+    "name": "Neuromuscular",
+    "slug": "neuromuscular",
+    "icon": "💪",
+    "color": "bg-emerald-100 text-emerald-800 border-emerald-200",
+    "tocCount": 8,
+    "imageCount": 3
+  },
+  {
     "name": "Neurocritical Care",
     "slug": "neurocritical-care",
     "icon": "🏥",
@@ -142,13 +150,5 @@
     "color": "bg-rose-100 text-rose-800 border-rose-200",
     "tocCount": 6,
     "imageCount": 8
-  },
-  {
-    "name": "Neuromuscular",
-    "slug": "neuromuscular",
-    "icon": "💪",
-    "color": "bg-emerald-100 text-emerald-800 border-emerald-200",
-    "tocCount": 8,
-    "imageCount": 3
   }
 ]
