@@ -493,11 +493,7 @@
   gap: 1rem;
   margin: 1rem 0 1.5rem;
 }
-@media (min-width: 768px) {
-  .pathway-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+/* Single column layout — pathways listed vertically */
 .pathway-card {
   border-radius: 12px;
   border: 1px solid #e2e8f0;
