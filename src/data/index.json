@@ -144,11 +144,19 @@
     "imageCount": 5
   },
   {
+    "name": "NCH Pathways",
+    "slug": "pathways",
+    "icon": "🗺️",
+    "color": "bg-fuchsia-100 text-fuchsia-800 border-fuchsia-200",
+    "tocCount": 3,
+    "imageCount": 1
+  },
+  {
     "name": "Neuro On-Call Quick References",
     "slug": "neuro-on-call",
     "icon": "🚨",
     "color": "bg-rose-100 text-rose-800 border-rose-200",
-    "tocCount": 6,
-    "imageCount": 8
+    "tocCount": 3,
+    "imageCount": 3
   }
 ]

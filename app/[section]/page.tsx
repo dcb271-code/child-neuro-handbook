@@ -52,6 +52,7 @@ const accentMap: Record<string, string> = {
   psychiatry:                          '#db2777',
   sleep:                               '#7c3aed',
   stroke:                              '#b45309',
+  pathways:                            '#a21caf',
   'neuro-on-call':                     '#dc2626',
   neuromuscular:                       '#059669',
 };

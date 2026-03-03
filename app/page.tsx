@@ -29,6 +29,7 @@ const accentMap: Record<string, string> = {
   psychiatry:                        '#db2777',
   sleep:                             '#7c3aed',
   stroke:                            '#b45309',
+  pathways:                          '#a21caf',
   'neuro-on-call':                   '#dc2626',
   neuromuscular:                     '#059669',
 };
@@ -69,7 +70,7 @@ export default function Home() {
                 Neuro On-Call
               </div>
               <div className="text-xs text-slate-400 dark:text-slate-500 mt-0.5">
-                Status epilepticus &middot; seizure meds &middot; stroke &middot; headache protocols
+                Seizure meds &middot; febrile seizures &middot; LVO escalation
               </div>
             </div>
             <svg className="w-4 h-4 text-slate-300 dark:text-slate-600 group-hover:text-red-400 transition-colors shrink-0"
@@ -79,7 +80,29 @@ export default function Home() {
           </div>
         </a>
 
-        {sections.filter(s => s.slug !== 'neuro-on-call').map((s) => {
+        {/* NCH Pathways — featured card */}
+        <a
+          href="/pathways/"
+          className="group sm:col-span-2 lg:col-span-3 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 bg-white dark:bg-slate-800/80 hover:shadow-md transition-all duration-200 overflow-hidden flex min-h-[56px]"
+        >
+          <div className="w-1 shrink-0" style={{ backgroundColor: '#a21caf' }} />
+          <div className="flex-1 flex items-center gap-4 px-4 sm:px-5 py-3">
+            <div className="flex-1 min-w-0">
+              <div className="font-semibold text-slate-800 dark:text-slate-100 group-hover:text-fuchsia-700 dark:group-hover:text-fuchsia-400 transition-colors text-sm sm:text-base">
+                NCH Pathways
+              </div>
+              <div className="text-xs text-slate-400 dark:text-slate-500 mt-0.5">
+                Status epilepticus &middot; stroke &middot; HIE &middot; status migrainosus
+              </div>
+            </div>
+            <svg className="w-4 h-4 text-slate-300 dark:text-slate-600 group-hover:text-fuchsia-400 transition-colors shrink-0"
+              fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+        </a>
+
+        {sections.filter(s => s.slug !== 'neuro-on-call' && s.slug !== 'pathways').map((s) => {
           const accent = accentMap[s.slug] ?? '#475569';
           return (
             <a
