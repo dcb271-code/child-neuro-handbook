@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef, useMemo } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 
 type TocEntry = { level: number; text: string; id: string };
 
@@ -11,22 +11,15 @@ interface Props {
 
 export default function MobileSubsectionNav({ toc, accent }: Props) {
   const [active, setActive] = useState('');
-  const anchorRefs = useRef<Map<string, HTMLAnchorElement>>(new Map());
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  // Use level-1 entries as pills; fall back to level-2 when there are fewer than 2
-  // (e.g. Neuroradiology has only 1 level-1 entry but 15 level-2 entries)
-  const pills = useMemo(() => {
-    const level1 = toc.filter(t => t.level === 1);
-    return level1.length >= 2 ? level1 : toc.filter(t => t.level <= 2);
-  }, [toc]);
+  const [open, setOpen] = useState(false);
+  const navRef = useRef<HTMLDivElement>(null);
 
   // Track which section is currently in view
   useEffect(() => {
-    if (!pills.length) return;
+    if (!toc.length) return;
 
-    const targets = pills
-      .map(p => document.getElementById(p.id))
+    const targets = toc
+      .map(t => document.getElementById(t.id))
       .filter((el): el is HTMLElement => el !== null);
 
     if (!targets.length) return;
@@ -38,64 +31,94 @@ export default function MobileSubsectionNav({ toc, accent }: Props) {
           .sort((a, b) => (a.target as HTMLElement).offsetTop - (b.target as HTMLElement).offsetTop);
         if (visible.length) setActive(visible[0].target.id);
       },
-      // Top offset accounts for: sticky header (56px) + this pill bar (~44px) + buffer
       { rootMargin: '-104px 0px -50% 0px', threshold: 0 }
     );
 
     targets.forEach(el => observer.observe(el));
     return () => observer.disconnect();
-  }, [pills]);
+  }, [toc]);
 
-  // Scroll the active pill into the center of the pill bar
+  // Close dropdown when clicking outside
   useEffect(() => {
-    if (!active) return;
-    const el = anchorRefs.current.get(active);
-    const container = scrollRef.current;
-    if (!el || !container) return;
-    const targetLeft = el.offsetLeft - container.clientWidth / 2 + el.offsetWidth / 2;
-    container.scrollTo({ left: targetLeft, behavior: 'smooth' });
-  }, [active]);
+    if (!open) return;
+    function handleClick(e: MouseEvent) {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener('click', handleClick);
+    return () => document.removeEventListener('click', handleClick);
+  }, [open]);
 
-  // Don't render if there's nothing meaningful to navigate (0 or 1 entry)
-  if (pills.length < 2) return null;
+  const handleSelect = useCallback((id: string) => {
+    setActive(id);
+    setOpen(false);
+  }, []);
+
+  if (toc.length < 2) return null;
+
+  const activeEntry = toc.find(t => t.id === active);
+  const activeLabel = activeEntry?.text ?? 'On this page';
 
   return (
-    <div className="xl:hidden sticky top-14 z-30 -mx-4 sm:-mx-6 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 shadow-sm pill-nav-container">
-      <div
-        ref={scrollRef}
-        className="pill-nav-scroll overflow-x-auto"
-        style={{ WebkitOverflowScrolling: 'touch' } as React.CSSProperties}
+    <div ref={navRef} className="lg:hidden sticky top-14 z-30 -mx-4 sm:-mx-6">
+      {/* Toggle bar */}
+      <button
+        onClick={() => setOpen(o => !o)}
+        className="w-full flex items-center justify-between gap-2 px-4 sm:px-6 py-2.5 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 shadow-sm text-left min-h-[44px]"
       >
-        <div className="flex items-center gap-2 px-4 sm:px-6 py-2">
-          {pills.map(pill => {
-            const isActive = active === pill.id;
-            return (
-              <a
-                key={pill.id}
-                href={`#${pill.id}`}
-                ref={el => {
-                  if (el) anchorRefs.current.set(pill.id, el);
-                  else anchorRefs.current.delete(pill.id);
-                }}
-                style={isActive ? { backgroundColor: accent, color: 'white' } : undefined}
-                className={[
-                  'shrink-0 whitespace-nowrap rounded-full px-3.5 text-xs font-medium leading-none transition-colors',
-                  // 44px tall touch target; text is vertically centered inside
-                  'flex items-center h-[34px]',
-                  isActive
-                    ? 'shadow-sm'
-                    : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 active:bg-slate-300 dark:active:bg-slate-600',
-                ].join(' ')}
-                onClick={() => setActive(pill.id)}
-              >
-                {pill.text}
-              </a>
-            );
-          })}
-          {/* Trailing spacer so the last pill isn't flush against the scroll edge */}
-          <div className="shrink-0 w-2" aria-hidden="true" />
+        <div className="flex items-center gap-2 min-w-0">
+          <span
+            className="w-1.5 h-1.5 rounded-full shrink-0"
+            style={{ backgroundColor: accent }}
+          />
+          <span className="text-xs font-medium text-slate-700 dark:text-slate-200 truncate">
+            {activeLabel}
+          </span>
         </div>
-      </div>
+        <svg
+          className={`w-4 h-4 text-slate-400 shrink-0 transition-transform ${open ? 'rotate-180' : ''}`}
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+
+      {/* Dropdown TOC */}
+      {open && (
+        <div className="absolute left-0 right-0 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 shadow-lg max-h-[60vh] overflow-y-auto">
+          <nav aria-label="Table of contents" className="py-2">
+            <ul className="space-y-0.5">
+              {toc.map(item => {
+                const isActive = active === item.id;
+                return (
+                  <li key={item.id}>
+                    <a
+                      href={`#${item.id}`}
+                      onClick={() => handleSelect(item.id)}
+                      className={[
+                        'block py-2 px-4 sm:px-6 text-xs transition-colors',
+                        isActive
+                          ? 'font-semibold text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-slate-800'
+                          : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800',
+                      ].join(' ')}
+                      style={{ paddingLeft: `${(item.level - 1) * 12 + 16}px` }}
+                    >
+                      {item.level === 1 ? (
+                        <span className="font-semibold">{item.text}</span>
+                      ) : (
+                        item.text
+                      )}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+        </div>
+      )}
     </div>
   );
 }

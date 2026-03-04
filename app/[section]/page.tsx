@@ -87,14 +87,14 @@ export default function SectionPage({ params }: { params: { section: string } })
         </div>
       </div>
 
-      {/* Mobile subsection pill nav — sticky below header, hidden on xl+ */}
+      {/* Mobile TOC nav — sticky below header, hidden on lg+ */}
       <MobileSubsectionNav toc={data.toc} accent={accent} />
 
       {/* Body: TOC sidebar + content */}
       <div className="flex gap-6 items-start">
-        {/* Sticky TOC (desktop only) */}
+        {/* Sticky TOC (desktop/tablet) */}
         {data.toc.length > 0 && (
-          <aside className="hidden xl:block w-52 shrink-0 sticky top-20 self-start bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm py-4 max-h-[calc(100vh-6rem)] overflow-y-auto">
+          <aside className="hidden lg:block w-52 shrink-0 sticky top-20 self-start bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm py-4 max-h-[calc(100vh-6rem)] overflow-y-auto">
             <TableOfContents toc={data.toc} />
           </aside>
         )}
