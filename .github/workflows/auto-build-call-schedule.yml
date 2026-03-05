@@ -1,0 +1,44 @@
+name: Build Call Schedule
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'public/pdfs/neuro-on-call/call-schedule.xlsx'
+
+jobs:
+  build-schedule:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run build-call-schedule script
+        run: node scripts/build-call-schedule.mjs
+        env:
+          XLSX_SRC: public/pdfs/neuro-on-call/call-schedule.xlsx
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git diff --quiet public/call-schedule/index.html && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit updated HTML
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/call-schedule/index.html src/data/neuro-on-call.json
+          git commit -m "Rebuild call schedule from updated XLSX (automated)"
+          git push

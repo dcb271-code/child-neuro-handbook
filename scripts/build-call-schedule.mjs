@@ -13,7 +13,7 @@ const require = createRequire(import.meta.url);
 const XLSX = require('xlsx');
 
 // ── Paths ────────────────────────────────────────────────────────────────────
-const XLSX_SRC  = 'C:/Users/dylan/Child Neuro Handbook Word/Faculty Call Schedule July 7.25 through 6.26.xlsx';
+const XLSX_SRC  = process.env.XLSX_SRC || 'C:/Users/dylan/Child Neuro Handbook Word/Faculty Call Schedule July 7.25 through 6.26.xlsx';
 const PUBLIC    = 'public';
 const PDF_DIR   = path.join(PUBLIC, 'pdfs/neuro-on-call');
 const DEST_XLSX = path.join(PDF_DIR, 'call-schedule.xlsx');
