@@ -30,20 +30,52 @@ const RELEVANT_SHEETS = [
 
 // ── 1. Read workbook ─────────────────────────────────────────────────────────
 console.log('Reading XLSX…');
-const wb = XLSX.readFile(XLSX_SRC);
+const wb = XLSX.readFile(XLSX_SRC, { cellStyles: true });
 
-// ── 2. Convert sheets to HTML tables ─────────────────────────────────────────
+// ── 2. Convert sheets to HTML tables with cell background colors ─────────────
 const sheetHtmls = [];
 for (const name of RELEVANT_SHEETS) {
   const ws = wb.Sheets[name];
   if (!ws) { console.warn(`  ⚠ Sheet not found: ${name}`); continue; }
 
+  const sheetId = `sheet-${name.replace(/\s+/g, '-').toLowerCase()}`;
+
   // sheet_to_html gives a full HTML doc; extract just the <table>
-  let raw = XLSX.utils.sheet_to_html(ws, { id: `sheet-${name.replace(/\s+/g, '-').toLowerCase()}` });
-  // Strip the wrapper
+  let raw = XLSX.utils.sheet_to_html(ws, { id: sheetId });
   const tableStart = raw.indexOf('<table');
   const tableEnd = raw.lastIndexOf('</table>') + 8;
-  const tableHtml = raw.substring(tableStart, tableEnd);
+  let tableHtml = raw.substring(tableStart, tableEnd);
+
+  // Inject background colors from cell styles
+  const range = XLSX.utils.decode_range(ws['!ref'] || 'A1');
+  for (let r = range.s.r; r <= range.e.r; r++) {
+    for (let c = range.s.c; c <= range.e.c; c++) {
+      const addr = XLSX.utils.encode_cell({ r, c });
+      const cell = ws[addr];
+      if (!cell || !cell.s || cell.s.patternType !== 'solid') continue;
+      const rgb = cell.s.fgColor && cell.s.fgColor.rgb;
+      if (!rgb) continue;
+
+      const cellId = `${sheetId}-${addr}`;
+      // Add inline background style to the td with this id
+      const idAttr = `id="${cellId}"`;
+      const idx = tableHtml.indexOf(idAttr);
+      if (idx < 0) continue;
+
+      // Find the opening <td that contains this id
+      const tdStart = tableHtml.lastIndexOf('<td', idx);
+      if (tdStart < 0) continue;
+
+      // Check if td already has a style attr
+      const tdTag = tableHtml.substring(tdStart, idx + idAttr.length + 1);
+      if (tdTag.includes('style="')) continue; // skip if already styled
+
+      // Insert style after <td
+      tableHtml = tableHtml.substring(0, tdStart + 3) +
+        ` style="background:#${rgb}"` +
+        tableHtml.substring(tdStart + 3);
+    }
+  }
 
   sheetHtmls.push({ name, html: tableHtml });
   console.log(`  ✓ ${name} (${tableHtml.length} chars)`);
@@ -131,28 +163,22 @@ const standalonePage = `<!DOCTYPE html>
     overflow-wrap: break-word;
   }
   /* Title row */
-  tr:nth-child(1) td { background: #f8fafc; font-weight: 600; font-size: 11px; color: #64748b; }
+  tr:nth-child(1) td { font-weight: 600; font-size: 11px; color: #64748b; }
   tr:nth-child(2) td {
-    background: #1e40af;
-    color: #fff;
     font-weight: 700;
     font-size: 14px;
     text-align: center;
   }
   /* Column headers row */
   tr:nth-child(3) td {
-    background: #dbeafe;
     font-weight: 700;
     font-size: 11px;
-    color: #1e40af;
     text-align: center;
   }
   /* Month header row */
   tr:nth-child(4) td {
-    background: #eff6ff;
     font-weight: 700;
     font-size: 13px;
-    color: #1d4ed8;
     text-align: center;
   }
   /* Day of week row */
