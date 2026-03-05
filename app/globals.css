@@ -222,6 +222,16 @@
   border-radius: 8px;
 }
 
+/* ── Responsive spreadsheet embeds ── */
+.doc-content .spreadsheet-embed {
+  width: 100%;
+  height: 80vh;
+  min-height: 400px;
+  max-height: 900px;
+  border: none;
+  border-radius: 0 0 8px 8px;
+}
+
 /* ── Sticky first column for wide tables ── */
 .table-wrap {
   position: relative;
