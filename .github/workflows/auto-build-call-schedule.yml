@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'public/pdfs/neuro-on-call/call-schedule.xlsx'
+  workflow_dispatch:
 
 jobs:
   build-schedule:
