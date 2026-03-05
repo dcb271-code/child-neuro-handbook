@@ -118,13 +118,17 @@ const standalonePage = `<!DOCTYPE html>
     border-collapse: collapse;
     width: 100%;
     min-width: 700px;
+    table-layout: fixed;
     font-size: 12px;
   }
   td {
     border: 1px solid #e2e8f0;
     padding: 4px 6px;
     vertical-align: top;
-    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
   /* Title row */
   tr:nth-child(1) td { background: #f8fafc; font-weight: 600; font-size: 11px; color: #64748b; }
