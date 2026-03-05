@@ -17,7 +17,8 @@ const XLSX_SRC  = 'C:/Users/dylan/Child Neuro Handbook Word/Faculty Call Schedul
 const PUBLIC    = 'public';
 const PDF_DIR   = path.join(PUBLIC, 'pdfs/neuro-on-call');
 const DEST_XLSX = path.join(PDF_DIR, 'call-schedule.xlsx');
-const DEST_HTML = path.join(PUBLIC, 'call-schedule.html');
+const DEST_DIR  = path.join(PUBLIC, 'call-schedule');
+const DEST_HTML = path.join(DEST_DIR, 'index.html');
 const DATA_FILE = 'src/data/neuro-on-call.json';
 
 // ── Relevant sheets (July 2025 – June 2026) ─────────────────────────────────
@@ -189,6 +190,7 @@ function showSheet(idx) {
 
 // ── 5. Write files ───────────────────────────────────────────────────────────
 fs.mkdirSync(PDF_DIR, { recursive: true });
+fs.mkdirSync(DEST_DIR, { recursive: true });
 fs.copyFileSync(XLSX_SRC, DEST_XLSX);
 console.log(`Copied XLSX → ${DEST_XLSX}`);
 
@@ -229,7 +231,7 @@ const embedHtml = `
     <span style="font-size:0.8rem;font-weight:600;color:#1e293b;">📅 Faculty Call Schedule (July 2025 – June 2026)</span>
     <a href="/pdfs/neuro-on-call/call-schedule.xlsx" download style="font-size:0.75rem;color:#2563eb;white-space:nowrap;text-decoration:none;background:#eff6ff;border:1px solid #bfdbfe;border-radius:6px;padding:0.25rem 0.6rem;">Download XLSX ↗</a>
   </div>
-  <iframe src="/call-schedule.html" class="spreadsheet-embed" width="100%" style="height:650px;display:block;border:none;background:#fafafa;"></iframe>
+  <iframe src="/call-schedule/" class="spreadsheet-embed" width="100%" style="height:650px;display:block;border:none;background:#fafafa;"></iframe>
 </div>
 </section>
 `;
