@@ -12,23 +12,45 @@ type Chunk = {
 };
 
 let fuseInstance: Fuse<Chunk> | null = null;
+let searchData: Chunk[] | null = null;
+
+async function loadData(): Promise<Chunk[]> {
+  if (searchData) return searchData;
+  const res = await fetch('/search.json');
+  searchData = await res.json() as Chunk[];
+  return searchData;
+}
 
 async function getFuse(): Promise<Fuse<Chunk>> {
   if (fuseInstance) return fuseInstance;
-  const res = await fetch('/search.json');
-  const data: Chunk[] = await res.json();
+  const data = await loadData();
   fuseInstance = new Fuse(data, {
     keys: [
       { name: 'heading',     weight: 3 },
       { name: 'sectionName', weight: 2 },
       { name: 'text',        weight: 1 },
     ],
-    threshold: 0.4,
-    ignoreLocation: true,
+    threshold: 0.3,
     includeScore: true,
     minMatchCharLength: 2,
   });
   return fuseInstance;
+}
+
+/** Direct case-insensitive substring search — prioritizes heading matches. */
+function exactSearch(data: Chunk[], q: string): FuseResult<Chunk>[] {
+  const lower = q.toLowerCase();
+  const headingMatches: FuseResult<Chunk>[] = [];
+  const textMatches: FuseResult<Chunk>[] = [];
+
+  for (const chunk of data) {
+    if (chunk.heading.toLowerCase().includes(lower)) {
+      headingMatches.push({ item: chunk, refIndex: 0, score: 0.01 });
+    } else if (chunk.text.toLowerCase().includes(lower)) {
+      textMatches.push({ item: chunk, refIndex: 0, score: 0.15 });
+    }
+  }
+  return [...headingMatches, ...textMatches];
 }
 
 export default function GlobalSearch() {
@@ -42,8 +64,34 @@ export default function GlobalSearch() {
   const search = useCallback(async (q: string) => {
     if (q.trim().length < 2) { setResults([]); return; }
     setLoading(true);
+
+    const data = await loadData();
     const fuse = await getFuse();
-    setResults(fuse.search(q, { limit: 10 }));
+
+    // Run both exact substring search and fuzzy search
+    const exact = exactSearch(data, q.trim());
+    const fuzzy = fuse.search(q, { limit: 15 });
+
+    // Merge: exact matches first, then fuzzy (deduplicated)
+    const seen = new Set<string>();
+    const merged: FuseResult<Chunk>[] = [];
+
+    for (const r of exact) {
+      const key = `${r.item.section}:${r.item.id}:${r.item.heading}`;
+      if (!seen.has(key)) {
+        seen.add(key);
+        merged.push(r);
+      }
+    }
+    for (const r of fuzzy) {
+      const key = `${r.item.section}:${r.item.id}:${r.item.heading}`;
+      if (!seen.has(key)) {
+        seen.add(key);
+        merged.push(r);
+      }
+    }
+
+    setResults(merged.slice(0, 10));
     setLoading(false);
   }, []);
 
