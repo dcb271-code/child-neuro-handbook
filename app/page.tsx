@@ -146,6 +146,53 @@ export default function Home() {
           );
         })}
       </div>
+
+      {/* Helpful Links */}
+      <div className="mt-10 sm:mt-12">
+        <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-200 mb-4">
+          Helpful Links
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          {[
+            { name: 'Neurogenetics Portal', desc: 'Gene-phenotype search for neurogenetic conditions', href: 'https://neurogenetics-portal.vercel.app/', color: '#4f46e5' },
+            { name: 'Neuromuscular Database', desc: 'Searchable neuromuscular disease reference', href: 'https://neuromuscular-db.vercel.app/', color: '#059669' },
+            { name: 'Neurogenetics Curriculum', desc: 'Structured neurogenetics learning modules', href: 'https://neurogenetics-curriculum.vercel.app/', color: '#7c3aed' },
+            { name: 'GeneReviews', desc: 'Expert-authored genetic condition summaries', href: 'https://www.ncbi.nlm.nih.gov/books/NBK1116/', color: '#0284c7' },
+            { name: 'OMIM', desc: 'Comprehensive catalog of human genes and genetic disorders', href: 'https://omim.org/', color: '#b45309' },
+            { name: 'Child Neurology Society', desc: 'Practice resources, guidelines, and education', href: 'https://www.childneurologysociety.org/', color: '#0d9488' },
+            { name: 'ILAE', desc: 'Epilepsy classification, definitions, and treatment guidelines', href: 'https://www.ilae.org/', color: '#dc2626' },
+            { name: 'Neuromuscular Disease Center', desc: 'Washington University comprehensive NM reference', href: 'https://neuromuscular.wustl.edu/', color: '#ea580c' },
+            { name: 'Epilepsy Foundation', desc: 'Patient and family resources, toolkits, and education', href: 'https://www.epilepsy.com/', color: '#16a34a' },
+            { name: 'NORD', desc: 'Rare disease database with clinical summaries', href: 'https://rarediseases.org/', color: '#db2777' },
+          ].map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group rounded-xl border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 bg-white dark:bg-slate-800/80 hover:shadow-md transition-all duration-200 overflow-hidden flex min-h-[56px]"
+            >
+              <div
+                className="w-1 shrink-0 rounded-full my-3 mx-2"
+                style={{ backgroundColor: link.color }}
+              />
+              <div className="flex-1 px-3 sm:px-4 py-3 flex flex-col justify-center">
+                <div className="font-semibold text-slate-800 dark:text-slate-100 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors text-sm leading-snug">
+                  {link.name}
+                </div>
+                <div className="text-xs text-slate-400 dark:text-slate-500 mt-0.5">
+                  {link.desc}
+                </div>
+              </div>
+              <div className="flex items-center pr-3">
+                <svg className="w-3.5 h-3.5 text-slate-300 dark:text-slate-600 group-hover:text-blue-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
     </div>
     </DailyChallenge>
   );
