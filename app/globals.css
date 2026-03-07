@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Helpful Links collapsible arrow */
+details summary { list-style: none; }
+details summary::-webkit-details-marker { display: none; }
+details[open] .details-arrow { transform: rotate(90deg); }
+
 @layer base {
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;

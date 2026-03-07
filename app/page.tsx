@@ -147,52 +147,46 @@ export default function Home() {
         })}
       </div>
 
-      {/* Helpful Links */}
-      <div className="mt-10 sm:mt-12">
-        <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-200 mb-4">
-          Helpful Links
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+      {/* Helpful Links — collapsible */}
+      <details className="mt-10 sm:mt-12 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/80 overflow-hidden">
+        <summary className="flex items-center gap-3 px-4 sm:px-5 py-3.5 cursor-pointer select-none hover:bg-slate-50 dark:hover:bg-slate-750 transition-colors">
+          <svg className="w-4 h-4 text-slate-400 dark:text-slate-500 transition-transform details-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+          <span className="font-semibold text-slate-800 dark:text-slate-200 text-sm sm:text-base">Helpful Links</span>
+          <span className="text-xs text-slate-400 dark:text-slate-500">Child neurology resources</span>
+        </summary>
+        <div className="border-t border-slate-100 dark:border-slate-700">
           {[
-            { name: 'Neurogenetics Portal', desc: 'Gene-phenotype search for neurogenetic conditions', href: 'https://neurogenetics-portal.vercel.app/', color: '#4f46e5' },
-            { name: 'Neuromuscular Database', desc: 'Searchable neuromuscular disease reference', href: 'https://neuromuscular-db.vercel.app/', color: '#059669' },
-            { name: 'Neurogenetics Curriculum', desc: 'Structured neurogenetics learning modules', href: 'https://neurogenetics-curriculum.vercel.app/', color: '#7c3aed' },
-            { name: 'GeneReviews', desc: 'Expert-authored genetic condition summaries', href: 'https://www.ncbi.nlm.nih.gov/books/NBK1116/', color: '#0284c7' },
-            { name: 'OMIM', desc: 'Comprehensive catalog of human genes and genetic disorders', href: 'https://omim.org/', color: '#b45309' },
-            { name: 'Child Neurology Society', desc: 'Practice resources, guidelines, and education', href: 'https://www.childneurologysociety.org/', color: '#0d9488' },
-            { name: 'ILAE', desc: 'Epilepsy classification, definitions, and treatment guidelines', href: 'https://www.ilae.org/', color: '#dc2626' },
-            { name: 'Neuromuscular Disease Center', desc: 'Washington University comprehensive NM reference', href: 'https://neuromuscular.wustl.edu/', color: '#ea580c' },
-            { name: 'Epilepsy Foundation', desc: 'Patient and family resources, toolkits, and education', href: 'https://www.epilepsy.com/', color: '#16a34a' },
-            { name: 'NORD', desc: 'Rare disease database with clinical summaries', href: 'https://rarediseases.org/', color: '#db2777' },
+            { name: 'Neurogenetics Portal', desc: 'Gene-phenotype search for neurogenetic conditions', href: 'https://neurogenetics-portal.vercel.app/' },
+            { name: 'Neuromuscular Database', desc: 'Searchable neuromuscular disease reference', href: 'https://neuromuscular-db.vercel.app/' },
+            { name: 'Neurogenetics Curriculum', desc: 'Structured neurogenetics learning modules', href: 'https://neurogenetics-curriculum.vercel.app/' },
+            { name: 'GeneReviews', desc: 'Expert-authored genetic condition summaries', href: 'https://www.ncbi.nlm.nih.gov/books/NBK1116/' },
+            { name: 'OMIM', desc: 'Comprehensive catalog of human genes and genetic disorders', href: 'https://omim.org/' },
+            { name: 'Child Neurology Society', desc: 'Practice resources, guidelines, and education', href: 'https://www.childneurologysociety.org/' },
+            { name: 'ILAE', desc: 'Epilepsy classification, definitions, and treatment guidelines', href: 'https://www.ilae.org/' },
+            { name: 'Neuromuscular Disease Center', desc: 'Washington University comprehensive NM reference', href: 'https://neuromuscular.wustl.edu/' },
+            { name: 'Epilepsy Foundation', desc: 'Patient and family resources, toolkits, and education', href: 'https://www.epilepsy.com/' },
+            { name: 'NORD', desc: 'Rare disease database with clinical summaries', href: 'https://rarediseases.org/' },
           ].map((link) => (
             <a
               key={link.href}
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group rounded-xl border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 bg-white dark:bg-slate-800/80 hover:shadow-md transition-all duration-200 overflow-hidden flex min-h-[56px]"
+              className="flex items-center gap-3 px-5 sm:px-6 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-750 transition-colors border-b border-slate-50 dark:border-slate-700/50 last:border-b-0"
             >
-              <div
-                className="w-1 shrink-0 rounded-full my-3 mx-2"
-                style={{ backgroundColor: link.color }}
-              />
-              <div className="flex-1 px-3 sm:px-4 py-3 flex flex-col justify-center">
-                <div className="font-semibold text-slate-800 dark:text-slate-100 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors text-sm leading-snug">
-                  {link.name}
-                </div>
-                <div className="text-xs text-slate-400 dark:text-slate-500 mt-0.5">
-                  {link.desc}
-                </div>
+              <div className="flex-1 min-w-0">
+                <span className="text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline">{link.name}</span>
+                <span className="text-xs text-slate-400 dark:text-slate-500 ml-2 hidden sm:inline">{link.desc}</span>
               </div>
-              <div className="flex items-center pr-3">
-                <svg className="w-3.5 h-3.5 text-slate-300 dark:text-slate-600 group-hover:text-blue-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </div>
+              <svg className="w-3.5 h-3.5 text-slate-300 dark:text-slate-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
             </a>
           ))}
         </div>
-      </div>
+      </details>
     </div>
     </DailyChallenge>
   );
