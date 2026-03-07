@@ -1416,6 +1416,27 @@
   {
     "section": "neurogenetics-and-neurometabolics",
     "sectionName": "Neurogenetics",
+    "heading": "Mitochondrial Disorders",
+    "id": "mitochondrial-disorders",
+    "text": "Maternal (mtDNA), autosomal recessive, or autosomal dominant inheritance.\nMultisystem involvement; neurologic plus myopathy, cardiomyopathy/arrhythmia, endocrine, GI, renal disease.\nTriggers: fever, fasting, infection, some medications (e.g., valproate in suspected POLG disease).\nTesting: lactate ± pyruvate, CK, MRI, mtDNA/nuclear panels, RC chain analysis ± biopsy.\nManagement: avoid mitochondrial toxins; supportive care; CoQ10 or targeted therapies in specific deficiencies."
+  },
+  {
+    "section": "neurogenetics-and-neurometabolics",
+    "sectionName": "Neurogenetics",
+    "heading": "Recognizable Mitochondrial Syndromes",
+    "id": "mito-syndromes",
+    "text": "Syndrome and featuresGenetics\n\nLeigh syndrome – subacute encephalopathy with symmetric brainstem/basal ganglia lesionsAR, mtDNA, or X‑linked\nPearson syndrome – sideroblastic anemia, pancytopenia, exocrine pancreatic insufficiency, renal tubulopathymtDNA\nMERRF – myoclonic epilepsy with ragged‑red fibersmtDNA\nNARP – neurogenic weakness, ataxia, retinitis pigmentosamtDNA\nMELAS – mitochondrial encephalopathy, lactic acidosis, stroke‑like episodesmtDNA\nAlpers syndrome – encephalopathy, seizures, hepatic dysfunction (often POLG)Nuclear (AR/AD)\nMNGIE – mitochondrial neurogastrointestinal encephalopat"
+  },
+  {
+    "section": "neurogenetics-and-neurometabolics",
+    "sectionName": "Neurogenetics",
+    "heading": "Leukodystrophies / Leukoencephalopathies – Pattern Table",
+    "id": "leukodystrophies",
+    "text": "DiseaseMRI patternKey testClinical clues\n\nX‑ALDPosterior WM → anterior; enhancing edgeVLCFASchool‑age boy, behavioral/visual decline, adrenal failure\nMLDPeriventricular + cerebellar WM; tigroidArylsulfatase ARegression, spasticity, neuropathy\nKrabbeCSTs, cerebellar WM, thick nerve rootsGALC enzymeExtreme irritability, early neuropathy, opisthotonos\nCanavanDiffuse WM with U‑fiber involvement; high NAAUrine/MRS NAAMacrocephaly, hypotonia, regression\nAlexanderFrontal WM, basal ganglia/brainstem; enhancementGFAPMacrocephaly, seizures, regression\nVanishing white matterRarefied/cystic WM, CSF‑like s"
+  },
+  {
+    "section": "neurogenetics-and-neurometabolics",
+    "sectionName": "Neurogenetics",
     "heading": "Developmental Delay ± Epilepsy – Genetic and Metabolic Work‑up",
     "id": "gdd-epilepsy-workup",
     "text": ""
