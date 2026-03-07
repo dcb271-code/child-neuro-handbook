@@ -1,4 +1,5 @@
 import indexData from '@/src/data/index.json';
+import DailyChallenge from '@/components/DailyChallenge';
 
 type SectionMeta = {
   name: string;
@@ -45,6 +46,7 @@ export default function Home() {
   const totalImages = sections.reduce((s, x) => s + x.imageCount, 0);
 
   return (
+    <DailyChallenge>
     <div>
       {/* Page header */}
       <div className="mb-6 sm:mb-8">
@@ -145,5 +147,6 @@ export default function Home() {
         })}
       </div>
     </div>
+    </DailyChallenge>
   );
 }
