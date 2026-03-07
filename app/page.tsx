@@ -170,6 +170,7 @@ export default function Home() {
             { name: 'NORD', href: 'https://rarediseases.org/' },
             { name: 'Radiopaedia', href: 'https://radiopaedia.org/' },
             { name: 'EEG Atlas (Niedermeyer)', href: 'https://www.learningeeg.com/' },
+            { name: 'Practical Neurology', href: 'https://practicalneurology.com/diseases-diagnoses/child-neurology/' },
           ].map((link) => (
             <a
               key={link.href}
