@@ -1339,72 +1339,79 @@
   {
     "section": "neurogenetics-and-neurometabolics",
     "sectionName": "Neurogenetics",
-    "heading": "Conceptual Split",
-    "id": "metabolic-conceptual-split",
-    "text": "Small‑molecule / intoxication type – aminoacidopathies, organic acidemias, urea cycle defects, some energy disorders; acute or intermittent crises with acidosis, hyperammonemia, hypoglycemia.\nLarge‑molecule / organelle – lysosomal, peroxisomal, many glycogen and glycosylation disorders; chronic progressive neurodegeneration with visceromegaly and dysmorphism."
+    "heading": "Conceptual Framework",
+    "id": "conceptual-framework",
+    "text": "Most neurometabolic disorders can be organized along two fundamental axes: biochemical class (what is biochemically wrong) and clinical tempo (how they present over time). Overlaid on this is the question of which organ systems are involved and what the MRI shows. Getting these three axes right guides both the urgency and the direction of your workup."
   },
   {
     "section": "neurogenetics-and-neurometabolics",
     "sectionName": "Neurogenetics",
-    "heading": "Clinical Questions",
-    "id": "metabolic-clinical-questions",
-    "text": "Multi‑organ involvement?\nGray vs white‑matter predominance on MRI?\nMacrocephaly vs microcephaly?\nStatic vs regressive vs episodic?"
+    "heading": "The Core Dichotomy: Small-Molecule vs. Large-Molecule",
+    "id": "the-core-dichotomy-small-molecule-vs-large-molecule",
+    "text": "Small-molecule (intoxication/energy) disorders involve the accumulation of toxic small metabolites or failure of energy production. Because these metabolites are water-soluble and can be cleared — by dialysis, dietary manipulation, cofactors, or specific medications — many are highly treatable. This is the group you cannot miss.\nLarge-molecule (organelle) disorders involve failure to process complex molecules within organelles (lysosomes, peroxisomes, Golgi). Damage accumulates structurally over time. With limited exceptions (early enzyme replacement, HSC transplant in selected cases), these a"
   },
   {
     "section": "neurogenetics-and-neurometabolics",
     "sectionName": "Neurogenetics",
-    "heading": "Basic Metabolic Work‑up",
-    "id": "basic-metabolic-workup",
+    "heading": "A Critical Nuance: Intoxication vs. Energy Failure",
+    "id": "a-critical-nuance-intoxication-vs-energy-failure",
+    "text": "Within the small-molecule category, intoxication-type disorders (e.g., organic acidemias, UCDs, MSUD) and energy-failure disorders (e.g., FAODs, mitochondrial RC defects, GLUT1) are distinct. This matters clinically: organic acidemias cause toxicity from accumulating organic acids and often produce ketosis and metabolic acidosis; FAODs primarily cause energy failure during fasting and produce hypoketotic hypoglycemia. Mitochondrial disorders can present with either pattern or both. Recognizing the sub-type guides initial empirical management."
+  },
+  {
+    "section": "neurogenetics-and-neurometabolics",
+    "sectionName": "Neurogenetics",
+    "heading": "Why Some IEMs Cause Episodic Disease and Others Cause Steady Decline",
+    "id": "why-some-iems-cause-episodic-disease-and-others-cause-steady",
+    "text": "This depends on whether the pathological mechanism is acute metabolite accumulation (reversible if treated) vs. structural or irreversible cellular damage over time. In UCD or MSUD, ammonia or leucine rises during metabolic stress, causing encephalopathy — but the neuron itself can recover if the crisis resolves. In contrast, lysosomal storage with progressive lipid or substrate deposition is structural; neurons die. Many disorders are intermediate: basal ganglia injury in organic acidemias (irreversible stroke-like damage) can occur against a backdrop of episodic presentation."
+  },
+  {
+    "section": "neurogenetics-and-neurometabolics",
+    "sectionName": "Neurogenetics",
+    "heading": "Phenotypic Spectrum and Residual Enzyme Activity",
+    "id": "phenotypic-spectrum-and-residual-enzyme-activity",
+    "text": "The same gene can produce wildly different phenotypes depending on residual enzyme activity or variant severity. Classic PKU with near-zero PAH activity causes severe untreated intellectual disability; mild hyperphenylalaninemia from a different variant may be asymptomatic. Infantile Pompe (GAA) causes fatal cardiomyopathy in infancy; late-onset Pompe causes a slowly progressive limb-girdle/respiratory myopathy in adulthood. Residents should resist anchoring to the textbook presentation of a named disorder — the phenotypic range of most IEMs is broader than the classic description.\nTable 1. Th"
+  },
+  {
+    "section": "neurogenetics-and-neurometabolics",
+    "sectionName": "Neurogenetics",
+    "heading": "Pattern Recognition: Clinical Clues and Pitfalls",
+    "id": "pattern-recognition-clinical-clues-and-pitfalls",
+    "text": "The following table summarizes high-yield clinical presentations with the most important diagnostic considerations and practical pitfalls. A normal MRI does not exclude an IEM. A normal newborn screen does not exclude an IEM.\nTable 2. Clinical Clue–Diagnosis Pairings and Pitfalls\n\n\nCLINICAL FINDINGTHINK ABOUTKEY POINT / PITFALL\n\n\nAcute encephalopathy + hyperammonemiaUCD, organic acidemia, FAOD (esp. with liver failure)Treat the ammonia — do not wait for a diagnosis. Protein restriction and caloric support immediately.\nLactic acidosis, normal anion gap or elevated L:P ratioMitochondrial disease"
+  },
+  {
+    "section": "neurogenetics-and-neurometabolics",
+    "sectionName": "Neurogenetics",
+    "heading": "Treatable IEMs: Do Not Miss",
+    "id": "treatable-iems-do-not-miss",
+    "text": "The following disorders are emphasized because (1) they are treatable — sometimes dramatically so — and (2) missing them results in preventable harm. Kentucky NBS status is noted; a normal NBS does not exclude disorders not on the panel or conditions with poor sensitivity on screen.\nTable 3. High-Priority Treatable IEMs — Don't Miss\n\n\nDISORDERMECHANISMKEY CLINICAL CLUEDON'T-MISS TESTTREATMENTKY NBS\n\n\nGLUT1 deficiency (SLC2A1)Impaired glucose transport across BBB; CSF glucose low relative to serumSeizures worsened by fasting, improved fasting ketosis; acquired microcephaly; movement disorderFas"
+  },
+  {
+    "section": "neurogenetics-and-neurometabolics",
+    "sectionName": "Neurogenetics",
+    "heading": "Tiered Workup for Suspected Neurometabolic Disease",
+    "id": "tiered-workup-for-suspected-neurometabolic-disease",
     "text": ""
   },
   {
     "section": "neurogenetics-and-neurometabolics",
     "sectionName": "Neurogenetics",
-    "heading": "First‑Tier (Screen)",
+    "heading": "First-Tier Screen",
     "id": "first-tier-screen",
-    "text": "Blood:\n\nAmmonia, lactate.\nPlasma amino acids.\nAcylcarnitine profile.\nTotal homocysteine.\nCopper, ceruloplasmin.\n\nUrine:\n\nOrganic acids.\nPurines/pyrimidines.\nCreatine metabolites.\nOligosaccharides.\nGlycosaminoglycans."
+    "text": "Obtain in all children with unexplained global developmental delay, regression, early-onset movement disorder, or recurrent metabolic decompensation — unless a clear alternative diagnosis exists.\nTable 4. First-Tier Metabolic Screen\n\n\nCOMPARTMENTTESTWHAT IT SCREENS FOR\n\n\nBloodAmmoniaUrea cycle defects, organic acidemias, liver failure\nBloodLactate (± pyruvate)Mitochondrial disease, PDH deficiency, organic acidemias — NOTE: collect properly (no tourniquet, free-flowing); a single normal value does not exclude mitochondrial disease\nBloodPlasma amino acidsAminoacidopathies (PKU, MSUD, HCU), UCD ("
   },
   {
     "section": "neurogenetics-and-neurometabolics",
     "sectionName": "Neurogenetics",
-    "heading": "Second‑Tier (Targeted)",
-    "id": "second-tier-targeted",
-    "text": "VLCFAs, plasmalogens.\nCholesterol and 7‑dehydrocholesterol.\nPipecolic acid / AASA.\nCSF amino acids, neurotransmitters, lactate/pyruvate, 5‑MTHF, glucose.\nLysosomal enzyme panels; sterol/bile‑acid panels.\nExome/genome or targeted sequencing."
+    "heading": "Second-Tier Targeted Testing",
+    "id": "second-tier-targeted-testing",
+    "text": "Use first-tier results, clinical pattern, and MRI findings to guide second-tier investigations. Not all of the following are needed in every child — let the phenotype direct the workup.\nTable 5. Second-Tier Targeted Testing by Pattern\n\n\nSCENARIO / PATTERNTARGETED STUDIESNOTES\n\n\nSuspected peroxisomal disorder (ZSD, RCDP, X-ALD): dysmorphism, cataracts, leukodystrophy, adrenal insufficiencyVLCFAs; plasmalogens; phytanic/pristanic acids; ABCD1 gene for X-ALDX-ALD: males on KY NBS since 2018. ZSD: Zellweger spectrum has broad severity — consider in neonatal hypotonia + cholestasis + dysmorphism.\nS"
   },
   {
     "section": "neurogenetics-and-neurometabolics",
     "sectionName": "Neurogenetics",
-    "heading": "Treatable‑First Disorders",
-    "id": "treatable-first",
-    "text": "Use early in regression, refractory epilepsy, crises, or evolving movement disorders.\n\nDisorderKey cluesUrgent testsInitial treatment\n\nGLUT1 deficiencyEarly seizures, microcephaly, exercise‑induced dyskinesiaCSF/serum glucose ratio; SLC2A1Ketogenic diet\nNeurotransmitter synthesis defectsOculogyric crises, parkinsonism/dystonia, autonomic featuresCSF monoamines, BH4, neopterinLevodopa, 5‑HTP, BH4, folinic acid, etc.\nUrea cycle defectsHyperammonemia, respiratory alkalosis, encephalopathyAmmonia, plasma AAs, urine orotic acidScavengers, dialysis, protein restriction\nBiotinidase / multiple carboxy"
-  },
-  {
-    "section": "neurogenetics-and-neurometabolics",
-    "sectionName": "Neurogenetics",
-    "heading": "Mitochondrial Disorders",
-    "id": "mitochondrial-disorders",
-    "text": "Maternal (mtDNA), autosomal recessive, or autosomal dominant inheritance.\nMultisystem involvement; neurologic plus myopathy, cardiomyopathy/arrhythmia, endocrine, GI, renal disease.\nTriggers: fever, fasting, infection, some medications (e.g., valproate in suspected POLG disease).\nTesting: lactate ± pyruvate, CK, MRI, mtDNA/nuclear panels, RC chain analysis ± biopsy.\nManagement: avoid mitochondrial toxins; supportive care; CoQ10 or targeted therapies in specific deficiencies."
-  },
-  {
-    "section": "neurogenetics-and-neurometabolics",
-    "sectionName": "Neurogenetics",
-    "heading": "Recognizable Mitochondrial Syndromes",
-    "id": "mito-syndromes",
-    "text": "Syndrome and featuresGenetics\n\nLeigh syndrome – subacute encephalopathy with symmetric brainstem/basal ganglia lesionsAR, mtDNA, or X‑linked\nPearson syndrome – sideroblastic anemia, pancytopenia, exocrine pancreatic insufficiency, renal tubulopathymtDNA\nMERRF – myoclonic epilepsy with ragged‑red fibersmtDNA\nNARP – neurogenic weakness, ataxia, retinitis pigmentosamtDNA\nMELAS – mitochondrial encephalopathy, lactic acidosis, stroke‑like episodesmtDNA\nAlpers syndrome – encephalopathy, seizures, hepatic dysfunction (often POLG)Nuclear (AR/AD)\nMNGIE – mitochondrial neurogastrointestinal encephalopat"
-  },
-  {
-    "section": "neurogenetics-and-neurometabolics",
-    "sectionName": "Neurogenetics",
-    "heading": "Leukodystrophies / Leukoencephalopathies – Pattern Table",
-    "id": "leukodystrophies",
-    "text": "DiseaseMRI patternKey testClinical clues\n\nX‑ALDPosterior WM → anterior; enhancing edgeVLCFASchool‑age boy, behavioral/visual decline, adrenal failure\nMLDPeriventricular + cerebellar WM; tigroidArylsulfatase ARegression, spasticity, neuropathy\nKrabbeCSTs, cerebellar WM, thick nerve rootsGALC enzymeExtreme irritability, early neuropathy, opisthotonos\nCanavanDiffuse WM with U‑fiber involvement; high NAAUrine/MRS NAAMacrocephaly, hypotonia, regression\nAlexanderFrontal WM, basal ganglia/brainstem; enhancementGFAPMacrocephaly, seizures, regression\nVanishing white matterRarefied/cystic WM, CSF‑like s"
-  },
-  {
-    "section": "neurogenetics-and-neurometabolics",
-    "sectionName": "Neurogenetics",
-    "heading": "When to Test Now vs When to Defer",
-    "id": "test-now-vs-defer",
-    "text": "Test now for regression, evolving movement disorder, refractory epilepsy, progressive MRI changes, metabolic crises, strong family history, or a treatable‑first phenotype.\nStage/defer only for clearly static encephalopathy with well‑documented perinatal insult and no red flags, or mild stable delay—though baseline genetic testing is still encouraged."
+    "heading": "Bedside Checklist for the On-Call Resident",
+    "id": "bedside-checklist-for-the-on-call-resident",
+    "text": "Table 6. Stepwise Approach to the Child with Suspected Neurometabolic Disease\n\n\nSTEPACTION\n\n\n1. StabilizeABCs. Correct hypoglycemia, treat seizures. Do NOT delay acute labs for imaging.\n2. Acute labs (all acutely ill children with encephalopathy)Ammonia, blood gas, glucose, lactate, electrolytes, LFTs, CBC, ketones, plasma amino acids, acylcarnitines, urine organic acids (± orotic acid). Treat hyperammonemia and acidosis empirically while pending.\n3. Categorize by axesSmall- vs large-molecule. Acute/episodic vs subacute/regressive vs chronic progressive. Multi-organ vs brain-predominant. MRI p"
   },
   {
     "section": "neurogenetics-and-neurometabolics",
