@@ -169,7 +169,7 @@ export default function Home() {
             { name: 'Epilepsy Foundation', href: 'https://www.epilepsy.com/' },
             { name: 'NORD', href: 'https://rarediseases.org/' },
             { name: 'Radiopaedia', href: 'https://radiopaedia.org/' },
-            { name: 'EEG Atlas (ACNS)', href: 'https://www.acns.org/' },
+            { name: 'EEG Atlas (Niedermeyer)', href: 'https://www.learningeeg.com/' },
           ].map((link) => (
             <a
               key={link.href}
