@@ -41,7 +41,7 @@
   {
     "id": 4,
     "category": "Child Neurology / Neuro-oncology",
-    "stem": "Neurology / Neuro-oncology An 18-month-old, previously healthy boy develops a subacute onset of severe irritability, tremulousness, and chaotic, rapid conjugate eye movements. He is unable to walk due to severe ataxia. Which of the following diagnostic tests is most critical in identifying the underlying etiology of this syndrome?",
+    "stem": "An 18-month-old, previously healthy boy develops a subacute onset of severe irritability, tremulousness, and chaotic, rapid conjugate eye movements. He is unable to walk due to severe ataxia. Which of the following diagnostic tests is most critical in identifying the underlying etiology of this syndrome?",
     "choices": [
       "Serum very-long-chain fatty acid (VLCFA) levels",
       "Urine catecholamines and abdominal/chest imaging",
@@ -80,7 +80,7 @@
   {
     "id": 7,
     "category": "Neuroanatomy / Vascular",
-    "stem": "Vascular A 15-year-old girl is brought to the emergency department after the acute onset of left-sided facial droop and left arm and leg weakness. She had been playing on the monkey bars earlier that day. Examination shows left hemiparesis and a right-sided ptosis and miosis. An MRA confirms a right internal carotid artery dissection. The pupillary findings are the result of damage to which of the following?",
+    "stem": "A 15-year-old girl is brought to the emergency department after the acute onset of left-sided facial droop and left arm and leg weakness. She had been playing on the monkey bars earlier that day. Examination shows left hemiparesis and a right-sided ptosis and miosis. An MRA confirms a right internal carotid artery dissection. The pupillary findings are the result of damage to which of the following?",
     "choices": [
       "Parasympathetic fibers from the Edinger-Westphal nucleus",
       "Sympathetic fibers traveling alongside the internal carotid artery",
@@ -127,7 +127,7 @@
       "Valproic acid"
     ],
     "answer": 3,
-    "explanation": "Valproic acid carries a severe risk of fatal hepatotoxicity, particularly in children under 2 years of age on polytherapy and in children with underlying mitochondrial disorders (such as Alpers syndrome or MELAS) or fatty acid oxidation defects. It should be strictly avoided in this patient. Here is the next batch of 15 high-yield multiple-choice questions, building upon the previous set. This batch continues to focus heavily on child neurology while integrating epilepsy, pharmacology, neuroanatomy, and pediatric-to-adult crossover topics. Child Neurology Board Review Bank: Batch 2 (Questions 11–25)"
+    "explanation": "Valproic acid carries a severe risk of fatal hepatotoxicity, particularly in children under 2 years of age on polytherapy and in children with underlying mitochondrial disorders (such as Alpers syndrome or MELAS) or fatty acid oxidation defects. It should be strictly avoided in this patient."
   },
   {
     "id": 11,
@@ -184,7 +184,7 @@
   {
     "id": 15,
     "category": "Child Neurology (Congenital Malformations)",
-    "stem": "Neurology (Congenital Malformations) A newborn is noted to have a lumbosacral myelomeningocele at birth. A subsequent MRI of the brain reveals downward displacement of the cerebellar vermis and tonsils, along with brainstem tissue, into the foramen magnum. Which of the following is the most accurate diagnosis for the brain malformation?",
+    "stem": "A newborn is noted to have a lumbosacral myelomeningocele at birth. A subsequent MRI of the brain reveals downward displacement of the cerebellar vermis and tonsils, along with brainstem tissue, into the foramen magnum. Which of the following is the most accurate diagnosis for the brain malformation?",
     "choices": [
       "Chiari I malformation",
       "Chiari II malformation",
@@ -314,7 +314,7 @@
   {
     "id": 25,
     "category": "Neuroanatomy / Movement Disorders",
-    "stem": "Movement Disorders A 16-year-old boy complains that his hands shake noticeably when he tries to drink from a glass or hold a cafeteria tray, causing him embarrassment at school. The shaking resolves when his hands rest in his lap. His father has a similar tremor. The patient notes that his father's tremor improves temporarily after drinking a glass of wine. What is the most likely diagnosis?",
+    "stem": "A 16-year-old boy complains that his hands shake noticeably when he tries to drink from a glass or hold a cafeteria tray, causing him embarrassment at school. The shaking resolves when his hands rest in his lap. His father has a similar tremor. The patient notes that his father's tremor improves temporarily after drinking a glass of wine. What is the most likely diagnosis?",
     "choices": [
       "Enhanced physiologic tremor",
       "Parkinson disease",
@@ -322,7 +322,7 @@
       "Huntington disease"
     ],
     "answer": 2,
-    "explanation": "Essential tremor typically presents as a bilateral postural and kinetic tremor (4-8 Hz). It is inherited in an autosomal dominant pattern with high penetrance, is often exacerbated by anxiety, and characteristically improves temporarily with alcohol consumption. Here is the next batch of 15 high-yield multiple-choice questions for your child neurology board review bank. This set continues to balance epilepsy, general child neurology, neuroanatomy, pharmacology, and adult/pediatric crossover topics. Child Neurology Board Review Bank: Batch 3 (Questions 26–40)"
+    "explanation": "Essential tremor typically presents as a bilateral postural and kinetic tremor (4-8 Hz). It is inherited in an autosomal dominant pattern with high penetrance, is often exacerbated by anxiety, and characteristically improves temporarily with alcohol consumption."
   },
   {
     "id": 26,
@@ -353,7 +353,7 @@
   {
     "id": 28,
     "category": "Epilepsy / Infectious Disease",
-    "stem": "Infectious Disease A 10-year-old immigrant boy with a history of delayed immunizations presents with declining school performance, behavioral changes, and new-onset generalized myoclonic jerks. His EEG reveals bilaterally symmetric, synchronous, high-voltage periodic complexes of sharp and slow waves repeating every 4 to 10 seconds. These bursts correlate with his myoclonic jerks. Which of the following is the most likely diagnosis?",
+    "stem": "A 10-year-old immigrant boy with a history of delayed immunizations presents with declining school performance, behavioral changes, and new-onset generalized myoclonic jerks. His EEG reveals bilaterally symmetric, synchronous, high-voltage periodic complexes of sharp and slow waves repeating every 4 to 10 seconds. These bursts correlate with his myoclonic jerks. Which of the following is the most likely diagnosis?",
     "choices": [
       "Herpes simplex encephalitis",
       "Lafora body disease",
@@ -483,7 +483,7 @@
   {
     "id": 38,
     "category": "Child Neurology (Metabolic / Movement Disorders)",
-    "stem": "Neurology (Metabolic / Movement Disorders) A 1-year-old boy with a history of mild motor delay presents with acute developmental regression, generalized weakness, and a left abducens nerve palsy following a diarrheal illness. Brain MRI shows symmetric T2 hyperintensities in the putamen and periaqueductal gray matter. Serum and CSF lactate levels are markedly elevated. What is the most likely diagnosis?",
+    "stem": "A 1-year-old boy with a history of mild motor delay presents with acute developmental regression, generalized weakness, and a left abducens nerve palsy following a diarrheal illness. Brain MRI shows symmetric T2 hyperintensities in the putamen and periaqueductal gray matter. Serum and CSF lactate levels are markedly elevated. What is the most likely diagnosis?",
     "choices": [
       "Leigh disease (Subacute necrotizing encephalomyelopathy)",
       "Glutaric aciduria type 1",
@@ -496,7 +496,7 @@
   {
     "id": 39,
     "category": "Child Neurology (Neuromuscular / Channelopathy)",
-    "stem": "Neurology (Neuromuscular / Channelopathy) A 15-year-old girl complains of muscle stiffness and difficulty releasing her grip on doorknobs. She notes that the stiffness paradoxically improves after she repeatedly opens and closes her hands (\"warm-up\" phenomenon). Examination shows percussion myotonia of the thenar eminence. An EMG demonstrates diffuse myotonic discharges. This condition is most commonly caused by a mutation in a gene encoding for which of the following?",
+    "stem": "A 15-year-old girl complains of muscle stiffness and difficulty releasing her grip on doorknobs. She notes that the stiffness paradoxically improves after she repeatedly opens and closes her hands (\"warm-up\" phenomenon). Examination shows percussion myotonia of the thenar eminence. An EMG demonstrates diffuse myotonic discharges. This condition is most commonly caused by a mutation in a gene encoding for which of the following?",
     "choices": [
       "Voltage-gated sodium channel (SCN4A)",
       "Voltage-gated chloride channel (CLCN1)",
@@ -509,7 +509,7 @@
   {
     "id": 40,
     "category": "Child Neurology / Psychiatry (ADHD & Tics)",
-    "stem": "Neurology / Psychiatry (ADHD & Tics) A 9-year-old boy with a known history of Tourette syndrome is brought to the clinic for worsening academic performance. His teachers report severe inattention, distractibility, and inability to stay in his seat. His parents are hesitant to start stimulant medications because they have read it might exacerbate his motor tics. Which of the following medications is a norepinephrine reuptake inhibitor that is FDA-approved for this comorbid condition and carries a lower risk of exacerbating tics?",
+    "stem": "A 9-year-old boy with a known history of Tourette syndrome is brought to the clinic for worsening academic performance. His teachers report severe inattention, distractibility, and inability to stay in his seat. His parents are hesitant to start stimulant medications because they have read it might exacerbate his motor tics. Which of the following medications is a norepinephrine reuptake inhibitor that is FDA-approved for this comorbid condition and carries a lower risk of exacerbating tics?",
     "choices": [
       "Methylphenidate",
       "Atomoxetine",
@@ -517,12 +517,12 @@
       "Dextroamphetamine"
     ],
     "answer": 1,
-    "explanation": "Atomoxetine is a non-stimulant selective norepinephrine reuptake inhibitor approved for the treatment of ADHD. Because it does not directly increase dopamine in the striatum like stimulants (methylphenidate, dextroamphetamine) do, it is less likely to exacerbate tics, making it an excellent pharmacological choice for children with comorbid ADHD and Tourette syndrome. Here is the next batch of 15 high-yield multiple-choice questions for your child neurology board review bank. This set continues our focus on pediatric topics while mixing in high-yield epilepsy, neuroanatomy, pharmacology, and adult/pediatric crossover material. Child Neurology Board Review Bank: Batch 4 (Questions 41–55)"
+    "explanation": "Atomoxetine is a non-stimulant selective norepinephrine reuptake inhibitor approved for the treatment of ADHD. Because it does not directly increase dopamine in the striatum like stimulants (methylphenidate, dextroamphetamine) do, it is less likely to exacerbate tics, making it an excellent pharmacological choice for children with comorbid ADHD and Tourette syndrome."
   },
   {
     "id": 41,
     "category": "Child Neurology (Embryology / Malformations)",
-    "stem": "Neurology (Embryology / Malformations) A newborn is found to have a single midline cerebral ventricle, fused thalami, and cyclopia. Failure of which embryonic vesicle to divide is responsible for this malformation?",
+    "stem": "A newborn is found to have a single midline cerebral ventricle, fused thalami, and cyclopia. Failure of which embryonic vesicle to divide is responsible for this malformation?",
     "choices": [
       "Rhombencephalon",
       "Mesencephalon",
@@ -639,7 +639,7 @@
   {
     "id": 50,
     "category": "Child Neurology (Metabolic/Leukodystrophy)",
-    "stem": "Neurology (Metabolic/Leukodystrophy) A 5-month-old infant presents with extreme irritability, hypersensitivity to stimuli, hypertonicity evolving into opisthotonos, and unexplained low-grade fevers. MRI reveals symmetric periventricular white matter signal abnormality. CSF protein is elevated. Brain pathology demonstrates PAS-positive multinucleated macrophages. What is the underlying enzyme deficiency?",
+    "stem": "A 5-month-old infant presents with extreme irritability, hypersensitivity to stimuli, hypertonicity evolving into opisthotonos, and unexplained low-grade fevers. MRI reveals symmetric periventricular white matter signal abnormality. CSF protein is elevated. Brain pathology demonstrates PAS-positive multinucleated macrophages. What is the underlying enzyme deficiency?",
     "choices": [
       "Arylsulfatase A",
       "Aspartoacylase",
@@ -691,7 +691,7 @@
   {
     "id": 54,
     "category": "Child Neurology (Metabolic/Leukodystrophy)",
-    "stem": "Neurology (Metabolic/Leukodystrophy) A 10-month-old boy is evaluated for macrocephaly, developmental delay, and onset of seizures. MRI of the brain demonstrates extensive white matter T2-hyperintensity with a prominent anterior-to-posterior gradient (frontal lobe predominance). Pathology would be expected to show accumulation of Rosenthal fibers. This condition is caused by a mutation in the gene encoding which of the following proteins?",
+    "stem": "A 10-month-old boy is evaluated for macrocephaly, developmental delay, and onset of seizures. MRI of the brain demonstrates extensive white matter T2-hyperintensity with a prominent anterior-to-posterior gradient (frontal lobe predominance). Pathology would be expected to show accumulation of Rosenthal fibers. This condition is caused by a mutation in the gene encoding which of the following proteins?",
     "choices": [
       "Glial fibrillary acidic protein (GFAP)",
       "Proteolipid protein 1 (PLP1)",
@@ -712,7 +712,7 @@
       "West syndrome"
     ],
     "answer": 1,
-    "explanation": "Ohtahara syndrome (early infantile epileptic encephalopathy) presents between day 1 and month 3 of life with frequent tonic spasms and a continuous burst-suppression pattern on EEG during both wakefulness and sleep. It is heavily associated with structural brain malformations. In contrast, Early Myoclonic Encephalopathy (EME) features predominant myoclonic seizures, is more often metabolic in origin, and burst-suppression is most prominent during sleep. Here is the fifth batch of 15 high-yield multiple-choice questions for your child neurology board review bank. This batch continues to blend general child neurology, genetic/metabolic conditions, epilepsy, neuroanatomy, pharmacology, and relevant crossover topics. Child Neurology Board Review Bank: Batch 5 (Questions 56–70)"
+    "explanation": "Ohtahara syndrome (early infantile epileptic encephalopathy) presents between day 1 and month 3 of life with frequent tonic spasms and a continuous burst-suppression pattern on EEG during both wakefulness and sleep. It is heavily associated with structural brain malformations. In contrast, Early Myoclonic Encephalopathy (EME) features predominant myoclonic seizures, is more often metabolic in origin, and burst-suppression is most prominent during sleep.."
   },
   {
     "id": 56,
@@ -907,7 +907,7 @@
       "Oral albendazole"
     ],
     "answer": 1,
-    "explanation": "The patient has Stage 2 (disseminated) Lyme disease caused by Borrelia burgdorferi, presenting with neurologic manifestations (Lyme neuroborreliosis). Classic signs include bilateral cranial nerve VII palsies and lymphocytic meningitis, preceded by the erythema migrans (bull's eye) rash. The standard treatment for Lyme meningitis and cranial neuritis is intravenous ceftriaxone. Here is the sixth batch of 15 high-yield multiple-choice questions for your child neurology board review bank. This set integrates child neurology, epilepsy, neuroanatomy, pharmacology, and adult/pediatric crossover topics, with all explanations directly cited from the provided materials. Child Neurology Board Review Bank: Batch 6 (Questions 71–85)"
+    "explanation": "The patient has Stage 2 (disseminated) Lyme disease caused by Borrelia burgdorferi, presenting with neurologic manifestations (Lyme neuroborreliosis). Classic signs include bilateral cranial nerve VII palsies and lymphocytic meningitis, preceded by the erythema migrans (bull's eye) rash. The standard treatment for Lyme meningitis and cranial neuritis is intravenous ceftriaxone.."
   },
   {
     "id": 71,
@@ -964,7 +964,7 @@
   {
     "id": 75,
     "category": "Child Neurology (Cortical Malformations)",
-    "stem": "Neurology (Cortical Malformations) A 10-year-old girl with medically refractory epilepsy and mild intellectual disability undergoes a brain MRI. The MRI demonstrates a thick band of gray matter located deep to the cortex, separated from the true cortex by a layer of white matter. This condition is most commonly associated with a mutation in a gene located on which chromosome?",
+    "stem": "A 10-year-old girl with medically refractory epilepsy and mild intellectual disability undergoes a brain MRI. The MRI demonstrates a thick band of gray matter located deep to the cortex, separated from the true cortex by a layer of white matter. This condition is most commonly associated with a mutation in a gene located on which chromosome?",
     "choices": [
       "Chromosome X",
       "Chromosome 17",
@@ -1120,7 +1120,7 @@
   {
     "id": 87,
     "category": "Child Neurology (Embryology / Malformations)",
-    "stem": "Neurology (Embryology / Malformations) A neonate is born with midline facial defects including cyclopia and a proboscis. Neuroimaging reveals a single midline cerebral ventricle with fused thalami and an absence of the interhemispheric fissure. This malformation is primarily due to the failure of which embryonic structure to divide?",
+    "stem": "A neonate is born with midline facial defects including cyclopia and a proboscis. Neuroimaging reveals a single midline cerebral ventricle with fused thalami and an absence of the interhemispheric fissure. This malformation is primarily due to the failure of which embryonic structure to divide?",
     "choices": [
       "Mesencephalon",
       "Prosencephalon",
@@ -1133,7 +1133,7 @@
   {
     "id": 88,
     "category": "Child Neurology / Neuro-oncology (Paraneoplastic)",
-    "stem": "Neurology / Neuro-oncology (Paraneoplastic) A 2-year-old child presents with rapid, chaotic conjugate eye movements, severe ataxia, and myoclonus. An abdominal MRI reveals an underlying neuroblastoma. Which of the following statements is true regarding this paraneoplastic syndrome in children compared to adults?",
+    "stem": "A 2-year-old child presents with rapid, chaotic conjugate eye movements, severe ataxia, and myoclonus. An abdominal MRI reveals an underlying neuroblastoma. Which of the following statements is true regarding this paraneoplastic syndrome in children compared to adults?",
     "choices": [
       "It is most commonly associated with anti-Hu antibodies.",
       "The neurological prognosis is generally better in children than in adults.",
@@ -1198,7 +1198,7 @@
   {
     "id": 93,
     "category": "Child Neurology (Neuromuscular / Genetics)",
-    "stem": "Neurology (Neuromuscular / Genetics) A 4-month-old infant presents with severe generalized hypotonia, a weak cry, and a \"frog-leg\" posture when placed supine. She is diffusely areflexic and has never been able to achieve head control. This disease is most commonly caused by an autosomal recessive mutation in which of the following genes?",
+    "stem": "A 4-month-old infant presents with severe generalized hypotonia, a weak cry, and a \"frog-leg\" posture when placed supine. She is diffusely areflexic and has never been able to achieve head control. This disease is most commonly caused by an autosomal recessive mutation in which of the following genes?",
     "choices": [
       "DMPK",
       "PMP22",
@@ -1289,7 +1289,7 @@
   {
     "id": 100,
     "category": "Child Neurology (Metabolic / Leukodystrophy)",
-    "stem": "Neurology (Metabolic / Leukodystrophy) A 3-year-old girl with previously normal development presents with progressive clumsiness, frequent falls, and a loss of language skills. Examination shows spasticity in her legs but absent deep tendon reflexes at the knees and ankles. MRI of the brain shows symmetric T2 hyperintensities in the periventricular white matter that notably spare the subcortical U-fibers. Laboratory testing will most likely show a deficiency of which enzyme?",
+    "stem": "A 3-year-old girl with previously normal development presents with progressive clumsiness, frequent falls, and a loss of language skills. Examination shows spasticity in her legs but absent deep tendon reflexes at the knees and ankles. MRI of the brain shows symmetric T2 hyperintensities in the periventricular white matter that notably spare the subcortical U-fibers. Laboratory testing will most likely show a deficiency of which enzyme?",
     "choices": [
       "Galactocerebrosidase",
       "Arylsulfatase A",
@@ -1297,7 +1297,7 @@
       "Hexosaminidase A"
     ],
     "answer": 1,
-    "explanation": "Metachromatic leukodystrophy is an autosomal recessive disorder caused by a deficiency of arylsulfatase A, which normally breaks down cerebroside sulfate. The accumulation of sulfatide leads to widespread demyelination of both the central and peripheral nervous systems. The late infantile form presents between 2 and 4 years of age with progressive psychomotor slowing, ataxia, and seizures. MRI classically shows T2 hyperintense signal changes in the periventricular and subcortical white matter that spare the U-fibers. Here is the next batch of 15 questions. As requested, these feature slightly shorter clinical stems and more concise explanations, making them excellent for rapid-fire review. They remain heavily focused on child neurology while integrating pharmacology, neuroanatomy, and crossover topics. Child Neurology Board Review Bank: Batch 7 (Questions 101–115)"
+    "explanation": "Metachromatic leukodystrophy is an autosomal recessive disorder caused by a deficiency of arylsulfatase A, which normally breaks down cerebroside sulfate. The accumulation of sulfatide leads to widespread demyelination of both the central and peripheral nervous systems. The late infantile form presents between 2 and 4 years of age with progressive psychomotor slowing, ataxia, and seizures. MRI classically shows T2 hyperintense signal changes in the periventricular and subcortical white matter that spare the U-fibers."
   },
   {
     "id": 101,
@@ -1432,7 +1432,7 @@
   {
     "id": 111,
     "category": "Psychiatry / Movement Disorders",
-    "stem": "Movement Disorders A 10-year-old boy has a 2-year history of frequent eye blinking, shoulder shrugging, and occasional throat clearing and grunting. These movements are preceded by an uncomfortable urge to perform them. What is the most likely diagnosis?",
+    "stem": "A 10-year-old boy has a 2-year history of frequent eye blinking, shoulder shrugging, and occasional throat clearing and grunting. These movements are preceded by an uncomfortable urge to perform them. What is the most likely diagnosis?",
     "choices": [
       "Sydenham chorea",
       "Tourette syndrome",
@@ -1484,7 +1484,7 @@
   {
     "id": 115,
     "category": "Child Neurology (Congenital Malformations)",
-    "stem": "Neurology (Congenital Malformations) A newborn is born with a lumbosacral myelomeningocele. Which of the following brain malformations is most likely to be present concurrently on a screening MRI?",
+    "stem": "A newborn is born with a lumbosacral myelomeningocele. Which of the following brain malformations is most likely to be present concurrently on a screening MRI?",
     "choices": [
       "Chiari I malformation",
       "Chiari II malformation",
@@ -1692,7 +1692,7 @@
   {
     "id": 131,
     "category": "Neuroanatomy / Congenital Syndromes",
-    "stem": "Congenital Syndromes A 2-day-old infant is evaluated for difficulty feeding and a poor suck. On examination, the infant has a remarkable lack of facial expression when crying and is unable to abduct either eye. The remainder of the neurological examination is normal. What is the most likely diagnosis?",
+    "stem": "A 2-day-old infant is evaluated for difficulty feeding and a poor suck. On examination, the infant has a remarkable lack of facial expression when crying and is unable to abduct either eye. The remainder of the neurological examination is normal. What is the most likely diagnosis?",
     "choices": [
       "Congenital myasthenia gravis",
       "Möbius syndrome",
@@ -1705,7 +1705,7 @@
   {
     "id": 132,
     "category": "Genetics / Developmental Regression",
-    "stem": "Developmental Regression A 2-year-old girl is evaluated for developmental regression. After a period of normal development, she lost her spoken words at 18 months of age. She now avoids eye contact, exhibits persistent hand-wringing movements, and her head growth has decelerated. A mutation in which of the following genes is most likely?",
+    "stem": "A 2-year-old girl is evaluated for developmental regression. After a period of normal development, she lost her spoken words at 18 months of age. She now avoids eye contact, exhibits persistent hand-wringing movements, and her head growth has decelerated. A mutation in which of the following genes is most likely?",
     "choices": [
       "FMR1",
       "MECP2",
@@ -1718,7 +1718,7 @@
   {
     "id": 133,
     "category": "Genetics / Cognitive Delay",
-    "stem": "Cognitive Delay A 4-year-old boy presents with language delay and hyperactivity. On examination, he is noted to have a large head, a long face, and prominent ears. Family history is notable for a maternal uncle with intellectual disability. This syndrome is caused by an expansion of which of the following?",
+    "stem": "A 4-year-old boy presents with language delay and hyperactivity. On examination, he is noted to have a large head, a long face, and prominent ears. Family history is notable for a maternal uncle with intellectual disability. This syndrome is caused by an expansion of which of the following?",
     "choices": [
       "GAA trinucleotide repeat",
       "CAG trinucleotide repeat",
@@ -1731,7 +1731,7 @@
   {
     "id": 134,
     "category": "Neuromuscular / Myopathy",
-    "stem": "Myopathy A 15-year-old boy complains that he can no longer drink from a straw or blow up a balloon. On examination, he has a \"pouting\" appearance to his mouth, a \"transverse smile,\" and prominent scapular winging. What is the most likely diagnosis?",
+    "stem": "A 15-year-old boy complains that he can no longer drink from a straw or blow up a balloon. On examination, he has a \"pouting\" appearance to his mouth, a \"transverse smile,\" and prominent scapular winging. What is the most likely diagnosis?",
     "choices": [
       "Duchenne muscular dystrophy",
       "Facioscapulohumeral dystrophy (FSHD)",
@@ -1744,7 +1744,7 @@
   {
     "id": 135,
     "category": "Infectious / Encephalopathy",
-    "stem": "Encephalopathy A 10-year-old immigrant boy with no history of vaccinations presents with declining school performance, behavioral changes, and frequent myoclonic jerks. His EEG shows generalized, periodic, high-voltage sharp and slow-wave complexes every 5 seconds. What is the underlying cause of his disease?",
+    "stem": "A 10-year-old immigrant boy with no history of vaccinations presents with declining school performance, behavioral changes, and frequent myoclonic jerks. His EEG shows generalized, periodic, high-voltage sharp and slow-wave complexes every 5 seconds. What is the underlying cause of his disease?",
     "choices": [
       "Herpes simplex virus",
       "Defective measles virus",
@@ -1770,7 +1770,7 @@
   {
     "id": 137,
     "category": "EEG / Normal Variants",
-    "stem": "Normal Variants An EEG is ordered for a 15-year-old girl being evaluated for headaches. During drowsiness, the EEG demonstrates runs of sharply contoured, positive-polarity potentials at frequencies of 14 Hz and 6 Hz, localized maximally over the posterior temporal regions. What does this finding indicate?",
+    "stem": "An EEG is ordered for a 15-year-old girl being evaluated for headaches. During drowsiness, the EEG demonstrates runs of sharply contoured, positive-polarity potentials at frequencies of 14 Hz and 6 Hz, localized maximally over the posterior temporal regions. What does this finding indicate?",
     "choices": [
       "It is diagnostic of juvenile myoclonic epilepsy.",
       "It is a normal, benign variant.",
@@ -1783,7 +1783,7 @@
   {
     "id": 138,
     "category": "Vascular / Congenital Malformations",
-    "stem": "Congenital Malformations A 2-month-old infant is evaluated for a rapidly increasing head circumference and failure to thrive. On examination, the infant is tachypneic, has a full fontanelle, and a loud cranial bruit is auscultated. An echocardiogram reveals high-output congestive heart failure. What is the most likely diagnosis?",
+    "stem": "A 2-month-old infant is evaluated for a rapidly increasing head circumference and failure to thrive. On examination, the infant is tachypneic, has a full fontanelle, and a loud cranial bruit is auscultated. An echocardiogram reveals high-output congestive heart failure. What is the most likely diagnosis?",
     "choices": [
       "Dandy-Walker malformation",
       "Vein of Galen malformation",
@@ -1796,7 +1796,7 @@
   {
     "id": 139,
     "category": "Neuromuscular / Toxins",
-    "stem": "Toxins A 3-month-old infant is brought to the emergency department for a weak cry, poor feeding, and a 3-day history of constipation. On examination, the infant has severe diffuse hypotonia, ptosis, a weak gag reflex, and pupils that initially constrict to light but then slowly dilate. What is the most likely diagnosis?",
+    "stem": "A 3-month-old infant is brought to the emergency department for a weak cry, poor feeding, and a 3-day history of constipation. On examination, the infant has severe diffuse hypotonia, ptosis, a weak gag reflex, and pupils that initially constrict to light but then slowly dilate. What is the most likely diagnosis?",
     "choices": [
       "Werdnig-Hoffmann disease",
       "Infantile botulism",
@@ -1822,7 +1822,7 @@
   {
     "id": 141,
     "category": "Neurodegenerative / Ataxia",
-    "stem": "Ataxia A 13-year-old girl is evaluated for a progressive gait ataxia and frequent falls. Examination shows an absence of deep tendon reflexes in the lower extremities, profound loss of proprioception, and bilateral upgoing toes. She is also noted to have high arches (pes cavus). What is the underlying genetic defect?",
+    "stem": "A 13-year-old girl is evaluated for a progressive gait ataxia and frequent falls. Examination shows an absence of deep tendon reflexes in the lower extremities, profound loss of proprioception, and bilateral upgoing toes. She is also noted to have high arches (pes cavus). What is the underlying genetic defect?",
     "choices": [
       "Mutation in the ATM gene",
       "GAA trinucleotide repeat expansion",
@@ -1835,7 +1835,7 @@
   {
     "id": 142,
     "category": "Vascular / Stroke",
-    "stem": "Stroke A 7-year-old girl with sickle cell disease presents with the acute onset of right-sided hemiparesis and expressive aphasia. Cerebral angiography reveals bilateral stenosis of the supraclinoid internal carotid arteries with a prominent, hazy collateral vascular network at the base of the brain. What is the diagnosis?",
+    "stem": "A 7-year-old girl with sickle cell disease presents with the acute onset of right-sided hemiparesis and expressive aphasia. Cerebral angiography reveals bilateral stenosis of the supraclinoid internal carotid arteries with a prominent, hazy collateral vascular network at the base of the brain. What is the diagnosis?",
     "choices": [
       "Arterial dissection",
       "Cerebral sinus venous thrombosis",
@@ -1848,7 +1848,7 @@
   {
     "id": 143,
     "category": "Neuroanatomy / Eye Movements",
-    "stem": "Eye Movements An 8-month-old infant is brought to the clinic for abnormal head movements. The parents note he has started intermittently nodding his head and keeping his head tilted to the side. Examination reveals a high-frequency, small-amplitude, \"shimmering\" pendular nystagmus in his left eye. An MRI of the brain is normal. What is the most likely diagnosis?",
+    "stem": "An 8-month-old infant is brought to the clinic for abnormal head movements. The parents note he has started intermittently nodding his head and keeping his head tilted to the side. Examination reveals a high-frequency, small-amplitude, \"shimmering\" pendular nystagmus in his left eye. An MRI of the brain is normal. What is the most likely diagnosis?",
     "choices": [
       "Spasmus nutans",
       "Opsoclonus-myoclonus syndrome",
@@ -1859,22 +1859,9 @@
     "explanation": "Spasmus nutans is a benign, usually self-limiting syndrome occurring in infancy, characterized by the classic triad of head nodding, asymmetric/monocular \"shimmering\" nystagmus, and torticollis (head tilt)."
   },
   {
-    "id": 144,
-    "category": "Headache /",
-    "stem": "Cranial Nerves An 8-year-old boy develops a severe, left-sided, throbbing headache associated with nausea. Three days later, the headache resolves, but he develops left-sided ptosis, a dilated left pupil, and the inability to adduct, elevate, or depress his left eye. What is the most likely diagnosis?",
-    "choices": [
-      "Tolosa-Hunt syndrome",
-      "Ophthalmoplegic migraine",
-      "Optic neuritis",
-      "Orbital cellulitis"
-    ],
-    "answer": 1,
-    "explanation": "Ophthalmoplegic migraine (now classified as a cranial neuralgia) typically presents in childhood with a severe migrainous headache followed by an ipsilateral ocular nerve palsy. The oculomotor nerve (CN III) is most commonly affected, frequently involving the pupil."
-  },
-  {
     "id": 145,
     "category": "Epilepsy / Paroxysmal Events",
-    "stem": "Paroxysmal Events An 18-month-old boy is playing when his brother takes a toy away. The boy becomes furious, lets out a brief cry, holds his breath, and turns blue around the lips. He then loses consciousness, goes limp, and experiences brief generalized body jerking for a few seconds before waking up and returning to normal. What is the most likely diagnosis?",
+    "stem": "An 18-month-old boy is playing when his brother takes a toy away. The boy becomes furious, lets out a brief cry, holds his breath, and turns blue around the lips. He then loses consciousness, goes limp, and experiences brief generalized body jerking for a few seconds before waking up and returning to normal. What is the most likely diagnosis?",
     "choices": [
       "Absence seizure",
       "Cyanotic breath-holding spell",
@@ -1882,7 +1869,7 @@
       "Generalized tonic-clonic seizure"
     ],
     "answer": 1,
-    "explanation": "Cyanotic breath-holding spells are benign paroxysmal events provoked by anger or frustration. They begin with a cry, followed by apnea, cyanosis, and loss of consciousness. The brief jerking represents a reflex anoxic seizure secondary to transient cerebral hypoperfusion, not an epileptic seizure. Here is the seventh batch of 15 high-yield multiple-choice questions. As requested, these feature slightly shorter clinical stems and more concise explanations, making them excellent for rapid-fire review. They represent classic \"bread and butter\" themes that reliably appear on child neurology boards and in-service training exams (RITE). Child Neurology Board Review Bank: Batch 8 (Questions 131–145)"
+    "explanation": "Cyanotic breath-holding spells are benign paroxysmal events provoked by anger or frustration. They begin with a cry, followed by apnea, cyanosis, and loss of consciousness. The brief jerking represents a reflex anoxic seizure secondary to transient cerebral hypoperfusion, not an epileptic seizure."
   },
   {
     "id": 146,
@@ -2077,7 +2064,7 @@
       "Maternally inherited mitochondrial DNA point mutation"
     ],
     "answer": 0,
-    "explanation": "Congenital myotonic dystrophy (Type 1) presents in neonates with severe hypotonia, facial diplegia, respiratory failure, and arthrogryposis (clubfeet). It is caused by an unstable CTG trinucleotide repeat expansion in the DMPK gene on chromosome 19. The severe congenital form almost exclusively occurs when the expanded repeat is inherited from an affected mother. Here is the next batch of 15 high-yield multiple-choice questions. These focus specifically on \"red flags\" in child neurology—presentations that represent \"cannot miss\" diagnoses, neurologic emergencies, highly treatable conditions that are often misdiagnosed, or physical exam clues that should prompt immediate investigation. Child Neurology Board Review Bank: Batch 10 (Questions 161–175)"
+    "explanation": "Congenital myotonic dystrophy (Type 1) presents in neonates with severe hypotonia, facial diplegia, respiratory failure, and arthrogryposis (clubfeet). It is caused by an unstable CTG trinucleotide repeat expansion in the DMPK gene on chromosome 19. The severe congenital form almost exclusively occurs when the expanded repeat is inherited from an affected mother."
   },
   {
     "id": 161,
@@ -2095,7 +2082,7 @@
   {
     "id": 162,
     "category": "Red Flag (Infantile Hypotonia & Constipation)",
-    "stem": "Flag (Infantile Hypotonia & Constipation) A 2-month-old infant is brought to the emergency department for a weak cry, poor feeding, and a 4-day history of constipation. Examination reveals a lethargic infant with profound diffuse hypotonia, an absent gag reflex, ptosis, and pupils that initially constrict to light but slowly dilate when the light is maintained on the macula. Which of the following treatments should be strictly avoided?",
+    "stem": "A 2-month-old infant is brought to the emergency department for a weak cry, poor feeding, and a 4-day history of constipation. Examination reveals a lethargic infant with profound diffuse hypotonia, an absent gag reflex, ptosis, and pupils that initially constrict to light but slowly dilate when the light is maintained on the macula. Which of the following treatments should be strictly avoided?",
     "choices": [
       "Intubation and mechanical ventilation",
       "Botulism immune globulin (BabyBIG)",
@@ -2108,7 +2095,7 @@
   {
     "id": 163,
     "category": "Red Flag (Acute Paraparesis & Sensory Level)",
-    "stem": "Flag (Acute Paraparesis & Sensory Level) A 15-year-old girl presents with a 4-day history of back pain, followed by rapidly progressive weakness in both legs. She is now unable to move her legs and has not urinated in 12 hours. Examination shows flaccid paraplegia, absent deep tendon reflexes in the legs, and complete loss of sensation below the umbilicus. What is the most urgent diagnostic step?",
+    "stem": "A 15-year-old girl presents with a 4-day history of back pain, followed by rapidly progressive weakness in both legs. She is now unable to move her legs and has not urinated in 12 hours. Examination shows flaccid paraplegia, absent deep tendon reflexes in the legs, and complete loss of sensation below the umbilicus. What is the most urgent diagnostic step?",
     "choices": [
       "Lumbar puncture for CSF analysis",
       "Urgent MRI of the entire spine with and without gadolinium",
@@ -2147,7 +2134,7 @@
   {
     "id": 166,
     "category": "Red Flag (Ataxia & Abnormal Eye Movements)",
-    "stem": "Flag (Ataxia & Abnormal Eye Movements) An 18-month-old boy presents with subacute onset of severe irritability, truncal ataxia, and chaotic, rapid, conjugate eye movements that occur in all directions. What occult malignancy must be actively hunted for in this patient?",
+    "stem": "An 18-month-old boy presents with subacute onset of severe irritability, truncal ataxia, and chaotic, rapid, conjugate eye movements that occur in all directions. What occult malignancy must be actively hunted for in this patient?",
     "choices": [
       "Leukemia",
       "Wilms tumor",
@@ -2173,7 +2160,7 @@
   {
     "id": 168,
     "category": "Red Flag (Macrocephaly & Heart Failure)",
-    "stem": "Flag (Macrocephaly & Heart Failure) A 2-month-old infant is evaluated for a rapidly enlarging head circumference and failure to thrive. Examination reveals a full fontanelle, tachypnea, and a loud cranial bruit auscultated over the skull. An echocardiogram shows high-output congestive heart failure. What is the most likely central nervous system lesion?",
+    "stem": "A 2-month-old infant is evaluated for a rapidly enlarging head circumference and failure to thrive. Examination reveals a full fontanelle, tachypnea, and a loud cranial bruit auscultated over the skull. An echocardiogram shows high-output congestive heart failure. What is the most likely central nervous system lesion?",
     "choices": [
       "Choroid plexus papilloma",
       "Dandy-Walker malformation",
@@ -2199,7 +2186,7 @@
   {
     "id": 170,
     "category": "Red Flag (Myoclonus in an Unvaccinated Child)",
-    "stem": "Flag (Myoclonus in an Unvaccinated Child) A 10-year-old immigrant boy with no history of immunizations presents with declining school performance, severe behavioral changes, and frequent myoclonic jerks. His EEG reveals high-voltage periodic complexes of sharp and slow waves repeating every 4 to 10 seconds. What viral pathogen is responsible for this fatal neurodegenerative disease?",
+    "stem": "A 10-year-old immigrant boy with no history of immunizations presents with declining school performance, severe behavioral changes, and frequent myoclonic jerks. His EEG reveals high-voltage periodic complexes of sharp and slow waves repeating every 4 to 10 seconds. What viral pathogen is responsible for this fatal neurodegenerative disease?",
     "choices": [
       "Herpes simplex virus",
       "Epstein-Barr virus",
@@ -2212,7 +2199,7 @@
   {
     "id": 171,
     "category": "Red Flag (Misdiagnosed Cerebral Palsy)",
-    "stem": "Flag (Misdiagnosed Cerebral Palsy) A 6-year-old girl is referred for \"spastic diplegic cerebral palsy.\" Her parents note she is clumsy and her feet turn inward. Crucially, they report that her gait is completely normal when she first wakes up in the morning, but her dystonia and stiffness become progressively more severe by the late afternoon. Which of the following is the most appropriate next step?",
+    "stem": "A 6-year-old girl is referred for \"spastic diplegic cerebral palsy.\" Her parents note she is clumsy and her feet turn inward. Crucially, they report that her gait is completely normal when she first wakes up in the morning, but her dystonia and stiffness become progressively more severe by the late afternoon. Which of the following is the most appropriate next step?",
     "choices": [
       "Prescribe a trial of low-dose levodopa",
       "Schedule bilateral Achilles tendon lengthening",
@@ -2225,7 +2212,7 @@
   {
     "id": 172,
     "category": "Red Flag (Post-Infectious Weakness & Areflexia)",
-    "stem": "Flag (Post-Infectious Weakness & Areflexia) A 13-year-old boy presents with weakness in his legs that is rapidly ascending to his arms. He had a diarrheal illness (Campylobacter jejuni) two weeks prior. On examination, he has diffuse flaccid weakness and absent deep tendon reflexes. Which of the following monitoring parameters is most critical in his immediate acute management?",
+    "stem": "A 13-year-old boy presents with weakness in his legs that is rapidly ascending to his arms. He had a diarrheal illness (Campylobacter jejuni) two weeks prior. On examination, he has diffuse flaccid weakness and absent deep tendon reflexes. Which of the following monitoring parameters is most critical in his immediate acute management?",
     "choices": [
       "Serum creatine kinase (CK)",
       "Serial negative inspiratory forces (NIFs) and pulse oximetry",
@@ -2251,7 +2238,7 @@
   {
     "id": 174,
     "category": "Red Flag (Symmetric Basal Ganglia Lesions)",
-    "stem": "Flag (Symmetric Basal Ganglia Lesions) An 18-month-old boy with a history of mild motor delays develops severe generalized weakness, hypotonia, and a left abducens nerve palsy immediately following a febrile gastroenteritis. Brain MRI shows symmetric T2-hyperintense lesions in the putamen and periaqueductal gray matter. Laboratory studies show an elevated lactate-to-pyruvate ratio. What is the most likely diagnosis?",
+    "stem": "An 18-month-old boy with a history of mild motor delays develops severe generalized weakness, hypotonia, and a left abducens nerve palsy immediately following a febrile gastroenteritis. Brain MRI shows symmetric T2-hyperintense lesions in the putamen and periaqueductal gray matter. Laboratory studies show an elevated lactate-to-pyruvate ratio. What is the most likely diagnosis?",
     "choices": [
       "Canavan disease",
       "Leigh disease (subacute necrotizing encephalomyelopathy)",
@@ -2272,7 +2259,7 @@
       "Migraine with aura"
     ],
     "answer": 0,
-    "explanation": "A strictly positional headache (severe when upright, relieved when recumbent) is the cardinal red flag for intracranial hypotension, usually due to a cerebrospinal fluid (CSF) leak. Patients with connective tissue disorders like Marfan syndrome are at uniquely high risk for spontaneous CSF leaks due to dural ectasia and meningeal weakness. Here is the next batch of 15 high-yield multiple-choice questions focusing specifically on \"pathognomonic\" or classic key signs seen on physical exams, neuroimaging, EEGs, and clinical presentations in child neurology. Child Neurology Board Review Bank: Batch 11 (Questions 176–190)"
+    "explanation": "A strictly positional headache (severe when upright, relieved when recumbent) is the cardinal red flag for intracranial hypotension, usually due to a cerebrospinal fluid (CSF) leak. Patients with connective tissue disorders like Marfan syndrome are at uniquely high risk for spontaneous CSF leaks due to dural ectasia and meningeal weakness."
   },
   {
     "id": 176,
@@ -2303,7 +2290,7 @@
   {
     "id": 178,
     "category": "Clinical Exam Sign (Spinal Muscular Atrophy)",
-    "stem": "Exam Sign (Spinal Muscular Atrophy) A 7-month-old infant is evaluated for profound weakness. The child is alert and tracks well visually. The physical examination is notable for a \"frog-leg\" posture, a bell-shaped chest with paradoxical diaphragmatic breathing, areflexia, and fine quivering movements of the tongue. These exam findings are classic for a defect in which of the following structures?",
+    "stem": "A 7-month-old infant is evaluated for profound weakness. The child is alert and tracks well visually. The physical examination is notable for a \"frog-leg\" posture, a bell-shaped chest with paradoxical diaphragmatic breathing, areflexia, and fine quivering movements of the tongue. These exam findings are classic for a defect in which of the following structures?",
     "choices": [
       "Neuromuscular junction",
       "Peripheral nerve",
@@ -2355,7 +2342,7 @@
   {
     "id": 182,
     "category": "Imaging & Pathology Sign (Alexander Disease)",
-    "stem": "Pathology Sign (Alexander Disease) An 18-month-old boy presents with megalencephaly, developmental regression, and spasticity. Brain MRI reveals diffuse, symmetric white matter signal abnormalities with a striking frontal lobe predominance. Brain biopsy would reveal the pathognomonic accumulation of which of the following?",
+    "stem": "An 18-month-old boy presents with megalencephaly, developmental regression, and spasticity. Brain MRI reveals diffuse, symmetric white matter signal abnormalities with a striking frontal lobe predominance. Brain biopsy would reveal the pathognomonic accumulation of which of the following?",
     "choices": [
       "Rosenthal fibers",
       "Globoid cells",
@@ -2368,7 +2355,7 @@
   {
     "id": 183,
     "category": "Clinical Presentation Sign (Tuberous Sclerosis)",
-    "stem": "Presentation Sign (Tuberous Sclerosis) A 5-month-old boy presents with infantile spasms. A careful skin examination using a Wood's lamp reveals several hypomelanotic macules shaped like ash leaves. Which cardiac finding is most pathognomonic for this child's underlying genetic disorder?",
+    "stem": "A 5-month-old boy presents with infantile spasms. A careful skin examination using a Wood's lamp reveals several hypomelanotic macules shaped like ash leaves. Which cardiac finding is most pathognomonic for this child's underlying genetic disorder?",
     "choices": [
       "Coarctation of the aorta",
       "Supravalvular aortic stenosis",
@@ -2420,7 +2407,7 @@
   {
     "id": 187,
     "category": "EEG Sign (Landau-Kleffner Syndrome)",
-    "stem": "Sign (Landau-Kleffner Syndrome) A 6-year-old boy with previously normal development presents with acquired verbal auditory agnosia (he no longer understands spoken language). An overnight EEG reveals near-continuous spike-and-wave discharges that occupy more than 85% of his slow-wave sleep. This pathognomonic EEG finding is known as:",
+    "stem": "A 6-year-old boy with previously normal development presents with acquired verbal auditory agnosia (he no longer understands spoken language). An overnight EEG reveals near-continuous spike-and-wave discharges that occupy more than 85% of his slow-wave sleep. This pathognomonic EEG finding is known as:",
     "choices": [
       "Hypsarrhythmia",
       "Electrical status epilepticus in sleep (ESES)",
@@ -2433,7 +2420,7 @@
   {
     "id": 188,
     "category": "Clinical Exam Sign (Dorsal Midbrain Syndrome)",
-    "stem": "Exam Sign (Dorsal Midbrain Syndrome) A 4-month-old infant with a rapidly enlarging head circumference is evaluated for hydrocephalus. On examination, the infant exhibits a tonic downward deviation of both eyes, with the retracted upper eyelids exposing the superior sclera. The pupils are large and exhibit light-near dissociation. What is the name of this pathognomonic eye sign?",
+    "stem": "A 4-month-old infant with a rapidly enlarging head circumference is evaluated for hydrocephalus. On examination, the infant exhibits a tonic downward deviation of both eyes, with the retracted upper eyelids exposing the superior sclera. The pupils are large and exhibit light-near dissociation. What is the name of this pathognomonic eye sign?",
     "choices": [
       "Opsoclonus",
       "Internuclear ophthalmoplegia",
@@ -2459,7 +2446,7 @@
   {
     "id": 190,
     "category": "Clinical Sign (Vein of Galen Malformation)",
-    "stem": "Sign (Vein of Galen Malformation) A 2-week-old neonate presents with a rapidly enlarging head circumference and signs of high-output congestive heart failure. On physical examination, a prominent, loud continuous noise is auscultated over the infant's skull. What is the most likely diagnosis?",
+    "stem": "A 2-week-old neonate presents with a rapidly enlarging head circumference and signs of high-output congestive heart failure. On physical examination, a prominent, loud continuous noise is auscultated over the infant's skull. What is the most likely diagnosis?",
     "choices": [
       "Aqueductal stenosis",
       "Choroid plexus papilloma",
@@ -2467,12 +2454,12 @@
       "Dandy-Walker malformation"
     ],
     "answer": 2,
-    "explanation": "The triad of a cranial bruit, macrocephaly (due to hydrocephalus), and high-output congestive heart failure in a neonate or young infant is the pathognomonic presentation for a Vein of Galen malformation (a large midline arteriovenous malformation shunting massive amounts of blood). Here is the final batch of 15 high-yield multiple-choice questions for your child neurology board review bank. These questions are specifically tailored to high-yield \"on-call\" scenarios, including phone triage decisions, classic emergency department presentations, and critical acute management steps that every child neurology resident must know. Child Neurology Board Review Bank: Batch 12 (Questions 191–205)"
+    "explanation": "The triad of a cranial bruit, macrocephaly (due to hydrocephalus), and high-output congestive heart failure in a neonate or young infant is the pathognomonic presentation for a Vein of Galen malformation (a large midline arteriovenous malformation shunting massive amounts of blood)."
   },
   {
     "id": 191,
     "category": "On-Call Phone Triage (Infantile Hypotonia)",
-    "stem": "Phone Triage (Infantile Hypotonia) An on-call resident receives a phone call from a pediatrician regarding a 2-month-old infant with new-onset poor feeding, a weak cry, and generalized floppiness over the last 48 hours. What key question about the infant's recent history should the resident ask to help rule in a classic neurologic emergency?",
+    "stem": "An on-call resident receives a phone call from a pediatrician regarding a 2-month-old infant with new-onset poor feeding, a weak cry, and generalized floppiness over the last 48 hours. What key question about the infant's recent history should the resident ask to help rule in a classic neurologic emergency?",
     "choices": [
       "\"Has the baby had a fever?\"",
       "\"Has the baby been constipated?\"",
@@ -2485,7 +2472,7 @@
   {
     "id": 192,
     "category": "Emergency Management (Status Epilepticus / Pharmacology)",
-    "stem": "Management (Status Epilepticus / Pharmacology) A 2-year-old boy presents in nonconvulsive status epilepticus. You note from his chart that he has a history of developmental delay and a suspected underlying mitochondrial disorder. He is currently on anticonvulsant polytherapy. Which of the following intravenous medications should be strictly avoided due to a high risk of fatal hepatotoxicity?",
+    "stem": "A 2-year-old boy presents in nonconvulsive status epilepticus. You note from his chart that he has a history of developmental delay and a suspected underlying mitochondrial disorder. He is currently on anticonvulsant polytherapy. Which of the following intravenous medications should be strictly avoided due to a high risk of fatal hepatotoxicity?",
     "choices": [
       "Phenobarbital",
       "Levetiracetam",
@@ -2498,7 +2485,7 @@
   {
     "id": 193,
     "category": "On-Call Phone Triage (Paroxysmal Event)",
-    "stem": "Phone Triage (Paroxysmal Event) A panicked parent calls at 6:00 AM reporting that their 8-year-old boy just woke up fully conscious but unable to speak, with excessive drooling and rhythmic twitching of his right lower face. The episode lasted 2 minutes and he is now acting normally. What is the most likely diagnosis?",
+    "stem": "A panicked parent calls at 6:00 AM reporting that their 8-year-old boy just woke up fully conscious but unable to speak, with excessive drooling and rhythmic twitching of his right lower face. The episode lasted 2 minutes and he is now acting normally. What is the most likely diagnosis?",
     "choices": [
       "Complex partial seizure",
       "Acute stroke",
@@ -2524,7 +2511,7 @@
   {
     "id": 195,
     "category": "On-Call Phone Triage (Pediatric Spells)",
-    "stem": "Phone Triage (Pediatric Spells) A mother calls the neurology clinic stating her 17-month-old \"had a seizure.\" She reports that his older brother took his toy away, prompting the toddler to let out a brief cry, stop breathing, turn blue around the lips, and go limp. He then had a few seconds of body jerking before waking up. What is the most likely diagnosis?",
+    "stem": "A mother calls the neurology clinic stating her 17-month-old \"had a seizure.\" She reports that his older brother took his toy away, prompting the toddler to let out a brief cry, stop breathing, turn blue around the lips, and go limp. He then had a few seconds of body jerking before waking up. What is the most likely diagnosis?",
     "choices": [
       "Absence seizure",
       "Cyanotic breath-holding spell",
@@ -2563,7 +2550,7 @@
   {
     "id": 198,
     "category": "On-Call Phone Triage (Elevated ICP /",
-    "stem": "Phone Triage (Elevated ICP / Brain Tumor) A pediatrician calls the on-call pager reporting a 7-year-old boy who has had daily headaches for a month. The child's mother notes the headaches are worst in the early morning, sometimes awaken him from sleep, and are frequently associated with morning vomiting. What is the most appropriate next step?",
+    "stem": "A pediatrician calls the on-call pager reporting a 7-year-old boy who has had daily headaches for a month. The child's mother notes the headaches are worst in the early morning, sometimes awaken him from sleep, and are frequently associated with morning vomiting. What is the most appropriate next step?",
     "choices": [
       "Prescribe a triptan over the phone",
       "Schedule a routine clinic visit in 2 weeks",
@@ -2576,7 +2563,7 @@
   {
     "id": 199,
     "category": "On-Call Phone Triage (Spontaneous Intracranial Hypotension)",
-    "stem": "Phone Triage (Spontaneous Intracranial Hypotension) A 16-year-old girl calls the triage line complaining of a severe, incapacitating headache. Which of the following questions will best help determine if the headache is due to spontaneous intracranial hypotension (CSF leak)?",
+    "stem": "A 16-year-old girl calls the triage line complaining of a severe, incapacitating headache. Which of the following questions will best help determine if the headache is due to spontaneous intracranial hypotension (CSF leak)?",
     "choices": [
       "\"Does the headache throb on one side of your head?\"",
       "\"Is the headache completely relieved when you lie down flat?\"",
@@ -2589,7 +2576,7 @@
   {
     "id": 200,
     "category": "Emergency Triage (Opsoclonus-Myoclonus Syndrome)",
-    "stem": "Triage (Opsoclonus-Myoclonus Syndrome) An 18-month-old child is brought to the ER with subacute onset of severe irritability, inability to walk due to truncal ataxia, and chaotic, rapid, darting eye movements in all directions. Which of the following must be emergently searched for as the underlying cause?",
+    "stem": "An 18-month-old child is brought to the ER with subacute onset of severe irritability, inability to walk due to truncal ataxia, and chaotic, rapid, darting eye movements in all directions. Which of the following must be emergently searched for as the underlying cause?",
     "choices": [
       "Leukemia",
       "Retinoblastoma",
@@ -2602,7 +2589,7 @@
   {
     "id": 201,
     "category": "Emergency Triage (Stroke Mimics & Trauma)",
-    "stem": "Triage (Stroke Mimics & Trauma) An 8-year-old girl develops acute right-sided face and arm weakness and expressive aphasia shortly after falling off the monkey bars. Examination in the ER also reveals a left-sided ptosis and miosis. What is the most likely diagnosis?",
+    "stem": "An 8-year-old girl develops acute right-sided face and arm weakness and expressive aphasia shortly after falling off the monkey bars. Examination in the ER also reveals a left-sided ptosis and miosis. What is the most likely diagnosis?",
     "choices": [
       "Left internal carotid artery dissection",
       "Right middle cerebral artery (MCA) dissection",
@@ -2615,7 +2602,7 @@
   {
     "id": 202,
     "category": "On-Call Phone Triage (Infantile Spasms)",
-    "stem": "Phone Triage (Infantile Spasms) A mother calls the clinic concerned that her 6-month-old infant has started doing \"crunches\" where her head drops forward and arms suddenly extend. These occur in clusters of 10 to 15, mostly when she wakes up from naps. She also seems less interactive lately. What is the most appropriate action?",
+    "stem": "A mother calls the clinic concerned that her 6-month-old infant has started doing \"crunches\" where her head drops forward and arms suddenly extend. These occur in clusters of 10 to 15, mostly when she wakes up from naps. She also seems less interactive lately. What is the most appropriate action?",
     "choices": [
       "Reassure the mother that this is benign sleep myoclonus.",
       "Send the child to the ER/clinic for an urgent EEG to evaluate for infantile spasms.",
@@ -2641,7 +2628,7 @@
   {
     "id": 204,
     "category": "Emergency Triage (Vein of Galen Malformation)",
-    "stem": "Triage (Vein of Galen Malformation) A 2-week-old neonate presents with a rapidly enlarging head circumference, tachypnea, and signs of high-output congestive heart failure. Which of the following simple physical exam maneuvers can most rapidly suggest the underlying neurologic diagnosis?",
+    "stem": "A 2-week-old neonate presents with a rapidly enlarging head circumference, tachypnea, and signs of high-output congestive heart failure. Which of the following simple physical exam maneuvers can most rapidly suggest the underlying neurologic diagnosis?",
     "choices": [
       "Eliciting the Moro reflex",
       "Checking for the Babinski response",
