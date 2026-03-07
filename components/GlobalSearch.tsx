@@ -20,10 +20,11 @@ async function getFuse(): Promise<Fuse<Chunk>> {
   fuseInstance = new Fuse(data, {
     keys: [
       { name: 'heading',     weight: 3 },
-      { name: 'sectionName', weight: 1 },
+      { name: 'sectionName', weight: 2 },
       { name: 'text',        weight: 1 },
     ],
-    threshold: 0.35,
+    threshold: 0.4,
+    ignoreLocation: true,
     includeScore: true,
     minMatchCharLength: 2,
   });
