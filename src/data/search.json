@@ -1208,21 +1208,21 @@
     "sectionName": "Neurogenetics",
     "heading": "Corpus Callosum Malformations",
     "id": "corpus-callosum-malformations",
-    "text": "ACC and related CC malformations are among the most common brain malformations detected on prenatal and postnatal imaging. Their clinical significance is highly variable and poorly predicted by the imaging alone — genetic workup is essential.\nTable 2. Corpus Callosum Malformations\n\n\nMALFORMATIONIMAGING FEATURESCLINICAL / GENETIC CONSIDERATIONS\n\n\nComplete ACCAbsent CC on all sequences; parallel ('racing car') ventricles; colpocephaly (posterior &gt; anterior horn dilation); interhemispheric cysts common; absent cingulate gyrus → gyri radiate from roof of 3rd ventricle ('sunburst' or 'spokes of "
+    "text": "ACC and related CC malformations are among the most common brain malformations detected on prenatal and postnatal imaging. Their clinical significance is highly variable and poorly predicted by imaging alone — genetic testing is fairly low-yield in isolated ACC but when combined with other developmental brain malformations, congenital anomalies, or neurodevelopmental abnormalities, genetic testing should be strongly considered.\nTable 2. Corpus Callosum Malformations\n\n\nMALFORMATIONIMAGING FEATURESCLINICAL / GENETIC CONSIDERATIONS\n\n\nComplete ACCAbsent CC on all sequences; parallel ('racing car')"
   },
   {
     "section": "neurogenetics-and-neurometabolics",
     "sectionName": "Neurogenetics",
     "heading": "Forebrain Malformations: HPE and SOD",
     "id": "forebrain-malformations-hpe-and-sod",
-    "text": "Holoprosencephaly (HPE) and septo-optic dysplasia (SOD) represent a clinical and genetic spectrum of forebrain induction failure. SHH signaling is the central developmental pathway — mutations in SHH and its downstream effectors (ZIC2, SIX3, PTCH1, CDON) account for a significant proportion of familial HPE, though most cases remain without a molecular diagnosis. Trisomy 13 is the most common chromosomal cause of alobar HPE.\nTable 3. Holoprosencephaly Spectrum and Septo-Optic Dysplasia\n\n\nMALFORMATIONKEY IMAGINGGENETICS / CAUSECLINICAL FEATURES / PEARLS\n\n\nAlobar HPESingle monoventricle; fused th"
+    "text": "Holoprosencephaly (HPE) and septo-optic dysplasia (SOD) represent a clinical and genetic spectrum of forebrain induction failure. SOD is on the extreme end of the optic nerve hypoplasia spectrum. SHH signaling is the central developmental pathway — mutations in SHH and its downstream effectors (ZIC2, SIX3, PTCH1, CDON) account for a significant proportion of familial HPE, though most cases remain without a molecular diagnosis. Trisomy 13 is the most common chromosomal cause of alobar HPE.\nTable 3. Holoprosencephaly Spectrum and Septo-Optic Dysplasia\n\n\nMALFORMATIONKEY IMAGINGGENETICS / CAUSECLI"
   },
   {
     "section": "neurogenetics-and-neurometabolics",
     "sectionName": "Neurogenetics",
     "heading": "Neuronal Migration Disorders and Cortical Malformations",
     "id": "neuronal-migration-disorders-and-cortical-malformations",
-    "text": "For MRI imaging features of MCD, see the Neuroradiology chapter. This section focuses on the genetic and mechanistic basis of the major migration and cortical organization disorders, which are essential for neurogenetics-oriented practice.\nThe dominant pathways disrupted in migration disorders are microtubule dynamics (LIS1, DCX, TUBA1A), dystroglycan glycosylation (cobblestone disorders), cytoskeletal actin regulation (FLNA → PNH), and mTOR pathway (PMG, HME, FCD). Recognizing which pathway is likely disrupted guides targeted gene panel selection.\nTable 4. Neuronal Migration Disorders — Genet"
+    "text": "The dominant pathways disrupted in migration disorders are microtubule dynamics (LIS1, DCX, TUBA1A), dystroglycan glycosylation (cobblestone disorders), cytoskeletal actin regulation (FLNA → PNH), and mTOR pathway (PMG, HME, FCD). Recognizing which pathway is likely disrupted guides targeted gene panel selection.\nTable 4. Neuronal Migration Disorders — Genetics, Mechanism, and Clinical Features\n\n\nMALFORMATIONGENE(S)MECHANISMIMAGING GRADIENT / PATTERNCLINICAL / PEARLS\n\n\nClassic lissencephaly (Type 1 / LCH)LIS1 (PAFAH1B1)\nDCX\nTUBA1A\nARX (X-linked, males)Dynein-mediated radial migration failure; "
   },
   {
     "section": "neurogenetics-and-neurometabolics",
@@ -1236,7 +1236,7 @@
     "sectionName": "Neurogenetics",
     "heading": "Craniosynostosis",
     "id": "craniosynostosis",
-    "text": "Craniosynostosis — premature fusion of one or more cranial sutures — produces characteristic head shape abnormalities and carries risk of elevated intracranial pressure, especially in multi-suture and syndromic forms. The majority of syndromic craniosynostoses involve gain-of-function mutations in FGFR1, FGFR2, or FGFR3 (fibroblast growth factor receptors), with downstream effects on cranial suture ossification timing. The child neurology resident's primary roles are: (1) distinguish craniosynostosis from deformational plagiocephaly; (2) recognize signs of elevated ICP; (3) be aware of associa"
+    "text": "Craniosynostosis — premature fusion of one or more cranial sutures — produces characteristic head shape abnormalities and carries risk of elevated intracranial pressure, especially in multi-suture and syndromic forms. The majority of syndromic craniosynostoses involve gain-of-function mutations in FGFR1, FGFR2, or FGFR3 (fibroblast growth factor receptors), with downstream effects on cranial suture ossification timing. \nTable 6. Syndromic Craniosynostosis\n\n\nSYNDROMEGENE / PATHWAYSUTURES FUSEDHEAD SHAPEASSOCIATED FEATURES / NEUROLOGY PEARLS\n\n\nNon-syndromic (isolated)Variable; TWIST1, EFNB1 in s"
   },
   {
     "section": "neurogenetics-and-neurometabolics",
