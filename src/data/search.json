@@ -1192,93 +1192,51 @@
   {
     "section": "neurogenetics-and-neurometabolics",
     "sectionName": "Neurogenetics",
-    "heading": "Malformations of Brain Development",
-    "id": "malformations-of-brain-development",
+    "heading": "Brain Development and Malformations",
+    "id": "brain-development-and-malformations",
     "text": ""
   },
   {
     "section": "neurogenetics-and-neurometabolics",
     "sectionName": "Neurogenetics",
-    "heading": "Developmental Timing Framework",
-    "id": "developmental-timing",
-    "text": "Gestational ageDominant processKey CNS eventsExample disorders\n\n3–4 weeksPrimary neurulationNeural tube and crest; closure of rostral and caudal neuroporesAnencephaly, encephalocele, myelomeningocele, Chiari II deformation\n4–6 weeksTelencephalizationForebrain/face development; cerebral vesicles; optic/olfactory placodes; early posterior fossa formationHoloprosencephaly, Dandy–Walker spectrum, craniosynostosis\n6–16 weeksNeuronal/glial proliferationProliferation in ventricular/subventricular zones; early neuroblast differentiation; apoptosisPrimary microcephaly, megalencephaly\n12–24 weeksNeurona"
+    "heading": "Neuroembryology and Developmental Timing",
+    "id": "neuroembryology-and-developmental-timing",
+    "text": "Understanding when in development a process occurs is the conceptual foundation for why malformations look the way they do. The brain builds itself in a strictly ordered sequence — each stage depends on the fidelity of the stage before it. Disruption at a given developmental window produces a characteristic pattern of malformation that is largely predictable from timing alone.\nTwo principles follow from this: (1) earlier disruption produces more severe and widespread malformation; (2) the imaging pattern of a malformation reflects its developmental stage of origin — recognizing where in the se"
   },
   {
     "section": "neurogenetics-and-neurometabolics",
     "sectionName": "Neurogenetics",
-    "heading": "Selected Brain Malformations",
-    "id": "selected-brain-malformations",
-    "text": ""
+    "heading": "Corpus Callosum Malformations",
+    "id": "corpus-callosum-malformations",
+    "text": "ACC and related CC malformations are among the most common brain malformations detected on prenatal and postnatal imaging. Their clinical significance is highly variable and poorly predicted by the imaging alone — genetic workup is essential.\nTable 2. Corpus Callosum Malformations\n\n\nMALFORMATIONIMAGING FEATURESCLINICAL / GENETIC CONSIDERATIONS\n\n\nComplete ACCAbsent CC on all sequences; parallel ('racing car') ventricles; colpocephaly (posterior &gt; anterior horn dilation); interhemispheric cysts common; absent cingulate gyrus → gyri radiate from roof of 3rd ventricle ('sunburst' or 'spokes of "
   },
   {
     "section": "neurogenetics-and-neurometabolics",
     "sectionName": "Neurogenetics",
-    "heading": "Agenesis of the Corpus Callosum (ACC)",
-    "id": "agenesis-corpus-callosum",
-    "text": "Multiple genetic and acquired causes; isolated or syndromic.\nClinical spectrum: normal with subtle interhemispheric deficits → global developmental delay/intellectual disability and epilepsy.\nAicardi syndrome (classically in girls): ACC with polymicrogyria, heterotopia, unlayered cortex; chorioretinal lacunae; vertebral/rib anomalies; infantile spasms."
+    "heading": "Forebrain Malformations: HPE and SOD",
+    "id": "forebrain-malformations-hpe-and-sod",
+    "text": "Holoprosencephaly (HPE) and septo-optic dysplasia (SOD) represent a clinical and genetic spectrum of forebrain induction failure. SHH signaling is the central developmental pathway — mutations in SHH and its downstream effectors (ZIC2, SIX3, PTCH1, CDON) account for a significant proportion of familial HPE, though most cases remain without a molecular diagnosis. Trisomy 13 is the most common chromosomal cause of alobar HPE.\nTable 3. Holoprosencephaly Spectrum and Septo-Optic Dysplasia\n\n\nMALFORMATIONKEY IMAGINGGENETICS / CAUSECLINICAL FEATURES / PEARLS\n\n\nAlobar HPESingle monoventricle; fused th"
   },
   {
     "section": "neurogenetics-and-neurometabolics",
     "sectionName": "Neurogenetics",
-    "heading": "Holoprosencephaly",
-    "id": "holoprosencephaly",
-    "text": "Incomplete forebrain separation (alobar, semilobar, lobar).\nSeizures, significant intellectual disability, endocrine dysfunction, facial midline anomalies, other midline defects.\nOften due to SHH and related developmental genes or chromosomal abnormalities."
+    "heading": "Neuronal Migration Disorders and Cortical Malformations",
+    "id": "neuronal-migration-disorders-and-cortical-malformations",
+    "text": "For MRI imaging features of MCD, see the Neuroradiology chapter. This section focuses on the genetic and mechanistic basis of the major migration and cortical organization disorders, which are essential for neurogenetics-oriented practice.\nThe dominant pathways disrupted in migration disorders are microtubule dynamics (LIS1, DCX, TUBA1A), dystroglycan glycosylation (cobblestone disorders), cytoskeletal actin regulation (FLNA → PNH), and mTOR pathway (PMG, HME, FCD). Recognizing which pathway is likely disrupted guides targeted gene panel selection.\nTable 4. Neuronal Migration Disorders — Genet"
   },
   {
     "section": "neurogenetics-and-neurometabolics",
     "sectionName": "Neurogenetics",
-    "heading": "Optic Nerve Hypoplasia / Septo‑Optic Dysplasia",
-    "id": "optic-nerve-hypoplasia",
-    "text": "Small optic nerves/chiasm, absent septum pellucidum ± hypothalamic/pituitary anomalies and other dysplasias.\nVisual impairment, pituitary hormone deficiencies, seizures if associated cortical malformations.\nRequires coordinated ophthalmology, endocrine, and neurology care."
-  },
-  {
-    "section": "neurogenetics-and-neurometabolics",
-    "sectionName": "Neurogenetics",
-    "heading": "Hemimegalencephaly",
-    "id": "hemimegalencephaly",
-    "text": "Overgrowth and dysplasia of a cerebral hemisphere; often mTOR‑pathway or mosaic overgrowth.\nMacrocephaly or asymmetric head, contralateral hemiparesis, early refractory focal epilepsy.\nHemispherectomy/hemispherotomy often required for epileptic encephalopathy."
-  },
-  {
-    "section": "neurogenetics-and-neurometabolics",
-    "sectionName": "Neurogenetics",
-    "heading": "Lissencephaly and Related Cortical Malformations",
-    "id": "lissencephaly",
-    "text": "Type 1 (classic): agyria/pachygyria with thickened cortex ± band heterotopia.\n\nLIS1/PAFAH1B1: posterior‑predominant.\nDCX (X‑linked): anterior‑predominant in males; subcortical band heterotopia in females.\n\nType 2 (cobblestone): cobblestone cortex in dystroglycanopathies (Walker–Warburg, Fukuyama, muscle–eye–brain).\nUsually severe developmental impairment, early epilepsy, feeding/respiratory difficulties."
-  },
-  {
-    "section": "neurogenetics-and-neurometabolics",
-    "sectionName": "Neurogenetics",
-    "heading": "Skull and Posterior Fossa",
-    "id": "skull-posterior-fossa",
-    "text": ""
-  },
-  {
-    "section": "neurogenetics-and-neurometabolics",
-    "sectionName": "Neurogenetics",
-    "heading": "Fontanelle Closure",
-    "id": "fontanelle-closure",
-    "text": "Posterior: usually 1–2 months (up to 6 months can be normal).\nAnterior: usually 9–18 months."
+    "heading": "Posterior Fossa Malformations and Joubert Syndrome",
+    "id": "posterior-fossa-malformations-and-joubert-syndrome",
+    "text": "Posterior fossa malformations range from incidental variants (mega cisterna magna — see Neuroradiology chapter) to severe disorders with major neurodevelopmental and multiorgan implications. Joubert syndrome is the paradigmatic ciliopathy — understanding its pathogenesis contextualizes why a cerebellar malformation produces retinal dystrophy, renal disease, and hepatic fibrosis.\nTable 5. Posterior Fossa Malformations\n\n\nMALFORMATIONMRI HALLMARKGENETICSCLINICAL FEATURES / PEARLS\n\n\nJoubert syndrome (JBTS) and related disorders (JSRD)Molar tooth sign (MTS): axial MRI shows elongated, thickened sup"
   },
   {
     "section": "neurogenetics-and-neurometabolics",
     "sectionName": "Neurogenetics",
     "heading": "Craniosynostosis",
     "id": "craniosynostosis",
-    "text": "Premature fusion of cranial sutures → abnormal head shape ± raised ICP.\nSyndromic forms (often FGFR‑pathway):\n\nApert: bicoronal synostosis, brachycephaly, syndactyly; may have ACC and other anomalies.\nCrouzon: craniosynostosis with midface hypoplasia; risk of elevated ICP.\nCarpenter: multi‑suture synostosis with poly/syndactyly; possible hypogonadism, obesity, brain anomalies."
-  },
-  {
-    "section": "neurogenetics-and-neurometabolics",
-    "sectionName": "Neurogenetics",
-    "heading": "Chiari Deformation",
-    "id": "chiari-deformation",
-    "text": "Chiari I deformation\n5 mm caudal displacement of cerebellar tonsils through foramen magnum.\nOften incidental; symptomatic cases: Valsalva‑triggered occipital headache, neck pain, ataxia, cranial neuropathies, syringomyelia.\nChiari II (\"Arnold–Chiari\")\nChiari I plus myelomeningocele and small posterior fossa; beaked tectum, towering cerebellum, hydrocephalus.\nChiari III\nChiari II plus occipital or high cervical encephalocele."
-  },
-  {
-    "section": "neurogenetics-and-neurometabolics",
-    "sectionName": "Neurogenetics",
-    "heading": "Dandy–Walker Spectrum",
-    "id": "dandy-walker",
-    "text": "Classic Dandy–Walker malformation:\n\nCystic dilation of 4th ventricle.\nHypoplastic/elevated vermis.\nEnlarged posterior fossa with high tentorium/torcula.\nHydrocephalus is common.\n\n\"Dandy–Walker variant\": variably hypoplastic vermis/posterior fossa anomalies.\nOften associated with ACC, other cortical malformations, Walker–Warburg, Joubert and related pontocerebellar hypoplasias.\nPrognosis largely determined by associated anomalies."
+    "text": "Craniosynostosis — premature fusion of one or more cranial sutures — produces characteristic head shape abnormalities and carries risk of elevated intracranial pressure, especially in multi-suture and syndromic forms. The majority of syndromic craniosynostoses involve gain-of-function mutations in FGFR1, FGFR2, or FGFR3 (fibroblast growth factor receptors), with downstream effects on cranial suture ossification timing. The child neurology resident's primary roles are: (1) distinguish craniosynostosis from deformational plagiocephaly; (2) recognize signs of elevated ICP; (3) be aware of associa"
   },
   {
     "section": "neurogenetics-and-neurometabolics",
