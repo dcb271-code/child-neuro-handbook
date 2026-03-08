@@ -2314,14 +2314,14 @@
     "sectionName": "Neuroradiology",
     "heading": "Reading a Pediatric Brain MRI",
     "id": "reading-a-pediatric-brain-mri",
-    "text": "Pediatric neuroimaging differs from adult neuroimaging in one fundamental respect: the brain is a moving target. Myelination, cortical thickness, gray-white differentiation, and ventricular size all change dramatically across the first two years of life. Every MRI must be interpreted relative to the child's age — a finding that is pathological at 18 months may be normal at 2 weeks, and vice versa. This section provides a structured approach to sequence review and a framework for the most common interpretive pitfalls."
+    "text": "Pediatric neuroimaging differs from adult neuroimaging in one fundamental respect: the brain is a moving target. Myelination, cortical thickness, gray-white differentiation, and ventricular size all change dramatically across the first two years of life. Every MRI must be interpreted relative to the child's age — a finding that is pathological at 18 months may be normal at 2 weeks, and vice versa."
   },
   {
     "section": "neuroradiology",
     "sectionName": "Neuroradiology",
     "heading": "General Reporting Structure",
     "id": "general-reporting-structure",
-    "text": "When dictating or presenting a pediatric brain MRI, work through the following domains systematically regardless of the clinical question:\n\n\nDOMAINWHAT TO ASSESS\n\n\nVentricles and CSF spacesSize, symmetry, configuration; transependymal flow; choroid plexus; aqueduct patency\nBrain parenchyma — white matterSignal relative to age; distribution of abnormality; myelination stage\nBrain parenchyma — gray matterCortical thickness and gyral pattern; basal ganglia and thalami signal; hippocampi\nExtra-axial spacesSubarachnoid spaces (symmetric? Blood?); subdural collections; epidural\nVascular structuresAr"
+    "text": "DOMAINWHAT TO ASSESS\n\n\nVentricles and CSF spacesSize, symmetry, configuration; transependymal flow; choroid plexus; aqueduct patency\nBrain parenchyma — white matterSignal relative to age; distribution of abnormality; myelination stage\nBrain parenchyma — gray matterCortical thickness and gyral pattern; basal ganglia and thalami signal; hippocampi\nExtra-axial spacesSubarachnoid spaces (symmetric? Blood?); subdural collections; epidural\nVascular structuresArterial flow voids; venous sinuses; enhancement pattern if contrast given\nPosterior fossaCerebellar hemispheres and vermis; brainstem morpholo"
   },
   {
     "section": "neuroradiology",
@@ -2349,7 +2349,7 @@
     "sectionName": "Neuroradiology",
     "heading": "Normal Variants vs. Pathology — High-Yield Distinctions",
     "id": "normal-variants-vs-pathology-high-yield-distinctions",
-    "text": "Misidentifying normal variants as pathology is one of the most common errors residents make on pediatric MRI. The consequences range from unnecessary follow-up imaging and parental anxiety to inappropriate invasive procedures. The distinctions below are consistently high-yield on wards, in clinic, and on call.\nTable 5. Normal Variants vs. Pathological Mimics\nGreen column = features supporting benign/normal variant. Red column = features suggesting pathological mimic.\n\n\nENTITYNORMAL VARIANT / BENIGNPATHOLOGICAL MIMICHOW TO DISTINGUISHRADIOPAEDIA\n\n\nMega cisterna magna vs. Dandy-Walker spectrumMe"
+    "text": "Table 5. Normal Variants vs. Pathological Mimics\n\n\nENTITYNORMAL VARIANT / BENIGNPATHOLOGICAL MIMICHOW TO DISTINGUISHRADIOPAEDIA\n\n\nMega cisterna magna vs. Dandy-Walker spectrumMega cisterna magna: enlarged posterior fossa CSF space, normal vermis and 4th ventricle, normal tentorium. Incidental, no intervention.Dandy-Walker malformation: vermian hypoplasia/rotation, enlarged 4th ventricle communicating with posterior fossa cyst, elevated tentorium. Associated with hydrocephalus and NDI.Key question: Is the vermis normal and fully formed? Is the 4th ventricle enlarged and communicating with the c"
   },
   {
     "section": "neuroradiology",
