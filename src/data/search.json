@@ -2312,114 +2312,51 @@
   {
     "section": "neuroradiology",
     "sectionName": "Neuroradiology",
-    "heading": "Reading MRIs",
-    "id": "reading-mris",
-    "text": ""
+    "heading": "Reading a Pediatric Brain MRI",
+    "id": "reading-a-pediatric-brain-mri",
+    "text": "Pediatric neuroimaging differs from adult neuroimaging in one fundamental respect: the brain is a moving target. Myelination, cortical thickness, gray-white differentiation, and ventricular size all change dramatically across the first two years of life. Every MRI must be interpreted relative to the child's age — a finding that is pathological at 18 months may be normal at 2 weeks, and vice versa. This section provides a structured approach to sequence review and a framework for the most common interpretive pitfalls."
   },
   {
     "section": "neuroradiology",
     "sectionName": "Neuroradiology",
     "heading": "General Reporting Structure",
     "id": "general-reporting-structure",
-    "text": "Ventricles and CSF spacesBrain parenchymaWhite matterGray matter structuresExtra-axial spacesVascular structuresSkull base and cranial nervesSinuses and mastoids"
+    "text": "When dictating or presenting a pediatric brain MRI, work through the following domains systematically regardless of the clinical question:\n\n\nDOMAINWHAT TO ASSESS\n\n\nVentricles and CSF spacesSize, symmetry, configuration; transependymal flow; choroid plexus; aqueduct patency\nBrain parenchyma — white matterSignal relative to age; distribution of abnormality; myelination stage\nBrain parenchyma — gray matterCortical thickness and gyral pattern; basal ganglia and thalami signal; hippocampi\nExtra-axial spacesSubarachnoid spaces (symmetric? Blood?); subdural collections; epidural\nVascular structuresAr"
   },
   {
     "section": "neuroradiology",
     "sectionName": "Neuroradiology",
-    "heading": "Side-by-Side Sequence Review",
-    "id": "side-by-side-sequence-review",
-    "text": ""
+    "heading": "Sequence-by-Sequence Review",
+    "id": "sequence-by-sequence-review",
+    "text": "Review sequences in pairs. The table below gives the primary question each sequence answers, what to look for, and the key pediatric pitfall.\nTable 1. MRI Sequence Review Guide\n\n\nSEQUENCEPRIMARY QUESTIONWHAT TO LOOK FORKEY PEDIATRIC PITFALLCLINICAL UTILITY\n\n\nSagittal T1Is the anatomy normal?Corpus callosum (genu→splenium); brainstem morphology; cerebellar vermis; tonsil position; pituitary; aqueduct; CV junctionCorpus callosum thinning vs. agenesis vs. hypogenesis — identify what is present (genu, body, splenium, rostrum) before calling partial agenesisStructural overview; midline anomalies; C"
   },
   {
     "section": "neuroradiology",
     "sectionName": "Neuroradiology",
-    "heading": "Sagittal T1 + Axial T1 (Review Structure/Anatomy)",
-    "id": "sagittal-t1-axial-t1-review-structure-anatomy",
-    "text": "Sagittal T1 - Focus on midline structures:Corpus callosum integrityBrainstem morphologyCerebellar vermis and tonsils (Chiari)Pituitary/pineal glandsVentricles (third, fourth, aqueduct)Craniovertebral junctionAxial T1 - Focus on parenchyma and ventricles:Gray-white differentiationVentricle size and symmetryBasal ganglia and thalamiCortical surface/atrophyExtra-axial spacesVascular flow voids"
+    "heading": "Leukodystrophy Pattern Recognition",
+    "id": "leukodystrophy-pattern-recognition",
+    "text": "Leukodystrophies are genetically determined disorders of white matter — distinguished from acquired white matter disease by their symmetric, progressive, and anatomically patterned involvement. The single most useful first step is to identify the predominant WM pattern, which narrows the differential substantially before genetic testing is sent. The key distinction is between demyelination (myelin actively destroyed — typically progressive with MRI change) and hypomyelination (myelin never formed normally — T2-bright WM that does not progress on serial imaging).\nKey Questions When Approaching "
   },
   {
     "section": "neuroradiology",
     "sectionName": "Neuroradiology",
-    "heading": "Axial T2 + Axial FLAIR",
-    "id": "axial-t2-axial-flair",
-    "text": "Axial T2 - Focus on signal abnormalities:White matter signalCSF spaces and ventriclesBasal ganglia and thalamiBrainstem signalVascular structuresSinuses and mastoidsAxial FLAIR - Focus on pathologic hyperintensities:White matter lesions (periventricular, deep, subcortical)Cortical/subcortical junctionPeriventricular rimsSubarachnoid spaces (rule out SAH)Parenchymal lesions"
+    "heading": "Malformations of Cortical Development (MCD)",
+    "id": "malformations-of-cortical-development-mcd",
+    "text": "MCDs arise from disruption of the three sequential stages of cortical formation: proliferation (germinal zone, weeks 7–16), migration (radial/tangential, weeks 12–24), and organization/postmigration (synaptogenesis, weeks 24–postnatal). The earlier the disruption, the more severe and widespread the malformation. This mechanistic framework is worth knowing because it maps onto the imaging phenotype: migration defects produce heterotopia and lissencephaly; organization defects produce PMG and FCD.\nTechnical Requirements for MCD EvaluationStandard clinical MRI protocols frequently miss subtle MCD"
   },
   {
     "section": "neuroradiology",
     "sectionName": "Neuroradiology",
-    "heading": "DWI + ADC",
-    "id": "dwi-adc",
-    "text": "DWI/ADC - Focus on restricted diffusion:Acute infarction (high DWI, low ADC)Subacute/chronic infarcts (T2 shine-through)Abscesses and cellular tumorsEpidermoid cystsSusceptibility artifacts"
+    "heading": "Normal Variants vs. Pathology — High-Yield Distinctions",
+    "id": "normal-variants-vs-pathology-high-yield-distinctions",
+    "text": "Misidentifying normal variants as pathology is one of the most common errors residents make on pediatric MRI. The consequences range from unnecessary follow-up imaging and parental anxiety to inappropriate invasive procedures. The distinctions below are consistently high-yield on wards, in clinic, and on call.\nTable 5. Normal Variants vs. Pathological Mimics\nGreen column = features supporting benign/normal variant. Red column = features suggesting pathological mimic.\n\n\nENTITYNORMAL VARIANT / BENIGNPATHOLOGICAL MIMICHOW TO DISTINGUISHRADIOPAEDIA\n\n\nMega cisterna magna vs. Dandy-Walker spectrumMe"
   },
   {
     "section": "neuroradiology",
     "sectionName": "Neuroradiology",
-    "heading": "SWI",
-    "id": "swi",
-    "text": "SWI/GRE - Focus on blood products:MicrohemorrhagesVascular malformationsHemorrhagic transformationCalcificationsIron depositionVenous anatomy"
-  },
-  {
-    "section": "neuroradiology",
-    "sectionName": "Neuroradiology",
-    "heading": "Coronal T1/T2",
-    "id": "coronal-t1-t2",
-    "text": "Coronal T1/T2 - Focus on temporal structures:Hippocampi symmetry and signalTemporal lobes (mesial temporal sclerosis)Pituitary and cavernous sinusesOrbits and optic nervesVentricular morphology"
-  },
-  {
-    "section": "neuroradiology",
-    "sectionName": "Neuroradiology",
-    "heading": "MRA",
-    "id": "mra",
-    "text": ""
-  },
-  {
-    "section": "neuroradiology",
-    "sectionName": "Neuroradiology",
-    "heading": "MRA",
-    "id": "mra-2",
-    "text": "Circle of Willis completenessMajor vessel patency (ICA, vertebral, basilar)Cerebral artery branchesAneurysmsVascular malformations"
-  },
-  {
-    "section": "neuroradiology",
-    "sectionName": "Neuroradiology",
-    "heading": "Regional Review Strategy",
-    "id": "regional-review-strategy",
-    "text": ""
-  },
-  {
-    "section": "neuroradiology",
-    "sectionName": "Neuroradiology",
-    "heading": "1. Supratentorial Compartment",
-    "id": "1-supratentorial-compartment",
-    "text": "Cerebral hemispheres symmetryVentricle size and configurationWhite matter signal abnormalitiesGray matter morphologyBasal ganglia and thalamiCorpus callosum"
-  },
-  {
-    "section": "neuroradiology",
-    "sectionName": "Neuroradiology",
-    "heading": "2. Infratentorial Compartment",
-    "id": "2-infratentorial-compartment",
-    "text": "Cerebellar hemispheresCerebellar pedunclesBrainstem (midbrain, pons, medulla)Fourth ventricleCisternal spaces"
-  },
-  {
-    "section": "neuroradiology",
-    "sectionName": "Neuroradiology",
-    "heading": "3. Extra-axial Spaces",
-    "id": "3-extra-axial-spaces",
-    "text": "Subdural spacesSubarachnoid spacesBasal cisternsEpidural spaces"
-  },
-  {
-    "section": "neuroradiology",
-    "sectionName": "Neuroradiology",
-    "heading": "4. Vascular Structures",
-    "id": "4-vascular-structures",
-    "text": "Major arterial flow voidsDural venous sinusesSuperficial and deep veinsEnhancement patterns (if contrast given)"
-  },
-  {
-    "section": "neuroradiology",
-    "sectionName": "Neuroradiology",
-    "heading": "5. Skull Base and Adjacent Structures",
-    "id": "5-skull-base-and-adjacent-structures",
-    "text": "Craniovertebral junctionSkull base foraminaCranial nervesSinuses and mastoids"
+    "heading": "Neonatal Brain Injury Patterns",
+    "id": "neonatal-brain-injury-patterns",
+    "text": "Neonatal brain injury patterns reflect the interaction between the type and duration of the insult and the regional metabolic vulnerability at the gestational age of injury. Term and preterm brains are injured differently — because their most metabolically active and most vulnerable regions differ. Understanding this mapping between insult type, gestational age, and imaging pattern is the conceptual foundation for interpreting neonatal MRI.\nMRI Timing in HIE — A Critical Practical PointOptimal MRI timing for term HIE is 3–5 days of life: DWI restriction peaks and is most conspicuous at this wi"
   },
   {
     "section": "neuro-exam",
