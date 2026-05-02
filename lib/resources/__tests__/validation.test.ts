@@ -42,7 +42,7 @@ describe('validateSubsection', () => {
   });
   it('rejects unknown values', () => {
     expect(validateSubsection('admin')).toBe(false);
-    expect(validateSubsection('Conferences')).toBe(false); // case sensitive
+    expect(validateSubsection('Conferences')).toBe(false);
     expect(validateSubsection('')).toBe(false);
   });
 });
@@ -58,6 +58,13 @@ describe('validateUrl', () => {
     expect(validateUrl('not a url')).toBe(false);
     expect(validateUrl('')).toBe(false);
   });
+  it('rejects URLs with leading, trailing, or embedded whitespace', () => {
+    expect(validateUrl('  https://example.org')).toBe(false);
+    expect(validateUrl('https://example.org  ')).toBe(false);
+    expect(validateUrl('https://example.org' + String.fromCharCode(10))).toBe(false);
+    expect(validateUrl('https://exam ple.org')).toBe(false);
+    expect(validateUrl('https://example.org' + String.fromCharCode(9))).toBe(false);
+  });
 });
 
 describe('validateShortString', () => {
@@ -68,7 +75,11 @@ describe('validateShortString', () => {
   it('rejects empty, too-long, or newline-bearing strings', () => {
     expect(validateShortString('')).toBe(false);
     expect(validateShortString('x'.repeat(201))).toBe(false);
-    expect(validateShortString('one\ntwo')).toBe(false);
-    expect(validateShortString('one\rtwo')).toBe(false);
+    expect(validateShortString('one' + String.fromCharCode(10) + 'two')).toBe(false);
+    expect(validateShortString('one' + String.fromCharCode(13) + 'two')).toBe(false);
+  });
+  it('rejects Unicode line and paragraph separators', () => {
+    expect(validateShortString('one' + String.fromCharCode(0x2028) + 'two')).toBe(false);
+    expect(validateShortString('one' + String.fromCharCode(0x2029) + 'two')).toBe(false);
   });
 });

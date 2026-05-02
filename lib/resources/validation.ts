@@ -26,6 +26,8 @@ export function validateSubsection(s: string): s is Subsection {
 }
 
 export function validateUrl(s: string): boolean {
+  if (typeof s !== 'string') return false;
+  if (/\s/.test(s)) return false; // any whitespace anywhere (incl. \r, \n, \t, leading/trailing)
   try {
     const u = new URL(s);
     return u.protocol === 'http:' || u.protocol === 'https:';
@@ -38,5 +40,9 @@ export function validateShortString(s: string): boolean {
   if (typeof s !== 'string') return false;
   if (s.length === 0 || s.length > 200) return false;
   if (/[\r\n]/.test(s)) return false;
+  // Check for Unicode line separator (U+2028) and paragraph separator (U+2029)
+  const lineSeparator = String.fromCharCode(0x2028);
+  const paragraphSeparator = String.fromCharCode(0x2029);
+  if (s.includes(lineSeparator) || s.includes(paragraphSeparator)) return false;
   return true;
 }
