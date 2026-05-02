@@ -4,6 +4,9 @@ out/
 *.log
 .DS_Store
 Thumbs.db
+.env
+.env.local
+.env.*.local
 
 # The source .docx files are local only.
 # To regenerate src/data/ and public/images/, run: node scripts/extract.mjs
