@@ -14,7 +14,7 @@ export type Metadata = {
 };
 
 export const METADATA_PATH = 'resources/_metadata.json';
-export const EMPTY_METADATA: Metadata = { links: [], fileTitles: {} };
+export const EMPTY_METADATA: Metadata = Object.freeze({ links: [], fileTitles: {} }) as Metadata;
 
 export function slugify(name: string): string {
   // Drop the extension if present
