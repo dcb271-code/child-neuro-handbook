@@ -33,10 +33,15 @@ export async function DELETE(req: Request) {
     return NextResponse.json({ error: 'delete failed' }, { status: 500 });
   }
 
-  const md = await readMetadata();
-  if (md.fileTitles[pathname]) {
-    delete md.fileTitles[pathname];
-    await writeMetadata(md);
+  // Best-effort cleanup: blob is already gone, an orphaned title override is harmless.
+  try {
+    const md = await readMetadata();
+    if (md.fileTitles[pathname]) {
+      delete md.fileTitles[pathname];
+      await writeMetadata(md);
+    }
+  } catch (err) {
+    console.error('[resources/file] metadata cleanup failed:', err);
   }
 
   return NextResponse.json({ ok: true });
