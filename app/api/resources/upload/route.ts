@@ -52,6 +52,7 @@ export async function POST(req: Request) {
     });
     url = result.url;
   } catch (err) {
+    console.error('[resources/upload] put() failed:', err);
     return NextResponse.json({ error: 'upload failed' }, { status: 500 });
   }
 
