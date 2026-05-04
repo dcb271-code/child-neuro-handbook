@@ -4,6 +4,7 @@ import { isAuthed } from '@/lib/resources/auth';
 import FileCard from '@/components/resources/FileCard';
 import LinkCard from '@/components/resources/LinkCard';
 import AuthBar from '@/components/resources/AuthBar';
+import UploadDropzone from '@/components/resources/UploadDropzone';
 import type { Subsection } from '@/lib/resources/validation';
 
 export const dynamic = 'force-dynamic';
@@ -91,19 +92,22 @@ export default async function ResourcesPage() {
               ))}
             </div>
           ) : (
-            <div className="pathway-grid">
-              {filesBySub[s.key].length === 0 && <p className="text-sm text-slate-400">No files yet.</p>}
-              {filesBySub[s.key].map((f) => (
-                <FileCard
-                  key={f.pathname}
-                  pathname={f.pathname}
-                  url={f.url}
-                  title={f.title}
-                  contentType={f.contentType}
-                  authed={authed}
-                />
-              ))}
-            </div>
+            <>
+              <div className="pathway-grid">
+                {filesBySub[s.key].length === 0 && <p className="text-sm text-slate-400">No files yet.</p>}
+                {filesBySub[s.key].map((f) => (
+                  <FileCard
+                    key={f.pathname}
+                    pathname={f.pathname}
+                    url={f.url}
+                    title={f.title}
+                    contentType={f.contentType}
+                    authed={authed}
+                  />
+                ))}
+              </div>
+              {authed && <UploadDropzone subsection={s.key as 'conferences' | 'lectures' | 'misc'} />}
+            </>
           )}
         </section>
       ))}
