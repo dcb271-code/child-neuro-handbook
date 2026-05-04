@@ -9,7 +9,11 @@ export default function AuthBar({ authed }: { authed: boolean }) {
   const [showModal, setShowModal] = useState(false);
 
   async function logout() {
-    await fetch('/api/resources/logout', { method: 'POST' });
+    try {
+      await fetch('/api/resources/logout', { method: 'POST' });
+    } catch (err) {
+      console.error('[resources/logout] failed:', err);
+    }
     router.refresh();
   }
 

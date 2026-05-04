@@ -13,19 +13,24 @@ export default function LoginModal({ onClose }: { onClose: () => void }) {
     e.preventDefault();
     setBusy(true);
     setError(null);
-    const res = await fetch('/api/resources/auth', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ password }),
-    });
-    setBusy(false);
-    if (res.ok) {
-      onClose();
-      router.refresh();
-    } else if (res.status === 401) {
-      setError('Incorrect password');
-    } else {
-      setError('Something went wrong');
+    try {
+      const res = await fetch('/api/resources/auth', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ password }),
+      });
+      if (res.ok) {
+        onClose();
+        router.refresh();
+      } else if (res.status === 401) {
+        setError('Incorrect password');
+      } else {
+        setError('Something went wrong');
+      }
+    } catch {
+      setError('Network error — check your connection');
+    } finally {
+      setBusy(false);
     }
   }
 
