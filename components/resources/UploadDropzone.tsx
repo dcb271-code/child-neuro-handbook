@@ -19,6 +19,7 @@ export default function UploadDropzone({ subsection }: { subsection: 'conference
   }
 
   async function upload(file: File) {
+    if (progress !== null) return; // already uploading
     setError(null);
     if (file.size > MAX_BYTES) { setError('File exceeds 25 MB.'); return; }
 
@@ -54,8 +55,17 @@ export default function UploadDropzone({ subsection }: { subsection: 'conference
 
   return (
     <div
+      role="button"
+      tabIndex={0}
+      aria-label="Drop a file or click to browse"
       className={`resources-dropzone ${over ? 'is-over' : ''}`}
       onClick={() => inputRef.current?.click()}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          inputRef.current?.click();
+        }
+      }}
       onDragOver={(e) => { e.preventDefault(); setOver(true); }}
       onDragLeave={() => setOver(false)}
       onDrop={(e) => {
