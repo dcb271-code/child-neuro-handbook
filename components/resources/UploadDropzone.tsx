@@ -2,9 +2,10 @@
 
 import { useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { MAX_FILE_BYTES } from '@/lib/resources/validation';
 
 const ACCEPT = '.pdf,.ppt,.pptx,.doc,.docx,.png,.jpg,.jpeg';
-const MAX_BYTES = 25 * 1024 * 1024;
+const MAX_MB_LABEL = `${Math.floor(MAX_FILE_BYTES / (1024 * 1024))} MB`;
 
 export default function UploadDropzone({ subsection }: { subsection: 'conferences' | 'lectures' | 'misc' }) {
   const router = useRouter();
@@ -21,7 +22,7 @@ export default function UploadDropzone({ subsection }: { subsection: 'conference
   async function upload(file: File) {
     if (progress !== null) return; // already uploading
     setError(null);
-    if (file.size > MAX_BYTES) { setError('File exceeds 25 MB.'); return; }
+    if (file.size > MAX_FILE_BYTES) { setError(`File exceeds ${MAX_MB_LABEL}.`); return; }
 
     const suggested = deriveTitle(file.name);
     const titleInput = window.prompt('Display title (Cancel to keep the filename):', suggested);
@@ -89,7 +90,7 @@ export default function UploadDropzone({ subsection }: { subsection: 'conference
       {progress === null ? (
         <>
           <div className="text-sm">⬆ Drop a file here or click to browse</div>
-          <div className="text-xs text-slate-400 mt-1">PDF, PPT/PPTX, DOC/DOCX, PNG/JPG · max 25 MB</div>
+          <div className="text-xs text-slate-400 mt-1">PDF, PPT/PPTX, DOC/DOCX, PNG/JPG · max {MAX_MB_LABEL}</div>
         </>
       ) : (
         <div className="text-sm">Uploading… {progress}%</div>

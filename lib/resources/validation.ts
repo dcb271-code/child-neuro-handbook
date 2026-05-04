@@ -11,7 +11,11 @@ export const ALLOWED_MIME = [
 export const ALLOWED_SUBSECTIONS = ['conferences', 'lectures', 'misc'] as const;
 export type Subsection = (typeof ALLOWED_SUBSECTIONS)[number];
 
-export const MAX_FILE_BYTES = 25 * 1024 * 1024; // 25 MB
+// Vercel Serverless Functions cap multipart bodies at ~4.5 MB; leave headroom for
+// the multipart envelope so we don't surface infrastructure-layer 413s to users.
+// To raise this, migrate uploads to client-side direct upload via @vercel/blob's
+// handleUpload pattern (which bypasses the function body limit).
+export const MAX_FILE_BYTES = 4 * 1024 * 1024; // 4 MB
 
 export function validateMime(mime: string): boolean {
   return (ALLOWED_MIME as readonly string[]).includes(mime);

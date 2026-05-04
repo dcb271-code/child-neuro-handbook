@@ -52,10 +52,10 @@ export async function readMetadata(): Promise<Metadata> {
   // Find the metadata blob (list+fetch pattern — Blob has no direct GET-by-path)
   const { blobs } = await list({ prefix: METADATA_PATH });
   const hit = blobs.find((b) => b.pathname === METADATA_PATH);
-  if (!hit) return { ...EMPTY_METADATA };
+  if (!hit) return { links: [], fileTitles: {} };
 
   const res = await fetch(hit.url, { cache: 'no-store' });
-  if (!res.ok) return { ...EMPTY_METADATA };
+  if (!res.ok) return { links: [], fileTitles: {} };
   try {
     const data = (await res.json()) as Metadata;
     return {
@@ -63,7 +63,7 @@ export async function readMetadata(): Promise<Metadata> {
       fileTitles: data?.fileTitles && typeof data.fileTitles === 'object' ? data.fileTitles : {},
     };
   } catch {
-    return { ...EMPTY_METADATA };
+    return { links: [], fileTitles: {} };
   }
 }
 

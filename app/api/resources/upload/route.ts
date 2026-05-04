@@ -39,6 +39,16 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'file too large' }, { status: 400 });
   }
 
+  // Validate the optional title BEFORE the upload, so a malformed title can't
+  // leave an orphaned blob behind.
+  let title: string | undefined;
+  if (typeof titleRaw === 'string' && titleRaw.trim() !== '') {
+    if (!validateShortString(titleRaw)) {
+      return NextResponse.json({ error: 'invalid title' }, { status: 400 });
+    }
+    title = titleRaw;
+  }
+
   const sub = subsection as Subsection;
   const pathname = blobPathFor(sub, file.name);
 
@@ -56,12 +66,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'upload failed' }, { status: 500 });
   }
 
-  let title: string | undefined;
-  if (typeof titleRaw === 'string' && titleRaw.trim() !== '') {
-    if (!validateShortString(titleRaw)) {
-      return NextResponse.json({ error: 'invalid title' }, { status: 400 });
-    }
-    title = titleRaw;
+  if (title !== undefined) {
     const md = await readMetadata();
     md.fileTitles[pathname] = title;
     await writeMetadata(md);
