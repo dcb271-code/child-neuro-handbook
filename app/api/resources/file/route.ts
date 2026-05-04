@@ -46,3 +46,46 @@ export async function DELETE(req: Request) {
 
   return NextResponse.json({ ok: true });
 }
+
+export async function PATCH(req: Request) {
+  if (!isAuthed()) {
+    return NextResponse.json({ error: 'unauthorized' }, { status: 401 });
+  }
+
+  let body: { pathname?: string; title?: string };
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ error: 'bad request' }, { status: 400 });
+  }
+
+  const pathname = body?.pathname;
+  const rawTitle = body?.title;
+
+  if (typeof pathname !== 'string' || !pathname.startsWith('resources/')) {
+    return NextResponse.json({ error: 'invalid pathname' }, { status: 400 });
+  }
+  if (pathname === 'resources/_metadata.json') {
+    return NextResponse.json({ error: 'forbidden' }, { status: 400 });
+  }
+  if (typeof rawTitle !== 'string') {
+    return NextResponse.json({ error: 'invalid title' }, { status: 400 });
+  }
+
+  const title = rawTitle.trim().slice(0, 200);
+
+  try {
+    const md = await readMetadata();
+    if (title) {
+      md.fileTitles[pathname] = title;
+    } else {
+      delete md.fileTitles[pathname];
+    }
+    await writeMetadata(md);
+  } catch (err) {
+    console.error('[resources/file] PATCH failed:', err);
+    return NextResponse.json({ error: 'rename failed' }, { status: 500 });
+  }
+
+  return NextResponse.json({ ok: true });
+}

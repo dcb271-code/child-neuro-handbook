@@ -7,6 +7,7 @@ import AuthBar from '@/components/resources/AuthBar';
 import UploadDropzone from '@/components/resources/UploadDropzone';
 import AddLinkModal from '@/components/resources/AddLinkModal';
 import DeleteHandlers from '@/components/resources/DeleteHandlers';
+import CollapsibleSection from '@/components/resources/CollapsibleSection';
 import type { Subsection } from '@/lib/resources/validation';
 
 export const dynamic = 'force-dynamic';
@@ -75,46 +76,41 @@ export default async function ResourcesPage() {
 
       <AuthBar authed={authed} />
 
-      {SUBSECTIONS.map((s) => (
-        <section key={s.key} className="mb-10">
-          <h2
-            className="flex items-center gap-2 text-base sm:text-lg font-semibold mb-3 px-3 py-2 rounded-md"
-            style={{ backgroundColor: `${s.color}15`, color: s.color }}
-          >
-            <span>{s.title}</span>
-            <span className="text-xs font-normal text-slate-500 ml-2">{s.blurb}</span>
-          </h2>
-
-          {s.key === 'links' ? (
-            <>
-              <div className="pathway-grid">
-                {md.links.length === 0 && <p className="text-sm text-slate-400">No links yet.</p>}
-                {md.links.map((l) => (
-                  <LinkCard key={l.id} id={l.id} url={l.url} label={l.label} authed={authed} />
-                ))}
-              </div>
-              {authed && <div className="mt-3"><AddLinkModal /></div>}
-            </>
-          ) : (
-            <>
-              <div className="pathway-grid">
-                {filesBySub[s.key].length === 0 && <p className="text-sm text-slate-400">No files yet.</p>}
-                {filesBySub[s.key].map((f) => (
-                  <FileCard
-                    key={f.pathname}
-                    pathname={f.pathname}
-                    url={f.url}
-                    title={f.title}
-                    contentType={f.contentType}
-                    authed={authed}
-                  />
-                ))}
-              </div>
-              {authed && <UploadDropzone subsection={s.key as 'conferences' | 'lectures' | 'misc'} />}
-            </>
-          )}
-        </section>
-      ))}
+      {SUBSECTIONS.map((s) => {
+        const count = s.key === 'links' ? md.links.length : filesBySub[s.key].length;
+        return (
+          <CollapsibleSection key={s.key} title={s.title} blurb={s.blurb} color={s.color} count={count}>
+            {s.key === 'links' ? (
+              <>
+                <div className="pathway-grid">
+                  {md.links.length === 0 && <p className="text-sm text-slate-400">No links yet.</p>}
+                  {md.links.map((l) => (
+                    <LinkCard key={l.id} id={l.id} url={l.url} label={l.label} authed={authed} />
+                  ))}
+                </div>
+                {authed && <div className="mt-3"><AddLinkModal /></div>}
+              </>
+            ) : (
+              <>
+                <div className="pathway-grid">
+                  {filesBySub[s.key].length === 0 && <p className="text-sm text-slate-400">No files yet.</p>}
+                  {filesBySub[s.key].map((f) => (
+                    <FileCard
+                      key={f.pathname}
+                      pathname={f.pathname}
+                      url={f.url}
+                      title={f.title}
+                      contentType={f.contentType}
+                      authed={authed}
+                    />
+                  ))}
+                </div>
+                {authed && <UploadDropzone subsection={s.key as 'conferences' | 'lectures' | 'misc'} />}
+              </>
+            )}
+          </CollapsibleSection>
+        );
+      })}
     </div>
   );
 }
