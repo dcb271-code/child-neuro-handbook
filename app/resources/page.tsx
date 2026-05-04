@@ -3,6 +3,7 @@ import { readMetadata, resolveTitle } from '@/lib/resources/metadata';
 import { isAuthed } from '@/lib/resources/auth';
 import FileCard from '@/components/resources/FileCard';
 import LinkCard from '@/components/resources/LinkCard';
+import AuthBar from '@/components/resources/AuthBar';
 import type { Subsection } from '@/lib/resources/validation';
 
 export const dynamic = 'force-dynamic';
@@ -69,7 +70,7 @@ export default async function ResourcesPage() {
         </p>
       </div>
 
-      {/* AuthBar slot — wired in Task 3.2 */}
+      <AuthBar authed={authed} />
 
       {SUBSECTIONS.map((s) => (
         <section key={s.key} className="mb-10">
