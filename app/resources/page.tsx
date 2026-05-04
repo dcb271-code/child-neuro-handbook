@@ -5,6 +5,8 @@ import FileCard from '@/components/resources/FileCard';
 import LinkCard from '@/components/resources/LinkCard';
 import AuthBar from '@/components/resources/AuthBar';
 import UploadDropzone from '@/components/resources/UploadDropzone';
+import AddLinkModal from '@/components/resources/AddLinkModal';
+import DeleteHandlers from '@/components/resources/DeleteHandlers';
 import type { Subsection } from '@/lib/resources/validation';
 
 export const dynamic = 'force-dynamic';
@@ -62,6 +64,7 @@ export default async function ResourcesPage() {
 
   return (
     <div>
+      {authed && <DeleteHandlers />}
       <div className="mb-6 sm:mb-8">
         <h1 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight mb-1">
           Resources & Conferences
@@ -85,12 +88,15 @@ export default async function ResourcesPage() {
           </h2>
 
           {s.key === 'links' ? (
-            <div className="pathway-grid">
-              {md.links.length === 0 && <p className="text-sm text-slate-400">No links yet.</p>}
-              {md.links.map((l) => (
-                <LinkCard key={l.id} id={l.id} url={l.url} label={l.label} authed={authed} />
-              ))}
-            </div>
+            <>
+              <div className="pathway-grid">
+                {md.links.length === 0 && <p className="text-sm text-slate-400">No links yet.</p>}
+                {md.links.map((l) => (
+                  <LinkCard key={l.id} id={l.id} url={l.url} label={l.label} authed={authed} />
+                ))}
+              </div>
+              {authed && <div className="mt-3"><AddLinkModal /></div>}
+            </>
           ) : (
             <>
               <div className="pathway-grid">
