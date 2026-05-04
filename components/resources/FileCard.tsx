@@ -52,7 +52,7 @@ export default function FileCard({ pathname, url, title, contentType, authed }: 
         <a href={url} target="_blank" rel="noopener noreferrer" className="pathway-btn pathway-btn-view">
           View Full Screen ↗
         </a>
-        <a href={url} download className="pathway-btn pathway-btn-view">⬇ Download</a>
+        <a href={url} download className="pathway-btn pathway-btn-download">⬇ Download</a>
         {authed && (
           <button
             type="button"
