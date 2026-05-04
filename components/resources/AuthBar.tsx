@@ -21,7 +21,7 @@ export default function AuthBar({ authed }: { authed: boolean }) {
     <div className="resources-auth-bar">
       {authed ? (
         <>
-          <span className="text-xs text-emerald-700">✓ Logged in</span>
+          <span className="text-xs text-emerald-700">Logged in</span>
           <button type="button" onClick={logout} className="text-xs text-slate-500 hover:underline ml-3">
             Log out
           </button>

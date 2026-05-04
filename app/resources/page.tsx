@@ -40,12 +40,11 @@ const SUBSECTIONS: Array<{
   title: string;
   blurb: string;
   color: string;
-  icon: string;
 }> = [
-  { key: 'conferences', title: 'Conferences',                 blurb: 'Slide decks and handouts',     color: '#7c3aed', icon: '🎓' },
-  { key: 'lectures',    title: 'Lectures / Teaching Files',   blurb: 'Teaching slides and handouts', color: '#059669', icon: '📚' },
-  { key: 'links',       title: 'External Links',              blurb: 'Curated outside resources',    color: '#2563eb', icon: '🔗' },
-  { key: 'misc',        title: 'Misc Files',                  blurb: 'Everything else',              color: '#475569', icon: '📁' },
+  { key: 'conferences', title: 'Conferences',                 blurb: 'Slide decks and handouts',     color: '#7c3aed' },
+  { key: 'lectures',    title: 'Lectures / Teaching Files',   blurb: 'Teaching slides and handouts', color: '#059669' },
+  { key: 'links',       title: 'External Links',              blurb: 'Curated outside resources',    color: '#2563eb' },
+  { key: 'misc',        title: 'Misc Files',                  blurb: 'Everything else',              color: '#475569' },
 ];
 
 export default async function ResourcesPage() {
@@ -82,7 +81,6 @@ export default async function ResourcesPage() {
             className="flex items-center gap-2 text-base sm:text-lg font-semibold mb-3 px-3 py-2 rounded-md"
             style={{ backgroundColor: `${s.color}15`, color: s.color }}
           >
-            <span>{s.icon}</span>
             <span>{s.title}</span>
             <span className="text-xs font-normal text-slate-500 ml-2">{s.blurb}</span>
           </h2>
