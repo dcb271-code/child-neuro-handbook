@@ -11,3 +11,4 @@ tsconfig.tsbuildinfo
 
 # The source .docx files are local only.
 # To regenerate src/data/ and public/images/, run: node scripts/extract.mjs
+_inbox/
