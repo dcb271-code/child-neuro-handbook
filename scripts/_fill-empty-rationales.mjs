@@ -137,6 +137,24 @@ const PATCHES = [
     rationale:
       'CN V1 (ophthalmic division of the trigeminal) runs in the lateral wall of the cavernous sinus alongside CN III, CN IV, and CN V2 — not centrally with the internal carotid and CN VI.',
   },
+  {
+    id: 'q-formulate-the-next-best-step-for-isolated-severe-language-de',
+    optionText: 'Genetic testing for Fragile X syndrome',
+    rationale:
+      'Fragile X testing is reasonable in a child with global developmental delay, intellectual disability, or autistic features, but is not the first step for isolated expressive language delay. Hearing impairment must be ruled out first.',
+  },
+  {
+    id: 'q-diagnose-idiopathic-intracranial-hypertension-iih-based-on-c',
+    optionText: '20 cm H2O',
+    rationale:
+      'Normal pediatric and adult opening pressures can range up to ~20–25 cm H2O depending on body habitus and position; this overlaps the upper limit of normal and does not by itself meet the IIH threshold of >25 cm H2O.',
+  },
+  {
+    id: 'q-recognize-the-primary-stroke-prevention-strategy-in-sickle-c',
+    optionText: 'Electroencephalogram (EEG)',
+    rationale:
+      'EEG evaluates seizure activity, not cerebral blood flow or stroke risk. It has no established role in primary stroke screening for sickle cell disease.',
+  },
 ];
 
 const data = JSON.parse(readFileSync(TARGET, 'utf8'));
