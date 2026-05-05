@@ -18,11 +18,20 @@ export function applyNamingConvention(title: string, authors: string, year: stri
 type Props = {
   open: boolean;
   initialTitle: string;
+  heading?: string;
+  submitLabel?: string;
   onClose: () => void;
   onSubmit: (newTitle: string) => Promise<void> | void;
 };
 
-export default function RenameModal({ open, initialTitle, onClose, onSubmit }: Props) {
+export default function RenameModal({
+  open,
+  initialTitle,
+  heading = 'Rename file',
+  submitLabel = 'Save',
+  onClose,
+  onSubmit,
+}: Props) {
   const [title, setTitle] = useState(initialTitle);
   const [authors, setAuthors] = useState('');
   const [year, setYear] = useState('');
@@ -68,7 +77,7 @@ export default function RenameModal({ open, initialTitle, onClose, onSubmit }: P
         onClick={(e) => e.stopPropagation()}
         className="w-full max-w-md rounded-lg bg-white dark:bg-slate-800 p-5 shadow-xl"
       >
-        <h2 className="text-base font-semibold text-slate-900 dark:text-white mb-1">Rename file</h2>
+        <h2 className="text-base font-semibold text-slate-900 dark:text-white mb-1">{heading}</h2>
         <p className="text-xs text-slate-500 mb-4">
           First 5–6 words of the title (articles dropped), then optionally <code>(Author Year)</code>.
         </p>
@@ -128,7 +137,7 @@ export default function RenameModal({ open, initialTitle, onClose, onSubmit }: P
             disabled={busy || !preview}
             className="px-3 py-1.5 text-sm rounded-md bg-indigo-600 text-white hover:bg-indigo-700 disabled:opacity-50"
           >
-            {busy ? 'Saving…' : 'Save'}
+            {busy ? 'Saving…' : submitLabel}
           </button>
         </div>
       </div>
