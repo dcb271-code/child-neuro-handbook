@@ -119,6 +119,24 @@ const PATCHES = [
     rationale:
       'Williams syndrome is classically associated with infantile hypercalcemia (not hypophosphatemia), thought to relate to abnormal vitamin D handling and calcium-sensing receptor function in the setting of the 7q11.23 microdeletion.',
   },
+  {
+    id: 'q-recognize-the-clinical-features-of-nightmare-disorder',
+    optionText: 'Non-REM Stage 1 (N1)',
+    rationale:
+      'N1 is the brief transition between wake and sleep; nightmares are not characteristic of this stage.',
+  },
+  {
+    id: 'q-recognize-the-clinical-features-of-nightmare-disorder',
+    optionText: 'Non-REM Stage 2 (N2)',
+    rationale:
+      'N2 (light sleep) is when most non-REM time is spent, but it is not the stage associated with vivid dream imagery; nightmares are a REM phenomenon.',
+  },
+  {
+    id: 'q-identify-the-cranial-nerves-traversing-the-cavernous-sinus',
+    optionText: 'Ophthalmic nerve (CN V1)',
+    rationale:
+      'CN V1 (ophthalmic division of the trigeminal) runs in the lateral wall of the cavernous sinus alongside CN III, CN IV, and CN V2 — not centrally with the internal carotid and CN VI.',
+  },
 ];
 
 const data = JSON.parse(readFileSync(TARGET, 'utf8'));
