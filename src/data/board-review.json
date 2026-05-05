@@ -431,7 +431,7 @@
       {
         "text": "1 year",
         "isCorrect": false,
-        "rationale": ""
+        "rationale": "RCVS is by definition a self-limited vasculopathy whose angiographic changes resolve within 12 weeks. Persistence of vasoconstriction at 1 year would exclude RCVS and prompt evaluation for primary CNS angiitis or another persistent arteriopathy."
       },
       {
         "text": "6 months",
@@ -682,7 +682,7 @@
       {
         "text": "Skeletal muscle",
         "isCorrect": false,
-        "rationale": ""
+        "rationale": "Skeletal muscle pathology (congenital myopathies, muscular dystrophies) is a peripheral cause of hypotonia and characteristically produces depressed or absent deep tendon reflexes. The brisk reflexes and preserved alertness here point to a central, not peripheral, localization."
       },
       {
         "text": "Central nervous system (brain/spinal cord)",
@@ -774,7 +774,7 @@
       {
         "text": "Sudden cardiac arrest",
         "isCorrect": false,
-        "rationale": ""
+        "rationale": "Infantile spasms do not carry an increased risk of sudden cardiac arrest. The urgency of treatment relates to preventing the catastrophic cognitive and developmental impact of ongoing hypsarrhythmia and untreated epileptic encephalopathy."
       }
     ]
   },
@@ -923,7 +923,7 @@
       {
         "text": "Rotavirus",
         "isCorrect": false,
-        "rationale": ""
+        "rationale": "Rotavirus causes acute gastroenteritis and does not have an established association with cerebral arteriopathy or pediatric arterial ischemic stroke."
       },
       {
         "text": "Varicella-zoster virus",
@@ -974,7 +974,7 @@
       {
         "text": "Prescribe a daily prophylactic anti-seizure medication",
         "isCorrect": false,
-        "rationale": ""
+        "rationale": "Daily prophylactic anti-seizure medication is explicitly not recommended for simple febrile seizures. The risks of chronic AED therapy outweigh both the modest recurrence risk and the very small (~1%) excess lifetime epilepsy risk."
       },
       {
         "text": "Order a stat electroencephalogram (EEG)",
@@ -1589,7 +1589,7 @@
       {
         "text": "Diffuse cortical dysfunction",
         "isCorrect": false,
-        "rationale": ""
+        "rationale": "Diffuse cortical dysfunction (post-anoxic injury, severe metabolic encephalopathy) can cause profound unresponsiveness while sparing brainstem reflexes, and remains a real consideration in this presentation. It is not the *least* likely cause."
       },
       {
         "text": "Nonconvulsive status epilepticus",
@@ -1630,7 +1630,7 @@
       {
         "text": "Two-point discrimination testing of the lower extremities",
         "isCorrect": false,
-        "rationale": ""
+        "rationale": "Two-point discrimination requires verbal report and cooperation that a 2-month-old cannot provide. It is not part of the infant neurologic examination."
       },
       {
         "text": "Assessment of primitive reflexes, tone, and head control",
@@ -1953,7 +1953,7 @@
       {
         "text": "Attention-deficit/hyperactivity disorder",
         "isCorrect": false,
-        "rationale": ""
+        "rationale": "ADHD is a behavioral diagnosis made in school-aged children based on inattention, hyperactivity, and impulsivity. It does not present in infancy with motor asymmetry and is unrelated to early hand preference."
       },
       {
         "text": "Autism spectrum disorder",
@@ -2204,7 +2204,7 @@
       {
         "text": "Oppositional defiant disorder and specific learning disorder",
         "isCorrect": false,
-        "rationale": ""
+        "rationale": "ODD and learning disorders can co-occur in children with Tourette syndrome, but the two highest-yield comorbidities — present in roughly half of patients and central to management — are OCD and ADHD."
       },
       {
         "text": "Major depressive disorder and schizophrenia",
@@ -3270,7 +3270,7 @@
       {
         "text": "Oral prednisone caused a higher rate of permanent blindness compared to placebo.",
         "isCorrect": false,
-        "rationale": ""
+        "rationale": "The ONTT did not demonstrate a higher rate of permanent blindness with oral prednisone. The actual finding was an increased rate of recurrent optic neuritis attacks in the oral-prednisone arm, which is why isolated oral prednisone is no longer recommended."
       },
       {
         "text": "Oral prednisone significantly improved long-term visual acuity at 1 year compared to placebo.",
@@ -3357,7 +3357,7 @@
       {
         "text": "Pediatric migraines must be continuous and unremitting for 7 days.",
         "isCorrect": false,
-        "rationale": ""
+        "rationale": "Pediatric migraines are episodic, lasting 2–72 hours per attack. Continuous unremitting headache for 7 days does not meet ICHD migraine criteria and would suggest status migrainosus or a different headache disorder."
       }
     ]
   },
@@ -3916,7 +3916,7 @@
       {
         "text": "Notch signaling pathway",
         "isCorrect": false,
-        "rationale": ""
+        "rationale": "Notch signaling regulates cell-fate decisions and is implicated in T-cell leukemias and other malignancies, but it is not the pathway disrupted in TSC. The hamartin-tuberin complex acts as a GAP for Rheb, directly inhibiting mTORC1."
       },
       {
         "text": "Mitogen-activated protein kinase (MAPK) pathway",
@@ -4700,7 +4700,7 @@
       {
         "text": "Nuclear DNA on chromosome 15",
         "isCorrect": false,
-        "rationale": ""
+        "rationale": "NARP is caused by point mutations (most commonly m.8993T>G) in the mitochondrial ATP6 gene, which encodes a subunit of complex V. It is inherited maternally and is not encoded on nuclear chromosome 15."
       },
       {
         "text": "Nuclear DNA on chromosome X",
@@ -5161,7 +5161,7 @@
       {
         "text": "1 to 2 years",
         "isCorrect": false,
-        "rationale": ""
+        "rationale": "CYP3A4 autoinduction by carbamazepine is largely complete within 3–5 weeks of reaching a stable dose; serum levels then plateau. A 1–2 year time course would be inconsistent with the known pharmacokinetics of enzyme induction."
       }
     ]
   },
@@ -5448,7 +5448,7 @@
       {
         "text": "The fever reaches a peak of 40.5°C (104.9°F) just prior to the seizure",
         "isCorrect": false,
-        "rationale": ""
+        "rationale": "Peak temperature does not classify a febrile seizure as simple or complex. Classification depends on duration (>15 minutes), focality, or recurrence within 24 hours."
       }
     ]
   },
@@ -5607,7 +5607,7 @@
       {
         "text": "12 years",
         "isCorrect": false,
-        "rationale": ""
+        "rationale": "By age 12 the PDR has long since reached the adult alpha range (~9–10 Hz). The 8 Hz milestone is achieved much earlier — typically around 3 years; waiting until 12 would be abnormally delayed."
       },
       {
         "text": "8 years",
@@ -8195,7 +8195,7 @@
       {
         "text": "Epidermal nevi",
         "isCorrect": false,
-        "rationale": ""
+        "rationale": "Epidermal nevi are the hallmark of Epidermal Nevus Syndrome (Schimmelpenning), not PHACE. The \"E\" in PHACE stands for Eye abnormalities; sternal/supraumbilical raphe defects extend the acronym to PHACES."
       }
     ]
   },
@@ -8728,7 +8728,7 @@
       {
         "text": "Hypophosphatemia",
         "isCorrect": false,
-        "rationale": ""
+        "rationale": "Williams syndrome is classically associated with infantile hypercalcemia (not hypophosphatemia), thought to relate to abnormal vitamin D handling and calcium-sensing receptor function in the setting of the 7q11.23 microdeletion."
       }
     ]
   },

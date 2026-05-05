@@ -1,7 +1,13 @@
 'use client';
 
-import type { Question } from '@/lib/board-review/types';
+import type { Question, Difficulty } from '@/lib/board-review/types';
 import { DIM1_LABEL, DIM1_COLOR } from '@/lib/board-review/types';
+
+const DIFFICULTY_COLOR: Record<Difficulty, string> = {
+  easy: '#16a34a',
+  medium: '#d97706',
+  hard: '#dc2626',
+};
 
 type Props = {
   question: Question;
@@ -27,21 +33,38 @@ export default function QuestionCard({
 
   return (
     <div className="max-w-3xl mx-auto py-4 sm:py-6">
-      {/* Top: progress + topic tag */}
-      <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-2">
+      {/* Top: progress + difficulty + topic tag */}
+      <div className="flex items-center justify-between gap-2 text-xs text-slate-500 dark:text-slate-400 mb-2 flex-wrap">
         <span className="tabular-nums">
           Question {questionIndex + 1} of {totalQuestions}
         </span>
-        <span
-          className="font-semibold px-2.5 py-0.5 rounded-full border"
-          style={{
-            color: accent,
-            backgroundColor: `${accent}10`,
-            borderColor: `${accent}30`,
-          }}
-        >
-          {DIM1_LABEL[question.labels.dim1Category]}
-        </span>
+        <div className="flex items-center gap-1.5">
+          <span
+            className="font-semibold px-2 py-0.5 rounded-full border flex items-center gap-1.5"
+            style={{
+              color: DIFFICULTY_COLOR[question.difficulty],
+              backgroundColor: `${DIFFICULTY_COLOR[question.difficulty]}10`,
+              borderColor: `${DIFFICULTY_COLOR[question.difficulty]}30`,
+            }}
+            title={`Difficulty: ${question.difficulty}`}
+          >
+            <span
+              className="w-1.5 h-1.5 rounded-full"
+              style={{ backgroundColor: DIFFICULTY_COLOR[question.difficulty] }}
+            />
+            {question.difficulty}
+          </span>
+          <span
+            className="font-semibold px-2.5 py-0.5 rounded-full border"
+            style={{
+              color: accent,
+              backgroundColor: `${accent}10`,
+              borderColor: `${accent}30`,
+            }}
+          >
+            {DIM1_LABEL[question.labels.dim1Category]}
+          </span>
+        </div>
       </div>
 
       <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-1.5 mb-6">
