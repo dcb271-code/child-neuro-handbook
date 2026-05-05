@@ -8,7 +8,11 @@ export const ALLOWED_MIME = [
   'image/jpeg',
 ] as const;
 
-export const ALLOWED_SUBSECTIONS = ['conferences', 'lectures', 'misc'] as const;
+// Storage slugs (folder names in blob). Display names live in the page
+// component — note that the `misc` slug is shown as "Library" for legacy
+// reasons (existing files were uploaded to resources/misc/ before the
+// rename). New uploads to the actual "Misc" section use the `general` slug.
+export const ALLOWED_SUBSECTIONS = ['conferences', 'lectures', 'misc', 'general'] as const;
 export type Subsection = (typeof ALLOWED_SUBSECTIONS)[number];
 
 // Vercel Serverless Functions cap multipart bodies at ~4.5 MB; leave headroom for

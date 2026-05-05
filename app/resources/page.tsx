@@ -43,24 +43,26 @@ const SUBSECTIONS: Array<{
   blurb: string;
   color: string;
 }> = [
-  { key: 'conferences', title: 'Conferences',                 blurb: 'Slide decks and handouts',     color: '#7c3aed' },
-  { key: 'lectures',    title: 'Lectures / Teaching Files',   blurb: 'Teaching slides and handouts', color: '#059669' },
-  { key: 'links',       title: 'External Links',              blurb: 'Curated outside resources',    color: '#2563eb' },
-  { key: 'misc',        title: 'Misc Files',                  blurb: 'Everything else',              color: '#475569' },
+  { key: 'misc',        title: 'Library',                    blurb: 'Reference papers and saved files', color: '#d97706' },
+  { key: 'conferences', title: 'Conferences',                blurb: 'Slide decks and handouts',          color: '#7c3aed' },
+  { key: 'lectures',    title: 'Lectures / Teaching Files',  blurb: 'Teaching slides and handouts',      color: '#059669' },
+  { key: 'general',     title: 'Misc',                       blurb: 'Everything else',                   color: '#475569' },
+  { key: 'links',       title: 'External Links',             blurb: 'Curated outside resources',         color: '#2563eb' },
 ];
 
 export default async function ResourcesPage() {
   const authed = (() => { try { return isAuthed(); } catch { return false; } })();
   const md = await readMetadata();
 
-  const [conferences, lectures, misc] = await Promise.all([
+  const [conferences, lectures, misc, general] = await Promise.all([
     listSubsection('conferences', md.fileTitles),
     listSubsection('lectures', md.fileTitles),
     listSubsection('misc', md.fileTitles),
+    listSubsection('general', md.fileTitles),
   ]);
 
-  const filesBySub: Record<'conferences' | 'lectures' | 'misc', FileRow[]> = {
-    conferences, lectures, misc,
+  const filesBySub: Record<'conferences' | 'lectures' | 'misc' | 'general', FileRow[]> = {
+    conferences, lectures, misc, general,
   };
 
   return (
@@ -114,7 +116,7 @@ export default async function ResourcesPage() {
                     />
                   ))}
                 </div>
-                {authed && <UploadDropzone subsection={s.key as 'conferences' | 'lectures' | 'misc'} />}
+                {authed && <UploadDropzone subsection={s.key as 'conferences' | 'lectures' | 'misc' | 'general'} />}
               </>
             )}
           </CollapsibleSection>
