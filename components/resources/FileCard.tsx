@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import RenameModal from './RenameModal';
+import { fileIdFor } from '@/lib/resources/fileId';
 
 type Props = {
   pathname: string;
@@ -11,10 +12,6 @@ type Props = {
   contentType: string;
   authed: boolean;
 };
-
-export function fileIdFor(pathname: string): string {
-  return 'file-' + pathname.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-}
 
 function iconFor(contentType: string): string {
   if (contentType === 'application/pdf') return '📄';

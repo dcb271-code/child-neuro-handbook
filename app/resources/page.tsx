@@ -1,7 +1,8 @@
 import { list } from '@vercel/blob';
 import { readMetadata, resolveTitle } from '@/lib/resources/metadata';
 import { isAuthed } from '@/lib/resources/auth';
-import FileCard, { fileIdFor } from '@/components/resources/FileCard';
+import FileCard from '@/components/resources/FileCard';
+import { fileIdFor } from '@/lib/resources/fileId';
 import LinkCard from '@/components/resources/LinkCard';
 import AuthBar from '@/components/resources/AuthBar';
 import UploadDropzone from '@/components/resources/UploadDropzone';
