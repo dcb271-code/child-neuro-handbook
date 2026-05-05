@@ -13,7 +13,7 @@ function deriveTitle(name: string): string {
   return noExt.replace(/[_-]+/g, ' ').replace(/\s+/g, ' ').trim();
 }
 
-export default function UploadDropzone({ subsection }: { subsection: 'conferences' | 'lectures' | 'misc' | 'general' }) {
+export default function UploadDropzone({ subsection }: { subsection: 'conferences' | 'lectures' | 'misc' | 'general' | 'journal' }) {
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState<string | null>(null);

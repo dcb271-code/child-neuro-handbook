@@ -44,6 +44,7 @@ const SUBSECTIONS: Array<{
   color: string;
 }> = [
   { key: 'misc',        title: 'Library',                    blurb: 'Reference papers and saved files', color: '#d97706' },
+  { key: 'journal',     title: 'Journal Club',               blurb: 'Articles for journal club',         color: '#0d9488' },
   { key: 'conferences', title: 'Conferences',                blurb: 'Slide decks and handouts',          color: '#7c3aed' },
   { key: 'lectures',    title: 'Lectures / Teaching Files',  blurb: 'Teaching slides and handouts',      color: '#059669' },
   { key: 'general',     title: 'Misc',                       blurb: 'Everything else',                   color: '#475569' },
@@ -54,15 +55,16 @@ export default async function ResourcesPage() {
   const authed = (() => { try { return isAuthed(); } catch { return false; } })();
   const md = await readMetadata();
 
-  const [conferences, lectures, misc, general] = await Promise.all([
+  const [conferences, lectures, misc, general, journal] = await Promise.all([
     listSubsection('conferences', md.fileTitles),
     listSubsection('lectures', md.fileTitles),
     listSubsection('misc', md.fileTitles),
     listSubsection('general', md.fileTitles),
+    listSubsection('journal', md.fileTitles),
   ]);
 
-  const filesBySub: Record<'conferences' | 'lectures' | 'misc' | 'general', FileRow[]> = {
-    conferences, lectures, misc, general,
+  const filesBySub: Record<'conferences' | 'lectures' | 'misc' | 'general' | 'journal', FileRow[]> = {
+    conferences, lectures, misc, general, journal,
   };
 
   return (
@@ -116,7 +118,7 @@ export default async function ResourcesPage() {
                     />
                   ))}
                 </div>
-                {authed && <UploadDropzone subsection={s.key as 'conferences' | 'lectures' | 'misc' | 'general'} />}
+                {authed && <UploadDropzone subsection={s.key as 'conferences' | 'lectures' | 'misc' | 'general' | 'journal'} />}
               </>
             )}
           </CollapsibleSection>
