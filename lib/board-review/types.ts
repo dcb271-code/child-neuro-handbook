@@ -30,6 +30,9 @@ export type Difficulty = 'easy' | 'medium' | 'hard';
 
 export type QuestionType = 'recall' | 'application';
 
+export type ModuleId = 1 | 2 | 3 | 4 | 5 | 6;
+export const MODULE_IDS: ModuleId[] = [1, 2, 3, 4, 5, 6];
+
 export type Option = {
   text: string;
   isCorrect: boolean;
@@ -48,6 +51,7 @@ export type Question = {
   };
   difficulty: Difficulty;
   clerkshipAppropriate: boolean;
+  module: ModuleId;
   dateAdded: string;
   sources: string[];
   learningObjective: string;

@@ -1,16 +1,18 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import type { Question, Dim1Category, Difficulty } from '@/lib/board-review/types';
-import { DIM1_LABEL, DIM1_COLOR } from '@/lib/board-review/types';
+import type { Question, Dim1Category, Difficulty, ModuleId } from '@/lib/board-review/types';
+import { DIM1_LABEL, DIM1_COLOR, MODULE_IDS } from '@/lib/board-review/types';
 import QuestionCard from './QuestionCard';
 import ResultsScreen from './ResultsScreen';
 
 type Phase = 'idle' | 'active' | 'complete';
 
+type TopicSelection = 'all' | 'adult' | Dim1Category;
+
 type Filters = {
-  dim1: Dim1Category | 'all';
-  population: 'peds' | 'adult' | 'all';
+  topic: TopicSelection;
+  module: ModuleId | 'all';
   difficulties: Set<Difficulty>;
   clerkshipOnly: boolean;
   count: number;
@@ -24,6 +26,9 @@ const DIFFICULTY_STYLE: Record<Difficulty, { dot: string; text: string; border: 
   hard:   { dot: '#dc2626', text: 'text-red-700 dark:text-red-300',     border: 'border-red-400',    bg: 'bg-red-50 dark:bg-red-900/20' },
 };
 
+const ADULT_COLOR = '#475569'; // slate
+const CLERKSHIP_COLOR = '#0d9488'; // teal
+
 function shuffle<T>(arr: T[]): T[] {
   const out = arr.slice();
   for (let i = out.length - 1; i > 0; i--) {
@@ -36,8 +41,8 @@ function shuffle<T>(arr: T[]): T[] {
 export default function BoardReviewApp({ questions: allQuestions }: { questions: Question[] }) {
   const [phase, setPhase] = useState<Phase>('idle');
   const [filters, setFilters] = useState<Filters>({
-    dim1: 'all',
-    population: 'all',
+    topic: 'all',
+    module: 'all',
     difficulties: new Set<Difficulty>(['easy', 'medium', 'hard']),
     clerkshipOnly: false,
     count: 10,
@@ -52,15 +57,27 @@ export default function BoardReviewApp({ questions: allQuestions }: { questions:
     return counts;
   }, [allQuestions]);
 
+  const adultCount = useMemo(() => allQuestions.filter((q) => q.labels.population === 'adult').length, [allQuestions]);
+
+  const moduleCounts = useMemo(() => {
+    const counts: Record<number, number> = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
+    for (const q of allQuestions) counts[q.module] = (counts[q.module] || 0) + 1;
+    return counts;
+  }, [allQuestions]);
+
   const filteredPool = useMemo(() => {
     return allQuestions.filter((q) => {
-      if (filters.dim1 !== 'all' && q.labels.dim1Category !== filters.dim1) return false;
-      if (filters.population !== 'all' && q.labels.population !== filters.population) return false;
+      if (filters.topic === 'adult') {
+        if (q.labels.population !== 'adult') return false;
+      } else if (filters.topic !== 'all') {
+        if (q.labels.dim1Category !== filters.topic) return false;
+      }
+      if (filters.module !== 'all' && q.module !== filters.module) return false;
       if (filters.difficulties.size > 0 && !filters.difficulties.has(q.difficulty)) return false;
       if (filters.clerkshipOnly && !q.clerkshipAppropriate) return false;
       return true;
     });
-  }, [allQuestions, filters.dim1, filters.population, filters.difficulties, filters.clerkshipOnly]);
+  }, [allQuestions, filters.topic, filters.module, filters.difficulties, filters.clerkshipOnly]);
 
   const effectiveCount = Math.min(filters.count, filteredPool.length);
 
@@ -146,14 +163,15 @@ export default function BoardReviewApp({ questions: allQuestions }: { questions:
         </p>
       </div>
 
+      {/* Topic — includes "Adult" as a folded pill at the end */}
       <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/40 p-5 mb-4">
         <h2 className="text-sm font-semibold text-slate-700 dark:text-slate-200 mb-3">Topic</h2>
         <div className="flex flex-wrap gap-2">
           <button
             type="button"
-            onClick={() => setFilters((f) => ({ ...f, dim1: 'all' }))}
+            onClick={() => setFilters((f) => ({ ...f, topic: 'all' }))}
             className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
-              filters.dim1 === 'all'
+              filters.topic === 'all'
                 ? 'border-indigo-400 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 font-semibold'
                 : 'border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800'
             }`}
@@ -161,13 +179,13 @@ export default function BoardReviewApp({ questions: allQuestions }: { questions:
             All ({allQuestions.length})
           </button>
           {sortedDim1.map((cat) => {
-            const active = filters.dim1 === cat;
+            const active = filters.topic === cat;
             const color = DIM1_COLOR[cat];
             return (
               <button
                 key={cat}
                 type="button"
-                onClick={() => setFilters((f) => ({ ...f, dim1: cat }))}
+                onClick={() => setFilters((f) => ({ ...f, topic: cat }))}
                 className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
                   active ? 'font-semibold' : 'hover:opacity-80'
                 }`}
@@ -181,32 +199,67 @@ export default function BoardReviewApp({ questions: allQuestions }: { questions:
               </button>
             );
           })}
+          {/* visual divider */}
+          <span className="self-center text-slate-300 dark:text-slate-600 select-none px-1" aria-hidden="true">|</span>
+          <button
+            type="button"
+            onClick={() => setFilters((f) => ({ ...f, topic: 'adult' }))}
+            className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
+              filters.topic === 'adult' ? 'font-semibold' : 'hover:opacity-80'
+            }`}
+            style={{
+              borderColor: filters.topic === 'adult' ? ADULT_COLOR : '#e2e8f0',
+              backgroundColor: filters.topic === 'adult' ? `${ADULT_COLOR}15` : 'transparent',
+              color: filters.topic === 'adult' ? ADULT_COLOR : undefined,
+            }}
+          >
+            Adult ({adultCount})
+          </button>
         </div>
       </div>
 
+      {/* Module */}
       <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/40 p-5 mb-4">
-        <h2 className="text-sm font-semibold text-slate-700 dark:text-slate-200 mb-3">Population</h2>
-        <div className="flex gap-2">
-          {(['all', 'peds', 'adult'] as const).map((p) => (
-            <button
-              key={p}
-              type="button"
-              onClick={() => setFilters((f) => ({ ...f, population: p }))}
-              className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
-                filters.population === p
-                  ? 'border-indigo-400 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 font-semibold'
-                  : 'border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800'
-              }`}
-            >
-              {p === 'all' ? 'All' : p === 'peds' ? 'Pediatric' : 'Adult'}
-            </button>
-          ))}
+        <h2 className="text-sm font-semibold text-slate-700 dark:text-slate-200 mb-1">Module</h2>
+        <p className="text-xs text-slate-500 dark:text-slate-400 mb-3">
+          Each module is a balanced slice of the bank — pick a different one each visit to avoid repeats.
+        </p>
+        <div className="flex flex-wrap gap-2">
+          <button
+            type="button"
+            onClick={() => setFilters((f) => ({ ...f, module: 'all' }))}
+            className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
+              filters.module === 'all'
+                ? 'border-indigo-400 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 font-semibold'
+                : 'border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800'
+            }`}
+          >
+            All
+          </button>
+          {MODULE_IDS.map((m) => {
+            const active = filters.module === m;
+            return (
+              <button
+                key={m}
+                type="button"
+                onClick={() => setFilters((f) => ({ ...f, module: m }))}
+                className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
+                  active
+                    ? 'border-indigo-400 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 font-semibold'
+                    : 'border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800'
+                }`}
+              >
+                {m} <span className="opacity-60">({moduleCounts[m]})</span>
+              </button>
+            );
+          })}
         </div>
       </div>
 
-      <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/40 p-5 mb-4">
+      {/* Difficulty + clerkship folded into one row */}
+      <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/40 p-5 mb-6">
         <h2 className="text-sm font-semibold text-slate-700 dark:text-slate-200 mb-3">Difficulty</h2>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           {(['easy', 'medium', 'hard'] as const).map((d) => {
             const active = filters.difficulties.has(d);
             const style = DIFFICULTY_STYLE[d];
@@ -234,28 +287,26 @@ export default function BoardReviewApp({ questions: allQuestions }: { questions:
               </button>
             );
           })}
+          <span className="text-slate-300 dark:text-slate-600 select-none px-1" aria-hidden="true">|</span>
+          <button
+            type="button"
+            onClick={() => setFilters((f) => ({ ...f, clerkshipOnly: !f.clerkshipOnly }))}
+            className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
+              filters.clerkshipOnly ? 'font-semibold' : 'hover:opacity-80'
+            }`}
+            style={{
+              borderColor: filters.clerkshipOnly ? CLERKSHIP_COLOR : '#e2e8f0',
+              backgroundColor: filters.clerkshipOnly ? `${CLERKSHIP_COLOR}15` : 'transparent',
+              color: filters.clerkshipOnly ? CLERKSHIP_COLOR : undefined,
+            }}
+            title="Restrict to questions tagged appropriate for medical-student level review"
+          >
+            Clerkship-only
+          </button>
         </div>
       </div>
 
-      <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/40 p-5 mb-4">
-        <label className="flex items-center gap-3 cursor-pointer">
-          <input
-            type="checkbox"
-            checked={filters.clerkshipOnly}
-            onChange={(e) => setFilters((f) => ({ ...f, clerkshipOnly: e.target.checked }))}
-            className="w-4 h-4 rounded border-slate-300 dark:border-slate-600 text-indigo-600 focus:ring-indigo-500"
-          />
-          <div>
-            <div className="text-sm font-semibold text-slate-700 dark:text-slate-200">
-              Clerkship-appropriate only
-            </div>
-            <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-              Filter to questions tagged appropriate for medical-student level review.
-            </div>
-          </div>
-        </label>
-      </div>
-
+      {/* Count */}
       <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/40 p-5 mb-6">
         <h2 className="text-sm font-semibold text-slate-700 dark:text-slate-200 mb-3">Number of questions</h2>
         <div className="flex gap-2">

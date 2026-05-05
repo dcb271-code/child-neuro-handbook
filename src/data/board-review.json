@@ -38,7 +38,8 @@
         "isCorrect": false,
         "rationale": "This option describes the mutation responsible for Periventricular Nodular Heterotopia."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-identify-the-primary-biochemical-defect-in-nonketotic-hyperg",
@@ -79,7 +80,8 @@
         "isCorrect": false,
         "rationale": "This option describes X-linked Adrenoleukodystrophy."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-diagnose-menkes-disease-based-on-its-unique-neurovascular-pr",
@@ -120,7 +122,8 @@
         "isCorrect": false,
         "rationale": "This option describes neurodegeneration with brain iron accumulation (PKAN)."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-recognize-the-clinical-and-histologic-hallmarks-of-krabbe-di",
@@ -161,7 +164,8 @@
         "isCorrect": false,
         "rationale": "This option describes Canavan disease, which involves U fibers."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-differentiate-sialidosis-type-1-from-other-cherry-red-spot-s",
@@ -202,7 +206,8 @@
         "isCorrect": false,
         "rationale": "This option deficiency (along with N-acetyl neuraminidase) causes Sialidosis Type 2, which features severe neurological features, coarse facial features, and severe dysostosis."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-correlate-infantile-neuronal-ceroid-lipofuscinosis-with-its-",
@@ -243,7 +248,8 @@
         "isCorrect": false,
         "rationale": "This option is characteristic of Juvenile NCL (Batten's disease, CLN3)."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-recognize-the-sequential-cutaneous-manifestations-of-inconti",
@@ -284,7 +290,8 @@
         "isCorrect": false,
         "rationale": "This option features ash-leaf spots and shagreen patches."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-diagnose-alobar-holoprosencephaly-based-on-core-radiologic-a",
@@ -325,7 +332,8 @@
         "isCorrect": false,
         "rationale": "This option refers to lissencephaly (smooth brain)."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-correlate-epidermal-nevus-syndrome-with-hemi-megalencephaly",
@@ -366,7 +374,8 @@
         "isCorrect": true,
         "rationale": "Epidermal nevus syndrome is defined by epidermal nevi (raised hyperpigmented patches present at birth/childhood) combined with neurological manifestations. The classic neurological triad includes intellectual disability, seizures, and ipsilateral brain malformations—most classically hemi-megalencephaly or lissencephaly."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-identify-the-genetic-mutation-and-mechanism-for-periventricu",
@@ -407,7 +416,8 @@
         "isCorrect": true,
         "rationale": "The patient has Periventricular Nodular Heterotopia (PVNH), which most commonly presents with seizures and learning disabilities. It is an X-linked dominant disorder caused by a mutation in the FLNA (Filamin A) gene on chromosome Xq28. This gene encodes a protein involved in cytoskeleton stabilization; its mutation impedes the attachment of neurons to the radial glia during migration. It is typically lethal in males."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-identify-the-expected-clinical-course-of-reversible-cerebral",
@@ -448,7 +458,8 @@
         "isCorrect": true,
         "rationale": "RCVS is characterized by severe headaches (with or without other neurological symptoms) and angiographic evidence of vasoconstriction of cerebral arteries that spontaneously resolves in 12 weeks."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-localize-the-betz-cells-within-the-layers-of-the-cerebral-co",
@@ -489,7 +500,8 @@
         "isCorrect": false,
         "rationale": "This option is the internal granular layer, which primarily receives afferent input from the thalamus."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-recognize-the-neurovascular-and-neuropathic-manifestations-o",
@@ -530,7 +542,8 @@
         "isCorrect": false,
         "rationale": "This option accumulates in Adrenoleukodystrophy."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-identify-the-prevention-and-biomarker-for-neural-tube-defect",
@@ -571,7 +584,8 @@
         "isCorrect": false,
         "rationale": "This option are incorrect vitamins for the primary prevention of NTDs."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-identify-the-target-antibody-in-rasmussen-s-encephalitis",
@@ -612,7 +626,8 @@
         "isCorrect": false,
         "rationale": "This option is the target in anti-NMDA receptor encephalitis."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-distinguish-developmental-regression-from-developmental-dela",
@@ -653,7 +668,8 @@
         "isCorrect": false,
         "rationale": "This option incorrectly minimize the loss of milestones as mere \"delay\" or \"plateauing,\" which misses the clinical urgency of regression."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-differentiate-central-from-peripheral-hypotonia-based-on-the",
@@ -694,7 +710,8 @@
         "isCorrect": false,
         "rationale": ", and D represent peripheral causes of hypotonia, which typically present with absent or depressed deep tendon reflexes and severe weakness, rather than hyperreflexia."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-recognize-the-red-flags-for-duchenne-muscular-dystrophy-and-",
@@ -735,7 +752,8 @@
         "isCorrect": false,
         "rationale": "This option evaluates for Strep pharyngitis, relevant for Sydenham chorea, not a myopathy."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-recognize-the-semiology-of-infantile-spasms-and-understand-t",
@@ -776,7 +794,8 @@
         "isCorrect": false,
         "rationale": "Infantile spasms do not carry an increased risk of sudden cardiac arrest. The urgency of treatment relates to preventing the catastrophic cognitive and developmental impact of ongoing hypsarrhythmia and untreated epileptic encephalopathy."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-differentiate-childhood-absence-seizures-from-behavioral-day",
@@ -817,7 +836,8 @@
         "isCorrect": false,
         "rationale": "This option would be expected if the child were simply daydreaming or inattentive, which does not fit the classic clinical seizure description."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-identify-red-flag-secondary-causes-of-headache-in-children",
@@ -858,7 +878,8 @@
         "isCorrect": false,
         "rationale": "This option is incorrect as tension headaches do not cause papilledema or daily morning vomiting."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-recognize-sickle-cell-disease-as-a-primary-risk-factor-for-p",
@@ -899,7 +920,8 @@
         "isCorrect": false,
         "rationale": "This option causes chronic progressive weakness, not acute stroke."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-identify-post-varicella-arteriopathy-as-a-cause-of-childhood",
@@ -940,7 +962,8 @@
         "isCorrect": false,
         "rationale": ", and D are common childhood viruses but are not the classic, highly tested infectious trigger for large vessel cerebral arteriopathy in children."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-formulate-a-management-plan-for-a-simple-febrile-seizure",
@@ -981,7 +1004,8 @@
         "isCorrect": false,
         "rationale": ", and C represent unnecessary, over-aggressive testing and treatment for a simple febrile seizure."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-understand-the-indications-and-risks-of-ordering-an-mri-with",
@@ -1022,7 +1046,8 @@
         "isCorrect": true,
         "rationale": "A practical clerkship competency is understanding the indications, basics of how to consent, and major risks for... MRI with sedation in kids. Children under age 6 typically cannot remain perfectly still for the duration of an MRI, making procedural sedation or general anesthesia a practical necessity and a primary point of informed consent."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-recognize-the-clinical-presentation-of-acute-chorea-sydenham",
@@ -1063,7 +1088,8 @@
         "isCorrect": false,
         "rationale": "This option describes Parkinson's disease, not an acute pediatric chorea."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-differentiate-motor-tics-from-focal-motor-seizures",
@@ -1104,7 +1130,8 @@
         "isCorrect": false,
         "rationale": "This option is incorrect because seizures cannot be voluntarily suppressed."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-identify-the-basic-skin-findings-associated-with-neurofibrom",
@@ -1145,7 +1172,8 @@
         "isCorrect": false,
         "rationale": "This option is characterized by ocular and cutaneous telangiectasias."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-recognize-the-clinical-clues-for-spinal-muscular-atrophy-sma",
@@ -1186,7 +1214,8 @@
         "isCorrect": true,
         "rationale": "Recognizing SMA clues and indications to refer quickly is a core objective. The combination of severe flaccid paralysis, areflexia, and normal cognition in an infant is the classic presentation of Spinal Muscular Atrophy (SMA), a disease of the anterior horn cells. Early recognition is vital due to the availability of time-sensitive gene therapies."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-identify-signs-of-increased-intracranial-pressure-and-shunt-",
@@ -1227,7 +1256,8 @@
         "isCorrect": false,
         "rationale": "This option manifests as continuous clinical or electrographic seizures, not isolated headache/vomiting/lethargy."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-differentiate-seizure-syncope-and-psychogenic-non-epileptic-",
@@ -1268,7 +1298,8 @@
         "isCorrect": true,
         "rationale": "Differentiating seizure vs. syncope vs. PNES is a core clerkship skill. The prodrome of pallor/diaphoresis in a provocative setting (prolonged standing/heat), followed by a brief loss of consciousness with minor myoclonic jerks (convulsive syncope) and an immediate, clear-headed recovery is the textbook presentation of vasovagal syncope."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-recognize-acute-flaccid-paralysis-and-the-need-to-rule-out-s",
@@ -1309,7 +1340,8 @@
         "isCorrect": false,
         "rationale": "This option is an epilepsy syndrome."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-associate-hypomelanotic-macules-and-infantile-spasms-with-tu",
@@ -1350,7 +1382,8 @@
         "isCorrect": false,
         "rationale": "This option features café-au-lait spots, not ash-leaf spots."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-identify-the-pattern-of-spastic-diplegic-cerebral-palsy-and-",
@@ -1391,7 +1424,8 @@
         "isCorrect": false,
         "rationale": "This option features primary incoordination and balance issues, localizing to the cerebellum."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-recognize-the-basic-algorithm-concept-for-treating-pediatric",
@@ -1432,7 +1466,8 @@
         "isCorrect": false,
         "rationale": "This option is inappropriate because a 15-minute seizure constitutes impending/established status epilepticus, requiring medical intervention and admission/observation, not immediate discharge."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-identify-venous-sinus-thrombosis-as-a-pediatric-stroke-etiol",
@@ -1473,7 +1508,8 @@
         "isCorrect": false,
         "rationale": "This option is a diagnosis of exclusion in a patient with acute focal seizures and papilledema."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-recognize-the-clinical-phenotype-of-rett-syndrome",
@@ -1514,7 +1550,8 @@
         "isCorrect": false,
         "rationale": "This option is a common cause of inherited intellectual disability and autism, particularly in males, but does not feature this specific pattern of profound loss of hand skills and hand-wringing."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-demonstrate-appropriate-professional-communication-skills-wh",
@@ -1555,7 +1592,8 @@
         "isCorrect": false,
         "rationale": "This option violates the principle of using simple, accessible language."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-formulate-a-basic-localization-hypothesis-for-a-patient-with",
@@ -1596,7 +1634,8 @@
         "isCorrect": false,
         "rationale": ", and D are all highly likely causes of diffuse altered mental status (coma/delirium) that leave brainstem pathways intact."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-adapt-the-neurologic-examination-for-pediatric-patients",
@@ -1637,7 +1676,8 @@
         "isCorrect": true,
         "rationale": "A \"must master\" skill on the neuro rotation is adapting the exam by age—infant primitive reflexes, tone, head control, visual tracking. Infants cannot follow commands, so the exam relies heavily on observational tone, primitive reflexes (e.g., Moro, rooting), and developmental posture (head control)."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-recognize-the-unique-clinical-presentation-and-genetic-defec",
@@ -1678,7 +1718,8 @@
         "isCorrect": false,
         "rationale": "This option mutations cause Central Core Myopathy, which presents with proximal weakness and malignant hyperthermia risk, but lacks the distinct contracture/hyperlaxity presentation."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-identify-the-american-academy-of-pediatrics-aap-age-guidelin",
@@ -1719,7 +1760,8 @@
         "isCorrect": false,
         "rationale": "This option are incorrect; while general developmental surveillance happens at every visit, autism-specific screening occurs later."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-differentiate-spinal-muscular-atrophy-sma-type-1-from-other-",
@@ -1760,7 +1802,8 @@
         "isCorrect": false,
         "rationale": "This option describes a primary myopathy (e.g., congenital myopathy or muscular dystrophy)."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-recognize-the-risk-factors-and-clinical-presentation-of-spas",
@@ -1801,7 +1844,8 @@
         "isCorrect": false,
         "rationale": "This option injury, often from kernicterus or profound asphyxia, results in dyskinetic/choreoathetoid cerebral palsy."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-diagnose-walker-warburg-syndrome-based-on-the-triad-of-muscu",
@@ -1842,7 +1886,8 @@
         "isCorrect": true,
         "rationale": "The classic triad of congenital muscular dystrophy (hypotonia, elevated CK), severe brain malformations (hydrocephalus, cobblestone lissencephaly, cerebellar hypoplasia), and severe ocular anomalies (microphthalmia, retinal dysplasia, cataracts) characterizes Walker-Warburg syndrome. It is an autosomal recessive disorder."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-identify-normal-developmental-variants-in-reading-skills-to-",
@@ -1883,7 +1928,8 @@
         "isCorrect": false,
         "rationale": "This option is inappropriate, as there is no evidence of ADHD in the vignette."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-recognize-the-clinical-presentation-and-specific-autonomic-f",
@@ -1924,7 +1970,8 @@
         "isCorrect": false,
         "rationale": "This option is a classic cause of folate-deficiency macrocytic anemia in infants, not botulism."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-identify-early-handedness-as-a-red-flag-for-hemiplegic-cereb",
@@ -1965,7 +2012,8 @@
         "isCorrect": true,
         "rationale": "Hand preference typically does not develop until after 1 year of age. The development of hand preference before age one is a significant red flag for possible hemiplegia (spastic hemiplegic cerebral palsy) affecting the contralateral limb. This infant's history of neonatal seizures further raises the suspicion for a perinatal stroke, the most common cause of hemiplegic cerebral palsy."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-identify-the-genetic-mutation-and-associated-anesthetic-risk",
@@ -2006,7 +2054,8 @@
         "isCorrect": false,
         "rationale": "This option are not the classic, direct, highly-tested surgical risks associated with RYR1 mutations."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-correlate-dyskinetic-cerebral-palsy-with-extreme-hyperbiliru",
@@ -2047,7 +2096,8 @@
         "isCorrect": false,
         "rationale": "This option damage results in spastic diplegia, typical of prematurity without kernicterus."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-distinguish-klumpke-palsy-from-erb-s-palsy-based-on-clinical",
@@ -2088,7 +2138,8 @@
         "isCorrect": false,
         "rationale": "This option describes Erb's palsy, which presents with the \"waiter's tip\" posture (adducted shoulder, extended elbow, pronated forearm) and an intact grasp reflex."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-recognize-the-classic-dysmorphic-features-of-cornelia-de-lan",
@@ -2129,7 +2180,8 @@
         "isCorrect": false,
         "rationale": "This option features a smooth philtrum, thin upper lip, short palpebral fissures, and microcephaly, but lacks the striking synophrys and micromelia."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-differentiate-congenital-acetylcholinesterase-deficiency-fro",
@@ -2170,7 +2222,8 @@
         "isCorrect": false,
         "rationale": "This option is caused by transplacental maternal antibodies and typically resolves within the first 3-5 weeks of life."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-identify-the-comorbidities-frequently-associated-with-touret",
@@ -2211,7 +2264,8 @@
         "isCorrect": false,
         "rationale": ", and D represent other psychiatric and behavioral disorders that are not the defining, classically highly-tested primary comorbidities of Tourette syndrome."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-identify-the-histologic-hallmark-of-nemaline-myopathy",
@@ -2252,7 +2306,8 @@
         "isCorrect": false,
         "rationale": "This option describes the late-stage dystrophic changes seen in Duchenne or Becker Muscular Dystrophy."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-diagnose-fetal-alcohol-syndrome-based-on-facial-dysmorpholog",
@@ -2293,7 +2348,8 @@
         "isCorrect": false,
         "rationale": "This option causes Fetal Hydantoin Syndrome (cleft lip/palate, hypoplastic nails, and cardiac defects)."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-differentiate-spinal-muscular-atrophy-type-2-based-on-age-of",
@@ -2334,7 +2390,8 @@
         "isCorrect": false,
         "rationale": "This option is incorrect for SMA, which is a progressive neurodegenerative disorder of anterior horn cells."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-recognize-the-biphasic-clinical-presentation-of-prader-willi",
@@ -2375,7 +2432,8 @@
         "isCorrect": false,
         "rationale": "This option causes Fragile X syndrome."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-diagnose-juvenile-myasthenia-gravis-based-on-clinical-sympto",
@@ -2416,7 +2474,8 @@
         "isCorrect": false,
         "rationale": "This option is a depolarizing neuromuscular blocker."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-differentiate-congenital-cytomegalovirus-cmv-infection-from-",
@@ -2457,7 +2516,8 @@
         "isCorrect": false,
         "rationale": "This option presents with snuffles, periostitis, and a maculopapular rash."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-recognize-muscle-eye-brain-disease-and-distinguish-it-from-w",
@@ -2498,7 +2558,8 @@
         "isCorrect": false,
         "rationale": "This option lacks the classic combination of lissencephaly and congenital eye malformations."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-diagnose-landau-kleffner-syndrome-acquired-epileptic-aphasia",
@@ -2539,7 +2600,8 @@
         "isCorrect": false,
         "rationale": "This option describes Childhood Absence Epilepsy, which presents with brief staring spells, not progressive language regression."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-identify-the-inheritance-pattern-and-protein-defect-of-duche",
@@ -2580,7 +2642,8 @@
         "isCorrect": false,
         "rationale": "This option describes the pathology of Spinal Muscular Atrophy."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-recognize-the-diagnostic-criteria-for-neurofibromatosis-type",
@@ -2621,7 +2684,8 @@
         "isCorrect": false,
         "rationale": "This option are pathognomonic for Aicardi syndrome (associated with infantile spasms and agenesis of the corpus callosum)."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-identify-the-clinical-characteristics-of-spastic-quadriplegi",
@@ -2662,7 +2726,8 @@
         "isCorrect": true,
         "rationale": "Spastic quadriplegia involves severe upper motor neuron signs (spasticity, hyperreflexia) affecting all four limbs (legs often > arms). It is typically caused by severe diffuse insults like severe hypoxic-ischemic encephalopathy/asphyxia, multicystic encephalomalacia, or severe CNS infections. It is heavily associated with severe comorbidities including pseudobulbar palsy (swallowing difficulties predisposing to aspiration), severe intellectual disability, and intractable seizures."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-identify-the-mechanism-of-action-of-natalizumab-and-its-majo",
@@ -2703,7 +2768,8 @@
         "isCorrect": false,
         "rationale": "This option describes the mechanism of fingolimod."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-localize-the-target-of-the-pathogenic-antibody-in-neuromyeli",
@@ -2744,7 +2810,8 @@
         "isCorrect": false,
         "rationale": "This option describes the primary target in multiple sclerosis and anti-MOG antibody disease (Myelin Oligodendrocyte Glycoprotein)."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-associate-the-anti-yo-antibody-with-paraneoplastic-cerebella",
@@ -2785,7 +2852,8 @@
         "isCorrect": false,
         "rationale": "This option is classically associated with anti-Hu (sensory neuronopathy/encephalomyelitis), anti-CRMP-5, or anti-VGCC (Lambert-Eaton)."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-localize-alexia-without-agraphia-to-the-left-pca-territory-a",
@@ -2826,7 +2894,8 @@
         "isCorrect": false,
         "rationale": "This option lesions cause Gerstmann's syndrome (agraphia, acalculia, right-left confusion, finger agnosia) or Alexia with Agraphia."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-identify-the-required-autonomic-features-for-sunct-syndrome",
@@ -2867,7 +2936,8 @@
         "isCorrect": false,
         "rationale": "This option describes the criteria for SUNA (Short-lasting Unilateral Neuralgiform headache attacks with cranial autonomic symptoms), which requires only one or neither of conjunctival injection and lacrimation."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-diagnose-a-medial-medullary-syndrome-dejerine-syndrome",
@@ -2908,7 +2978,8 @@
         "isCorrect": false,
         "rationale": "This option causes Lateral Medullary Syndrome (Wallenberg), which presents with crossed pain/temp loss, ataxia, Horner's syndrome, and bulbar symptoms (dysphagia/hoarseness), but typically spares motor strength and the hypoglossal nerve."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-differentiate-paroxysmal-hemicrania-based-on-its-absolute-re",
@@ -2949,7 +3020,8 @@
         "isCorrect": true,
         "rationale": "The patient has Paroxysmal Hemicrania, a trigeminal autonomic cephalalgia characterized by severe, short-lived unilateral headaches (2-30 minutes) occurring multiple times a day (>5 times), mostly in women. It is classically and absolutely an \"Indomethacin-responsive headache\"."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-diagnose-neurosarcoidosis-based-on-neuroimaging-and-classic-",
@@ -2990,7 +3062,8 @@
         "isCorrect": false,
         "rationale": "This option describes Krabbe disease (globoid cells)."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-recognize-the-artery-of-percheron-and-its-associated-bilater",
@@ -3031,7 +3104,8 @@
         "isCorrect": false,
         "rationale": "This option supplies the anterior medial frontal lobes."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-identify-the-pathophysiology-of-the-migraine-aura",
@@ -3072,7 +3146,8 @@
         "isCorrect": false,
         "rationale": "This option is a mechanism of allergic reactions/anaphylaxis, not the central driver of migraine aura."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-distinguish-primary-cns-lymphoma-in-an-immunocompromised-hos",
@@ -3113,7 +3188,8 @@
         "isCorrect": false,
         "rationale": "This option typically presents with multiple ring-enhancing lesions in the basal ganglia, and relies on Toxoplasma IgG/PCR, not EBV."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-diagnose-moyamoya-disease-based-on-clinical-presentation-and",
@@ -3154,7 +3230,8 @@
         "isCorrect": false,
         "rationale": "This option are typically driven by vertebrobasilar atherosclerosis or dissection, rather than the classic anterior circulation targets of Moyamoya."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-identify-the-typical-profile-and-management-of-reversible-ce",
@@ -3195,7 +3272,8 @@
         "isCorrect": true,
         "rationale": "Reversible Cerebral Vasoconstriction Syndrome (RCVS) classically presents with recurrent thunderclap headaches (often provoked by exertion, Valsalva, or sexual intercourse) and a \"string of beads\" appearance on angiography due to multifocal vasospasm. Unlike primary CNS vasculitis, the CSF is typically normal, and the condition spontaneously resolves within 12 weeks. Treatment is supportive (e.g., calcium channel blockers)."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-recognize-the-clinical-and-histopathological-features-of-cer",
@@ -3236,7 +3314,8 @@
         "isCorrect": false,
         "rationale": "This option describes the pathology of hypertensive intracerebral hemorrhage, which typically involves deep structures (putamen, thalamus, pons) rather than lobar cortical regions."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-recall-the-effect-of-oral-versus-intravenous-corticosteroids",
@@ -3277,7 +3356,8 @@
         "isCorrect": false,
         "rationale": ", and D are factually incorrect based on the ONTT results."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-apply-contraindications-for-iv-tpa-in-acute-ischemic-stroke",
@@ -3318,7 +3398,8 @@
         "isCorrect": false,
         "rationale": "This option represents a moderate-to-severe stroke, which is exactly what tPA is intended to treat. A very low NIHSS (minor/rapidly improving symptoms) is a relative contraindication."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-identify-the-age-dependent-diagnostic-criteria-for-pediatric",
@@ -3359,7 +3440,8 @@
         "isCorrect": false,
         "rationale": "Pediatric migraines are episodic, lasting 2–72 hours per attack. Continuous unremitting headache for 7 days does not meet ICHD migraine criteria and would suggest status migrainosus or a different headache disorder."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-localize-a-brainstem-stroke-causing-benedikt-syndrome",
@@ -3400,7 +3482,8 @@
         "isCorrect": false,
         "rationale": "This option causes Weber syndrome, which features an ipsilateral CN III palsy and contralateral dense hemiparesis (due to corticospinal tract damage), but lacks the prominent choreoathetosis/tremor of red nucleus involvement."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-diagnose-anti-hu-syndrome",
@@ -3441,7 +3524,8 @@
         "isCorrect": false,
         "rationale": "This option causes subacute cerebellar degeneration (breast/ovarian cancer)."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-identify-the-classic-mri-finding-of-a-cavernous-malformation",
@@ -3482,7 +3566,8 @@
         "isCorrect": false,
         "rationale": "This option describes an Arteriovenous Malformation (AVM), which contains high-flow arteries shunting directly to veins, appearing as flow voids."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-diagnose-idiopathic-intracranial-hypertension-pseudotumor-ce",
@@ -3523,7 +3608,8 @@
         "isCorrect": false,
         "rationale": "This option are indicated for Temporal Arteritis, which typically affects patients >50 years old and features jaw claudication, not papilledema and obesity."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-diagnose-dejerine-roussy-syndrome-thalamic-pain-syndrome",
@@ -3564,7 +3650,8 @@
         "isCorrect": false,
         "rationale": "This option causes crossed sensory signs (ipsilateral face, contralateral body), not complete hemisensory loss."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-institute-immediate-therapy-for-suspected-temporal-arteritis",
@@ -3605,7 +3692,8 @@
         "isCorrect": false,
         "rationale": "This option delays critical sight-saving therapy."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-diagnose-primary-angiitis-of-the-central-nervous-system-pacn",
@@ -3646,7 +3734,8 @@
         "isCorrect": false,
         "rationale": "This option shows nonspecific ischemic/inflammatory changes but cannot definitively confirm vasculitis over other etiologies."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-identify-the-optimal-surgical-versus-medical-management-for-",
@@ -3687,7 +3776,8 @@
         "isCorrect": false,
         "rationale": "This option was proven ineffective for preventing strokes compared to medical therapy in the EC/IC Bypass Study. -------------------------------------------------------------------------------- Neurogenetics Board Review Comprehensive Question Set (25) Here is a brand new, highly targeted set of 25 neurogenetics questions specifically tailored to your requested difficulty distribution (3 Very Easy, 7 Relatively Straightforward, 7 Medium, 5 Hard, and 3 Very Hard). These questions draw heavily on the chromosomal, metabolic, and inherited neurological disorder concepts from the provided \"Board Review\" and \"Pediatric Board Study Guide\" resources, ensuring zero redundancy with your previous question sets. VERY EASY (3 Questions)"
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-identify-the-proper-cytogenetic-notation-for-down-syndrome-m",
@@ -3728,7 +3818,8 @@
         "isCorrect": false,
         "rationale": "This option is the karyotype for Klinefelter syndrome (a male with an extra X chromosome)."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-identify-the-genetic-mechanism-of-huntington-disease",
@@ -3769,7 +3860,8 @@
         "isCorrect": false,
         "rationale": "This option is the mechanism for Prader-Willi syndrome."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-identify-the-chromosomal-location-and-gene-product-associate",
@@ -3810,7 +3902,8 @@
         "isCorrect": false,
         "rationale": "This option describes the genetics of Tuberous Sclerosis Complex Type 1 (TSC1)."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-diagnose-wolf-hirschhorn-syndrome-based-on-characteristic-fa",
@@ -3851,7 +3944,8 @@
         "isCorrect": false,
         "rationale": "This option causes midline defects like holoprosencephaly, cleft lip/palate, and polydactyly."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-diagnose-cri-du-chat-syndrome-based-on-characteristic-clinic",
@@ -3892,7 +3986,8 @@
         "isCorrect": false,
         "rationale": "This option is Wolf-Hirschhorn syndrome (\"Greek helmet\" face)."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-identify-the-intracellular-signaling-pathway-dysregulated-in",
@@ -3933,7 +4028,8 @@
         "isCorrect": false,
         "rationale": ", and D are critical neurodevelopmental and oncologic pathways, but they are not the primary target of the TSC1/TSC2 complex. (Notch signaling is heavily implicated in CADASIL)."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-correlate-the-molar-tooth-sign-on-mri-with-joubert-syndrome",
@@ -3974,7 +4070,8 @@
         "isCorrect": false,
         "rationale": "This option is characteristic of neurological Wilson disease."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-diagnose-fragile-x-associated-tremor-ataxia-syndrome-fxtas-b",
@@ -4015,7 +4112,8 @@
         "isCorrect": true,
         "rationale": "The patient has Fragile X-associated tremor/ataxia syndrome (FXTAS), which occurs in older adult male carriers of the FMR1 premutation (55 to 200 CGG repeats). It presents with ataxia, intention tremor, cognitive decline, and the classic MRI finding of middle cerebellar peduncle (MCP) hyperintensities. His grandson has the full mutation (>200 repeats) causing classic Fragile X syndrome."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-identify-the-defective-gene-in-x-linked-charcot-marie-tooth-",
@@ -4056,7 +4154,8 @@
         "isCorrect": false,
         "rationale": "This option is the defective protein in Friedreich Ataxia."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-identify-the-genetic-defect-associated-with-familial-hemiple",
@@ -4097,7 +4196,8 @@
         "isCorrect": false,
         "rationale": "This option mutations cause FHM3, as well as Dravet syndrome and GEFS+."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-identify-the-primary-cellular-function-of-the-nf2-gene-produ",
@@ -4138,7 +4238,8 @@
         "isCorrect": true,
         "rationale": "Merlin is a structural cytoskeletal protein (related to the ezrin-radixin-moesin family) that links actin filaments to cell membrane proteins. It acts as a tumor suppressor by regulating contact-dependent inhibition of cell growth; loss of its function leads to the unchecked proliferation of Schwann cells and meningeal cells."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-recognize-the-somatic-sporadic-inheritance-pattern-of-sturge",
@@ -4179,7 +4280,8 @@
         "isCorrect": false,
         "rationale": "This option is the inheritance pattern for disorders like Menkes disease or Adrenoleukodystrophy."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-differentiate-megalencephalic-leukoencephalopathy-with-subco",
@@ -4220,7 +4322,8 @@
         "isCorrect": false,
         "rationale": "This option presents in older boys (4-8 years) with normal head size, behavioral changes, and posterior-predominant white matter demyelination."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-correlate-surf1-gene-mutations-with-leigh-syndrome-and-compl",
@@ -4261,7 +4364,8 @@
         "isCorrect": true,
         "rationale": "The clinical presentation of acute developmental regression, brainstem/basal ganglia symmetric lesions, and hypotonia following a metabolic stressor is the classic presentation of Leigh syndrome (subacute necrotizing encephalomyelopathy). The most common nuclear gene mutation causing Leigh syndrome is SURF1, which encodes an assembly factor crucial for Complex IV (Cytochrome c oxidase)."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-correlate-periventricular-nodular-heterotopia-with-the-flna-",
@@ -4302,7 +4406,8 @@
         "isCorrect": true,
         "rationale": "The MRI findings describe periventricular nodular heterotopia (PVNH). In familial cases, this is most commonly caused by a mutation in the FLNA (Filamin A) gene on chromosome Xq28, which regulates actin cytoskeleton stabilization for neuronal migration. It is inherited in an X-linked dominant pattern. Crucially, it is typically lethal in males in utero (explaining the mother's history of recurrent male miscarriages), meaning it presents almost exclusively in females."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-diagnose-niemann-pick-type-c-based-on-vertical-supranuclear-",
@@ -4343,7 +4448,8 @@
         "isCorrect": false,
         "rationale": "This option describes Tay-Sachs disease."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-correlate-bassen-kornzweig-syndrome-abetalipoproteinemia-wit",
@@ -4384,7 +4490,8 @@
         "isCorrect": true,
         "rationale": "The clinical picture of severe fat malabsorption, acanthocytosis, atypical retinitis pigmentosa, and a profound spinocerebellar/posterior column neuropathy (mimicking Friedreich ataxia or Vitamin E deficiency) is diagnostic of Abetalipoproteinemia (Bassen-Kornzweig syndrome). It is caused by an autosomal recessive mutation in the MTTP gene, completely abrogating the assembly of apolipoprotein B-containing lipoproteins (chylomicrons, VLDL, LDL) and leading to a severe, secondary fat-soluble vitamin (especially Vitamin E) deficiency that destroys the posterior columns and peripheral nerves."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-diagnose-unverricht-lundborg-disease-epm1",
@@ -4425,7 +4532,8 @@
         "isCorrect": false,
         "rationale": "This option describes MERRF (Myoclonic Epilepsy with Ragged Red Fibers), which features myoclonus, ataxia, short stature, and deafness."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-identify-the-underlying-molecular-defect-in-hereditary-hemor",
@@ -4466,7 +4574,8 @@
         "isCorrect": false,
         "rationale": "This option is the pathway disrupted in CADASIL (leading to subcortical strokes and dementia)."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-diagnose-tangier-disease-based-on-neuropathy-and-pathognomon",
@@ -4507,7 +4616,8 @@
         "isCorrect": false,
         "rationale": "This option mutations cause Fabry disease (X-linked, burning pain in hands/feet, angiokeratomas)."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-identify-the-clinical-features-and-classification-of-dejerin",
@@ -4548,7 +4658,8 @@
         "isCorrect": false,
         "rationale": "This option describes features not typical of CMT3. (CMTX is X-linked, but does not typically cause severe ID)."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-recognize-the-clinical-presentation-of-18q-deletion-syndrome",
@@ -4589,7 +4700,8 @@
         "isCorrect": false,
         "rationale": "This option features elfin facies, hypercalcemia, and supravalvular aortic stenosis. -------------------------------------------------------------------------------- VERY HARD (3 Questions)"
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-diagnose-molybdenum-cofactor-deficiency-sulfite-oxidase-defi",
@@ -4630,7 +4742,8 @@
         "isCorrect": true,
         "rationale": "Intractable neonatal seizures, hypertonia, and uniquely dislocated lenses (ectopia lentis) in a newborn are pathognomonic for Sulfite Oxidase Deficiency or Molybdenum Cofactor Deficiency. (Molybdenum is a required cofactor for sulfite oxidase). Because sulfite cannot be converted to sulfate, it reacts with cysteine to form S-sulfocysteine, which accumulates to toxic levels and is massively elevated in the urine."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-identify-the-enzyme-defect-in-cerebrotendinous-xanthomatosis",
@@ -4671,7 +4784,8 @@
         "isCorrect": false,
         "rationale": "This option is deficient in Refsum disease, a peroxisomal disorder that causes retinitis pigmentosa, ataxia, and neuropathy (without tendon xanthomas or cataracts)."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-identify-the-genetic-defect-and-molecular-mechanism-of-narp-",
@@ -4712,7 +4826,8 @@
         "isCorrect": true,
         "rationale": "NARP is a classic mitochondrial encephalomyopathy. Like MELAS and MERRF, it is caused by a mutation in the Mitochondrial DNA (mtDNA), specifically the MT-ATP6 gene, which encodes a subunit of ATP synthase (Complex V). Because it is located in the mitochondrial genome, it is passed strictly through maternal inheritance and is subject to heteroplasmy, explaining the variable phenotypic severity seen among generations in the maternal lineage."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-diagnose-lafora-body-disease-based-on-clinical-presentation-",
@@ -4753,7 +4868,8 @@
         "isCorrect": false,
         "rationale": "This option are the classic electron microscopy finding for Late Infantile Neuronal Ceroid Lipofuscinosis (Batten disease)."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-identify-the-clinical-features-and-genetic-mechanism-of-auto",
@@ -4794,7 +4910,8 @@
         "isCorrect": true,
         "rationale": "The presentation of brief, hyperkinetic, bizarre nocturnal seizures with preserved awareness and a strong family history is classic for Autosomal Dominant Nocturnal Frontal Lobe Epilepsy (ADNFLE). It is classically associated with mutations in the CHRNA4 or CHRNB2 genes, which encode subunits of the neuronal nicotinic acetylcholine receptor."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-diagnose-pyridoxine-dependent-epilepsy-and-identify-its-unde",
@@ -4835,7 +4952,8 @@
         "isCorrect": false,
         "rationale": "This option causes GLUT1 deficiency syndrome, characterized by low CSF glucose and responsiveness to the ketogenic diet."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-differentiate-early-childhood-occipital-epilepsy-panayiotopo",
@@ -4876,7 +4994,8 @@
         "isCorrect": false,
         "rationale": "This option presents with staring spells and 3-Hz generalized spike-and-wave discharges."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-localize-a-focal-seizure-presenting-with-the-classic-fencing",
@@ -4917,7 +5036,8 @@
         "isCorrect": false,
         "rationale": "This option produces episodic focal somatosensory symptoms (tingling, numbness)."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-anticipate-the-pharmacokinetic-interaction-between-valproic-",
@@ -4958,7 +5078,8 @@
         "isCorrect": false,
         "rationale": "This option occurs with highly protein-bound drugs, but the toxicity here is distinctly driven by the epoxide metabolite accumulation."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-localize-mesial-temporal-lobe-seizures-based-on-classic-aura",
@@ -4999,7 +5120,8 @@
         "isCorrect": false,
         "rationale": "This option lesions (hamartomas) produce gelastic (laughing) seizures."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-recognize-the-interaction-between-estrogen-containing-contra",
@@ -5040,7 +5162,8 @@
         "isCorrect": true,
         "rationale": "Ethinyl estradiol is a potent inducer of the UDP-glucuronosyltransferase (UGT) enzyme system in the liver. Lamotrigine is primarily metabolized via glucuronidation. Adding an estrogen-containing oral contraceptive can increase lamotrigine clearance by >50%, resulting in sub-therapeutic levels and breakthrough seizures unless the lamotrigine dose is significantly increased."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-identify-risk-factors-for-the-recurrence-of-febrile-seizures",
@@ -5081,7 +5204,8 @@
         "isCorrect": true,
         "rationale": "Major risk factors for the recurrence of febrile seizures include young age at onset (<18 months), a family history of febrile seizures, a lower peak temperature precipitating the seizure, and a shorter duration of fever prior to the seizure."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-differentiate-benign-myoclonic-epilepsy-of-infancy-from-othe",
@@ -5122,7 +5246,8 @@
         "isCorrect": false,
         "rationale": "This option is indicated for highly refractory epilepsies, whereas this syndrome is benign."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-recognize-the-phenomenon-of-autoinduction-associated-with-ca",
@@ -5163,7 +5288,8 @@
         "isCorrect": false,
         "rationale": "CYP3A4 autoinduction by carbamazepine is largely complete within 3–5 weeks of reaching a stable dose; serum levels then plateau. A 1–2 year time course would be inconsistent with the known pharmacokinetics of enzyme induction."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-diagnose-lgi1-autoimmune-encephalitis-based-on-classic-seizu",
@@ -5204,7 +5330,8 @@
         "isCorrect": false,
         "rationale": "This option are targeted in anti-NMDAR encephalitis, which classically presents in young women with psychiatric symptoms, autonomic instability, and orofacial dyskinesias."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-correlate-anti-nmda-receptor-encephalitis-with-its-associate",
@@ -5245,7 +5372,8 @@
         "isCorrect": false,
         "rationale": "This option are not a classic primary site for tumors triggering this specific encephalitis."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-recognize-the-clinical-presentation-and-metabolic-etiology-o",
@@ -5286,7 +5414,8 @@
         "isCorrect": true,
         "rationale": "Early Myoclonic Encephalopathy (EME) presents in the neonatal period with erratic, fragmented myoclonus and a burst-suppression EEG pattern. Unlike Ohtahara syndrome (which presents with tonic spasms and is usually due to structural brain malformations), EME is most commonly caused by underlying inborn errors of metabolism, particularly nonketotic hyperglycinemia or amino/organic acidopathies."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-select-the-appropriate-targeted-therapy-for-infantile-spasms",
@@ -5327,7 +5456,8 @@
         "isCorrect": false,
         "rationale": "This option is the treatment for childhood absence epilepsy."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-identify-the-appropriate-second-line-therapy-for-pediatric-s",
@@ -5368,7 +5498,8 @@
         "isCorrect": false,
         "rationale": "This option or continuous midazolam/pentobarbital infusions are reserved for refractory status epilepticus (failing both first and second-line agents) and require intubation."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-recognize-the-clinical-sequence-of-hemiconvulsion-hemiplegia",
@@ -5409,7 +5540,8 @@
         "isCorrect": false,
         "rationale": "This option is the hallmark of premature hypoxic-ischemic injury."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-classify-a-complex-febrile-seizure-based-on-duration-and-foc",
@@ -5450,7 +5582,8 @@
         "isCorrect": false,
         "rationale": "Peak temperature does not classify a febrile seizure as simple or complex. Classification depends on duration (>15 minutes), focality, or recurrence within 24 hours."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-recognize-the-clinical-utility-of-the-ketogenic-diet-and-its",
@@ -5491,7 +5624,8 @@
         "isCorrect": false,
         "rationale": "This option are not the absolute, direct contraindications that fatty acid oxidation defects are, though high-protein versions of the diet must be modified for urea cycle disorders."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-identify-the-side-effect-profile-of-topiramate",
@@ -5532,7 +5666,8 @@
         "isCorrect": false,
         "rationale": "This option describes the classic side effect profile of Phenytoin."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-diagnose-sialidosis-type-1-cherry-red-spot-myoclonus-syndrom",
@@ -5573,7 +5708,8 @@
         "isCorrect": false,
         "rationale": "This option deficiency causes Tay-Sachs disease, which presents in infancy with cherry-red spots but features profound cognitive and motor regression."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-recall-normal-pediatric-eeg-maturation-regarding-the-posteri",
@@ -5614,7 +5750,8 @@
         "isCorrect": false,
         "rationale": ", and D are incorrect maturational milestones. Knowing that an 8 Hz PDR is expected by age 3 is essential for distinguishing normal maturation from abnormal background slowing in toddlers."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-recognize-the-risk-of-stevens-johnson-syndrome-with-rapid-la",
@@ -5655,7 +5792,8 @@
         "isCorrect": false,
         "rationale": "This option are idiosyncratic, black-box warning side effects of Valproic acid, not the primary acute risk of rapid lamotrigine titration."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-correlate-gelastic-seizures-with-a-hypothalamic-hamartoma",
@@ -5696,7 +5834,8 @@
         "isCorrect": false,
         "rationale": "This option is the location for ependymomas, presenting with signs of increased intracranial pressure and ataxia."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-differentiate-sandifer-syndrome-from-epileptic-seizures",
@@ -5737,7 +5876,8 @@
         "isCorrect": false,
         "rationale": "This option is the treatment for infantile spasms (West syndrome), which usually occur in clusters upon waking and feature a highly abnormal EEG (hypsarrhythmia)."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-recognize-the-clinical-presentation-of-a-vein-of-galen-malfo",
@@ -5778,7 +5918,8 @@
         "isCorrect": true,
         "rationale": "A Vein of Galen malformation is an arteriovenous shunt located deep in the brain. In the neonatal period, it classically presents with profound high-output congestive heart failure (due to the massive shunting of blood) and a cranial bruit. It can also lead to progressive macrocephaly due to hydrocephalus from increased venous pressure."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-diagnose-glut-1-deficiency-syndrome-based-on-early-onset-sei",
@@ -5819,7 +5960,8 @@
         "isCorrect": true,
         "rationale": "Early-onset seizures (often provoked by fasting), developmental delay, and the pathognomonic finding of low CSF glucose (hypoglycorrhachia) with a normal serum glucose define GLUT-1 deficiency syndrome. It is caused by a mutation in the SLC2A1 gene, which impairs glucose transport across the blood-brain barrier. It is highly responsive to the ketogenic diet."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-correlate-holoprosencephaly-with-trisomy-13-patau-syndrome",
@@ -5860,7 +6002,8 @@
         "isCorrect": false,
         "rationale": "This option features upslanting palpebral fissures, a single palmar crease, and atrioventricular septal defects."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-identify-the-specific-biochemical-marker-and-imaging-feature",
@@ -5901,7 +6044,8 @@
         "isCorrect": true,
         "rationale": "The triad of macrocephaly, hypotonia, and a leukodystrophy involving the subcortical U-fibers points to Canavan disease. It is caused by a deficiency in aspartoacylase, which leads to a diagnostic accumulation of N-acetylaspartic acid (NAA) in the urine, blood, and brain (visible as a massive NAA peak on MR spectroscopy)."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-diagnose-acute-disseminated-encephalomyelitis-adem-and-selec",
@@ -5942,7 +6086,8 @@
         "isCorrect": false,
         "rationale": "This option is the treatment for HSV encephalitis, which classically localizes to the medial temporal lobes, not multifocal diffuse lesions."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-recognize-the-clinical-presentation-and-mri-findings-of-a-di",
@@ -5983,7 +6128,8 @@
         "isCorrect": true,
         "rationale": "The presentation of multiple cranial nerve palsies (VI, VII), long tract signs (hemiparesis), and ataxia, coupled with an expansile mass in the pons, is the classic presentation of a brainstem glioma (Diffuse Intrinsic Pontine Glioma / DIPG). It carries a very poor prognosis."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-differentiate-transient-neonatal-myasthenia-gravis-from-cong",
@@ -6024,7 +6170,8 @@
         "isCorrect": false,
         "rationale": "This option describes the pathophysiology of poliomyelitis."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-identify-the-genetic-mechanism-underlying-angelman-syndrome",
@@ -6065,7 +6212,8 @@
         "isCorrect": true,
         "rationale": "Angelman syndrome is characterized by severe intellectual disability, severe speech impairment, ataxia, seizures, and a unique happy demeanor with inappropriate laughter (\"happy puppet\"). It is caused by a loss of expression of imprinted genes on the maternal chromosome 15q11-q13."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-recognize-the-clinical-features-and-age-of-onset-of-epilepsy",
@@ -6106,7 +6254,8 @@
         "isCorrect": false,
         "rationale": "This option presents in adolescence with early morning myoclonus and generalized tonic-clonic seizures."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-diagnose-alternating-hemiplegia-of-childhood-and-recognize-i",
@@ -6147,7 +6296,8 @@
         "isCorrect": true,
         "rationale": "The clinical picture of early-onset, recurrent episodes of alternating hemiplegia (swapping sides), oculomotor abnormalities, and complete temporary relief following sleep is the hallmark of Alternating Hemiplegia of Childhood (AHC). It is heavily linked to mutations in the ATP1A2 gene, which encodes the alpha-2 subunit of the sodium/potassium-transporting ATPase."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-identify-the-clinical-triggers-and-distinctive-neuroimaging-",
@@ -6188,7 +6338,8 @@
         "isCorrect": false,
         "rationale": "This option is a leukodystrophy presenting with extreme irritability, hypertonia, and white matter disease sparing U-fibers."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-correlate-epidermal-nevi-with-hemimegalencephaly-in-epiderma",
@@ -6229,7 +6380,8 @@
         "isCorrect": false,
         "rationale": "This option presents with ash-leaf spots, facial angiofibromas, and cortical tubers."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-identify-the-primary-anatomic-etiology-of-obstructive-sleep-",
@@ -6270,7 +6422,8 @@
         "isCorrect": true,
         "rationale": "In children (particularly preschool and early school age), Obstructive Sleep Apnea (OSA) frequently masquerades as ADHD (hyperactivity, inattention) rather than daytime sleepiness. Unlike adults, where obesity is the primary driver, the most common anatomic cause of pediatric OSA is adenotonsillar hypertrophy."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-recognize-the-association-between-right-to-left-cardiac-shun",
@@ -6311,7 +6464,8 @@
         "isCorrect": false,
         "rationale": "This option are incorrect mechanisms for this specific, highly-tested association."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-identify-arterial-dissection-as-a-cause-of-stroke-in-a-pedia",
@@ -6352,7 +6506,8 @@
         "isCorrect": false,
         "rationale": "This option causes an epidural hematoma."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-recognize-the-clinical-presentation-and-genetic-etiology-of-",
@@ -6393,7 +6548,8 @@
         "isCorrect": false,
         "rationale": "This option mutations cause Friedreich Ataxia."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-diagnose-benign-familial-neonatal-seizures-and-its-genetic-c",
@@ -6434,7 +6590,8 @@
         "isCorrect": true,
         "rationale": "Benign familial neonatal seizures (\"fifth day fits\") typically present around day 5 of life with focal clonic or apneic seizures in an otherwise healthy infant. They are self-limiting and have an autosomal dominant inheritance pattern. They are most commonly caused by mutations in the KCNQ2 or KCNQ3 genes, which encode voltage-gated potassium channels."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-identify-the-severe-neonatal-presentation-of-congenital-myot",
@@ -6475,7 +6632,8 @@
         "isCorrect": false,
         "rationale": "This option are incorrect; Myotonic Dystrophy Type 1 is an autosomal dominant disorder."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-recognize-the-clinical-stigmata-and-neurologic-manifestation",
@@ -6516,7 +6674,8 @@
         "isCorrect": false,
         "rationale": "This option classically presents with chorioretinitis, hydrocephalus, and diffuse intracranial calcifications."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-identify-the-clinical-presentation-and-genetic-defect-of-pel",
@@ -6557,7 +6716,8 @@
         "isCorrect": true,
         "rationale": "Pendular nystagmus in early infancy, titubation, and an MRI showing classic hypomyelination (rather than demyelination) are hallmarks of Pelizaeus-Merzbacher Disease (PMD). It is an X-linked recessive disorder caused by a mutation in the PLP1 gene, which is a major structural protein of CNS myelin."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-diagnose-lead-encephalopathy-and-identify-its-classic-hemato",
@@ -6598,7 +6758,8 @@
         "isCorrect": false,
         "rationale": "This option are seen in microangiopathic hemolytic anemias (e.g., HUS, TTP)."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-recognize-the-classic-dysmorphic-features-of-trisomy-18",
@@ -6639,7 +6800,8 @@
         "isCorrect": false,
         "rationale": "This option features a webbed neck, cystic hygroma, and primary amenorrhea later in life."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-correlate-parinaud-syndrome-with-a-mass-in-the-pineal-region",
@@ -6680,7 +6842,8 @@
         "isCorrect": false,
         "rationale": "This option mass would cause lower cranial nerve palsies and long-tract signs."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-recognize-the-clinical-triad-of-lesch-nyhan-syndrome-and-its",
@@ -6721,7 +6884,8 @@
         "isCorrect": false,
         "rationale": "This option is deficient in Niemann-Pick disease (hepatosplenomegaly, cherry-red spot)."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-identify-fda-approved-abortive-treatments-for-pediatric-migr",
@@ -6762,7 +6926,8 @@
         "isCorrect": false,
         "rationale": "This option is a calcium-channel blocker used occasionally for migraine or cluster headache prophylaxis, not acute abortive therapy."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-identify-the-clinical-presentation-and-genetic-mutation-asso",
@@ -6803,7 +6968,8 @@
         "isCorrect": false,
         "rationale": "This option mutations are associated with paroxysmal kinesiogenic dyskinesia and benign familial infantile convulsions."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-diagnose-cadasil-based-on-a-characteristic-clinical-history-",
@@ -6844,7 +7010,8 @@
         "isCorrect": false,
         "rationale": "This option are classically involved in Canavan and Alexander diseases, and spared in Krabbe and Metachromatic Leukodystrophy."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-recognize-the-clinical-presentation-eeg-findings-and-specifi",
@@ -6885,7 +7052,8 @@
         "isCorrect": false,
         "rationale": "This option is the hallmark of Guillain-Barré syndrome."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-identify-the-deficient-enzyme-in-pompe-disease-glycogen-stor",
@@ -6926,7 +7094,8 @@
         "isCorrect": false,
         "rationale": "This option is deficient in McArdle disease (GSD Type V), which presents in older children/adolescents with exercise-induced cramping and myoglobinuria."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-recognize-the-clinical-history-delayed-presentation-and-clas",
@@ -6967,7 +7136,8 @@
         "isCorrect": false,
         "rationale": "This option is the highly chaotic pattern seen in West syndrome (infantile spasms)."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-localize-the-lesion-responsible-for-internuclear-ophthalmopl",
@@ -7008,7 +7178,8 @@
         "isCorrect": false,
         "rationale": "This option acts as the horizontal gaze center; a lesion here causes an ipsilateral conjugate gaze palsy (neither eye can look toward the side of the lesion)."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-identify-the-inheritance-pattern-biochemical-defect-and-clin",
@@ -7049,7 +7220,8 @@
         "isCorrect": false,
         "rationale": "This option describes Wilson disease, another copper transport defect (ATP7B), which typically presents in older childhood/adolescence with liver disease or extrapyramidal symptoms, rather than early infancy with kinky hair."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-diagnose-the-miller-fisher-variant-of-guillain-barr-syndrome",
@@ -7090,7 +7262,8 @@
         "isCorrect": false,
         "rationale": "This option causes a descending flaccid paralysis with cranial nerve palsies, sluggish pupils, and prominent hypotonia/weakness, typically without pronounced isolated ataxia."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-recognize-the-clinical-presentation-physical-findings-and-sp",
@@ -7131,7 +7304,8 @@
         "isCorrect": false,
         "rationale": "This option is deficient in Metachromatic Leukodystrophy, a demyelinating disorder that causes peripheral neuropathy and central white matter disease without massive hepatosplenomegaly or a cherry-red spot."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-identify-the-clinical-and-eeg-features-of-ohtahara-syndrome",
@@ -7172,7 +7346,8 @@
         "isCorrect": false,
         "rationale": "This option is the classic EEG pattern for West syndrome (infantile spasms), which typically presents slightly later (4 to 8 months of age)."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-correlate-the-clinical-presentation-of-a-craniopharyngioma-w",
@@ -7213,7 +7388,8 @@
         "isCorrect": false,
         "rationale": "This option describes an intraventricular tumor, such as a choroid plexus papilloma or a subependymal giant cell astrocytoma (SEGA), which typically presents with obstructive hydrocephalus."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-diagnose-cerebral-venous-sinus-thrombosis-and-recognize-the-",
@@ -7254,7 +7430,8 @@
         "isCorrect": true,
         "rationale": "The patient has a cerebral venous sinus thrombosis (CSVT) associated with a hypercoagulable state (OCP use). CSVT often presents with headache, seizures, and venous infarctions that may cross arterial territories and undergo hemorrhagic conversion. The standard of care is systemic anticoagulation, which is indicated even in the presence of hemorrhagic infarcts, as it prevents further thrombosis and does not significantly increase bleeding risk."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-correlate-the-specific-neuroanatomic-malformation-of-schizen",
@@ -7295,7 +7472,8 @@
         "isCorrect": false,
         "rationale": "This option describes a Chiari malformation."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-diagnose-zellweger-spectrum-disorder-based-on-characteristic",
@@ -7336,7 +7514,8 @@
         "isCorrect": false,
         "rationale": "This option is elevated in Phenylketonuria (PKU)."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-diagnose-panayiotopoulos-syndrome-early-childhood-occipital-",
@@ -7377,7 +7556,8 @@
         "isCorrect": false,
         "rationale": "This option is the finding for Childhood Absence Epilepsy, which features brief staring spells, not prolonged autonomic seizures."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-identify-the-classic-mri-sign-associated-with-neurologic-wil",
@@ -7418,7 +7598,8 @@
         "isCorrect": false,
         "rationale": "This option is pathognomonic for Pantothenate Kinase-Associated Neurodegeneration (PKAN)."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-identify-the-defective-ion-channel-in-myotonia-congenita",
@@ -7459,7 +7640,8 @@
         "isCorrect": false,
         "rationale": "This option are targeted by autoantibodies in Myasthenia Gravis, which presents with fatigable weakness, not myotonia."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-recognize-the-clinical-features-and-anatomic-localization-of",
@@ -7500,7 +7682,8 @@
         "isCorrect": false,
         "rationale": "This option occlusion causes Lateral Pontine Syndrome, which presents similarly but distinctly features ipsilateral facial paralysis and deafness/tinnitus, rather than the prominent hoarseness/dysphagia of a medullary lesion."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-identify-the-anatomical-target-of-poliovirus-leading-to-flac",
@@ -7541,7 +7724,8 @@
         "isCorrect": false,
         "rationale": "This option is the target of the immune-mediated attack in Guillain-Barré syndrome, which typically presents with symmetric, ascending paralysis, not a focal/asymmetric paralysis heralded by acute meningitis."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-diagnose-wernicke-encephalopathy-based-on-the-clinical-triad",
@@ -7582,7 +7766,8 @@
         "isCorrect": false,
         "rationale": "This option deficiency can cause intractable seizures in neonates or peripheral neuropathy."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-recognize-the-inheritance-pattern-dermatologic-stages-and-sy",
@@ -7623,7 +7808,8 @@
         "isCorrect": false,
         "rationale": "This option describes ataxia-telangiectasia."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-diagnose-homocystinuria-based-on-phenotypic-similarities-to-",
@@ -7664,7 +7850,8 @@
         "isCorrect": false,
         "rationale": "This option causes Lesch-Nyhan syndrome (self-mutilation, choreoathetosis, hyperuricemia)."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-differentiate-sandifer-syndrome-from-epileptic-spasms-based-",
@@ -7705,7 +7892,8 @@
         "isCorrect": false,
         "rationale": "This option would show corresponding focal epileptiform activity on the EEG and are not strictly tied to the act of feeding."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-recognize-the-classic-clinical-triad-and-inheritance-pattern",
@@ -7746,7 +7934,8 @@
         "isCorrect": false,
         "rationale": "This option describes Tay-Sachs or Krabbe disease, which have distinct features (e.g., cherry red spot, optic atrophy)."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-correlate-the-clinical-presentation-and-frontal-predominant-",
@@ -7787,7 +7976,8 @@
         "isCorrect": false,
         "rationale": "This option are alpha-synuclein inclusions found in the substantia nigra in Parkinson disease or the cortex in Lewy Body Dementia."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-recognize-the-clinical-presentation-of-stroke-in-a-patient-w",
@@ -7828,7 +8018,8 @@
         "isCorrect": true,
         "rationale": "The patient’s history of vaso-occlusive crises and acute chest syndrome indicates sickle cell disease. Sickle cell disease is a major risk factor for large-artery ischemic stroke in children (often involving the internal carotid or middle cerebral arteries) due to chronic intimal damage and stenosis."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-diagnose-biotinidase-deficiency-based-on-its-classic-dermato",
@@ -7869,7 +8060,8 @@
         "isCorrect": true,
         "rationale": "The clinical triad of neurologic features (seizures, hearing loss, encephalopathy), distinct dermatologic findings (alopecia, acrodermatitis enteropathica-like skin rash), and metabolic acidosis/lactic acidosis is the classic presentation of biotinidase deficiency, a treatable multiple carboxylase deficiency."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-differentiate-congenital-toxoplasmosis-based-on-its-characte",
@@ -7910,7 +8102,8 @@
         "isCorrect": true,
         "rationale": "The classic clinical triad of congenital toxoplasmosis includes chorioretinitis, hydrocephalus/microcephaly, and intracranial calcifications. On neuroimaging, toxoplasmosis classically presents with diffuse intraparenchymal calcifications."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-identify-the-genetic-mechanism-underlying-prader-willi-syndr",
@@ -7951,7 +8144,8 @@
         "isCorrect": false,
         "rationale": "This option results in Angelman syndrome, which presents with severe intellectual disability, an unsteady wide-based gait, a happy demeanor with frequent laughing, and seizures."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-associate-opsoclonus-myoclonus-syndrome-with-its-most-common",
@@ -7992,7 +8186,8 @@
         "isCorrect": false,
         "rationale": "This option are primary posterior fossa brain tumors. While they cause ataxia and increased intracranial pressure, they do not cause the paraneoplastic opsoclonus-myoclonus syndrome."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-diagnose-juvenile-dermatomyositis-based-on-clinical-and-labo",
@@ -8033,7 +8228,8 @@
         "isCorrect": false,
         "rationale": "This option presents with proximal weakness and high CPK but exclusively affects boys (X-linked recessive) and lacks the classic inflammatory rashes."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-recognize-cyclic-vomiting-syndrome-as-a-migraine-equivalent-",
@@ -8074,7 +8270,8 @@
         "isCorrect": true,
         "rationale": "Cyclic vomiting syndrome (also known as abdominal migraine) is characterized by stereotyped, recurrent bouts of intense nausea and vomiting separated by completely symptom-free intervals. It is widely recognized as a childhood migraine equivalent, and many of these patients go on to develop classic migraine headaches later in life."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-distinguish-a-simple-febrile-seizure-from-a-complex-febrile-",
@@ -8115,7 +8312,8 @@
         "isCorrect": true,
         "rationale": "A simple febrile seizure occurs in a child aged 6 months to 5 years, is generalized (non-focal), lasts less than 15 minutes, and occurs only once in a 24-hour period. This child meets all criteria for a simple febrile seizure."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-recognize-the-laboratory-profile-of-ornithine-transcarbamyla",
@@ -8156,7 +8354,8 @@
         "isCorrect": false,
         "rationale": "This option presents with severe metabolic ketoacidosis and sweet-smelling urine."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-recall-the-clinical-criteria-for-phace-syndrome",
@@ -8197,7 +8396,8 @@
         "isCorrect": false,
         "rationale": "Epidermal nevi are the hallmark of Epidermal Nevus Syndrome (Schimmelpenning), not PHACE. The \"E\" in PHACE stands for Eye abnormalities; sternal/supraumbilical raphe defects extend the acronym to PHACES."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-diagnose-an-acute-dystonic-reaction-secondary-to-dopamine-re",
@@ -8238,7 +8438,8 @@
         "isCorrect": false,
         "rationale": "This option is used for Parkinson disease or Dopa-responsive dystonia, but is not the acute abortive treatment of choice for medication-induced dystonic reactions."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-identify-the-classic-presentation-of-retinoblastoma",
@@ -8279,7 +8480,8 @@
         "isCorrect": false,
         "rationale": "This option presents as sudden, painless vision loss with a \"cherry-red spot\" on the macula upon fundoscopy, not gross leukocoria."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-diagnose-mcardle-disease-glycogen-storage-disease-type-v-bas",
@@ -8320,7 +8522,8 @@
         "isCorrect": false,
         "rationale": "This option is deficient in Pompe disease (Glycogen Storage Disease Type II), which presents in infancy with severe hypotonia, massive cardiomegaly, and heart failure."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-recognize-the-clinical-triad-of-classic-galactosemia",
@@ -8361,7 +8564,8 @@
         "isCorrect": true,
         "rationale": "The triad of jaundice/hepatomegaly, cataracts, and E. coli sepsis in a neonate ingesting lactose (breast milk) is the classic presentation of Galactosemia (galactose-1-phosphate uridyltransferase deficiency). The immediate and life-saving intervention is the total elimination of dietary galactose/lactose, transitioning the infant to a soy-based formula."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-diagnose-lyme-disease-presenting-as-an-isolated-cranial-neur",
@@ -8402,7 +8606,8 @@
         "isCorrect": false,
         "rationale": "This option are generally reserved for signs of more extensive CNS involvement (e.g., meningitis, severe headache, altered mental status) or if the diagnosis remains unclear, but are not the first-line initial diagnostic test for isolated facial palsy suspected of being Lyme."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-recall-the-cardinal-features-and-serum-biomarker-for-ataxia-",
@@ -8443,7 +8648,8 @@
         "isCorrect": false,
         "rationale": "This option is highly elevated in muscular dystrophies."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-differentiate-an-epidural-hematoma-based-on-mechanism-and-ne",
@@ -8484,7 +8690,8 @@
         "isCorrect": true,
         "rationale": "The classic clinical sequence of a lucid interval followed by rapid neurologic decline after head trauma, combined with a biconvex (lens-shaped) hyperdensity on CT, is diagnostic of an epidural hematoma. This is almost exclusively caused by a laceration of the middle meningeal artery underneath a temporal bone fracture."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-identify-the-classic-cns-tumor-associated-with-von-hippel-li",
@@ -8525,7 +8732,8 @@
         "isCorrect": true,
         "rationale": "Cerebellar and spinal hemangioblastomas are the classic central nervous system tumors associated with Von Hippel-Lindau disease, alongside retinal angiomas and renal cell carcinomas."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-correlate-the-chiari-ii-malformation-with-its-classic-spinal",
@@ -8566,7 +8774,8 @@
         "isCorrect": false,
         "rationale": "This option occurs in various syndromes (like Aicardi) but is not the defining spinal dysraphism of Chiari II."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-differentiate-sleep-terrors-from-nightmares-based-on-clinica",
@@ -8607,7 +8816,8 @@
         "isCorrect": false,
         "rationale": "This option includes nightmares, which occur later in the night (during REM sleep), are fully recalled by the child, and the child can be easily awakened and consoled."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-diagnose-benign-epilepsy-with-centrotemporal-spikes-bects-fr",
@@ -8648,7 +8858,8 @@
         "isCorrect": true,
         "rationale": "The patient’s clinical presentation of a nocturnal focal motor seizure involving the face (twitching, drooling, speech arrest) in an otherwise healthy school-aged child is classic for Benign Epilepsy with Centrotemporal Spikes (BECTS), also known as Rolandic Epilepsy. The characteristic EEG finding is bilateral (or unilateral) independent centrotemporal spikes."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-diagnose-x-linked-adrenoleukodystrophy-based-on-combined-neu",
@@ -8689,7 +8900,8 @@
         "isCorrect": false,
         "rationale": "This option insufficiency causes Type 1 Diabetes Mellitus, which is an autoimmune process unrelated to X-ALD."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-recognize-the-classic-cardiac-metabolic-and-dysmorphic-featu",
@@ -8730,7 +8942,8 @@
         "isCorrect": false,
         "rationale": "Williams syndrome is classically associated with infantile hypercalcemia (not hypophosphatemia), thought to relate to abnormal vitamin D handling and calcium-sensing receptor function in the setting of the 7q11.23 microdeletion."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-identify-abusive-head-trauma-shaken-baby-syndrome-based-on-c",
@@ -8771,7 +8984,8 @@
         "isCorrect": false,
         "rationale": "This option is seen in metabolic storage diseases like Tay-Sachs or Niemann-Pick disease."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-differentiate-homocystinuria-from-marfan-syndrome-by-specifi",
@@ -8812,7 +9026,8 @@
         "isCorrect": false,
         "rationale": "This option defects result in Maple Syrup Urine Disease (MSUD), which presents with severe acute encephalopathy in neonates."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-correlate-a-painful-pupil-involving-oculomotor-nerve-palsy-w",
@@ -8853,7 +9068,8 @@
         "isCorrect": false,
         "rationale": "This option commonly causes contralateral hemiparesis and aphasia if it ruptures or compresses the hemisphere."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-localize-a-bitemporal-hemianopsia-to-the-optic-chiasm",
@@ -8894,7 +9110,8 @@
         "isCorrect": false,
         "rationale": "This option lesions result in monocular vision loss (ipsilateral blindness)."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-diagnose-carpal-tunnel-syndrome-based-on-anatomic-boundaries",
@@ -8935,7 +9152,8 @@
         "isCorrect": false,
         "rationale": "This option is often used interchangeably with transverse carpal ligament in broad terms, but anatomically, the transverse carpal ligament specifically forms the roof of the carpal tunnel itself."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-recognize-the-clinical-presentation-of-spinal-muscular-atrop",
@@ -8976,7 +9194,8 @@
         "isCorrect": true,
         "rationale": "Severe hypotonia, absent reflexes, tongue fasciculations, and paradoxical breathing in a cognitively intact infant are classic for Spinal Muscular Atrophy (SMA) Type 1 (Werdnig-Hoffmann disease). SMA is caused by a mutation in the SMN1 gene leading to progressive degeneration of the anterior horn cells (lower motor neurons) in the spinal cord."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-identify-the-clinical-features-genetic-mechanism-and-systemi",
@@ -9017,7 +9236,8 @@
         "isCorrect": false,
         "rationale": "This option is not a feature of myotonic dystrophy; respiratory issues typically arise from diaphragmatic/intercostal muscle weakness."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-diagnose-neurofibromatosis-type-1-nf1-and-identify-its-assoc",
@@ -9058,7 +9278,8 @@
         "isCorrect": true,
         "rationale": "The patient has Neurofibromatosis Type 1 (NF1), characterized by café-au-lait macules (>6 measuring >5mm before puberty), axillary/inguinal freckling, and neurofibromas. Lisch nodules (iris hamartomas) are a classic ophthalmologic finding required for the clinical criteria of NF1."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-identify-the-classic-eeg-finding-for-infantile-spasms-west-s",
@@ -9099,7 +9320,8 @@
         "isCorrect": false,
         "rationale": "This option is the classic EEG finding for Childhood Absence Epilepsy."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-recognize-the-clinical-presentation-and-genetic-etiology-of--2",
@@ -9140,7 +9362,8 @@
         "isCorrect": false,
         "rationale": "This option mutations cause Tuberous Sclerosis Complex."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-differentiate-tay-sachs-disease-from-other-lysosomal-storage",
@@ -9181,7 +9404,8 @@
         "isCorrect": true,
         "rationale": "The presence of developmental regression, an exaggerated startle response, a cherry-red macula, and the absence of hepatosplenomegaly strongly points to Tay-Sachs disease (GM2 gangliosidosis). Tay-Sachs is caused by a deficiency in Hexosaminidase A."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-identify-the-clinical-presentation-and-csf-findings-of-acute",
@@ -9222,7 +9446,8 @@
         "isCorrect": true,
         "rationale": "The patient’s rapidly progressive, symmetric, ascending weakness and areflexia following a GI illness (frequently Campylobacter jejuni) is classic for Guillain-Barré syndrome (AIDP). The hallmark CSF finding is albuminocytologic dissociation—an elevated CSF protein level with a normal white blood cell count."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-differentiate-congenital-cytomegalovirus-cmv-from-other-torc",
@@ -9263,7 +9488,8 @@
         "isCorrect": false,
         "rationale": "This option are not the classic localizing patterns for the major TORCH infections."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-recognize-the-clinical-presentation-and-focal-neuroimaging-f",
@@ -9304,7 +9530,8 @@
         "isCorrect": true,
         "rationale": "Acute fever, altered mental status, focal seizures, CSF revealing RBCs (due to hemorrhagic necrosis), and MRI showing unilateral temporal lobe edema are the classic hallmarks of Herpes Simplex Virus (HSV) encephalitis. Intravenous acyclovir is the definitive empirical and targeted treatment and must be started immediately."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-diagnose-neurofibromatosis-type-2-nf2-based-on-classic-clini",
@@ -9345,7 +9572,8 @@
         "isCorrect": true,
         "rationale": "The patient’s clinical presentation of bilateral sensorineural hearing loss, tinnitus, and balance issues, combined with a strong autosomal dominant family history, points to Neurofibromatosis Type 2 (NF2). The hallmark diagnostic criteria for NF2 is the presence of bilateral vestibular schwannomas (acoustic neuromas) on MRI."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-diagnose-tourette-syndrome-based-on-clinical-criteria-and-sy",
@@ -9386,7 +9614,8 @@
         "isCorrect": true,
         "rationale": "The patient meets the DSM-5 criteria for Tourette Syndrome, which requires the presence of multiple motor tics and at least one vocal tic, waxing and waning but persisting for more than 1 year, with onset before the age of 18."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-identify-the-phenotypic-features-and-genetic-mutation-associ",
@@ -9427,7 +9656,8 @@
         "isCorrect": false,
         "rationale": "This option repeat expansions are the cause of Myotonic Dystrophy Type 1."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-diagnose-idiopathic-intracranial-hypertension-and-select-the",
@@ -9468,7 +9698,8 @@
         "isCorrect": false,
         "rationale": "This option are abortive and prophylactic treatments for migraine headaches, respectively, and do not lower intracranial pressure."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-correlate-the-anatomical-location-and-histology-of-a-posteri",
@@ -9509,7 +9740,8 @@
         "isCorrect": false,
         "rationale": "This option are the histologic hallmark of a pilocytic astrocytoma, which typically appears as a cystic mass with a mural nodule in the cerebellar hemisphere."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-identify-the-classic-eeg-finding-and-clinical-triad-of-lenno",
@@ -9550,7 +9782,8 @@
         "isCorrect": false,
         "rationale": "This option is the EEG hallmark of West syndrome (infantile spasms), which typically occurs earlier in infancy (4 to 8 months)."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-diagnose-phenylketonuria-pku-based-on-clinical-features-and-",
@@ -9591,7 +9824,8 @@
         "isCorrect": false,
         "rationale": "This option is deficient in Alkaptonuria, presenting with dark-pigmented urine and, later in life, severe arthritis (ochronosis)."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-recognize-benign-paroxysmal-vertigo-of-childhood-as-a-migrai",
@@ -9632,7 +9866,8 @@
         "isCorrect": true,
         "rationale": "The patient’s presentation of brief, sudden attacks of vertigo, ataxia, fear, pallor, and nausea in an otherwise healthy toddler is classic for Benign Paroxysmal Vertigo of Childhood (BPVC). BPVC is widely recognized as an early childhood \"migraine equivalent\" and is a strong predictor of developing classic migraine headaches later in childhood or adolescence."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-recognize-the-clinical-triad-of-horner-syndrome-and-its-unde",
@@ -9673,7 +9908,8 @@
         "isCorrect": true,
         "rationale": "The triad of ipsilateral ptosis, miosis (constricted pupil), and anhidrosis (lack of sweating) defines Horner syndrome. This results from a lesion anywhere along the three-neuron oculosympathetic pathway originating in the hypothalamus, traveling down the brainstem/cervical cord, and ascending via the superior cervical ganglion."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-identify-the-clinical-presentation-cardiac-association-and-g",
@@ -9714,7 +9950,8 @@
         "isCorrect": false,
         "rationale": "This option is the most common cardiac tumor in infants and is highly associated with Tuberous Sclerosis Complex."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-recognize-the-enzyme-deficiency-in-metachromatic-leukodystro",
@@ -9755,7 +9992,8 @@
         "isCorrect": true,
         "rationale": "The combination of a central demyelinating process (leukodystrophy on MRI) and a peripheral demyelinating process (peripheral neuropathy resulting in areflexia and delayed nerve conduction) presenting in late infancy/early childhood is the hallmark of Metachromatic Leukodystrophy (MLD). MLD is caused by a deficiency of arylsulfatase A."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-correlate-the-facial-lesion-of-sturge-weber-syndrome-with-th",
@@ -9796,7 +10034,8 @@
         "isCorrect": false,
         "rationale": "This option are characteristic of Neurofibromatosis Type 2."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-diagnose-tick-paralysis-based-on-ascending-flaccid-paralysis",
@@ -9837,7 +10076,8 @@
         "isCorrect": false,
         "rationale": "This option are the mainstays of treatment for Guillain-Barré syndrome, but tick removal is the definitive and immediate treatment for tick paralysis."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-diagnose-pediatric-migraine-based-on-duration-clinical-chara",
@@ -9878,7 +10118,8 @@
         "isCorrect": false,
         "rationale": "This option is incorrect because tension-type headaches are bilateral, pressing or tightening in quality, mild to moderate, and are specifically not aggravated by routine physical activity."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-identify-the-characteristic-neuroimaging-finding-and-defecti",
@@ -9919,7 +10160,8 @@
         "isCorrect": true,
         "rationale": "PKAN features a classic MRI finding known as the \"eye of the tiger\" sign, which consists of hypointensity of the globus pallidus (due to iron accumulation) with a central streak of T2 hyperintensity."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-diagnose-juvenile-myoclonic-epilepsy-jme-from-a-clinical-his",
@@ -9960,7 +10202,8 @@
         "isCorrect": false,
         "rationale": "This option presents with intractable focal seizures (epilepsia partialis continua), hemiparesis, and unilateral hemispheric atrophy."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-identify-the-histological-findings-associated-with-a-pilocyt",
@@ -10001,7 +10244,8 @@
         "isCorrect": false,
         "rationale": "This option describes the histology of an ependymoma (perivascular pseudorosettes), which typically arises in the fourth ventricle rather than the cerebellar hemisphere."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-correlate-the-clinical-features-of-narcolepsy-with-cataplexy",
@@ -10042,7 +10286,8 @@
         "isCorrect": true,
         "rationale": "The patient exhibits excessive daytime sleepiness and cataplexy (sudden loss of muscle tone triggered by strong emotion, like laughter), which are the hallmark features of narcolepsy type 1. The pathophysiology involves the loss of hypocretin (orexin) producing neurons in the lateral hypothalamus, leading to characteristically low CSF hypocretin levels."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-recognize-the-anatomical-brain-malformations-that-define-dan",
@@ -10083,7 +10328,8 @@
         "isCorrect": false,
         "rationale": "This option describes a Chiari I malformation."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-recognize-the-angiographic-appearance-and-diagnosis-of-moyam",
@@ -10124,7 +10370,8 @@
         "isCorrect": false,
         "rationale": "This option describes the classic MRI appearance of a cavernous malformation due to blood products in various stages of evolution."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-diagnose-juvenile-myasthenia-gravis-based-on-the-clinical-pr",
@@ -10165,7 +10412,8 @@
         "isCorrect": false,
         "rationale": "This option is the defective protein in Spinal Muscular Atrophy, a genetic anterior horn cell disorder, not an autoimmune condition."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-identify-the-teratogenic-metabolic-risks-of-specific-anti-se",
@@ -10206,7 +10454,8 @@
         "isCorrect": true,
         "rationale": "Enzyme-inducing anti-seizure medications, particularly phenobarbital (as well as phenytoin and carbamazepine), interfere with Vitamin K metabolism. Supplementation with Vitamin K in the final month of pregnancy is necessary to prevent severe hemorrhagic disease of the newborn."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-differentiate-cyanotic-breath-holding-spells-from-seizures-b",
@@ -10247,7 +10496,8 @@
         "isCorrect": true,
         "rationale": "The sequence of anger/frustration, vigorous crying, forced exhalation, cyanosis, loss of tone, and brief loss of consciousness is the classic presentation of a cyanotic breath-holding spell. They most commonly occur between 6 and 18 months of age and are benign."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-identify-the-clinical-presentation-and-characteristic-electr",
@@ -10288,7 +10538,8 @@
         "isCorrect": false,
         "rationale": "This option is incorrect as 3-Hz generalized spike-and-wave discharges are classic for Childhood Absence Epilepsy."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-recognize-the-clinical-and-imaging-presentation-of-maple-syr",
@@ -10329,7 +10580,8 @@
         "isCorrect": false,
         "rationale": "This option causes Propionic acidemia, presenting with hyperammonemia, severe ketoacidosis, and bone marrow suppression."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-identify-the-inheritance-pattern-and-defective-protein-in-du",
@@ -10370,7 +10622,8 @@
         "isCorrect": true,
         "rationale": "Duchenne Muscular Dystrophy is an X-linked recessive disorder that results from a mutation or deletion in the gene encoding the dystrophin protein."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-diagnose-tuberous-sclerosis-complex-tsc-based-on-clinical-an",
@@ -10411,7 +10664,8 @@
         "isCorrect": true,
         "rationale": "The infant presents with infantile spasms and hypomelanotic \"ash-leaf spots,\" which are pathognomonic clinical features of Tuberous Sclerosis Complex (TSC). Cardiac rhabdomyomas are the most frequent cardiac finding in infants with TSC and may spontaneously regress over time."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-diagnose-infant-botulism-and-identify-its-definitive-clinica",
@@ -10452,7 +10706,8 @@
         "isCorrect": false,
         "rationale": "This option is the standard treatment for Guillain-Barré syndrome, which causes ascending, not descending, paralysis."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-recognize-the-clinical-presentation-mri-findings-and-specifi",
@@ -10493,7 +10748,8 @@
         "isCorrect": true,
         "rationale": "Irritability, hypertonicity, optic atrophy, elevated CSF protein, and white matter demyelination sparing the U-fibers are hallmark features of Krabbe disease (globoid cell leukodystrophy). Krabbe disease is caused by a deficiency of galactocerebrosidase."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-identify-standard-physiologic-targets-in-the-management-of-e",
@@ -10534,7 +10790,8 @@
         "isCorrect": false,
         "rationale": "This option represents a severely elevated pressure that exceeds normal vascular autoregulation mechanisms (effective MAP is 60-150 mm Hg) and risks hemorrhagic conversion or worsening edema."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-recognize-the-clinical-presentation-and-primary-antecedent-p",
@@ -10575,7 +10832,8 @@
         "isCorrect": false,
         "rationale": "This option causes infectious mononucleosis and rarely acute cerebellar ataxia, but is not the causative agent of Sydenham chorea."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-identify-the-clinical-trigger-and-first-line-treatment-for-c",
@@ -10616,7 +10874,8 @@
         "isCorrect": false,
         "rationale": "This option is used for focal seizures and can actively worsen absence seizures."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-recall-the-epidemiology-and-localization-of-common-pediatric",
@@ -10657,7 +10916,8 @@
         "isCorrect": false,
         "rationale": "This option is the most common overall brain tumor in children and arises in the posterior fossa, but it is benign (Grade I), not malignant."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-select-first-line-and-contraindicated-anti-seizure-medicatio",
@@ -10698,7 +10958,8 @@
         "isCorrect": false,
         "rationale": "Fenfluramine is FDA-approved for Dravet seizures and substantially reduces convulsive seizure frequency."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-identify-first-line-treatment-for-infantile-spasms-in-tubero",
@@ -10739,7 +11000,8 @@
         "isCorrect": false,
         "rationale": "Topiramate is occasionally used as add-on for refractory spasms but is not first-line."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-sequence-the-stepwise-pharmacologic-treatment-of-pediatric-c",
@@ -10780,7 +11042,8 @@
         "isCorrect": false,
         "rationale": "Continuous anesthetic infusions (midazolam, pentobarbital, propofol) are reserved for refractory status epilepticus after second-line agents fail."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-identify-the-gene-responsible-for-self-limited-familial-neon",
@@ -10821,7 +11084,8 @@
         "isCorrect": false,
         "rationale": "STXBP1 variants cause early infantile developmental and epileptic encephalopathy (Ohtahara phenotype), not self-limited seizures."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-recognize-the-eeg-and-clinical-features-of-ohtahara-syndrome",
@@ -10862,7 +11126,8 @@
         "isCorrect": false,
         "rationale": "CSWS is the EEG hallmark of Landau-Kleffner syndrome / ESES, which presents in school-age children with language regression."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-diagnose-and-treat-pyridoxine-dependent-epilepsy",
@@ -10903,7 +11168,8 @@
         "isCorrect": false,
         "rationale": "Therapeutic hypothermia is indicated for hypoxic-ischemic encephalopathy of moderate to severe degree within the first 6 hours of life; this neonate has no perinatal asphyxia."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-select-pharmacologic-treatment-for-electrical-status-epilept",
@@ -10944,7 +11210,8 @@
         "isCorrect": false,
         "rationale": "Levetiracetam has only modest efficacy for ESES and is rarely sufficient as monotherapy."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-identify-appropriate-candidates-for-vagus-nerve-stimulator-p",
@@ -10985,7 +11252,8 @@
         "isCorrect": false,
         "rationale": "A single resectable epileptogenic lesion is best treated with resective surgery, which offers the highest chance of seizure freedom; VNS is reserved for patients who are not surgical candidates."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-differentiate-psychogenic-non-epileptic-seizures-from-epilep",
@@ -11026,7 +11294,8 @@
         "isCorrect": false,
         "rationale": "Convulsive syncope produces brief (<30 seconds) myoclonic jerks following a clear vasovagal trigger and rapid pallor, not 20–30 minutes of rhythmic shaking."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-identify-the-genetic-cause-of-pcdh19-epilepsy",
@@ -11067,7 +11336,8 @@
         "isCorrect": false,
         "rationale": "No single ASM is reliably effective in PCDH19 epilepsy; treatment is empiric and often unsatisfying. Lamotrigine in particular is not preferred."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-identify-the-typical-age-at-which-a-child-sits-independently",
@@ -11108,7 +11378,8 @@
         "isCorrect": false,
         "rationale": "12 months is the typical age for first independent steps; sitting is well-established months earlier."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-identify-the-typical-age-range-for-independent-walking",
@@ -11149,7 +11420,8 @@
         "isCorrect": false,
         "rationale": "Waiting until 24 months delays diagnosis of conditions such as Duchenne muscular dystrophy or spinal muscular atrophy, where earlier identification meaningfully changes management."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-identify-the-typical-age-at-which-the-pincer-grasp-emerges",
@@ -11190,7 +11462,8 @@
         "isCorrect": false,
         "rationale": "By 18 months pincer grasp is well-established and the child is using utensils with some skill."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-identify-the-typical-ages-at-which-children-copy-specific-ge",
@@ -11231,7 +11504,8 @@
         "isCorrect": false,
         "rationale": "A diamond is the figure typically copied around age 7. The square is achieved earlier."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-identify-the-typical-age-at-which-a-child-speaks-two-word-ph",
@@ -11272,7 +11546,8 @@
         "isCorrect": false,
         "rationale": "By 36 months children typically speak in 3–4 word sentences and are intelligible to strangers about 75% of the time."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-identify-the-typical-age-at-which-the-social-smile-emerges",
@@ -11313,7 +11588,8 @@
         "isCorrect": false,
         "rationale": "By 9 months stranger anxiety and joint attention emerge; social smiling has been present since 2 months."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-identify-the-typical-age-range-for-disappearance-of-the-moro",
@@ -11354,7 +11630,8 @@
         "isCorrect": false,
         "rationale": "An upgoing toe (Babinski) is a normal finding in infants until approximately 12–24 months because of incomplete corticospinal tract myelination."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-identify-the-typical-age-at-which-the-parachute-protective-e",
@@ -11395,7 +11672,8 @@
         "isCorrect": false,
         "rationale": "By 12–15 months the parachute reflex should be well-established; its first appearance this late is delayed."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-describe-the-typical-pattern-of-cns-myelination-on-mri",
@@ -11436,7 +11714,8 @@
         "isCorrect": false,
         "rationale": "Brainstem myelinates first (largely complete at term), with cortical projections and subcortical U-fibers last to mature."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-identify-the-typical-age-at-which-hand-preference-develops",
@@ -11477,7 +11756,8 @@
         "isCorrect": false,
         "rationale": "Asymmetric hand use this early should never be dismissed as benign delay; it warrants neuroimaging and a focused neurologic exam."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-select-first-line-immunotherapy-for-anti-nmda-receptor-encep",
@@ -11518,7 +11798,8 @@
         "isCorrect": false,
         "rationale": "Treatment delays worsen long-term outcomes; immunotherapy should not be deferred while tumor work-up is in progress."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-select-disease-modifying-therapy-for-spinal-muscular-atrophy",
@@ -11559,7 +11840,8 @@
         "isCorrect": false,
         "rationale": "Pre-symptomatic treatment dramatically improves motor outcomes versus initiating therapy after symptom onset, when motor neuron loss has already occurred."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-identify-glucocorticoid-therapy-as-standard-of-care-for-duch",
@@ -11600,7 +11882,8 @@
         "isCorrect": false,
         "rationale": "Delaying glucocorticoids forfeits the window when they can prolong ambulation and protect cardiopulmonary function."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-select-maintenance-therapy-for-wilson-disease",
@@ -11641,7 +11924,8 @@
         "isCorrect": false,
         "rationale": "Iron supplementation has no role in Wilson disease and can compete with copper handling unfavorably."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-identify-the-criteria-and-time-window-for-therapeutic-hypoth",
@@ -11682,7 +11966,8 @@
         "isCorrect": false,
         "rationale": "Magnesium has been studied as a potential neuroprotectant but is not standard of care for term HIE in current guidelines."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-select-first-line-pharmacologic-treatment-for-tourette-syndr",
@@ -11723,7 +12008,8 @@
         "isCorrect": false,
         "rationale": "Chronic benzodiazepine therapy is not appropriate for Tourette syndrome given dependence and cognitive risk."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-select-disease-modifying-therapy-for-pediatric-multiple-scle",
@@ -11764,7 +12050,8 @@
         "isCorrect": false,
         "rationale": "Withholding therapy after a confirmed second clinical event allows accumulation of irreversible disability and brain volume loss; treatment should not be deferred."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-apply-current-evidence-based-guidance-to-migraine-prophylaxi",
@@ -11805,7 +12092,8 @@
         "isCorrect": false,
         "rationale": "OnabotulinumtoxinA is FDA-approved for chronic migraine in adults but not in children under 18; pediatric data are limited."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-select-acute-and-preventive-treatment-for-stroke-in-sickle-c",
@@ -11846,7 +12134,8 @@
         "isCorrect": false,
         "rationale": "Anticoagulation is not standard for arterial ischemic stroke in sickle cell disease and increases hemorrhagic risk."
       }
-    ]
+    ],
+    "module": 6
   },
   {
     "id": "q-identify-standard-treatment-for-sydenham-chorea",
@@ -11887,7 +12176,8 @@
         "isCorrect": false,
         "rationale": "IVIG, plasmapheresis, and corticosteroids have been used in severe or refractory cases but are not standard initial therapy."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-diagnose-dopa-responsive-dystonia-segawa-syndrome-and-identi",
@@ -11928,7 +12218,8 @@
         "isCorrect": false,
         "rationale": "Wilson disease is reasonable to consider in childhood movement disorders but typically presents in adolescence with mixed extrapyramidal-psychiatric features and Kayser-Fleischer rings, not isolated diurnal lower-limb dystonia."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-recognize-the-clinical-features-of-niemann-pick-disease-type",
@@ -11969,7 +12260,8 @@
         "isCorrect": false,
         "rationale": "X-ALD presents in school-aged boys with behavioral/cognitive decline, hyperpigmentation, and adrenal insufficiency, with white-matter changes on MRI rather than vertical supranuclear gaze palsy and splenomegaly."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-differentiate-stereotypies-from-tics-by-clinical-features",
@@ -12010,7 +12302,8 @@
         "isCorrect": false,
         "rationale": "The opposite is true: stereotypies typically begin before age 3, whereas tics typically begin between ages 4 and 8."
       }
-    ]
+    ],
+    "module": 1
   },
   {
     "id": "q-recognize-pandas-and-its-proposed-clinical-criteria",
@@ -12051,7 +12344,8 @@
         "isCorrect": false,
         "rationale": "Conversion (functional) disorders may include movements but lack the streptococcal temporal linkage and waxing-waning relapsing course."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-recognize-atp1a3-related-rapid-onset-dystonia-parkinsonism-a",
@@ -12092,7 +12386,8 @@
         "isCorrect": false,
         "rationale": "Sandifer syndrome features tonic posturing in association with feeding due to GERD, not multi-day hemiplegia."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-recognize-tardive-dyskinesia-from-chronic-dopamine-receptor-",
@@ -12133,7 +12428,8 @@
         "isCorrect": false,
         "rationale": "Levodopa would worsen tardive dyskinesia by adding to the dopaminergic mismatch; it is not appropriate."
       }
-    ]
+    ],
+    "module": 4
   },
   {
     "id": "q-identify-iron-deficiency-as-a-treatable-contributor-to-pedia",
@@ -12174,7 +12470,8 @@
         "isCorrect": false,
         "rationale": "Sleep hygiene alone is insufficient when an identified, treatable cause (low iron) is present."
       }
-    ]
+    ],
+    "module": 2
   },
   {
     "id": "q-differentiate-chorea-from-athetosis-dystonia-and-myoclonus-b",
@@ -12215,7 +12512,8 @@
         "isCorrect": false,
         "rationale": "This describes a resting tremor, classically seen in Parkinson disease."
       }
-    ]
+    ],
+    "module": 5
   },
   {
     "id": "q-recognize-focal-cerebral-arteriopathy-as-a-leading-cause-of-",
@@ -12256,7 +12554,8 @@
         "isCorrect": false,
         "rationale": "Dissection typically follows trauma or neck manipulation and on imaging shows long-segment irregularity, intramural hematoma, or a flame-shaped occlusion of the cervical (not intracranial) carotid or vertebral artery."
       }
-    ]
+    ],
+    "module": 3
   },
   {
     "id": "q-recognize-the-typical-presentation-of-perinatal-arterial-isc",
@@ -12297,6 +12596,7 @@
         "isCorrect": false,
         "rationale": "Benign familial neonatal seizures present with brief, multifocal clonic seizures in the setting of normal imaging and a positive family history, not with an MCA territory infarct on MRI."
       }
-    ]
+    ],
+    "module": 5
   }
 ]
