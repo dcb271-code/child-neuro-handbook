@@ -148,6 +148,28 @@ export default function Home() {
         })}
       </div>
 
+      {/* Board Review — featured card */}
+      <a
+        href="/board-review/"
+        className="group mt-3 sm:mt-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 bg-white dark:bg-slate-800/80 hover:shadow-md transition-all duration-200 overflow-hidden flex min-h-[56px]"
+      >
+        <div className="w-1 shrink-0" style={{ backgroundColor: '#0d9488' }} />
+        <div className="flex-1 flex items-center gap-4 px-4 sm:px-5 py-3">
+          <div className="flex-1 min-w-0">
+            <div className="font-semibold text-slate-800 dark:text-slate-100 group-hover:text-teal-700 dark:group-hover:text-teal-400 transition-colors text-sm sm:text-base">
+              Board Review
+            </div>
+            <div className="text-xs text-slate-400 dark:text-slate-500 mt-0.5">
+              ABPN-style MCQs &middot; instant feedback &middot; filter by topic
+            </div>
+          </div>
+          <svg className="w-4 h-4 text-slate-300 dark:text-slate-600 group-hover:text-teal-400 transition-colors shrink-0"
+            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+      </a>
+
       {/* Resources & Conferences — featured card */}
       <a
         href="/resources/"
