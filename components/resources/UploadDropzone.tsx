@@ -116,6 +116,7 @@ export default function UploadDropzone({ subsection }: { subsection: 'conference
         initialTitle={pendingTitle}
         heading="Name file before upload"
         submitLabel="Upload"
+        showHelp={false}
         onClose={cancelPending}
         onSubmit={(formatted) => startUpload(formatted)}
       />

@@ -9,7 +9,7 @@ export function applyNamingConvention(title: string, authors: string, year: stri
     .trim()
     .split(/\s+/)
     .filter((w) => w && !ARTICLES.has(w.toLowerCase()))
-    .slice(0, 6);
+    .slice(0, 10);
   const base = words.join(' ');
   const metaParts = [authors.trim(), year.trim()].filter(Boolean);
   return metaParts.length ? `${base} (${metaParts.join(' ')})` : base;
@@ -20,6 +20,7 @@ type Props = {
   initialTitle: string;
   heading?: string;
   submitLabel?: string;
+  showHelp?: boolean;
   onClose: () => void;
   onSubmit: (newTitle: string) => Promise<void> | void;
 };
@@ -29,6 +30,7 @@ export default function RenameModal({
   initialTitle,
   heading = 'Rename file',
   submitLabel = 'Save',
+  showHelp = true,
   onClose,
   onSubmit,
 }: Props) {
@@ -77,10 +79,14 @@ export default function RenameModal({
         onClick={(e) => e.stopPropagation()}
         className="w-full max-w-md rounded-lg bg-white dark:bg-slate-800 p-5 shadow-xl"
       >
-        <h2 className="text-base font-semibold text-slate-900 dark:text-white mb-1">{heading}</h2>
-        <p className="text-xs text-slate-500 mb-4">
-          First 5–6 words of the title (articles dropped), then optionally <code>(Author Year)</code>.
-        </p>
+        <h2 className={`text-base font-semibold text-slate-900 dark:text-white ${showHelp ? 'mb-1' : 'mb-4'}`}>
+          {heading}
+        </h2>
+        {showHelp && (
+          <p className="text-xs text-slate-500 mb-4">
+            First 10 words of the title (articles dropped), then optionally <code>(Author Year)</code>.
+          </p>
+        )}
 
         <label className="block text-xs font-medium text-slate-600 dark:text-slate-300 mb-1">Title</label>
         <input
