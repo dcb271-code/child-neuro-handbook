@@ -7,16 +7,31 @@ type Props = {
   blurb: string;
   color: string;
   count: number;
+  fileIds?: string[];
   children: ReactNode;
 };
 
-export default function CollapsibleSection({ title, blurb, color, count, children }: Props) {
+export default function CollapsibleSection({ title, blurb, color, count, fileIds, children }: Props) {
   const ref = useRef<HTMLDetailsElement>(null);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if (ref.current) ref.current.open = false;
-  }, []);
+    const hash = window.location.hash.slice(1);
+    if (hash && fileIds && fileIds.includes(hash)) {
+      setOpen(true);
+    }
+  }, [fileIds]);
+
+  useEffect(() => {
+    if (!open) return;
+    const hash = window.location.hash.slice(1);
+    if (!hash || !fileIds || !fileIds.includes(hash)) return;
+    const t = setTimeout(() => {
+      document.getElementById(hash)?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    }, 60);
+    return () => clearTimeout(t);
+  }, [open, fileIds]);
 
   return (
     <details

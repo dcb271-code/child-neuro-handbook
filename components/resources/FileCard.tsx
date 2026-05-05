@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import RenameModal from './RenameModal';
 
 type Props = {
   pathname: string;
@@ -10,6 +11,10 @@ type Props = {
   contentType: string;
   authed: boolean;
 };
+
+export function fileIdFor(pathname: string): string {
+  return 'file-' + pathname.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
 
 function iconFor(contentType: string): string {
   if (contentType === 'application/pdf') return '📄';
@@ -30,35 +35,41 @@ function typeLabel(contentType: string): string {
 export default function FileCard({ pathname, url, title, contentType, authed }: Props) {
   const router = useRouter();
   const [previewOpen, setPreviewOpen] = useState(false);
-  const [renaming, setRenaming] = useState(false);
+  const [renameOpen, setRenameOpen] = useState(false);
+  const [shared, setShared] = useState(false);
 
   const isPdf = contentType === 'application/pdf';
   const isImg = contentType.startsWith('image/');
   const previewable = isPdf || isImg;
+  const id = fileIdFor(pathname);
 
-  async function handleRename() {
-    const next = window.prompt('Rename file', title);
-    if (next == null) return;
-    const trimmed = next.trim();
-    if (!trimmed || trimmed === title) return;
-    setRenaming(true);
+  async function handleShare() {
+    const link = `${window.location.origin}${window.location.pathname}#${id}`;
     try {
-      const res = await fetch('/api/resources/file', {
-        method: 'PATCH',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ pathname, title: trimmed }),
-      });
-      if (res.ok) router.refresh();
-      else window.alert('Rename failed');
+      await navigator.clipboard.writeText(link);
+      setShared(true);
+      setTimeout(() => setShared(false), 1500);
     } catch {
-      window.alert('Network error');
-    } finally {
-      setRenaming(false);
+      window.prompt('Copy this link:', link);
+    }
+  }
+
+  async function handleRename(newTitle: string) {
+    const res = await fetch('/api/resources/file', {
+      method: 'PATCH',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ pathname, title: newTitle }),
+    });
+    if (res.ok) {
+      setRenameOpen(false);
+      router.refresh();
+    } else {
+      window.alert('Rename failed');
     }
   }
 
   return (
-    <div className="pathway-card">
+    <div id={id} className="pathway-card scroll-mt-20">
       <div className="pathway-card-header">
         <span className="pathway-card-icon">{iconFor(contentType)}</span>
         <div className="pathway-card-info">
@@ -66,20 +77,18 @@ export default function FileCard({ pathname, url, title, contentType, authed }: 
           <div className="pathway-card-type">{typeLabel(contentType)}</div>
         </div>
       </div>
-      <div className="pathway-card-preview">
-        {previewable && previewOpen ? (
-          isPdf ? (
+      {previewable && previewOpen && (
+        <div className="pathway-card-preview">
+          {isPdf ? (
             <object data={url} type="application/pdf" className="pdf-embed w-full">
               <p className="p-3 text-xs text-slate-500">Preview unavailable.</p>
             </object>
           ) : (
             /* eslint-disable-next-line @next/next/no-img-element */
             <img src={url} alt={title} className="w-full h-auto" />
-          )
-        ) : (
-          <div className="p-6 text-center text-3xl text-slate-400">{iconFor(contentType)}</div>
-        )}
-      </div>
+          )}
+        </div>
+      )}
       <div className="pathway-card-actions">
         {previewable && (
           <button
@@ -94,14 +103,16 @@ export default function FileCard({ pathname, url, title, contentType, authed }: 
           Open ↗
         </a>
         <a href={url} download className="pathway-btn pathway-btn-download">⬇ Download</a>
+        <button type="button" onClick={handleShare} className="pathway-btn pathway-btn-view">
+          {shared ? '✓ Copied' : '🔗 Share'}
+        </button>
         {authed && (
           <button
             type="button"
-            onClick={handleRename}
-            disabled={renaming}
+            onClick={() => setRenameOpen(true)}
             className="pathway-btn pathway-btn-view"
           >
-            ✏ {renaming ? 'Renaming…' : 'Rename'}
+            ✏ Rename
           </button>
         )}
         {authed && (
@@ -115,6 +126,13 @@ export default function FileCard({ pathname, url, title, contentType, authed }: 
           </button>
         )}
       </div>
+
+      <RenameModal
+        open={renameOpen}
+        initialTitle={title}
+        onClose={() => setRenameOpen(false)}
+        onSubmit={handleRename}
+      />
     </div>
   );
 }

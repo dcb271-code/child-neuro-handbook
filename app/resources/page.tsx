@@ -1,7 +1,7 @@
 import { list } from '@vercel/blob';
 import { readMetadata, resolveTitle } from '@/lib/resources/metadata';
 import { isAuthed } from '@/lib/resources/auth';
-import FileCard from '@/components/resources/FileCard';
+import FileCard, { fileIdFor } from '@/components/resources/FileCard';
 import LinkCard from '@/components/resources/LinkCard';
 import AuthBar from '@/components/resources/AuthBar';
 import UploadDropzone from '@/components/resources/UploadDropzone';
@@ -78,8 +78,16 @@ export default async function ResourcesPage() {
 
       {SUBSECTIONS.map((s) => {
         const count = s.key === 'links' ? md.links.length : filesBySub[s.key].length;
+        const fileIds = s.key === 'links' ? [] : filesBySub[s.key].map((f) => fileIdFor(f.pathname));
         return (
-          <CollapsibleSection key={s.key} title={s.title} blurb={s.blurb} color={s.color} count={count}>
+          <CollapsibleSection
+            key={s.key}
+            title={s.title}
+            blurb={s.blurb}
+            color={s.color}
+            count={count}
+            fileIds={fileIds}
+          >
             {s.key === 'links' ? (
               <>
                 <div className="pathway-grid">
