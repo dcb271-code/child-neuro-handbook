@@ -14,12 +14,79 @@ const XLSX = require('xlsx');
 
 // ── Paths ────────────────────────────────────────────────────────────────────
 const XLSX_SRC  = process.env.XLSX_SRC || 'C:/Users/dylan/Child Neuro Handbook Word/Faculty Call Schedule July 7.25 through 6.26.xlsx';
+const XLSX_2627_SRC = process.env.XLSX_2627_SRC || 'C:/Users/dylan/Child Neuro Handbook Word/General_ICU Call 2026-2027 Calendar in Excel.xlsx';
 const PUBLIC    = 'public';
 const PDF_DIR   = path.join(PUBLIC, 'pdfs/neuro-on-call');
 const DEST_XLSX = path.join(PDF_DIR, 'call-schedule.xlsx');
+const DEST_XLSX_2627 = path.join(PDF_DIR, 'call-schedule-2026-2027.xlsx');
 const DEST_DIR  = path.join(PUBLIC, 'call-schedule');
 const DEST_HTML = path.join(DEST_DIR, 'index.html');
 const DATA_FILE = 'src/data/neuro-on-call.json';
+
+function excelSerialToMD(serial) {
+  const d = new Date((serial - 25569) * 86400 * 1000);
+  return `${d.getUTCMonth() + 1}/${d.getUTCDate()}`;
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+// ── Build 2026-2027 provisional schedule table ───────────────────────────────
+function build2627Html() {
+  if (!fs.existsSync(XLSX_2627_SRC)) {
+    console.log('No 2026-2027 XLSX found, skipping that subsection');
+    return '';
+  }
+  console.log('Reading 2026-2027 XLSX…');
+  const wb = XLSX.readFile(XLSX_2627_SRC);
+  const ws = wb.Sheets[wb.SheetNames[0]];
+  const rows = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
+
+  const trs = [];
+  for (let i = 1; i < rows.length; i++) {
+    const r = rows[i];
+    let week = r[0];
+    const general = String(r[1] || '').trim();
+    const icu = String(r[2] || '').trim();
+    const notes = String(r[3] || '').trim();
+    if (!week && !general && !icu) continue;
+    if (typeof week === 'number') week = excelSerialToMD(week);
+    week = String(week).trim();
+    const isHoliday = !!notes;
+    const bg = isHoliday ? '#fef3c7' : '';
+    const cell = (v, align = 'left') => `<td style="border:1px solid #e2e8f0;padding:0.4rem 0.6rem;text-align:${align};${bg ? `background:${bg};` : ''}font-size:0.82rem;">${escapeHtml(v) || '&nbsp;'}</td>`;
+    trs.push(`<tr>${cell(week)}${cell(general)}${cell(icu)}${cell(notes)}</tr>`);
+  }
+
+  const tableHtml = `
+<h3 id="faculty-call-schedule-2627" style="margin-top:2rem;">Faculty Call Schedule (2026–2027)</h3>
+<p style="margin:0.25rem 0 0.75rem;font-size:0.85rem;color:#64748b;">Provisional listing of General &amp; ICU attendings by week from the 2026–2027 spreadsheet. The fully formatted monthly calendar is not yet available; holiday weeks are highlighted.</p>
+<div style="margin:1rem 0;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
+  <div style="padding:0.6rem 0.875rem;background:#f8fafc;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:0.5rem;flex-wrap:wrap;">
+    <span style="font-size:0.8rem;font-weight:600;color:#1e293b;">📅 General &amp; ICU Call (July 2026 – June 2027)</span>
+    <a href="/pdfs/neuro-on-call/call-schedule-2026-2027.xlsx" download style="font-size:0.75rem;color:#2563eb;white-space:nowrap;text-decoration:none;background:#eff6ff;border:1px solid #bfdbfe;border-radius:6px;padding:0.25rem 0.6rem;">Download XLSX ↗</a>
+  </div>
+  <div class="table-wrap" style="overflow-x:auto;background:#fff;">
+    <table style="border-collapse:collapse;width:100%;min-width:560px;">
+      <thead>
+        <tr style="background:#f1f5f9;">
+          <th style="border:1px solid #e2e8f0;padding:0.5rem 0.6rem;text-align:left;font-size:0.78rem;font-weight:700;color:#475569;">Week</th>
+          <th style="border:1px solid #e2e8f0;padding:0.5rem 0.6rem;text-align:left;font-size:0.78rem;font-weight:700;color:#475569;">General</th>
+          <th style="border:1px solid #e2e8f0;padding:0.5rem 0.6rem;text-align:left;font-size:0.78rem;font-weight:700;color:#475569;">ICU</th>
+          <th style="border:1px solid #e2e8f0;padding:0.5rem 0.6rem;text-align:left;font-size:0.78rem;font-weight:700;color:#475569;">Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+${trs.map(t => '        ' + t).join('\n')}
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+  console.log(`  ✓ Built 2026-2027 table (${trs.length} rows)`);
+  return tableHtml;
+}
 
 // ── Relevant sheets (July 2025 – June 2026) ─────────────────────────────────
 const RELEVANT_SHEETS = [
@@ -224,6 +291,13 @@ fs.mkdirSync(DEST_DIR, { recursive: true });
 fs.copyFileSync(XLSX_SRC, DEST_XLSX);
 console.log(`Copied XLSX → ${DEST_XLSX}`);
 
+if (fs.existsSync(XLSX_2627_SRC)) {
+  fs.copyFileSync(XLSX_2627_SRC, DEST_XLSX_2627);
+  console.log(`Copied 2026-2027 XLSX → ${DEST_XLSX_2627}`);
+}
+
+const schedule2627Html = build2627Html();
+
 fs.writeFileSync(DEST_HTML, standalonePage);
 console.log(`Wrote HTML → ${DEST_HTML} (${standalonePage.length} chars)`);
 
@@ -235,14 +309,18 @@ const newTocEntries = [
   { level: 1, text: 'On Call Resources', id: 'on-call-resources' },
   { level: 2, text: 'Faculty Call Schedule', id: 'faculty-call-schedule' },
 ];
-
-// Check if already added
-if (!data.toc.find(t => t.id === 'on-call-resources')) {
-  data.toc.push(...newTocEntries);
-  console.log('Added TOC entries');
-} else {
-  console.log('TOC entries already exist, skipping');
+if (schedule2627Html) {
+  newTocEntries.push({ level: 2, text: 'Faculty Call Schedule (2026–2027)', id: 'faculty-call-schedule-2627' });
 }
+
+// Remove any prior On Call Resources TOC entries, then re-add
+data.toc = data.toc.filter(t =>
+  t.id !== 'on-call-resources' &&
+  t.id !== 'faculty-call-schedule' &&
+  t.id !== 'faculty-call-schedule-2627'
+);
+data.toc.push(...newTocEntries);
+console.log('Refreshed On Call Resources TOC entries');
 
 // Build embed HTML (matches PDF embed pattern)
 const embedHtml = `
@@ -263,6 +341,7 @@ const embedHtml = `
   </div>
   <iframe src="/call-schedule/" class="spreadsheet-embed" width="100%" style="height:650px;display:block;border:none;background:#fafafa;"></iframe>
 </div>
+${schedule2627Html}
 </section>
 `;
 
