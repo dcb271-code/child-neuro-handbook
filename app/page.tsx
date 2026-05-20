@@ -1,5 +1,6 @@
 import indexData from '@/src/data/index.json';
 import DailyChallenge from '@/components/DailyChallenge';
+import CallWeekStrip from '@/components/CallWeekStrip';
 
 type SectionMeta = {
   name: string;
@@ -58,6 +59,9 @@ export default function Home() {
           {sections.length} sections &middot; {totalTopics} topics &middot; {totalImages} figures
         </p>
       </div>
+
+      {/* Current call coverage */}
+      <CallWeekStrip />
 
       {/* Section grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">

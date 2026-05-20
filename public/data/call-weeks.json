@@ -1,0 +1,415 @@
+[
+  {
+    "start": "2026-05-18",
+    "end": "2026-05-24",
+    "general": "Barton",
+    "icu": "Lakhotia",
+    "notes": ""
+  },
+  {
+    "start": "2026-05-25",
+    "end": "2026-05-31",
+    "general": "Marshall",
+    "icu": "Lakhotia",
+    "notes": "Memorial Day Mon 5/25"
+  },
+  {
+    "start": "2026-06-01",
+    "end": "2026-06-07",
+    "general": "Lakhotia",
+    "icu": "Marshall",
+    "notes": ""
+  },
+  {
+    "start": "2026-06-08",
+    "end": "2026-06-14",
+    "general": "Hocker",
+    "icu": "Doll",
+    "notes": ""
+  },
+  {
+    "start": "2026-06-15",
+    "end": "2026-06-21",
+    "general": "Brock",
+    "icu": "Means",
+    "notes": ""
+  },
+  {
+    "start": "2026-06-22",
+    "end": "2026-06-26",
+    "general": "Brock",
+    "icu": "Doll",
+    "notes": ""
+  },
+  {
+    "start": "2026-06-29",
+    "end": "2026-07-05",
+    "general": "Barton",
+    "icu": "Means",
+    "notes": "4th of July"
+  },
+  {
+    "start": "2026-07-06",
+    "end": "2026-07-12",
+    "general": "Marshall",
+    "icu": "Sweeney",
+    "notes": ""
+  },
+  {
+    "start": "2026-07-13",
+    "end": "2026-07-19",
+    "general": "Puri",
+    "icu": "Means",
+    "notes": ""
+  },
+  {
+    "start": "2026-07-20",
+    "end": "2026-07-26",
+    "general": "Sweeney",
+    "icu": "Singer",
+    "notes": ""
+  },
+  {
+    "start": "2026-07-27",
+    "end": "2026-08-02",
+    "general": "Singer",
+    "icu": "Sweeney",
+    "notes": ""
+  },
+  {
+    "start": "2026-08-03",
+    "end": "2026-08-09",
+    "general": "Lakhotia",
+    "icu": "Marshall",
+    "notes": "Annual Child Neuro Update"
+  },
+  {
+    "start": "2026-08-10",
+    "end": "2026-08-16",
+    "general": "Means",
+    "icu": "Puri",
+    "notes": ""
+  },
+  {
+    "start": "2026-08-17",
+    "end": "2026-08-23",
+    "general": "Evans",
+    "icu": "Lakhotia",
+    "notes": ""
+  },
+  {
+    "start": "2026-08-24",
+    "end": "2026-08-30",
+    "general": "Barton",
+    "icu": "Means",
+    "notes": ""
+  },
+  {
+    "start": "2026-08-31",
+    "end": "2026-09-07",
+    "general": "Ray",
+    "icu": "Brock",
+    "notes": "Labor Day (Mon)"
+  },
+  {
+    "start": "2026-09-08",
+    "end": "2026-09-13",
+    "general": "Doll",
+    "icu": "Marshall",
+    "notes": ""
+  },
+  {
+    "start": "2026-09-14",
+    "end": "2026-09-20",
+    "general": "Means",
+    "icu": "Ray",
+    "notes": ""
+  },
+  {
+    "start": "2026-09-21",
+    "end": "2026-09-27",
+    "general": "Singer",
+    "icu": "Sweeney",
+    "notes": ""
+  },
+  {
+    "start": "2026-09-28",
+    "end": "2026-10-04",
+    "general": "Barton",
+    "icu": "Brock",
+    "notes": ""
+  },
+  {
+    "start": "2026-10-05",
+    "end": "2026-10-11",
+    "general": "Marshall",
+    "icu": "Doll",
+    "notes": ""
+  },
+  {
+    "start": "2026-10-12",
+    "end": "2026-10-18",
+    "general": "Sweeney",
+    "icu": "Singer",
+    "notes": "CNS 10/14-10/17"
+  },
+  {
+    "start": "2026-10-19",
+    "end": "2026-10-25",
+    "general": "Chandler",
+    "icu": "Sweeney",
+    "notes": ""
+  },
+  {
+    "start": "2026-10-26",
+    "end": "2026-10-30",
+    "general": "Puri",
+    "icu": "Means",
+    "notes": ""
+  },
+  {
+    "start": "2026-10-31",
+    "end": "2026-11-01",
+    "general": "Evans",
+    "icu": "",
+    "notes": "Weekend call coverage*"
+  },
+  {
+    "start": "2026-11-02",
+    "end": "2026-11-08",
+    "general": "Lakhotia",
+    "icu": "Chandler",
+    "notes": ""
+  },
+  {
+    "start": "2026-11-09",
+    "end": "2026-11-13",
+    "general": "Doll",
+    "icu": "Means",
+    "notes": ""
+  },
+  {
+    "start": "2026-11-14",
+    "end": "2026-11-15",
+    "general": "Ray",
+    "icu": "",
+    "notes": "Weekend call coverage*"
+  },
+  {
+    "start": "2026-11-16",
+    "end": "2026-11-22",
+    "general": "Sweeney",
+    "icu": "Lakhotia",
+    "notes": ""
+  },
+  {
+    "start": "2026-11-23",
+    "end": "2026-11-29",
+    "general": "Means",
+    "icu": "Ray",
+    "notes": "Thanksgiving"
+  },
+  {
+    "start": "2026-11-30",
+    "end": "2026-12-06",
+    "general": "Chandler",
+    "icu": "Lakhotia",
+    "notes": ""
+  },
+  {
+    "start": "2026-12-07",
+    "end": "2026-12-13",
+    "general": "Ray",
+    "icu": "Doll",
+    "notes": ""
+  },
+  {
+    "start": "2026-12-14",
+    "end": "2026-12-20",
+    "general": "Brock",
+    "icu": "Chandler",
+    "notes": ""
+  },
+  {
+    "start": "2026-12-21",
+    "end": "2026-12-27",
+    "general": "Evans",
+    "icu": "Sweeney",
+    "notes": "Christmas"
+  },
+  {
+    "start": "2026-12-28",
+    "end": "2027-01-03",
+    "general": "Marshall",
+    "icu": "Brock",
+    "notes": "New Years"
+  },
+  {
+    "start": "2027-01-04",
+    "end": "2027-01-10",
+    "general": "Lakhotia",
+    "icu": "Chandler",
+    "notes": ""
+  },
+  {
+    "start": "2027-01-11",
+    "end": "2027-01-18",
+    "general": "Doll",
+    "icu": "Barton",
+    "notes": "MLK Day (Mon)"
+  },
+  {
+    "start": "2027-01-19",
+    "end": "2027-01-24",
+    "general": "Chandler",
+    "icu": "Means",
+    "notes": ""
+  },
+  {
+    "start": "2027-01-25",
+    "end": "2027-01-31",
+    "general": "Puri",
+    "icu": "Means",
+    "notes": ""
+  },
+  {
+    "start": "2027-02-01",
+    "end": "2027-02-07",
+    "general": "Sweeney",
+    "icu": "Barton",
+    "notes": ""
+  },
+  {
+    "start": "2027-02-08",
+    "end": "2027-02-14",
+    "general": "Marshall",
+    "icu": "Singer",
+    "notes": ""
+  },
+  {
+    "start": "2027-02-15",
+    "end": "2027-02-21",
+    "general": "Chandler",
+    "icu": "Brock",
+    "notes": ""
+  },
+  {
+    "start": "2027-02-22",
+    "end": "2027-02-28",
+    "general": "Barton",
+    "icu": "Chandler",
+    "notes": ""
+  },
+  {
+    "start": "2027-03-01",
+    "end": "2027-03-07",
+    "general": "Lakhotia",
+    "icu": "Chandler",
+    "notes": ""
+  },
+  {
+    "start": "2027-03-08",
+    "end": "2027-03-14",
+    "general": "Singer",
+    "icu": "Puri",
+    "notes": ""
+  },
+  {
+    "start": "2027-03-15",
+    "end": "2027-03-21",
+    "general": "Chandler",
+    "icu": "Lakhotia",
+    "notes": ""
+  },
+  {
+    "start": "2027-03-22",
+    "end": "2027-03-28",
+    "general": "Means",
+    "icu": "Barton",
+    "notes": ""
+  },
+  {
+    "start": "2027-03-29",
+    "end": "2027-04-04",
+    "general": "Barton",
+    "icu": "Lakhotia",
+    "notes": ""
+  },
+  {
+    "start": "2027-04-05",
+    "end": "2027-04-11",
+    "general": "Sweeney",
+    "icu": "Means",
+    "notes": ""
+  },
+  {
+    "start": "2027-04-12",
+    "end": "2027-04-18",
+    "general": "Brock",
+    "icu": "Chandler",
+    "notes": ""
+  },
+  {
+    "start": "2027-04-19",
+    "end": "2027-04-25",
+    "general": "Evans",
+    "icu": "Means",
+    "notes": ""
+  },
+  {
+    "start": "2027-04-26",
+    "end": "2027-05-02",
+    "general": "Singer",
+    "icu": "Ray",
+    "notes": "AAN Conference (starts 5/1)"
+  },
+  {
+    "start": "2027-05-03",
+    "end": "2027-05-09",
+    "general": "Doll",
+    "icu": "Marshall",
+    "notes": ""
+  },
+  {
+    "start": "2027-05-10",
+    "end": "2027-05-16",
+    "general": "Brock",
+    "icu": "Chandler",
+    "notes": ""
+  },
+  {
+    "start": "2027-05-17",
+    "end": "2027-05-23",
+    "general": "Ray",
+    "icu": "Lakhotia",
+    "notes": ""
+  },
+  {
+    "start": "2027-05-24",
+    "end": "2027-05-31",
+    "general": "Sweeney",
+    "icu": "Puri",
+    "notes": "Memorial Day (Mon)"
+  },
+  {
+    "start": "2027-06-01",
+    "end": "2027-06-06",
+    "general": "Lakhotia",
+    "icu": "Chandler",
+    "notes": ""
+  },
+  {
+    "start": "2027-06-07",
+    "end": "2027-06-13",
+    "general": "Brock",
+    "icu": "Doll",
+    "notes": ""
+  },
+  {
+    "start": "2027-06-14",
+    "end": "2027-06-20",
+    "general": "Doll",
+    "icu": "Chandler",
+    "notes": ""
+  }
+]

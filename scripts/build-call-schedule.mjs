@@ -28,6 +28,26 @@ function excelSerialToMD(serial) {
   return `${d.getUTCMonth() + 1}/${d.getUTCDate()}`;
 }
 
+function excelSerialToDate(serial) {
+  return new Date((serial - 25569) * 86400 * 1000);
+}
+
+function isoDate(d) {
+  const y = d.getUTCFullYear();
+  const m = String(d.getUTCMonth() + 1).padStart(2, '0');
+  const day = String(d.getUTCDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
+
+// Hand-curated bridge: covers 25-26 schedule gap until 26-27 flat sheet starts (6/22/26)
+const BRIDGE_WEEKS = [
+  { start: '2026-05-18', end: '2026-05-24', general: 'Barton',   icu: 'Lakhotia', notes: '' },
+  { start: '2026-05-25', end: '2026-05-31', general: 'Marshall', icu: 'Lakhotia', notes: 'Memorial Day Mon 5/25' },
+  { start: '2026-06-01', end: '2026-06-07', general: 'Lakhotia', icu: 'Marshall', notes: '' },
+  { start: '2026-06-08', end: '2026-06-14', general: 'Hocker',   icu: 'Doll',     notes: '' },
+  { start: '2026-06-15', end: '2026-06-21', general: 'Brock',    icu: 'Means',    notes: '' },
+];
+
 function escapeHtml(s) {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
@@ -356,4 +376,57 @@ data.html += embedHtml;
 
 fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
 console.log('Updated neuro-on-call.json');
+
+// ── 7. Emit normalized weekly schedule JSON for homepage widget ──────────────
+function build2627WeekEntries() {
+  if (!fs.existsSync(XLSX_2627_SRC)) return [];
+  const wb = XLSX.readFile(XLSX_2627_SRC);
+  const ws = wb.Sheets[wb.SheetNames[0]];
+  const rows = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
+  const entries = [];
+  let curYear = 2026; // first row is 6/22-6/26 in 2026
+  let prevStartMonth = null;
+  for (let i = 1; i < rows.length; i++) {
+    const r = rows[i];
+    const raw = r[0];
+    const general = String(r[1] || '').trim();
+    const icu = String(r[2] || '').trim();
+    const notes = String(r[3] || '').trim();
+    if (!raw && !general && !icu) continue;
+
+    if (typeof raw === 'number') {
+      // Single-day holiday row — the source XLSX has buggy serials, so don't trust
+      // the value. Fold into the preceding week: extend that week's end by one day
+      // and append the holiday note (covers Labor Day / MLK / Memorial Day pattern).
+      if (entries.length === 0) continue;
+      const prev = entries[entries.length - 1];
+      const prevEnd = new Date(prev.end + 'T00:00:00Z');
+      prevEnd.setUTCDate(prevEnd.getUTCDate() + 1);
+      prev.end = isoDate(prevEnd);
+      if (notes) prev.notes = prev.notes ? `${prev.notes}; ${notes} (Mon)` : `${notes} (Mon)`;
+      continue;
+    }
+    const s = String(raw).trim();
+    const m = s.match(/^(\d{1,2})\/(\d{1,2})\s*[-–]\s*(?:(\d{1,2})\/)?(\d{1,2})$/);
+    if (!m) { console.warn(`  ⚠ Could not parse week range: "${s}"`); continue; }
+    const sM = +m[1], sD = +m[2], eD = +m[4];
+    const eM = m[3] ? +m[3] : sM;
+    if (prevStartMonth !== null && sM < prevStartMonth) curYear++;
+    prevStartMonth = sM;
+    const sYear = curYear;
+    const eYear = eM < sM ? curYear + 1 : curYear;
+    const startD = new Date(Date.UTC(sYear, sM - 1, sD));
+    const endD = new Date(Date.UTC(eYear, eM - 1, eD));
+    entries.push({ start: isoDate(startD), end: isoDate(endD), general, icu, notes });
+  }
+  return entries;
+}
+
+const allWeeks = [...BRIDGE_WEEKS, ...build2627WeekEntries()].sort((a, b) => a.start.localeCompare(b.start));
+const DATA_OUT_DIR = path.join(PUBLIC, 'data');
+fs.mkdirSync(DATA_OUT_DIR, { recursive: true });
+const WEEKS_FILE = path.join(DATA_OUT_DIR, 'call-weeks.json');
+fs.writeFileSync(WEEKS_FILE, JSON.stringify(allWeeks, null, 2));
+console.log(`Wrote ${allWeeks.length} weekly entries → ${WEEKS_FILE}`);
+
 console.log('\nDone! ✓');
