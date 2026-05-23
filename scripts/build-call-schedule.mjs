@@ -2,9 +2,17 @@
 /**
  * build-call-schedule.mjs
  *
- * Reads the faculty call schedule XLSX, converts each monthly sheet to
+ * Reads the faculty call schedule workbook(s), converts every month sheet to
  * a standalone HTML page with month tabs, copies files to public/,
- * and appends an "On Call Resources" section to neuro-on-call.json.
+ * and refreshes the "On Call Resources" section in neuro-on-call.json.
+ *
+ * Month tabs are AUTO-DETECTED from sheet names matching "<Month> <Year>"
+ * across every committed workbook in MONTH_WORKBOOKS — there is no hardcoded
+ * list of months, so a new academic year drops in without code changes.
+ *
+ * IMPORTANT: every input this script reads must be COMMITTED so the GitHub
+ * Action can reproduce the full build. If an optional source is missing the
+ * script preserves existing output instead of deleting it (see PRESERVE notes).
  */
 import fs from 'fs';
 import path from 'path';
@@ -13,23 +21,35 @@ const require = createRequire(import.meta.url);
 const XLSX = require('xlsx');
 
 // ── Paths ────────────────────────────────────────────────────────────────────
-const XLSX_SRC  = process.env.XLSX_SRC || 'C:/Users/dylan/Child Neuro Handbook Word/Faculty Call Schedule July 7.25 through 6.26.xlsx';
-const XLSX_2627_SRC = process.env.XLSX_2627_SRC || 'C:/Users/dylan/Child Neuro Handbook Word/General_ICU Call 2026-2027 Calendar in Excel.xlsx';
 const PUBLIC    = 'public';
 const PDF_DIR   = path.join(PUBLIC, 'pdfs/neuro-on-call');
-const DEST_XLSX = path.join(PDF_DIR, 'call-schedule.xlsx');
-const DEST_XLSX_2627 = path.join(PDF_DIR, 'call-schedule-2026-2027.xlsx');
 const DEST_DIR  = path.join(PUBLIC, 'call-schedule');
 const DEST_HTML = path.join(DEST_DIR, 'index.html');
 const DATA_FILE = 'src/data/neuro-on-call.json';
 
+// Committed monthly workbooks. Month sheets from ALL of these are merged into
+// one chronological tab list; on overlapping months the FIRST workbook wins.
+// `call-schedule.xlsx` is the current/incoming book managed by the email
+// automation; `call-schedule-2025-2026.xlsx` is the archived prior year.
+const ARCHIVE_2025_26 = path.join(PDF_DIR, 'call-schedule-2025-2026.xlsx');
+const CURRENT_WORKBOOK = process.env.XLSX_SRC || path.join(PDF_DIR, 'call-schedule.xlsx');
+const MONTH_WORKBOOKS = [ARCHIVE_2025_26, CURRENT_WORKBOOK];
+
+// 2026-2027 provisional week list (flat single-sheet book). Prefer the local
+// source of truth when present; otherwise fall back to the committed copy so
+// CI can still build the table (PRESERVE: never strips it for lack of input).
+const DEST_XLSX_2627 = path.join(PDF_DIR, 'call-schedule-2026-2027.xlsx');
+function firstExisting(paths) {
+  return paths.find(p => fs.existsSync(p)) || paths[paths.length - 1];
+}
+const XLSX_2627_SRC = process.env.XLSX_2627_SRC || firstExisting([
+  'C:/Users/dylan/Child Neuro Handbook Word/General_ICU Call 2026-2027 Calendar in Excel.xlsx',
+  DEST_XLSX_2627,
+]);
+
 function excelSerialToMD(serial) {
   const d = new Date((serial - 25569) * 86400 * 1000);
   return `${d.getUTCMonth() + 1}/${d.getUTCDate()}`;
-}
-
-function excelSerialToDate(serial) {
-  return new Date((serial - 25569) * 86400 * 1000);
 }
 
 function isoDate(d) {
@@ -55,10 +75,10 @@ function escapeHtml(s) {
 // ── Build 2026-2027 provisional schedule table ───────────────────────────────
 function build2627Html() {
   if (!fs.existsSync(XLSX_2627_SRC)) {
-    console.log('No 2026-2027 XLSX found, skipping that subsection');
+    console.log('No 2026-2027 source found, skipping that subsection');
     return '';
   }
-  console.log('Reading 2026-2027 XLSX…');
+  console.log(`Reading 2026-2027 week list from ${XLSX_2627_SRC}…`);
   const wb = XLSX.readFile(XLSX_2627_SRC);
   const ws = wb.Sheets[wb.SheetNames[0]];
   const rows = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
@@ -80,8 +100,8 @@ function build2627Html() {
   }
 
   const tableHtml = `
-<h3 id="faculty-call-schedule-2627" style="margin-top:2rem;">Faculty Call Schedule (2026–2027)</h3>
-<p style="margin:0.25rem 0 0.75rem;font-size:0.85rem;color:#64748b;">Provisional listing of General &amp; ICU attendings by week from the 2026–2027 spreadsheet. The fully formatted monthly calendar is not yet available; holiday weeks are highlighted.</p>
+<h3 id="faculty-call-schedule-2627" style="margin-top:2rem;">Faculty Call Schedule (2026–2027) — Quick Glance</h3>
+<p style="margin:0.25rem 0 0.75rem;font-size:0.85rem;color:#64748b;">Provisional week-by-week listing of General &amp; ICU attendings for 2026–2027. The fully formatted monthly calendar is in the tabbed view above; holiday weeks are highlighted here.</p>
 <div style="margin:1rem 0;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
   <div style="padding:0.6rem 0.875rem;background:#f8fafc;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:0.5rem;flex-wrap:wrap;">
     <span style="font-size:0.8rem;font-weight:600;color:#1e293b;">📅 General &amp; ICU Call (July 2026 – June 2027)</span>
@@ -108,32 +128,23 @@ ${trs.map(t => '        ' + t).join('\n')}
   return tableHtml;
 }
 
-// ── Relevant sheets (July 2025 – June 2026) ─────────────────────────────────
-const RELEVANT_SHEETS = [
-  'July 2025', 'August 2025', 'September 2025', 'October 2025',
-  'November 2025', 'December 2025', 'January 2026', 'February 2026',
-  'March 2026', 'April 2026', 'May 2026', 'June 2026',
-];
+// ── Month-sheet detection ────────────────────────────────────────────────────
+const MONTH_NAMES = ['January','February','March','April','May','June',
+  'July','August','September','October','November','December'];
+const MONTH_IDX = Object.fromEntries(MONTH_NAMES.map((m, i) => [m, i]));
+const MONTH_RE = new RegExp(`^(${MONTH_NAMES.join('|')})\\s+(20\\d{2})$`);
+function monthKey(label) {
+  const m = label.match(MONTH_RE);
+  return (+m[2]) * 12 + MONTH_IDX[m[1]];
+}
 
-// ── 1. Read workbook ─────────────────────────────────────────────────────────
-console.log('Reading XLSX…');
-const wb = XLSX.readFile(XLSX_SRC, { cellStyles: true });
-
-// ── 2. Convert sheets to HTML tables with cell background colors ─────────────
-const sheetHtmls = [];
-for (const name of RELEVANT_SHEETS) {
-  const ws = wb.Sheets[name];
-  if (!ws) { console.warn(`  ⚠ Sheet not found: ${name}`); continue; }
-
-  const sheetId = `sheet-${name.replace(/\s+/g, '-').toLowerCase()}`;
-
-  // sheet_to_html gives a full HTML doc; extract just the <table>
+// Convert one worksheet to an HTML <table>, injecting cell background colors.
+function sheetToTableHtml(ws, sheetId) {
   let raw = XLSX.utils.sheet_to_html(ws, { id: sheetId });
   const tableStart = raw.indexOf('<table');
   const tableEnd = raw.lastIndexOf('</table>') + 8;
   let tableHtml = raw.substring(tableStart, tableEnd);
 
-  // Inject background colors from cell styles
   const range = XLSX.utils.decode_range(ws['!ref'] || 'A1');
   for (let r = range.s.r; r <= range.e.r; r++) {
     for (let c = range.s.c; c <= range.e.c; c++) {
@@ -144,40 +155,61 @@ for (const name of RELEVANT_SHEETS) {
       if (!rgb) continue;
 
       const cellId = `${sheetId}-${addr}`;
-      // Add inline background style to the td with this id
       const idAttr = `id="${cellId}"`;
       const idx = tableHtml.indexOf(idAttr);
       if (idx < 0) continue;
 
-      // Find the opening <td that contains this id
       const tdStart = tableHtml.lastIndexOf('<td', idx);
       if (tdStart < 0) continue;
 
-      // Check if td already has a style attr
       const tdTag = tableHtml.substring(tdStart, idx + idAttr.length + 1);
       if (tdTag.includes('style="')) continue; // skip if already styled
 
-      // Insert style after <td
       tableHtml = tableHtml.substring(0, tdStart + 3) +
         ` style="background:#${rgb}"` +
         tableHtml.substring(tdStart + 3);
     }
   }
-
-  sheetHtmls.push({ name, html: tableHtml });
-  console.log(`  ✓ ${name} (${tableHtml.length} chars)`);
+  return tableHtml;
 }
 
-// ── 3. Determine current month for auto-selection ────────────────────────────
+// ── 1. Collect month sheets across all committed workbooks ───────────────────
+const months = new Map(); // monthKey -> { name, html }
+for (const wbPath of MONTH_WORKBOOKS) {
+  if (!fs.existsSync(wbPath)) { console.warn(`  ⚠ Workbook not found, skipping: ${wbPath}`); continue; }
+  console.log(`Reading ${wbPath}…`);
+  const wb = XLSX.readFile(wbPath, { cellStyles: true });
+  for (const name of wb.SheetNames) {
+    if (!MONTH_RE.test(name)) continue;
+    const key = monthKey(name);
+    if (months.has(key)) continue; // earlier workbook wins on overlap
+    const sheetId = `sheet-${name.replace(/\s+/g, '-').toLowerCase()}`;
+    months.set(key, { name, html: sheetToTableHtml(wb.Sheets[name], sheetId) });
+    console.log(`  ✓ ${name}`);
+  }
+}
+
+// Call years run July→June: start the tab list at the first July present so a
+// stray leading month (e.g. a leftover June from a prior year) is dropped.
+let keys = [...months.keys()].sort((a, b) => a - b);
+if (keys.length === 0) {
+  console.error('No month sheets detected in any workbook — aborting to avoid clobbering output.');
+  process.exit(1);
+}
+const firstJuly = keys.find(k => k % 12 === MONTH_IDX['July']);
+const startKey = firstJuly ?? keys[0];
+keys = keys.filter(k => k >= startKey);
+const sheetHtmls = keys.map(k => months.get(k));
+console.log(`Tabs: ${sheetHtmls.length} (${sheetHtmls[0].name} → ${sheetHtmls[sheetHtmls.length - 1].name})`);
+
+// ── 2. Determine current month for auto-selection ────────────────────────────
 const now = new Date();
-const monthNames = ['January','February','March','April','May','June',
-  'July','August','September','October','November','December'];
-const currentMonthLabel = `${monthNames[now.getMonth()]} ${now.getFullYear()}`;
-const defaultIdx = RELEVANT_SHEETS.indexOf(currentMonthLabel);
+const currentMonthLabel = `${MONTH_NAMES[now.getMonth()]} ${now.getFullYear()}`;
+const defaultIdx = sheetHtmls.findIndex(s => s.name === currentMonthLabel);
 const activeIdx = defaultIdx >= 0 ? defaultIdx : 0;
 console.log(`Current month: ${currentMonthLabel} (tab index ${activeIdx})`);
 
-// ── 4. Generate standalone HTML page ─────────────────────────────────────────
+// ── 3. Generate standalone HTML page ─────────────────────────────────────────
 const standalonePage = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -305,15 +337,14 @@ function showSheet(idx) {
 </body>
 </html>`;
 
-// ── 5. Write files ───────────────────────────────────────────────────────────
+// ── 4. Write files ───────────────────────────────────────────────────────────
 fs.mkdirSync(PDF_DIR, { recursive: true });
 fs.mkdirSync(DEST_DIR, { recursive: true });
-fs.copyFileSync(XLSX_SRC, DEST_XLSX);
-console.log(`Copied XLSX → ${DEST_XLSX}`);
 
-if (fs.existsSync(XLSX_2627_SRC)) {
+// Keep the 2026-2027 download copy in sync (skip if source IS the copy).
+if (fs.existsSync(XLSX_2627_SRC) && path.resolve(XLSX_2627_SRC) !== path.resolve(DEST_XLSX_2627)) {
   fs.copyFileSync(XLSX_2627_SRC, DEST_XLSX_2627);
-  console.log(`Copied 2026-2027 XLSX → ${DEST_XLSX_2627}`);
+  console.log(`Copied 2026-2027 week list → ${DEST_XLSX_2627}`);
 }
 
 const schedule2627Html = build2627Html();
@@ -321,7 +352,7 @@ const schedule2627Html = build2627Html();
 fs.writeFileSync(DEST_HTML, standalonePage);
 console.log(`Wrote HTML → ${DEST_HTML} (${standalonePage.length} chars)`);
 
-// ── 6. Update neuro-on-call.json ─────────────────────────────────────────────
+// ── 5. Update neuro-on-call.json ─────────────────────────────────────────────
 const data = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
 
 // Add TOC entries
@@ -356,8 +387,11 @@ const embedHtml = `
 <h3 id="faculty-call-schedule">Faculty Call Schedule</h3>
 <div style="margin:1.25rem 0;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
   <div style="padding:0.6rem 0.875rem;background:#f8fafc;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:0.5rem;flex-wrap:wrap;">
-    <span style="font-size:0.8rem;font-weight:600;color:#1e293b;">📅 Faculty Call Schedule (July 2025 – June 2026)</span>
-    <a href="/pdfs/neuro-on-call/call-schedule.xlsx" download style="font-size:0.75rem;color:#2563eb;white-space:nowrap;text-decoration:none;background:#eff6ff;border:1px solid #bfdbfe;border-radius:6px;padding:0.25rem 0.6rem;">Download XLSX ↗</a>
+    <span style="font-size:0.8rem;font-weight:600;color:#1e293b;">📅 Faculty Call Schedule (monthly calendar)</span>
+    <span style="display:flex;gap:0.4rem;flex-wrap:wrap;">
+      <a href="/pdfs/neuro-on-call/call-schedule.xlsx" download style="font-size:0.75rem;color:#2563eb;white-space:nowrap;text-decoration:none;background:#eff6ff;border:1px solid #bfdbfe;border-radius:6px;padding:0.25rem 0.6rem;">2026–27 XLSX ↗</a>
+      <a href="/pdfs/neuro-on-call/call-schedule-2025-2026.xlsx" download style="font-size:0.75rem;color:#2563eb;white-space:nowrap;text-decoration:none;background:#eff6ff;border:1px solid #bfdbfe;border-radius:6px;padding:0.25rem 0.6rem;">2025–26 XLSX ↗</a>
+    </span>
   </div>
   <iframe src="/call-schedule/" class="spreadsheet-embed" width="100%" style="height:650px;display:block;border:none;background:#fafafa;"></iframe>
 </div>
@@ -377,7 +411,7 @@ data.html += embedHtml;
 fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
 console.log('Updated neuro-on-call.json');
 
-// ── 7. Emit normalized weekly schedule JSON for homepage widget ──────────────
+// ── 6. Emit normalized weekly schedule JSON for homepage widget ──────────────
 function build2627WeekEntries() {
   if (!fs.existsSync(XLSX_2627_SRC)) return [];
   const wb = XLSX.readFile(XLSX_2627_SRC);
@@ -422,11 +456,23 @@ function build2627WeekEntries() {
   return entries;
 }
 
-const allWeeks = [...BRIDGE_WEEKS, ...build2627WeekEntries()].sort((a, b) => a.start.localeCompare(b.start));
+const week2627 = build2627WeekEntries();
 const DATA_OUT_DIR = path.join(PUBLIC, 'data');
 fs.mkdirSync(DATA_OUT_DIR, { recursive: true });
 const WEEKS_FILE = path.join(DATA_OUT_DIR, 'call-weeks.json');
-fs.writeFileSync(WEEKS_FILE, JSON.stringify(allWeeks, null, 2));
-console.log(`Wrote ${allWeeks.length} weekly entries → ${WEEKS_FILE}`);
+
+// PRESERVE: if the 2026-2027 week source is unavailable we'd only have the 5
+// bridge weeks — never overwrite a richer existing file with that stub.
+const freshWeeks = [...BRIDGE_WEEKS, ...week2627].sort((a, b) => a.start.localeCompare(b.start));
+let existingCount = 0;
+if (fs.existsSync(WEEKS_FILE)) {
+  try { existingCount = JSON.parse(fs.readFileSync(WEEKS_FILE, 'utf8')).length; } catch { /* ignore */ }
+}
+if (week2627.length === 0 && existingCount > freshWeeks.length) {
+  console.warn(`  ⚠ 2026-2027 week source missing; preserving existing call-weeks.json (${existingCount} entries)`);
+} else {
+  fs.writeFileSync(WEEKS_FILE, JSON.stringify(freshWeeks, null, 2));
+  console.log(`Wrote ${freshWeeks.length} weekly entries → ${WEEKS_FILE}`);
+}
 
 console.log('\nDone! ✓');
