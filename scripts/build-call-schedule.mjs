@@ -84,6 +84,8 @@ function build2627Html() {
   const rows = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
 
   const trs = [];
+  let curYear = 2026;        // first row (6/22-6/26) falls in 2026
+  let prevStartMonth = null;
   for (let i = 1; i < rows.length; i++) {
     const r = rows[i];
     let week = r[0];
@@ -91,8 +93,24 @@ function build2627Html() {
     const icu = String(r[2] || '').trim();
     const notes = String(r[3] || '').trim();
     if (!week && !general && !icu) continue;
-    if (typeof week === 'number') week = excelSerialToMD(week);
+    const wasNumeric = typeof week === 'number';
+    if (wasNumeric) week = excelSerialToMD(week);
     week = String(week).trim();
+
+    // Append the calendar year so dates aren't ambiguous across the Jul→Jun span.
+    // Advance the year only on real week rows; holiday rows have buggy serials.
+    const mr = week.match(/^(\d{1,2})\/\d{1,2}(?:\s*[-–]\s*(?:(\d{1,2})\/)?\d{1,2})?$/);
+    if (mr) {
+      const sM = +mr[1];
+      if (!wasNumeric) {
+        if (prevStartMonth !== null && sM < prevStartMonth) curYear++;
+        prevStartMonth = sM;
+      }
+      const eM = mr[2] ? +mr[2] : sM;
+      const eYear = (mr[2] && eM < sM) ? curYear + 1 : curYear;
+      week += eYear === curYear ? `, ${curYear}` : `, ${curYear}–${eYear}`;
+    }
+
     const isHoliday = !!notes;
     const bg = isHoliday ? '#fef3c7' : '';
     const cell = (v, align = 'left') => `<td style="border:1px solid #e2e8f0;padding:0.4rem 0.6rem;text-align:${align};${bg ? `background:${bg};` : ''}font-size:0.82rem;">${escapeHtml(v) || '&nbsp;'}</td>`;
