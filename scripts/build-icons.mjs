@@ -55,9 +55,9 @@ const svg = `
         stroke="#ffffff" stroke-width="22" stroke-linecap="round" fill="none"/>
 
   <path d="M140 196 L140 268 A32 32 0 0 0 204 268 L204 196"
-        stroke="#ffffff" stroke-width="30" stroke-linecap="butt" stroke-linejoin="miter" fill="none"/>
+        stroke="#ffffff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
   <path d="M314 196 L314 300 L366 300"
-        stroke="#ffffff" stroke-width="30" stroke-linecap="butt" stroke-linejoin="miter" fill="none"/>
+        stroke="#ffffff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 </svg>
 `;
 
