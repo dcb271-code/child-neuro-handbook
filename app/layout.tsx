@@ -9,11 +9,18 @@ const inter = Inter({ subsets: ['latin'], display: 'swap' });
 export const metadata: Metadata = {
   title: 'Child Neurology Handbook',
   description: 'UofL Neurology Residency — Clinical Reference for Child Neurology',
+  applicationName: 'Neuro',
+  appleWebApp: {
+    capable: true,
+    title: 'Neuro',
+    statusBarStyle: 'black-translucent',
+  },
 };
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
+  themeColor: '#1e3a5f',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
