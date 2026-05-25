@@ -31,10 +31,10 @@
         stroke="#ffffff" stroke-width="22" stroke-linecap="round" fill="none"/>
 
   <!-- U (left hemisphere, for UofL) -->
-  <path d="M140 198 L140 268 Q140 300 172 300 Q204 300 204 268 L204 198"
-        stroke="#ffffff" stroke-width="30" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M140 196 L140 268 A32 32 0 0 0 204 268 L204 196"
+        stroke="#ffffff" stroke-width="30" stroke-linecap="butt" stroke-linejoin="miter" fill="none"/>
 
   <!-- L (right hemisphere) -->
-  <path d="M312 198 L312 300 L368 300"
-        stroke="#ffffff" stroke-width="30" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M314 196 L314 300 L366 300"
+        stroke="#ffffff" stroke-width="30" stroke-linecap="butt" stroke-linejoin="miter" fill="none"/>
 </svg>
