@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import GlobalSearch from '@/components/GlobalSearch';
 import DarkModeToggle from '@/components/DarkModeToggle';
+import ServiceWorkerRegistration from '@/components/ServiceWorkerRegistration';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' });
 
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: `(function(){try{var d=localStorage.getItem('dark-mode');if(d==='true'||(d===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})()` }} />
       </head>
       <body className="min-h-screen bg-[#F8F9FA] dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors">
+        <ServiceWorkerRegistration />
         {/* Top navigation bar */}
         <header
           className="sticky top-0 z-40 shadow-sm dark:shadow-slate-950/50"
