@@ -1,14 +1,14 @@
 <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="bg" x1="256" y1="0" x2="256" y2="512" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#214a73"/>
-      <stop offset="1" stop-color="#0f2238"/>
+      <stop offset="0" stop-color="#c8102e"/>
+      <stop offset="1" stop-color="#7a0a1e"/>
     </linearGradient>
     <radialGradient id="sheen" cx="256" cy="130" r="300" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.18"/>
       <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
     </radialGradient>
-    <g id="half" stroke="#f1f5f9" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <g id="half" stroke="#ffffff" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" fill="none">
       <path d="M256 146
                C280 132 314 134 328 158
                C350 140 384 150 390 180
@@ -17,9 +17,6 @@
                C404 326 380 350 352 348
                C336 364 296 368 270 356
                C264 360 260 360 256 360"/>
-      <path d="M292 190 C326 198 330 226 304 240"/>
-      <path d="M300 268 C338 276 340 308 308 316"/>
-      <path d="M300 330 C326 332 340 320 342 302"/>
     </g>
   </defs>
 
@@ -31,10 +28,13 @@
 
   <!-- central fissure -->
   <path d="M256 146 C248 192 264 226 256 258 C248 292 262 330 256 360"
-        stroke="#f1f5f9" stroke-width="22" stroke-linecap="round" fill="none"/>
+        stroke="#ffffff" stroke-width="22" stroke-linecap="round" fill="none"/>
 
-  <!-- synapse node -->
-  <circle cx="304" cy="240" r="30" fill="#38bdf8" fill-opacity="0.22"/>
-  <circle cx="304" cy="240" r="16" fill="#38bdf8"/>
-  <circle cx="304" cy="240" r="16" fill="none" stroke="#0f2238" stroke-width="6"/>
+  <!-- U (left hemisphere, for UofL) -->
+  <path d="M140 198 L140 268 Q140 300 172 300 Q204 300 204 268 L204 198"
+        stroke="#ffffff" stroke-width="30" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- L (right hemisphere) -->
+  <path d="M312 198 L312 300 L368 300"
+        stroke="#ffffff" stroke-width="30" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 </svg>
