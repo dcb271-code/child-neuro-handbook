@@ -20,7 +20,7 @@
     "slug": "movement-disorders",
     "icon": "🔄",
     "color": "bg-green-100 text-green-800 border-green-200",
-    "tocCount": 8,
+    "tocCount": 35,
     "imageCount": 2
   },
   {
@@ -68,7 +68,7 @@
     "slug": "stroke",
     "icon": "🫀",
     "color": "bg-amber-100 text-amber-800 border-amber-200",
-    "tocCount": 14,
+    "tocCount": 22,
     "imageCount": 6
   },
   {
@@ -156,7 +156,7 @@
     "slug": "neuro-on-call",
     "icon": "🚨",
     "color": "bg-rose-100 text-rose-800 border-rose-200",
-    "tocCount": 8,
+    "tocCount": 11,
     "imageCount": 2
   }
 ]
