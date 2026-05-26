@@ -6,6 +6,7 @@ import TableOfContents from '@/components/TableOfContents';
 import MobileSubsectionNav from '@/components/MobileSubsectionNav';
 import SectionContent from '@/components/SectionContent';
 import ImageLightbox from '@/components/ImageLightbox';
+import ASMWithdrawalCalculator from '@/components/asm-withdrawal/ASMWithdrawalCalculator';
 
 type TocEntry = { level: number; text: string; id: string };
 
@@ -103,6 +104,12 @@ export default function SectionPage({ params }: { params: { section: string } })
         <article className="flex-1 min-w-0 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm px-4 sm:px-8 py-5 sm:py-7">
           <SectionContent html={data.html} />
           <ImageLightbox />
+
+          {params.section === 'epilepsy' && (
+            <section id="asm-withdrawal-calculator" className="scroll-mt-24 mt-8 pt-6 border-t border-slate-100 dark:border-slate-700">
+              <ASMWithdrawalCalculator />
+            </section>
+          )}
 
           {/* Prev / Next */}
           <div className="mt-8 sm:mt-10 pt-5 sm:pt-6 border-t border-slate-100 dark:border-slate-700 flex justify-between gap-4 flex-wrap">
