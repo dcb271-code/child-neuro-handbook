@@ -44,7 +44,6 @@ export type FutureEpilepsyInputs = {
 export type FutureEpilepsyResult = {
   higherRiskCount: number;
   recurrenceOnly: boolean;
-  anyComplex: boolean;
   fse: boolean;
   stratum: string;
   baseRisk: number;
@@ -82,11 +81,15 @@ export function calcFirstSeizure(inputs: FirstSeizureInputs): FirstSeizureResult
   const treatedR2y = r2y * 0.6;
   const treatedR5y = r5y * 0.7;
 
+  // Flag off the rounded value so the ILAE banner never disagrees with the
+  // displayed 2-yr percentage. (Invisible for current table values.)
+  const untreatedR2y = Math.round(r2y);
+
   return {
     label: base.label,
-    untreated: { r2y: Math.round(r2y), r5y: Math.round(r5y) },
+    untreated: { r2y: untreatedR2y, r5y: Math.round(r5y) },
     treated: { r2y: Math.round(treatedR2y), r5y: Math.round(treatedR5y) },
-    epilepsyDx: r2y >= 60, // ILAE 2014: single seizure + >=60% recurrence risk
+    epilepsyDx: untreatedR2y >= 60, // ILAE 2014: single seizure + >=60% recurrence risk
   };
 }
 
@@ -166,7 +169,6 @@ export function calcFutureEpilepsy(inputs: FutureEpilepsyInputs): FutureEpilepsy
   return {
     higherRiskCount,
     recurrenceOnly,
-    anyComplex,
     fse: fseFlag,
     stratum,
     baseRisk,

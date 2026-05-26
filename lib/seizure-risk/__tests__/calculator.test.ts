@@ -46,7 +46,9 @@ describe('calcFebrileRecurrence', () => {
   });
   it('strata labels and counts', () => {
     expect(tt(0).stratum).toBe('Lowest (population baseline)');
+    expect(tt(1).stratum).toBe('Low');
     expect(tt(2).stratum).toBe('Moderate');
+    expect(tt(3).stratum).toBe('High');
     expect(tt(4).rfCount).toBe(4);
     expect(tt(4).stratum).toBe('High');
   });
@@ -92,8 +94,17 @@ describe('calcFutureEpilepsy', () => {
   it('FSE + recurrence equals FSE alone (recurrence adds nothing)', () => {
     expect(calcFutureEpilepsy({ ...base, prolongedLevel: 'fse', multipleInDay: true }).baseRisk).toBe(25);
   });
+  it('prior abnormality alone (no complex features) = 7%', () => {
+    expect(calcFutureEpilepsy({ ...base, priorAbnormality: true }).baseRisk).toBe(7);
+  });
+  it('prior abnormality + recurrence-only = 10%', () => {
+    expect(calcFutureEpilepsy({ ...base, priorAbnormality: true, multipleInDay: true }).baseRisk).toBe(10);
+  });
   it('prior abnormality + higher-risk feature = 22%', () => {
     expect(calcFutureEpilepsy({ ...base, focal: true, priorAbnormality: true }).baseRisk).toBe(22);
+  });
+  it('FSE + prior abnormality + focal: prior-abnormality precedence wins (40%)', () => {
+    expect(calcFutureEpilepsy({ ...base, prolongedLevel: 'fse', focal: true, priorAbnormality: true }).baseRisk).toBe(40);
   });
   it('family history of epilepsy applies a x1.5 modifier (focal 7 -> 10.5)', () => {
     const r = calcFutureEpilepsy({ ...base, focal: true, familyHxEpilepsy: true });
