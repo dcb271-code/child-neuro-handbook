@@ -11,10 +11,14 @@ import {
 
 // ---------- UI helpers ----------
 function Field({ label, children, hint }: { label: string; children: React.ReactNode; hint?: string }) {
+  // Wrap the control in the <label> so it is implicitly associated with its
+  // input — clicking the text focuses the field and screen readers announce it.
   return (
     <div className="mb-3">
-      <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">{label}</label>
-      {children}
+      <label className="block">
+        <span className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">{label}</span>
+        {children}
+      </label>
       {hint && <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">{hint}</p>}
     </div>
   );
@@ -55,7 +59,7 @@ function RiskPill({ value, label, color }: { value: RiskValue; label: string; co
     <div className={`rounded-lg p-3 border ${color}`}>
       <div className="text-xs uppercase tracking-wide opacity-80">{label}</div>
       <div className="text-2xl font-semibold mt-1">
-        {value === null || value === undefined ? '—' : `${value}%`}
+        {value == null ? '—' : `${value}%`}
       </div>
     </div>
   );
@@ -103,9 +107,9 @@ export default function ASMWithdrawalCalculator() {
 
       {/* Tabs */}
       <div className="flex flex-wrap gap-1 mb-5 border-b border-slate-200 dark:border-slate-700">
-        <button onClick={() => setTab('lamberink')} className={tabClass('lamberink')}>Lamberink 2017 (peds + adults)</button>
-        <button onClick={() => setTab('dai')} className={tabClass('dai')}>Dai 2025 (peds only)</button>
-        <button onClick={() => setTab('about')} className={tabClass('about')}>About / caveats</button>
+        <button type="button" onClick={() => setTab('lamberink')} className={tabClass('lamberink')}>Lamberink 2017 (peds + adults)</button>
+        <button type="button" onClick={() => setTab('dai')} className={tabClass('dai')}>Dai 2025 (peds only)</button>
+        <button type="button" onClick={() => setTab('about')} className={tabClass('about')}>About / caveats</button>
       </div>
 
       {tab === 'lamberink' && (
