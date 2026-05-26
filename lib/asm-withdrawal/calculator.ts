@@ -87,10 +87,13 @@ export function calcLamberink(inputs: LamberinkInputs): LamberinkResult | null {
     nseizures, benign, delay, focal, eeg,
   } = inputs;
 
-  const ttrC = Math.min(24, Math.max(0, ttr));
-  const durC = Math.min(40, Math.max(0, duration));
-  const ageC = Math.min(80, Math.max(0, ageonset));
-  const naedC = Math.min(9, Math.max(0, naed));
+  // The TTR/DUR/AGE/NAED tables are keyed by integer years/counts, so clamp
+  // AND round: a non-integer input (e.g. 1.5y) would otherwise miss every
+  // indexOf match and silently return null / undefined.
+  const ttrC = Math.round(Math.min(24, Math.max(0, ttr)));
+  const durC = Math.round(Math.min(40, Math.max(0, duration)));
+  const ageC = Math.round(Math.min(80, Math.max(0, ageonset)));
+  const naedC = Math.round(Math.min(9, Math.max(0, naed)));
 
   const ttrIdx = findIdx(TTR_VALUES, ttrC);
   const durIdx = findIdx(DUR_VALUES, durC);
@@ -102,6 +105,8 @@ export function calcLamberink(inputs: LamberinkInputs): LamberinkResult | null {
   const nseizPtsLong = nseizures === '10+' ? 2.5 : 0;
   const benignPts    = benign === 'yes' ? 0 : 5.5;
   const delayPts     = delay === 'yes' ? 2.0 : 0;
+  // Only an epileptiform EEG carries points; 'normal' and 'notdone' both
+  // score 0, matching the Lamberink model (a missing EEG is treated as normal).
   const eegPtsRec    = eeg === 'epileptiform' ? 4 : 0;
   const eegPtsLong   = eeg === 'epileptiform' ? 2 : 0;
   const sexPts       = sex === 'female' ? 1.5 : 0;
