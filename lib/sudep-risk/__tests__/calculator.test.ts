@@ -163,15 +163,15 @@ describe('calcPedSUDEP — SCN1A floor + phenotype ordering', () => {
   it('SCN1A multiplies a GEFS+ phenotype by ×1.4 — above the floor on an active profile (drift guard)', () => {
     const bare  = calcPedSUDEP({ ...pedBase, ...STD, syndrome: 'gefs_mild', geneticEtiology: 'none' });
     const scn1a = calcPedSUDEP({ ...pedBase, ...STD, syndrome: 'gefs_mild', geneticEtiology: 'scn1a' });
-    expect(bare.rawRate / 2.55).toBeCloseTo(0.15, 6);        // gene-agnostic GEFS+ baseline, unfloored (0.3825)
+    expect(bare.rawRate / 2.55).toBeCloseTo(0.30, 6);        // gene-agnostic GEFS+ baseline (raised to 0.30), unfloored
     expect(scn1a.rawRate).toBeGreaterThan(bare.rawRate);      // SCN1A raises it...
-    expect(scn1a.rawRate).toBeCloseTo(0.15 * 1.4 * 2.55, 5);  // ...by ×1.4 → 0.5355, just above the 0.5 floor
+    expect(scn1a.rawRate).toBeCloseTo(0.30 * 1.4 * 2.55, 5);  // ...by ×1.4 → 1.071, just above the 1.0 floor
     expect(scn1a.geneticFloorBinding).toBe(false);            // the multiplier carried it above the floor
   });
 
-  it('SCN1A floors a self-limited phenotype up to the 0.5/1000py final-rate floor', () => {
+  it('SCN1A floors a self-limited phenotype up to the 1.0/1000py final-rate floor', () => {
     const r = calcPedSUDEP({ ...pedBase, ...STD, syndrome: 'selflimited', geneticEtiology: 'scn1a' });
-    expect(r.rawRate).toBeCloseTo(0.5, 6);               // 0.10 × ×1.4 × 2.55 = 0.357 < 0.5 → floored
+    expect(r.rawRate).toBeCloseTo(1.0, 6);               // 0.10 × ×1.4 × 2.55 = 0.357 < 1.0 → floored
     expect(r.geneticFloorBinding).toBe(true);
   });
 
@@ -203,15 +203,18 @@ describe('calcPedSUDEP — syndrome floor (high-mortality syndromes)', () => {
     expect(r.rawRate).toBeCloseTo(4.59, 2);
     expect(r.syndromeFloorApplied).toBe(false);
   });
-  it('genuinely seizure-free Dravet (no GTCS in past year) escapes the floor', () => {
+  it('seizure-free Dravet (no GTCS past year) floors to the REMISSION floor (0.65×2.3=1.495), not full escape', () => {
     const r = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', gtcFrequency: 'none_pastyear' });
-    expect(r.rawRate).toBeCloseTo(0.27, 6); // 1.8 * 0.3 * 0.5
-    expect(r.syndromeFloorApplied).toBe(false);
-    expect(r.rawRate).toBeLessThan(2.3);
+    expect(r.rawRate).toBeCloseTo(2.3 * 0.65, 5);   // channelopathy substrate persists; floor reduced, not deleted
+    expect(r.syndromeFloorApplied).toBe(true);
+    expect(r.floorIsRemission).toBe(true);
+    expect(r.rawRate).toBeLessThan(2.3);             // still below the active floor
+    expect(r.rawRate).toBeGreaterThan(0.4);          // but above general epilepsy — no longer 0.27
   });
-  it('"No GTCS ever" Dravet also escapes the floor', () => {
+  it('"No GTCS ever" Dravet also floors to the remission floor', () => {
     const r = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', gtcFrequency: 'never' });
-    expect(r.syndromeFloorApplied).toBe(false);
+    expect(r.rawRate).toBeCloseTo(2.3 * 0.65, 5);
+    expect(r.floorIsRemission).toBe(true);
     expect(r.rawRate).toBeLessThan(2.3);
   });
   it('non-floor syndromes (focal DRE) are never floored, even with favorable factors', () => {
@@ -250,31 +253,38 @@ describe('calcPedSUDEP — high-end saturation (soft asymptote)', () => {
   });
 });
 
-describe('calcPedSUDEP — SCN1A 0.5 final-rate floor (favorable modifiers cannot pull below it)', () => {
-  it('GEFS+/SCN1A with rare GTCS + monitoring floors to 0.5 (was the ~0.13 favorable-modifier underestimate)', () => {
-    // unfloored product = 0.15 * rare(1.0) * shared(0.5) = 0.075; the old 0.25 baseline-floor route landed ~0.13
+describe('calcPedSUDEP — SCN1A 1.0 final-rate floor (favorable modifiers cannot pull below it)', () => {
+  it('GEFS+/SCN1A with rare GTCS + monitoring floors to 1.0 (a known-pathogenic SCN1A is never benign)', () => {
+    // unfloored product = 0.30 × ×1.4 × rare(1.0) × shared(0.5) = 0.21 → floored to the 1.0 SCN1A floor
     const r = calcPedSUDEP({ ...pedBase, syndrome: 'gefs_mild', geneticEtiology: 'scn1a', gtcFrequency: 'rare', supervision: 'shared' });
-    expect(r.rawRate).toBeCloseTo(0.5, 6);
+    expect(r.rawRate).toBeCloseTo(1.0, 6);
     expect(r.geneticFloorApplied).toBe(true);
     expect(r.geneticFloorBinding).toBe(true);
-    expect(r.tier).toBe('Low');
+    expect(r.tier).toBe('Moderate');
   });
-  it('the floor is on the FINAL rate — an active-enough SCN1A profile rises above 0.5 on its own', () => {
-    // 0.15 × ×1.4 × very_frequent(5) × nocturnal(1.7) × alone(2) = 3.57 — well above the floor, so it is inert
+  it('the floor is on the FINAL rate — an active-enough SCN1A profile rises above 1.0 on its own', () => {
+    // 0.30 × ×1.4 × very_frequent(5) × nocturnal(1.7) × alone(2) = 7.14 — well above the floor, so it is inert
     const r = calcPedSUDEP({ ...pedBase, syndrome: 'gefs_mild', geneticEtiology: 'scn1a', gtcFrequency: 'very_frequent', nocturnal: true, supervision: 'alone' });
-    expect(r.rawRate).toBeCloseTo(0.15 * 1.4 * 5 * 1.7 * 2, 5);
+    expect(r.rawRate).toBeCloseTo(0.30 * 1.4 * 5 * 1.7 * 2, 5);
     expect(r.geneticFloorBinding).toBe(false);
   });
-  it('genuine seizure-freedom overrides the SCN1A floor (consistent with the syndrome floor)', () => {
+  it('seizure-freedom REDUCES the SCN1A floor (0.65×1.0=0.65) rather than eliminating it', () => {
     const r = calcPedSUDEP({ ...pedBase, syndrome: 'gefs_mild', geneticEtiology: 'scn1a', gtcFrequency: 'none_pastyear' });
-    expect(r.rawRate).toBeLessThan(0.5);   // 0.15 * none_pastyear(0.3) * shared(0.5) = 0.0225, not floored
-    expect(r.geneticFloorBinding).toBe(false);
+    expect(r.rawRate).toBeCloseTo(1.0 * 0.65, 5);  // 0.30×1.4×0.3×0.5 = 0.063 < 0.65 → remission floor
+    expect(r.floorIsRemission).toBe(true);
+    expect(r.geneticFloorBinding).toBe(true);
   });
-  it('Dravet + SCN1A: the 2.3 syndrome floor dominates the 0.5 gene floor (no double-count, gene floor not binding)', () => {
+  it('Dravet + SCN1A: the 2.3 syndrome floor dominates the 1.0 gene floor (no double-count, gene floor not binding)', () => {
     const r = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', geneticEtiology: 'scn1a' }); // favorable → floored
     expect(r.rawRate).toBeCloseTo(2.3, 5);
     expect(r.syndromeFloorApplied).toBe(true);
     expect(r.geneticFloorBinding).toBe(false);
+  });
+  it('seizure-free Dravet + SCN1A uses the reduced syndrome remission floor (0.65×2.3), gene floor not binding', () => {
+    const r = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', geneticEtiology: 'scn1a', gtcFrequency: 'none_pastyear' });
+    expect(r.rawRate).toBeCloseTo(2.3 * 0.65, 5);   // syndrome remission floor (1.495) > gene remission floor (0.65)
+    expect(r.floorIsRemission).toBe(true);
+    expect(r.syndromeFloorApplied).toBe(true);
   });
 });
 

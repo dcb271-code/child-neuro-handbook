@@ -42,6 +42,8 @@ export type PedSUDEPResult = {
   geneticFloorApplied: boolean;
   geneticFloorBinding: boolean;
   syndromeFloorApplied: boolean;
+  floorApplied: number;
+  floorIsRemission: boolean;
   gtc: LabeledMultiplier;
   nocturnal: Multiplier;
   supervision: Multiplier;
@@ -94,9 +96,9 @@ const SYNDROME_BASELINES: Record<Syndrome, SyndromeBaseline> = {
     source: 'AAN/AES 2017; Donner 2018'
   },
   gefs_mild: {
-    rate: 0.15,
+    rate: 0.30,
     label: 'GEFS+ / mild genetic epilepsy (normal intelligence)',
-    description: 'Genetic epilepsy with febrile seizures plus and related mild SCN1A-spectrum phenotypes with normal cognition. SUDEP is documented but rare and far below Dravet (GeneReviews "SCN1A Seizure Disorders"; systematic review PMC8739186). This baseline reflects a mild recurrent epilepsy where the gene is unknown or non-SCN1A; selecting SCN1A raises it via the SCN1A risk floor.',
+    description: 'Genetic epilepsy with febrile seizures plus and related mild SCN1A-spectrum phenotypes with normal cognition. SUDEP is documented but rare and far below Dravet (GeneReviews "SCN1A Seizure Disorders"; systematic review PMC8739186). Baseline set just below general controlled epilepsy (0.40): a genetic epilepsy with afebrile GTCS carries at least general-epilepsy-level SUDEP risk, not less. The gene is unknown or non-SCN1A here; selecting SCN1A adds its ×1.4 multiplier and 1.0/1000py floor.',
     source: 'GeneReviews SCN1A; Frontiers 2021 (PMC8739186)'
   },
   focal_dre: {
@@ -163,8 +165,8 @@ const GENETIC_MODIFIERS: Record<GeneticEtiology, GeneticModifier> = {
   none: { mult: 1.0, note: '' },
   scn1a: {
     mult: 1.4,
-    floorRate: 0.5,
-    note: 'SCN1A spans the full severity spectrum (febrile seizures -> GEFS+ -> Dravet -> severe DEE; GeneReviews) and is never benign. It is the STRONGEST genetic modifier in this tool: on any phenotype that does not already assume it, SCN1A applies a 1.4× channelopathy multiplier — a pathogenic variant raises SUDEP risk over the same phenotype without it — calibrated to stay just below the Dravet phenotype (1.20×1.4 = 1.68 < 1.80), preserving the severity ordering. Every other gene is capped at or below this. SCN1A ALSO sets a 0.5/1000py floor on the FINAL estimate, so a mild SCN1A phenotype with favorable modifiers still reads ≥0.5 rather than slipping toward zero. On Dravet and severe non-Dravet DEE the multiplier is suppressed — that severity is already in the phenotype baseline, so apply the gene by choosing the phenotype, not by double-counting. As with the syndrome floor, genuine seizure-freedom (no GTCS ever, or none in the past year) — the dominant protective factor — overrides the floor.',
+    floorRate: 1.0,
+    note: 'SCN1A spans the full severity spectrum (febrile seizures -> GEFS+ -> Dravet -> severe DEE; GeneReviews) and is never benign. It is the STRONGEST genetic modifier in this tool: on any phenotype that does not already assume it, SCN1A applies a 1.4× channelopathy multiplier — a pathogenic variant raises SUDEP risk over the same phenotype without it — calibrated to stay just below the Dravet phenotype (1.20×1.4 = 1.68 < 1.80), preserving the severity ordering. Every other gene is capped at or below this. SCN1A ALSO sets a 1.0/1000py floor on the FINAL estimate, so a mild SCN1A phenotype with favorable modifiers still reads ≥1.0 (Moderate, ~¼ of Dravet) rather than slipping toward general-population levels. On Dravet and severe non-Dravet DEE the multiplier is suppressed — that severity is already in the phenotype baseline, so apply the gene by choosing the phenotype, not by double-counting. Seizure-freedom (the dominant protective factor) REDUCES the floor (×0.65) rather than eliminating it — the channelopathy substrate persists.',
     cardiacFlag: false
   },
   scn2a: {
@@ -313,6 +315,13 @@ const LOWEST_PLAUSIBLE = 0.01;
 //     saturation transform in calcPedSUDEP.
 const SAT_KNEE = 7.0;
 const SAT_ASYMPTOTE = 15.0;
+// Seizure-freedom (no GTCS ever, or none in the past year) is the dominant
+// protective factor (Tomson 2025, ~36×), but for a high-mortality channelopathy
+// syndrome (Dravet, severe-DEE) or a pathogenic floor-type gene (SCN1A) it does
+// not abolish risk — the substrate persists and a GTCS-free year is fragile. So
+// seizure-freedom REDUCES the applicable floor by this factor rather than letting
+// the estimate escape the floor entirely. Dravet sz-free → 0.65×2.3 = 1.50.
+const REMISSION_FACTOR = 0.65;
 
 export function calcPedSUDEP(inputs: PedSUDEPInputs): PedSUDEPResult {
   const {
@@ -345,18 +354,23 @@ export function calcPedSUDEP(inputs: PedSUDEPInputs): PedSUDEPResult {
   //     published rates (Cooper 2016, Donnan 2023) describe active disease, and
   //     crude within-syndrome stratification by these factors is weakly
   //     evidenced. The floor is the lower bound of Donnan's 95% CI.
-  //   - Genetic floor: a pathogenic floor-type gene (SCN1A, 0.5) is never benign;
+  //   - Genetic floor: a pathogenic floor-type gene (SCN1A, 1.0) is never benign;
   //     favorable modifiers cannot pull its final estimate below this minimum.
   // When both apply, the higher floor governs (e.g. Dravet + SCN1A → 2.3, so the
-  // gene floor is inert and there is no double-count). EXCEPTION: genuine
-  // seizure-freedom (no GTCS ever, or none in the past year) is the strongest
-  // protective factor (Tomson 2025, ~36x) and overrides every floor.
+  // gene floor is inert and there is no double-count). Seizure-freedom (no GTCS
+  // ever, or none in the past year) — the dominant protective factor — does NOT
+  // void the floor for these substrates; it REDUCES it by REMISSION_FACTOR (the
+  // channelopathy persists and a GTCS-free year is fragile). So a seizure-free
+  // Dravet floors to 0.65×2.3 = 1.50 rather than escaping to ~0.27.
   const seizureFree = gtcFrequency === 'never' || gtcFrequency === 'none_pastyear';
   const syndFloorVal = synd.floor ?? 0;
   const geneFloorVal = gen.floorRate ?? 0;
-  const activeFloor = Math.max(syndFloorVal, geneFloorVal);
-  const floorBinds = !seizureFree && activeFloor > 0 && rawUnfloored < activeFloor;
-  const raw = floorBinds ? activeFloor : rawUnfloored;
+  const baseFloor = Math.max(syndFloorVal, geneFloorVal);
+  const effectiveFloor = seizureFree ? baseFloor * REMISSION_FACTOR : baseFloor;
+  const floorBinds = effectiveFloor > 0 && rawUnfloored < effectiveFloor;
+  const raw = floorBinds ? effectiveFloor : rawUnfloored;
+  const floorApplied = floorBinds ? effectiveFloor : 0;
+  const floorIsRemission = floorBinds && seizureFree;
   // Attribute the binding floor for the breakdown UI; the syndrome floor wins
   // ties so Dravet/severe-DEE + SCN1A reads as a syndrome floor, not a gene one.
   const syndromeFloorApplied = floorBinds && syndFloorVal >= geneFloorVal;
@@ -425,6 +439,8 @@ export function calcPedSUDEP(inputs: PedSUDEPInputs): PedSUDEPResult {
     geneticFloorApplied: gen.floorRate != null,
     geneticFloorBinding,
     syndromeFloorApplied,
+    floorApplied,
+    floorIsRemission,
     gtc,
     nocturnal: noct,
     supervision: sup,

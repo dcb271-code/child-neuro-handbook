@@ -453,7 +453,9 @@ export default function SUDEPRiskCalculator() {
 
                   {pResult.syndromeFloorApplied && (
                     <div>
-                      <strong>Syndrome floor:</strong> held at {pResult.syndrome.floor?.toFixed(1)}/1000py — active-disease {pResult.syndrome.label} retains substantial SUDEP risk regardless of favorable modifiers. Only genuine seizure-freedom (no GTCS in the past year) lowers it below this.
+                      <strong>Syndrome floor:</strong> held at {pResult.floorApplied.toFixed(2)}/1000py — {pResult.floorIsRemission
+                        ? `reduced from the active floor of ${pResult.syndrome.floor?.toFixed(1)} because the patient is seizure-free, but a high-mortality ${pResult.syndrome.label} retains meaningful SUDEP risk even after a GTCS-free year — the channelopathy substrate persists and remission can be fragile.`
+                        : `active-disease ${pResult.syndrome.label} retains substantial SUDEP risk regardless of favorable modifiers. Seizure-freedom reduces this to a lower remission floor, but not to zero.`}
                     </div>
                   )}
 
@@ -471,7 +473,7 @@ export default function SUDEPRiskCalculator() {
                         : 'no multiplier';
                     const fr = pResult.genetic.floorRate?.toFixed(2);
                     const floorPart = pResult.geneticFloorBinding
-                      ? `held at the ${fr}/1000py floor`
+                      ? `held at the ${pResult.floorApplied.toFixed(2)}/1000py floor${pResult.floorIsRemission ? ' (reduced for seizure-freedom)' : ''}`
                       : `${fr}/1000py floor not binding`;
                     return (
                       <div>
