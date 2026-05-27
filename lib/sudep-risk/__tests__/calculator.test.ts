@@ -20,9 +20,10 @@ describe('calcPedSUDEP — calibration anchors', () => {
     expect(r.displayString).toBe('4.59');
     expect(r.tier).toBe('High');
   });
-  it('SCN8A-DEE typical profile ≈ 6.12/1000py', () => {
-    const r = calcPedSUDEP({ ...pedBase, syndrome: 'other_dee', geneticEtiology: 'scn8a', gtcFrequency: 'frequent', nocturnal: true, duration: 'medium' });
-    expect(r.rawRate).toBeCloseTo(6.12, 2);
+  it('SCN8A on the non-trumped other-DEE category applies the ×1.3 channelopathy multiplier', () => {
+    const none  = calcPedSUDEP({ ...pedBase, syndrome: 'other_dee', gtcFrequency: 'frequent', nocturnal: true, duration: 'medium' });
+    const scn8a = calcPedSUDEP({ ...pedBase, syndrome: 'other_dee', geneticEtiology: 'scn8a', gtcFrequency: 'frequent', nocturnal: true, duration: 'medium' });
+    expect(scn8a.rawRate).toBeCloseTo(none.rawRate * 1.3, 5);
   });
 });
 
@@ -75,11 +76,10 @@ describe('calcPedSUDEP — modifiers', () => {
     expect(scn1a.geneticFloorApplied).toBe(true);
     expect(scn1a.geneticFloorBinding).toBe(false);
   });
-  it('cardiac-overlap gene (KCNQ1/H2) multiplies the Dravet baseline by 4.0 and sets cardiacFlag', () => {
-    // frequent + nocturnal keeps both well above the syndrome floor so the 4x ratio is clean
-    const none = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', gtcFrequency: 'frequent', nocturnal: true });
-    const cardiac = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', gtcFrequency: 'frequent', nocturnal: true, geneticEtiology: 'kcnq1_h2' });
-    expect(cardiac.rawRate).toBeCloseTo(none.rawRate * 4.0, 5);
+  it('cardiac-overlap gene (KCNQ1/H2) multiplies a non-DEE phenotype by ×1.3 (capped ≤ SCN1A) and sets cardiacFlag', () => {
+    const none = calcPedSUDEP({ ...pedBase, syndrome: 'focal_dre', gtcFrequency: 'frequent', nocturnal: true });
+    const cardiac = calcPedSUDEP({ ...pedBase, syndrome: 'focal_dre', gtcFrequency: 'frequent', nocturnal: true, geneticEtiology: 'kcnq1_h2' });
+    expect(cardiac.rawRate).toBeCloseTo(none.rawRate * 1.3, 5);
     expect(cardiac.cardiacFlag).toBe(true);
   });
   it('cardiacFlag is false for non-cardiac genes', () => {
@@ -156,28 +156,28 @@ describe('calcPedSUDEP — SCN1A floor + phenotype ordering', () => {
     expect(severeDee.rawRate).toBeGreaterThan(dravet.rawRate);
     expect(dravet.rawRate).toBeGreaterThan(focal.rawRate);
     expect(focal.rawRate).toBeGreaterThan(gefs.rawRate);
-    expect(severeDee.rawRate).toBeCloseTo(1.90 * 2.55, 5); // severe_dee (DEE) baseline x STD; SCN1A does NOT multiply DEE phenotypes
-    expect(focal.rawRate).toBeCloseTo(1.20 * 1.3 * 2.55, 4); // focal+SCN1A: ×1.3 channelopathy multiplier (3.98), still < Dravet
+    expect(severeDee.rawRate).toBeCloseTo(1.90 * 2.55, 5); // severe_dee assumes a severe channelopathy → SCN1A does NOT multiply
+    expect(focal.rawRate).toBeCloseTo(1.20 * 1.4 * 2.55, 4); // focal+SCN1A: ×1.4 (strongest channelopathy), still < Dravet
   });
 
-  it('SCN1A floors a GEFS+ phenotype to the 0.5/1000py final-rate floor (drift guard for the invariant)', () => {
+  it('SCN1A multiplies a GEFS+ phenotype by ×1.4 — above the floor on an active profile (drift guard)', () => {
     const bare  = calcPedSUDEP({ ...pedBase, ...STD, syndrome: 'gefs_mild', geneticEtiology: 'none' });
     const scn1a = calcPedSUDEP({ ...pedBase, ...STD, syndrome: 'gefs_mild', geneticEtiology: 'scn1a' });
-    expect(bare.rawRate / 2.55).toBeCloseTo(0.15, 6);   // gene-agnostic GEFS+ baseline, unfloored (0.3825)
-    expect(scn1a.rawRate).toBeGreaterThan(bare.rawRate); // SCN1A raises it...
-    expect(scn1a.rawRate).toBeCloseTo(0.5, 6);           // 0.15 × ×1.3 × 2.55 = 0.497 < 0.5 → floored to 0.5
-    expect(scn1a.geneticFloorBinding).toBe(true);
+    expect(bare.rawRate / 2.55).toBeCloseTo(0.15, 6);        // gene-agnostic GEFS+ baseline, unfloored (0.3825)
+    expect(scn1a.rawRate).toBeGreaterThan(bare.rawRate);      // SCN1A raises it...
+    expect(scn1a.rawRate).toBeCloseTo(0.15 * 1.4 * 2.55, 5);  // ...by ×1.4 → 0.5355, just above the 0.5 floor
+    expect(scn1a.geneticFloorBinding).toBe(false);            // the multiplier carried it above the floor
   });
 
   it('SCN1A floors a self-limited phenotype up to the 0.5/1000py final-rate floor', () => {
     const r = calcPedSUDEP({ ...pedBase, ...STD, syndrome: 'selflimited', geneticEtiology: 'scn1a' });
-    expect(r.rawRate).toBeCloseTo(0.5, 6);               // 0.10 × ×1.3 × 2.55 = 0.332 < 0.5 → floored
+    expect(r.rawRate).toBeCloseTo(0.5, 6);               // 0.10 × ×1.4 × 2.55 = 0.357 < 0.5 → floored
     expect(r.geneticFloorBinding).toBe(true);
   });
 
   it('regression: drug-resistant focal + SCN1A is no longer the 10.71 Very-high artifact', () => {
     const r = calcPedSUDEP({ ...pedBase, ...STD, syndrome: 'focal_dre', geneticEtiology: 'scn1a' });
-    expect(r.rawRate).toBeCloseTo(1.20 * 1.3 * 2.55, 4); // 3.98 — ×1.3 multiplier, far from the old 10.71 artifact
+    expect(r.rawRate).toBeCloseTo(1.20 * 1.4 * 2.55, 4); // 4.28 — ×1.4 multiplier, far from the old 10.71 artifact
     expect(r.rawRate).toBeLessThan(10);
     expect(r.tier).toBe('High');
   });
@@ -242,9 +242,9 @@ describe('calcPedSUDEP — high-end saturation (soft asymptote)', () => {
     expect(r.ceilinged).toBe(true);                   // raw ≥ asymptote(15)
   });
   it('diminishing returns: a far larger raw barely moves the displayed value near the asymptote', () => {
-    const big  = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', gtcFrequency: 'frequent', nocturnal: true, supervision: 'alone', adherence: 'poor', duration: 'long' });
-    const huge = calcPedSUDEP({ ...pedBase, syndrome: 'severe_dee', geneticEtiology: 'kcnq1_h2', gtcFrequency: 'very_frequent', nocturnal: true, supervision: 'alone', adherence: 'poor', duration: 'long' });
-    expect(huge.rawRate).toBeGreaterThan(big.rawRate * 2);            // raw at least doubles
+    const big  = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', gtcFrequency: 'very_frequent', nocturnal: true, supervision: 'alone' }); // raw 30.6
+    const huge = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', gtcFrequency: 'very_frequent', nocturnal: true, supervision: 'alone', adherence: 'poor', duration: 'long' }); // raw 91.8
+    expect(huge.rawRate).toBeGreaterThan(big.rawRate * 2);            // raw at least doubles (91.8 vs 30.6)
     expect(huge.displayRate - big.displayRate).toBeLessThan(0.5);     // displayed value barely changes
     expect(huge.displayRate).toBeLessThanOrEqual(15);                 // never exceeds the asymptote (approaches it)
   });
@@ -260,9 +260,9 @@ describe('calcPedSUDEP — SCN1A 0.5 final-rate floor (favorable modifiers canno
     expect(r.tier).toBe('Low');
   });
   it('the floor is on the FINAL rate — an active-enough SCN1A profile rises above 0.5 on its own', () => {
-    // 0.15 × ×1.3 × very_frequent(5) × nocturnal(1.7) × alone(2) = 3.315 — well above the floor, so it is inert
+    // 0.15 × ×1.4 × very_frequent(5) × nocturnal(1.7) × alone(2) = 3.57 — well above the floor, so it is inert
     const r = calcPedSUDEP({ ...pedBase, syndrome: 'gefs_mild', geneticEtiology: 'scn1a', gtcFrequency: 'very_frequent', nocturnal: true, supervision: 'alone' });
-    expect(r.rawRate).toBeCloseTo(0.15 * 1.3 * 5 * 1.7 * 2, 5);
+    expect(r.rawRate).toBeCloseTo(0.15 * 1.4 * 5 * 1.7 * 2, 5);
     expect(r.geneticFloorBinding).toBe(false);
   });
   it('genuine seizure-freedom overrides the SCN1A floor (consistent with the syndrome floor)', () => {
@@ -299,37 +299,90 @@ describe('calcPedSUDEP — ceiling reserved for the genuinely extreme (knee 7 / 
   });
 });
 
-describe('calcPedSUDEP — SCN1A multiplies risk on non-DEE phenotypes (×1.3), not on DEE phenotypes', () => {
-  it('adding SCN1A to an active focal DRE increases the rate (×1.3), staying below Dravet', () => {
+describe('calcPedSUDEP — SCN1A multiplies non-DEE phenotypes (×1.4), trumped on Dravet/severe-DEE', () => {
+  it('adding SCN1A to an active focal DRE increases the rate (×1.4), staying below Dravet', () => {
     const std = { gtcFrequency: 'frequent', nocturnal: true, supervision: 'shared', duration: 'medium' } as const;
     const none   = calcPedSUDEP({ ...pedBase, syndrome: 'focal_dre', ...std });
     const scn1a  = calcPedSUDEP({ ...pedBase, syndrome: 'focal_dre', geneticEtiology: 'scn1a', ...std });
     const dravet = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', ...std });
-    expect(scn1a.rawRate).toBeGreaterThan(none.rawRate);          // SCN1A now visibly raises an active phenotype
-    expect(scn1a.rawRate).toBeCloseTo(none.rawRate * 1.3, 5);     // by exactly ×1.3
+    expect(scn1a.rawRate).toBeGreaterThan(none.rawRate);          // SCN1A visibly raises an active phenotype
+    expect(scn1a.rawRate).toBeCloseTo(none.rawRate * 1.4, 5);     // by exactly ×1.4
     expect(scn1a.rawRate).toBeLessThan(dravet.rawRate);           // ordering invariant: focal+SCN1A < Dravet
-    expect(scn1a.effectiveGeneMult).toBeCloseTo(1.3, 6);
+    expect(scn1a.effectiveGeneMult).toBeCloseTo(1.4, 6);
   });
-  it('adding SCN1A to an active GEFS+ increases the rate (×1.3)', () => {
+  it('adding SCN1A to an active GEFS+ increases the rate (×1.4)', () => {
     const std = { gtcFrequency: 'frequent', nocturnal: true, supervision: 'alone' } as const;
     const none  = calcPedSUDEP({ ...pedBase, syndrome: 'gefs_mild', ...std });
     const scn1a = calcPedSUDEP({ ...pedBase, syndrome: 'gefs_mild', geneticEtiology: 'scn1a', ...std });
     expect(scn1a.rawRate).toBeGreaterThan(none.rawRate);
-    expect(scn1a.rawRate).toBeCloseTo(none.rawRate * 1.3, 5);
+    expect(scn1a.rawRate).toBeCloseTo(none.rawRate * 1.4, 5);
   });
-  it('SCN1A does NOT multiply DEE phenotypes — the phenotype already encodes the channelopathy', () => {
+  it('SCN1A does NOT multiply Dravet or severe-DEE — those baselines already assume the channelopathy', () => {
     const std = { gtcFrequency: 'frequent', nocturnal: true, supervision: 'alone' } as const;
-    for (const syndrome of ['dravet', 'severe_dee', 'lgs', 'other_dee'] as const) {
+    for (const syndrome of ['dravet', 'severe_dee'] as const) {
       const none  = calcPedSUDEP({ ...pedBase, syndrome, ...std });
       const scn1a = calcPedSUDEP({ ...pedBase, syndrome, geneticEtiology: 'scn1a', ...std });
-      expect(scn1a.rawRate).toBeCloseTo(none.rawRate, 5);   // no multiplier on DEE phenotypes
+      expect(scn1a.rawRate).toBeCloseTo(none.rawRate, 5);
       expect(scn1a.effectiveGeneMult).toBeCloseTo(1.0, 6);
     }
   });
-  it('non-floor channelopathy genes still multiply on every phenotype (unchanged)', () => {
-    const none  = calcPedSUDEP({ ...pedBase, syndrome: 'focal_dre', gtcFrequency: 'frequent', nocturnal: true });
-    const scn8a = calcPedSUDEP({ ...pedBase, syndrome: 'focal_dre', geneticEtiology: 'scn8a', gtcFrequency: 'frequent', nocturnal: true });
-    expect(scn8a.rawRate).toBeCloseTo(none.rawRate * 3.0, 5);
+  it('SCN1A still multiplies the non-trumped DEE categories (other-DEE, LGS) so the gene specifies etiology', () => {
+    const std = { gtcFrequency: 'frequent', nocturnal: true, supervision: 'alone' } as const;
+    for (const syndrome of ['other_dee', 'lgs'] as const) {
+      const none  = calcPedSUDEP({ ...pedBase, syndrome, ...std });
+      const scn1a = calcPedSUDEP({ ...pedBase, syndrome, geneticEtiology: 'scn1a', ...std });
+      expect(scn1a.rawRate).toBeGreaterThan(none.rawRate);
+      expect(scn1a.effectiveGeneMult).toBeCloseTo(1.4, 6);
+    }
+  });
+});
+
+describe('calcPedSUDEP — genetic ordering: SCN1A strongest, cardiac capped, Dravet/severe-DEE trump', () => {
+  const std = { gtcFrequency: 'frequent', nocturnal: true, supervision: 'partial' } as const;
+  const otherGenes = ['scn2a','scn8a','stxbp1','kcnq1_h2','scn5a','scn1b','depdc5','dup15q','kcnt1','other_chan','other_ge'] as const;
+  it('on a non-DEE phenotype, no single gene exceeds SCN1A', () => {
+    const scn1a = calcPedSUDEP({ ...pedBase, syndrome: 'focal_dre', geneticEtiology: 'scn1a', ...std }).rawRate;
+    for (const g of otherGenes) {
+      const r = calcPedSUDEP({ ...pedBase, syndrome: 'focal_dre', geneticEtiology: g, ...std }).rawRate;
+      expect(r).toBeLessThanOrEqual(scn1a + 1e-9);
+    }
+  });
+  it('a non-SCN1A channelopathy still raises a non-DEE phenotype (×1.3), at/below SCN1A', () => {
+    const none  = calcPedSUDEP({ ...pedBase, syndrome: 'focal_dre', ...std });
+    const scn8a = calcPedSUDEP({ ...pedBase, syndrome: 'focal_dre', geneticEtiology: 'scn8a', ...std });
+    const scn1a = calcPedSUDEP({ ...pedBase, syndrome: 'focal_dre', geneticEtiology: 'scn1a', ...std });
+    expect(scn8a.rawRate).toBeGreaterThan(none.rawRate);
+    expect(scn8a.rawRate).toBeCloseTo(none.rawRate * 1.3, 5);
+    expect(scn8a.rawRate).toBeLessThanOrEqual(scn1a.rawRate);
+  });
+  it('cardiac-overlap genes are capped at/below SCN1A but still raise the cardiac-eval flag', () => {
+    const scn1a = calcPedSUDEP({ ...pedBase, syndrome: 'focal_dre', geneticEtiology: 'scn1a', ...std }).rawRate;
+    for (const g of ['kcnq1_h2','scn5a','scn1b'] as const) {
+      const r = calcPedSUDEP({ ...pedBase, syndrome: 'focal_dre', geneticEtiology: g, ...std });
+      expect(r.rawRate).toBeLessThanOrEqual(scn1a + 1e-9);
+      expect(r.cardiacFlag).toBe(true);
+    }
+  });
+  it('Dravet trumps every gene — adding any etiology leaves the Dravet rate unchanged', () => {
+    const dravet = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', ...std }).rawRate;
+    for (const g of ['scn1a', ...otherGenes] as const) {
+      expect(calcPedSUDEP({ ...pedBase, syndrome: 'dravet', geneticEtiology: g, ...std }).rawRate).toBeCloseTo(dravet, 5);
+    }
+  });
+  it('a cardiac gene on Dravet leaves the rate unchanged but still flags cardiac eval', () => {
+    const dravet = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', ...std });
+    const withCardiac = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', geneticEtiology: 'kcnq1_h2', ...std });
+    expect(withCardiac.rawRate).toBeCloseTo(dravet.rawRate, 5);
+    expect(withCardiac.cardiacFlag).toBe(true);
+  });
+  it('LGS + a gene never exceeds Dravet or severe-DEE (the ×1.4 cap keeps 1.20×1.4 < 1.80)', () => {
+    const dravet = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', ...std }).rawRate;
+    const severe = calcPedSUDEP({ ...pedBase, syndrome: 'severe_dee', ...std }).rawRate;
+    for (const g of ['scn1a', ...otherGenes] as const) {
+      const lgs = calcPedSUDEP({ ...pedBase, syndrome: 'lgs', geneticEtiology: g, ...std }).rawRate;
+      expect(lgs).toBeLessThan(dravet);
+      expect(lgs).toBeLessThan(severe);
+    }
   });
 });
 

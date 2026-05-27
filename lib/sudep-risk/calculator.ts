@@ -139,79 +139,87 @@ const SYNDROME_BASELINES: Record<Syndrome, SyndromeBaseline> = {
   }
 };
 
-// DEE phenotypes whose baseline ALREADY encodes a floor-type channelopathy's
-// severity. A floor-type gene (SCN1A) does not additionally multiply these,
-// avoiding double-counting: if the SCN1A is presenting as Dravet/severe DEE,
-// that is captured by selecting the phenotype, not by a generic gene multiplier.
-const DEE_PHENOTYPES = new Set<Syndrome>(['dravet', 'severe_dee', 'lgs', 'other_dee']);
+// Phenotypes whose baseline ALREADY assumes a severe channelopathy, so a
+// selected gene does NOT additionally multiply (Dravet ≈ SCN1A; severe non-Dravet
+// DEE ≈ severe SCN1A/SCN8A-type). Choosing the phenotype IS how the channelopathy
+// is expressed here — multiplying again would double-count. LGS and "other genetic
+// DEE" are deliberately NOT in this set: they are etiologically heterogeneous, so
+// naming the gene refines (modifies) the estimate. See effectiveGeneMult below.
+const GENE_TRUMP_PHENOTYPES = new Set<Syndrome>(['dravet', 'severe_dee']);
 
-// Gene-specific modifiers. Most genes apply as a multiplier on the syndrome
-// baseline. Floor-type genes (floorRate != null) ALSO set a minimum on the FINAL
-// computed rate — joining the same final-rate floor logic as the high-mortality
-// syndrome floors (see calcPedSUDEP below) — so favorable modifiers cannot drag
-// a known-pathogenic gene's estimate implausibly low. A floor-type gene's
-// multiplier is suppressed on DEE_PHENOTYPES (the phenotype already encodes it).
+// Gene-specific modifiers, applied on the syndrome baseline. Ordering principle
+// (clinician-directed): SCN1A is the principal epilepsy channelopathy, so it is
+// the STRONGEST modifier (1.4); every other gene is capped at or below it. The
+// cap is also bounded by the phenotype-axis invariant — the highest non-trumped
+// baseline (focal/gen-DRE/LGS = 1.20) × SCN1A's 1.4 = 1.68 stays below the Dravet
+// baseline (1.80), so no gene-on-phenotype can leapfrog Dravet/severe-DEE.
+// Cardiac-overlap genes (cardiacFlag) are capped like the rest; their additive
+// arrhythmic risk is surfaced through the cardiac-eval flag, not a larger number.
+// Floor-type genes (floorRate != null) ALSO set a minimum on the FINAL rate,
+// joining the syndrome-floor logic so favorable modifiers can't drag a known-
+// pathogenic gene implausibly low. ALL gene multipliers are suppressed on
+// GENE_TRUMP_PHENOTYPES (the phenotype already encodes the channelopathy).
 const GENETIC_MODIFIERS: Record<GeneticEtiology, GeneticModifier> = {
   none: { mult: 1.0, note: '' },
   scn1a: {
-    mult: 1.3,
+    mult: 1.4,
     floorRate: 0.5,
-    note: 'SCN1A spans the full severity spectrum (febrile seizures -> GEFS+ -> Dravet -> severe DEE; GeneReviews) and is never benign. On NON-DEE phenotypes (GEFS+, focal/generalized DRE, etc.) it applies a 1.3× channelopathy multiplier — a pathogenic SCN1A variant raises SUDEP risk over the same phenotype without it — calibrated to stay below the Dravet phenotype (1.20×1.3 < 1.80), preserving the severity ordering. It ALSO sets a 0.5/1000py floor on the FINAL estimate, so a mild SCN1A phenotype with favorable modifiers still reads ≥0.5 rather than slipping toward zero. On DEE phenotypes (Dravet, severe non-Dravet DEE, LGS) the multiplier is suppressed — that severity is already in the phenotype baseline, so apply the gene by choosing the phenotype, not by double-counting. As with the syndrome floor, genuine seizure-freedom (no GTCS ever, or none in the past year) — the dominant protective factor — overrides the floor.',
+    note: 'SCN1A spans the full severity spectrum (febrile seizures -> GEFS+ -> Dravet -> severe DEE; GeneReviews) and is never benign. It is the STRONGEST genetic modifier in this tool: on any phenotype that does not already assume it, SCN1A applies a 1.4× channelopathy multiplier — a pathogenic variant raises SUDEP risk over the same phenotype without it — calibrated to stay just below the Dravet phenotype (1.20×1.4 = 1.68 < 1.80), preserving the severity ordering. Every other gene is capped at or below this. SCN1A ALSO sets a 0.5/1000py floor on the FINAL estimate, so a mild SCN1A phenotype with favorable modifiers still reads ≥0.5 rather than slipping toward zero. On Dravet and severe non-Dravet DEE the multiplier is suppressed — that severity is already in the phenotype baseline, so apply the gene by choosing the phenotype, not by double-counting. As with the syndrome floor, genuine seizure-freedom (no GTCS ever, or none in the past year) — the dominant protective factor — overrides the floor.',
     cardiacFlag: false
   },
   scn2a: {
-    mult: 2.5,
-    note: 'SCN2A DEE — SUDEP confirmed as a risk in Donnan 2023 (1/15 patients). SCN2A also has cardiac sodium channel expression with reported arrhythmia overlap.',
+    mult: 1.3,
+    note: 'SCN2A DEE — SUDEP confirmed as a risk in Donnan 2023 (1/15 patients). SCN2A also has cardiac sodium channel expression with reported arrhythmia overlap. As an established SUDEP-associated channelopathy it adds risk on a non-DEE phenotype but is capped below SCN1A; if it is presenting as a severe DEE, select that phenotype (which then trumps the gene).',
     cardiacFlag: false
   },
   scn8a: {
-    mult: 3.0,
-    note: 'SCN8A-DEE — SUDEP confirmed as a risk in Donnan 2023 (2/22 patients = 9%). The original SCN8A epilepsy proband (Veeramah 2012) died of SUDEP.',
+    mult: 1.3,
+    note: 'SCN8A-DEE — SUDEP confirmed as a risk in Donnan 2023 (2/22 patients = 9%). The original SCN8A epilepsy proband (Veeramah 2012) died of SUDEP. Among the strongest non-SCN1A SUDEP signals; capped just below SCN1A on non-DEE phenotypes, and select severe-DEE for a severe SCN8A presentation (which trumps the gene).',
     cardiacFlag: false
   },
   stxbp1: {
-    mult: 2.5,
-    note: 'STXBP1 encephalopathy — SUDEP confirmed risk per Donnan 2023 (1/17 patients). One of only 4 DEE genes with SUDEP in that cohort.',
+    mult: 1.3,
+    note: 'STXBP1 encephalopathy — SUDEP confirmed risk per Donnan 2023 (1/17 patients). One of only 4 DEE genes with SUDEP in that cohort. Capped below SCN1A; severe presentations are captured by selecting a DEE phenotype.',
     cardiacFlag: false
   },
   kcnq1_h2: {
-    mult: 4.0,
-    note: 'KCNQ1 or KCNH2 — primary long QT syndrome genes with epilepsy as a recognized phenotype. Auerbach 2013, Anderson 2014: ~30% of LQTS patients have a seizure history. SCD risk is partly cardiac in origin.',
+    mult: 1.3,
+    note: 'KCNQ1 or KCNH2 — primary long QT syndrome genes with epilepsy as a recognized phenotype. Auerbach 2013, Anderson 2014: ~30% of LQTS patients have a seizure history. SCD risk is partly cardiac in origin — that additive arrhythmic risk is surfaced through the cardiac-evaluation flag rather than a larger multiplier, so the multiplier itself is capped at/below SCN1A.',
     cardiacFlag: true
   },
   scn5a: {
-    mult: 3.5,
-    note: 'SCN5A — Brugada and LQT3 syndrome gene with epilepsy overlap. Bagnall 2016: pathogenic SCN5A variants in postmortem SUDEP cohorts.',
+    mult: 1.3,
+    note: 'SCN5A — Brugada and LQT3 syndrome gene with epilepsy overlap. Bagnall 2016: pathogenic SCN5A variants in postmortem SUDEP cohorts. Multiplier capped at/below SCN1A; the arrhythmic component is flagged for cardiac evaluation.',
     cardiacFlag: true
   },
   scn1b: {
-    mult: 2.5,
-    note: 'SCN1B — beta-1 subunit of sodium channel, GEFS+ spectrum, also Brugada/LQT overlap. Pathogenic variants identified in SUDEP postmortem studies.',
+    mult: 1.3,
+    note: 'SCN1B — beta-1 subunit of sodium channel, GEFS+ spectrum, also Brugada/LQT overlap. Pathogenic variants identified in SUDEP postmortem studies. Capped at/below SCN1A; cardiac evaluation flagged.',
     cardiacFlag: true
   },
   depdc5: {
-    mult: 2.5,
-    note: 'DEPDC5 (mTOR pathway, familial focal epilepsy) — Nascimento 2015 reported two definite SUDEP cases within a single family; familial clustering pattern.',
+    mult: 1.3,
+    note: 'DEPDC5 (mTOR pathway, familial focal epilepsy) — Nascimento 2015 reported two definite SUDEP cases within a single family; familial clustering pattern. Pairs naturally with the focal-DRE phenotype; capped at/below SCN1A.',
     cardiacFlag: false
   },
   dup15q: {
-    mult: 3.5,
-    note: 'Dup15q (15q11.2-q13.1 maternal duplication) — Friedman 2016 case series suggested SUDEP rate possibly approaching Dravet. Among highest non-Dravet rates documented.',
+    mult: 1.3,
+    note: 'Dup15q (15q11.2-q13.1 maternal duplication) — Friedman 2016 case series suggested SUDEP rate possibly approaching Dravet. Among highest non-Dravet rates documented; the multiplier is capped below SCN1A, and a Dravet-level presentation should be entered via a DEE phenotype.',
     cardiacFlag: false
   },
   kcnt1: {
-    mult: 2.0,
-    note: 'KCNT1 (EIMFS, ADNFLE phenotypes) — Kuchenbuch 2019 reported 17% SUDEP in KCNT1-EIMFS cohort; Donnan 2023 found none in their smaller sample.',
+    mult: 1.3,
+    note: 'KCNT1 (EIMFS, ADNFLE phenotypes) — Kuchenbuch 2019 reported 17% SUDEP in KCNT1-EIMFS cohort; Donnan 2023 found none in their smaller sample. EIMFS is a DEE — enter it as such (which trumps the gene); on a non-DEE phenotype the multiplier is capped below SCN1A.',
     cardiacFlag: false
   },
   other_chan: {
-    mult: 1.5,
-    note: 'Other channelopathy (KCNB1, GABRB3, CACNA1A, etc.) — variable evidence; channelopathies broadly carry elevated SUDEP signal per postmortem genetic studies.',
+    mult: 1.25,
+    note: 'Other channelopathy (KCNB1, GABRB3, CACNA1A, etc.) — variable evidence; channelopathies broadly carry elevated SUDEP signal per postmortem genetic studies. A generic channelopathy sits just below the named established-SUDEP genes.',
     cardiacFlag: false
   },
   other_ge: {
-    mult: 1.2,
-    note: 'Other genetic etiology not classified as channelopathy or established SUDEP gene. Modest baseline adjustment for unmeasured genetic predisposition.',
+    mult: 1.15,
+    note: 'Other genetic etiology not classified as channelopathy or established SUDEP gene. Modest baseline adjustment for unmeasured genetic predisposition — the weakest genetic modifier.',
     cardiacFlag: false
   }
 };
@@ -321,11 +329,13 @@ export function calcPedSUDEP(inputs: PedSUDEPInputs): PedSUDEPResult {
   const adh  = ADHERENCE_MULTIPLIER[adherence];
   const dur  = DURATION_MULTIPLIER[duration];
 
-  // Floor-type genes (SCN1A) apply their multiplier only on non-DEE phenotypes;
-  // on DEE phenotypes the multiplier is suppressed (the phenotype already encodes
-  // the channelopathy) and the gene contributes solely via the final-rate floor
-  // applied below. Non-floor genes always keep their multiplier.
-  const effectiveGeneMult = (gen.floorRate != null && DEE_PHENOTYPES.has(syndrome)) ? 1.0 : gen.mult;
+  // Genetic modifier. On phenotypes that already assume a severe channelopathy
+  // (GENE_TRUMP_PHENOTYPES: Dravet, severe non-Dravet DEE) the selected gene does
+  // NOT multiply — the phenotype baseline already encodes that severity, so a
+  // further multiply would double-count. Everywhere else the gene multiplies (and
+  // floor-type genes additionally floor the final rate, below). Per-gene
+  // multipliers are capped so SCN1A is the strongest and none can exceed Dravet.
+  const effectiveGeneMult = GENE_TRUMP_PHENOTYPES.has(syndrome) ? 1.0 : gen.mult;
   const rawUnfloored = synd.rate * effectiveGeneMult * gtc.mult * noct.mult *
               sup.mult * adh.mult * dur.mult;
 

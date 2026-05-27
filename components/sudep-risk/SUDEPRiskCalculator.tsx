@@ -281,7 +281,7 @@ export default function SUDEPRiskCalculator() {
 
               <Field
                 label="Genetic etiology (if known)"
-                hint="Most genes multiply the syndrome baseline (SCN2A, SCN8A, STXBP1, KCNT1, etc.). SCN1A applies a 1.3× channelopathy multiplier on non-DEE phenotypes (GEFS+, focal/generalized DRE) plus a 0.5/1000py floor on the final estimate — so a pathogenic variant always raises risk, and favorable modifiers can't pull it below 0.5. On a DEE phenotype its severity is already in the baseline, so choose 'Dravet' or 'Severe early-infantile / non-Dravet DEE' rather than double-counting. KCNQ1/KCNH2/SCN5A/SCN1B flag for cardiac evaluation due to brain-heart channelopathy overlap."
+                hint="A selected gene multiplies the syndrome baseline. SCN1A is the strongest modifier (×1.4) plus a 0.5/1000py floor on the final estimate — a pathogenic variant always raises risk and favorable modifiers can't pull it below 0.5. Every other gene is capped at or below SCN1A (established channelopathies ×1.3; generic etiologies less). The multipliers are bounded so no gene-on-phenotype exceeds Dravet. On 'Dravet' or 'Severe early-infantile / non-Dravet DEE' the baseline already assumes the channelopathy, so the gene does NOT multiply further — choose those phenotypes for a severe presentation. KCNQ1/KCNH2/SCN5A/SCN1B flag for cardiac evaluation due to brain-heart channelopathy overlap (the flag, not a larger multiplier, carries that arrhythmic concern)."
               >
                 <Select
                   value={P.geneticEtiology}
@@ -458,13 +458,18 @@ export default function SUDEPRiskCalculator() {
                   )}
 
                   {P.geneticEtiology !== 'none' && (() => {
-                    // Floor-type genes (SCN1A) show both their phenotype-dependent
-                    // multiplier and the final-rate floor status; other genes show
-                    // their plain multiplier.
+                    // Reflect the EFFECTIVE multiplier actually applied: the gene is
+                    // suppressed ("trumped") on Dravet/severe-DEE, where the phenotype
+                    // already assumes the channelopathy. Floor-type genes (SCN1A) also
+                    // append the final-rate floor status.
+                    const em = pResult.effectiveGeneMult;
+                    const trumped = em === 1 && pResult.genetic.mult !== 1;
+                    const multPart = em !== 1
+                      ? `${em}× channelopathy multiplier`
+                      : trumped
+                        ? 'no multiplier — phenotype already assumes the channelopathy'
+                        : 'no multiplier';
                     const fr = pResult.genetic.floorRate?.toFixed(2);
-                    const multPart = pResult.effectiveGeneMult !== 1
-                      ? `${pResult.effectiveGeneMult}× channelopathy multiplier`
-                      : 'no multiplier (phenotype already encodes the gene)';
                     const floorPart = pResult.geneticFloorBinding
                       ? `held at the ${fr}/1000py floor`
                       : `${fr}/1000py floor not binding`;
@@ -472,7 +477,7 @@ export default function SUDEPRiskCalculator() {
                       <div>
                         <strong>Genetic modifier:</strong> {pResult.geneticFloorApplied
                           ? `${multPart}; ${floorPart}`
-                          : `${pResult.genetic.mult}×`}
+                          : multPart}
                         <div className="text-slate-500 dark:text-slate-400 mt-0.5 italic">{pResult.genetic.note}</div>
                       </div>
                     );
