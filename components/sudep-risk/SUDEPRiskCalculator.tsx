@@ -281,7 +281,7 @@ export default function SUDEPRiskCalculator() {
 
               <Field
                 label="Genetic etiology (if known)"
-                hint="Most genes multiply the syndrome baseline (SCN2A, SCN8A, STXBP1, KCNT1, etc.). SCN1A instead sets a risk floor at the GEFS+/mild-with-SCN1A level — severity above that is set by the phenotype, so choose 'Dravet' or 'Severe early-infantile / non-Dravet DEE' for those presentations. KCNQ1/KCNH2/SCN5A/SCN1B flag for cardiac evaluation due to brain-heart channelopathy overlap."
+                hint="Most genes multiply the syndrome baseline (SCN2A, SCN8A, STXBP1, KCNT1, etc.). SCN1A instead sets a 0.5/1000py floor on the final estimate — favorable modifiers can't pull a known-pathogenic SCN1A child below it — while severity above the floor is set by the phenotype, so choose 'Dravet' or 'Severe early-infantile / non-Dravet DEE' for those presentations. KCNQ1/KCNH2/SCN5A/SCN1B flag for cardiac evaluation due to brain-heart channelopathy overlap."
               >
                 <Select
                   value={P.geneticEtiology}
@@ -414,7 +414,7 @@ export default function SUDEPRiskCalculator() {
                 )}
                 {pResult.ceilinged && (
                   <div className="text-xs mt-2 opacity-75 italic">
-                    In the model&apos;s saturating range: above ~10/1000py, additional risk factors yield progressively smaller increments, approaching an asymptote near 20/1000py (≈ Cooper 2016 Dravet 95% CI upper bound — the highest credible documented rate). The raw multiplicative product is higher, but relative effects attenuate at this absolute-risk level, so stacking more factors does not proportionally raise the estimate.
+                    In the model&apos;s saturating range: above ~7/1000py, additional risk factors yield progressively smaller increments, approaching a ceiling near 15/1000py. This ceiling is deliberate — clean pediatric syndrome rates essentially never exceed ~10 (Dravet 4.4–9.3; pediatric DEE 2.8), so the model reserves ~15 for the maximally-stacked profile rather than extrapolating. Literature has reported rates as high as ~18/1000py in select, heavily risk-stratified strata (Tomson 2025: lives alone + nonadherent + nocturnal TCS + ≥1 TCS; Cooper&apos;s Dravet 95% CI reaches 19.5), but those are not pediatric syndrome point estimates and the model does not project to them. The tail is genuinely uncertain — these events are rare and SUDEP is never zero — so the displayed value is compressed, not extrapolated upward.
                   </div>
                 )}
               </div>
@@ -461,8 +461,8 @@ export default function SUDEPRiskCalculator() {
                     <div>
                       <strong>Genetic modifier:</strong> {pResult.geneticFloorApplied
                         ? (pResult.geneticFloorBinding
-                            ? `risk floor ${pResult.genetic.floorBaseline?.toFixed(2)}/1000py (raised the baseline)`
-                            : `risk floor ${pResult.genetic.floorBaseline?.toFixed(2)}/1000py (not binding — phenotype baseline is already higher)`)
+                            ? `risk floor ${pResult.genetic.floorRate?.toFixed(2)}/1000py (raised the final rate)`
+                            : `risk floor ${pResult.genetic.floorRate?.toFixed(2)}/1000py (not binding — computed rate already exceeds it)`)
                         : `${pResult.genetic.mult}×`}
                       <div className="text-slate-500 dark:text-slate-400 mt-0.5 italic">{pResult.genetic.note}</div>
                     </div>
@@ -508,7 +508,7 @@ export default function SUDEPRiskCalculator() {
                     <strong>Raw computed rate:</strong> {pResult.rawRate.toFixed(3)}/1000py
                     {pResult.displayLevel === 'detection_limit' && ' (below detection limit — displayed as ≤0.05)'}
                     {pResult.displayLevel === 'lowest_plausible' && ' (below resolvable threshold — displayed as <0.01)'}
-                    {pResult.ceilinged && ' (in the saturating range — displayed value compressed toward the ~20/1000py asymptote)'}
+                    {pResult.ceilinged && ' (in the saturating range — displayed value compressed toward the ~15/1000py ceiling)'}
                   </div>
                 </div>
               </details>

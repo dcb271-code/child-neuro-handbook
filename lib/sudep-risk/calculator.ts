@@ -29,7 +29,7 @@ export type PedSUDEPInputs = {
 };
 
 export type SyndromeBaseline = { rate: number; label: string; description: string; source: string; floor?: number };
-export type GeneticModifier = { mult: number; note: string; cardiacFlag?: boolean; floorBaseline?: number };
+export type GeneticModifier = { mult: number; note: string; cardiacFlag?: boolean; floorRate?: number };
 export type Multiplier = { mult: number; note: string };
 export type LabeledMultiplier = { mult: number; label: string; note: string };
 export type DisplayLevel = 'measurable' | 'detection_limit' | 'lowest_plausible' | 'ceiling';
@@ -138,15 +138,18 @@ const SYNDROME_BASELINES: Record<Syndrome, SyndromeBaseline> = {
   }
 };
 
-// Gene-specific modifiers. Applied as a multiplier on the syndrome baseline,
-// except for floor-type genes (floorBaseline != null), which set a minimum
-// effective baseline instead of multiplying (see calcPedSUDEP below).
+// Gene-specific modifiers. Most genes apply as a multiplier on the syndrome
+// baseline. Floor-type genes (floorRate != null) instead set a minimum on the
+// FINAL computed rate — joining the same final-rate floor logic as the
+// high-mortality syndrome floors (see calcPedSUDEP below) — rather than
+// multiplying. This prevents favorable modifiers from dragging a known-
+// pathogenic gene's estimate implausibly low.
 const GENETIC_MODIFIERS: Record<GeneticEtiology, GeneticModifier> = {
   none: { mult: 1.0, note: '' },
   scn1a: {
     mult: 1.0,
-    floorBaseline: 0.25,
-    note: 'SCN1A spans the full severity spectrum (febrile seizures -> GEFS+ -> Dravet -> severe DEE; GeneReviews). A pathogenic SCN1A variant is never benign, so it sets a risk FLOOR at 0.25/1000py — the GEFS+-with-SCN1A level, above the 0.15 gene-agnostic GEFS+ baseline — regardless of the phenotype chosen. Severity above that floor is set by the selected phenotype (Dravet, severe non-Dravet DEE), so SCN1A does not additionally multiply those, avoiding double-counting.',
+    floorRate: 0.5,
+    note: 'SCN1A spans the full severity spectrum (febrile seizures -> GEFS+ -> Dravet -> severe DEE; GeneReviews). A pathogenic SCN1A variant is never benign, so it sets a risk FLOOR of 0.5/1000py on the FINAL estimate — favorable modifiers (monitoring, rare GTCS) cannot pull a known-pathogenic SCN1A child below it. The floor is on the final rate, not the baseline, so a mild GEFS+/SCN1A phenotype with active seizures reads ≥0.5 rather than slipping toward zero. Severity ABOVE the floor is set by the selected phenotype (Dravet, severe non-Dravet DEE), so SCN1A does not additionally multiply those, avoiding double-counting. As with the syndrome floor, genuine seizure-freedom (no GTCS ever, or none in the past year) — the dominant protective factor — overrides it.',
     cardiacFlag: false
   },
   scn2a: {
@@ -272,14 +275,29 @@ const DURATION_MULTIPLIER: Record<Duration, Multiplier> = {
 const DETECTION_LIMIT = 0.05;
 const LOWEST_PLAUSIBLE = 0.01;
 // High-end saturation replaces a hard cap. Pure multiplication holds through the
-// calibrated range (raw ≤ SAT_KNEE = 10/1000py, the High/Very-high boundary);
-// above the knee, increments diminish smoothly toward SAT_ASYMPTOTE (20/1000py ≈
-// Cooper 2016 Dravet 95% CI upper bound — the highest credible documented rate).
-// Rationale: risk-factor ORs attenuate at high absolute risk and factors are
-// correlated, so the naive product overstates; no cohort sustains rates near the
-// old 30 cap. See the saturation transform in calcPedSUDEP.
-const SAT_KNEE = 10.0;
-const SAT_ASYMPTOTE = 20.0;
+// calibrated range (raw ≤ SAT_KNEE = 7/1000py — about Donnan 2023's Dravet upper
+// CI, 7.8, and the upper bound of clean pediatric syndrome point estimates);
+// above the knee, increments diminish smoothly toward SAT_ASYMPTOTE (15/1000py).
+// Calibration rationale (intentional, clinician-directed):
+//   - Clean pediatric syndrome point estimates essentially never exceed ~10
+//     (Donnan Dravet 4.4, Cooper Dravet 9.3, pediatric DEE overall 2.8, LGS
+//     total mortality 6.1). Rates above 10 are confined to a confidence bound
+//     (Cooper CI 19.5) and a heavily risk-stratified, adult-inclusive registry
+//     stratum (Tomson 2025: 18.1 for alone + nonadherent + nocturnal TCS + ≥1
+//     TCS). The model deliberately does NOT try to reproduce those ~18+ extremes
+//     for a pediatric syndrome tool; it tops out near 15 and the UI notes that
+//     literature has reported rates as high as ~18 in select strata.
+//   - The 15 ceiling is reserved for the genuinely extreme: it takes a
+//     maximally-stacked profile (very-frequent + nocturnal GTCS + sleeps alone
+//     + nonadherent + long duration, on a refractory/channelopathy baseline) to
+//     approach it. A serious-but-not-maximal Very-high case tops out near 12.
+//   - Risk-factor ORs attenuate at high absolute risk and factors are
+//     correlated, so the naive product overstates; the tail is also genuinely
+//     uncertain (these events are rare and SUDEP is never zero), which is why
+//     the displayed value is compressed rather than extrapolated. See the
+//     saturation transform in calcPedSUDEP.
+const SAT_KNEE = 7.0;
+const SAT_ASYMPTOTE = 15.0;
 
 export function calcPedSUDEP(inputs: PedSUDEPInputs): PedSUDEPResult {
   const {
@@ -296,30 +314,35 @@ export function calcPedSUDEP(inputs: PedSUDEPInputs): PedSUDEPResult {
   const adh  = ADHERENCE_MULTIPLIER[adherence];
   const dur  = DURATION_MULTIPLIER[duration];
 
-  // SCN1A is modeled as a risk floor, not a multiplier: a pathogenic SCN1A
-  // variant is never benign, so it raises the baseline to its floor when the
-  // selected phenotype sits below it, and otherwise leaves severity to the
-  // phenotype (no double-counting for Dravet / severe non-Dravet DEE, which
-  // already exceed the floor). Non-floor genes keep their multiplier.
-  const effectiveBaseline = gen.floorBaseline != null
-    ? Math.max(synd.rate, gen.floorBaseline)
-    : synd.rate;
-  const effectiveGeneMult = gen.floorBaseline != null ? 1.0 : gen.mult;
-
-  const rawUnfloored = effectiveBaseline * effectiveGeneMult * gtc.mult * noct.mult *
+  // SCN1A is modeled as a risk floor, not a multiplier (gen.floorRate != null,
+  // gen.mult = 1.0): a pathogenic SCN1A variant is never benign, but rather than
+  // inflating the baseline it sets a minimum on the FINAL rate (applied below,
+  // jointly with the syndrome floor). Non-floor genes keep their multiplier.
+  const rawUnfloored = synd.rate * gen.mult * gtc.mult * noct.mult *
               sup.mult * adh.mult * dur.mult;
 
-  // Syndrome floor: high-mortality syndromes (Dravet, severe non-Dravet DEE)
-  // retain substantial SUDEP risk despite favorable modifiers — the published
-  // rates (Cooper 2016, Donnan 2023) describe active disease, and crude
-  // within-syndrome stratification by these factors is weakly evidenced. The
-  // floor is the lower bound of Donnan's 95% CI (2.3; 2.5 for severe DEE).
-  // EXCEPTION: genuine seizure-freedom (no GTCS ever, or none in the past year)
-  // is the strongest protective factor (Tomson 2025, ~36x) and is allowed to
-  // lower risk below the floor.
+  // Final-rate floors. Two sources set a minimum on the final rate:
+  //   - Syndrome floor: high-mortality syndromes (Dravet 2.3, severe non-Dravet
+  //     DEE 2.5) retain substantial SUDEP risk despite favorable modifiers — the
+  //     published rates (Cooper 2016, Donnan 2023) describe active disease, and
+  //     crude within-syndrome stratification by these factors is weakly
+  //     evidenced. The floor is the lower bound of Donnan's 95% CI.
+  //   - Genetic floor: a pathogenic floor-type gene (SCN1A, 0.5) is never benign;
+  //     favorable modifiers cannot pull its final estimate below this minimum.
+  // When both apply, the higher floor governs (e.g. Dravet + SCN1A → 2.3, so the
+  // gene floor is inert and there is no double-count). EXCEPTION: genuine
+  // seizure-freedom (no GTCS ever, or none in the past year) is the strongest
+  // protective factor (Tomson 2025, ~36x) and overrides every floor.
   const seizureFree = gtcFrequency === 'never' || gtcFrequency === 'none_pastyear';
-  const syndromeFloorApplied = synd.floor != null && !seizureFree && rawUnfloored < synd.floor;
-  const raw = syndromeFloorApplied ? synd.floor! : rawUnfloored;
+  const syndFloorVal = synd.floor ?? 0;
+  const geneFloorVal = gen.floorRate ?? 0;
+  const activeFloor = Math.max(syndFloorVal, geneFloorVal);
+  const floorBinds = !seizureFree && activeFloor > 0 && rawUnfloored < activeFloor;
+  const raw = floorBinds ? activeFloor : rawUnfloored;
+  // Attribute the binding floor for the breakdown UI; the syndrome floor wins
+  // ties so Dravet/severe-DEE + SCN1A reads as a syndrome floor, not a gene one.
+  const syndromeFloorApplied = floorBinds && syndFloorVal >= geneFloorVal;
+  const geneticFloorBinding = floorBinds && geneFloorVal > syndFloorVal;
 
   // High-end saturation (diminishing returns) instead of a hard cap. Below the
   // knee the value is unchanged; above it, increments shrink toward the
@@ -380,8 +403,8 @@ export function calcPedSUDEP(inputs: PedSUDEPInputs): PedSUDEPResult {
     syndrome: synd,
     genetic: gen,
     geneticApplied: geneticEtiology !== 'none',
-    geneticFloorApplied: gen.floorBaseline != null,
-    geneticFloorBinding: gen.floorBaseline != null && gen.floorBaseline > synd.rate,
+    geneticFloorApplied: gen.floorRate != null,
+    geneticFloorBinding,
     syndromeFloorApplied,
     gtc,
     nocturnal: noct,

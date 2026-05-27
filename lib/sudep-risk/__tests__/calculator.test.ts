@@ -43,12 +43,12 @@ describe('calcPedSUDEP — threshold display logic', () => {
     expect(r.displayString).toBe('≤0.05');
     expect(r.tier).toBe('Very low');
   });
-  it('extreme profile saturates toward the ~20 asymptote (no longer a hard ≥30 cap)', () => {
+  it('extreme profile saturates toward the ~15 asymptote (no hard ≥30 cap; ceiling lowered from 20)', () => {
     const r = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', gtcFrequency: 'very_frequent', nocturnal: true, supervision: 'alone', adherence: 'poor', duration: 'long' });
-    expect(r.rawRate).toBeGreaterThan(30);     // uncapped multiplicative product remains high
+    expect(r.rawRate).toBeGreaterThan(30);     // uncapped multiplicative product remains high (~92)
     expect(r.displayLevel).toBe('ceiling');
-    expect(r.displayRate).toBeLessThan(20);    // approaches but never reaches the asymptote
-    expect(r.displayRate).toBeGreaterThan(19);
+    expect(r.displayRate).toBeLessThan(15);    // approaches but never reaches the asymptote
+    expect(r.displayRate).toBeGreaterThan(14.9);
     expect(r.displayString).toBe(r.displayRate.toFixed(2));
   });
 });
@@ -160,18 +160,18 @@ describe('calcPedSUDEP — SCN1A floor + phenotype ordering', () => {
     expect(focal.rawRate).toBeCloseTo(3.06, 2);
   });
 
-  it('SCN1A adds risk to a GEFS+ phenotype — floor 0.25 exceeds the 0.15 GEFS+ baseline (drift guard for the invariant)', () => {
+  it('SCN1A floors a GEFS+ phenotype to the 0.5/1000py final-rate floor (drift guard for the invariant)', () => {
     const bare  = calcPedSUDEP({ ...pedBase, ...STD, syndrome: 'gefs_mild', geneticEtiology: 'none' });
     const scn1a = calcPedSUDEP({ ...pedBase, ...STD, syndrome: 'gefs_mild', geneticEtiology: 'scn1a' });
-    expect(scn1a.rawRate).toBeGreaterThan(bare.rawRate);
-    expect(bare.rawRate  / 2.55).toBeCloseTo(0.15, 6);
-    expect(scn1a.rawRate / 2.55).toBeCloseTo(0.25, 6);
+    expect(bare.rawRate / 2.55).toBeCloseTo(0.15, 6);   // gene-agnostic GEFS+ baseline, unfloored (0.3825)
+    expect(scn1a.rawRate).toBeGreaterThan(bare.rawRate); // SCN1A raises it...
+    expect(scn1a.rawRate).toBeCloseTo(0.5, 6);           // ...to the 0.5 final-rate floor (0.3825 < 0.5)
     expect(scn1a.geneticFloorBinding).toBe(true);
   });
 
-  it('SCN1A floors a self-limited phenotype up to the GEFS+-with-SCN1A level (0.25)', () => {
+  it('SCN1A floors a self-limited phenotype up to the 0.5/1000py final-rate floor', () => {
     const r = calcPedSUDEP({ ...pedBase, ...STD, syndrome: 'selflimited', geneticEtiology: 'scn1a' });
-    expect(r.rawRate / 2.55).toBeCloseTo(0.25, 6);
+    expect(r.rawRate).toBeCloseTo(0.5, 6);               // 0.10 * 2.55 = 0.255 < 0.5 → floored
     expect(r.geneticFloorBinding).toBe(true);
   });
 
@@ -227,18 +227,74 @@ describe('calcPedSUDEP — high-end saturation (soft asymptote)', () => {
     expect(r.displayRate).toBeCloseTo(r.rawRate, 6);
     expect(r.displayLevel).toBe('measurable');
   });
-  it('compresses an above-knee value (raw ~18.4 → displayed ~15.7) without yet flagging the saturating note', () => {
+  it('compresses an above-knee value below the asymptote without flagging the saturating note (raw ~9.18 → ~8.91)', () => {
+    const r = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', gtcFrequency: 'frequent', nocturnal: true, supervision: 'partial', duration: 'medium' });
+    expect(r.rawRate).toBeCloseTo(9.18, 2);
+    expect(r.displayRate).toBeLessThan(r.rawRate);   // saturation is applied above the knee (7)
+    expect(r.displayRate).toBeCloseTo(8.91, 1);
+    expect(r.ceilinged).toBe(false);                  // raw < asymptote(15), so no note yet
+  });
+  it('flags the saturating note once raw reaches the asymptote (raw ~18.4 → displayed ~13.07)', () => {
     const r = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', gtcFrequency: 'frequent', nocturnal: true, supervision: 'alone', duration: 'medium' });
     expect(r.rawRate).toBeCloseTo(18.36, 2);
-    expect(r.displayRate).toBeLessThan(r.rawRate);   // saturation is applied above the knee
-    expect(r.displayRate).toBeCloseTo(15.66, 1);
-    expect(r.ceilinged).toBe(false);                  // raw < asymptote(20), so no note yet
+    expect(r.displayRate).toBeLessThan(r.rawRate);
+    expect(r.displayRate).toBeCloseTo(13.07, 1);
+    expect(r.ceilinged).toBe(true);                   // raw ≥ asymptote(15)
   });
   it('diminishing returns: a far larger raw barely moves the displayed value near the asymptote', () => {
     const big  = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', gtcFrequency: 'frequent', nocturnal: true, supervision: 'alone', adherence: 'poor', duration: 'long' });
     const huge = calcPedSUDEP({ ...pedBase, syndrome: 'severe_dee', geneticEtiology: 'kcnq1_h2', gtcFrequency: 'very_frequent', nocturnal: true, supervision: 'alone', adherence: 'poor', duration: 'long' });
     expect(huge.rawRate).toBeGreaterThan(big.rawRate * 2);            // raw at least doubles
     expect(huge.displayRate - big.displayRate).toBeLessThan(0.5);     // displayed value barely changes
-    expect(huge.displayRate).toBeLessThanOrEqual(20);                 // never exceeds the asymptote (approaches it)
+    expect(huge.displayRate).toBeLessThanOrEqual(15);                 // never exceeds the asymptote (approaches it)
+  });
+});
+
+describe('calcPedSUDEP — SCN1A 0.5 final-rate floor (favorable modifiers cannot pull below it)', () => {
+  it('GEFS+/SCN1A with rare GTCS + monitoring floors to 0.5 (was the ~0.13 favorable-modifier underestimate)', () => {
+    // unfloored product = 0.15 * rare(1.0) * shared(0.5) = 0.075; the old 0.25 baseline-floor route landed ~0.13
+    const r = calcPedSUDEP({ ...pedBase, syndrome: 'gefs_mild', geneticEtiology: 'scn1a', gtcFrequency: 'rare', supervision: 'shared' });
+    expect(r.rawRate).toBeCloseTo(0.5, 6);
+    expect(r.geneticFloorApplied).toBe(true);
+    expect(r.geneticFloorBinding).toBe(true);
+    expect(r.tier).toBe('Low');
+  });
+  it('the floor is on the FINAL rate — an active-enough SCN1A profile rises above 0.5 on its own', () => {
+    // 0.15 * very_frequent(5) * nocturnal(1.7) * alone(2) = 2.55 — well above the floor, so it is inert
+    const r = calcPedSUDEP({ ...pedBase, syndrome: 'gefs_mild', geneticEtiology: 'scn1a', gtcFrequency: 'very_frequent', nocturnal: true, supervision: 'alone' });
+    expect(r.rawRate).toBeCloseTo(2.55, 5);
+    expect(r.geneticFloorBinding).toBe(false);
+  });
+  it('genuine seizure-freedom overrides the SCN1A floor (consistent with the syndrome floor)', () => {
+    const r = calcPedSUDEP({ ...pedBase, syndrome: 'gefs_mild', geneticEtiology: 'scn1a', gtcFrequency: 'none_pastyear' });
+    expect(r.rawRate).toBeLessThan(0.5);   // 0.15 * none_pastyear(0.3) * shared(0.5) = 0.0225, not floored
+    expect(r.geneticFloorBinding).toBe(false);
+  });
+  it('Dravet + SCN1A: the 2.3 syndrome floor dominates the 0.5 gene floor (no double-count, gene floor not binding)', () => {
+    const r = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', geneticEtiology: 'scn1a' }); // favorable → floored
+    expect(r.rawRate).toBeCloseTo(2.3, 5);
+    expect(r.syndromeFloorApplied).toBe(true);
+    expect(r.geneticFloorBinding).toBe(false);
+  });
+});
+
+describe('calcPedSUDEP — ceiling reserved for the genuinely extreme (knee 7 / asymptote 15)', () => {
+  it('a serious-but-not-maximal Very-high case (Dravet frequent + nocturnal + alone) tops out well below the ceiling (~12)', () => {
+    const r = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', gtcFrequency: 'frequent', nocturnal: true, supervision: 'alone' });
+    expect(r.rawRate).toBeCloseTo(15.3, 2);
+    expect(r.tier).toBe('Very high');
+    expect(r.displayRate).toBeCloseTo(12.17, 1);
+    expect(r.displayRate).toBeLessThan(13);          // nowhere near the 15 ceiling
+  });
+  it('only the maximally-stacked profile (very-freq + nocturnal + alone + nonadherent + long) approaches 15', () => {
+    const max = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', gtcFrequency: 'very_frequent', nocturnal: true, supervision: 'alone', adherence: 'poor', duration: 'long' });
+    expect(max.displayRate).toBeGreaterThan(14.9);
+    expect(max.displayRate).toBeLessThan(15);
+  });
+  it('the Very-high tier (display ≥10) requires a genuinely high computed rate — adding "alone" crosses High → Very high', () => {
+    const high     = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', gtcFrequency: 'frequent', nocturnal: true, supervision: 'partial' }); // raw 9.18
+    const veryHigh = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', gtcFrequency: 'frequent', nocturnal: true, supervision: 'alone' });   // raw 15.3
+    expect(high.tier).toBe('High');
+    expect(veryHigh.tier).toBe('Very high');
   });
 });
