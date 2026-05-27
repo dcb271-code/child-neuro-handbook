@@ -281,7 +281,7 @@ export default function SUDEPRiskCalculator() {
 
               <Field
                 label="Genetic etiology (if known)"
-                hint="Most genes multiply the syndrome baseline (SCN2A, SCN8A, STXBP1, KCNT1, etc.). SCN1A instead sets a 0.5/1000py floor on the final estimate — favorable modifiers can't pull a known-pathogenic SCN1A child below it — while severity above the floor is set by the phenotype, so choose 'Dravet' or 'Severe early-infantile / non-Dravet DEE' for those presentations. KCNQ1/KCNH2/SCN5A/SCN1B flag for cardiac evaluation due to brain-heart channelopathy overlap."
+                hint="Most genes multiply the syndrome baseline (SCN2A, SCN8A, STXBP1, KCNT1, etc.). SCN1A applies a 1.3× channelopathy multiplier on non-DEE phenotypes (GEFS+, focal/generalized DRE) plus a 0.5/1000py floor on the final estimate — so a pathogenic variant always raises risk, and favorable modifiers can't pull it below 0.5. On a DEE phenotype its severity is already in the baseline, so choose 'Dravet' or 'Severe early-infantile / non-Dravet DEE' rather than double-counting. KCNQ1/KCNH2/SCN5A/SCN1B flag for cardiac evaluation due to brain-heart channelopathy overlap."
               >
                 <Select
                   value={P.geneticEtiology}
@@ -457,16 +457,26 @@ export default function SUDEPRiskCalculator() {
                     </div>
                   )}
 
-                  {P.geneticEtiology !== 'none' && (
-                    <div>
-                      <strong>Genetic modifier:</strong> {pResult.geneticFloorApplied
-                        ? (pResult.geneticFloorBinding
-                            ? `risk floor ${pResult.genetic.floorRate?.toFixed(2)}/1000py (raised the final rate)`
-                            : `risk floor ${pResult.genetic.floorRate?.toFixed(2)}/1000py (not binding — computed rate already exceeds it)`)
-                        : `${pResult.genetic.mult}×`}
-                      <div className="text-slate-500 dark:text-slate-400 mt-0.5 italic">{pResult.genetic.note}</div>
-                    </div>
-                  )}
+                  {P.geneticEtiology !== 'none' && (() => {
+                    // Floor-type genes (SCN1A) show both their phenotype-dependent
+                    // multiplier and the final-rate floor status; other genes show
+                    // their plain multiplier.
+                    const fr = pResult.genetic.floorRate?.toFixed(2);
+                    const multPart = pResult.effectiveGeneMult !== 1
+                      ? `${pResult.effectiveGeneMult}× channelopathy multiplier`
+                      : 'no multiplier (phenotype already encodes the gene)';
+                    const floorPart = pResult.geneticFloorBinding
+                      ? `held at the ${fr}/1000py floor`
+                      : `${fr}/1000py floor not binding`;
+                    return (
+                      <div>
+                        <strong>Genetic modifier:</strong> {pResult.geneticFloorApplied
+                          ? `${multPart}; ${floorPart}`
+                          : `${pResult.genetic.mult}×`}
+                        <div className="text-slate-500 dark:text-slate-400 mt-0.5 italic">{pResult.genetic.note}</div>
+                      </div>
+                    );
+                  })()}
 
                   <div>
                     <strong>GTCS frequency:</strong> {pResult.gtc.mult}× — {pResult.gtc.label}

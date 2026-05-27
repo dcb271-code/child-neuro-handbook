@@ -38,6 +38,7 @@ export type PedSUDEPResult = {
   syndrome: SyndromeBaseline;
   genetic: GeneticModifier;
   geneticApplied: boolean;
+  effectiveGeneMult: number;
   geneticFloorApplied: boolean;
   geneticFloorBinding: boolean;
   syndromeFloorApplied: boolean;
@@ -138,18 +139,24 @@ const SYNDROME_BASELINES: Record<Syndrome, SyndromeBaseline> = {
   }
 };
 
+// DEE phenotypes whose baseline ALREADY encodes a floor-type channelopathy's
+// severity. A floor-type gene (SCN1A) does not additionally multiply these,
+// avoiding double-counting: if the SCN1A is presenting as Dravet/severe DEE,
+// that is captured by selecting the phenotype, not by a generic gene multiplier.
+const DEE_PHENOTYPES = new Set<Syndrome>(['dravet', 'severe_dee', 'lgs', 'other_dee']);
+
 // Gene-specific modifiers. Most genes apply as a multiplier on the syndrome
-// baseline. Floor-type genes (floorRate != null) instead set a minimum on the
-// FINAL computed rate — joining the same final-rate floor logic as the
-// high-mortality syndrome floors (see calcPedSUDEP below) — rather than
-// multiplying. This prevents favorable modifiers from dragging a known-
-// pathogenic gene's estimate implausibly low.
+// baseline. Floor-type genes (floorRate != null) ALSO set a minimum on the FINAL
+// computed rate — joining the same final-rate floor logic as the high-mortality
+// syndrome floors (see calcPedSUDEP below) — so favorable modifiers cannot drag
+// a known-pathogenic gene's estimate implausibly low. A floor-type gene's
+// multiplier is suppressed on DEE_PHENOTYPES (the phenotype already encodes it).
 const GENETIC_MODIFIERS: Record<GeneticEtiology, GeneticModifier> = {
   none: { mult: 1.0, note: '' },
   scn1a: {
-    mult: 1.0,
+    mult: 1.3,
     floorRate: 0.5,
-    note: 'SCN1A spans the full severity spectrum (febrile seizures -> GEFS+ -> Dravet -> severe DEE; GeneReviews). A pathogenic SCN1A variant is never benign, so it sets a risk FLOOR of 0.5/1000py on the FINAL estimate — favorable modifiers (monitoring, rare GTCS) cannot pull a known-pathogenic SCN1A child below it. The floor is on the final rate, not the baseline, so a mild GEFS+/SCN1A phenotype with active seizures reads ≥0.5 rather than slipping toward zero. Severity ABOVE the floor is set by the selected phenotype (Dravet, severe non-Dravet DEE), so SCN1A does not additionally multiply those, avoiding double-counting. As with the syndrome floor, genuine seizure-freedom (no GTCS ever, or none in the past year) — the dominant protective factor — overrides it.',
+    note: 'SCN1A spans the full severity spectrum (febrile seizures -> GEFS+ -> Dravet -> severe DEE; GeneReviews) and is never benign. On NON-DEE phenotypes (GEFS+, focal/generalized DRE, etc.) it applies a 1.3× channelopathy multiplier — a pathogenic SCN1A variant raises SUDEP risk over the same phenotype without it — calibrated to stay below the Dravet phenotype (1.20×1.3 < 1.80), preserving the severity ordering. It ALSO sets a 0.5/1000py floor on the FINAL estimate, so a mild SCN1A phenotype with favorable modifiers still reads ≥0.5 rather than slipping toward zero. On DEE phenotypes (Dravet, severe non-Dravet DEE, LGS) the multiplier is suppressed — that severity is already in the phenotype baseline, so apply the gene by choosing the phenotype, not by double-counting. As with the syndrome floor, genuine seizure-freedom (no GTCS ever, or none in the past year) — the dominant protective factor — overrides the floor.',
     cardiacFlag: false
   },
   scn2a: {
@@ -314,11 +321,12 @@ export function calcPedSUDEP(inputs: PedSUDEPInputs): PedSUDEPResult {
   const adh  = ADHERENCE_MULTIPLIER[adherence];
   const dur  = DURATION_MULTIPLIER[duration];
 
-  // SCN1A is modeled as a risk floor, not a multiplier (gen.floorRate != null,
-  // gen.mult = 1.0): a pathogenic SCN1A variant is never benign, but rather than
-  // inflating the baseline it sets a minimum on the FINAL rate (applied below,
-  // jointly with the syndrome floor). Non-floor genes keep their multiplier.
-  const rawUnfloored = synd.rate * gen.mult * gtc.mult * noct.mult *
+  // Floor-type genes (SCN1A) apply their multiplier only on non-DEE phenotypes;
+  // on DEE phenotypes the multiplier is suppressed (the phenotype already encodes
+  // the channelopathy) and the gene contributes solely via the final-rate floor
+  // applied below. Non-floor genes always keep their multiplier.
+  const effectiveGeneMult = (gen.floorRate != null && DEE_PHENOTYPES.has(syndrome)) ? 1.0 : gen.mult;
+  const rawUnfloored = synd.rate * effectiveGeneMult * gtc.mult * noct.mult *
               sup.mult * adh.mult * dur.mult;
 
   // Final-rate floors. Two sources set a minimum on the final rate:
@@ -403,6 +411,7 @@ export function calcPedSUDEP(inputs: PedSUDEPInputs): PedSUDEPResult {
     syndrome: synd,
     genetic: gen,
     geneticApplied: geneticEtiology !== 'none',
+    effectiveGeneMult,
     geneticFloorApplied: gen.floorRate != null,
     geneticFloorBinding,
     syndromeFloorApplied,
