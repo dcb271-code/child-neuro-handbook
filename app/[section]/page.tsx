@@ -7,6 +7,7 @@ import MobileSubsectionNav from '@/components/MobileSubsectionNav';
 import SectionContent from '@/components/SectionContent';
 import ImageLightbox from '@/components/ImageLightbox';
 import ASMWithdrawalCalculator from '@/components/asm-withdrawal/ASMWithdrawalCalculator';
+import SeizureRiskCalculators from '@/components/seizure-risk/SeizureRiskCalculators';
 
 type TocEntry = { level: number; text: string; id: string };
 
@@ -108,6 +109,11 @@ export default function SectionPage({ params }: { params: { section: string } })
           {params.section === 'epilepsy' && (
             <section id="asm-withdrawal-calculator" className="scroll-mt-24 mt-8 pt-6 border-t border-slate-100 dark:border-slate-700">
               <ASMWithdrawalCalculator />
+            </section>
+          )}
+          {params.section === 'epilepsy' && (
+            <section id="seizure-risk-calculators" className="scroll-mt-24 mt-8 pt-6 border-t border-slate-100 dark:border-slate-700">
+              <SeizureRiskCalculators />
             </section>
           )}
 
