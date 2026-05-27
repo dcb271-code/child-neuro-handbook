@@ -326,7 +326,7 @@ export default function SUDEPRiskCalculator() {
 
               <Field
                 label="Nighttime supervision"
-                hint="The single most modifiable factor, on a 3-level scale. Shared bedroom / active monitoring is protective (Langan 2005, HR ~0.4); a separate room with only intermittent checks (baby cam, periodic checks) is the neutral reference — the typical pediatric situation; sleeping alone and unwitnessed is high-risk (Sveinsson 2020, adult living-alone data, OR ~5)."
+                hint="The single most modifiable factor, on a 3-level scale. Shared bedroom / active monitoring is protective (Langan 2005, HR ~0.4); a separate room with only intermittent checks (baby cam, periodic checks) is the neutral reference — the typical pediatric situation; sleeping alone and unwitnessed is high-risk (Sveinsson 2020, adult living-alone data, OR ~5). For the severe early-onset epilepsies — infantile-onset DEE (Dravet, severe infantile DEE) and refractory childhood DEE (LGS) — this defaults to monitored, because those children are near-universally closely supervised; every other epilepsy defaults to the neutral reference, since supervision varies (e.g. an otherwise-independent adolescent with drug-resistant focal epilepsy). Adjust to the individual patient."
               >
                 <Toggle<string>
                   value={P.supervision}
@@ -471,6 +471,11 @@ export default function SUDEPRiskCalculator() {
                   <div>
                     <strong>Supervision:</strong> {pResult.supervision.mult}× ({P.supervision === 'shared' ? 'shared / monitored' : P.supervision === 'partial' ? 'separate / intermittent' : 'alone / unmonitored'})
                     <div className="text-slate-500 dark:text-slate-400 mt-0.5 italic">{pResult.supervision.note}</div>
+                    {P.supervision === 'shared' && (P.syndrome === 'dravet' || P.syndrome === 'severe_dee' || P.syndrome === 'lgs') && (
+                      <div className="text-slate-400 dark:text-slate-500 mt-0.5 text-[10px]">
+                        Preset to monitored for this syndrome. This is a class rule, not Dravet-specific: the severe early-onset epilepsies — infantile-onset DEE (Dravet, severe infantile DEE) and refractory childhood DEE (LGS) — are near-universally closely supervised, so the headline reflects the monitored (Donnan-type) cohort rather than the general (Cooper-type) one. Change the selection above if this child sleeps unmonitored.
+                      </div>
+                    )}
                   </div>
 
                   {P.adherence === 'poor' && (
