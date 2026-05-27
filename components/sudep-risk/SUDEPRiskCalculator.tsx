@@ -123,8 +123,10 @@ function Select<T extends string>({ value, onChange, options }: {
 // MAIN COMPONENT
 // ============================================================================
 
+type Tab = 'pediatric' | 'sudep3' | 'sudep7' | 'modifiable' | 'teaching' | 'refs';
+
 export default function SUDEPRiskCalculator() {
-  const [tab, setTab] = useState('pediatric');
+  const [tab, setTab] = useState<Tab>('pediatric');
 
   const [P, setP] = useState<PedSUDEPInputs>({
     syndrome: 'controlled',
@@ -164,14 +166,14 @@ export default function SUDEPRiskCalculator() {
       </div>
 
       <div className="flex gap-1 mb-5 border-b border-slate-200 dark:border-slate-700 flex-wrap">
-        {[
+        {([
           ['pediatric', 'Pediatric risk context'],
           ['sudep3', 'SUDEP-3'],
           ['sudep7', 'SUDEP-7 v2.0'],
           ['modifiable', 'Modifiable factors'],
           ['teaching', 'Teaching points'],
-          ['refs', 'References']
-        ].map(([id, label]) => (
+          ['refs', 'References'],
+        ] as [Tab, string][]).map(([id, label]) => (
           <button
             key={id}
             type="button"
@@ -341,9 +343,7 @@ export default function SUDEPRiskCalculator() {
               </h4>
 
               <div className={`rounded-lg p-4 border-2 mb-4 ${
-                pResult.tier === 'Extremely low' ? 'bg-emerald-50 border-emerald-300 text-emerald-900 dark:bg-emerald-900/20 dark:border-emerald-700 dark:text-emerald-200' :
-                pResult.tier === 'Very low' ? 'bg-emerald-50 border-emerald-300 text-emerald-900 dark:bg-emerald-900/20 dark:border-emerald-700 dark:text-emerald-200' :
-                pResult.tier === 'Low' ? 'bg-emerald-50 border-emerald-300 text-emerald-900 dark:bg-emerald-900/20 dark:border-emerald-700 dark:text-emerald-200' :
+                ['Extremely low', 'Very low', 'Low'].includes(pResult.tier) ? 'bg-emerald-50 border-emerald-300 text-emerald-900 dark:bg-emerald-900/20 dark:border-emerald-700 dark:text-emerald-200' :
                 pResult.tier === 'Moderate' ? 'bg-amber-50 border-amber-300 text-amber-900 dark:bg-amber-900/20 dark:border-amber-700 dark:text-amber-200' :
                 pResult.tier === 'High' ? 'bg-orange-50 border-orange-300 text-orange-900 dark:bg-orange-900/20 dark:border-orange-700 dark:text-orange-200' :
                 'bg-red-50 border-red-300 text-red-900 dark:bg-red-900/20 dark:border-red-700 dark:text-red-200'
@@ -791,7 +791,7 @@ export default function SUDEPRiskCalculator() {
                         ? 'bg-emerald-600 border-emerald-600 text-white'
                         : 'bg-white dark:bg-slate-900 border-slate-400 dark:border-slate-500 hover:border-slate-600 dark:hover:border-slate-400'
                     }`}
-                    aria-label="Toggle done"
+                    aria-label={`Mark "${f.title}" as done`}
                   >
                     {done[f.id] && (
                       <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
