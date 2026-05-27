@@ -331,8 +331,12 @@ export function calcPedSUDEP(inputs: PedSUDEPInputs): PedSUDEPResult {
   const tenYear = 100 * (1 - Math.pow(1 - displayRate/1000, 10));
 
   // Compare to age-matched general pediatric population SUDEP-equivalent rate
-  const relativeToControlled = displayRate / 0.2; // vs "controlled epilepsy" baseline
+  // (the "controlled epilepsy" baseline; reference the table so it can't drift).
+  const relativeToControlled = displayRate / SYNDROME_BASELINES.controlled.rate;
 
+  // For display, the UI should use `displayString` (and prefix annual/10-yr
+  // percentages with `annualPrefix`). `rawRate` is the uncapped value;
+  // `finalRate` is capped at CEILING; `displayRate` is snapped to the threshold.
   return {
     syndrome: synd,
     genetic: gen,
