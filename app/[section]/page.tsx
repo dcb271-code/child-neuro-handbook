@@ -111,6 +111,7 @@ export default function SectionPage({ params }: { params: { section: string } })
               <ASMWithdrawalCalculator />
             </section>
           )}
+
           {params.section === 'epilepsy' && (
             <section id="seizure-risk-calculators" className="scroll-mt-24 mt-8 pt-6 border-t border-slate-100 dark:border-slate-700">
               <SeizureRiskCalculators />
