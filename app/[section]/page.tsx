@@ -8,6 +8,7 @@ import SectionContent from '@/components/SectionContent';
 import ImageLightbox from '@/components/ImageLightbox';
 import ASMWithdrawalCalculator from '@/components/asm-withdrawal/ASMWithdrawalCalculator';
 import SeizureRiskCalculators from '@/components/seizure-risk/SeizureRiskCalculators';
+import SUDEPRiskCalculator from '@/components/sudep-risk/SUDEPRiskCalculator';
 
 type TocEntry = { level: number; text: string; id: string };
 
@@ -59,6 +60,14 @@ const accentMap: Record<string, string> = {
   neuromuscular:                       '#059669',
 };
 
+const SECTION_WIDGETS: Record<string, { id: string; Component: () => JSX.Element }[]> = {
+  epilepsy: [
+    { id: 'asm-withdrawal-calculator', Component: ASMWithdrawalCalculator },
+    { id: 'seizure-risk-calculators', Component: SeizureRiskCalculators },
+    { id: 'sudep-risk-calculator', Component: SUDEPRiskCalculator },
+  ],
+};
+
 export default function SectionPage({ params }: { params: { section: string } }) {
   const data = getSectionData(params.section);
   if (!data) notFound();
@@ -106,17 +115,11 @@ export default function SectionPage({ params }: { params: { section: string } })
           <SectionContent html={data.html} />
           <ImageLightbox />
 
-          {params.section === 'epilepsy' && (
-            <section id="asm-withdrawal-calculator" className="scroll-mt-24 mt-8 pt-6 border-t border-slate-100 dark:border-slate-700">
-              <ASMWithdrawalCalculator />
+          {(SECTION_WIDGETS[params.section] ?? []).map(({ id, Component }) => (
+            <section key={id} id={id} className="scroll-mt-24 mt-8 pt-6 border-t border-slate-100 dark:border-slate-700">
+              <Component />
             </section>
-          )}
-
-          {params.section === 'epilepsy' && (
-            <section id="seizure-risk-calculators" className="scroll-mt-24 mt-8 pt-6 border-t border-slate-100 dark:border-slate-700">
-              <SeizureRiskCalculators />
-            </section>
-          )}
+          ))}
 
           {/* Prev / Next */}
           <div className="mt-8 sm:mt-10 pt-5 sm:pt-6 border-t border-slate-100 dark:border-slate-700 flex justify-between gap-4 flex-wrap">
