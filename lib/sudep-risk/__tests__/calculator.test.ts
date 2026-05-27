@@ -66,9 +66,10 @@ describe('calcPedSUDEP — modifiers', () => {
     expect(scn1a.geneticFloorApplied).toBe(true);
     expect(scn1a.geneticFloorBinding).toBe(false);
   });
-  it('cardiac-overlap gene (KCNQ1/H2) is NOT suppressed in Dravet and sets cardiacFlag', () => {
-    const none = calcPedSUDEP({ ...pedBase, syndrome: 'dravet' });
-    const cardiac = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', geneticEtiology: 'kcnq1_h2' });
+  it('cardiac-overlap gene (KCNQ1/H2) multiplies the Dravet baseline by 4.0 and sets cardiacFlag', () => {
+    // frequent + nocturnal keeps both well above the syndrome floor so the 4x ratio is clean
+    const none = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', gtcFrequency: 'frequent', nocturnal: true });
+    const cardiac = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', gtcFrequency: 'frequent', nocturnal: true, geneticEtiology: 'kcnq1_h2' });
     expect(cardiac.rawRate).toBeCloseTo(none.rawRate * 4.0, 5);
     expect(cardiac.cardiacFlag).toBe(true);
   });
@@ -170,5 +171,42 @@ describe('calcPedSUDEP — SCN1A floor + phenotype ordering', () => {
     expect(r.rawRate).toBeCloseTo(3.06, 2);
     expect(r.rawRate).toBeLessThan(10);
     expect(r.tier).toBe('High');
+  });
+});
+
+describe('calcPedSUDEP — syndrome floor (high-mortality syndromes)', () => {
+  // pedBase is the favorable default profile: rare GTC, no nocturnal, shared, good adherence, short duration
+  it('Dravet with favorable-but-active factors is floored to 2.3 (Moderate), not 0.9 (Low)', () => {
+    const r = calcPedSUDEP({ ...pedBase, syndrome: 'dravet' }); // rare GTC = still active disease
+    expect(r.rawRate).toBeCloseTo(2.3, 5);
+    expect(r.syndromeFloorApplied).toBe(true);
+    expect(r.tier).toBe('Moderate');
+  });
+  it('severe non-Dravet DEE floors to 2.5, preserving severe-DEE > Dravet at the floor', () => {
+    const dravet = calcPedSUDEP({ ...pedBase, syndrome: 'dravet' });
+    const severe = calcPedSUDEP({ ...pedBase, syndrome: 'severe_dee' });
+    expect(severe.rawRate).toBeCloseTo(2.5, 5);
+    expect(severe.syndromeFloorApplied).toBe(true);
+    expect(severe.rawRate).toBeGreaterThan(dravet.rawRate);
+  });
+  it('typical active Dravet (frequent nocturnal) is above the floor — floor inert', () => {
+    const r = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', gtcFrequency: 'frequent', nocturnal: true, duration: 'medium' });
+    expect(r.rawRate).toBeCloseTo(4.59, 2);
+    expect(r.syndromeFloorApplied).toBe(false);
+  });
+  it('genuinely seizure-free Dravet (no GTCS in past year) escapes the floor', () => {
+    const r = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', gtcFrequency: 'none_pastyear' });
+    expect(r.rawRate).toBeCloseTo(0.27, 6); // 1.8 * 0.3 * 0.5
+    expect(r.syndromeFloorApplied).toBe(false);
+    expect(r.rawRate).toBeLessThan(2.3);
+  });
+  it('"No GTCS ever" Dravet also escapes the floor', () => {
+    const r = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', gtcFrequency: 'never' });
+    expect(r.syndromeFloorApplied).toBe(false);
+    expect(r.rawRate).toBeLessThan(2.3);
+  });
+  it('non-floor syndromes (focal DRE) are never floored, even with favorable factors', () => {
+    const r = calcPedSUDEP({ ...pedBase, syndrome: 'focal_dre' });
+    expect(r.syndromeFloorApplied).toBe(false);
   });
 });

@@ -228,7 +228,18 @@ export default function SUDEPRiskCalculator() {
               >
                 <Select
                   value={P.syndrome}
-                  onChange={(v) => setP((s) => ({ ...s, syndrome: v }))}
+                  onChange={(v) => setP((s) => {
+                    const next = { ...s, syndrome: v };
+                    // High-burden syndromes are defined by frequent, often
+                    // nocturnal GTCS — default to that typical presentation so
+                    // the headline reflects the syndrome's published rate; the
+                    // clinician dials these down for a better-controlled patient.
+                    if (v === 'dravet' || v === 'severe_dee' || v === 'lgs') {
+                      next.gtcFrequency = 'frequent';
+                      next.nocturnal = true;
+                    }
+                    return next;
+                  })}
                   options={[
                     ['selflimited', 'Self-limited (SeLECTS, CAE, JAE, etc.)'],
                     ['newonset', 'New-onset / single seizure'],
@@ -414,6 +425,12 @@ export default function SUDEPRiskCalculator() {
                     <div className="text-slate-500 dark:text-slate-400 mt-0.5 italic">{pResult.syndrome.description}</div>
                     <div className="text-slate-400 dark:text-slate-500 mt-0.5 text-[10px]">Source: {pResult.syndrome.source}</div>
                   </div>
+
+                  {pResult.syndromeFloorApplied && (
+                    <div>
+                      <strong>Syndrome floor:</strong> held at {pResult.syndrome.floor?.toFixed(1)}/1000py — active-disease {pResult.syndrome.label} retains substantial SUDEP risk regardless of favorable modifiers. Only genuine seizure-freedom (no GTCS in the past year) lowers it below this.
+                    </div>
+                  )}
 
                   {P.geneticEtiology !== 'none' && (
                     <div>

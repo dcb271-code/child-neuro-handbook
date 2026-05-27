@@ -28,7 +28,7 @@ export type PedSUDEPInputs = {
   duration: Duration;
 };
 
-export type SyndromeBaseline = { rate: number; label: string; description: string; source: string };
+export type SyndromeBaseline = { rate: number; label: string; description: string; source: string; floor?: number };
 export type GeneticModifier = { mult: number; note: string; cardiacFlag?: boolean; floorBaseline?: number };
 export type Multiplier = { mult: number; note: string };
 export type LabeledMultiplier = { mult: number; label: string; note: string };
@@ -40,6 +40,7 @@ export type PedSUDEPResult = {
   geneticApplied: boolean;
   geneticFloorApplied: boolean;
   geneticFloorBinding: boolean;
+  syndromeFloorApplied: boolean;
   gtc: LabeledMultiplier;
   nocturnal: Multiplier;
   supervision: Multiplier;
@@ -120,7 +121,8 @@ const SYNDROME_BASELINES: Record<Syndrome, SyndromeBaseline> = {
     rate: 1.90,
     label: 'Severe early-infantile / non-Dravet DEE (e.g., non-Dravet SCN1A-type)',
     description: 'Severe non-Dravet developmental and epileptic encephalopathy — e.g., the gain-of-function early-infantile SCN1A entity (neonatal onset, arthrogryposis, hyperkinetic movement disorder, profound impairment; Sadleir/Berecki, Brain 2022). Placed marginally above Dravet: Donnan 2023 found a higher SUDEP PROPORTION in non-Dravet SCN1A DEE (3/15, 20%) than Dravet (12/203, 5.9%), but this is a small-sample proportion, not an incidence rate, and the authors caution against over-interpretation. The +0.10 over Dravet encodes that prior conservatively.',
-    source: 'Donnan 2023 (PMID 36750385); Sadleir/Berecki Brain 2022'
+    source: 'Donnan 2023 (PMID 36750385); Sadleir/Berecki Brain 2022',
+    floor: 2.5
   },
   lgs: {
     rate: 1.20,
@@ -132,7 +134,8 @@ const SYNDROME_BASELINES: Record<Syndrome, SyndromeBaseline> = {
     rate: 1.80,
     label: 'Dravet syndrome (SCN1A or clinical)',
     description: 'Highest documented syndrome-specific SUDEP rate. Cooper 2016 reported 9.3/1000py (95% CI 4.5–19.5); Donnan 2023 refined to 4.4/1000py with broader phenotypic spectrum (95% CI 2.3–7.8). Baseline calibrated so that typical Dravet (frequent nocturnal GTCS, supervised) produces ~4–5/1000py. 79% of Dravet SUDEP occurs before age 18.',
-    source: 'Cooper 2016, Donnan 2023'
+    source: 'Cooper 2016, Donnan 2023',
+    floor: 2.3
   }
 };
 
@@ -295,8 +298,20 @@ export function calcPedSUDEP(inputs: PedSUDEPInputs): PedSUDEPResult {
     : synd.rate;
   const effectiveGeneMult = gen.floorBaseline != null ? 1.0 : gen.mult;
 
-  const raw = effectiveBaseline * effectiveGeneMult * gtc.mult * noct.mult *
+  const rawUnfloored = effectiveBaseline * effectiveGeneMult * gtc.mult * noct.mult *
               sup.mult * adh.mult * dur.mult;
+
+  // Syndrome floor: high-mortality syndromes (Dravet, severe non-Dravet DEE)
+  // retain substantial SUDEP risk despite favorable modifiers — the published
+  // rates (Cooper 2016, Donnan 2023) describe active disease, and crude
+  // within-syndrome stratification by these factors is weakly evidenced. The
+  // floor is the lower bound of Donnan's 95% CI (2.3; 2.5 for severe DEE).
+  // EXCEPTION: genuine seizure-freedom (no GTCS ever, or none in the past year)
+  // is the strongest protective factor (Tomson 2025, ~36x) and is allowed to
+  // lower risk below the floor.
+  const seizureFree = gtcFrequency === 'never' || gtcFrequency === 'none_pastyear';
+  const syndromeFloorApplied = synd.floor != null && !seizureFree && rawUnfloored < synd.floor;
+  const raw = syndromeFloorApplied ? synd.floor! : rawUnfloored;
 
   // Cap at ceiling only; below detection_limit we use display thresholds
   // rather than a hard numerical floor (more defensible epistemically —
@@ -358,6 +373,7 @@ export function calcPedSUDEP(inputs: PedSUDEPInputs): PedSUDEPResult {
     geneticApplied: geneticEtiology !== 'none',
     geneticFloorApplied: gen.floorBaseline != null,
     geneticFloorBinding: gen.floorBaseline != null && gen.floorBaseline > synd.rate,
+    syndromeFloorApplied,
     gtc,
     nocturnal: noct,
     supervision: sup,
