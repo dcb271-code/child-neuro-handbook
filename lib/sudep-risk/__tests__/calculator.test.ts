@@ -59,6 +59,14 @@ describe('calcPedSUDEP — modifiers', () => {
     const alone = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', gtcFrequency: 'frequent', nocturnal: true, duration: 'medium', supervision: 'alone' });
     expect(alone.rawRate / shared.rawRate).toBeCloseTo(4, 5);
   });
+  it('supervision is a 3-level scale: shared (0.5) < separate/intermittent (1.0 reference) < alone (2.0)', () => {
+    const shared  = calcPedSUDEP({ ...pedBase, syndrome: 'focal_dre', gtcFrequency: 'frequent', supervision: 'shared' });
+    const partial = calcPedSUDEP({ ...pedBase, syndrome: 'focal_dre', gtcFrequency: 'frequent', supervision: 'partial' });
+    const alone   = calcPedSUDEP({ ...pedBase, syndrome: 'focal_dre', gtcFrequency: 'frequent', supervision: 'alone' });
+    expect(partial.supervision.mult).toBe(1.0);
+    expect(partial.rawRate / shared.rawRate).toBeCloseTo(2, 5);  // 1.0 vs 0.5
+    expect(alone.rawRate / partial.rawRate).toBeCloseTo(2, 5);   // 2.0 vs 1.0
+  });
   it('Dravet + SCN1A is unchanged — the SCN1A floor (0.25) is below Dravet (1.80), so not binding (no double-count)', () => {
     const none = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', gtcFrequency: 'frequent', nocturnal: true, duration: 'medium' });
     const scn1a = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', geneticEtiology: 'scn1a', gtcFrequency: 'frequent', nocturnal: true, duration: 'medium' });

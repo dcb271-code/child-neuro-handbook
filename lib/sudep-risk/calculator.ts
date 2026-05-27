@@ -14,7 +14,7 @@ export type GeneticEtiology =
   | 'kcnq1_h2' | 'scn5a' | 'scn1b' | 'depdc5' | 'dup15q'
   | 'kcnt1' | 'other_chan' | 'other_ge';
 export type GtcFrequency = 'never' | 'none_pastyear' | 'rare' | 'frequent' | 'very_frequent';
-export type Supervision = 'shared' | 'alone';
+export type Supervision = 'shared' | 'partial' | 'alone';
 export type Adherence = 'good' | 'poor';
 export type Duration = 'short' | 'medium' | 'long';
 
@@ -242,8 +242,9 @@ const NOCTURNAL_MULTIPLIER: Record<'no' | 'yes', Multiplier> = {
 };
 
 const SUPERVISION_MULTIPLIER: Record<Supervision, Multiplier> = {
-  shared: { mult: 0.5, note: 'Langan 2005: HR ~0.4 for bedroom sharing or monitor use. Tomson 2025: lowest-risk stratum requires bedroom sharing.' },
-  alone: { mult: 2.0, note: 'Sveinsson 2020: OR 5.01 for living alone; interaction with GTCS yields OR 67.10. This is the single most modifiable factor.' }
+  shared: { mult: 0.5, note: 'Shared bedroom or active monitoring (co-sleeping, in-room caregiver, attended listening device). Langan 2005: HR ~0.4 for bedroom sharing or monitor use. Tomson 2025: lowest-risk stratum requires bedroom sharing.' },
+  partial: { mult: 1.0, note: 'Separate room with intermittent or remote monitoring (periodic checks, baby monitor without continuous attendance) — the typical pediatric situation. Reference category: neither the protective effect of active monitoring nor the elevated risk of being unwitnessed.' },
+  alone: { mult: 2.0, note: 'Sleeps alone and unwitnessed / lives alone. Sveinsson 2020: OR 5.01 for living alone (adult data); interaction with GTCS yields OR 67.10. The single most modifiable factor.' }
 };
 
 const ADHERENCE_MULTIPLIER: Record<Adherence, Multiplier> = {

@@ -133,7 +133,7 @@ export default function SUDEPRiskCalculator() {
     geneticEtiology: 'none',
     gtcFrequency: 'rare',
     nocturnal: false,
-    supervision: 'shared',
+    supervision: 'partial',
     adherence: 'good',
     duration: 'short',
   });
@@ -314,14 +314,15 @@ export default function SUDEPRiskCalculator() {
 
               <Field
                 label="Nighttime supervision"
-                hint="The single most modifiable factor. Langan 2005: HR ~0.4 for shared bedroom or monitoring. Sveinsson 2020: 67-fold higher risk for living alone + GTCS interaction."
+                hint="The single most modifiable factor, on a 3-level scale. Shared bedroom / active monitoring is protective (Langan 2005, HR ~0.4); a separate room with only intermittent checks (baby cam, periodic checks) is the neutral reference — the typical pediatric situation; sleeping alone and unwitnessed is high-risk (Sveinsson 2020, adult living-alone data, OR ~5)."
               >
                 <Toggle<string>
                   value={P.supervision}
                   onChange={(v) => setP((s) => ({ ...s, supervision: v as PedSUDEPInputs['supervision'] }))}
                   options={[
-                    ['shared', 'Shared bedroom or monitored'],
-                    ['alone', 'Sleeps alone, no monitor']
+                    ['shared', 'Shared / actively monitored'],
+                    ['partial', 'Separate room, intermittent'],
+                    ['alone', 'Alone / unmonitored']
                   ]}
                 />
               </Field>
@@ -456,7 +457,7 @@ export default function SUDEPRiskCalculator() {
                   )}
 
                   <div>
-                    <strong>Supervision:</strong> {pResult.supervision.mult}× ({P.supervision === 'shared' ? 'shared/monitored' : 'alone'})
+                    <strong>Supervision:</strong> {pResult.supervision.mult}× ({P.supervision === 'shared' ? 'shared / monitored' : P.supervision === 'partial' ? 'separate / intermittent' : 'alone / unmonitored'})
                     <div className="text-slate-500 dark:text-slate-400 mt-0.5 italic">{pResult.supervision.note}</div>
                   </div>
 
