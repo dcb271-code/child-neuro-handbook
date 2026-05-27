@@ -7,10 +7,10 @@
    Values copied verbatim from the reviewed draft. */
 
 export type Syndrome =
-  | 'selflimited' | 'newonset' | 'controlled' | 'focal_dre'
-  | 'gen_dre' | 'other_dee' | 'lgs' | 'dravet';
+  | 'selflimited' | 'newonset' | 'controlled' | 'gefs_mild' | 'focal_dre'
+  | 'gen_dre' | 'other_dee' | 'severe_dee' | 'lgs' | 'dravet';
 export type GeneticEtiology =
-  | 'none' | 'scn1a_nondravet' | 'scn2a' | 'scn8a' | 'stxbp1'
+  | 'none' | 'scn1a' | 'scn2a' | 'scn8a' | 'stxbp1'
   | 'kcnq1_h2' | 'scn5a' | 'scn1b' | 'depdc5' | 'dup15q'
   | 'kcnt1' | 'other_chan' | 'other_ge';
 export type GtcFrequency = 'never' | 'none_pastyear' | 'rare' | 'frequent' | 'very_frequent';
@@ -29,7 +29,7 @@ export type PedSUDEPInputs = {
 };
 
 export type SyndromeBaseline = { rate: number; label: string; description: string; source: string };
-export type GeneticModifier = { mult: number; note: string; cardiacFlag?: boolean };
+export type GeneticModifier = { mult: number; note: string; cardiacFlag?: boolean; floorBaseline?: number };
 export type Multiplier = { mult: number; note: string };
 export type LabeledMultiplier = { mult: number; label: string; note: string };
 export type DisplayLevel = 'measurable' | 'detection_limit' | 'lowest_plausible' | 'ceiling';
@@ -38,7 +38,8 @@ export type PedSUDEPResult = {
   syndrome: SyndromeBaseline;
   genetic: GeneticModifier;
   geneticApplied: boolean;
-  geneticSuppressedForDravet: boolean;
+  geneticFloorApplied: boolean;
+  geneticFloorBinding: boolean;
   gtc: LabeledMultiplier;
   nocturnal: Multiplier;
   supervision: Multiplier;
@@ -91,6 +92,12 @@ const SYNDROME_BASELINES: Record<Syndrome, SyndromeBaseline> = {
     description: 'General pediatric epilepsy mixed cohorts. AAN/AES 2017 averaged 0.22/1000py; modern capture-recapture data (Donner 2018) found 1.11/1000py — the AAN figure may underestimate. Baseline calibrated to give ~0.2/1000py with typical "controlled" features (rare GTC, supervised, adherent).',
     source: 'AAN/AES 2017; Donner 2018'
   },
+  gefs_mild: {
+    rate: 0.15,
+    label: 'GEFS+ / mild genetic epilepsy (normal intelligence)',
+    description: 'Genetic epilepsy with febrile seizures plus and related mild SCN1A-spectrum phenotypes with normal cognition. SUDEP is documented but rare and far below Dravet (GeneReviews "SCN1A Seizure Disorders"; systematic review PMC8739186). This baseline reflects a mild recurrent epilepsy where the gene is unknown or non-SCN1A; selecting SCN1A raises it via the SCN1A risk floor.',
+    source: 'GeneReviews SCN1A; Frontiers 2021 (PMC8739186)'
+  },
   focal_dre: {
     rate: 1.20,
     label: 'Drug-resistant focal epilepsy',
@@ -108,6 +115,12 @@ const SYNDROME_BASELINES: Record<Syndrome, SyndromeBaseline> = {
     label: 'Other genetic DEE (non-Dravet, non-LGS)',
     description: 'Mixed genetic DEEs overall (Donnan 2023). In that study, SUDEP occurred only in SCN1A, SCN2A, SCN8A, and STXBP1 — not in SYNGAP1, NEXMIF, PCDH19, CHD2, GRIN2A, KCNT1, KCNQ2, or Angelman. Apply gene-specific modifier if known.',
     source: 'Donnan 2023 Neurology'
+  },
+  severe_dee: {
+    rate: 1.90,
+    label: 'Severe early-infantile / non-Dravet DEE (e.g., non-Dravet SCN1A-type)',
+    description: 'Severe non-Dravet developmental and epileptic encephalopathy — e.g., the gain-of-function early-infantile SCN1A entity (neonatal onset, arthrogryposis, hyperkinetic movement disorder, profound impairment; Sadleir/Berecki, Brain 2022). Placed marginally above Dravet: Donnan 2023 found a higher SUDEP PROPORTION in non-Dravet SCN1A DEE (3/15, 27%) than Dravet (12/203, 5.9%), but this is a small-sample proportion, not an incidence rate, and the authors caution against over-interpretation. The +0.10 over Dravet encodes that prior conservatively.',
+    source: 'Donnan 2023 (PMID 36750385); Sadleir/Berecki Brain 2022'
   },
   lgs: {
     rate: 1.20,
@@ -128,9 +141,10 @@ const SYNDROME_BASELINES: Record<Syndrome, SyndromeBaseline> = {
 // effect (e.g., Dravet baseline already accounts for SCN1A).
 const GENETIC_MODIFIERS: Record<GeneticEtiology, GeneticModifier> = {
   none: { mult: 1.0, note: '' },
-  scn1a_nondravet: {
-    mult: 3.5,
-    note: 'Non-Dravet SCN1A DEE — Donnan 2023 found SUDEP in 3/15 patients (20%) over the study period, the highest per-patient SUDEP proportion in their cohort.',
+  scn1a: {
+    mult: 1.0,
+    floorBaseline: 0.25,
+    note: 'SCN1A spans the full severity spectrum (febrile seizures -> GEFS+ -> Dravet -> severe DEE; GeneReviews). A pathogenic SCN1A variant is never benign, so it sets a risk FLOOR at 0.25/1000py — the GEFS+-with-SCN1A level, above the 0.15 gene-agnostic GEFS+ baseline — regardless of the phenotype chosen. Severity above that floor is set by the selected phenotype (Dravet, severe non-Dravet DEE), so SCN1A does not additionally multiply those, avoiding double-counting.',
     cardiacFlag: false
   },
   scn2a: {
@@ -271,16 +285,17 @@ export function calcPedSUDEP(inputs: PedSUDEPInputs): PedSUDEPResult {
   const adh  = ADHERENCE_MULTIPLIER[adherence];
   const dur  = DURATION_MULTIPLIER[duration];
 
-  // Genetic modifier is suppressed for Dravet baseline if the gene is SCN1A —
-  // Dravet's baseline already captures SCN1A effect. Use only the SCN1A
-  // modifier for non-Dravet SCN1A cases.
-  let effectiveGeneMult = gen.mult;
-  if (syndrome === 'dravet' && geneticEtiology !== 'kcnq1_h2' &&
-      geneticEtiology !== 'scn5a' && geneticEtiology !== 'scn1b') {
-    effectiveGeneMult = 1.0; // already baked in
-  }
+  // SCN1A is modeled as a risk floor, not a multiplier: a pathogenic SCN1A
+  // variant is never benign, so it raises the baseline to its floor when the
+  // selected phenotype sits below it, and otherwise leaves severity to the
+  // phenotype (no double-counting for Dravet / severe non-Dravet DEE, which
+  // already exceed the floor). Non-floor genes keep their multiplier.
+  const effectiveBaseline = gen.floorBaseline != null
+    ? Math.max(synd.rate, gen.floorBaseline)
+    : synd.rate;
+  const effectiveGeneMult = gen.floorBaseline != null ? 1.0 : gen.mult;
 
-  const raw = synd.rate * effectiveGeneMult * gtc.mult * noct.mult *
+  const raw = effectiveBaseline * effectiveGeneMult * gtc.mult * noct.mult *
               sup.mult * adh.mult * dur.mult;
 
   // Cap at ceiling only; below detection_limit we use display thresholds
@@ -340,10 +355,9 @@ export function calcPedSUDEP(inputs: PedSUDEPInputs): PedSUDEPResult {
   return {
     syndrome: synd,
     genetic: gen,
-    geneticApplied: effectiveGeneMult > 1.0 ||
-                    (effectiveGeneMult === 1.0 && geneticEtiology !== 'none'),
-    geneticSuppressedForDravet: syndrome === 'dravet' && gen.mult > 1.0 &&
-                               effectiveGeneMult === 1.0,
+    geneticApplied: geneticEtiology !== 'none',
+    geneticFloorApplied: gen.floorBaseline != null,
+    geneticFloorBinding: gen.floorBaseline != null && gen.floorBaseline > synd.rate,
     gtc,
     nocturnal: noct,
     supervision: sup,

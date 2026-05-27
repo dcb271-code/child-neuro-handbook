@@ -58,11 +58,13 @@ describe('calcPedSUDEP — modifiers', () => {
     const alone = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', gtcFrequency: 'frequent', nocturnal: true, duration: 'medium', supervision: 'alone' });
     expect(alone.rawRate / shared.rawRate).toBeCloseTo(4, 5);
   });
-  it('Dravet baseline suppresses an SCN1A-type genetic modifier (no double-count)', () => {
-    const none = calcPedSUDEP({ ...pedBase, syndrome: 'dravet' });
-    const scn1a = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', geneticEtiology: 'scn1a_nondravet' });
+  it('Dravet + SCN1A is unchanged — the SCN1A floor (0.25) is below Dravet (1.80), so not binding (no double-count)', () => {
+    const none = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', gtcFrequency: 'frequent', nocturnal: true, duration: 'medium' });
+    const scn1a = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', geneticEtiology: 'scn1a', gtcFrequency: 'frequent', nocturnal: true, duration: 'medium' });
     expect(scn1a.rawRate).toBeCloseTo(none.rawRate, 6);
-    expect(scn1a.geneticSuppressedForDravet).toBe(true);
+    expect(scn1a.rawRate).toBeCloseTo(4.59, 2);
+    expect(scn1a.geneticFloorApplied).toBe(true);
+    expect(scn1a.geneticFloorBinding).toBe(false);
   });
   it('cardiac-overlap gene (KCNQ1/H2) is NOT suppressed in Dravet and sets cardiacFlag', () => {
     const none = calcPedSUDEP({ ...pedBase, syndrome: 'dravet' });
@@ -126,5 +128,47 @@ describe('calcSUDEP3', () => {
     const r = s3({ gtcsPastYear: true, anySzPastYear: true, idDD: true });
     expect(r.score).toBe(4);
     expect(r.stratum).toBe('Highest');
+  });
+});
+
+const STD = {
+  gtcFrequency: 'frequent', nocturnal: true, supervision: 'shared',
+  adherence: 'good', duration: 'medium',
+} as const;
+// STD clinical product = 2.5 * 1.7 * 0.5 * 1.0 * 1.2 = 2.55
+
+describe('calcPedSUDEP — SCN1A floor + phenotype ordering', () => {
+  it('enforces severe-DEE > Dravet > focal+SCN1A > GEFS++SCN1A on a fixed clinical profile', () => {
+    const severeDee = calcPedSUDEP({ ...pedBase, ...STD, syndrome: 'severe_dee', geneticEtiology: 'scn1a' });
+    const dravet    = calcPedSUDEP({ ...pedBase, ...STD, syndrome: 'dravet' });
+    const focal     = calcPedSUDEP({ ...pedBase, ...STD, syndrome: 'focal_dre', geneticEtiology: 'scn1a' });
+    const gefs      = calcPedSUDEP({ ...pedBase, ...STD, syndrome: 'gefs_mild', geneticEtiology: 'scn1a' });
+    expect(severeDee.rawRate).toBeGreaterThan(dravet.rawRate);
+    expect(dravet.rawRate).toBeGreaterThan(focal.rawRate);
+    expect(focal.rawRate).toBeGreaterThan(gefs.rawRate);
+    expect(severeDee.rawRate).toBeCloseTo(4.85, 2);
+    expect(focal.rawRate).toBeCloseTo(3.06, 2);
+  });
+
+  it('SCN1A adds risk to a GEFS+ phenotype — floor 0.25 exceeds the 0.15 GEFS+ baseline (drift guard for the invariant)', () => {
+    const bare  = calcPedSUDEP({ ...pedBase, ...STD, syndrome: 'gefs_mild', geneticEtiology: 'none' });
+    const scn1a = calcPedSUDEP({ ...pedBase, ...STD, syndrome: 'gefs_mild', geneticEtiology: 'scn1a' });
+    expect(scn1a.rawRate).toBeGreaterThan(bare.rawRate);
+    expect(bare.rawRate  / 2.55).toBeCloseTo(0.15, 6);
+    expect(scn1a.rawRate / 2.55).toBeCloseTo(0.25, 6);
+    expect(scn1a.geneticFloorBinding).toBe(true);
+  });
+
+  it('SCN1A floors a self-limited phenotype up to the GEFS+-with-SCN1A level (0.25)', () => {
+    const r = calcPedSUDEP({ ...pedBase, ...STD, syndrome: 'selflimited', geneticEtiology: 'scn1a' });
+    expect(r.rawRate / 2.55).toBeCloseTo(0.25, 6);
+    expect(r.geneticFloorBinding).toBe(true);
+  });
+
+  it('regression: drug-resistant focal + SCN1A is no longer the 10.71 Very-high artifact', () => {
+    const r = calcPedSUDEP({ ...pedBase, ...STD, syndrome: 'focal_dre', geneticEtiology: 'scn1a' });
+    expect(r.rawRate).toBeCloseTo(3.06, 2);
+    expect(r.rawRate).toBeLessThan(10);
+    expect(r.tier).toBe('High');
   });
 });
