@@ -233,9 +233,11 @@ export default function SUDEPRiskCalculator() {
                     ['selflimited', 'Self-limited (SeLECTS, CAE, JAE, etc.)'],
                     ['newonset', 'New-onset / single seizure'],
                     ['controlled', 'Controlled epilepsy (general pediatric)'],
+                    ['gefs_mild', 'GEFS+ / mild genetic epilepsy (normal intelligence)'],
                     ['focal_dre', 'Drug-resistant focal epilepsy'],
                     ['gen_dre', 'Drug-resistant generalized epilepsy'],
                     ['other_dee', 'Other genetic DEE (non-Dravet, non-LGS)'],
+                    ['severe_dee', 'Severe early-infantile / non-Dravet DEE'],
                     ['lgs', 'Lennox-Gastaut syndrome'],
                     ['dravet', 'Dravet syndrome']
                   ]}
@@ -244,14 +246,14 @@ export default function SUDEPRiskCalculator() {
 
               <Field
                 label="Genetic etiology (if known)"
-                hint="Modifies risk on top of syndrome. SCN1A in Dravet is suppressed (already baked into Dravet baseline). KCNQ1/KCNH2/SCN5A/SCN1B flag for cardiac evaluation due to brain-heart channelopathy overlap."
+                hint="Most genes multiply the syndrome baseline (SCN2A, SCN8A, STXBP1, KCNT1, etc.). SCN1A instead sets a risk floor at the GEFS+/mild-with-SCN1A level — severity above that is set by the phenotype, so choose 'Dravet' or 'Severe early-infantile / non-Dravet DEE' for those presentations. KCNQ1/KCNH2/SCN5A/SCN1B flag for cardiac evaluation due to brain-heart channelopathy overlap."
               >
                 <Select
                   value={P.geneticEtiology}
                   onChange={(v) => setP((s) => ({ ...s, geneticEtiology: v }))}
                   options={[
                     ['none', 'None identified / not tested'],
-                    ['scn1a_nondravet', 'SCN1A (non-Dravet phenotype)'],
+                    ['scn1a', 'SCN1A'],
                     ['scn2a', 'SCN2A-DEE'],
                     ['scn8a', 'SCN8A-DEE'],
                     ['stxbp1', 'STXBP1-DEE'],
@@ -415,8 +417,10 @@ export default function SUDEPRiskCalculator() {
 
                   {P.geneticEtiology !== 'none' && (
                     <div>
-                      <strong>Genetic modifier:</strong> {pResult.geneticSuppressedForDravet
-                        ? '1.0× (suppressed — already in Dravet baseline)'
+                      <strong>Genetic modifier:</strong> {pResult.geneticFloorApplied
+                        ? (pResult.geneticFloorBinding
+                            ? `risk floor ${pResult.genetic.floorBaseline}/1000py (raised the baseline)`
+                            : `risk floor ${pResult.genetic.floorBaseline}/1000py (not binding — phenotype baseline is already higher)`)
                         : `${pResult.genetic.mult}×`}
                       <div className="text-slate-500 dark:text-slate-400 mt-0.5 italic">{pResult.genetic.note}</div>
                     </div>
