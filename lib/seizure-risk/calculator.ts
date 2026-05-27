@@ -21,7 +21,8 @@ export type FirstSeizureResult = {
   label: string;
   untreated: { r2y: number; r5y: number };
   treated: { r2y: number; r5y: number };
-  epilepsyDx: boolean;
+  epilepsyDx: boolean;        // 5-yr (proxy for ILAE 10-yr) >= 60%
+  likelyEpilepsyDx: boolean;  // 5-yr 51-59%: likely meets once extrapolated to 10 yr
 };
 
 export type FebrileRecurrenceInputs = {
@@ -81,15 +82,19 @@ export function calcFirstSeizure(inputs: FirstSeizureInputs): FirstSeizureResult
   const treatedR2y = r2y * 0.6;
   const treatedR5y = r5y * 0.7;
 
-  // Flag off the rounded value so the ILAE banner never disagrees with the
-  // displayed 2-yr percentage. (Invisible for current table values.)
+  // The ILAE 2014 criterion is a >=60% recurrence risk at 10 years. This tool
+  // only computes to 5 years, so we flag off the (rounded, untreated) 5-yr
+  // value — the closest proxy — and add a softer "likely meets" note in the
+  // 51-59% band, where the 10-yr risk plausibly crosses 60%.
   const untreatedR2y = Math.round(r2y);
+  const untreatedR5y = Math.round(r5y);
 
   return {
     label: base.label,
-    untreated: { r2y: untreatedR2y, r5y: Math.round(r5y) },
+    untreated: { r2y: untreatedR2y, r5y: untreatedR5y },
     treated: { r2y: Math.round(treatedR2y), r5y: Math.round(treatedR5y) },
-    epilepsyDx: untreatedR2y >= 60, // ILAE 2014: single seizure + >=60% recurrence risk
+    epilepsyDx: untreatedR5y >= 60,
+    likelyEpilepsyDx: untreatedR5y > 50 && untreatedR5y < 60,
   };
 }
 

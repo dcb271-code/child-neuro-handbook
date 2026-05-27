@@ -183,7 +183,16 @@ export default function SeizureRiskCalculators() {
               <div className="bg-red-50 border-2 border-red-300 dark:bg-red-900/20 dark:border-red-700 rounded-lg p-3 mb-4">
                 <div className="text-sm font-semibold text-red-900 dark:text-red-200">⚠ Meets ILAE 2014 epilepsy criterion</div>
                 <div className="text-xs text-red-800 dark:text-red-300 mt-1">
-                  10-year recurrence risk likely ≥60% after a single unprovoked seizure with this risk profile → can be classified as epilepsy without waiting for a second seizure.
+                  5-year recurrence is ≥60%, so the 10-year risk (the ILAE 2014 threshold) is ≥60% after a single unprovoked seizure with this risk profile → can be classified as epilepsy without waiting for a second seizure.
+                </div>
+              </div>
+            )}
+
+            {firstResult.likelyEpilepsyDx && (
+              <div className="bg-amber-50 border-2 border-amber-300 dark:bg-amber-900/20 dark:border-amber-700 rounded-lg p-3 mb-4">
+                <div className="text-sm font-semibold text-amber-900 dark:text-amber-200">△ Likely meets ILAE 2014 epilepsy criterion</div>
+                <div className="text-xs text-amber-800 dark:text-amber-300 mt-1">
+                  5-year recurrence exceeds 50%. The ILAE 2014 threshold is defined on 10-year risk, which this tool doesn&apos;t compute — the 10-year risk for this profile likely reaches ≥60%. Consider whether a single-seizure epilepsy diagnosis applies.
                 </div>
               </div>
             )}

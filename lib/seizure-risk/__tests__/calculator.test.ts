@@ -2,33 +2,51 @@ import { describe, it, expect } from 'vitest';
 import { calcFirstSeizure, calcFebrileRecurrence, calcFutureEpilepsy } from '../calculator';
 
 describe('calcFirstSeizure', () => {
-  it('idiopathic/normal EEG = lowest-risk anchors (untreated 21/26, treated 13/18, no epilepsy dx)', () => {
+  it('idiopathic/normal EEG = lowest-risk anchors (untreated 21/26, treated 13/18); neither ILAE notice', () => {
     const r = calcFirstSeizure({ etiology: 'idiopathic', eeg: 'normal', nocturnal: false, todds: false, priorFS: false });
     expect(r.untreated).toEqual({ r2y: 21, r5y: 26 });
     expect(r.treated).toEqual({ r2y: 13, r5y: 18 });
     expect(r.epilepsyDx).toBe(false);
+    expect(r.likelyEpilepsyDx).toBe(false);
   });
 
-  it('idiopathic/abnormal = 41/56 untreated', () => {
-    const r = calcFirstSeizure({ etiology: 'idiopathic', eeg: 'abnormal', nocturnal: false, todds: false, priorFS: false });
-    expect(r.untreated).toEqual({ r2y: 41, r5y: 56 });
-  });
-
-  it('remoteSymptomatic/normal = 32/40 untreated', () => {
+  it('remoteSymptomatic/normal = 32/40 untreated; 5-yr 40% triggers neither notice', () => {
     const r = calcFirstSeizure({ etiology: 'remoteSymptomatic', eeg: 'normal', nocturnal: false, todds: false, priorFS: false });
     expect(r.untreated).toEqual({ r2y: 32, r5y: 40 });
+    expect(r.epilepsyDx).toBe(false);
+    expect(r.likelyEpilepsyDx).toBe(false);
   });
 
-  it('remoteSymptomatic/abnormal = 54/65 untreated, still below ILAE 60% threshold', () => {
+  // ILAE 2014 = 10-yr recurrence >=60%; the tool uses untreated 5-yr (rounded) as the proxy.
+  it('remoteSymptomatic/abnormal (5-yr 65%) MEETS the ILAE criterion (hard flag)', () => {
     const r = calcFirstSeizure({ etiology: 'remoteSymptomatic', eeg: 'abnormal', nocturnal: false, todds: false, priorFS: false });
     expect(r.untreated).toEqual({ r2y: 54, r5y: 65 });
-    expect(r.epilepsyDx).toBe(false);
+    expect(r.epilepsyDx).toBe(true);
+    expect(r.likelyEpilepsyDx).toBe(false);
   });
 
-  it('remoteSymptomatic/abnormal + nocturnal crosses the ILAE 60% epilepsy threshold', () => {
-    const r = calcFirstSeizure({ etiology: 'remoteSymptomatic', eeg: 'abnormal', nocturnal: true, todds: false, priorFS: false });
+  it('idiopathic/abnormal (5-yr 56%) triggers the soft "likely meets" note, not the hard flag', () => {
+    const r = calcFirstSeizure({ etiology: 'idiopathic', eeg: 'abnormal', nocturnal: false, todds: false, priorFS: false });
+    expect(r.untreated).toEqual({ r2y: 41, r5y: 56 });
+    expect(r.epilepsyDx).toBe(false);
+    expect(r.likelyEpilepsyDx).toBe(true);
+  });
+
+  it('soft-note upper edge: 5-yr exactly 60% is the HARD flag, not soft', () => {
+    // remoteSymptomatic/normal r5y 40 x1.20(nocturnal) x1.25... use modifiers to land >=60.
+    // idiopathic/abnormal r5y 56 x1.08(todds) = 60.48 -> rounds to 60 -> hard.
+    const r = calcFirstSeizure({ etiology: 'idiopathic', eeg: 'abnormal', nocturnal: false, todds: true, priorFS: false });
+    expect(r.untreated.r5y).toBe(60);
     expect(r.epilepsyDx).toBe(true);
-    expect(r.untreated.r2y).toBe(68);
+    expect(r.likelyEpilepsyDx).toBe(false);
+  });
+
+  it('soft-note lower edge: 5-yr 51-59% is soft only', () => {
+    // remoteSymptomatic/normal r5y 40 x1.20(nocturnal)=48 x1.08(priorFS)=51.84 -> 52 -> soft
+    const r = calcFirstSeizure({ etiology: 'remoteSymptomatic', eeg: 'normal', nocturnal: true, todds: false, priorFS: true });
+    expect(r.untreated.r5y).toBe(52);
+    expect(r.epilepsyDx).toBe(false);
+    expect(r.likelyEpilepsyDx).toBe(true);
   });
 });
 
