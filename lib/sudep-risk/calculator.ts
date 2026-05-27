@@ -271,7 +271,15 @@ const DURATION_MULTIPLIER: Record<Duration, Multiplier> = {
 //   thresholds.
 const DETECTION_LIMIT = 0.05;
 const LOWEST_PLAUSIBLE = 0.01;
-const CEILING = 30.0;   // per 1000py — above Cooper 2016 Dravet 95% CI upper
+// High-end saturation replaces a hard cap. Pure multiplication holds through the
+// calibrated range (raw ≤ SAT_KNEE = 10/1000py, the High/Very-high boundary);
+// above the knee, increments diminish smoothly toward SAT_ASYMPTOTE (20/1000py ≈
+// Cooper 2016 Dravet 95% CI upper bound — the highest credible documented rate).
+// Rationale: risk-factor ORs attenuate at high absolute risk and factors are
+// correlated, so the naive product overstates; no cohort sustains rates near the
+// old 30 cap. See the saturation transform in calcPedSUDEP.
+const SAT_KNEE = 10.0;
+const SAT_ASYMPTOTE = 20.0;
 
 export function calcPedSUDEP(inputs: PedSUDEPInputs): PedSUDEPResult {
   const {
@@ -313,26 +321,27 @@ export function calcPedSUDEP(inputs: PedSUDEPInputs): PedSUDEPResult {
   const syndromeFloorApplied = synd.floor != null && !seizureFree && rawUnfloored < synd.floor;
   const raw = syndromeFloorApplied ? synd.floor! : rawUnfloored;
 
-  // Cap at ceiling only; below detection_limit we use display thresholds
-  // rather than a hard numerical floor (more defensible epistemically —
-  // the literature cannot reliably distinguish very low rates from zero).
-  const finalRate = Math.min(CEILING, raw);
+  // High-end saturation (diminishing returns) instead of a hard cap. Below the
+  // knee the value is unchanged; above it, increments shrink toward the
+  // asymptote. Continuous AND C1-smooth at the knee: scale = ASYMPTOTE − KNEE
+  // makes the slope 1 on both sides, so there is no kink at the transition.
+  const saturated = raw <= SAT_KNEE
+    ? raw
+    : SAT_KNEE + (SAT_ASYMPTOTE - SAT_KNEE) * (1 - Math.exp(-(raw - SAT_KNEE) / (SAT_ASYMPTOTE - SAT_KNEE)));
+  const finalRate = saturated;
 
-  // Display thresholds
+  // Display thresholds. Low end uses the same epistemic thresholds as before
+  // (the literature can't resolve very low rates); high end shows the saturated
+  // value and flags the 'ceiling' (saturating) regime once raw ≥ the asymptote.
   let displayLevel: DisplayLevel;  // 'measurable' | 'detection_limit' | 'lowest_plausible' | 'ceiling'
   let displayRate: number;         // for use in calculations and standard display
   let displayString: string;       // for direct rendering, e.g., "≤0.05" or "0.42"
   let annualPrefix = '';           // for percentage display
 
-  if (raw > CEILING) {
-    displayLevel = 'ceiling';
-    displayRate = CEILING;
-    displayString = `≥${CEILING.toFixed(0)}`;
-    annualPrefix = '≥';
-  } else if (raw >= DETECTION_LIMIT) {
-    displayLevel = 'measurable';
-    displayRate = raw;
-    displayString = raw.toFixed(2);
+  if (raw >= DETECTION_LIMIT) {
+    displayLevel = raw >= SAT_ASYMPTOTE ? 'ceiling' : 'measurable';
+    displayRate = saturated;
+    displayString = saturated.toFixed(2);
   } else if (raw >= LOWEST_PLAUSIBLE) {
     displayLevel = 'detection_limit';
     displayRate = DETECTION_LIMIT;       // upper bound for percentage calcs

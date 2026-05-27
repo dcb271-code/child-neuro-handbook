@@ -389,7 +389,7 @@ export default function SUDEPRiskCalculator() {
                 )}
                 {pResult.ceilinged && (
                   <div className="text-xs mt-2 opacity-75 italic">
-                    At or above the model&apos;s display ceiling (30/1000py — just above Cooper 2016 Dravet 95% CI upper bound). The raw computed risk is even higher; the cap prevents implausibly compounded estimates.
+                    In the model&apos;s saturating range: above ~10/1000py, additional risk factors yield progressively smaller increments, approaching an asymptote near 20/1000py (≈ Cooper 2016 Dravet 95% CI upper bound — the highest credible documented rate). The raw multiplicative product is higher, but relative effects attenuate at this absolute-risk level, so stacking more factors does not proportionally raise the estimate.
                   </div>
                 )}
               </div>

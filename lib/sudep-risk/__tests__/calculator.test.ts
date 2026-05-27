@@ -43,12 +43,13 @@ describe('calcPedSUDEP — threshold display logic', () => {
     expect(r.displayString).toBe('≤0.05');
     expect(r.tier).toBe('Very low');
   });
-  it('raw ≥ 30 → ceiling "≥30"', () => {
+  it('extreme profile saturates toward the ~20 asymptote (no longer a hard ≥30 cap)', () => {
     const r = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', gtcFrequency: 'very_frequent', nocturnal: true, supervision: 'alone', adherence: 'poor', duration: 'long' });
-    expect(r.rawRate).toBeGreaterThan(30);
+    expect(r.rawRate).toBeGreaterThan(30);     // uncapped multiplicative product remains high
     expect(r.displayLevel).toBe('ceiling');
-    expect(r.displayString).toBe('≥30');
-    expect(r.displayRate).toBe(30);
+    expect(r.displayRate).toBeLessThan(20);    // approaches but never reaches the asymptote
+    expect(r.displayRate).toBeGreaterThan(19);
+    expect(r.displayString).toBe(r.displayRate.toFixed(2));
   });
 });
 
@@ -208,5 +209,28 @@ describe('calcPedSUDEP — syndrome floor (high-mortality syndromes)', () => {
   it('non-floor syndromes (focal DRE) are never floored, even with favorable factors', () => {
     const r = calcPedSUDEP({ ...pedBase, syndrome: 'focal_dre' });
     expect(r.syndromeFloorApplied).toBe(false);
+  });
+});
+
+describe('calcPedSUDEP — high-end saturation (soft asymptote)', () => {
+  it('leaves the calibrated range (≤10/1000py) unchanged — displayRate equals rawRate', () => {
+    const r = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', gtcFrequency: 'frequent', nocturnal: true, duration: 'medium' }); // 4.59
+    expect(r.rawRate).toBeCloseTo(4.59, 2);
+    expect(r.displayRate).toBeCloseTo(r.rawRate, 6);
+    expect(r.displayLevel).toBe('measurable');
+  });
+  it('compresses an above-knee value (raw ~18.4 → displayed ~15.7) without yet flagging the saturating note', () => {
+    const r = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', gtcFrequency: 'frequent', nocturnal: true, supervision: 'alone', duration: 'medium' });
+    expect(r.rawRate).toBeCloseTo(18.36, 2);
+    expect(r.displayRate).toBeLessThan(r.rawRate);   // saturation is applied above the knee
+    expect(r.displayRate).toBeCloseTo(15.66, 1);
+    expect(r.ceilinged).toBe(false);                  // raw < asymptote(20), so no note yet
+  });
+  it('diminishing returns: a far larger raw barely moves the displayed value near the asymptote', () => {
+    const big  = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', gtcFrequency: 'frequent', nocturnal: true, supervision: 'alone', adherence: 'poor', duration: 'long' });
+    const huge = calcPedSUDEP({ ...pedBase, syndrome: 'severe_dee', geneticEtiology: 'kcnq1_h2', gtcFrequency: 'very_frequent', nocturnal: true, supervision: 'alone', adherence: 'poor', duration: 'long' });
+    expect(huge.rawRate).toBeGreaterThan(big.rawRate * 2);            // raw at least doubles
+    expect(huge.displayRate - big.displayRate).toBeLessThan(0.5);     // displayed value barely changes
+    expect(huge.displayRate).toBeLessThanOrEqual(20);                 // never exceeds the asymptote (approaches it)
   });
 });
