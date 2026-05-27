@@ -7,7 +7,7 @@
    4) Febrile seizure recurrence: Berg/Shinnar 1997 PMID: 9111436.
    5) Febrile → epilepsy: Annegers 1987 PMID: 3807992. See About tab for full reference list. */
 
-import { useMemo, useState } from 'react';
+import { useId, useMemo, useState } from 'react';
 import {
   calcFirstSeizure,
   calcFebrileRecurrence,
@@ -19,12 +19,13 @@ import {
 
 // ---------- UI helpers ----------
 function Field({ label, children, hint }: { label: string; children: React.ReactNode; hint?: string }) {
+  // role="group" + aria-labelledby works for BOTH a single <select> and a
+  // <Toggle> button-group; a wrapping <label> would only associate one control.
+  const labelId = useId();
   return (
-    <div className="mb-3">
-      <label className="block">
-        <span className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">{label}</span>
-        {children}
-      </label>
+    <div className="mb-3" role="group" aria-labelledby={labelId}>
+      <span id={labelId} className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">{label}</span>
+      {children}
       {hint && <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">{hint}</p>}
     </div>
   );
@@ -74,7 +75,7 @@ function RiskPill({ value, label, color, suffix = '%' }: {
     <div className={`rounded-lg p-3 ${color}`}>
       <div className="text-xs uppercase tracking-wide opacity-80">{label}</div>
       <div className="text-2xl font-semibold mt-1">
-        {value === null || value === undefined ? '—' : `${value}${suffix}`}
+        {value == null ? '—' : `${value}${suffix}`}
       </div>
     </div>
   );
