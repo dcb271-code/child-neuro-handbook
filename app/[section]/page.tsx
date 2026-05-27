@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import type { ComponentType } from 'react';
 import fs from 'fs';
 import path from 'path';
 import indexData from '@/src/data/index.json';
@@ -60,7 +61,7 @@ const accentMap: Record<string, string> = {
   neuromuscular:                       '#059669',
 };
 
-const SECTION_WIDGETS: Record<string, { id: string; Component: () => JSX.Element }[]> = {
+const SECTION_WIDGETS: Record<string, { id: string; Component: ComponentType }[]> = {
   epilepsy: [
     { id: 'asm-withdrawal-calculator', Component: ASMWithdrawalCalculator },
     { id: 'seizure-risk-calculators', Component: SeizureRiskCalculators },
