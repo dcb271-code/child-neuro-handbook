@@ -47,7 +47,6 @@ export type PedSUDEPResult = {
   adherence: Multiplier;
   duration: Multiplier;
   rawRate: number;
-  finalRate: number;
   displayRate: number;
   displayString: string;
   displayLevel: DisplayLevel;
@@ -329,7 +328,6 @@ export function calcPedSUDEP(inputs: PedSUDEPInputs): PedSUDEPResult {
   const saturated = raw <= SAT_KNEE
     ? raw
     : SAT_KNEE + (SAT_ASYMPTOTE - SAT_KNEE) * (1 - Math.exp(-(raw - SAT_KNEE) / (SAT_ASYMPTOTE - SAT_KNEE)));
-  const finalRate = saturated;
 
   // Display thresholds. Low end uses the same epistemic thresholds as before
   // (the literature can't resolve very low rates); high end shows the saturated
@@ -375,8 +373,9 @@ export function calcPedSUDEP(inputs: PedSUDEPInputs): PedSUDEPResult {
   const relativeToControlled = displayRate / SYNDROME_BASELINES.controlled.rate;
 
   // For display, the UI should use `displayString` (and prefix annual/10-yr
-  // percentages with `annualPrefix`). `rawRate` is the uncapped value;
-  // `finalRate` is capped at CEILING; `displayRate` is snapped to the threshold.
+  // percentages with `annualPrefix`). `rawRate` is the pre-saturation value
+  // (after any syndrome floor); `displayRate` is the saturated value, snapped
+  // to the detection thresholds at the low end.
   return {
     syndrome: synd,
     genetic: gen,
@@ -390,7 +389,6 @@ export function calcPedSUDEP(inputs: PedSUDEPInputs): PedSUDEPResult {
     adherence: adh,
     duration: dur,
     rawRate: raw,
-    finalRate,
     displayRate,
     displayString,
     displayLevel,

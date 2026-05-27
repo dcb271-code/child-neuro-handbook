@@ -11,6 +11,29 @@ import {
 } from '@/lib/sudep-risk/calculator';
 
 // ============================================================================
+// SEVERE EARLY-ONSET DEE PRESETS
+// Single source of truth for the three behaviors that key off this syndrome
+// class: the typical-presentation preset applied on selection, the neutral
+// reset applied when switching away, and the breakdown explanatory note.
+// Adding a syndrome here updates all three at once.
+// ============================================================================
+
+const SEVERE_DEE_SYNDROMES = ['dravet', 'severe_dee', 'lgs'];
+const isSevereDEE = (s: string) => SEVERE_DEE_SYNDROMES.includes(s);
+// Human-readable class label, shared by the field hint and the breakdown note
+// so the two phrasings cannot drift apart.
+const SEVERE_DEE_CLASS_LABEL =
+  'the severe early-onset epilepsies — infantile-onset DEE (Dravet, severe infantile DEE) and refractory childhood DEE (LGS)';
+// Applied when a severe DEE is selected: these children present with frequent
+// nocturnal GTCS and are near-universally closely monitored, so the headline
+// reflects the monitored cohort (Donnan 2023 ~4.4) not the general one
+// (Cooper 2016 ~9.3). NEUTRAL_PRESET restores the defaults when switching away
+// so the monitored discount never leaks onto another syndrome (e.g. an
+// independent adolescent with drug-resistant focal epilepsy).
+const SEVERE_DEE_PRESET = { gtcFrequency: 'frequent', nocturnal: true, supervision: 'shared' } as const;
+const NEUTRAL_PRESET = { gtcFrequency: 'rare', nocturnal: false, supervision: 'partial' } as const;
+
+// ============================================================================
 // MODIFIABLE RISK FACTORS — for the SUDEP conversation
 // ============================================================================
 
@@ -229,27 +252,16 @@ export default function SUDEPRiskCalculator() {
                 <Select
                   value={P.syndrome}
                   onChange={(v) => setP((s) => {
+                    // Selecting a severe early-onset DEE presets the typical
+                    // presentation (frequent nocturnal GTCS) AND shared/monitored
+                    // supervision (see SEVERE_DEE_PRESET). Switching away from a
+                    // DEE restores the neutral defaults (NEUTRAL_PRESET) so the
+                    // monitored discount and the frequent/nocturnal preset never
+                    // leak onto another syndrome. Switching between two non-DEE
+                    // syndromes preserves whatever the clinician has entered.
                     const next = { ...s, syndrome: v };
-                    // High-burden syndromes are defined by frequent, often
-                    // nocturnal GTCS — default to that typical presentation so
-                    // the headline reflects the syndrome's published rate; the
-                    // clinician dials these down for a better-controlled patient.
-                    // These severe DEEs are also near-universally closely
-                    // monitored in practice (dependent infants/children,
-                    // hypervigilant caregivers, common use of seizure-detection
-                    // devices), so default supervision to shared/monitored too.
-                    // This reconciles the headline with the *monitored* Dravet
-                    // cohort (Donnan 2023 ~4.4) rather than the general cohort
-                    // (Cooper 2016 ~9.3); the gap between those two landmark
-                    // rates is itself largely a supervision difference, which
-                    // the 0.5× shared multiplier reproduces. Clinician dials
-                    // supervision to neutral/alone if the child is not closely
-                    // watched.
-                    if (v === 'dravet' || v === 'severe_dee' || v === 'lgs') {
-                      next.gtcFrequency = 'frequent';
-                      next.nocturnal = true;
-                      next.supervision = 'shared';
-                    }
+                    if (isSevereDEE(v)) return { ...next, ...SEVERE_DEE_PRESET };
+                    if (isSevereDEE(s.syndrome)) return { ...next, ...NEUTRAL_PRESET };
                     return next;
                   })}
                   options={[
@@ -326,7 +338,7 @@ export default function SUDEPRiskCalculator() {
 
               <Field
                 label="Nighttime supervision"
-                hint="The single most modifiable factor, on a 3-level scale. Shared bedroom / active monitoring is protective (Langan 2005, HR ~0.4); a separate room with only intermittent checks (baby cam, periodic checks) is the neutral reference — the typical pediatric situation; sleeping alone and unwitnessed is high-risk (Sveinsson 2020, adult living-alone data, OR ~5). For the severe early-onset epilepsies — infantile-onset DEE (Dravet, severe infantile DEE) and refractory childhood DEE (LGS) — this defaults to monitored, because those children are near-universally closely supervised; every other epilepsy defaults to the neutral reference, since supervision varies (e.g. an otherwise-independent adolescent with drug-resistant focal epilepsy). Adjust to the individual patient."
+                hint={`The single most modifiable factor, on a 3-level scale. Shared bedroom / active monitoring is protective (Langan 2005, HR ~0.4); a separate room with only intermittent checks (baby cam, periodic checks) is the neutral reference — the typical pediatric situation; sleeping alone and unwitnessed is high-risk (Sveinsson 2020, adult living-alone data, OR ~5). For ${SEVERE_DEE_CLASS_LABEL}, this defaults to monitored, because those children are near-universally closely supervised; every other epilepsy defaults to the neutral reference, since supervision varies (e.g. an otherwise-independent adolescent with drug-resistant focal epilepsy). Adjust to the individual patient.`}
               >
                 <Toggle<string>
                   value={P.supervision}
@@ -471,9 +483,9 @@ export default function SUDEPRiskCalculator() {
                   <div>
                     <strong>Supervision:</strong> {pResult.supervision.mult}× ({P.supervision === 'shared' ? 'shared / monitored' : P.supervision === 'partial' ? 'separate / intermittent' : 'alone / unmonitored'})
                     <div className="text-slate-500 dark:text-slate-400 mt-0.5 italic">{pResult.supervision.note}</div>
-                    {P.supervision === 'shared' && (P.syndrome === 'dravet' || P.syndrome === 'severe_dee' || P.syndrome === 'lgs') && (
+                    {P.supervision === 'shared' && isSevereDEE(P.syndrome) && (
                       <div className="text-slate-400 dark:text-slate-500 mt-0.5 text-[10px]">
-                        Preset to monitored for this syndrome. This is a class rule, not Dravet-specific: the severe early-onset epilepsies — infantile-onset DEE (Dravet, severe infantile DEE) and refractory childhood DEE (LGS) — are near-universally closely supervised, so the headline reflects the monitored (Donnan-type) cohort rather than the general (Cooper-type) one. Change the selection above if this child sleeps unmonitored.
+                        {`Preset to monitored for this syndrome. This is a class rule, not Dravet-specific: ${SEVERE_DEE_CLASS_LABEL} are near-universally closely supervised, so the headline reflects the monitored (Donnan-type) cohort rather than the general (Cooper-type) one. Change the selection above if this child sleeps unmonitored.`}
                       </div>
                     )}
                   </div>
@@ -496,7 +508,7 @@ export default function SUDEPRiskCalculator() {
                     <strong>Raw computed rate:</strong> {pResult.rawRate.toFixed(3)}/1000py
                     {pResult.displayLevel === 'detection_limit' && ' (below detection limit — displayed as ≤0.05)'}
                     {pResult.displayLevel === 'lowest_plausible' && ' (below resolvable threshold — displayed as <0.01)'}
-                    {pResult.ceilinged && ' (above display ceiling — capped at 30)'}
+                    {pResult.ceilinged && ' (in the saturating range — displayed value compressed toward the ~20/1000py asymptote)'}
                   </div>
                 </div>
               </details>
