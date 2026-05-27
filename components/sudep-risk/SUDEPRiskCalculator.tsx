@@ -234,9 +234,21 @@ export default function SUDEPRiskCalculator() {
                     // nocturnal GTCS — default to that typical presentation so
                     // the headline reflects the syndrome's published rate; the
                     // clinician dials these down for a better-controlled patient.
+                    // These severe DEEs are also near-universally closely
+                    // monitored in practice (dependent infants/children,
+                    // hypervigilant caregivers, common use of seizure-detection
+                    // devices), so default supervision to shared/monitored too.
+                    // This reconciles the headline with the *monitored* Dravet
+                    // cohort (Donnan 2023 ~4.4) rather than the general cohort
+                    // (Cooper 2016 ~9.3); the gap between those two landmark
+                    // rates is itself largely a supervision difference, which
+                    // the 0.5× shared multiplier reproduces. Clinician dials
+                    // supervision to neutral/alone if the child is not closely
+                    // watched.
                     if (v === 'dravet' || v === 'severe_dee' || v === 'lgs') {
                       next.gtcFrequency = 'frequent';
                       next.nocturnal = true;
+                      next.supervision = 'shared';
                     }
                     return next;
                   })}
