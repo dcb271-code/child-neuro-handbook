@@ -20,7 +20,7 @@ Two problems result:
 
 ### Evidence reviewed
 
-- **Donnan 2023 (PMID 36750385):** DEE-only cohort. SUDEP proportion was higher in *non-Dravet* SCN1A DEE (3/15, 27%) than Dravet-SCN1A (12/203, 5.9%) — **but** this is a per-patient proportion in n=15 (3 deaths), which the authors explicitly caution is too small to estimate reliably, and is **not** an incidence rate. The only Dravet *rate* reported is 4.4/1000py (95% CI 2.3–7.8). The cohort never included mild GEFS+ / normal-IQ phenotypes.
+- **Donnan 2023 (PMID 36750385):** DEE-only cohort. SUDEP proportion was higher in *non-Dravet* SCN1A DEE (3/15, 20%) than Dravet-SCN1A (12/203, 5.9%) — **but** this is a per-patient proportion in n=15 (3 deaths), which the authors explicitly caution is too small to estimate reliably, and is **not** an incidence rate. The only Dravet *rate* reported is 4.4/1000py (95% CI 2.3–7.8). The cohort never included mild GEFS+ / normal-IQ phenotypes.
 - **Cooper 2016 (PMID 27810515):** Dravet SUDEP 9.32/1000py (95% CI 4.46–19.45) — the highest documented syndrome-specific rate in the literature.
 - **SCN1A spectrum** (GeneReviews "SCN1A Seizure Disorders"; Frontiers systematic review PMC8739186): SCN1A spans simple febrile seizures → GEFS+ (mild end) → Dravet → severe DEE; SUDEP is "significantly higher in Dravet than the milder GEFS+ phenotype."
 - **Gain-of-function "beyond Dravet" entity** (Sadleir/Berecki, Brain 2022 / Ann Neurol 2019): a distinct, *more severe* non-Dravet SCN1A entity (neonatal onset, arthrogryposis, hyperkinetic movement disorder, profound impairment; variants cluster differently, OR 17.8) genuinely exists — supporting "severe non-Dravet SCN1A DEE belongs at/above Dravet" on **severity** grounds, though no SUDEP *rate* exists for it.
