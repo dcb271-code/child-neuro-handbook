@@ -419,8 +419,8 @@ export default function SUDEPRiskCalculator() {
                     <div>
                       <strong>Genetic modifier:</strong> {pResult.geneticFloorApplied
                         ? (pResult.geneticFloorBinding
-                            ? `risk floor ${pResult.genetic.floorBaseline}/1000py (raised the baseline)`
-                            : `risk floor ${pResult.genetic.floorBaseline}/1000py (not binding — phenotype baseline is already higher)`)
+                            ? `risk floor ${pResult.genetic.floorBaseline?.toFixed(2)}/1000py (raised the baseline)`
+                            : `risk floor ${pResult.genetic.floorBaseline?.toFixed(2)}/1000py (not binding — phenotype baseline is already higher)`)
                         : `${pResult.genetic.mult}×`}
                       <div className="text-slate-500 dark:text-slate-400 mt-0.5 italic">{pResult.genetic.note}</div>
                     </div>
