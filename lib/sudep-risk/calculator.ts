@@ -136,9 +136,9 @@ const SYNDROME_BASELINES: Record<Syndrome, SyndromeBaseline> = {
   }
 };
 
-// Gene-specific modifiers. Apply MULTIPLICATIVELY on top of syndrome baseline,
-// but only when the syndrome baseline doesn't already capture the genetic
-// effect (e.g., Dravet baseline already accounts for SCN1A).
+// Gene-specific modifiers. Applied as a multiplier on the syndrome baseline,
+// except for floor-type genes (floorBaseline != null), which set a minimum
+// effective baseline instead of multiplying (see calcPedSUDEP below).
 const GENETIC_MODIFIERS: Record<GeneticEtiology, GeneticModifier> = {
   none: { mult: 1.0, note: '' },
   scn1a: {

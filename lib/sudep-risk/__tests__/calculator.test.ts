@@ -146,7 +146,7 @@ describe('calcPedSUDEP — SCN1A floor + phenotype ordering', () => {
     expect(severeDee.rawRate).toBeGreaterThan(dravet.rawRate);
     expect(dravet.rawRate).toBeGreaterThan(focal.rawRate);
     expect(focal.rawRate).toBeGreaterThan(gefs.rawRate);
-    expect(severeDee.rawRate).toBeCloseTo(4.85, 2);
+    expect(severeDee.rawRate).toBeCloseTo(1.90 * 2.55, 5); // severe_dee baseline x STD clinical product
     expect(focal.rawRate).toBeCloseTo(3.06, 2);
   });
 
