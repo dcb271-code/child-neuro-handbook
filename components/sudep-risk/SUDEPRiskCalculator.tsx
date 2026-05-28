@@ -232,25 +232,14 @@ export default function SUDEPRiskCalculator() {
       {tab === 'pediatric' && (
         <div>
           <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-3 mb-5 text-xs text-blue-900 dark:text-blue-200">
-            <strong>How this is calibrated.</strong> Baseline rates are
-            syndrome-specific values from published pediatric cohorts.
-            Multipliers are derived from the published odds ratios for each
-            risk factor and applied multiplicatively. The model is
-            calibrated to reproduce the 350-fold spread in absolute SUDEP
-            incidence documented in Tomson 2025 (Neurology).
-            <br /><br />
-            <strong>About the low end.</strong> Rather than enforcing a
-            single numerical floor, the display uses two thresholds that
-            reflect how well the underlying literature can resolve very low
-            rates: results below 0.05/1000py (the lowest stratum
-            empirically observed by Tomson 2025; 95% CI 0.02–0.12) are
-            shown as <em>≤0.05</em>; results below 0.01/1000py are shown
-            as <em>&lt;0.01</em>. SUDEP risk in epilepsy is never zero —
-            cases have been reported in SeLECTS (Verducci 2020) and in
-            patients without antecedent GTCS (Sveinsson 2020: OR 1.15 for
-            non-GTCS-only seizures, NS). But the literature genuinely
-            cannot distinguish rates this low from each other, and
-            displaying a precise decimal would overstate certainty.
+            <strong>How to read this.</strong> Syndrome baselines (published
+            pediatric cohorts) are scaled by risk-factor odds ratios.
+            Read the <strong>plausible range</strong> and the{' '}
+            <strong>evidence chip</strong>, not just the point estimate:
+            strong evidence gives a tight range, thin evidence a wide one.
+            It is a teaching aid for the SUDEP conversation, not an
+            individual prediction. SUDEP risk is never zero, but the
+            literature cannot resolve very low rates (shown as ≤0.05 / &lt;0.01).
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -421,17 +410,17 @@ export default function SUDEPRiskCalculator() {
                 </div>
                 {pResult.displayLevel === 'detection_limit' && (
                   <div className="text-xs mt-2 opacity-75 italic">
-                    At or below the empirical detection limit (Tomson 2025 lowest stratum 0.05/1000py, 95% CI 0.02–0.12). The literature cannot reliably distinguish rates this low; the true rate may be substantially lower. Risk is not zero — SUDEP has been reported in self-limited syndromes and in patients without antecedent GTCS, just rarely.
+                    At/below the literature&apos;s detection limit (Tomson lowest stratum 0.05/1000py). Risk is very low but never zero.
                   </div>
                 )}
                 {pResult.displayLevel === 'lowest_plausible' && (
                   <div className="text-xs mt-2 opacity-75 italic">
-                    Below what the SUDEP literature can resolve. Risk is very low but not zero — case reports exist in apparently low-risk profiles. Treat as essentially baseline risk for the favorable management profile.
+                    Below what the SUDEP literature can resolve — essentially baseline risk, but never zero.
                   </div>
                 )}
                 {pResult.ceilinged && (
                   <div className="text-xs mt-2 opacity-75 italic">
-                    In the model&apos;s saturating range: above ~7/1000py, additional risk factors yield progressively smaller increments, approaching a ceiling near 15/1000py. This ceiling is deliberate — clean pediatric syndrome rates essentially never exceed ~10 (Dravet 4.4–9.3; pediatric DEE 2.8), so the model reserves ~15 for the maximally-stacked profile rather than extrapolating. Literature has reported rates as high as ~18/1000py in select, heavily risk-stratified strata (Tomson 2025: lives alone + nonadherent + nocturnal TCS + ≥1 TCS; Cooper&apos;s Dravet 95% CI reaches 19.5), but those are not pediatric syndrome point estimates and the model does not project to them. The tail is genuinely uncertain — these events are rare and SUDEP is never zero — so the displayed value is compressed, not extrapolated upward.
+                    Model caps near 15/1000py — clean pediatric syndrome rates rarely exceed ~10, so the most extreme stacking saturates here rather than extrapolating. The plausible range above reaches the documented worst case (~18–20; Cooper CI, Tomson highest stratum).
                   </div>
                 )}
               </div>
