@@ -3,8 +3,9 @@
 import { useId, useMemo, useState } from 'react';
 import {
   calcSarnat, calcThompson, assessTHEligibility,
-  SARNAT_DOMAINS, THOMPSON_ITEMS,
+  SARNAT_DOMAINS, THOMPSON_ITEMS, ACUTE_PERINATAL_EVENTS,
   type SarnatInputs, type ThompsonInputs, type SarnatSeverityKey,
+  type PHBand, type BDBand, type ApgarBand,
 } from '@/lib/hie/calculator';
 
 // ============================================================================
@@ -63,6 +64,17 @@ function Toggle<T extends string | boolean>({ value, onChange, options }: {
   );
 }
 
+// Walk-through criteria row. `ok` colors green/red; `warn` overrides to amber to
+// signal a non-blocking caveat (e.g. case-by-case GA, extended-window age).
+function CritRow({ ok, warn, label }: { ok: boolean; warn?: boolean; label: string }) {
+  const cls = warn
+    ? 'bg-amber-50 dark:bg-amber-900/20 text-amber-900 dark:text-amber-200'
+    : ok
+      ? 'bg-emerald-50 dark:bg-emerald-900/20 text-emerald-900 dark:text-emerald-200'
+      : 'bg-rose-50 dark:bg-rose-900/20 text-rose-900 dark:text-rose-200';
+  return <div className={`p-2 rounded ${cls}`}>{warn ? '⚠' : ok ? '✓' : '✗'} {label}</div>;
+}
+
 function NumberInput({ value, onChange, suffix, min, max }: {
   value: number; onChange: (v: number) => void; suffix?: string; min?: number; max?: number;
 }) {
@@ -101,7 +113,15 @@ export default function NeonatalHIECalculator() {
     grasp: 'n', suck: 'n', respiration: 'n', fontanelle: 'n',
   });
 
-  const [elig, setElig] = useState({ gestationalAge: 39, ageHours: 2, hasEvidence: false, contraindications: false });
+  const [elig, setElig] = useState<{
+    gestationalAge: number; birthWeight: number; ageHours: number;
+    ph: PHBand; baseDeficit: BDBand; apgar10: ApgarBand;
+    assistedVent10min: boolean; acutePerinatalEvent: boolean; contraindications: boolean;
+  }>({
+    gestationalAge: 39, birthWeight: 3200, ageHours: 2,
+    ph: 'unknown', baseDeficit: 'unknown', apgar10: 'gt_5',
+    assistedVent10min: false, acutePerinatalEvent: false, contraindications: false,
+  });
 
   const sarnatResult   = useMemo(() => calcSarnat(sarnat), [sarnat]);
   const thompsonResult = useMemo(() => calcThompson(thompson), [thompson]);
@@ -282,35 +302,98 @@ export default function NeonatalHIECalculator() {
       {tab === 'eligibility' && (
         <div>
           <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-3 mb-5 text-xs text-blue-900 dark:text-blue-200">
-            <strong>Therapeutic hypothermia eligibility.</strong> Cooling is standard of care for moderate-to-severe HIE in term / late-preterm infants (CoolCap 2005, NICHD 2005, TOBY 2009). Window: within 6 hours of birth. Combine the assessment below with Sarnat / Thompson from the prior tabs.
+            <strong>TH eligibility — walk through the criteria.</strong> Two-path logic from the institutional HIE pathway (CoolCap 2005, NICHD 2005, TOBY 2009; AAP Committee on Fetus &amp; Newborn 2014; Zanelli 2026). <strong>Path A</strong> is severe biochemistry alone; <strong>Path B</strong> is the alternative when no gas / intermediate gas — it requires <em>all three</em> sub-criteria. Plus the gates (GA, BW, age) and an encephalopathy threshold pulled from the prior tabs.
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <h4 className="text-sm font-semibold text-slate-800 dark:text-slate-200 mb-3 uppercase tracking-wide">Criteria</h4>
+              <h4 className="text-sm font-semibold text-slate-800 dark:text-slate-200 mb-3 uppercase tracking-wide">Inclusion gates</h4>
 
-              <Field label="Gestational age" hint="Cooling protocols established for ≥36 weeks. Some centers cool 33–35-week infants under research protocols (PRESERVE).">
+              <Field label="Gestational age" hint="≥36 wks: standard. 35w0d–35w6d: case-by-case per protocol (Faix 2025). <35 wks: cooling not indicated — target strict normothermia.">
                 <NumberInput value={elig.gestationalAge} onChange={(v) => setElig(s => ({ ...s, gestationalAge: v }))} suffix="weeks" min={20} max={42} />
               </Field>
 
-              <Field label="Age at assessment" hint="Cooling must begin within 6h of birth for established benefit. HEAL trial extended to 6–24h: no benefit (and possible harm) outside select cases.">
-                <NumberInput value={elig.ageHours} onChange={(v) => setElig(s => ({ ...s, ageHours: v }))} suffix="hours of life" min={0} max={24} />
+              <Field label="Birth weight" hint="Threshold per the institutional pathway: must be >1800 g.">
+                <NumberInput value={elig.birthWeight} onChange={(v) => setElig(s => ({ ...s, birthWeight: v }))} suffix="g" min={400} max={6000} />
               </Field>
 
-              <Field
-                label="Evidence of perinatal HI event"
-                hint="ANY ONE qualifies: Apgar ≤5 at 10 min, ongoing resuscitation at 10 min, pH ≤7.0 (cord or first hour), base deficit ≥16, or clear sentinel event (abruption, cord prolapse, uterine rupture, etc.)."
-              >
-                <Toggle<boolean>
-                  value={elig.hasEvidence}
-                  onChange={(v) => setElig(s => ({ ...s, hasEvidence: v }))}
-                  options={[[false, 'No / unclear'], [true, 'Yes — documented']]}
+              <Field label="Age at assessment" hint="≤6 h: standard cooling window. 6–24 h: extended window — may be considered after parental discussion of benefits and risks (Zanelli 2026 AAP clinical report). >24 h: not indicated. Exam can evolve — reassess every 1–2 hours up to 6 HOL.">
+                <NumberInput value={elig.ageHours} onChange={(v) => setElig(s => ({ ...s, ageHours: v }))} suffix="hours of life" min={0} max={48} />
+              </Field>
+
+              <h4 className="text-sm font-semibold text-slate-800 dark:text-slate-200 mt-5 mb-3 uppercase tracking-wide">
+                Path A — Biochemical <span className="text-[10px] font-normal text-slate-500 dark:text-slate-400 normal-case">(any one qualifies)</span>
+              </h4>
+
+              <Field label="Blood gas pH (cord / ABG / VBG / cap in 1st hour of life)">
+                <Select<PHBand>
+                  value={elig.ph}
+                  onChange={(v) => setElig(s => ({ ...s, ph: v }))}
+                  options={[
+                    ['unknown', 'No blood gas available'],
+                    ['le_7', 'pH ≤ 7.0  (qualifies Path A)'],
+                    ['7.01-7.15', 'pH 7.01–7.15  (intermediate → Path B trigger)'],
+                    ['gt_7.15', 'pH > 7.15'],
+                  ]}
                 />
               </Field>
 
+              <Field label="Base deficit (same sample)">
+                <Select<BDBand>
+                  value={elig.baseDeficit}
+                  onChange={(v) => setElig(s => ({ ...s, baseDeficit: v }))}
+                  options={[
+                    ['unknown', 'No blood gas available'],
+                    ['ge_16', 'BD ≥ 16 mmol/L  (qualifies Path A)'],
+                    ['10-15.9', 'BD 10–15.9  (intermediate → Path B trigger)'],
+                    ['lt_10', 'BD < 10'],
+                  ]}
+                />
+              </Field>
+
+              <h4 className="text-sm font-semibold text-slate-800 dark:text-slate-200 mt-5 mb-3 uppercase tracking-wide">
+                Path B — Alternative <span className="text-[10px] font-normal text-slate-500 dark:text-slate-400 normal-case">(used when Path A doesn&apos;t apply — needs ALL three)</span>
+              </h4>
+
+              <Field label="10-minute Apgar">
+                <Select<ApgarBand>
+                  value={elig.apgar10}
+                  onChange={(v) => setElig(s => ({ ...s, apgar10: v }))}
+                  options={[
+                    ['gt_5', '>5'],
+                    ['le_5', '≤5  (qualifies clinical trigger)'],
+                    ['unknown', 'Unknown'],
+                  ]}
+                />
+              </Field>
+
+              <Field label="Assisted ventilation at birth ≥10 minutes" hint="Either alone satisfies the Path B clinical trigger — Apgar ≤5 OR vent ≥10 min.">
+                <Toggle<boolean>
+                  value={elig.assistedVent10min}
+                  onChange={(v) => setElig(s => ({ ...s, assistedVent10min: v }))}
+                  options={[[false, 'No'], [true, 'Yes']]}
+                />
+              </Field>
+
+              <Field label="Acute perinatal sentinel event">
+                <Toggle<boolean>
+                  value={elig.acutePerinatalEvent}
+                  onChange={(v) => setElig(s => ({ ...s, acutePerinatalEvent: v }))}
+                  options={[[false, 'No / unclear'], [true, 'Yes']]}
+                />
+                <details className="mt-2 text-xs text-slate-600 dark:text-slate-400">
+                  <summary className="cursor-pointer">Qualifying events (institutional list)</summary>
+                  <ul className="mt-1 ml-4 list-disc list-outside space-y-0.5">
+                    {ACUTE_PERINATAL_EVENTS.map(e => <li key={e}>{e}</li>)}
+                  </ul>
+                </details>
+              </Field>
+
+              <h4 className="text-sm font-semibold text-slate-800 dark:text-slate-200 mt-5 mb-3 uppercase tracking-wide">Contraindications</h4>
+
               <Field
-                label="Contraindications present"
-                hint="Major congenital anomaly incompatible with survival, severe active bleeding, severe sepsis, significant head trauma, or family/team decision to forgo TH. Pulmonary hypertension is NOT a contraindication (may be managed with concurrent iNO)."
+                label="Major contraindication present"
+                hint="Lethal congenital anomaly, severe active bleeding, severe sepsis, significant head trauma, or family/team decision to forgo TH. Pulmonary hypertension is NOT a contraindication (may be managed with concurrent iNO). ECMO + TH carries elevated ICH risk — weigh case-by-case."
               >
                 <Toggle<boolean>
                   value={elig.contraindications}
@@ -320,7 +403,7 @@ export default function NeonatalHIECalculator() {
               </Field>
 
               <div className="bg-slate-50 dark:bg-slate-900/40 rounded-md p-3 mt-4 text-xs text-slate-700 dark:text-slate-300">
-                <strong>Current encephalopathy assessment:</strong>
+                <strong>Encephalopathy (from prior tabs):</strong>
                 <div className="mt-2 space-y-1">
                   <div>Sarnat: <strong>{sarnatResult.stageLabel}</strong></div>
                   <div>Thompson: <strong>{thompsonResult.total}/22 ({thompsonResult.category})</strong></div>
@@ -338,37 +421,62 @@ export default function NeonatalHIECalculator() {
               }`}>
                 <div className="text-xs uppercase tracking-wide opacity-75">Recommendation</div>
                 <div className="text-lg font-semibold mt-1">
-                  {eligResult.eligible ? '✓ Eligible for therapeutic hypothermia' : '✗ Does not meet standard TH criteria'}
+                  {eligResult.eligible ? '✓ Eligible for therapeutic hypothermia' : '✗ Does not meet TH criteria'}
                 </div>
-                {!eligResult.eligible && eligResult.reasons.length > 0 && (
+                {eligResult.reasons.length > 0 && (
                   <div className="text-xs mt-2 opacity-90">
-                    <strong>Reasons:</strong>
+                    <strong>Why not:</strong>
                     <ul className="list-disc list-inside ml-2 mt-1">
                       {eligResult.reasons.map((r, i) => <li key={i}>{r}</li>)}
                     </ul>
                   </div>
                 )}
+                {eligResult.warnings.length > 0 && (
+                  <div className="text-xs mt-2 opacity-90">
+                    <strong>Caveats:</strong>
+                    <ul className="list-disc list-inside ml-2 mt-1">
+                      {eligResult.warnings.map((w, i) => <li key={i}>{w}</li>)}
+                    </ul>
+                  </div>
+                )}
               </div>
 
+              {/* Walk-through checklist */}
               <div className="space-y-2 text-xs">
-                {[
-                  [eligResult.eligibleGA, 'Gestational age ≥36 weeks'],
-                  [eligResult.eligibleAge, 'Age ≤6 hours (cooling window)'],
-                  [eligResult.physiologicCriteria, 'Evidence of perinatal HI event'],
-                  [eligResult.encephalopathyCriteria, 'Moderate or severe encephalopathy'],
-                  [!elig.contraindications, 'No major contraindications'],
-                ].map(([ok, label], i) => (
-                  <div key={i} className={`p-2 rounded ${ok
-                      ? 'bg-emerald-50 dark:bg-emerald-900/20 text-emerald-900 dark:text-emerald-200'
-                      : 'bg-amber-50 dark:bg-amber-900/20 text-amber-900 dark:text-amber-200'}`}>
-                    {ok ? '✓' : '✗'} {label as string}
-                  </div>
-                ))}
+                <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400 mt-1">Gates</div>
+                <CritRow ok={eligResult.eligibleGA || eligResult.gaCaseByCase}
+                  warn={eligResult.gaCaseByCase}
+                  label={`GA ${elig.gestationalAge} wks${eligResult.gaCaseByCase ? ' — 35w0d–35w6d (case-by-case)' : eligResult.eligibleGA ? ' — ≥36 wks ✓' : ' — <35 wks (block)'}`} />
+                <CritRow ok={eligResult.eligibleBW}
+                  label={`Birth weight ${elig.birthWeight} g${eligResult.eligibleBW ? ' — >1800 g ✓' : ' — ≤1800 g (block)'}`} />
+                <CritRow ok={eligResult.eligibleAge || eligResult.ageExtendedWindow}
+                  warn={eligResult.ageExtendedWindow}
+                  label={`Age ${elig.ageHours} h${eligResult.eligibleAge ? ' — within 6-h window ✓' : eligResult.ageExtendedWindow ? ' — 6–24 h extended window' : ' — >24 h (block)'}`} />
+
+                <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400 mt-3">Physiologic — Path A</div>
+                <CritRow ok={eligResult.criterionA}
+                  label={`Path A ${eligResult.criterionA ? `met — ${eligResult.criterionAReason}` : 'not met'}`} />
+
+                <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400 mt-3">Physiologic — Path B (needs all three)</div>
+                <CritRow ok={eligResult.biochemTriggerForB}
+                  label={`Biochem trigger ${eligResult.biochemTriggerForB ? '(no gas, or intermediate pH/BD) ✓' : '✗'}`} />
+                <CritRow ok={eligResult.clinicalTriggerForB}
+                  label={`Clinical trigger ${eligResult.clinicalTriggerForB ? '(10-min Apgar ≤5 or vent ≥10 min) ✓' : '✗'}`} />
+                <CritRow ok={eligResult.sentinelEventForB}
+                  label={`Acute perinatal event ${eligResult.sentinelEventForB ? '✓' : '✗'}`} />
+                <CritRow ok={eligResult.criterionB}
+                  label={`Path B ${eligResult.criterionB ? 'met' : 'not met'}`} />
+
+                <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400 mt-3">Encephalopathy & safety</div>
+                <CritRow ok={eligResult.encephalopathyMet}
+                  label={`Moderate/severe encephalopathy ${eligResult.encephalopathyMet ? '✓' : '✗'} — ${sarnatResult.stageLabel}, Thompson ${thompsonResult.total}`} />
+                <CritRow ok={!elig.contraindications}
+                  label={`No major contraindications ${!elig.contraindications ? '✓' : '✗'}`} />
               </div>
 
               {eligResult.eligible && (
                 <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-300 dark:border-blue-700 rounded-md p-3 mt-4 text-xs text-blue-900 dark:text-blue-200">
-                  <strong>Initiate TH:</strong> target core temperature 33.5°C (whole-body or selective head cooling) for 72 hours, followed by slow rewarming (0.5°C/hour). Continuous aEEG monitoring strongly recommended. Treat seizures aggressively. Consult neurology; transfer to a cooling-capable NICU if not already at one.
+                  <strong>Initiate TH:</strong> goal core temp 33.5°C (whole-body or selective head cooling) × 72 h, then rewarm 0.5°C/h to 36.5°C. Continuous EEG through rewarming. Admission labs: CBC, INR/PTT, CMP, Mg, Phos, blood gas (ABG + lactate), POC glucose q4h × 4 then q8h. Head US to rule out large ICH; brain MRI ~DOL 4 (after rewarming). Treat seizures per neonatal-seizure guideline; trophic feeds at provider discretion. Consult neurology; transfer to a cooling-capable NICU if not already there.
                 </div>
               )}
             </div>
@@ -443,6 +551,9 @@ export default function NeonatalHIECalculator() {
           <h4 className="text-sm font-semibold text-slate-900 dark:text-slate-100 mb-3">References (PubMed format)</h4>
           <ol className="space-y-2 list-decimal list-inside">
             <li>Sarnat HB, Sarnat MS. Neonatal encephalopathy following fetal distress. A clinical and electroencephalographic study. Arch Neurol. 1976;33(10):696-705. PMID: 987769.</li>
+            <li>Committee on Fetus and Newborn. Hypothermia and Neonatal Encephalopathy. Pediatrics. 2014;133(6):1146-1150. doi:10.1542/peds.2014-0899.</li>
+            <li>Zanelli SA, Wusthoff CJ, Lucke AM, Kaufman DA; Committee on Fetus and Newborn; Section on Neurology. Therapeutic Hypothermia for Neonatal Hypoxic-Ischemic Encephalopathy: Clinical Report. Pediatrics. 2026;157(2):e2025073627. PMID: 41581784.</li>
+            <li>Faix RG, Laptook AR, Shankaran S, et al. Whole-Body Hypothermia for Neonatal Encephalopathy in Preterm Infants 33 to 35 Weeks&apos; Gestation: A Randomized Clinical Trial. JAMA Pediatr. 2025;179(4):396-406. doi:10.1001/jamapediatrics.2024.6613.</li>
             <li>Thompson CM, Puterman AS, Linley LL, et al. The value of a scoring system for hypoxic ischaemic encephalopathy in predicting neurodevelopmental outcome. Acta Paediatr. 1997;86(7):757-761. PMID: 9240886.</li>
             <li>Gluckman PD, Wyatt JS, Azzopardi D, et al. Selective head cooling with mild systemic hypothermia after neonatal encephalopathy: multicentre randomised trial (CoolCap). Lancet. 2005;365(9460):663-670. PMID: 15721471.</li>
             <li>Shankaran S, Laptook AR, Ehrenkranz RA, et al. Whole-body hypothermia for neonates with hypoxic-ischemic encephalopathy. N Engl J Med. 2005;353(15):1574-1584. PMID: 16221780.</li>

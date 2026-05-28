@@ -231,49 +231,146 @@ export function calcThompson(inputs: ThompsonInputs): ThompsonResult {
 }
 
 // ============================================================================
-// TH ELIGIBILITY (NICHD / TOBY / CoolCap framework)
+// TH ELIGIBILITY (institutional HIE pathway; aligns with NICHD/TOBY/CoolCap)
+//
+// Two-path physiologic logic, operationalized for the resident to walk through:
+//   Path A (Biochemical): blood gas in first hour of life with pH ≤7.0 OR
+//                         base deficit ≥16. Single qualifying value.
+//   Path B (Alternative): used when no gas is available OR the gas is in the
+//                         intermediate zone (pH 7.01–7.15 or BD 10–15.9).
+//                         REQUIRES BOTH:
+//                           (i)  10-min Apgar ≤5 OR assisted ventilation at
+//                                birth for ≥10 min, AND
+//                           (ii) an acute perinatal event (decels, abruption,
+//                                cord prolapse/rupture, uterine rupture,
+//                                maternal trauma/hemorrhage/arrest, shoulder
+//                                dystocia, nuchal cord).
+// Plus the gates: GA ≥36 wks (35w0d–35w6d case-by-case), BW >1800 g, age ≤6 h
+// (6–24 h extended window may be considered after parental discussion).
+// Plus encephalopathy: Sarnat moderate/severe (≥3 mod-or-severe domains) OR
+// seizures OR Thompson ≥7.
+// Plus no major contraindications.
 // ============================================================================
 
+// Banded inputs avoid false precision and match how the protocol thinks (in
+// thresholds, not exact decimals).
+export type PHBand = 'le_7' | '7.01-7.15' | 'gt_7.15' | 'unknown';
+export type BDBand = 'ge_16' | '10-15.9' | 'lt_10' | 'unknown';
+export type ApgarBand = 'le_5' | 'gt_5' | 'unknown';
+
 export type THEligibilityInputs = {
-  gestationalAge: number;     // weeks
+  gestationalAge: number;     // weeks (decimal; 35.5 = 35w3-4d)
+  birthWeight: number;        // grams
   ageHours: number;           // hours of life at assessment
-  hasEvidence: boolean;       // documented perinatal HI event (any TOBY criterion)
+  // Path A (biochemical)
+  ph: PHBand;
+  baseDeficit: BDBand;
+  // Path B (alternative — clinical + sentinel event)
+  apgar10: ApgarBand;
+  assistedVent10min: boolean;   // assisted ventilation at birth ≥10 min
+  acutePerinatalEvent: boolean; // any qualifying sentinel event
+  // Encephalopathy — pulled from prior tabs
   sarnatStage: SarnatStage;
   thompsonScore: number | null;
+  // Contraindications
   contraindications: boolean;
 };
 
 export type THEligibilityResult = {
   eligible: boolean;
-  reasons: string[];
+  reasons: string[];   // blocking reasons (only present when not eligible)
+  warnings: string[];  // non-blocking caveats (case-by-case, extended window)
+  // Gates
   eligibleGA: boolean;
+  gaCaseByCase: boolean;    // 35w0d–35w6d
+  eligibleBW: boolean;
   eligibleAge: boolean;
-  physiologicCriteria: boolean;
-  encephalopathyCriteria: boolean;
+  ageExtendedWindow: boolean; // 6–24 h
+  // Physiologic paths
+  criterionA: boolean;
+  criterionAReason: string; // e.g. "pH ≤7.0" / "BD ≥16" / "" if not met
+  criterionB: boolean;
+  biochemTriggerForB: boolean;  // no gas OR intermediate values
+  clinicalTriggerForB: boolean; // Apgar ≤5 OR vent ≥10 min
+  sentinelEventForB: boolean;
+  physiologicMet: boolean;      // A OR B
+  // Encephalopathy
+  encephalopathyMet: boolean;
 };
 
 export function assessTHEligibility(inputs: THEligibilityInputs): THEligibilityResult {
   const {
-    gestationalAge, ageHours, hasEvidence, sarnatStage, thompsonScore, contraindications
+    gestationalAge, birthWeight, ageHours,
+    ph, baseDeficit, apgar10, assistedVent10min, acutePerinatalEvent,
+    sarnatStage, thompsonScore, contraindications,
   } = inputs;
 
-  const physiologicCriteria = hasEvidence;
-  const encephalopathyCriteria =
+  // --- Gates ---
+  const eligibleGA = gestationalAge >= 36;
+  const gaCaseByCase = !eligibleGA && gestationalAge >= 35;
+  const eligibleBW = birthWeight > 1800;
+  const eligibleAge = ageHours <= 6;
+  const ageExtendedWindow = !eligibleAge && ageHours <= 24;
+
+  // --- Path A: Biochemical ---
+  let criterionA = false;
+  let criterionAReason = '';
+  if (ph === 'le_7') { criterionA = true; criterionAReason = 'pH ≤7.0'; }
+  else if (baseDeficit === 'ge_16') { criterionA = true; criterionAReason = 'base deficit ≥16'; }
+
+  // --- Path B: Alternative ---
+  // Trigger requires either no gas available, or gas in the intermediate band.
+  const biochemTriggerForB =
+    (ph === 'unknown' && baseDeficit === 'unknown') ||
+    ph === '7.01-7.15' || baseDeficit === '10-15.9';
+  const clinicalTriggerForB = apgar10 === 'le_5' || assistedVent10min;
+  const sentinelEventForB = acutePerinatalEvent;
+  const criterionB = biochemTriggerForB && clinicalTriggerForB && sentinelEventForB;
+
+  const physiologicMet = criterionA || criterionB;
+
+  // --- Encephalopathy ---
+  const encephalopathyMet =
     sarnatStage === 'moderate' || sarnatStage === 'severe' || sarnatStage === 'moderate_severe' ||
     (thompsonScore !== null && thompsonScore >= 7);
-  const eligibleGA = gestationalAge >= 36;
-  const eligibleAge = ageHours <= 6;
-  const noContraindications = !contraindications;
 
-  const eligible = eligibleGA && eligibleAge && physiologicCriteria
-                && encephalopathyCriteria && noContraindications;
+  // --- Overall ---
+  // GA: <35 wks is a hard block; 35–35w6d is case-by-case (allowed, with warning).
+  const gaPasses = eligibleGA || gaCaseByCase;
+  // Age: >24 h is a hard block; 6–24 h is the extended window (allowed with discussion).
+  const agePasses = eligibleAge || ageExtendedWindow;
+  const eligible = gaPasses && eligibleBW && agePasses && physiologicMet
+                && encephalopathyMet && !contraindications;
 
   const reasons: string[] = [];
-  if (!eligibleGA) reasons.push('Gestational age <36 weeks');
-  if (!eligibleAge) reasons.push('Age >6 hours (outside cooling window)');
-  if (!physiologicCriteria) reasons.push('No documented evidence of perinatal hypoxic-ischemic event');
-  if (!encephalopathyCriteria) reasons.push('Encephalopathy does not meet moderate/severe threshold');
+  if (!gaPasses) reasons.push('Gestational age <35 weeks (cooling not indicated; target strict normothermia)');
+  if (!eligibleBW) reasons.push('Birth weight ≤1800 g');
+  if (!agePasses) reasons.push('Age >24 hours of life');
+  if (!physiologicMet) reasons.push('Neither Path A (biochemical) nor Path B (alternative) physiologic criteria are met');
+  if (!encephalopathyMet) reasons.push('Encephalopathy does not meet moderate/severe threshold (Sarnat or Thompson ≥7)');
   if (contraindications) reasons.push('Contraindication present');
 
-  return { eligible, reasons, eligibleGA, eligibleAge, physiologicCriteria, encephalopathyCriteria };
+  const warnings: string[] = [];
+  if (gaCaseByCase) warnings.push('GA 35w0d–35w6d: case-by-case per protocol — discuss with neonatology (Faix 2025).');
+  if (ageExtendedWindow) warnings.push('Age 6–24 h: outside the standard 6-h window. Initiation may be considered after parental discussion of potential benefits and risks (Zanelli 2026 AAP clinical report).');
+
+  return {
+    eligible, reasons, warnings,
+    eligibleGA, gaCaseByCase, eligibleBW, eligibleAge, ageExtendedWindow,
+    criterionA, criterionAReason, criterionB,
+    biochemTriggerForB, clinicalTriggerForB, sentinelEventForB,
+    physiologicMet, encephalopathyMet,
+  };
 }
+
+// Acute perinatal events that satisfy Path B's sentinel-event criterion
+// (per the institutional HIE pathway — broader than NICHD's original list).
+export const ACUTE_PERINATAL_EVENTS: readonly string[] = [
+  'Late or variable decelerations',
+  'Placental abruption',
+  'Cord prolapse / rupture',
+  'Uterine rupture',
+  'Maternal trauma, hemorrhage, or cardioresp arrest',
+  'Shoulder dystocia',
+  'Nuchal cord',
+];
