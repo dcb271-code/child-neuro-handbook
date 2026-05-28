@@ -68,7 +68,7 @@ const SECTION_WIDGETS: Record<string, { id: string; Component: ComponentType }[]
     { id: 'seizure-risk-calculators', Component: SeizureRiskCalculators },
     { id: 'sudep-risk-calculator', Component: SUDEPRiskCalculator },
   ],
-  stroke: [
+  'neurocritical-care': [
     { id: 'hie-calculator', Component: NeonatalHIECalculator },
   ],
 };

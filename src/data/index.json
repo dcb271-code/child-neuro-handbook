@@ -68,7 +68,7 @@
     "slug": "stroke",
     "icon": "🫀",
     "color": "bg-amber-100 text-amber-800 border-amber-200",
-    "tocCount": 23,
+    "tocCount": 22,
     "imageCount": 6
   },
   {
@@ -84,7 +84,7 @@
     "slug": "neurocritical-care",
     "icon": "🏥",
     "color": "bg-rose-100 text-rose-800 border-rose-200",
-    "tocCount": 10,
+    "tocCount": 11,
     "imageCount": 6
   },
   {
