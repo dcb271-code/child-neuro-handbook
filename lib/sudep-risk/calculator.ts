@@ -9,10 +9,13 @@
 export type Syndrome =
   | 'selflimited' | 'newonset' | 'controlled' | 'gefs_mild' | 'focal_dre'
   | 'gen_dre' | 'other_dee' | 'severe_dee' | 'lgs' | 'dravet';
+// Collapsed to honest buckets: we have no direct pediatric SUDEP *rate* for any
+// gene except SCN1A (via Dravet cohorts). The non-SCN1A genes share one elevated-
+// risk class each, with a wide confidence interval, rather than pseudo-distinct
+// point multipliers.
 export type GeneticEtiology =
-  | 'none' | 'scn1a' | 'scn2a' | 'scn8a' | 'stxbp1'
-  | 'kcnq1_h2' | 'scn5a' | 'scn1b' | 'depdc5' | 'dup15q'
-  | 'kcnt1' | 'other_chan' | 'other_ge';
+  | 'none' | 'scn1a' | 'sudep_gene' | 'cardiac' | 'other_chan' | 'other_ge';
+export type Evidence = 'strong' | 'moderate' | 'limited';
 export type GtcFrequency = 'never' | 'none_pastyear' | 'rare' | 'frequent' | 'very_frequent';
 export type Supervision = 'shared' | 'partial' | 'alone';
 export type Adherence = 'good' | 'poor';
@@ -28,8 +31,8 @@ export type PedSUDEPInputs = {
   duration: Duration;
 };
 
-export type SyndromeBaseline = { rate: number; label: string; description: string; source: string; floor?: number };
-export type GeneticModifier = { mult: number; note: string; cardiacFlag?: boolean; floorRate?: number };
+export type SyndromeBaseline = { rate: number; label: string; description: string; source: string; floor?: number; evidence: Evidence };
+export type GeneticModifier = { mult: number; note: string; cardiacFlag?: boolean; floorRate?: number; evidence?: Evidence };
 export type Multiplier = { mult: number; note: string };
 export type LabeledMultiplier = { mult: number; label: string; note: string };
 export type DisplayLevel = 'measurable' | 'detection_limit' | 'lowest_plausible' | 'ceiling';
@@ -52,6 +55,9 @@ export type PedSUDEPResult = {
   rawRate: number;
   displayRate: number;
   displayString: string;
+  ciLow: number;        // lower bound of the plausible range (clamped ≥ 0.01)
+  ciHigh: number;       // upper bound of the plausible range (clamped ≤ 20)
+  evidence: Evidence;   // combined strength of the evidence behind this estimate
   displayLevel: DisplayLevel;
   annualPrefix: string;
   belowDetection: boolean;
@@ -81,63 +87,73 @@ const SYNDROME_BASELINES: Record<Syndrome, SyndromeBaseline> = {
     rate: 0.10,
     label: 'Self-limited epilepsy syndrome',
     description: 'SeLECTS, CAE, JAE, Panayiotopoulos, etc. Excellent prognosis. SUDEP is rare but not zero — cases have been documented in SeLECTS (Verducci 2020 NA SUDEP Registry). With all favorable factors, raw computation falls below the literature\'s ability to resolve, displayed as ≤0.05 or <0.01 per 1000py.',
-    source: 'Tomson 2025; NA SUDEP Registry'
+    source: 'Tomson 2025; NA SUDEP Registry',
+    evidence: 'moderate'
   },
   newonset: {
     rate: 0.20,
     label: 'New-onset / single seizure',
     description: 'Uncomplicated, single unprovoked seizure or early in epilepsy course. Berg 2013 4-cohort study: 0.09/1000py for uncomplicated childhood epilepsy.',
-    source: 'Berg 2013 Pediatrics'
+    source: 'Berg 2013 Pediatrics',
+    evidence: 'strong'
   },
   controlled: {
     rate: 0.40,
     label: 'Controlled epilepsy (general pediatric)',
     description: 'General pediatric epilepsy mixed cohorts. AAN/AES 2017 averaged 0.22/1000py; modern capture-recapture data (Donner 2018) found 1.11/1000py — the AAN figure may underestimate. Baseline calibrated to give ~0.2/1000py with typical "controlled" features (rare GTC, supervised, adherent).',
-    source: 'AAN/AES 2017; Donner 2018'
+    source: 'AAN/AES 2017; Donner 2018',
+    evidence: 'strong'
   },
   gefs_mild: {
     rate: 0.30,
     label: 'GEFS+ / mild genetic epilepsy (normal intelligence)',
     description: 'Genetic epilepsy with febrile seizures plus and related mild SCN1A-spectrum phenotypes with normal cognition. SUDEP is documented but rare and far below Dravet (GeneReviews "SCN1A Seizure Disorders"; systematic review PMC8739186). Baseline set just below general controlled epilepsy (0.40): a genetic epilepsy with afebrile GTCS carries at least general-epilepsy-level SUDEP risk, not less. The gene is unknown or non-SCN1A here; selecting SCN1A adds its ×1.4 multiplier and 1.0/1000py floor.',
-    source: 'GeneReviews SCN1A; Frontiers 2021 (PMC8739186)'
+    source: 'GeneReviews SCN1A; Frontiers 2021 (PMC8739186)',
+    evidence: 'moderate'
   },
   focal_dre: {
     rate: 1.20,
     label: 'Drug-resistant focal epilepsy',
     description: 'Pediatric DRE. Donner 2018 and Keller 2018 capture-recapture rates ~1.1–1.5/1000py in childhood DRE cohorts.',
-    source: 'Donner 2018, Keller 2018 Neurology'
+    source: 'Donner 2018, Keller 2018 Neurology',
+    evidence: 'strong'
   },
   gen_dre: {
     rate: 1.20,
     label: 'Drug-resistant generalized epilepsy',
     description: 'Generalized DRE in pediatric population. Slightly higher GTCS burden than focal DRE; the multiplier model captures this through GTCS frequency.',
-    source: 'Donner 2018, Keller 2018'
+    source: 'Donner 2018, Keller 2018',
+    evidence: 'strong'
   },
   other_dee: {
     rate: 0.80,
     label: 'Other genetic DEE (non-Dravet, non-LGS)',
     description: 'Mixed genetic DEEs overall (Donnan 2023). In that study, SUDEP occurred only in SCN1A, SCN2A, SCN8A, and STXBP1 — not in SYNGAP1, NEXMIF, PCDH19, CHD2, GRIN2A, KCNT1, KCNQ2, or Angelman. Apply gene-specific modifier if known.',
-    source: 'Donnan 2023 Neurology'
+    source: 'Donnan 2023 Neurology',
+    evidence: 'moderate'
   },
   severe_dee: {
     rate: 1.90,
     label: 'Severe early-infantile / non-Dravet DEE (e.g., non-Dravet SCN1A-type)',
     description: 'Severe non-Dravet developmental and epileptic encephalopathy — e.g., the gain-of-function early-infantile SCN1A entity (neonatal onset, arthrogryposis, hyperkinetic movement disorder, profound impairment; Sadleir/Berecki, Brain 2022). Placed marginally above Dravet: Donnan 2023 found a higher SUDEP PROPORTION in non-Dravet SCN1A DEE (3/15, 20%) than Dravet (12/203, 5.9%), but this is a small-sample proportion, not an incidence rate, and the authors caution against over-interpretation. The +0.10 over Dravet encodes that prior conservatively.',
     source: 'Donnan 2023 (PMID 36750385); Sadleir/Berecki Brain 2022',
-    floor: 2.5
+    floor: 2.5,
+    evidence: 'moderate'
   },
   lgs: {
     rate: 1.20,
     label: 'Lennox-Gastaut syndrome',
     description: 'High mortality syndrome. Sullivan 2024 systematic review: total mortality 6.12/1000py; SUDEP-specific rate is lower (much of the mortality is status epilepticus, aspiration pneumonia, injuries). Calibrated for SUDEP specifically; typical LGS patient with frequent GTCS comes out higher.',
-    source: 'Sullivan 2024 Epilepsia'
+    source: 'Sullivan 2024 Epilepsia',
+    evidence: 'moderate'
   },
   dravet: {
     rate: 1.80,
     label: 'Dravet syndrome (SCN1A or clinical)',
     description: 'Highest documented syndrome-specific SUDEP rate. Cooper 2016 reported 9.3/1000py (95% CI 4.5–19.5); Donnan 2023 refined to 4.4/1000py with broader phenotypic spectrum (95% CI 2.3–7.8). Baseline calibrated so that typical Dravet (frequent nocturnal GTCS, supervised) produces ~4–5/1000py. 79% of Dravet SUDEP occurs before age 18.',
     source: 'Cooper 2016, Donnan 2023',
-    floor: 2.3
+    floor: 2.3,
+    evidence: 'strong'
   }
 };
 
@@ -161,68 +177,42 @@ const GENE_TRUMP_PHENOTYPES = new Set<Syndrome>(['dravet', 'severe_dee']);
 // joining the syndrome-floor logic so favorable modifiers can't drag a known-
 // pathogenic gene implausibly low. ALL gene multipliers are suppressed on
 // GENE_TRUMP_PHENOTYPES (the phenotype already encodes the channelopathy).
+// Collapsed to honest buckets. We have NO direct pediatric SUDEP incidence rate
+// for any gene except SCN1A (via Dravet cohorts) — Donnan 2023 reports small-n
+// PROPORTIONS, not rates — so distinguishing SCN2A from SCN8A from STXBP1 with
+// separate point multipliers would be false precision. Each non-SCN1A bucket
+// therefore carries one multiplier and a WIDE confidence interval (evidence:
+// 'limited'). SCN1A is kept distinct: strongest modifier, sets a floor, evidence
+// 'moderate' (the Dravet rate is well-characterized, but applying it across the
+// SCN1A spectrum onto a non-Dravet phenotype is inferential).
 const GENETIC_MODIFIERS: Record<GeneticEtiology, GeneticModifier> = {
   none: { mult: 1.0, note: '' },
   scn1a: {
     mult: 1.4,
     floorRate: 1.0,
-    note: 'SCN1A spans the full severity spectrum (febrile seizures -> GEFS+ -> Dravet -> severe DEE; GeneReviews) and is never benign. It is the STRONGEST genetic modifier in this tool: on any phenotype that does not already assume it, SCN1A applies a 1.4× channelopathy multiplier — a pathogenic variant raises SUDEP risk over the same phenotype without it — calibrated to stay just below the Dravet phenotype (1.20×1.4 = 1.68 < 1.80), preserving the severity ordering. Every other gene is capped at or below this. SCN1A ALSO sets a 1.0/1000py floor on the FINAL estimate, so a mild SCN1A phenotype with favorable modifiers still reads ≥1.0 (Moderate, ~¼ of Dravet) rather than slipping toward general-population levels. On Dravet and severe non-Dravet DEE the multiplier is suppressed — that severity is already in the phenotype baseline, so apply the gene by choosing the phenotype, not by double-counting. Seizure-freedom (the dominant protective factor) REDUCES the floor (×0.65) rather than eliminating it — the channelopathy substrate persists.',
-    cardiacFlag: false
+    evidence: 'moderate',
+    note: 'SCN1A spans the full severity spectrum (febrile seizures → GEFS+ → Dravet → severe DEE; GeneReviews) and is never benign. It is the STRONGEST genetic modifier: on any phenotype that does not already assume it, SCN1A applies a ×1.4 channelopathy multiplier (capped to stay just below the Dravet phenotype, 1.20×1.4 < 1.80) AND sets a 1.0/1000py floor, so a mild SCN1A phenotype with favorable modifiers still reads ≥1.0. On Dravet / severe-DEE the multiplier is suppressed (the phenotype already encodes it). Seizure-freedom reduces the floor (×0.65) rather than voiding it.'
   },
-  scn2a: {
+  sudep_gene: {
     mult: 1.3,
-    note: 'SCN2A DEE — SUDEP confirmed as a risk in Donnan 2023 (1/15 patients). SCN2A also has cardiac sodium channel expression with reported arrhythmia overlap. As an established SUDEP-associated channelopathy it adds risk on a non-DEE phenotype but is capped below SCN1A; if it is presenting as a severe DEE, select that phenotype (which then trumps the gene).',
-    cardiacFlag: false
+    evidence: 'limited',
+    note: 'Established SUDEP-associated gene — SCN2A, SCN8A, STXBP1, KCNT1, Dup15q, DEPDC5. Each has documented SUDEP cases (Donnan 2023; Veeramah 2012; Kuchenbuch 2019; Nascimento 2015) but no direct pediatric incidence rate, so they share one elevated-risk class with a wide interval rather than pseudo-distinct numbers. Capped below SCN1A; for a severe DEE presentation, select that phenotype (which trumps the gene).'
   },
-  scn8a: {
+  cardiac: {
     mult: 1.3,
-    note: 'SCN8A-DEE — SUDEP confirmed as a risk in Donnan 2023 (2/22 patients = 9%). The original SCN8A epilepsy proband (Veeramah 2012) died of SUDEP. Among the strongest non-SCN1A SUDEP signals; capped just below SCN1A on non-DEE phenotypes, and select severe-DEE for a severe SCN8A presentation (which trumps the gene).',
-    cardiacFlag: false
-  },
-  stxbp1: {
-    mult: 1.3,
-    note: 'STXBP1 encephalopathy — SUDEP confirmed risk per Donnan 2023 (1/17 patients). One of only 4 DEE genes with SUDEP in that cohort. Capped below SCN1A; severe presentations are captured by selecting a DEE phenotype.',
-    cardiacFlag: false
-  },
-  kcnq1_h2: {
-    mult: 1.3,
-    note: 'KCNQ1 or KCNH2 — primary long QT syndrome genes with epilepsy as a recognized phenotype. Auerbach 2013, Anderson 2014: ~30% of LQTS patients have a seizure history. SCD risk is partly cardiac in origin — that additive arrhythmic risk is surfaced through the cardiac-evaluation flag rather than a larger multiplier, so the multiplier itself is capped at/below SCN1A.',
-    cardiacFlag: true
-  },
-  scn5a: {
-    mult: 1.3,
-    note: 'SCN5A — Brugada and LQT3 syndrome gene with epilepsy overlap. Bagnall 2016: pathogenic SCN5A variants in postmortem SUDEP cohorts. Multiplier capped at/below SCN1A; the arrhythmic component is flagged for cardiac evaluation.',
-    cardiacFlag: true
-  },
-  scn1b: {
-    mult: 1.3,
-    note: 'SCN1B — beta-1 subunit of sodium channel, GEFS+ spectrum, also Brugada/LQT overlap. Pathogenic variants identified in SUDEP postmortem studies. Capped at/below SCN1A; cardiac evaluation flagged.',
-    cardiacFlag: true
-  },
-  depdc5: {
-    mult: 1.3,
-    note: 'DEPDC5 (mTOR pathway, familial focal epilepsy) — Nascimento 2015 reported two definite SUDEP cases within a single family; familial clustering pattern. Pairs naturally with the focal-DRE phenotype; capped at/below SCN1A.',
-    cardiacFlag: false
-  },
-  dup15q: {
-    mult: 1.3,
-    note: 'Dup15q (15q11.2-q13.1 maternal duplication) — Friedman 2016 case series suggested SUDEP rate possibly approaching Dravet. Among highest non-Dravet rates documented; the multiplier is capped below SCN1A, and a Dravet-level presentation should be entered via a DEE phenotype.',
-    cardiacFlag: false
-  },
-  kcnt1: {
-    mult: 1.3,
-    note: 'KCNT1 (EIMFS, ADNFLE phenotypes) — Kuchenbuch 2019 reported 17% SUDEP in KCNT1-EIMFS cohort; Donnan 2023 found none in their smaller sample. EIMFS is a DEE — enter it as such (which trumps the gene); on a non-DEE phenotype the multiplier is capped below SCN1A.',
-    cardiacFlag: false
+    cardiacFlag: true,
+    evidence: 'limited',
+    note: 'Cardiac-overlap channelopathy — KCNQ1/KCNH2 (long QT), SCN5A (Brugada/LQT3), SCN1B. These cause both epilepsy and primary arrhythmia syndromes (~30% of LQTS patients report seizures; Anderson 2014, Bagnall 2016). The death mechanism may be partly cardiac. That additive arrhythmic risk is surfaced through the cardiac-evaluation flag, NOT a larger multiplier — so the SUDEP multiplier is capped like other genes, with a wide interval.'
   },
   other_chan: {
     mult: 1.25,
-    note: 'Other channelopathy (KCNB1, GABRB3, CACNA1A, etc.) — variable evidence; channelopathies broadly carry elevated SUDEP signal per postmortem genetic studies. A generic channelopathy sits just below the named established-SUDEP genes.',
-    cardiacFlag: false
+    evidence: 'limited',
+    note: 'Other channelopathy with no established SUDEP data (KCNB1, GABRB3, CACNA1A, etc.). Channelopathies broadly carry an elevated postmortem SUDEP signal, but without direct data this sits just below the established-SUDEP class, with a wide interval.'
   },
   other_ge: {
     mult: 1.15,
-    note: 'Other genetic etiology not classified as channelopathy or established SUDEP gene. Modest baseline adjustment for unmeasured genetic predisposition — the weakest genetic modifier.',
-    cardiacFlag: false
+    evidence: 'limited',
+    note: 'Other genetic etiology, not a channelopathy or established SUDEP gene. Modest adjustment for unmeasured predisposition — the weakest genetic modifier, wide interval.'
   }
 };
 
@@ -322,6 +312,17 @@ const SAT_ASYMPTOTE = 15.0;
 // seizure-freedom REDUCES the applicable floor by this factor rather than letting
 // the estimate escape the floor entirely. Dravet sz-free → 0.65×2.3 = 1.50.
 const REMISSION_FACTOR = 0.65;
+// Confidence-interval model. Each input carries an evidence tier mapping to a
+// geometric uncertainty factor (the rate is divided/multiplied by it). Strong
+// (direct pediatric cohorts) ≈ ÷×1.8 — roughly Donnan's Dravet CI (2.3–7.8 around
+// 4.4). Moderate ≈ ÷×2.5; limited (no direct rate data) ≈ ÷×3.5. The syndrome and
+// (applied) gene factors combine in log-quadrature, so two uncertain inputs widen
+// the band. Bounds clamp to [0.01, 20]; 20 ≈ Cooper's Dravet CI upper (19.5) and
+// Tomson's highest stratum (18.1) — the most extreme credible rates, so a wide or
+// near-ceiling interval naturally reaches the "literature has reported ~18" range.
+const EVIDENCE_FACTOR: Record<Evidence, number> = { strong: 1.8, moderate: 2.5, limited: 3.5 };
+const CI_MIN = 0.01;
+const CI_MAX = 20;
 
 export function calcPedSUDEP(inputs: PedSUDEPInputs): PedSUDEPResult {
   const {
@@ -427,6 +428,17 @@ export function calcPedSUDEP(inputs: PedSUDEPInputs): PedSUDEPResult {
   // (the "controlled epilepsy" baseline; reference the table so it can't drift).
   const relativeToControlled = displayRate / SYNDROME_BASELINES.controlled.rate;
 
+  // Confidence interval from evidence tiers (syndrome + applied gene, combined in
+  // log-quadrature so two uncertain inputs widen the band). The gene contributes
+  // only when it actually applies — selected and not trumped by Dravet/severe-DEE.
+  const syndFactor = EVIDENCE_FACTOR[synd.evidence];
+  const geneApplies = geneticEtiology !== 'none' && !GENE_TRUMP_PHENOTYPES.has(syndrome);
+  const geneFactor = geneApplies && gen.evidence ? EVIDENCE_FACTOR[gen.evidence] : 1.0;
+  const ciFactor = Math.exp(Math.sqrt(Math.log(syndFactor) ** 2 + Math.log(geneFactor) ** 2));
+  const ciLow = Math.max(CI_MIN, displayRate / ciFactor);
+  const ciHigh = Math.min(CI_MAX, displayRate * ciFactor);
+  const evidence: Evidence = ciFactor <= 2.0 ? 'strong' : ciFactor <= 3.2 ? 'moderate' : 'limited';
+
   // For display, the UI should use `displayString` (and prefix annual/10-yr
   // percentages with `annualPrefix`). `rawRate` is the pre-saturation value
   // (after any syndrome floor); `displayRate` is the saturated value, snapped
@@ -449,6 +461,9 @@ export function calcPedSUDEP(inputs: PedSUDEPInputs): PedSUDEPResult {
     rawRate: raw,
     displayRate,
     displayString,
+    ciLow,
+    ciHigh,
+    evidence,
     displayLevel,
     annualPrefix,
     belowDetection: displayLevel === 'detection_limit' || displayLevel === 'lowest_plausible',

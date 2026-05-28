@@ -142,6 +142,20 @@ function Select<T extends string>({ value, onChange, options }: {
   );
 }
 
+// Honest display: ~2 significant figures (no false precision like "4.59").
+// Uncertainty is carried by the plausible range + evidence chip, not by decimals.
+function fmtRate(x: number): string {
+  if (x >= 10) return String(Math.round(x));
+  if (x >= 1) return (Math.round(x * 10) / 10).toString();
+  if (x >= 0.1) return (Math.round(x * 100) / 100).toString();
+  return (Math.round(x * 1000) / 1000).toString();
+}
+const EVIDENCE_LABEL: Record<'strong' | 'moderate' | 'limited', { text: string; cls: string }> = {
+  strong:   { text: 'strong evidence',             cls: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-200' },
+  moderate: { text: 'moderate evidence',           cls: 'bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-200' },
+  limited:  { text: 'limited evidence · wide range', cls: 'bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-200' },
+};
+
 // ============================================================================
 // MAIN COMPONENT
 // ============================================================================
@@ -289,16 +303,9 @@ export default function SUDEPRiskCalculator() {
                   options={[
                     ['none', 'None identified / not tested'],
                     ['scn1a', 'SCN1A'],
-                    ['scn2a', 'SCN2A-DEE'],
-                    ['scn8a', 'SCN8A-DEE'],
-                    ['stxbp1', 'STXBP1-DEE'],
-                    ['kcnq1_h2', 'KCNQ1 or KCNH2 (LQTS overlap)'],
-                    ['scn5a', 'SCN5A (Brugada / LQT3 overlap)'],
-                    ['scn1b', 'SCN1B (GEFS+/Brugada overlap)'],
-                    ['depdc5', 'DEPDC5'],
-                    ['dup15q', 'Dup15q (15q11.2-q13.1)'],
-                    ['kcnt1', 'KCNT1 (EIMFS, ADNFLE)'],
-                    ['other_chan', 'Other channelopathy (KCNB1, GABRB3, etc.)'],
+                    ['sudep_gene', 'Established SUDEP gene (SCN2A, SCN8A, STXBP1, KCNT1, Dup15q, DEPDC5)'],
+                    ['cardiac', 'Cardiac-overlap channelopathy (KCNQ1/KCNH2, SCN5A, SCN1B)'],
+                    ['other_chan', 'Other channelopathy (KCNB1, GABRB3, CACNA1A, etc.)'],
                     ['other_ge', 'Other genetic etiology']
                   ]}
                 />
@@ -388,8 +395,18 @@ export default function SUDEPRiskCalculator() {
               }`}>
                 <div className="text-xs uppercase tracking-wide opacity-75">{pResult.tier} risk</div>
                 <div className="text-3xl font-semibold mt-1">
-                  {pResult.displayString}
+                  {pResult.belowDetection ? pResult.displayString : `≈${fmtRate(pResult.displayRate)}`}
                   <span className="text-base font-normal opacity-75"> per 1000 person-years</span>
+                </div>
+                {!pResult.belowDetection && (
+                  <div className="text-sm mt-1 opacity-90">
+                    plausible range {fmtRate(pResult.ciLow)}–{fmtRate(pResult.ciHigh)} per 1000py
+                  </div>
+                )}
+                <div className="mt-2">
+                  <span className={`inline-block text-[11px] font-semibold uppercase tracking-wide px-2 py-0.5 rounded ${EVIDENCE_LABEL[pResult.evidence].cls}`}>
+                    {EVIDENCE_LABEL[pResult.evidence].text}
+                  </span>
                 </div>
                 <div className="text-sm mt-2 opacity-90 space-y-0.5">
                   <div>≈ {pResult.annualPrefix}{pResult.annualPercent.toFixed(3)}% annual risk</div>

@@ -20,10 +20,10 @@ describe('calcPedSUDEP — calibration anchors', () => {
     expect(r.displayString).toBe('4.59');
     expect(r.tier).toBe('High');
   });
-  it('SCN8A on the non-trumped other-DEE category applies the ×1.3 channelopathy multiplier', () => {
-    const none  = calcPedSUDEP({ ...pedBase, syndrome: 'other_dee', gtcFrequency: 'frequent', nocturnal: true, duration: 'medium' });
-    const scn8a = calcPedSUDEP({ ...pedBase, syndrome: 'other_dee', geneticEtiology: 'scn8a', gtcFrequency: 'frequent', nocturnal: true, duration: 'medium' });
-    expect(scn8a.rawRate).toBeCloseTo(none.rawRate * 1.3, 5);
+  it('a SUDEP-associated gene on the non-trumped other-DEE category applies the ×1.3 multiplier', () => {
+    const none = calcPedSUDEP({ ...pedBase, syndrome: 'other_dee', gtcFrequency: 'frequent', nocturnal: true, duration: 'medium' });
+    const gene = calcPedSUDEP({ ...pedBase, syndrome: 'other_dee', geneticEtiology: 'sudep_gene', gtcFrequency: 'frequent', nocturnal: true, duration: 'medium' });
+    expect(gene.rawRate).toBeCloseTo(none.rawRate * 1.3, 5);
   });
 });
 
@@ -76,14 +76,14 @@ describe('calcPedSUDEP — modifiers', () => {
     expect(scn1a.geneticFloorApplied).toBe(true);
     expect(scn1a.geneticFloorBinding).toBe(false);
   });
-  it('cardiac-overlap gene (KCNQ1/H2) multiplies a non-DEE phenotype by ×1.3 (capped ≤ SCN1A) and sets cardiacFlag', () => {
+  it('cardiac-overlap bucket multiplies a non-DEE phenotype by ×1.3 (capped ≤ SCN1A) and sets cardiacFlag', () => {
     const none = calcPedSUDEP({ ...pedBase, syndrome: 'focal_dre', gtcFrequency: 'frequent', nocturnal: true });
-    const cardiac = calcPedSUDEP({ ...pedBase, syndrome: 'focal_dre', gtcFrequency: 'frequent', nocturnal: true, geneticEtiology: 'kcnq1_h2' });
+    const cardiac = calcPedSUDEP({ ...pedBase, syndrome: 'focal_dre', gtcFrequency: 'frequent', nocturnal: true, geneticEtiology: 'cardiac' });
     expect(cardiac.rawRate).toBeCloseTo(none.rawRate * 1.3, 5);
     expect(cardiac.cardiacFlag).toBe(true);
   });
   it('cardiacFlag is false for non-cardiac genes', () => {
-    expect(calcPedSUDEP({ ...pedBase, geneticEtiology: 'scn8a' }).cardiacFlag).toBe(false);
+    expect(calcPedSUDEP({ ...pedBase, geneticEtiology: 'sudep_gene' }).cardiacFlag).toBe(false);
   });
 });
 
@@ -349,7 +349,7 @@ describe('calcPedSUDEP — SCN1A multiplies non-DEE phenotypes (×1.4), trumped 
 
 describe('calcPedSUDEP — genetic ordering: SCN1A strongest, cardiac capped, Dravet/severe-DEE trump', () => {
   const std = { gtcFrequency: 'frequent', nocturnal: true, supervision: 'partial' } as const;
-  const otherGenes = ['scn2a','scn8a','stxbp1','kcnq1_h2','scn5a','scn1b','depdc5','dup15q','kcnt1','other_chan','other_ge'] as const;
+  const otherGenes = ['sudep_gene','cardiac','other_chan','other_ge'] as const;
   it('on a non-DEE phenotype, no single gene exceeds SCN1A', () => {
     const scn1a = calcPedSUDEP({ ...pedBase, syndrome: 'focal_dre', geneticEtiology: 'scn1a', ...std }).rawRate;
     for (const g of otherGenes) {
@@ -359,19 +359,17 @@ describe('calcPedSUDEP — genetic ordering: SCN1A strongest, cardiac capped, Dr
   });
   it('a non-SCN1A channelopathy still raises a non-DEE phenotype (×1.3), at/below SCN1A', () => {
     const none  = calcPedSUDEP({ ...pedBase, syndrome: 'focal_dre', ...std });
-    const scn8a = calcPedSUDEP({ ...pedBase, syndrome: 'focal_dre', geneticEtiology: 'scn8a', ...std });
+    const gene  = calcPedSUDEP({ ...pedBase, syndrome: 'focal_dre', geneticEtiology: 'sudep_gene', ...std });
     const scn1a = calcPedSUDEP({ ...pedBase, syndrome: 'focal_dre', geneticEtiology: 'scn1a', ...std });
-    expect(scn8a.rawRate).toBeGreaterThan(none.rawRate);
-    expect(scn8a.rawRate).toBeCloseTo(none.rawRate * 1.3, 5);
-    expect(scn8a.rawRate).toBeLessThanOrEqual(scn1a.rawRate);
+    expect(gene.rawRate).toBeGreaterThan(none.rawRate);
+    expect(gene.rawRate).toBeCloseTo(none.rawRate * 1.3, 5);
+    expect(gene.rawRate).toBeLessThanOrEqual(scn1a.rawRate);
   });
   it('cardiac-overlap genes are capped at/below SCN1A but still raise the cardiac-eval flag', () => {
     const scn1a = calcPedSUDEP({ ...pedBase, syndrome: 'focal_dre', geneticEtiology: 'scn1a', ...std }).rawRate;
-    for (const g of ['kcnq1_h2','scn5a','scn1b'] as const) {
-      const r = calcPedSUDEP({ ...pedBase, syndrome: 'focal_dre', geneticEtiology: g, ...std });
-      expect(r.rawRate).toBeLessThanOrEqual(scn1a + 1e-9);
-      expect(r.cardiacFlag).toBe(true);
-    }
+    const r = calcPedSUDEP({ ...pedBase, syndrome: 'focal_dre', geneticEtiology: 'cardiac', ...std });
+    expect(r.rawRate).toBeLessThanOrEqual(scn1a + 1e-9);
+    expect(r.cardiacFlag).toBe(true);
   });
   it('Dravet trumps every gene — adding any etiology leaves the Dravet rate unchanged', () => {
     const dravet = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', ...std }).rawRate;
@@ -381,7 +379,7 @@ describe('calcPedSUDEP — genetic ordering: SCN1A strongest, cardiac capped, Dr
   });
   it('a cardiac gene on Dravet leaves the rate unchanged but still flags cardiac eval', () => {
     const dravet = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', ...std });
-    const withCardiac = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', geneticEtiology: 'kcnq1_h2', ...std });
+    const withCardiac = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', geneticEtiology: 'cardiac', ...std });
     expect(withCardiac.rawRate).toBeCloseTo(dravet.rawRate, 5);
     expect(withCardiac.cardiacFlag).toBe(true);
   });
@@ -421,5 +419,36 @@ describe('calcPedSUDEP — calibration anchors are reproduced (regression guard)
     const d = disp({ syndrome: 'dravet', gtcFrequency: 'very_frequent', nocturnal: true, supervision: 'alone', adherence: 'poor', duration: 'long' });
     expect(d).toBeLessThan(15);
     expect(d).toBeGreaterThan(14.5);
+  });
+});
+
+describe('calcPedSUDEP — confidence interval & evidence strength', () => {
+  it('strong-evidence syndrome (Dravet) gives a tight ÷×1.8 band and "strong" label', () => {
+    const r = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', gtcFrequency: 'frequent', nocturnal: true, supervision: 'shared', duration: 'medium' });
+    expect(r.evidence).toBe('strong');
+    expect(r.ciLow / r.displayRate).toBeCloseTo(1 / 1.8, 2);
+    expect(r.ciHigh / r.displayRate).toBeCloseTo(1.8, 2);
+  });
+  it('a limited-evidence gene widens the band and downgrades the evidence label', () => {
+    const strong   = calcPedSUDEP({ ...pedBase, syndrome: 'focal_dre', gtcFrequency: 'frequent', nocturnal: true });
+    const withGene = calcPedSUDEP({ ...pedBase, syndrome: 'focal_dre', geneticEtiology: 'sudep_gene', gtcFrequency: 'frequent', nocturnal: true });
+    expect(withGene.ciHigh / withGene.ciLow).toBeGreaterThan(strong.ciHigh / strong.ciLow);
+    expect(withGene.evidence).toBe('limited');
+  });
+  it('a trumped gene does NOT widen the band — the gene does not contribute on Dravet', () => {
+    const plain    = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', gtcFrequency: 'frequent', nocturnal: true });
+    const withGene = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', geneticEtiology: 'cardiac', gtcFrequency: 'frequent', nocturnal: true });
+    expect(withGene.ciLow).toBeCloseTo(plain.ciLow, 5);
+    expect(withGene.ciHigh).toBeCloseTo(plain.ciHigh, 5);
+    expect(withGene.evidence).toBe(plain.evidence);
+  });
+  it('the upper bound clamps at 20 (≈ Cooper/Tomson extreme) for max-stacked profiles', () => {
+    const max = calcPedSUDEP({ ...pedBase, syndrome: 'dravet', gtcFrequency: 'very_frequent', nocturnal: true, supervision: 'alone', adherence: 'poor', duration: 'long' });
+    expect(max.ciHigh).toBeLessThanOrEqual(20);
+    expect(max.ciHigh).toBeGreaterThan(15);   // band extends above the point ceiling toward ~18-20
+  });
+  it('the lower bound never drops below 0.01', () => {
+    const r = calcPedSUDEP({ ...pedBase, syndrome: 'selflimited', gtcFrequency: 'never', supervision: 'shared' });
+    expect(r.ciLow).toBeGreaterThanOrEqual(0.01);
   });
 });
