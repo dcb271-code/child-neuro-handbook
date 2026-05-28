@@ -10,6 +10,7 @@ import ImageLightbox from '@/components/ImageLightbox';
 import ASMWithdrawalCalculator from '@/components/asm-withdrawal/ASMWithdrawalCalculator';
 import SeizureRiskCalculators from '@/components/seizure-risk/SeizureRiskCalculators';
 import SUDEPRiskCalculator from '@/components/sudep-risk/SUDEPRiskCalculator';
+import NeonatalHIECalculator from '@/components/hie/NeonatalHIECalculator';
 
 type TocEntry = { level: number; text: string; id: string };
 
@@ -66,6 +67,9 @@ const SECTION_WIDGETS: Record<string, { id: string; Component: ComponentType }[]
     { id: 'asm-withdrawal-calculator', Component: ASMWithdrawalCalculator },
     { id: 'seizure-risk-calculators', Component: SeizureRiskCalculators },
     { id: 'sudep-risk-calculator', Component: SUDEPRiskCalculator },
+  ],
+  stroke: [
+    { id: 'hie-calculator', Component: NeonatalHIECalculator },
   ],
 };
 
