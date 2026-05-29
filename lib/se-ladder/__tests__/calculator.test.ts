@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { mgFor, calcDiastatPR } from '../calculator';
+import { recommendStabilization } from '../calculator';
 
 describe('mgFor — dose math with cap', () => {
   it('returns mgPerKg × weightKg when below cap', () => {
@@ -28,5 +29,13 @@ describe('calcDiastatPR — institutional per-age chart', () => {
   });
   it('≥12 y → 0.2 mg/kg', () => {
     expect(calcDiastatPR('ge_12y', 60)).toBe(12);
+  });
+});
+
+describe('recommendStabilization — Phase 1 (0–5 min)', () => {
+  it('returns the 5 checklist items in fixed order', () => {
+    const items = recommendStabilization();
+    expect(items.map(i => i.id)).toEqual(['abc','glucose','iv_io','labs','asm_levels']);
+    expect(items).toHaveLength(5);
   });
 });

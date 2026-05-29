@@ -48,3 +48,15 @@ export function calcDiastatPR(ageBand: AgeBand, weightKg: number): number {
   if (ageBand === '6-11y')  return Math.round(0.3 * weightKg * 10) / 10;
   return Math.round(0.2 * weightKg * 10) / 10;     // ge_12y
 }
+
+export type StabilizationItem = { id: string; label: string; note?: string };
+
+export function recommendStabilization(): StabilizationItem[] {
+  return [
+    { id: 'abc',        label: 'ABCs — position airway, supplemental O₂' },
+    { id: 'glucose',    label: 'Check glucose; treat if <60 mg/dL' },
+    { id: 'iv_io',      label: 'Get IV or IO access' },
+    { id: 'labs',       label: 'Send basic labs (CBC, BMP, ammonia, lactate)', note: 'Consider toxicology, blood gas as indicated' },
+    { id: 'asm_levels', label: 'Send ASM levels if on chronic ASMs' },
+  ];
+}
