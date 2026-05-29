@@ -83,3 +83,32 @@ describe('recommendFirstLine — Phase 2 (5–20 min)', () => {
     expect(r.find(d => d.drug === 'diazepam' && d.route === 'PR')!.mg).toBe(7.5);
   });
 });
+
+import { recommendSecondLine } from '../calculator';
+
+describe('recommendSecondLine — Phase 3 (20–40 min)', () => {
+  it('default order is levetiracetam → fosphenytoin → phenobarbital → valproate', () => {
+    const r = recommendSecondLine({ ...pBase, ageBand: '6-11y' });   // ≥6 y to avoid <2y valproate caution
+    expect(r.map(d => d.drug)).toEqual(['levetiracetam','fosphenytoin','phenobarbital','valproate']);
+  });
+  it('calculates loads against weight with caps (60 mg/kg levetiracetam, max 4500)', () => {
+    const r = recommendSecondLine({ ...pBase, weightKg: 25, ageBand: '6-11y' });
+    const lev = r.find(d => d.drug === 'levetiracetam')!;
+    expect(lev.mg).toBe(1500);      // 60 × 25
+    expect(lev.hitCap).toBe(false);
+  });
+  it('caps fosphenytoin at 1500 PE for heavy patients', () => {
+    const r = recommendSecondLine({ ...pBase, weightKg: 80, ageBand: 'ge_12y' });
+    const fos = r.find(d => d.drug === 'fosphenytoin')!;
+    expect(fos.mg).toBe(1500);
+    expect(fos.hitCap).toBe(true);
+  });
+  it('caps phenobarbital at 1000 mg', () => {
+    const r = recommendSecondLine({ ...pBase, weightKg: 60, ageBand: 'ge_12y' });
+    expect(r.find(d => d.drug === 'phenobarbital')!.mg).toBe(1000);
+  });
+  it('caps valproate at 3000 mg', () => {
+    const r = recommendSecondLine({ ...pBase, weightKg: 80, ageBand: 'ge_12y' });
+    expect(r.find(d => d.drug === 'valproate')!.mg).toBe(3000);
+  });
+});

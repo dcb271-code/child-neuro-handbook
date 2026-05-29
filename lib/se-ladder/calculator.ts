@@ -101,3 +101,36 @@ export function recommendFirstLine(p: PatientInputs): DrugRecommendation[] {
   });
   return out;
 }
+
+type SecondLineEntry = {
+  drug: string; mgPerKg: number; maxCap: number; infusionTime: string;
+  baseCautions?: CautionChip[];
+};
+
+const SECOND_LINE_TABLE: SecondLineEntry[] = [
+  { drug: 'levetiracetam', mgPerKg: 60, maxCap: 4500, infusionTime: 'over 10–15 min',
+    baseCautions: [{ severity: 'note', text: 'Safe even if on home levetiracetam' }] },
+  { drug: 'fosphenytoin',  mgPerKg: 20, maxCap: 1500, infusionTime: 'over 10–15 min',
+    baseCautions: [{ severity: 'note', text: 'Consider extra 10 mg PE/kg if no response after 10 min' }] },
+  { drug: 'phenobarbital', mgPerKg: 20, maxCap: 1000, infusionTime: '1–2 mg/kg/min',
+    baseCautions: [{ severity: 'caution', text: 'Respiratory depression and hypotension' }] },
+  { drug: 'valproate',     mgPerKg: 40, maxCap: 3000, infusionTime: 'up to ~20 mg/min',
+    baseCautions: [] },
+];
+
+export function recommendSecondLine(p: PatientInputs): DrugRecommendation[] {
+  return SECOND_LINE_TABLE.map((e, idx) => {
+    const { mg, hitCap } = mgFor(e.mgPerKg, p.weightKg, e.maxCap);
+    return {
+      drug: e.drug,
+      route: 'IV' as Route,
+      mgPerKg: e.mgPerKg,
+      mg,
+      maxCap: e.maxCap,
+      hitCap,
+      infusionTime: e.infusionTime,
+      cautions: [...(e.baseCautions ?? [])],
+      rank: idx + 1,
+    };
+  });
+}
