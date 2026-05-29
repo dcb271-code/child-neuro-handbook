@@ -112,3 +112,54 @@ describe('recommendSecondLine — Phase 3 (20–40 min)', () => {
     expect(r.find(d => d.drug === 'valproate')!.mg).toBe(3000);
   });
 });
+
+const pAdult = { ...pBase, ageBand: 'ge_12y' as const };
+
+describe('recommendSecondLine — flag filtering', () => {
+  it('suspected_dravet adds ✗ contraindicated chip to fosphenytoin', () => {
+    const r = recommendSecondLine({ ...pAdult, flags: ['suspected_dravet'] });
+    const fos = r.find(d => d.drug === 'fosphenytoin')!;
+    expect(fos.cautions.some(c => c.severity === 'contraindicated' && /Dravet/i.test(c.text))).toBe(true);
+  });
+  it('cardiac_conduction adds ✗ contraindicated chip to fosphenytoin', () => {
+    const r = recommendSecondLine({ ...pAdult, flags: ['cardiac_conduction'] });
+    const fos = r.find(d => d.drug === 'fosphenytoin')!;
+    expect(fos.cautions.some(c => c.severity === 'contraindicated' && /cardiac/i.test(c.text))).toBe(true);
+  });
+  it('polg_mito adds ✗ contraindicated chip to valproate', () => {
+    const r = recommendSecondLine({ ...pAdult, flags: ['polg_mito'] });
+    const val = r.find(d => d.drug === 'valproate')!;
+    expect(val.cautions.some(c => c.severity === 'contraindicated' && /POLG|mitochondr/i.test(c.text))).toBe(true);
+  });
+  it('age 28d-1y: valproate contraindicated by age default (POLG status unknown)', () => {
+    const r = recommendSecondLine({ ...pBase, ageBand: '28d-1y' });
+    const val = r.find(d => d.drug === 'valproate')!;
+    expect(val.cautions.some(c => c.severity === 'contraindicated' && /<2/.test(c.text))).toBe(true);
+  });
+  it('age 1-5y: valproate contraindicated by age default (POLG status unknown)', () => {
+    const r = recommendSecondLine({ ...pBase, ageBand: '1-5y' });
+    const val = r.find(d => d.drug === 'valproate')!;
+    expect(val.cautions.some(c => c.severity === 'contraindicated' && /<2/.test(c.text))).toBe(true);
+  });
+  it('age ≥6y: valproate has no age-based contraindication', () => {
+    const r = recommendSecondLine({ ...pBase, ageBand: '6-11y' });
+    const val = r.find(d => d.drug === 'valproate')!;
+    expect(val.cautions.some(c => c.severity === 'contraindicated' && /<2/.test(c.text))).toBe(false);
+  });
+  it('renal adds ⚠ caution chip to levetiracetam (still ranked)', () => {
+    const r = recommendSecondLine({ ...pAdult, flags: ['renal'] });
+    const lev = r.find(d => d.drug === 'levetiracetam')!;
+    expect(lev.cautions.some(c => c.severity === 'caution' && /renal|reduction/i.test(c.text))).toBe(true);
+    expect(r.indexOf(lev)).toBe(0);    // still first in default order
+  });
+  it('on_home_phenobarb adds note + de-ranks phenobarbital', () => {
+    const r = recommendSecondLine({ ...pAdult, flags: ['on_home_phenobarb'] });
+    const pb = r.find(d => d.drug === 'phenobarbital')!;
+    expect(pb.cautions.some(c => /home|already/i.test(c.text))).toBe(true);
+  });
+  it('flags stack: dravet + polg + cardiac + renal does not crash and stacks chips', () => {
+    const r = recommendSecondLine({ ...pAdult, flags: ['suspected_dravet','polg_mito','cardiac_conduction','renal'] });
+    expect(r).toHaveLength(4);
+    expect(r.find(d => d.drug === 'fosphenytoin')!.cautions.filter(c => c.severity === 'contraindicated').length).toBeGreaterThanOrEqual(2);
+  });
+});

@@ -121,16 +121,31 @@ const SECOND_LINE_TABLE: SecondLineEntry[] = [
 export function recommendSecondLine(p: PatientInputs): DrugRecommendation[] {
   return SECOND_LINE_TABLE.map((e, idx) => {
     const { mg, hitCap } = mgFor(e.mgPerKg, p.weightKg, e.maxCap);
+    const cautions: CautionChip[] = [...(e.baseCautions ?? [])];
+
+    // Per-drug flag filters
+    if (e.drug === 'fosphenytoin') {
+      if (p.flags.includes('suspected_dravet')) cautions.push({ severity: 'contraindicated', text: 'Contraindicated: suspected Dravet — sodium-channel blockers can paradoxically worsen' });
+      if (p.flags.includes('cardiac_conduction')) cautions.push({ severity: 'contraindicated', text: 'Contraindicated: cardiac conduction disease — risk of arrhythmia' });
+    }
+    if (e.drug === 'valproate') {
+      if (p.flags.includes('polg_mito')) cautions.push({ severity: 'contraindicated', text: 'Contraindicated: known/suspected POLG or mitochondrial disease (hepatotoxicity)' });
+      if ((p.ageBand === '28d-1y' || p.ageBand === '1-5y') && !p.flags.includes('polg_mito')) {
+        cautions.push({ severity: 'contraindicated', text: 'Avoid in <2 y unless POLG status is known' });
+      }
+    }
+    if (e.drug === 'levetiracetam' && p.flags.includes('renal')) {
+      cautions.push({ severity: 'caution', text: 'Renal impairment: consider dose reduction' });
+    }
+    if (e.drug === 'phenobarbital' && p.flags.includes('on_home_phenobarb')) {
+      cautions.push({ severity: 'caution', text: 'Already on home phenobarbital — do not repeat full load' });
+    }
+
     return {
-      drug: e.drug,
-      route: 'IV' as Route,
-      mgPerKg: e.mgPerKg,
-      mg,
-      maxCap: e.maxCap,
-      hitCap,
+      drug: e.drug, route: 'IV' as Route,
+      mgPerKg: e.mgPerKg, mg, maxCap: e.maxCap, hitCap,
       infusionTime: e.infusionTime,
-      cautions: [...(e.baseCautions ?? [])],
-      rank: idx + 1,
+      cautions, rank: idx + 1,
     };
   });
 }
