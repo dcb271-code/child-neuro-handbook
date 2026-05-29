@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import {
-  calcSarnat, calcThompson, assessTHEligibility,
-  type SarnatInputs, type ThompsonInputs, type THEligibilityInputs
+  calcSarnat, assessTHEligibility,
+  type SarnatInputs, type THEligibilityInputs
 } from '../calculator';
 
 const sarnatBase: SarnatInputs = {
@@ -9,17 +9,13 @@ const sarnatBase: SarnatInputs = {
   tone: 'normal', primitiveReflexes: 'normal', autonomic: 'normal',
   seizures: false,
 };
-const thompsonBase: ThompsonInputs = {
-  tone: 'n', loc: 'n', fits: 'n', posture: 'n', moro: 'n',
-  grasp: 'n', suck: 'n', respiration: 'n', fontanelle: 'n',
-};
 // A fully-qualifying eligibility profile: term, sufficient BW, within the 6-h
 // window, Path A satisfied (pH ≤7.0), moderate encephalopathy, no contraindications.
 const eligBase: THEligibilityInputs = {
   gestationalAge: 39, birthWeight: 3200, ageHours: 2,
   ph: 'le_7', baseDeficit: 'unknown', apgar10: 'gt_5',
   assistedVent10min: false, acutePerinatalEvent: false,
-  sarnatStage: 'moderate', thompsonScore: 12, contraindications: false,
+  sarnatStage: 'moderate', contraindications: false,
 };
 
 describe('calcSarnat — staging', () => {
@@ -56,44 +52,6 @@ describe('calcSarnat — staging', () => {
     const r = calcSarnat({ ...sarnatBase, seizures: true });
     expect(r.stage).toBe('moderate_severe');
     expect(r.meetsThCriteria).toBe(true);
-  });
-});
-
-describe('calcThompson — scoring', () => {
-  it('all-normal items → score 0, Mild category', () => {
-    const r = calcThompson(thompsonBase);
-    expect(r.total).toBe(0);
-    expect(r.max).toBe(22);
-    expect(r.category).toContain('Mild');
-  });
-  it('practical maximum is 22 (some items cap at 2)', () => {
-    // Items maxing at 3: tone(3), loc(3), posture(3), respiration(3) = 12
-    // Items maxing at 2: fits(2), moro(2), grasp(2), suck(2), fontanelle(2) = 10
-    const r = calcThompson({
-      tone: 'f', loc: 'c', fits: 'h', posture: 'd', moro: 'a',
-      grasp: 'a', suck: 'a', respiration: 'v', fontanelle: 't',
-    });
-    expect(r.total).toBe(22);
-    expect(r.category).toContain('Severe');
-  });
-  it('score 11 lands in Moderate (11–14)', () => {
-    // tone hypo(2) + loc lethargic(2) + posture distal flex(2) + respiration apnea(2)
-    // + moro absent(2) + fits <3/day(1) = 11
-    const r = calcThompson({ ...thompsonBase, tone: 'lo', loc: 'l', posture: 's', respiration: 'a', moro: 'a', fits: 'l' });
-    expect(r.total).toBe(11);
-    expect(r.category).toContain('Moderate');
-  });
-  it('score 15 lands in Severe (≥15)', () => {
-    // 3+3+3+3+1+1+1 = 15
-    const r = calcThompson({ ...thompsonBase, tone: 'f', loc: 'c', posture: 'd', respiration: 'v', moro: 'p', fits: 'l', grasp: 'p' });
-    expect(r.total).toBe(15);
-    expect(r.category).toContain('Severe');
-  });
-  it('returns per-item results matching the inputs', () => {
-    const r = calcThompson({ ...thompsonBase, tone: 'lo' });
-    const tone = r.itemResults.find(i => i.id === 'tone');
-    expect(tone?.score).toBe(2);
-    expect(tone?.valueLabel).toBe('Hypo');
   });
 });
 
@@ -201,13 +159,18 @@ describe('assessTHEligibility — gates', () => {
 });
 
 describe('assessTHEligibility — encephalopathy & contraindications', () => {
-  it('mild Sarnat + low Thompson → encephalopathy threshold not met → ineligible', () => {
-    const r = assessTHEligibility({ ...eligBase, sarnatStage: 'mild', thompsonScore: 5 });
+  it('mild Sarnat → encephalopathy threshold not met → ineligible', () => {
+    const r = assessTHEligibility({ ...eligBase, sarnatStage: 'mild' });
     expect(r.encephalopathyMet).toBe(false);
     expect(r.eligible).toBe(false);
   });
-  it('Thompson ≥7 alone meets the encephalopathy threshold even when Sarnat is mild', () => {
-    const r = assessTHEligibility({ ...eligBase, sarnatStage: 'mild', thompsonScore: 7 });
+  it('severe Sarnat meets the encephalopathy threshold', () => {
+    const r = assessTHEligibility({ ...eligBase, sarnatStage: 'severe' });
+    expect(r.encephalopathyMet).toBe(true);
+    expect(r.eligible).toBe(true);
+  });
+  it('seizures-driven (moderate_severe) Sarnat meets the encephalopathy threshold', () => {
+    const r = assessTHEligibility({ ...eligBase, sarnatStage: 'moderate_severe' });
     expect(r.encephalopathyMet).toBe(true);
     expect(r.eligible).toBe(true);
   });

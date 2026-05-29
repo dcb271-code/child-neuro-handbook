@@ -2,9 +2,9 @@
 
 import { useId, useMemo, useState } from 'react';
 import {
-  calcSarnat, calcThompson, assessTHEligibility,
-  SARNAT_DOMAINS, THOMPSON_ITEMS, ACUTE_PERINATAL_EVENTS,
-  type SarnatInputs, type ThompsonInputs, type SarnatSeverityKey,
+  calcSarnat, assessTHEligibility,
+  SARNAT_DOMAINS, ACUTE_PERINATAL_EVENTS,
+  type SarnatInputs, type SarnatSeverityKey,
   type PHBand, type BDBand, type ApgarBand,
 } from '@/lib/hie/calculator';
 
@@ -97,7 +97,7 @@ function NumberInput({ value, onChange, suffix, min, max }: {
 // MAIN COMPONENT
 // ============================================================================
 
-type Tab = 'sarnat' | 'thompson' | 'eligibility' | 'teaching' | 'refs';
+type Tab = 'sarnat' | 'eligibility' | 'teaching' | 'refs';
 
 export default function NeonatalHIECalculator() {
   const [tab, setTab] = useState<Tab>('sarnat');
@@ -106,11 +106,6 @@ export default function NeonatalHIECalculator() {
     consciousness: 'normal', spontActivity: 'normal', posture: 'normal',
     tone: 'normal', primitiveReflexes: 'normal', autonomic: 'normal',
     seizures: false,
-  });
-
-  const [thompson, setThompson] = useState<ThompsonInputs>({
-    tone: 'n', loc: 'n', fits: 'n', posture: 'n', moro: 'n',
-    grasp: 'n', suck: 'n', respiration: 'n', fontanelle: 'n',
   });
 
   const [elig, setElig] = useState<{
@@ -123,25 +118,23 @@ export default function NeonatalHIECalculator() {
     assistedVent10min: false, acutePerinatalEvent: false, contraindications: false,
   });
 
-  const sarnatResult   = useMemo(() => calcSarnat(sarnat), [sarnat]);
-  const thompsonResult = useMemo(() => calcThompson(thompson), [thompson]);
-  const eligResult     = useMemo(() => assessTHEligibility({
-    ...elig, sarnatStage: sarnatResult.stage, thompsonScore: thompsonResult.total,
-  }), [elig, sarnatResult, thompsonResult]);
+  const sarnatResult = useMemo(() => calcSarnat(sarnat), [sarnat]);
+  const eligResult   = useMemo(() => assessTHEligibility({
+    ...elig, sarnatStage: sarnatResult.stage,
+  }), [elig, sarnatResult]);
 
   return (
     <div className="not-prose text-slate-900 dark:text-slate-100">
       <div className="mb-4">
         <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Neonatal HIE Assessment</h3>
         <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
-          Modified Sarnat staging, Thompson score, and therapeutic-hypothermia eligibility — for resident education and the cooling-eligibility conversation.
+          Modified Sarnat staging and therapeutic-hypothermia eligibility — operationalized to the institutional HIE pathway for resident education and the cooling-eligibility conversation.
         </p>
       </div>
 
       <div className="flex gap-1 mb-5 border-b border-slate-200 dark:border-slate-700 flex-wrap">
         {([
           ['sarnat', 'Modified Sarnat'],
-          ['thompson', 'Thompson score'],
           ['eligibility', 'TH eligibility'],
           ['teaching', 'Teaching points'],
           ['refs', 'References'],
@@ -230,65 +223,6 @@ export default function NeonatalHIECalculator() {
                 <div className="mt-3 space-y-2 leading-relaxed">
                   <p>NICHD defined moderate encephalopathy as abnormalities in ≥3 of 6 categories (moderate or severe range), or seizures with at least one moderate/severe finding. Severe was defined by severe findings in multiple categories.</p>
                   <p>Inter-rater reliability of Sarnat is moderate (κ ~0.6–0.7); the main disagreements are at the mild-vs-moderate threshold (right where TH eligibility hinges) and around tone in sedated/intubated infants.</p>
-                </div>
-              </details>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* ============================================================ */}
-      {/* THOMPSON                                                       */}
-      {/* ============================================================ */}
-      {tab === 'thompson' && (
-        <div>
-          <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-3 mb-5 text-xs text-blue-900 dark:text-blue-200">
-            <strong>Thompson encephalopathy score.</strong> Granular 9-item alternative to Sarnat, range 0–22. Peak score &gt;10 in the first 7 days predicted abnormal outcome with 100% sensitivity / 61% specificity in normothermic infants (Thompson 1997).
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            <div>
-              <h4 className="text-sm font-semibold text-slate-800 dark:text-slate-200 mb-3 uppercase tracking-wide">9 clinical signs</h4>
-
-              {THOMPSON_ITEMS.map(item => (
-                <Field key={item.id} label={item.label}>
-                  <Select<string>
-                    value={thompson[item.id]}
-                    onChange={(v) => setThompson(s => ({ ...s, [item.id]: v }))}
-                    options={item.options.map(([v, l, pts]) => [v, l, pts] as const)}
-                  />
-                </Field>
-              ))}
-            </div>
-
-            <div>
-              <h4 className="text-sm font-semibold text-slate-800 dark:text-slate-200 mb-3 uppercase tracking-wide">Score</h4>
-
-              <div className="bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-700 rounded-lg p-5 mb-4">
-                <div className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Thompson score</div>
-                <div className="text-4xl font-semibold text-slate-900 dark:text-slate-100 mt-1">
-                  {thompsonResult.total} <span className="text-lg text-slate-400 dark:text-slate-500">/ {thompsonResult.max}</span>
-                </div>
-                <div className="text-xs text-slate-600 dark:text-slate-400 mt-2">{thompsonResult.category}</div>
-              </div>
-
-              <div className={`rounded-lg p-4 border-2 mb-4 ${
-                thompsonResult.total <= 10 ? 'bg-emerald-50 border-emerald-300 text-emerald-900 dark:bg-emerald-900/20 dark:border-emerald-700 dark:text-emerald-200' :
-                thompsonResult.total <= 14 ? 'bg-amber-50 border-amber-300 text-amber-900 dark:bg-amber-900/20 dark:border-amber-700 dark:text-amber-200' :
-                'bg-red-50 border-red-300 text-red-900 dark:bg-red-900/20 dark:border-red-700 dark:text-red-200'
-              }`}>
-                <div className="text-xs uppercase tracking-wide opacity-75">Interpretation</div>
-                <div className="text-sm mt-2 opacity-90">{thompsonResult.interpretation}</div>
-              </div>
-
-              <details className="bg-slate-50 dark:bg-slate-900/40 rounded-md p-3 text-xs text-slate-700 dark:text-slate-300">
-                <summary className="font-semibold cursor-pointer text-slate-800 dark:text-slate-200">
-                  How to use Thompson clinically
-                </summary>
-                <div className="mt-3 space-y-2 leading-relaxed">
-                  <p><strong>Serially.</strong> Score daily through the first week (or until 0). Trajectory matters as much as peak — improvement over 72h is reassuring; static or worsening high scores suggest severe injury.</p>
-                  <p><strong>Early triage.</strong> Some centers use Thompson ≥7 in the first 6 hours as a TH inclusion criterion alongside (or instead of) Sarnat. It may be more reproducible across examiners.</p>
-                  <p><strong>Caveats.</strong> Developed in normothermic infants — interpretation has shifted under universal TH for moderate-severe HIE. Sedation/intubation confound tone, LOC, and respiration scoring; the fontanelle item is rarely abnormal in HIE specifically.</p>
                 </div>
               </details>
             </div>
@@ -403,11 +337,8 @@ export default function NeonatalHIECalculator() {
               </Field>
 
               <div className="bg-slate-50 dark:bg-slate-900/40 rounded-md p-3 mt-4 text-xs text-slate-700 dark:text-slate-300">
-                <strong>Encephalopathy (from prior tabs):</strong>
-                <div className="mt-2 space-y-1">
-                  <div>Sarnat: <strong>{sarnatResult.stageLabel}</strong></div>
-                  <div>Thompson: <strong>{thompsonResult.total}/22 ({thompsonResult.category})</strong></div>
-                </div>
+                <strong>Encephalopathy (from Sarnat tab):</strong>
+                <div className="mt-2">Sarnat: <strong>{sarnatResult.stageLabel}</strong></div>
               </div>
             </div>
 
@@ -469,7 +400,7 @@ export default function NeonatalHIECalculator() {
 
                 <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400 mt-3">Encephalopathy & safety</div>
                 <CritRow ok={eligResult.encephalopathyMet}
-                  label={`Moderate/severe encephalopathy ${eligResult.encephalopathyMet ? '✓' : '✗'} — ${sarnatResult.stageLabel}, Thompson ${thompsonResult.total}`} />
+                  label={`Moderate/severe encephalopathy ${eligResult.encephalopathyMet ? '✓' : '✗'} — ${sarnatResult.stageLabel}`} />
                 <CritRow ok={!elig.contraindications}
                   label={`No major contraindications ${!elig.contraindications ? '✓' : '✗'}`} />
               </div>
@@ -502,12 +433,8 @@ export default function NeonatalHIECalculator() {
           </section>
 
           <section>
-            <h4 className="font-semibold text-slate-900 dark:text-slate-100 mb-2 text-base">Sarnat vs Thompson — when to use which</h4>
-            <ul className="space-y-1 list-disc list-inside ml-2">
-              <li><strong>Sarnat</strong> is categorical (3 stages), aligns with how the cooling trials defined moderate-severe HIE. Use for TH triage and consultant communication.</li>
-              <li><strong>Thompson</strong> is granular; use for daily bedside tracking through the first week to document trajectory.</li>
-              <li>They correlate (Spearman ρ ~0.76–0.91) and have similar predictive value for death/abnormal MRI (AUC ~0.72–0.78). Not interchangeable — complementary.</li>
-            </ul>
+            <h4 className="font-semibold text-slate-900 dark:text-slate-100 mb-2 text-base">Why Sarnat, not Thompson</h4>
+            <p>The cooling trials (NICHD, CoolCap, TOBY) defined moderate-severe HIE using Sarnat-equivalent staging, and our institutional pathway operationalizes Sarnat (≥3 mod-or-severe domains, or seizures with supportive features). Thompson 1997 was derived in normothermic infants and can <em>undercall</em> sedated/intubated/cooled babies — tone, LOC, suck, and respiration co-suppress under sedation+TH, so the linear sum can read mild-moderate on a clinically severe infant. Some centers still use Thompson for serial bedside trajectory tracking through the first week, but it is not appropriate for TH-eligibility triage and is not used here.</p>
           </section>
 
           <section>
@@ -554,7 +481,6 @@ export default function NeonatalHIECalculator() {
             <li>Committee on Fetus and Newborn. Hypothermia and Neonatal Encephalopathy. Pediatrics. 2014;133(6):1146-1150. doi:10.1542/peds.2014-0899.</li>
             <li>Zanelli SA, Wusthoff CJ, Lucke AM, Kaufman DA; Committee on Fetus and Newborn; Section on Neurology. Therapeutic Hypothermia for Neonatal Hypoxic-Ischemic Encephalopathy: Clinical Report. Pediatrics. 2026;157(2):e2025073627. PMID: 41581784.</li>
             <li>Faix RG, Laptook AR, Shankaran S, et al. Whole-Body Hypothermia for Neonatal Encephalopathy in Preterm Infants 33 to 35 Weeks&apos; Gestation: A Randomized Clinical Trial. JAMA Pediatr. 2025;179(4):396-406. doi:10.1001/jamapediatrics.2024.6613.</li>
-            <li>Thompson CM, Puterman AS, Linley LL, et al. The value of a scoring system for hypoxic ischaemic encephalopathy in predicting neurodevelopmental outcome. Acta Paediatr. 1997;86(7):757-761. PMID: 9240886.</li>
             <li>Gluckman PD, Wyatt JS, Azzopardi D, et al. Selective head cooling with mild systemic hypothermia after neonatal encephalopathy: multicentre randomised trial (CoolCap). Lancet. 2005;365(9460):663-670. PMID: 15721471.</li>
             <li>Shankaran S, Laptook AR, Ehrenkranz RA, et al. Whole-body hypothermia for neonates with hypoxic-ischemic encephalopathy. N Engl J Med. 2005;353(15):1574-1584. PMID: 16221780.</li>
             <li>Azzopardi DV, Strohm B, Edwards AD, et al. Moderate hypothermia to treat perinatal asphyxial encephalopathy (TOBY). N Engl J Med. 2009;361(14):1349-1358. PMID: 19797281.</li>
@@ -563,7 +489,6 @@ export default function NeonatalHIECalculator() {
             <li>Edwards AD, Brocklehurst P, Gunn AJ, et al. Neurological outcomes at 18 months of age after moderate hypothermia for perinatal hypoxic ischaemic encephalopathy. BMJ. 2010;340:c363. PMID: 20144981.</li>
             <li>Thoresen M, Hellström-Westas L, Liu X, de Vries LS. Effect of hypothermia on amplitude-integrated electroencephalogram in infants with asphyxia. Pediatrics. 2010;126(1):e131-e139. PMID: 20566612.</li>
             <li>Barkovich AJ, Hajnal BL, Vigneron D, et al. Prediction of neuromotor outcome in perinatal asphyxia: evaluation of MR scoring systems. AJNR Am J Neuroradiol. 1998;19(1):143-149. PMID: 9432172.</li>
-            <li>Chansarn P, Torgalkar R, Wilson D, et al. Correlation of Thompson and modified Sarnat scores in neonatal hypoxic ischemic encephalopathy. J Perinatol. 2021;41(7):1522-1523. PMID: 33658630.</li>
             <li>Conway JM, Walsh BH, Boylan GB, Murray DM. Mild hypoxic ischaemic encephalopathy and long term neurodevelopmental outcome — a systematic review. Early Hum Dev. 2018;120:80-87. PMID: 29496329.</li>
             <li>Mrelashvili A, Russ JB, Ferriero DM, Wusthoff CJ. The Sarnat score for neonatal encephalopathy: looking back and moving forward. Pediatr Res. 2020;88(6):824-825. PMID: 32942286.</li>
             <li>Bonifacio SL, Glass HC, Peloquin S, Ferriero DM. A new neurological focus in neonatal intensive care. Nat Rev Neurol. 2011;7(9):485-494. PMID: 21808297.</li>

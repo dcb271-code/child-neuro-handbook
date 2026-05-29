@@ -1,9 +1,11 @@
 /* Neonatal HIE Assessment — pure logic.
-   Three integrated tools for hypoxic-ischemic encephalopathy:
+   Two integrated tools for hypoxic-ischemic encephalopathy:
      1. Modified Sarnat staging (Sarnat 1976; modified per NICHD/TOBY/CoolCap).
-     2. Thompson encephalopathy score (Thompson 1997, PMID 9240886).
-     3. Therapeutic hypothermia (TH) eligibility per the TOBY/NICHD framework.
-   Values copied verbatim from the reviewed draft. */
+     2. Therapeutic hypothermia (TH) eligibility, operationalized to the
+        institutional HIE pathway (which aligns with NICHD/TOBY/CoolCap).
+   Thompson 1997 is deliberately omitted — the institutional pathway uses Sarnat,
+   and Thompson was derived pre-cooling so it undercalls sedated/intubated
+   infants (co-suppression of tone, LOC, suck, respiration under sedation+TH). */
 
 // ============================================================================
 // MODIFIED SARNAT STAGING
@@ -152,85 +154,6 @@ export function calcSarnat(inputs: SarnatInputs): SarnatResult {
 }
 
 // ============================================================================
-// THOMPSON ENCEPHALOPATHY SCORE (Thompson 1997, max 22 — some items cap at 2)
-// ============================================================================
-
-export type ThompsonItemId =
-  | 'tone' | 'loc' | 'fits' | 'posture' | 'moro'
-  | 'grasp' | 'suck' | 'respiration' | 'fontanelle';
-
-export type ThompsonItem = {
-  id: ThompsonItemId;
-  label: string;
-  options: ReadonlyArray<readonly [string, string, number]>;
-};
-
-export type ThompsonInputs = Record<ThompsonItemId, string>;
-
-export type ThompsonItemResult = {
-  id: ThompsonItemId;
-  label: string;
-  valueLabel: string;
-  score: number;
-};
-
-export type ThompsonResult = {
-  total: number;
-  max: 22;
-  category: string;
-  interpretation: string;
-  itemResults: ThompsonItemResult[];
-};
-
-export const THOMPSON_ITEMS: ReadonlyArray<ThompsonItem> = [
-  { id: 'tone', label: 'Tone',
-    options: [['n', 'Normal', 0], ['h', 'Hyper', 1], ['lo', 'Hypo', 2], ['f', 'Flaccid', 3]] },
-  { id: 'loc', label: 'Level of consciousness',
-    options: [['n', 'Normal', 0], ['s', 'Staring', 1], ['l', 'Lethargic', 2], ['c', 'Comatose', 3]] },
-  { id: 'fits', label: 'Fits (seizures)',
-    options: [['n', 'None', 0], ['l', '<3/day', 1], ['h', '≥3/day', 2]] },
-  { id: 'posture', label: 'Posture',
-    options: [['n', 'Normal', 0], ['f', 'Fisting / cycling', 1], ['s', 'Strong distal flexion', 2], ['d', 'Decerebrate', 3]] },
-  { id: 'moro', label: 'Moro reflex',
-    options: [['n', 'Normal', 0], ['p', 'Partial', 1], ['a', 'Absent', 2]] },
-  { id: 'grasp', label: 'Grasp reflex',
-    options: [['n', 'Normal', 0], ['p', 'Poor', 1], ['a', 'Absent', 2]] },
-  { id: 'suck', label: 'Suck reflex',
-    options: [['n', 'Normal', 0], ['p', 'Poor', 1], ['a', 'Absent / bites', 2]] },
-  { id: 'respiration', label: 'Respiration',
-    options: [['n', 'Normal', 0], ['h', 'Hyperventilation', 1], ['a', 'Brief apnea', 2], ['v', 'Apnea / IPPV', 3]] },
-  { id: 'fontanelle', label: 'Fontanelle',
-    options: [['n', 'Normal', 0], ['f', 'Full, not tense', 1], ['t', 'Tense', 2]] }
-];
-
-export function calcThompson(inputs: ThompsonInputs): ThompsonResult {
-  let total = 0;
-  const itemResults: ThompsonItemResult[] = [];
-  for (const item of THOMPSON_ITEMS) {
-    const val = inputs[item.id] ?? item.options[0][0];
-    const opt = item.options.find(o => o[0] === val);
-    const score = opt ? opt[2] : 0;
-    total += score;
-    itemResults.push({ id: item.id, label: item.label, valueLabel: opt ? opt[1] : '', score });
-  }
-
-  let category: string;
-  let interpretation: string;
-  if (total <= 10) {
-    category = 'Mild (1–10)';
-    interpretation = 'Mild encephalopathy. Most infants in this range have normal outcomes. Score >7 within 6 hours is sometimes used as a TH inclusion threshold in mixed protocols.';
-  } else if (total <= 14) {
-    category = 'Moderate (11–14)';
-    interpretation = 'Moderate encephalopathy. ~80% will have a normal outcome with appropriate management including therapeutic hypothermia. Best window for TH benefit.';
-  } else {
-    category = 'Severe (≥15)';
-    interpretation = 'Severe encephalopathy. Substantially elevated risk of death or significant neurodevelopmental impairment. TH should be offered when criteria met. Peak score >15 in the first 7 days suggests poor prognosis.';
-  }
-
-  return { total, max: 22, category, interpretation, itemResults };
-}
-
-// ============================================================================
 // TH ELIGIBILITY (institutional HIE pathway; aligns with NICHD/TOBY/CoolCap)
 //
 // Two-path physiologic logic, operationalized for the resident to walk through:
@@ -248,7 +171,7 @@ export function calcThompson(inputs: ThompsonInputs): ThompsonResult {
 // Plus the gates: GA ≥36 wks (35w0d–35w6d case-by-case), BW >1800 g, age ≤6 h
 // (6–24 h extended window may be considered after parental discussion).
 // Plus encephalopathy: Sarnat moderate/severe (≥3 mod-or-severe domains) OR
-// seizures OR Thompson ≥7.
+// seizures with supportive features.
 // Plus no major contraindications.
 // ============================================================================
 
@@ -269,9 +192,8 @@ export type THEligibilityInputs = {
   apgar10: ApgarBand;
   assistedVent10min: boolean;   // assisted ventilation at birth ≥10 min
   acutePerinatalEvent: boolean; // any qualifying sentinel event
-  // Encephalopathy — pulled from prior tabs
+  // Encephalopathy — pulled from prior tab
   sarnatStage: SarnatStage;
-  thompsonScore: number | null;
   // Contraindications
   contraindications: boolean;
 };
@@ -302,7 +224,7 @@ export function assessTHEligibility(inputs: THEligibilityInputs): THEligibilityR
   const {
     gestationalAge, birthWeight, ageHours,
     ph, baseDeficit, apgar10, assistedVent10min, acutePerinatalEvent,
-    sarnatStage, thompsonScore, contraindications,
+    sarnatStage, contraindications,
   } = inputs;
 
   // --- Gates ---
@@ -330,9 +252,11 @@ export function assessTHEligibility(inputs: THEligibilityInputs): THEligibilityR
   const physiologicMet = criterionA || criterionB;
 
   // --- Encephalopathy ---
+  // Sarnat is the institutional triage instrument (≥3 mod-or-severe domains, or
+  // seizures with supportive features). Thompson is deliberately not used: it
+  // was derived pre-cooling and undercalls sedated/intubated infants.
   const encephalopathyMet =
-    sarnatStage === 'moderate' || sarnatStage === 'severe' || sarnatStage === 'moderate_severe' ||
-    (thompsonScore !== null && thompsonScore >= 7);
+    sarnatStage === 'moderate' || sarnatStage === 'severe' || sarnatStage === 'moderate_severe';
 
   // --- Overall ---
   // GA: <35 wks is a hard block; 35–35w6d is case-by-case (allowed, with warning).
@@ -347,7 +271,7 @@ export function assessTHEligibility(inputs: THEligibilityInputs): THEligibilityR
   if (!eligibleBW) reasons.push('Birth weight ≤1800 g');
   if (!agePasses) reasons.push('Age >24 hours of life');
   if (!physiologicMet) reasons.push('Neither Path A (biochemical) nor Path B (alternative) physiologic criteria are met');
-  if (!encephalopathyMet) reasons.push('Encephalopathy does not meet moderate/severe threshold (Sarnat or Thompson ≥7)');
+  if (!encephalopathyMet) reasons.push('Encephalopathy does not meet moderate/severe threshold on Sarnat');
   if (contraindications) reasons.push('Contraindication present');
 
   const warnings: string[] = [];
