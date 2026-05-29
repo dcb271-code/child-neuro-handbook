@@ -39,3 +39,47 @@ describe('recommendStabilization — Phase 1 (0–5 min)', () => {
     expect(items).toHaveLength(5);
   });
 });
+
+import { recommendFirstLine } from '../calculator';
+import type { PatientInputs } from '../calculator';
+
+const pBase: PatientInputs = {
+  weightKg: 15, ageBand: '1-5y', ivAccess: true, isNeonate: false, flags: []
+};
+
+describe('recommendFirstLine — Phase 2 (5–20 min)', () => {
+  it('IV access: ranks lorazepam IV first, diazepam IV second', () => {
+    const r = recommendFirstLine(pBase);
+    expect(r[0].drug).toBe('lorazepam');
+    expect(r[0].route).toBe('IV');
+    expect(r[0].mg).toBeCloseTo(1.5);            // 0.1 × 15
+    expect(r[1].drug).toBe('diazepam');
+    expect(r[1].route).toBe('IV');
+  });
+  it('IV access caps lorazepam at 4 mg for heavy patients', () => {
+    const r = recommendFirstLine({ ...pBase, weightKg: 60 });
+    const loraz = r[0];
+    expect(loraz.mg).toBe(4);
+    expect(loraz.hitCap).toBe(true);
+  });
+  it('no IV access: returns midazolam IM, midazolam IN, and diazepam PR (no IV benzos)', () => {
+    const r = recommendFirstLine({ ...pBase, ivAccess: false });
+    const drugs = r.map(d => `${d.drug}/${d.route}`);
+    expect(drugs).toContain('midazolam/IM');
+    expect(drugs).toContain('midazolam/IN');
+    expect(drugs).toContain('diazepam/PR');
+    expect(drugs.some(d => d.endsWith('/IV'))).toBe(false);
+  });
+  it('no IV access: midazolam IM is weight-banded (5 mg for 13–40 kg)', () => {
+    const r = recommendFirstLine({ ...pBase, ivAccess: false, weightKg: 25 });
+    expect(r.find(d => d.drug === 'midazolam' && d.route === 'IM')!.mg).toBe(5);
+  });
+  it('no IV access: midazolam IM is 10 mg for >40 kg', () => {
+    const r = recommendFirstLine({ ...pBase, ivAccess: false, weightKg: 50 });
+    expect(r.find(d => d.drug === 'midazolam' && d.route === 'IM')!.mg).toBe(10);
+  });
+  it('diazepam PR uses the age-band chart (1–5 y, 15 kg → 7.5 mg)', () => {
+    const r = recommendFirstLine({ ...pBase, ivAccess: false, weightKg: 15 });
+    expect(r.find(d => d.drug === 'diazepam' && d.route === 'PR')!.mg).toBe(7.5);
+  });
+});

@@ -60,3 +60,44 @@ export function recommendStabilization(): StabilizationItem[] {
     { id: 'asm_levels', label: 'Send ASM levels if on chronic ASMs' },
   ];
 }
+
+const respCaution: CautionChip = { severity: 'caution', text: 'Watch airway / blood pressure' };
+
+export function recommendFirstLine(p: PatientInputs): DrugRecommendation[] {
+  const out: DrugRecommendation[] = [];
+  if (p.ivAccess) {
+    const loraz = mgFor(0.1, p.weightKg, 4);
+    out.push({
+      drug: 'lorazepam', route: 'IV', mgPerKg: 0.1, mg: loraz.mg, maxCap: 4, hitCap: loraz.hitCap,
+      infusionTime: 'over 2 min', note: 'May repeat once after 3–5 min if still seizing',
+      cautions: [respCaution], rank: 1,
+    });
+    const diaz = mgFor(0.2, p.weightKg, 10);
+    out.push({
+      drug: 'diazepam', route: 'IV', mgPerKg: 0.2, mg: diaz.mg, maxCap: 10, hitCap: diaz.hitCap,
+      infusionTime: 'over 2 min', note: 'Alternative to lorazepam. May repeat once after 3–5 min',
+      cautions: [respCaution], rank: 2,
+    });
+    return out;
+  }
+  // No IV access path
+  const midIM = p.weightKg < 13 ? 0 : (p.weightKg <= 40 ? 5 : 10);
+  out.push({
+    drug: 'midazolam', route: 'IM', mg: midIM, maxCap: 10, hitCap: false,
+    note: p.weightKg < 13 ? 'Weight <13 kg: use IN or PR instead' : 'Weight-banded: 13–40 kg → 5 mg; >40 kg → 10 mg',
+    cautions: [respCaution], rank: 1,
+  });
+  const midIN = mgFor(0.2, p.weightKg, 10);
+  out.push({
+    drug: 'midazolam', route: 'IN', mgPerKg: 0.2, mg: midIN.mg, maxCap: 10, hitCap: midIN.hitCap,
+    note: '0.1 mg/kg per nostril; use concentrated solution',
+    cautions: [respCaution], rank: 2,
+  });
+  const prMg = calcDiastatPR(p.ageBand, p.weightKg);
+  out.push({
+    drug: 'diazepam', route: 'PR', mg: prMg, maxCap: prMg, hitCap: false,
+    note: 'Diastat per age band; use the prefilled-dose closest to the calculated amount',
+    cautions: [respCaution], rank: 3,
+  });
+  return out;
+}
