@@ -172,3 +172,38 @@ export function recommendRefractory(p: PatientInputs): DrugRecommendation[] {
     },
   ];
 }
+
+export function recommendSuperRefractory(p: PatientInputs): DrugRecommendation[] {
+  const pentoBolus = mgFor(5, p.weightKg, 1000);
+  return [
+    {
+      drug: 'pentobarbital', route: 'infusion',
+      mgPerKg: 5, mg: pentoBolus.mg, maxCap: 1000, hitCap: false,
+      rate: 'start 0.5 mg/kg/hr; ↑ by 0.5 to max 5 mg/kg/hr',
+      note: 'Bolus 2–5 mg/kg over 15 min. Goal: burst-suppression on EEG. Reserved for SRSE (used a few times/year).',
+      cautions: [
+        { severity: 'caution', text: 'Hemodynamic, immunosuppression, GI dysmotility burden' },
+        { severity: 'note',    text: 'Contains sugar alcohol (no ketosis)' },
+      ],
+      rank: 1,
+    },
+    {
+      drug: 'anakinra', route: 'IV', mg: 0, maxCap: 0, hitCap: false,
+      note: 'IL-1Ra. Consider for FIRES/NORSE; typically SC dosing per rheum/ICU/Neuro protocol.',
+      cautions: [{ severity: 'note', text: 'Pair with concurrent immunotherapy and supportive care' }],
+      rank: 2,
+    },
+    {
+      drug: 'ketogenic_diet', route: 'IV', mg: 0, maxCap: 0, hitCap: false,
+      note: 'Consider initiating in SRSE/FIRES; coordinate with dietitian/neurology.',
+      cautions: [],
+      rank: 3,
+    },
+    {
+      drug: 'immunotherapy', route: 'IV', mg: 0, maxCap: 0, hitCap: false,
+      note: 'Pulse methylprednisolone ± IVIG ± plasma exchange; consider tocilizumab in select FIRES.',
+      cautions: [],
+      rank: 4,
+    },
+  ];
+}

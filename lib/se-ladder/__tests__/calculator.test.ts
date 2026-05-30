@@ -165,6 +165,7 @@ describe('recommendSecondLine — flag filtering', () => {
 });
 
 import { recommendRefractory } from '../calculator';
+import { recommendSuperRefractory } from '../calculator';
 
 describe('recommendRefractory — Phase 4 (40–60+ min, RSE)', () => {
   it('ranks midazolam first and ketamine second; pentobarbital is NOT in Phase 4', () => {
@@ -185,5 +186,22 @@ describe('recommendRefractory — Phase 4 (40–60+ min, RSE)', () => {
     expect(ket.route).toBe('infusion');
     expect(ket.note).toMatch(/2.*mg.*kg/i);
     expect(ket.rate).toMatch(/0\.5|1.*kg.*hr/i);
+  });
+});
+
+describe('recommendSuperRefractory — Phase 5 (>24 h or recurrence on weaning)', () => {
+  it('headlines pentobarbital, then FIRES/NORSE adjuncts (anakinra, ketogenic, immunotherapy)', () => {
+    const r = recommendSuperRefractory({ ...pBase, weightKg: 20 });
+    expect(r[0].drug).toBe('pentobarbital');
+    const drugs = r.map(d => d.drug);
+    expect(drugs).toContain('anakinra');
+    expect(drugs).toContain('ketogenic_diet');
+    expect(drugs).toContain('immunotherapy');
+  });
+  it('pentobarbital has bolus 2–5 mg/kg + start 0.5 mg/kg/hr', () => {
+    const r = recommendSuperRefractory({ ...pBase, weightKg: 20 });
+    const pb = r[0];
+    expect(pb.note).toMatch(/2.{0,3}5.*mg.*kg/i);
+    expect(pb.rate).toMatch(/0\.5.*kg.*hr/);
   });
 });
