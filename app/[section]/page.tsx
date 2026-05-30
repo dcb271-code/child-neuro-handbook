@@ -11,6 +11,7 @@ import ASMWithdrawalCalculator from '@/components/asm-withdrawal/ASMWithdrawalCa
 import SeizureRiskCalculators from '@/components/seizure-risk/SeizureRiskCalculators';
 import SUDEPRiskCalculator from '@/components/sudep-risk/SUDEPRiskCalculator';
 import NeonatalHIECalculator from '@/components/hie/NeonatalHIECalculator';
+import SEMedLadder from '@/components/se-ladder/SEMedLadder';
 
 type TocEntry = { level: number; text: string; id: string };
 
@@ -70,6 +71,7 @@ const SECTION_WIDGETS: Record<string, { id: string; Component: ComponentType }[]
   ],
   'neurocritical-care': [
     { id: 'hie-calculator', Component: NeonatalHIECalculator },
+    { id: 'se-med-ladder',  Component: SEMedLadder },
   ],
 };
 

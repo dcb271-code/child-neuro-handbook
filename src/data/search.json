@@ -2574,5 +2574,12 @@
     "heading": "Neonatal HIE Assessment",
     "id": "hie-calculator",
     "text": ""
+  },
+  {
+    "section": "neurocritical-care",
+    "sectionName": "Neurocritical Care",
+    "heading": "Status Epilepticus Med Ladder",
+    "id": "se-med-ladder",
+    "text": ""
   }
 ]
