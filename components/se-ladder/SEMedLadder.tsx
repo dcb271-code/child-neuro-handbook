@@ -297,7 +297,43 @@ export default function SEMedLadder() {
           </button>
         </div>
       )}
-      {tab === 'refractory' && <div data-testid="tab-refractory">Refractory &amp; weaning — TODO Task 18</div>}
+      {tab === 'refractory' && (
+        <div className="space-y-5 text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+          <section>
+            <h4 className="font-semibold text-slate-900 dark:text-slate-100 mb-1 text-base">Phase 4 — Refractory SE management</h4>
+            <p><strong>Midazolam infusion (primary 3rd-line).</strong> Bolus 0.1–0.15 mg/kg over 2 min; start 0.1 mg/kg/hr; rebolus 0.1–0.15 mg/kg and ↑ by 0.1 mg/kg/hr every 15–30 min as needed. Usual switch threshold ≥0.6–1 mg/kg/hr; absolute max 2 mg/kg/hr. Intubate; start continuous EEG.</p>
+            <p className="mt-2"><strong>Ketamine infusion (alternative or early adjunct).</strong> Bolus 2 mg/kg over 5 min; start 0.5–1 mg/kg/hr; rebolus 1.5 mg/kg; ↑ by 0.5 mg/kg/hr q30–120 min to a max of 6 mg/kg/hr. Decrease 10–20% if oversuppressed on EEG. Evidence summary populated in Task 21 (WebSearch).</p>
+            <p className="mt-2"><strong>EEG goal:</strong> electrographic seizure cessation or agreed burst-suppression pattern (typically 1 burst/10 s). Maintain ≈24 h of electrographic control before weaning. Reassess at least q2h; oversuppression (&lt;1 burst/page) → decrease infusion 10–20%.</p>
+          </section>
+
+          <section>
+            <h4 className="font-semibold text-slate-900 dark:text-slate-100 mb-1 text-base">Phase 5 — Super-refractory SE management</h4>
+            <p><strong>Pentobarbital infusion.</strong> Bolus 2–5 mg/kg over 15 min; start 0.5 mg/kg/hr; rebolus 1–2 mg/kg; ↑ by 0.5 mg/kg/hr to max 5 mg/kg/hr. Goal: burst-suppression on EEG. Reserved for SRSE — used a few times per year. Burden: hemodynamic, immunosuppression, GI dysmotility.</p>
+            <p className="mt-2"><strong>FIRES / NORSE adjuncts.</strong> Anakinra (IL-1Ra) per rheum/ICU/Neuro protocol; ketogenic diet initiation; pulse methylprednisolone ± IVIG ± plasma exchange; consider tocilizumab in select FIRES.</p>
+            <p className="mt-2"><strong>Anesthetic rotation.</strong> When one anesthetic fails after 24–48 h at therapeutic doses, consider rotating among midazolam / ketamine / propofol / pentobarbital / inhaled isoflurane.</p>
+          </section>
+
+          <section>
+            <h4 className="font-semibold text-slate-900 dark:text-slate-100 mb-1 text-base">Weaning</h4>
+            <p>Typical starting approach after <strong>24–48 h seizure-free</strong> on EEG.</p>
+            <ul className="list-disc list-inside ml-2 mt-1 space-y-0.5">
+              <li><strong>Midazolam:</strong> decrease by 0.1 mg/kg/hr every 1–3 h.</li>
+              <li><strong>Ketamine:</strong> decrease by 1 mg/kg/hr every 1–3 h.</li>
+              <li><strong>Pentobarbital:</strong> decrease by 1 mg/kg/hr every 1–3 h.</li>
+            </ul>
+            <p className="mt-2">If seizures recur during wean, resume the prior tolerated rate and consider adjunctive ASM optimization before re-attempting.</p>
+          </section>
+
+          <section>
+            <h4 className="font-semibold text-slate-900 dark:text-slate-100 mb-1 text-base">Monitoring</h4>
+            <ul className="list-disc list-inside ml-2 space-y-0.5">
+              <li><strong>Airway:</strong> intubate if GCS 3–8, poor airway protection, or deep anesthetic dosing needed. Target normocapnia (PaCO₂ 40–45 mmHg).</li>
+              <li><strong>Hemodynamics:</strong> maintain age-appropriate normal BP; avoid hypotension. Ensure adequate intravascular volume.</li>
+              <li><strong>Labs:</strong> per institutional checklist — CBC, CMP, blood gas + lactate, INR/PTT, Mg/Phos, glucose q4h × 4 then q8h.</li>
+            </ul>
+          </section>
+        </div>
+      )}
       {tab === 'teaching'   && <div data-testid="tab-teaching">Teaching — TODO Task 19</div>}
       {tab === 'refs'       && <div data-testid="tab-refs">References — TODO Task 20</div>}
     </div>
