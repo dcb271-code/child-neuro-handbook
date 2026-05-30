@@ -45,6 +45,45 @@ function PhaseCard({ title, time, current, complete, children }: { title: string
   );
 }
 
+function CautionChipView({ c }: { c: { severity: 'contraindicated' | 'caution' | 'note'; text: string } }) {
+  const cls = c.severity === 'contraindicated' ? 'bg-rose-100 text-rose-800 dark:bg-rose-900/40 dark:text-rose-200'
+            : c.severity === 'caution'        ? 'bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-200'
+            :                                   'bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-200';
+  const icon = c.severity === 'contraindicated' ? '✗' : c.severity === 'caution' ? '⚠' : 'ⓘ';
+  return <span className={`inline-block text-[11px] font-medium px-2 py-0.5 rounded mr-1 mb-1 ${cls}`}>{icon} {c.text}</span>;
+}
+
+function DrugSubCard({ rec, given, onToggle }: {
+  rec: import('@/lib/se-ladder/calculator').DrugRecommendation;
+  given: boolean;
+  onToggle: () => void;
+}) {
+  const contraindicated = rec.cautions.some(c => c.severity === 'contraindicated');
+  return (
+    <div className={`rounded border p-2.5 mb-2 ${contraindicated ? 'bg-rose-50/40 dark:bg-rose-900/10 border-rose-200 dark:border-rose-800' : 'bg-slate-50 dark:bg-slate-900/40 border-slate-200 dark:border-slate-700'}`}>
+      <div className="flex items-start justify-between gap-2">
+        <div className="text-sm">
+          <strong className="capitalize">{rec.drug}</strong> <span className="text-xs text-slate-500 dark:text-slate-400">· {rec.route}</span>
+          {rec.mg > 0 && (
+            <span className="ml-2 font-semibold text-blue-700 dark:text-blue-300">
+              {rec.mg} mg{rec.hitCap && <span className="ml-1 text-xs text-amber-700 dark:text-amber-300">(at max cap)</span>}
+            </span>
+          )}
+          {rec.mgPerKg && rec.mg > 0 && <span className="ml-1 text-xs text-slate-500 dark:text-slate-400">({rec.mgPerKg} mg/kg)</span>}
+          {rec.infusionTime && <div className="text-xs text-slate-600 dark:text-slate-400">{rec.infusionTime}</div>}
+          {rec.rate && <div className="text-xs text-slate-600 dark:text-slate-400">Rate: {rec.rate}</div>}
+          {rec.note && <div className="text-xs text-slate-500 dark:text-slate-400 mt-1 italic">{rec.note}</div>}
+          <div className="mt-1">{rec.cautions.map((c, i) => <CautionChipView key={i} c={c} />)}</div>
+        </div>
+        <label className="text-xs flex items-center gap-1 shrink-0">
+          <input type="checkbox" checked={given} onChange={onToggle} />
+          Given
+        </label>
+      </div>
+    </div>
+  );
+}
+
 function StabilizationCard({ items, complete, onCheck, allChecked }: {
   items: { id: string; label: string; note?: string }[];
   complete: Record<string, boolean>;
@@ -77,6 +116,12 @@ export default function SEMedLadder() {
   const [given, setGiven] = useState<GivenLog>({});
 
   const [stabilizationDone, setStabilizationDone] = useState<Record<string, boolean>>({});
+  const [drugsGiven, setDrugsGiven] = useState<Record<string, boolean>>({});
+  const toggleDrug = (key: string, phaseKey: Phase) => {
+    setDrugsGiven(s => ({ ...s, [key]: !s[key] }));
+    setGiven(g => ({ ...g, [phaseKey]: true }));   // marking ANY drug in a phase advances
+  };
+  const drugKey = (phaseKey: string, drug: string, route: string) => `${phaseKey}/${drug}/${route}`;
 
   const inputs: PatientInputs = { weightKg, ageBand, ivAccess, isNeonate, flags };
 
@@ -167,7 +212,14 @@ export default function SEMedLadder() {
             <StabilizationCard items={phase1} complete={stabilizationDone}
               onCheck={(id, v) => setStabilizationDone(s => ({ ...s, [id]: v }))} allChecked={allStabChecked} />
           </PhaseCard>
-          {/* Phases 2–5 added in Tasks 12–15 */}
+
+          <PhaseCard title={`Phase 2 — First-line benzo (${ivAccess ? 'IV access' : 'no IV access'})`} time="5–20 min" current={phase === 'first_line'} complete={!!given.first_line}>
+            {phase2.map(d => {
+              const k = drugKey('first_line', d.drug, d.route);
+              return <DrugSubCard key={k} rec={d} given={!!drugsGiven[k]} onToggle={() => toggleDrug(k, 'first_line')} />;
+            })}
+          </PhaseCard>
+          {/* Phases 3–5 added in Tasks 13–15 */}
         </div>
       )}
       {tab === 'dosing'     && <div data-testid="tab-dosing">Dosing card — TODO Task 17</div>}
@@ -176,7 +228,7 @@ export default function SEMedLadder() {
       {tab === 'refs'       && <div data-testid="tab-refs">References — TODO Task 20</div>}
 
       {/* Silence unused-variable warnings — these are wired in subsequent tasks */}
-      <div className="hidden">{phase}{phase2.length}{phase3.length}{phase4.length}{phase5.length}{given.first_line ? '' : ''}{String(typeof setGiven)}</div>
+      <div className="hidden">{phase}{phase3.length}{phase4.length}{phase5.length}{given.first_line ? '' : ''}{String(typeof setGiven)}</div>
     </div>
   );
 }
