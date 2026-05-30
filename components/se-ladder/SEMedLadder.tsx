@@ -334,7 +334,55 @@ export default function SEMedLadder() {
           </section>
         </div>
       )}
-      {tab === 'teaching'   && <div data-testid="tab-teaching">Teaching — TODO Task 19</div>}
+      {tab === 'teaching' && (
+        <div data-testid="tab-teaching" className="max-w-2xl text-sm text-slate-700 dark:text-slate-300 space-y-5 leading-relaxed">
+          <section>
+            <h4 className="font-semibold text-slate-900 dark:text-slate-100 mb-2 text-base">ILAE 2015 — t1 / t2 framework</h4>
+            <p>Trinka et al. (Epilepsia 2015) operationalized status epilepticus in time: <strong>t1</strong> = when you start treating as SE; <strong>t2</strong> = when long-term consequences (brain injury, pharmacoresistance) become a concern. For convulsive SE, t1 = 5 min and t2 = 30 min. Early treatment matters because pharmacoresistance progresses with each unsuccessful intervention.</p>
+          </section>
+
+          <section>
+            <h4 className="font-semibold text-slate-900 dark:text-slate-100 mb-2 text-base">ESETT — three 2nd-line drugs ≈ equivalent</h4>
+            <p>Kapur et al. (NEJM 2019) showed fosphenytoin, levetiracetam, and valproate produce seizure cessation in roughly half of patients each. Practical implication: pick by patient features (cautions, contraindications, availability), not by relative efficacy.</p>
+          </section>
+
+          <section>
+            <h4 className="font-semibold text-slate-900 dark:text-slate-100 mb-2 text-base">Why levetiracetam often goes first now</h4>
+            <p>Cleaner side-effect profile, no cardiac monitoring needed, broad indication (no contraindication in Dravet), ease of administration. Many institutions now default to levetiracetam as 2nd-line first choice. Fosphenytoin remains primary when levetiracetam is contraindicated/unavailable or when sodium-channel mechanism is desired.</p>
+          </section>
+
+          <section>
+            <h4 className="font-semibold text-slate-900 dark:text-slate-100 mb-2 text-base">Ketamine&apos;s role in refractory SE</h4>
+            <p>NMDA receptor blockade mechanistically complements GABAergic agents (lorazepam/midazolam) — synergy is established preclinically (Niquet 2017, Ann Neurol). Clinical signal favors <strong>earlier rather than later</strong> initiation (Jacobwitz 2022). Consider adding ketamine to or substituting for midazolam in Phase 4 rather than waiting until Phase 5.</p>
+          </section>
+
+          <section>
+            <h4 className="font-semibold text-slate-900 dark:text-slate-100 mb-2 text-base">Pentobarbital reserved for SRSE</h4>
+            <p>Hemodynamic, immunosuppression, and GI-dysmotility burden plus prolonged ICU stay make pentobarbital a Phase 5 drug — used a few times per year at most. Burst-suppression on EEG is the standard target.</p>
+          </section>
+
+          <section>
+            <h4 className="font-semibold text-slate-900 dark:text-slate-100 mb-2 text-base">Non-convulsive and focal SE</h4>
+            <p>This tool is calibrated for <em>convulsive</em> SE. Non-convulsive SE requires EEG to detect and a less time-critical pharmacologic escalation. Focal SE with impaired awareness has a different time framework (ILAE t1 = 10 min, t2 &gt; 60 min). Consult neurology / cEEG early.</p>
+          </section>
+
+          <section>
+            <h4 className="font-semibold text-slate-900 dark:text-slate-100 mb-2 text-base">FIRES / NORSE</h4>
+            <p>Febrile Infection-Related Epilepsy Syndrome (FIRES) and New-Onset Refractory SE (NORSE): suspect in a previously healthy patient with refractory SE preceded by a febrile prodrome (FIRES) or no clear cause (NORSE). Immunotherapy should start early — anakinra + pulse steroids ± IVIG. Ketogenic diet initiation. Hirsch et al. 2018 consensus paper is the standard reference.</p>
+          </section>
+
+          <section>
+            <h4 className="font-semibold text-slate-900 dark:text-slate-100 mb-2 text-base">Common pitfalls</h4>
+            <ul className="list-disc list-inside ml-2 space-y-0.5">
+              <li>Under-dosing benzos (the most common error).</li>
+              <li>Not repeating the benzo when the first dose was inadequate.</li>
+              <li>Delay from benzo failure to 2nd-line load (target ≤10 min).</li>
+              <li>Late ICU consultation / cEEG initiation.</li>
+              <li>Persisting on one anesthetic strategy too long when it isn&apos;t working at 24 h.</li>
+            </ul>
+          </section>
+        </div>
+      )}
       {tab === 'refs'       && <div data-testid="tab-refs">References — TODO Task 20</div>}
     </div>
   );
