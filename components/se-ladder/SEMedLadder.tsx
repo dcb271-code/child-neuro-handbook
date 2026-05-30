@@ -154,7 +154,7 @@ export default function SEMedLadder() {
       {/* Global inputs */}
       <div className="bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-700 rounded-md p-3 mb-4 grid sm:grid-cols-2 gap-3">
         <Field label="Weight (kg)">
-          <input type="number" value={weightKg} onChange={(e) => setWeightKg(parseFloat(e.target.value) || 0)}
+          <input type="number" value={weightKg} min={0} onChange={(e) => setWeightKg(parseFloat(e.target.value) || 0)}
             className="w-24 px-3 py-1.5 border border-slate-300 dark:border-slate-600 rounded-md text-sm bg-white dark:bg-slate-900" />
         </Field>
         <Field label="Age band">
@@ -205,7 +205,6 @@ export default function SEMedLadder() {
         ))}
       </div>
 
-      {/* Tab bodies (stubs — filled in subsequent tasks) */}
       {tab === 'pathway' && (
         isNeonate ? (
           <div className="rounded-lg border-2 border-amber-300 dark:border-amber-700 bg-amber-50 dark:bg-amber-900/20 p-4">

@@ -109,7 +109,7 @@ type SecondLineEntry = {
 
 const SECOND_LINE_TABLE: SecondLineEntry[] = [
   { drug: 'levetiracetam', mgPerKg: 60, maxCap: 4500, infusionTime: 'over 10–15 min',
-    baseCautions: [{ severity: 'note', text: 'Safe even if on home levetiracetam' }] },
+    baseCautions: [] },
   { drug: 'fosphenytoin',  mgPerKg: 20, maxCap: 1500, infusionTime: 'over 10–15 min',
     baseCautions: [{ severity: 'note', text: 'Consider extra 10 mg PE/kg if no response after 10 min' }] },
   { drug: 'phenobarbital', mgPerKg: 20, maxCap: 1000, infusionTime: '1–2 mg/kg/min',
@@ -136,6 +136,9 @@ export function recommendSecondLine(p: PatientInputs): DrugRecommendation[] {
     }
     if (e.drug === 'levetiracetam' && p.flags.includes('renal')) {
       cautions.push({ severity: 'caution', text: 'Renal impairment: consider dose reduction' });
+    }
+    if (e.drug === 'levetiracetam' && p.flags.includes('on_home_levetiracetam')) {
+      cautions.push({ severity: 'note', text: 'Safe even if on home levetiracetam — give the full load' });
     }
     if (e.drug === 'phenobarbital' && p.flags.includes('on_home_phenobarb')) {
       cautions.push({ severity: 'caution', text: 'Already on home phenobarbital — do not repeat full load' });
