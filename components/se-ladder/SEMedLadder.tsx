@@ -227,7 +227,18 @@ export default function SEMedLadder() {
             })}
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">If still seizing 10–20 min post-load → Phase 4 (refractory).</p>
           </PhaseCard>
-          {/* Phases 4–5 added in Tasks 14–15 */}
+
+          <PhaseCard title="Phase 4 — Refractory SE" time="40–60+ min" current={phase === 'refractory'} complete={!!given.refractory}>
+            {phase4.map(d => {
+              const k = drugKey('refractory', d.drug, d.route);
+              return <DrugSubCard key={k} rec={d} given={!!drugsGiven[k]} onToggle={() => toggleDrug(k, 'refractory')} />;
+            })}
+            <button type="button" onClick={() => setTab('refractory')}
+              className="mt-2 text-xs px-2.5 py-1 rounded border border-blue-300 dark:border-blue-700 text-blue-700 dark:text-blue-300 hover:bg-blue-50 dark:hover:bg-blue-900/30">
+              See Refractory &amp; weaning tab for full escalation, EEG goals, weaning
+            </button>
+          </PhaseCard>
+          {/* Phase 5 added in Task 15 */}
         </div>
       )}
       {tab === 'dosing'     && <div data-testid="tab-dosing">Dosing card — TODO Task 17</div>}
@@ -236,7 +247,7 @@ export default function SEMedLadder() {
       {tab === 'refs'       && <div data-testid="tab-refs">References — TODO Task 20</div>}
 
       {/* Silence unused-variable warnings — these are wired in subsequent tasks */}
-      <div className="hidden">{phase}{phase4.length}{phase5.length}{given.first_line ? '' : ''}{String(typeof setGiven)}</div>
+      <div className="hidden">{phase}{phase5.length}{given.first_line ? '' : ''}{String(typeof setGiven)}</div>
     </div>
   );
 }
