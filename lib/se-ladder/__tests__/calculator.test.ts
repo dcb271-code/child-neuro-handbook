@@ -163,3 +163,27 @@ describe('recommendSecondLine — flag filtering', () => {
     expect(r.find(d => d.drug === 'fosphenytoin')!.cautions.filter(c => c.severity === 'contraindicated').length).toBeGreaterThanOrEqual(2);
   });
 });
+
+import { recommendRefractory } from '../calculator';
+
+describe('recommendRefractory — Phase 4 (40–60+ min, RSE)', () => {
+  it('ranks midazolam first and ketamine second; pentobarbital is NOT in Phase 4', () => {
+    const r = recommendRefractory({ ...pBase, weightKg: 20 });
+    expect(r.map(d => d.drug)).toEqual(['midazolam','ketamine']);
+  });
+  it('returns midazolam bolus (0.1–0.15 mg/kg) + start rate (0.1 mg/kg/hr)', () => {
+    const r = recommendRefractory({ ...pBase, weightKg: 20 });
+    const mid = r[0];
+    expect(mid.drug).toBe('midazolam');
+    expect(mid.route).toBe('infusion');
+    expect(mid.note).toMatch(/0\.1|bolus/i);
+    expect(mid.rate).toMatch(/0\.1.*kg.*hr/);
+  });
+  it('returns ketamine bolus (2 mg/kg) + start rate (0.5–1 mg/kg/hr)', () => {
+    const r = recommendRefractory({ ...pBase, weightKg: 20 });
+    const ket = r.find(d => d.drug === 'ketamine')!;
+    expect(ket.route).toBe('infusion');
+    expect(ket.note).toMatch(/2.*mg.*kg/i);
+    expect(ket.rate).toMatch(/0\.5|1.*kg.*hr/i);
+  });
+});

@@ -149,3 +149,26 @@ export function recommendSecondLine(p: PatientInputs): DrugRecommendation[] {
     };
   });
 }
+
+export function recommendRefractory(p: PatientInputs): DrugRecommendation[] {
+  const midBolus = mgFor(0.15, p.weightKg, 1000);   // 0.1–0.15 mg/kg, no realistic cap
+  const ketBolus = mgFor(2, p.weightKg, 1000);
+  return [
+    {
+      drug: 'midazolam', route: 'infusion',
+      mgPerKg: 0.15, mg: midBolus.mg, maxCap: 1000, hitCap: false,
+      rate: 'start 0.1 mg/kg/hr; ↑ by 0.1 q15–30 min; usual switch ≥0.6–1; absolute max 2 mg/kg/hr',
+      note: 'Bolus 0.1–0.15 mg/kg over 2 min; intubate; start continuous EEG. PRIMARY 3rd-line.',
+      cautions: [{ severity: 'caution', text: 'Watch BP; tachyphylaxis common with prolonged infusion' }],
+      rank: 1,
+    },
+    {
+      drug: 'ketamine', route: 'infusion',
+      mgPerKg: 2, mg: ketBolus.mg, maxCap: 1000, hitCap: false,
+      rate: 'start 0.5–1 mg/kg/hr; ↑ by 0.5 q30–120 min to max 6 mg/kg/hr',
+      note: 'Bolus 2 mg/kg over 5 min. Alternative or early adjunct to midazolam (NMDA blockade complements GABAergic agents; emerging earlier-is-better signal).',
+      cautions: [{ severity: 'note', text: 'Consider adding earlier rather than waiting for SRSE' }],
+      rank: 2,
+    },
+  ];
+}
