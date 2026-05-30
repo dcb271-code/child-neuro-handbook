@@ -255,7 +255,48 @@ export default function SEMedLadder() {
           </div>
         )
       )}
-      {tab === 'dosing'     && <div data-testid="tab-dosing">Dosing card — TODO Task 17</div>}
+      {tab === 'dosing' && (
+        <div className="space-y-4 text-sm">
+          <p className="text-xs text-slate-500 dark:text-slate-400">Pre-calculated for {weightKg} kg, {ageBand}, {ivAccess ? 'IV access' : 'no IV access'}. Adjust globals above to recompute.</p>
+          {([
+            ['Phase 2 — First-line benzo', phase2],
+            ['Phase 3 — Second-line ASM',   phase3],
+            ['Phase 4 — Refractory',        phase4],
+            ['Phase 5 — Super-refractory',  phase5],
+          ] as const).map(([label, recs]) => (
+            <div key={label}>
+              <h4 className="text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1">{label}</h4>
+              <table className="w-full text-xs border border-slate-200 dark:border-slate-700">
+                <thead className="bg-slate-50 dark:bg-slate-900/40">
+                  <tr><th className="text-left p-1.5">Drug · route</th><th className="text-left p-1.5">Dose</th><th className="text-left p-1.5">Notes</th></tr>
+                </thead>
+                <tbody>
+                  {recs.map((r, i) => (
+                    <tr key={i} className="border-t border-slate-200 dark:border-slate-700">
+                      <td className="p-1.5"><span className="capitalize">{r.drug}</span> · {r.route}</td>
+                      <td className="p-1.5">{r.mg > 0 ? `${r.mg} mg${r.hitCap ? ' (cap)' : ''}` : '—'}{r.infusionTime && <span className="text-slate-500"> · {r.infusionTime}</span>}{r.rate && <span className="text-slate-500"> · rate: {r.rate}</span>}</td>
+                      <td className="p-1.5 text-slate-600 dark:text-slate-400">{r.note} {r.cautions.filter(c => c.severity !== 'note').map((c, j) => <CautionChipView key={j} c={c} />)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ))}
+          <button type="button" onClick={() => {
+            const lines: string[] = [`SE Med Ladder — ${weightKg} kg, ${ageBand}, ${ivAccess ? 'IV+' : 'No IV'}`];
+            const blocks: [string, typeof phase2][] = [['1st-line', phase2], ['2nd-line', phase3], ['Refractory', phase4], ['SRSE', phase5]];
+            for (const [lbl, recs] of blocks) {
+              lines.push(`\n[${lbl}]`);
+              for (const r of recs) lines.push(`  ${r.drug} ${r.route}: ${r.mg > 0 ? r.mg + ' mg' : '—'}${r.infusionTime ? ' ' + r.infusionTime : ''}${r.rate ? ' (' + r.rate + ')' : ''}`);
+            }
+            const text = lines.join('\n');
+            if (navigator.clipboard?.writeText) navigator.clipboard.writeText(text);
+          }}
+            className="text-xs px-2.5 py-1 rounded border border-blue-300 dark:border-blue-700 text-blue-700 dark:text-blue-300 hover:bg-blue-50 dark:hover:bg-blue-900/30">
+            Copy summary to clipboard
+          </button>
+        </div>
+      )}
       {tab === 'refractory' && <div data-testid="tab-refractory">Refractory &amp; weaning — TODO Task 18</div>}
       {tab === 'teaching'   && <div data-testid="tab-teaching">Teaching — TODO Task 19</div>}
       {tab === 'refs'       && <div data-testid="tab-refs">References — TODO Task 20</div>}
