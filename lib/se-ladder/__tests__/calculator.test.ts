@@ -166,6 +166,8 @@ describe('recommendSecondLine — flag filtering', () => {
 
 import { recommendRefractory } from '../calculator';
 import { recommendSuperRefractory } from '../calculator';
+import { currentPhase, nextPhase } from '../calculator';
+import type { Phase } from '../calculator';
 
 describe('recommendRefractory — Phase 4 (40–60+ min, RSE)', () => {
   it('ranks midazolam first and ketamine second; pentobarbital is NOT in Phase 4', () => {
@@ -203,5 +205,30 @@ describe('recommendSuperRefractory — Phase 5 (>24 h or recurrence on weaning)'
     const pb = r[0];
     expect(pb.note).toMatch(/2.{0,3}5.*mg.*kg/i);
     expect(pb.rate).toMatch(/0\.5.*kg.*hr/);
+  });
+});
+
+describe('phase-state machine', () => {
+  it('currentPhase: no drugs given → "stabilization"', () => {
+    expect(currentPhase({})).toBe('stabilization');
+  });
+  it('currentPhase: stabilization complete → "first_line"', () => {
+    expect(currentPhase({ stabilization: true })).toBe('first_line');
+  });
+  it('currentPhase: stabilization + first_line complete → "second_line"', () => {
+    expect(currentPhase({ stabilization: true, first_line: true })).toBe('second_line');
+  });
+  it('currentPhase: through second_line → "refractory"', () => {
+    expect(currentPhase({ stabilization: true, first_line: true, second_line: true })).toBe('refractory');
+  });
+  it('currentPhase: through refractory → "super_refractory"', () => {
+    expect(currentPhase({ stabilization: true, first_line: true, second_line: true, refractory: true })).toBe('super_refractory');
+  });
+  it('nextPhase advances linearly', () => {
+    expect(nextPhase('stabilization')).toBe('first_line');
+    expect(nextPhase('first_line')).toBe('second_line');
+    expect(nextPhase('second_line')).toBe('refractory');
+    expect(nextPhase('refractory')).toBe('super_refractory');
+    expect(nextPhase('super_refractory')).toBe('super_refractory');   // stays at terminal
   });
 });

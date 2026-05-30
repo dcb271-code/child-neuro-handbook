@@ -173,6 +173,22 @@ export function recommendRefractory(p: PatientInputs): DrugRecommendation[] {
   ];
 }
 
+export type GivenLog = Partial<Record<Phase, boolean>>;
+
+const PHASE_ORDER: Phase[] = ['stabilization','first_line','second_line','refractory','super_refractory'];
+
+export function currentPhase(given: GivenLog): Phase {
+  for (const p of PHASE_ORDER) {
+    if (!given[p]) return p;
+  }
+  return 'super_refractory';
+}
+
+export function nextPhase(p: Phase): Phase {
+  const i = PHASE_ORDER.indexOf(p);
+  return i < 0 || i === PHASE_ORDER.length - 1 ? p : PHASE_ORDER[i + 1];
+}
+
 export function recommendSuperRefractory(p: PatientInputs): DrugRecommendation[] {
   const pentoBolus = mgFor(5, p.weightKg, 1000);
   return [
