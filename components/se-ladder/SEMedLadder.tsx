@@ -1,6 +1,6 @@
 'use client';
 
-import { useId, useMemo, useState } from 'react';
+import { useEffect, useId, useMemo, useState } from 'react';
 import {
   recommendStabilization, recommendFirstLine, recommendSecondLine,
   recommendRefractory, recommendSuperRefractory, currentPhase,
@@ -29,6 +29,44 @@ function Field({ label, hint, children }: { label: string; hint?: string; childr
 
 type Tab = 'pathway' | 'dosing' | 'refractory' | 'teaching' | 'refs';
 
+function PhaseCard({ title, time, current, complete, children }: { title: string; time: string; current: boolean; complete: boolean; children: React.ReactNode }) {
+  const ring = current ? 'border-blue-500 dark:border-blue-400 ring-2 ring-blue-200 dark:ring-blue-900/30' : 'border-slate-200 dark:border-slate-700';
+  return (
+    <section className={`rounded-lg border-2 p-4 mb-3 bg-white dark:bg-slate-900 ${ring}`}>
+      <header className="flex items-center justify-between mb-2">
+        <h4 className="text-sm font-semibold text-slate-900 dark:text-slate-100">
+          {complete && <span className="mr-2 text-emerald-600 dark:text-emerald-400">✓</span>}
+          {title}
+        </h4>
+        <span className="text-xs text-slate-500 dark:text-slate-400">{time}</span>
+      </header>
+      {children}
+    </section>
+  );
+}
+
+function StabilizationCard({ items, complete, onCheck, allChecked }: {
+  items: { id: string; label: string; note?: string }[];
+  complete: Record<string, boolean>;
+  onCheck: (id: string, v: boolean) => void;
+  allChecked: boolean;
+}) {
+  return (
+    <ul className="space-y-1.5 text-sm">
+      {items.map(it => (
+        <li key={it.id} className="flex items-start gap-2">
+          <input type="checkbox" checked={!!complete[it.id]} onChange={(e) => onCheck(it.id, e.target.checked)} className="mt-1" />
+          <div>
+            <span className={complete[it.id] ? 'line-through text-slate-400 dark:text-slate-500' : ''}>{it.label}</span>
+            {it.note && <div className="text-xs text-slate-500 dark:text-slate-400">{it.note}</div>}
+          </div>
+        </li>
+      ))}
+      {allChecked && <li className="text-xs text-emerald-700 dark:text-emerald-300 mt-1">All stabilization steps complete — advance to first-line benzo.</li>}
+    </ul>
+  );
+}
+
 export default function SEMedLadder() {
   const [tab, setTab] = useState<Tab>('pathway');
   const [weightKg, setWeightKg] = useState(15);
@@ -38,6 +76,8 @@ export default function SEMedLadder() {
   const [flags, setFlags] = useState<Flag[]>([]);
   const [given, setGiven] = useState<GivenLog>({});
 
+  const [stabilizationDone, setStabilizationDone] = useState<Record<string, boolean>>({});
+
   const inputs: PatientInputs = { weightKg, ageBand, ivAccess, isNeonate, flags };
 
   const phase1 = useMemo(() => recommendStabilization(),       []);
@@ -46,6 +86,13 @@ export default function SEMedLadder() {
   const phase4 = useMemo(() => recommendRefractory(inputs),    [inputs]);
   const phase5 = useMemo(() => recommendSuperRefractory(inputs), [inputs]);
   const phase: Phase = currentPhase(given);
+  const allStabChecked = phase1.every(i => stabilizationDone[i.id]);
+
+  // Auto-mark stabilization phase complete when all 5 checklist items done.
+  // useEffect (not useMemo) — this is a side effect, not a derivation.
+  useEffect(() => {
+    if (allStabChecked && !given.stabilization) setGiven(g => ({ ...g, stabilization: true }));
+  }, [allStabChecked, given.stabilization]);
 
   const toggleFlag = (f: Flag) =>
     setFlags(s => s.includes(f) ? s.filter(x => x !== f) : [...s, f]);
@@ -114,14 +161,22 @@ export default function SEMedLadder() {
       </div>
 
       {/* Tab bodies (stubs — filled in subsequent tasks) */}
-      {tab === 'pathway'    && <div data-testid="tab-pathway">Pathway walker — TODO Task 11–16</div>}
+      {tab === 'pathway' && (
+        <div data-testid="tab-pathway">
+          <PhaseCard title="Phase 1 — Stabilization" time="0–5 min" current={phase === 'stabilization'} complete={!!given.stabilization}>
+            <StabilizationCard items={phase1} complete={stabilizationDone}
+              onCheck={(id, v) => setStabilizationDone(s => ({ ...s, [id]: v }))} allChecked={allStabChecked} />
+          </PhaseCard>
+          {/* Phases 2–5 added in Tasks 12–15 */}
+        </div>
+      )}
       {tab === 'dosing'     && <div data-testid="tab-dosing">Dosing card — TODO Task 17</div>}
       {tab === 'refractory' && <div data-testid="tab-refractory">Refractory &amp; weaning — TODO Task 18</div>}
       {tab === 'teaching'   && <div data-testid="tab-teaching">Teaching — TODO Task 19</div>}
       {tab === 'refs'       && <div data-testid="tab-refs">References — TODO Task 20</div>}
 
       {/* Silence unused-variable warnings — these are wired in subsequent tasks */}
-      <div className="hidden">{phase}{phase1.length}{phase2.length}{phase3.length}{phase4.length}{phase5.length}{given.first_line ? '' : ''}{String(typeof setGiven)}</div>
+      <div className="hidden">{phase}{phase2.length}{phase3.length}{phase4.length}{phase5.length}{given.first_line ? '' : ''}{String(typeof setGiven)}</div>
     </div>
   );
 }
