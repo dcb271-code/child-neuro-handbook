@@ -207,47 +207,58 @@ export default function SEMedLadder() {
 
       {/* Tab bodies (stubs — filled in subsequent tasks) */}
       {tab === 'pathway' && (
-        <div data-testid="tab-pathway">
-          <PhaseCard title="Phase 1 — Stabilization" time="0–5 min" current={phase === 'stabilization'} complete={!!given.stabilization}>
-            <StabilizationCard items={phase1} complete={stabilizationDone}
-              onCheck={(id, v) => setStabilizationDone(s => ({ ...s, [id]: v }))} allChecked={allStabChecked} />
-          </PhaseCard>
+        isNeonate ? (
+          <div className="rounded-lg border-2 border-amber-300 dark:border-amber-700 bg-amber-50 dark:bg-amber-900/20 p-4">
+            <div className="text-sm font-semibold text-amber-900 dark:text-amber-200 mb-1">Neonate (&lt;28 d) — use the Neonatal Seizure Pathway</div>
+            <p className="text-xs text-amber-900 dark:text-amber-200">First-line drug, dose, and escalation differ for neonates (phenobarbital is typically 1st-line, etc.).</p>
+            <a href="/pdfs/pathways/neonatal-seizure-pathway.pdf" target="_blank" rel="noopener"
+               className="inline-block mt-2 text-xs px-2.5 py-1 rounded border border-amber-400 dark:border-amber-700 text-amber-900 dark:text-amber-200 hover:bg-amber-100 dark:hover:bg-amber-900/40">
+              Open Neonatal Seizure Pathway PDF →
+            </a>
+          </div>
+        ) : (
+          <div data-testid="tab-pathway">
+            <PhaseCard title="Phase 1 — Stabilization" time="0–5 min" current={phase === 'stabilization'} complete={!!given.stabilization}>
+              <StabilizationCard items={phase1} complete={stabilizationDone}
+                onCheck={(id, v) => setStabilizationDone(s => ({ ...s, [id]: v }))} allChecked={allStabChecked} />
+            </PhaseCard>
 
-          <PhaseCard title={`Phase 2 — First-line benzo (${ivAccess ? 'IV access' : 'no IV access'})`} time="5–20 min" current={phase === 'first_line'} complete={!!given.first_line}>
-            {phase2.map(d => {
-              const k = drugKey('first_line', d.drug, d.route);
-              return <DrugSubCard key={k} rec={d} given={!!drugsGiven[k]} onToggle={() => toggleDrug(k, 'first_line')} />;
-            })}
-          </PhaseCard>
+            <PhaseCard title={`Phase 2 — First-line benzo (${ivAccess ? 'IV access' : 'no IV access'})`} time="5–20 min" current={phase === 'first_line'} complete={!!given.first_line}>
+              {phase2.map(d => { const k = drugKey('first_line', d.drug, d.route); return <DrugSubCard key={k} rec={d} given={!!drugsGiven[k]} onToggle={() => toggleDrug(k, 'first_line')} />; })}
+            </PhaseCard>
 
-          <PhaseCard title="Phase 3 — Second-line ASM" time="20–40 min" current={phase === 'second_line'} complete={!!given.second_line}>
-            {phase3.map(d => {
-              const k = drugKey('second_line', d.drug, d.route);
-              return <DrugSubCard key={k} rec={d} given={!!drugsGiven[k]} onToggle={() => toggleDrug(k, 'second_line')} />;
-            })}
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">If still seizing 10–20 min post-load → Phase 4 (refractory).</p>
-          </PhaseCard>
+            <PhaseCard title="Phase 3 — Second-line ASM" time="20–40 min" current={phase === 'second_line'} complete={!!given.second_line}>
+              {phase3.map(d => { const k = drugKey('second_line', d.drug, d.route); return <DrugSubCard key={k} rec={d} given={!!drugsGiven[k]} onToggle={() => toggleDrug(k, 'second_line')} />; })}
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">If still seizing 10–20 min post-load → Phase 4 (refractory).</p>
+            </PhaseCard>
 
-          <PhaseCard title="Phase 4 — Refractory SE" time="40–60+ min" current={phase === 'refractory'} complete={!!given.refractory}>
-            {phase4.map(d => {
-              const k = drugKey('refractory', d.drug, d.route);
-              return <DrugSubCard key={k} rec={d} given={!!drugsGiven[k]} onToggle={() => toggleDrug(k, 'refractory')} />;
-            })}
-            <button type="button" onClick={() => setTab('refractory')}
-              className="mt-2 text-xs px-2.5 py-1 rounded border border-blue-300 dark:border-blue-700 text-blue-700 dark:text-blue-300 hover:bg-blue-50 dark:hover:bg-blue-900/30">
-              See Refractory &amp; weaning tab for full escalation, EEG goals, weaning
-            </button>
-          </PhaseCard>
-          {/* Phase 5 added in Task 15 */}
-        </div>
+            <PhaseCard title="Phase 4 — Refractory SE" time="40–60+ min" current={phase === 'refractory'} complete={!!given.refractory}>
+              {phase4.map(d => { const k = drugKey('refractory', d.drug, d.route); return <DrugSubCard key={k} rec={d} given={!!drugsGiven[k]} onToggle={() => toggleDrug(k, 'refractory')} />; })}
+              <button type="button" onClick={() => setTab('refractory')}
+                className="mt-2 text-xs px-2.5 py-1 rounded border border-blue-300 dark:border-blue-700 text-blue-700 dark:text-blue-300 hover:bg-blue-50 dark:hover:bg-blue-900/30">
+                See Refractory &amp; weaning tab for full escalation, EEG goals, weaning
+              </button>
+            </PhaseCard>
+
+            <PhaseCard title="Phase 5 — Super-refractory SE" time=">24 h despite anesthetic" current={phase === 'super_refractory'} complete={!!given.super_refractory}>
+              {phase5.map(d => { const k = drugKey('super_refractory', d.drug, d.route); return <DrugSubCard key={k} rec={d} given={!!drugsGiven[k]} onToggle={() => toggleDrug(k, 'super_refractory')} />; })}
+            </PhaseCard>
+
+            <div className="rounded border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/40 p-3 mt-3 text-xs">
+              <strong>Summary:</strong> Patient {weightKg} kg, {ageBand}, {ivAccess ? 'IV access' : 'no IV access'}.{' '}
+              {Object.keys(drugsGiven).filter(k => drugsGiven[k]).length === 0
+                ? 'Nothing administered yet.'
+                : `Given: ${Object.keys(drugsGiven).filter(k => drugsGiven[k]).map(k => k.split('/').slice(1).join(' ')).join('; ')}.`}
+              <button type="button" onClick={() => { setDrugsGiven({}); setGiven({}); setStabilizationDone({}); }}
+                className="ml-3 px-2 py-0.5 text-[11px] rounded border border-slate-300 dark:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-800">Reset</button>
+            </div>
+          </div>
+        )
       )}
       {tab === 'dosing'     && <div data-testid="tab-dosing">Dosing card — TODO Task 17</div>}
       {tab === 'refractory' && <div data-testid="tab-refractory">Refractory &amp; weaning — TODO Task 18</div>}
       {tab === 'teaching'   && <div data-testid="tab-teaching">Teaching — TODO Task 19</div>}
       {tab === 'refs'       && <div data-testid="tab-refs">References — TODO Task 20</div>}
-
-      {/* Silence unused-variable warnings — these are wired in subsequent tasks */}
-      <div className="hidden">{phase}{phase5.length}{given.first_line ? '' : ''}{String(typeof setGiven)}</div>
     </div>
   );
 }
