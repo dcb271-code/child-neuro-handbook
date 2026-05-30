@@ -383,7 +383,23 @@ export default function SEMedLadder() {
           </section>
         </div>
       )}
-      {tab === 'refs'       && <div data-testid="tab-refs">References — TODO Task 20</div>}
+      {tab === 'refs' && (
+        <div data-testid="tab-refs" className="max-w-2xl text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
+          <h4 className="text-sm font-semibold text-slate-900 dark:text-slate-100 mb-3">References (PubMed format)</h4>
+          <ol className="space-y-2 list-decimal list-inside">
+            <li>Trinka E, Cock H, Hesdorffer D, et al. A definition and classification of status epilepticus — Report of the ILAE Task Force on Classification of Status Epilepticus. Epilepsia. 2015;56(10):1515-1523. PMID: 26336950.</li>
+            <li>Glauser T, Shinnar S, Gloss D, et al. Evidence-Based Guideline: Treatment of Convulsive Status Epilepticus in Children and Adults. Epilepsy Curr. 2016;16(1):48-61. PMID: 26900382.</li>
+            <li>Kapur J, Elm J, Chamberlain JM, et al. Randomized Trial of Three Anticonvulsant Medications for Status Epilepticus (ESETT). N Engl J Med. 2019;381(22):2103-2113. PMID: 31774955.</li>
+            <li>Niquet J, Baldwin R, Suchomelova L, et al. Benzodiazepine-refractory status epilepticus: pathophysiology and principles of treatment. Ann N Y Acad Sci. 2016;1378(1):166-173. PMID: 27606928.</li>
+            <li>Rosati A, L&apos;Erario M, Ilvento L, et al. Efficacy and safety of ketamine in refractory status epilepticus in children (KETASER01). Neurology. 2018;90(13):e1129-e1135. PMID: 29490863.</li>
+            <li>Jacobwitz M, Mulvihill C, Kaufman MC, et al. Ketamine for Management of Neonatal and Pediatric Refractory Status Epilepticus. Neurology. 2022;99(15):e1602-e1612. PMID: 35977840.</li>
+            <li>Höfler J, Trinka E. Intravenous ketamine in status epilepticus. Epilepsia. 2018;59(S2):198-206. PMID: 30146751.</li>
+            <li>Gaspard N, Foreman B, Judd LM, et al. Intravenous ketamine for the treatment of refractory status epilepticus: a retrospective multicenter study. Epilepsia. 2013;54(8):1498-1503. PMID: 23758557.</li>
+            <li>Hirsch LJ, Gaspard N, van Baalen A, et al. Proposed consensus definitions for new-onset refractory status epilepticus (NORSE), febrile infection-related epilepsy syndrome (FIRES), and related conditions. Epilepsia. 2018;59(4):739-744. PMID: 29399791.</li>
+          </ol>
+          <p className="mt-3 text-slate-500 dark:text-slate-400">Institutional pathway: <a href="/epilepsy#status-epilepticus-pathway" className="text-blue-600 dark:text-blue-400 hover:underline">Status Epilepticus Pathway (Epilepsy section)</a>, <a href="/pdfs/pathways/refractory-status-epilepticus-pathway.pdf" target="_blank" rel="noopener" className="text-blue-600 dark:text-blue-400 hover:underline">Refractory SE Pathway PDF</a>. Additional ketamine sources may be added in Task 21 after WebSearch verification.</p>
+        </div>
+      )}
     </div>
   );
 }
