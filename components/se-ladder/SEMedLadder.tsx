@@ -301,7 +301,7 @@ export default function SEMedLadder() {
           <section>
             <h4 className="font-semibold text-slate-900 dark:text-slate-100 mb-1 text-base">Phase 4 — Refractory SE management</h4>
             <p><strong>Midazolam infusion (primary 3rd-line).</strong> Bolus 0.1–0.15 mg/kg over 2 min; start 0.1 mg/kg/hr; rebolus 0.1–0.15 mg/kg and ↑ by 0.1 mg/kg/hr every 15–30 min as needed. Usual switch threshold ≥0.6–1 mg/kg/hr; absolute max 2 mg/kg/hr. Intubate; start continuous EEG.</p>
-            <p className="mt-2"><strong>Ketamine infusion (alternative or early adjunct).</strong> Bolus 2 mg/kg over 5 min; start 0.5–1 mg/kg/hr; rebolus 1.5 mg/kg; ↑ by 0.5 mg/kg/hr q30–120 min to a max of 6 mg/kg/hr. Decrease 10–20% if oversuppressed on EEG. In the Ket-Mid RCT (Awad 2025, n=144, ages 6 mo–16 yr), ketamine+midazolam achieved seizure cessation in 76% of children at 5 min vs 21% with midazolam+placebo (RR 3.7; p&lt;0.001), and in 83% vs 46% at 35 min — the clearest head-to-head comparison supporting combination use. In retrospective pediatric/neonatal RSE cohorts, ketamine infusion produces seizure termination in approximately 46% and reduction in an additional 28% (Jacobwitz 2022, n=69 patients); across pediatric case series the overall cessation rate is approximately 61% (Rosati 2018 KETASER01). Earlier initiation (&lt;32 h of SE) is associated with better control (Jacobwitz 2022, PMID 35817569). Mechanistic rationale: prolonged SE causes GABA&#x2090; receptor internalization and NMDA receptor externalization; midazolam+ketamine dual targeting of both receptor populations is synergistic, not merely additive (Niquet 2017, Ann Neurol, PMID 28714055).</p>
+            <p className="mt-2"><strong>Ketamine infusion (alternative or early adjunct).</strong> Bolus 2 mg/kg over 5 min; start 0.5–1 mg/kg/hr; rebolus 1.5 mg/kg; ↑ by 0.5 mg/kg/hr q30–120 min to a max of 6 mg/kg/hr. Decrease 10–20% if oversuppressed on EEG. Pediatric/neonatal refractory-SE evidence: ketamine produces seizure termination in ~46% and reduction in another ~28% (Jacobwitz 2022, n=69, PMID 35817569), with earlier initiation (&lt;32 h of SE) associated with better control; across pediatric case series cessation rates of 40–60% are reported (Rosati 2018 systematic review, CNS Drugs, PMID 30232735). Mechanistic rationale: prolonged SE causes GABA<sub>A</sub> internalization and NMDA receptor externalization, so midazolam + ketamine dual-targeting is synergistic, not merely additive (Niquet 2016, Ann N Y Acad Sci, PMID 27392038). For broader context, the Ket-Mid RCT (Othman 2025, Pediatr Neurol, PMID 40186980; n=144 children, ages 6 mo–16 y) showed ketamine + midazolam achieves 5-minute cessation in 76% vs 21% with midazolam + placebo when used as <em>first-line / early SE treatment</em> — that head-to-head comparison supports the combination mechanism, though its direct applicability to the post-2nd-line refractory setting is an extrapolation.</p>
             <p className="mt-2"><strong>EEG goal:</strong> electrographic seizure cessation or agreed burst-suppression pattern (typically 1 burst/10 s). Maintain ≈24 h of electrographic control before weaning. Reassess at least q2h; oversuppression (&lt;1 burst/page) → decrease infusion 10–20%.</p>
           </section>
 
@@ -342,7 +342,7 @@ export default function SEMedLadder() {
 
           <section>
             <h4 className="font-semibold text-slate-900 dark:text-slate-100 mb-2 text-base">ESETT — three 2nd-line drugs ≈ equivalent</h4>
-            <p>Kapur et al. (NEJM 2019) showed fosphenytoin, levetiracetam, and valproate produce seizure cessation in roughly half of patients each. Practical implication: pick by patient features (cautions, contraindications, availability), not by relative efficacy.</p>
+            <p>Kapur et al. (NEJM 2019) showed fosphenytoin, levetiracetam, and valproate produced seizure cessation in 45%, 47%, and 46% of patients respectively — clinically equivalent. Practical implication: pick by patient features (cautions, contraindications, availability), not by relative efficacy.</p>
           </section>
 
           <section>
@@ -352,7 +352,7 @@ export default function SEMedLadder() {
 
           <section>
             <h4 className="font-semibold text-slate-900 dark:text-slate-100 mb-2 text-base">Ketamine&apos;s role in refractory SE</h4>
-            <p>NMDA receptor blockade mechanistically complements GABAergic agents (lorazepam/midazolam) — synergy is established preclinically (Niquet 2017, Ann Neurol). Clinical signal favors <strong>earlier rather than later</strong> initiation (Jacobwitz 2022). Consider adding ketamine to or substituting for midazolam in Phase 4 rather than waiting until Phase 5.</p>
+            <p>NMDA receptor blockade mechanistically complements GABAergic agents (lorazepam/midazolam) — synergy is established preclinically (Niquet 2016, Ann N Y Acad Sci, PMID 27392038). Clinical signal favors <strong>earlier rather than later</strong> initiation (Jacobwitz 2022). Consider adding ketamine to or substituting for midazolam in Phase 4 rather than waiting until Phase 5.</p>
           </section>
 
           <section>
@@ -389,12 +389,11 @@ export default function SEMedLadder() {
             <li>Trinka E, Cock H, Hesdorffer D, et al. A definition and classification of status epilepticus — Report of the ILAE Task Force on Classification of Status Epilepticus. Epilepsia. 2015;56(10):1515-1523. PMID: 26336950.</li>
             <li>Glauser T, Shinnar S, Gloss D, et al. Evidence-Based Guideline: Treatment of Convulsive Status Epilepticus in Children and Adults. Epilepsy Curr. 2016;16(1):48-61. PMID: 26900382.</li>
             <li>Kapur J, Elm J, Chamberlain JM, et al. Randomized Trial of Three Anticonvulsant Medications for Status Epilepticus (ESETT). N Engl J Med. 2019;381(22):2103-2113. PMID: 31774955.</li>
-            <li>Niquet J, Baldwin R, Suchomelova L, et al. Benzodiazepine-refractory status epilepticus: pathophysiology and principles of treatment. Ann N Y Acad Sci. 2016;1378(1):166-173. PMID: 27606928.</li>
-            <li>Niquet J, Lumley L, Baldwin R, et al. Early polytherapy for benzodiazepine-refractory status epilepticus. Ann Neurol. 2017;82(3):359-371. PMID: 28714055. [Preclinical synergy of midazolam+ketamine+valproate; NMDA receptor externalization mechanism.]</li>
-            <li>Awad YM, Hafez HA, Sayed AM, et al. Combined Ketamine and Midazolam Versus Midazolam Alone for Initial Treatment of Pediatric Generalized Convulsive Status Epilepticus (Ket-Mid Study): A Randomized Controlled Trial. Pediatr Neurol. 2025;167:24-32. PMID: 40186980.</li>
-            <li>Rosati A, L&apos;Erario M, Ilvento L, et al. Efficacy and safety of ketamine in refractory status epilepticus in children (KETASER01). Neurology. 2018;90(13):e1129-e1135. PMID: 29490863.</li>
+            <li>Niquet J, Baldwin R, Suchomelova L, et al. Benzodiazepine-refractory status epilepticus: pathophysiology and principles of treatment. Ann N Y Acad Sci. 2016;1378(1):166-173. PMID: 27392038.</li>
+            <li>Othman AA, Sadek AA, Ahmed EA, Abdelkreem E. Combined Ketamine and Midazolam Versus Midazolam Alone for Initial Treatment of Pediatric Generalized Convulsive Status Epilepticus (Ket-Mid Study): A Randomized Controlled Trial. Pediatr Neurol. 2025;167:24-32. PMID: 40186980. [First-line / early SE trial; extrapolation to refractory setting is supportive but indirect.]</li>
+            <li>Rosati A, De Masi S, Guerrini R. Ketamine for Refractory Status Epilepticus: A Systematic Review. CNS Drugs. 2018;32(11):997-1009. PMID: 30232735.</li>
             <li>Jacobwitz M, Mulvihill C, Kaufman MC, et al. Ketamine for Management of Neonatal and Pediatric Refractory Status Epilepticus. Neurology. 2022;99(12):e1227-e1238. PMID: 35817569.</li>
-            <li>Höfler J, Trinka E. Intravenous ketamine in status epilepticus. Epilepsia. 2018;59(S2):198-206. PMID: 30146751.</li>
+            <li>Höfler J, Trinka E. Intravenous ketamine in status epilepticus. Epilepsia. 2018;59(S2):198-206. PMID: 30146731.</li>
             <li>Gaspard N, Foreman B, Judd LM, et al. Intravenous ketamine for the treatment of refractory status epilepticus: a retrospective multicenter study. Epilepsia. 2013;54(8):1498-1503. PMID: 23758557.</li>
             <li>Hirsch LJ, Gaspard N, van Baalen A, et al. Proposed consensus definitions for new-onset refractory status epilepticus (NORSE), febrile infection-related epilepsy syndrome (FIRES), and related conditions. Epilepsia. 2018;59(4):739-744. PMID: 29399791.</li>
           </ol>

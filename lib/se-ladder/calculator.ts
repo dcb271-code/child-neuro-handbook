@@ -40,14 +40,6 @@ export function mgFor(mgPerKg: number, weightKg: number, maxCap: number): { mg: 
   return { mg: Math.round(raw * 10) / 10, hitCap: false };
 }
 
-/** Diastat (diazepam rectal gel) per-age dosing per the institutional pathway.
-    The 28d–1y band has a sub-rule by weight (5–9.9 kg → 2.5 mg, ≥10 kg → 5 mg). */
-export function calcDiastatPR(ageBand: AgeBand, weightKg: number): number {
-  if (ageBand === '28d-1y') return weightKg < 10 ? 2.5 : 5;
-  if (ageBand === '1-5y')   return Math.round(0.5 * weightKg * 10) / 10;
-  if (ageBand === '6-11y')  return Math.round(0.3 * weightKg * 10) / 10;
-  return Math.round(0.2 * weightKg * 10) / 10;     // ge_12y
-}
 
 export type StabilizationItem = { id: string; label: string; note?: string };
 
@@ -72,12 +64,6 @@ export function recommendFirstLine(p: PatientInputs): DrugRecommendation[] {
       infusionTime: 'over 2 min', note: 'May repeat once after 3–5 min if still seizing',
       cautions: [respCaution], rank: 1,
     });
-    const diaz = mgFor(0.2, p.weightKg, 10);
-    out.push({
-      drug: 'diazepam', route: 'IV', mgPerKg: 0.2, mg: diaz.mg, maxCap: 10, hitCap: diaz.hitCap,
-      infusionTime: 'over 2 min', note: 'Alternative to lorazepam. May repeat once after 3–5 min',
-      cautions: [respCaution], rank: 2,
-    });
     return out;
   }
   // No IV access path
@@ -93,12 +79,6 @@ export function recommendFirstLine(p: PatientInputs): DrugRecommendation[] {
     note: '0.1 mg/kg per nostril; use concentrated solution',
     cautions: [respCaution], rank: 2,
   });
-  const prMg = calcDiastatPR(p.ageBand, p.weightKg);
-  out.push({
-    drug: 'diazepam', route: 'PR', mg: prMg, maxCap: prMg, hitCap: false,
-    note: 'Diastat per age band; use the prefilled-dose closest to the calculated amount',
-    cautions: [respCaution], rank: 3,
-  });
   return out;
 }
 
@@ -109,13 +89,21 @@ type SecondLineEntry = {
 
 const SECOND_LINE_TABLE: SecondLineEntry[] = [
   { drug: 'levetiracetam', mgPerKg: 60, maxCap: 4500, infusionTime: 'over 10–15 min',
-    baseCautions: [] },
+    baseCautions: [
+      { severity: 'note', text: 'Load range 40–60 mg/kg per institutional pathway (60 shown)' },
+    ] },
   { drug: 'fosphenytoin',  mgPerKg: 20, maxCap: 1500, infusionTime: 'over 10–15 min',
     baseCautions: [{ severity: 'note', text: 'Consider extra 10 mg PE/kg if no response after 10 min' }] },
-  { drug: 'phenobarbital', mgPerKg: 20, maxCap: 1000, infusionTime: '1–2 mg/kg/min',
-    baseCautions: [{ severity: 'caution', text: 'Respiratory depression and hypotension' }] },
-  { drug: 'valproate',     mgPerKg: 40, maxCap: 3000, infusionTime: 'up to ~20 mg/min',
-    baseCautions: [] },
+  { drug: 'phenobarbital', mgPerKg: 20, maxCap: 1000, infusionTime: 'over 15 min',
+    baseCautions: [
+      { severity: 'note', text: 'Max infusion rate: 1–2 mg/kg/min' },
+      { severity: 'caution', text: 'Respiratory depression and hypotension' },
+    ] },
+  { drug: 'valproate',     mgPerKg: 40, maxCap: 3000, infusionTime: 'over 10–15 min',
+    baseCautions: [
+      { severity: 'note', text: 'Max infusion rate: up to ~20 mg/min' },
+      { severity: 'note', text: 'Load range 20–40 mg/kg per institutional pathway (40 shown)' },
+    ] },
 ];
 
 export function recommendSecondLine(p: PatientInputs): DrugRecommendation[] {
@@ -130,8 +118,11 @@ export function recommendSecondLine(p: PatientInputs): DrugRecommendation[] {
     }
     if (e.drug === 'valproate') {
       if (p.flags.includes('polg_mito')) cautions.push({ severity: 'contraindicated', text: 'Contraindicated: known/suspected POLG or mitochondrial disease (hepatotoxicity)' });
-      if ((p.ageBand === '28d-1y' || p.ageBand === '1-5y') && !p.flags.includes('polg_mito')) {
+      if (p.ageBand === '28d-1y' && !p.flags.includes('polg_mito')) {
         cautions.push({ severity: 'contraindicated', text: 'Avoid in <2 y unless POLG status is known' });
+      }
+      if (p.ageBand === '1-5y' && !p.flags.includes('polg_mito')) {
+        cautions.push({ severity: 'caution', text: 'If patient <2 y of age, avoid unless POLG status is known' });
       }
     }
     if (e.drug === 'levetiracetam' && p.flags.includes('renal')) {

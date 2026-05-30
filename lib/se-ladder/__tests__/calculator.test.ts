@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { mgFor, calcDiastatPR } from '../calculator';
+import { mgFor } from '../calculator';
 import { recommendStabilization } from '../calculator';
 
 describe('mgFor — dose math with cap', () => {
@@ -14,23 +14,6 @@ describe('mgFor — dose math with cap', () => {
   });
 });
 
-describe('calcDiastatPR — institutional per-age chart', () => {
-  it('6–12 mo, 5–9.9 kg → 2.5 mg', () => {
-    expect(calcDiastatPR('28d-1y', 8)).toBe(2.5);
-  });
-  it('6–12 mo, ≥10 kg → 5 mg', () => {
-    expect(calcDiastatPR('28d-1y', 10)).toBe(5);
-  });
-  it('1–5 y → 0.5 mg/kg', () => {
-    expect(calcDiastatPR('1-5y', 15)).toBe(7.5);
-  });
-  it('6–11 y → 0.3 mg/kg', () => {
-    expect(calcDiastatPR('6-11y', 25)).toBe(7.5);
-  });
-  it('≥12 y → 0.2 mg/kg', () => {
-    expect(calcDiastatPR('ge_12y', 60)).toBe(12);
-  });
-});
 
 describe('recommendStabilization — Phase 1 (0–5 min)', () => {
   it('returns the 5 checklist items in fixed order', () => {
@@ -48,13 +31,12 @@ const pBase: PatientInputs = {
 };
 
 describe('recommendFirstLine — Phase 2 (5–20 min)', () => {
-  it('IV access: ranks lorazepam IV first, diazepam IV second', () => {
+  it('IV access: returns lorazepam IV only', () => {
     const r = recommendFirstLine(pBase);
+    expect(r).toHaveLength(1);
     expect(r[0].drug).toBe('lorazepam');
     expect(r[0].route).toBe('IV');
     expect(r[0].mg).toBeCloseTo(1.5);            // 0.1 × 15
-    expect(r[1].drug).toBe('diazepam');
-    expect(r[1].route).toBe('IV');
   });
   it('IV access caps lorazepam at 4 mg for heavy patients', () => {
     const r = recommendFirstLine({ ...pBase, weightKg: 60 });
@@ -62,12 +44,13 @@ describe('recommendFirstLine — Phase 2 (5–20 min)', () => {
     expect(loraz.mg).toBe(4);
     expect(loraz.hitCap).toBe(true);
   });
-  it('no IV access: returns midazolam IM, midazolam IN, and diazepam PR (no IV benzos)', () => {
+  it('no IV access: returns midazolam IM and midazolam IN only', () => {
     const r = recommendFirstLine({ ...pBase, ivAccess: false });
+    expect(r).toHaveLength(2);
     const drugs = r.map(d => `${d.drug}/${d.route}`);
     expect(drugs).toContain('midazolam/IM');
     expect(drugs).toContain('midazolam/IN');
-    expect(drugs).toContain('diazepam/PR');
+    expect(drugs).not.toContain('diazepam/PR');
     expect(drugs.some(d => d.endsWith('/IV'))).toBe(false);
   });
   it('no IV access: midazolam IM is weight-banded (5 mg for 13–40 kg)', () => {
@@ -77,10 +60,6 @@ describe('recommendFirstLine — Phase 2 (5–20 min)', () => {
   it('no IV access: midazolam IM is 10 mg for >40 kg', () => {
     const r = recommendFirstLine({ ...pBase, ivAccess: false, weightKg: 50 });
     expect(r.find(d => d.drug === 'midazolam' && d.route === 'IM')!.mg).toBe(10);
-  });
-  it('diazepam PR uses the age-band chart (1–5 y, 15 kg → 7.5 mg)', () => {
-    const r = recommendFirstLine({ ...pBase, ivAccess: false, weightKg: 15 });
-    expect(r.find(d => d.drug === 'diazepam' && d.route === 'PR')!.mg).toBe(7.5);
   });
 });
 
@@ -136,10 +115,11 @@ describe('recommendSecondLine — flag filtering', () => {
     const val = r.find(d => d.drug === 'valproate')!;
     expect(val.cautions.some(c => c.severity === 'contraindicated' && /<2/.test(c.text))).toBe(true);
   });
-  it('age 1-5y: valproate contraindicated by age default (POLG status unknown)', () => {
+  it('age 1-5y: valproate has age-based CAUTION (since band covers both <2y and ≥2y)', () => {
     const r = recommendSecondLine({ ...pBase, ageBand: '1-5y' });
     const val = r.find(d => d.drug === 'valproate')!;
-    expect(val.cautions.some(c => c.severity === 'contraindicated' && /<2/.test(c.text))).toBe(true);
+    expect(val.cautions.some(c => c.severity === 'caution' && /<2/.test(c.text))).toBe(true);
+    expect(val.cautions.some(c => c.severity === 'contraindicated' && /<2/.test(c.text))).toBe(false);
   });
   it('age ≥6y: valproate has no age-based contraindication', () => {
     const r = recommendSecondLine({ ...pBase, ageBand: '6-11y' });
