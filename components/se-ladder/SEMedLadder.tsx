@@ -27,6 +27,40 @@ function Field({ label, hint, children }: { label: string; hint?: string; childr
   );
 }
 
+// Numeric input that tracks the raw text locally so the field can be cleared
+// and retyped. Binding straight to the number and coercing empty input to 0
+// (the old `parseFloat(...) || 0`) made the "0" impossible to delete — clearing
+// it snapped back to 0. The draft lets it sit empty or hold a partial entry
+// ("1.") mid-edit; only a real number is propagated.
+function NumInput({ value, onChange, min, className }: {
+  value: number; onChange: (v: number) => void; min?: number; className?: string;
+}) {
+  const [draft, setDraft] = useState(String(value));
+
+  useEffect(() => {
+    if (Number(draft) !== value) setDraft(String(value));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value]);
+
+  return (
+    <input
+      type="number"
+      value={draft}
+      min={min}
+      onChange={(e) => {
+        const raw = e.target.value;
+        setDraft(raw);
+        if (raw !== '') {
+          const n = parseFloat(raw);
+          if (!Number.isNaN(n)) onChange(n);
+        }
+      }}
+      onBlur={() => setDraft(String(value))}
+      className={className}
+    />
+  );
+}
+
 type Tab = 'pathway' | 'dosing' | 'refractory' | 'teaching' | 'refs';
 
 function PhaseCard({ title, time, current, complete, children }: { title: string; time: string; current: boolean; complete: boolean; children: React.ReactNode }) {
@@ -154,7 +188,7 @@ export default function SEMedLadder() {
       {/* Global inputs */}
       <div className="bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-700 rounded-md p-3 mb-4 grid sm:grid-cols-2 gap-3">
         <Field label="Weight (kg)">
-          <input type="number" value={weightKg} min={0} onChange={(e) => setWeightKg(parseFloat(e.target.value) || 0)}
+          <NumInput value={weightKg} min={0} onChange={setWeightKg}
             className="w-24 px-3 py-1.5 border border-slate-300 dark:border-slate-600 rounded-md text-sm bg-white dark:bg-slate-900" />
         </Field>
         <Field label="Age band">

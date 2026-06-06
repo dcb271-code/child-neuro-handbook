@@ -1,6 +1,6 @@
 'use client';
 
-import { useId, useMemo, useState } from 'react';
+import { useEffect, useId, useMemo, useState } from 'react';
 import {
   calcSarnat, assessTHEligibility,
   SARNAT_DOMAINS, ACUTE_PERINATAL_EVENTS,
@@ -78,12 +78,32 @@ function CritRow({ ok, warn, label }: { ok: boolean; warn?: boolean; label: stri
 function NumberInput({ value, onChange, suffix, min, max }: {
   value: number; onChange: (v: number) => void; suffix?: string; min?: number; max?: number;
 }) {
+  // Track the raw text locally so the field can be cleared and retyped. Binding
+  // the box straight to the number and coercing empty input to 0 (the old
+  // `parseFloat(...) || 0`) made the "0" impossible to delete — clearing the
+  // field snapped it back to 0. The draft lets it sit empty or hold a partial
+  // entry ("1.") mid-edit; we only propagate a real number.
+  const [draft, setDraft] = useState(String(value));
+
+  useEffect(() => {
+    if (Number(draft) !== value) setDraft(String(value));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value]);
+
   return (
     <div className="flex items-center gap-2">
       <input
         type="number"
-        value={value}
-        onChange={(e) => onChange(parseFloat(e.target.value) || 0)}
+        value={draft}
+        onChange={(e) => {
+          const raw = e.target.value;
+          setDraft(raw);
+          if (raw !== '') {
+            const n = parseFloat(raw);
+            if (!Number.isNaN(n)) onChange(n);
+          }
+        }}
+        onBlur={() => setDraft(String(value))}
         min={min}
         max={max}
         className="w-24 px-3 py-1.5 border border-slate-300 dark:border-slate-600 rounded-md text-sm bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500"

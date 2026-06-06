@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   calcLamberink,
   calcDai,
@@ -27,14 +27,42 @@ function Field({ label, children, hint }: { label: string; children: React.React
 function NumInput({ value, onChange, min, max, step = 1 }: {
   value: number; onChange: (v: number) => void; min?: number; max?: number; step?: number;
 }) {
+  // Track the raw text in local state rather than binding the box directly to
+  // the numeric value. A purely numeric controlled value forces an emptied
+  // field straight back to 0, which is what made the "0" impossible to delete:
+  // you could never clear it to type a fresh number. The draft lets the field
+  // sit empty — or hold a partial entry like "1." — mid-edit.
+  const [draft, setDraft] = useState(String(value));
+
+  // Re-sync when the value changes from outside this input (e.g. a future
+  // reset button), but not while the draft already parses to the same number —
+  // that would clobber an in-progress edit.
+  useEffect(() => {
+    if (Number(draft) !== value) setDraft(String(value));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value]);
+
   return (
     <input
       type="number"
-      value={value}
+      value={draft}
       min={min}
       max={max}
       step={step}
-      onChange={(e) => onChange(e.target.value === '' ? 0 : Number(e.target.value))}
+      onChange={(e) => {
+        const raw = e.target.value;
+        setDraft(raw);
+        // Only propagate a real number. An empty or partial entry ("", "-",
+        // "1.") leaves the last good value in place so results don't flash to 0
+        // and the field can be cleared and retyped freely.
+        if (raw !== '') {
+          const n = Number(raw);
+          if (!Number.isNaN(n)) onChange(n);
+        }
+      }}
+      // On blur, snap the text back to the canonical current value so an empty
+      // or partial field never lingers.
+      onBlur={() => setDraft(String(value))}
       className="w-full px-3 py-1.5 border border-slate-300 dark:border-slate-600 rounded-md text-sm bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500"
     />
   );
@@ -69,6 +97,10 @@ type Tab = 'lamberink' | 'dai' | 'about';
 
 export default function ASMWithdrawalCalculator() {
   const [tab, setTab] = useState<Tab>('lamberink');
+  // The 10-year seizure-freedom estimate is opt-in and off by default: it is a
+  // distinct, more speculative construct than the withdrawal-decision risks and
+  // shouldn't read as a headline reassurance.
+  const [showLong, setShowLong] = useState(false);
 
   const [L, setL] = useState<LamberinkInputs>({
     duration: 2, ttr: 2, naed: 1, ageonset: 5,
@@ -164,8 +196,43 @@ export default function ASMWithdrawalCalculator() {
                     color="bg-amber-50 border-amber-200 text-amber-900 dark:bg-amber-900/20 dark:border-amber-800 dark:text-amber-200" />
                   <RiskPill label="5-year recurrence risk" value={lamberinkResult.risk5y}
                     color="bg-red-50 border-red-200 text-red-900 dark:bg-red-900/20 dark:border-red-800 dark:text-red-200" />
-                  <RiskPill label="10-year sustained seizure freedom" value={lamberinkResult.riskLong}
-                    color="bg-emerald-50 border-emerald-200 text-emerald-900 dark:bg-emerald-900/20 dark:border-emerald-800 dark:text-emerald-200" />
+                </div>
+
+                {/* Opt-in, de-emphasized 10-year seizure-freedom estimate. Shown
+                    as a point estimate only when the long-term score lands inside
+                    the range Lamberink quantifies precisely; the open-ended tails
+                    ('>99' / '<40') and out-of-range nulls get a qualitative note
+                    instead of an extrapolated number. */}
+                <div className="mb-4">
+                  <button
+                    type="button"
+                    onClick={() => setShowLong((s) => !s)}
+                    aria-expanded={showLong}
+                    className="flex items-center gap-1.5 text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
+                  >
+                    <span className="inline-block transition-transform" style={{ transform: showLong ? 'rotate(90deg)' : 'none' }}>▸</span>
+                    {showLong ? 'Hide' : 'Show'} 10-year seizure-freedom estimate
+                  </button>
+
+                  {showLong && (
+                    typeof lamberinkResult.riskLong === 'number' ? (
+                      <div className="mt-2 rounded-lg p-3 border bg-slate-50 border-slate-200 text-slate-700 dark:bg-slate-900/40 dark:border-slate-700 dark:text-slate-300">
+                        <div className="text-xs uppercase tracking-wide opacity-70">10-year sustained seizure freedom — model estimate</div>
+                        <div className="text-2xl font-semibold mt-1">{lamberinkResult.riskLong}%</div>
+                        <p className="text-xs mt-2 opacity-80 leading-relaxed">
+                          Modeled probability of being seizure-free 10 years after withdrawal (whether or not medication is later restarted). This is a population-level estimate with only modest individual discrimination (c-statistic ≈0.71) and is <strong>not</strong> a guarantee for an individual patient. The 2- and 5-year recurrence risks above are the figures most directly relevant to the withdrawal decision.
+                        </p>
+                      </div>
+                    ) : (
+                      <div className="mt-2 rounded-lg p-3 border border-dashed border-slate-300 dark:border-slate-700 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                        {lamberinkResult.riskLong == null ? (
+                          'No estimate available — the long-term score falls outside the model’s range. Check input values.'
+                        ) : (
+                          <>For these inputs the long-term outcome falls in an open-ended tail of the Lamberink model ({lamberinkResult.riskLong === '>99' ? 'very high' : 'low'} 10-year seizure freedom), beyond the range the study quantifies as a precise percentage. No point estimate is shown — interpret only qualitatively.</>
+                        )}
+                      </div>
+                    )
+                  )}
                 </div>
                 <div className="text-xs text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/40 rounded-md p-3 space-y-1">
                   <div>Recurrence score: <span className="font-mono">{lamberinkResult.scoreRec}</span></div>
