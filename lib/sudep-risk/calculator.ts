@@ -86,7 +86,7 @@ const SYNDROME_BASELINES: Record<Syndrome, SyndromeBaseline> = {
   selflimited: {
     rate: 0.10,
     label: 'Self-limited epilepsy syndrome',
-    description: 'SeLECTS, CAE, JAE, Panayiotopoulos, etc. Excellent prognosis. SUDEP is rare but not zero — cases have been documented in SeLECTS (Verducci 2020 NA SUDEP Registry). With all favorable factors, raw computation falls below the literature\'s ability to resolve, displayed as ≤0.05 or <0.01 per 1000py.',
+    description: 'SeLECTS, CAE, Panayiotopoulos, etc. Excellent prognosis. SUDEP is rare but not zero — cases have been documented in SeLECTS (Verducci 2020 NA SUDEP Registry). With all favorable factors, raw computation falls below the literature\'s ability to resolve, displayed as ≤0.05 or <0.01 per 1000py.',
     source: 'Tomson 2025; NA SUDEP Registry',
     evidence: 'moderate'
   },

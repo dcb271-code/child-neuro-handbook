@@ -268,7 +268,7 @@ export default function SUDEPRiskCalculator() {
                     return next;
                   })}
                   options={[
-                    ['selflimited', 'Self-limited (SeLECTS, CAE, JAE, etc.)'],
+                    ['selflimited', 'Self-limited (SeLECTS, CAE, etc.)'],
                     ['newonset', 'New-onset / single seizure'],
                     ['controlled', 'Controlled epilepsy (general pediatric)'],
                     ['gefs_mild', 'GEFS+ / mild genetic epilepsy (normal intelligence)'],
