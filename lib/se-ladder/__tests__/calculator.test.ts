@@ -44,22 +44,28 @@ describe('recommendFirstLine — Phase 2 (5–20 min)', () => {
     expect(loraz.mg).toBe(4);
     expect(loraz.hitCap).toBe(true);
   });
-  it('no IV access: returns midazolam IM and midazolam IN only', () => {
+  it('no IV access: returns midazolam IN only — IM is not used at this institution', () => {
     const r = recommendFirstLine({ ...pBase, ivAccess: false });
-    expect(r).toHaveLength(2);
+    expect(r).toHaveLength(1);
     const drugs = r.map(d => `${d.drug}/${d.route}`);
-    expect(drugs).toContain('midazolam/IM');
-    expect(drugs).toContain('midazolam/IN');
-    expect(drugs).not.toContain('diazepam/PR');
-    expect(drugs.some(d => d.endsWith('/IV'))).toBe(false);
+    expect(drugs).toEqual(['midazolam/IN']);
   });
-  it('no IV access: midazolam IM is weight-banded (5 mg for 13–40 kg)', () => {
-    const r = recommendFirstLine({ ...pBase, ivAccess: false, weightKg: 25 });
-    expect(r.find(d => d.drug === 'midazolam' && d.route === 'IM')!.mg).toBe(5);
+  it('no IV access: IM is never recommended at any weight', () => {
+    for (const weightKg of [8, 12, 13, 25, 40, 41, 60]) {
+      const r = recommendFirstLine({ ...pBase, ivAccess: false, weightKg });
+      expect(r.some(d => d.route === 'IM')).toBe(false);
+    }
   });
-  it('no IV access: midazolam IM is 10 mg for >40 kg', () => {
-    const r = recommendFirstLine({ ...pBase, ivAccess: false, weightKg: 50 });
-    expect(r.find(d => d.drug === 'midazolam' && d.route === 'IM')!.mg).toBe(10);
+  it('no IV access: midazolam IN is 0.2 mg/kg capped at 10 mg', () => {
+    expect(recommendFirstLine({ ...pBase, ivAccess: false, weightKg: 25 })[0].mg).toBe(5);
+    const heavy = recommendFirstLine({ ...pBase, ivAccess: false, weightKg: 80 })[0];
+    expect(heavy.mg).toBe(10);
+    expect(heavy.hitCap).toBe(true);
+  });
+  it('no IV access: small infants still get a dose (no IM weight-band gap)', () => {
+    const r = recommendFirstLine({ ...pBase, ivAccess: false, weightKg: 8 });
+    expect(r).toHaveLength(1);
+    expect(r[0].mg).toBeCloseTo(1.6);
   });
 });
 

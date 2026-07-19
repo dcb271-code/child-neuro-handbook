@@ -66,18 +66,12 @@ export function recommendFirstLine(p: PatientInputs): DrugRecommendation[] {
     });
     return out;
   }
-  // No IV access path
-  const midIM = p.weightKg < 13 ? 0 : (p.weightKg <= 40 ? 5 : 10);
-  out.push({
-    drug: 'midazolam', route: 'IM', mg: midIM, maxCap: 10, hitCap: false,
-    note: p.weightKg < 13 ? 'Weight <13 kg: use IN or PR instead' : 'Weight-banded: 13–40 kg → 5 mg; >40 kg → 10 mg',
-    cautions: [respCaution], rank: 1,
-  });
+  // No IV access path. IM is intentionally not offered — this institution uses IN or IV only.
   const midIN = mgFor(0.2, p.weightKg, 10);
   out.push({
     drug: 'midazolam', route: 'IN', mgPerKg: 0.2, mg: midIN.mg, maxCap: 10, hitCap: midIN.hitCap,
     note: '0.1 mg/kg per nostril; use concentrated solution',
-    cautions: [respCaution], rank: 2,
+    cautions: [respCaution], rank: 1,
   });
   return out;
 }
