@@ -12,6 +12,7 @@ import SeizureRiskCalculators from '@/components/seizure-risk/SeizureRiskCalcula
 import SUDEPRiskCalculator from '@/components/sudep-risk/SUDEPRiskCalculator';
 import NeonatalHIECalculator from '@/components/hie/NeonatalHIECalculator';
 import SEMedLadder from '@/components/se-ladder/SEMedLadder';
+import { SECTION_WIDGET_IDS } from '@/lib/content/widgets';
 
 type TocEntry = { level: number; text: string; id: string };
 
@@ -63,17 +64,25 @@ const accentMap: Record<string, string> = {
   neuromuscular:                       '#059669',
 };
 
-const SECTION_WIDGETS: Record<string, { id: string; Component: ComponentType }[]> = {
-  epilepsy: [
-    { id: 'asm-withdrawal-calculator', Component: ASMWithdrawalCalculator },
-    { id: 'seizure-risk-calculators', Component: SeizureRiskCalculators },
-    { id: 'sudep-risk-calculator', Component: SUDEPRiskCalculator },
-  ],
-  'neurocritical-care': [
-    { id: 'hie-calculator', Component: NeonatalHIECalculator },
-    { id: 'se-med-ladder',  Component: SEMedLadder },
-  ],
+const WIDGET_COMPONENTS: Record<string, ComponentType> = {
+  'asm-withdrawal-calculator': ASMWithdrawalCalculator,
+  'seizure-risk-calculators':  SeizureRiskCalculators,
+  'sudep-risk-calculator':     SUDEPRiskCalculator,
+  'hie-calculator':            NeonatalHIECalculator,
+  'se-med-ladder':             SEMedLadder,
 };
+
+const SECTION_WIDGETS: Record<string, { id: string; Component: ComponentType }[]> =
+  Object.fromEntries(
+    Object.entries(SECTION_WIDGET_IDS).map(([slug, ids]) => [
+      slug,
+      ids.map(id => {
+        const Component = WIDGET_COMPONENTS[id];
+        if (!Component) throw new Error(`No component registered for widget id "${id}"`);
+        return { id, Component };
+      }),
+    ])
+  );
 
 export default function SectionPage({ params }: { params: { section: string } }) {
   const data = getSectionData(params.section);
