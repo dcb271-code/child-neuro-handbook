@@ -70,6 +70,18 @@ calculator means touching that registry, the component map, and the section's `t
 Each has pure logic in `calculator.ts` with real unit tests in `__tests__/`. Keep the
 logic pure and test it there rather than in the component.
 
+### Family Points
+
+`/family-points` is a standalone dynamic page (like `/resources`, not a content
+section): a team leaderboard for the residency's family competition. Roster, tasks,
+and point values live in `lib/family-points/config.ts`; pure scoring logic and tests
+in `lib/family-points/calculator.ts`. The entry log is a JSON blob in Vercel Blob
+(`family-points/entries.json`), written through `app/api/family-points/entries/route.ts`,
+which gates writes behind the same shared-password cookie as resources
+(`lib/resources/auth.ts`). Team colors are the `.fp-c-{n}` classes in `globals.css` —
+a CVD-validated categorical palette with separate dark-mode steps; color follows the
+team, so don't reassign indexes.
+
 ## Working on clinical content
 
 **Never silently change a drug name, dose, threshold, contraindication, or age cutoff.**

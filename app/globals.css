@@ -752,3 +752,17 @@ details[open] .details-arrow { transform: rotate(90deg); }
   color: #fca5a5;
   border-color: #7f1d1d;
 }
+
+/* Family Points team colors — CVD-validated categorical palette;
+   dark steps validated against the slate-900 surface. Assigned per team in
+   lib/family-points/config.ts (color follows the team, never its rank). */
+.fp-c-0 { --fp: #2a78d6; }
+.fp-c-1 { --fp: #eb6834; }
+.fp-c-2 { --fp: #1baf7a; }
+.fp-c-3 { --fp: #eda100; }
+.fp-c-4 { --fp: #e87ba4; }
+.dark .fp-c-0 { --fp: #3987e5; }
+.dark .fp-c-1 { --fp: #d95926; }
+.dark .fp-c-2 { --fp: #199e70; }
+.dark .fp-c-3 { --fp: #c98500; }
+.dark .fp-c-4 { --fp: #d55181; }

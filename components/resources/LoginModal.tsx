@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-export default function LoginModal({ onClose }: { onClose: () => void }) {
+export default function LoginModal({ onClose, title = 'Log in to upload' }: { onClose: () => void; title?: string }) {
   const router = useRouter();
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
@@ -37,7 +37,7 @@ export default function LoginModal({ onClose }: { onClose: () => void }) {
   return (
     <div className="resources-modal-backdrop" onClick={onClose}>
       <div className="resources-modal" onClick={(e) => e.stopPropagation()}>
-        <h3 className="text-base font-semibold mb-3">Log in to upload</h3>
+        <h3 className="text-base font-semibold mb-3">{title}</h3>
         <form onSubmit={submit}>
           <input
             type="password"
