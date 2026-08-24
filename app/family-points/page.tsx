@@ -4,6 +4,7 @@ import { computeLeaderboard } from '@/lib/family-points/calculator';
 import { ACADEMIC_YEAR, MONTHS, TASKS } from '@/lib/family-points/config';
 import AuthBar from '@/components/family-points/AuthBar';
 import TeamIcon from '@/components/family-points/TeamIcon';
+import DailyChallenge from '@/components/DailyChallenge';
 import EntryPanel from '@/components/family-points/EntryPanel';
 import ExportCsvButton from '@/components/family-points/ExportCsvButton';
 
@@ -27,6 +28,7 @@ export default async function FamilyPointsPage() {
   const visibleMonths = MONTHS.slice(0, Math.max(lastActiveIdx + 1, 3));
 
   return (
+    <DailyChallenge>
     <div>
       <div className="mb-6 sm:mb-8">
         <h1 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight mb-1">
@@ -152,5 +154,6 @@ export default async function FamilyPointsPage() {
         <ExportCsvButton entries={entries} />
       </div>
     </div>
+    </DailyChallenge>
   );
 }

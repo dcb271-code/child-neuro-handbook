@@ -115,9 +115,10 @@ export default function DailyChallenge({ children }: { children: React.ReactNode
     setCorrect(false);
   }, []);
 
-  // Still loading
+  // Still reading localStorage — render nothing rather than flashing the
+  // gated content for a frame before the challenge replaces it.
   if (passed === null) {
-    return <>{children}</>;
+    return null;
   }
 
   // Already passed today — show handbook
