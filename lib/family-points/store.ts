@@ -11,7 +11,13 @@ export async function readEntries(): Promise<Entry[]> {
     const { blobs } = await list({ prefix: ENTRIES_PATH });
     const hit = blobs.find((b) => b.pathname === ENTRIES_PATH);
     if (!hit) return [];
-    const res = await fetch(hit.url, { cache: 'no-store' });
+    // The pathname is stable across overwrites and Blob content URLs are
+    // CDN-cached, so a read straight after a write otherwise returns the
+    // previous list. `uploadedAt` changes on every put — use it as a version
+    // stamp so each revision is a distinct URL. `cache: 'no-store'` alone only
+    // bypasses Next's cache, not the CDN's.
+    const stamp = hit.uploadedAt ? new Date(hit.uploadedAt).getTime() : Date.now();
+    const res = await fetch(`${hit.url}?v=${stamp}`, { cache: 'no-store' });
     if (!res.ok) return [];
     const data = (await res.json()) as { entries?: Entry[] };
     return Array.isArray(data?.entries) ? data.entries : [];
@@ -27,6 +33,7 @@ export async function writeEntries(entries: Entry[]): Promise<void> {
     addRandomSuffix: false,
     allowOverwrite: true,
     contentType: 'application/json',
+    cacheControlMaxAge: 60, // minimum the API allows; the ?v= stamp does the real work
   });
 }
 

@@ -54,7 +54,11 @@ export async function readMetadata(): Promise<Metadata> {
   const hit = blobs.find((b) => b.pathname === METADATA_PATH);
   if (!hit) return { links: [], fileTitles: {} };
 
-  const res = await fetch(hit.url, { cache: 'no-store' });
+  // Version-stamp the URL — the pathname is stable across overwrites and Blob
+  // content URLs are CDN-cached, so without this a read right after a write can
+  // return the previous metadata (and the next write would clobber the change).
+  const stamp = hit.uploadedAt ? new Date(hit.uploadedAt).getTime() : Date.now();
+  const res = await fetch(`${hit.url}?v=${stamp}`, { cache: 'no-store' });
   if (!res.ok) return { links: [], fileTitles: {} };
   try {
     const data = (await res.json()) as Metadata;
@@ -73,6 +77,7 @@ export async function writeMetadata(md: Metadata): Promise<void> {
     addRandomSuffix: false,
     allowOverwrite: true,
     contentType: 'application/json',
+    cacheControlMaxAge: 60,
   });
 }
 

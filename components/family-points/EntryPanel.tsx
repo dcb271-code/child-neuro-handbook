@@ -64,7 +64,12 @@ export default function EntryPanel({ recent }: { recent: Entry[] }) {
         body: JSON.stringify({ id }),
       });
       if (!res.ok) {
-        setError('Delete failed');
+        const data = await res.json().catch(() => null);
+        setError(
+          res.status === 401
+            ? 'Session expired — log in again'
+            : `Delete failed: ${data?.error ?? res.status}`,
+        );
         return;
       }
       router.refresh();
