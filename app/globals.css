@@ -766,3 +766,43 @@ details[open] .details-arrow { transform: rotate(90deg); }
 .dark .fp-c-2 { --fp: #199e70; }
 .dark .fp-c-3 { --fp: #c98500; }
 .dark .fp-c-4 { --fp: #d55181; }
+/* Neonatal HIE seizure-burden figure (epilepsy section, inline SVG) */
+.hie-sz-fig { margin: 1.25rem 0 1.5rem; }
+.hie-sz-fig svg { width: 100%; height: auto; display: block; overflow: visible; }
+.hie-sz-fig .band-cool   { fill: #64748b; opacity: .05; }
+.hie-sz-fig .band-rewarm { fill: #64748b; opacity: .13; }
+.hie-sz-fig .band-post   { fill: #64748b; opacity: .08; }
+.hie-sz-fig .band-thresh { fill: #dc2626; opacity: .14; }
+.hie-sz-fig .g    { stroke: currentColor; opacity: .12; stroke-width: 1; }
+.hie-sz-fig .axis { stroke: currentColor; opacity: .45; stroke-width: 1.5; }
+.hie-sz-fig .mk   { stroke: currentColor; opacity: .40; stroke-width: 1.5; stroke-dasharray: 3 3; }
+.hie-sz-fig .t    { fill: currentColor; font-size: 13px; }
+.hie-sz-fig .ax   { text-anchor: middle; opacity: .65; }
+.hie-sz-fig .ay   { text-anchor: end; opacity: .65; }
+.hie-sz-fig .axt  { font-size: 13px; opacity: .8; font-weight: 600; }
+.hie-sz-fig .mkl  { font-size: 12px; opacity: .85; font-weight: 600; }
+.hie-sz-fig .thl  { font-size: 12px; opacity: .8; }
+.hie-sz-fig .phase{ font-size: 11px; opacity: .55; text-transform: uppercase; letter-spacing: .04em; }
+.hie-sz-fig .s    { fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.hie-sz-fig .s1   { stroke: #2a78d6; }
+.hie-sz-fig .s2   { stroke: #eb6834; stroke-dasharray: 7 5; }
+.dark .hie-sz-fig .s1 { stroke: #3987e5; }
+.dark .hie-sz-fig .s2 { stroke: #d95926; }
+.dark .hie-sz-fig .band-thresh { opacity: .20; }
+.hie-sz-legend { display: flex; flex-wrap: wrap; gap: .35rem 1.25rem; margin: .5rem 0 .25rem; font-size: .8rem; }
+.hie-sz-legend span { display: inline-flex; align-items: center; gap: .4rem; }
+.hie-sz-legend i { width: 22px; height: 0; border-top-width: 3px; border-top-style: solid; display: inline-block; }
+.hie-sz-legend .k1 { border-top-color: #2a78d6; }
+.hie-sz-legend .k2 { border-top-color: #eb6834; border-top-style: dashed; }
+.dark .hie-sz-legend .k1 { border-top-color: #3987e5; }
+.dark .hie-sz-legend .k2 { border-top-color: #d95926; }
+.hie-sz-fig figcaption { font-size: .78rem; opacity: .75; line-height: 1.5; margin-top: .4rem; }
+/* The SVG scales with its container, so bump type in user-space units on
+   narrow screens to keep tick and marker labels legible at 375 px. */
+@media (max-width: 700px) {
+  .hie-sz-fig .t     { font-size: 21px; }
+  .hie-sz-fig .axt   { font-size: 21px; }
+  .hie-sz-fig .mkl   { font-size: 19px; }
+  .hie-sz-fig .thl   { font-size: 17px; }
+  .hie-sz-fig .phase { font-size: 16px; }
+}
