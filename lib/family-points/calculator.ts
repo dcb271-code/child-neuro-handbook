@@ -5,9 +5,20 @@ import {
   TEAMS,
   MEMBERS,
   memberByName,
+  monthForDate,
   taskById,
   type Month,
 } from './config';
+
+/**
+ * Points can be logged against a month that has not happened yet — a conference
+ * already booked, say. Those are held as "pending" and excluded from standings
+ * until their month arrives, so nobody can lead in September on the strength of
+ * a trip in April. They convert on their own once the month comes round.
+ */
+export function isPending(month: Month, now: Date = new Date()): boolean {
+  return MONTHS.indexOf(month) > MONTHS.indexOf(monthForDate(now));
+}
 
 export type Entry = {
   id: string;
@@ -56,7 +67,9 @@ export type MemberStanding = {
   name: string;
   pgy: number;
   total: number;
-  /** taskId → {count, points} for this member's logged tasks. */
+  /** Points logged against a month that has not arrived yet. */
+  pending: number;
+  /** taskId → {count, points} for this member's earned tasks. */
   byTask: Record<string, { count: number; points: number }>;
 };
 
@@ -65,16 +78,27 @@ export type TeamStanding = {
   name: string;
   colorIndex: number;
   total: number;
+  pending: number;
   byMonth: Record<Month, number>;
   members: MemberStanding[];
+};
+
+/** Residents grouped by training year, so people are only ever shown next to their own cohort. */
+export type PgyStanding = {
+  pgy: number;
+  total: number;
+  pending: number;
+  members: MemberStanding[]; // sorted by total desc
 };
 
 export type Leaderboard = {
   teams: TeamStanding[]; // sorted by total desc, then site order
   maxTeamTotal: number;
+  pgys: PgyStanding[]; // ascending by training year
+  pendingTotal: number;
 };
 
-export function computeLeaderboard(entries: Entry[]): Leaderboard {
+export function computeLeaderboard(entries: Entry[], now: Date = new Date()): Leaderboard {
   const teamMap = new Map<string, TeamStanding>();
   for (const t of TEAMS) {
     const byMonth = Object.fromEntries(MONTHS.map((m) => [m, 0])) as Record<Month, number>;
@@ -83,11 +107,13 @@ export function computeLeaderboard(entries: Entry[]): Leaderboard {
       name: t.name,
       colorIndex: t.colorIndex,
       total: 0,
+      pending: 0,
       byMonth,
       members: MEMBERS.filter((m) => m.teamId === t.id).map((m) => ({
         name: m.name,
         pgy: m.pgy,
         total: 0,
+        pending: 0,
         byTask: {},
       })),
     });
@@ -101,10 +127,17 @@ export function computeLeaderboard(entries: Entry[]): Leaderboard {
     if (!team) continue;
 
     const points = task.points * e.count;
+    const ms = team.members.find((m) => m.name === member.name);
+
+    if (isPending(e.month, now)) {
+      team.pending += points;
+      if (ms) ms.pending += points;
+      continue; // not earned yet: keep it out of totals and the monthly table
+    }
+
     team.total += points;
     if (MONTHS.includes(e.month)) team.byMonth[e.month] += points;
 
-    const ms = team.members.find((m) => m.name === member.name);
     if (ms) {
       ms.total += points;
       const t = (ms.byTask[e.taskId] ??= { count: 0, points: 0 });
@@ -116,17 +149,37 @@ export function computeLeaderboard(entries: Entry[]): Leaderboard {
   const teams = [...teamMap.values()].sort((a, b) => b.total - a.total);
   for (const t of teams) t.members.sort((a, b) => b.total - a.total);
 
-  return { teams, maxTeamTotal: Math.max(1, ...teams.map((t) => t.total)) };
+  const allMembers = teams.flatMap((t) => t.members);
+  const pgys: PgyStanding[] = [...new Set(MEMBERS.map((m) => m.pgy))]
+    .sort((a, b) => a - b)
+    .map((pgy) => {
+      const members = allMembers
+        .filter((m) => m.pgy === pgy)
+        .sort((a, b) => b.total - a.total);
+      return {
+        pgy,
+        total: members.reduce((s, m) => s + m.total, 0),
+        pending: members.reduce((s, m) => s + m.pending, 0),
+        members,
+      };
+    });
+
+  return {
+    teams,
+    maxTeamTotal: Math.max(1, ...teams.map((t) => t.total)),
+    pgys,
+    pendingTotal: teams.reduce((s, t) => s + t.pending, 0),
+  };
 }
 
 /** Flat CSV of the raw entry log, for export back to Excel. */
-export function entriesToCsv(entries: Entry[]): string {
+export function entriesToCsv(entries: Entry[], now: Date = new Date()): string {
   const esc = (v: string | number) => {
     const s = String(v);
     return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
   };
   const rows = [
-    ['Team', 'Member', 'Task', 'Points per task', 'Month', 'Count', 'Points', 'Entered'],
+    ['Team', 'Member', 'Task', 'Points per task', 'Month', 'Count', 'Points', 'Status', 'Entered'],
     ...entries.map((e) => {
       const member = memberByName(e.member);
       const task = taskById(e.taskId);
@@ -139,6 +192,7 @@ export function entriesToCsv(entries: Entry[]): string {
         e.month,
         e.count,
         entryPoints(e),
+        isPending(e.month, now) ? 'pending' : 'earned',
         new Date(e.createdAt).toISOString().slice(0, 10),
       ];
     }),
