@@ -5,6 +5,9 @@ import type { Question, Dim1Category, Difficulty, ModuleId } from '@/lib/board-r
 import { DIM1_LABEL, DIM1_COLOR, MODULE_IDS } from '@/lib/board-review/types';
 import QuestionCard from './QuestionCard';
 import ResultsScreen from './ResultsScreen';
+import WhoAmI from '@/components/identity/WhoAmI';
+import { useIdentity } from '@/lib/identity/useIdentity';
+import { submitAttempts } from '@/lib/progress/submitAttempts';
 
 type Phase = 'idle' | 'active' | 'complete';
 
@@ -50,6 +53,7 @@ export default function BoardReviewApp({ questions: allQuestions }: { questions:
   const [session, setSession] = useState<Question[]>([]);
   const [selections, setSelections] = useState<(number | null)[]>([]);
   const [current, setCurrent] = useState(0);
+  const { name: identityName } = useIdentity();
 
   const dim1Counts = useMemo(() => {
     const counts: Partial<Record<Dim1Category, number>> = {};
@@ -113,6 +117,19 @@ export default function BoardReviewApp({ questions: allQuestions }: { questions:
 
   function handleNext() {
     if (current + 1 >= session.length) {
+      if (identityName) {
+        submitAttempts(
+          session.map((q, i) => {
+            const sel = selections[i];
+            return {
+              member: identityName,
+              quiz: 'board-review' as const,
+              questionId: q.id,
+              correct: sel !== null && !!q.options[sel]?.isCorrect,
+            };
+          }),
+        );
+      }
       setPhase('complete');
     } else {
       setCurrent((c) => c + 1);
@@ -161,6 +178,7 @@ export default function BoardReviewApp({ questions: allQuestions }: { questions:
         <p className="text-slate-500 dark:text-slate-400 text-sm">
           {allQuestions.length} questions · ABPN child-neurology blueprint · instant feedback with all-option rationales.
         </p>
+        <WhoAmI className="mt-2" />
       </div>
 
       {/* Topic — includes "Adult" as a folded pill at the end */}

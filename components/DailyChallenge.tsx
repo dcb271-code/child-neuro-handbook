@@ -3,6 +3,9 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import questions from '@/src/data/questions.json';
 import factoids from '@/src/data/factoids.json';
+import WhoAmI from '@/components/identity/WhoAmI';
+import { useIdentity } from '@/lib/identity/useIdentity';
+import { submitAttempts } from '@/lib/progress/submitAttempts';
 
 type Question = {
   id: number;
@@ -59,6 +62,7 @@ export default function DailyChallenge({ children }: { children: React.ReactNode
 
   const today = todayKey();
   const seed = dateSeed(today);
+  const { name: identityName } = useIdentity();
 
   // Deterministic daily order of questions
   const shuffled = useMemo(() => seededShuffle(questions as Question[], seed), [seed]);
@@ -99,8 +103,31 @@ export default function DailyChallenge({ children }: { children: React.ReactNode
           localStorage.setItem('daily-challenge-passed', today);
         } catch {}
       }
+
+      // Log exactly one attempt per calendar day — the first question seen
+      // that day, whether right or wrong. A wrong answer cycles to a new
+      // question (see handleNextQuestion) so later retries the same day are
+      // not additional "completed" days; this is a first-look accuracy stat.
+      if (identityName) {
+        const loggedKey = `daily-progress-logged-${today}`;
+        let alreadyLogged = false;
+        try {
+          alreadyLogged = localStorage.getItem(loggedKey) === '1';
+        } catch {}
+        if (!alreadyLogged) {
+          try {
+            localStorage.setItem(loggedKey, '1');
+          } catch {}
+          submitAttempts([{
+            member: identityName,
+            quiz: 'daily',
+            questionId: String(currentQuestion.id),
+            correct: isCorrect,
+          }]);
+        }
+      }
     },
-    [answered, currentQuestion.answer, today]
+    [answered, currentQuestion.answer, currentQuestion.id, today, identityName]
   );
 
   const handleEnter = useCallback(() => {
@@ -140,6 +167,7 @@ export default function DailyChallenge({ children }: { children: React.ReactNode
           <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">
             Answer correctly to enter the handbook
           </p>
+          <WhoAmI className="justify-center mt-2" />
         </div>
 
         {/* Factoid of the day */}
