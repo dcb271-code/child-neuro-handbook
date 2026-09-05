@@ -120,9 +120,11 @@ describe('rite-exams.json integrity', () => {
 
   it('never lets the correct answer give itself away by length', () => {
     // A correct answer much longer than every distractor is answerable without
-    // knowing any neurology. The original extraction had 49 items where the gap
-    // exceeded 40 characters; the fix expands distractors rather than gutting
-    // the correct answer, so the cap is on the gap, not on answer length.
+    // knowing any neurology. The original extraction had 49 items with a gap
+    // over 40 characters and 63 more over 20. The fix expands distractors
+    // rather than gutting the correct answer, so the cap is on the *gap*, not
+    // on answer length — a long correct answer is fine if the distractors match
+    // it. 20 is not arbitrary: the whole bank clears it today.
     const offenders = data.exams.flatMap((e) =>
       e.questions
         .map((q) => {
@@ -132,9 +134,22 @@ describe('rite-exams.json integrity', () => {
           );
           return { id: q.id, gap: len(q.answer) - longestWrong };
         })
-        .filter((x) => x.gap >= 40),
+        .filter((x) => x.gap >= 20),
     );
     expect(offenders).toEqual([]);
+  });
+
+  it('does not park the correct answer on one letter', () => {
+    // 63 items were rewritten in a batch that left every answer on A; the
+    // reshuffle that fixed it is what this guards. No letter should hold more
+    // than 35% of a 424-item bank.
+    const counts = new Map<string, number>();
+    const all = data.exams.flatMap((e) => e.questions);
+    for (const q of all) counts.set(q.answer, (counts.get(q.answer) ?? 0) + 1);
+    const overweight = [...counts]
+      .filter(([, n]) => n / all.length >= 0.35)
+      .map(([letter, n]) => ({ letter, share: n / all.length }));
+    expect(overweight).toEqual([]);
   });
 
   it('keeps every exam within the benchmark-able size range', () => {

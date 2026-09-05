@@ -36,7 +36,7 @@
      "exam": 1,
      "num": 2,
      "part": "a",
-     "stem": "The sagittal T1 image shows a destructive, lobulated midline mass centred on the clivus with posterior displacement of the brainstem. What is the most likely diagnosis?",
+     "stem": "The sagittal T1 image shows a destructive, lobulated midline mass centerd on the clivus with posterior displacement of the brainstem. What is the most likely diagnosis?",
      "options": [
       {
        "letter": "A",
@@ -60,7 +60,7 @@
       }
      ],
      "answer": "A",
-     "explanation": "Chordoma. A midline, destructive, lobulated clival mass that is markedly T2 bright and erodes bone is a chordoma until proven otherwise. Chordomas arise from notochordal remnants and occur at the clivus, sacrococcyx and vertebral bodies. The main mimic is chondrosarcoma, which is typically off-midline at the petro-occipital fissure. A clival meningioma is dural-based and causes hyperostosis rather than destruction; a macroadenoma is centred on the sella, not the clivus; nasopharyngeal carcinoma arises from the mucosa below and invades upward.",
+     "explanation": "Chordoma. A midline, destructive, lobulated clival mass that is markedly T2 bright and erodes bone is a chordoma until proven otherwise. Chordomas arise from notochordal remnants and occur at the clivus, sacrococcyx and vertebral bodies. The main mimic is chondrosarcoma, which is typically off-midline at the petro-occipital fissure. A clival meningioma is dural-based and causes hyperostosis rather than destruction; a macroadenoma is centerd on the sella, not the clivus; nasopharyngeal carcinoma arises from the mucosa below and invades upward.",
      "images": [
       "/rite/9ec4639bb60cd5a813be334c75d110a1f7b9914a.jpg"
      ],
@@ -102,7 +102,7 @@
       "/rite/8871eb9aeb9008a253acb0a6c841f0b0436d42c1.jpg"
      ],
      "imageAlt": "Sagittal T1 lumbar spine: loss of the L2-L3 disc space with destruction and low signal of the adjacent endplates and vertebral bodies; ring enhancement on the post-contrast study.",
-     "learning": "Tumour spares the disc; infection crosses it. In children infection starts in the vascularised disc, in adults at the endplate."
+     "learning": "Tumor spares the disc; infection crosses it. In children infection starts in the vascularised disc, in adults at the endplate."
     },
     {
      "id": "rite-e1-4",
@@ -553,7 +553,7 @@
      "exam": 1,
      "num": 18,
      "part": "a",
-     "stem": "An intraparenchymal haematoma is bright on T1 and bright on T2. Which stage of haemorrhage does this signal pattern represent?",
+     "stem": "An intraparenchymal hematoma is bright on T1 and bright on T2. Which stage of hemorrhage does this signal pattern represent?",
      "options": [
       {
        "letter": "A",
@@ -872,7 +872,7 @@
      ],
      "answer": "D",
      "explanation": "Anti-amyloid monoclonal antibodies (lecanemab, CLARITY-AD; donanemab, TRAILBLAZER-ALZ 2) slow cognitive decline by roughly 25–35% over 18 months in early symptomatic AD. ARIA is most frequent in APOE ε4 homozygotes (lecanemab ARIA-E ~33% vs ~5% in non-carriers), most cases asymptomatic; baseline MRI with >4 microbleeds, CAA, or anticoagulation are exclusions. Plasma p-tau217 is emerging as a screening biomarker.",
-     "learning": "ARIA-E is vasogenic edema and ARIA-H is haemorrhage; APOE e4 homozygotes carry substantially the highest risk, which is why genotyping informs consent."
+     "learning": "ARIA-E is vasogenic edema and ARIA-H is hemorrhage; APOE e4 homozygotes carry substantially the highest risk, which is why genotyping informs consent."
     },
     {
      "id": "rite-e1-27",
@@ -900,7 +900,7 @@
      ],
      "answer": "B",
      "explanation": "Moyamoya (Japanese for \"puff of smoke\") is a progressive occlusive arteriopathy of the circle of Willis; associations include Down syndrome, NF1, sickle cell disease, prior cranial irradiation, and RNF213 variants in East Asians. Hyperventilation-induced hypocapnic vasoconstriction provokes ischemia. Revascularization surgery reduces stroke recurrence; avoid hypotension and hyperventilation perioperatively.",
-     "learning": "Direct or indirect bypass, such as encephaloduroarteriosynangiosis (EDAS). Moyamoya is markedly more common in Down syndrome; hyperventilation provokes ischaemia by lowering PaCO2 and constricting collaterals."
+     "learning": "Direct or indirect bypass, such as encephaloduroarteriosynangiosis (EDAS). Moyamoya is markedly more common in Down syndrome; hyperventilation provokes ischemia by lowering PaCO2 and constricting collaterals."
     },
     {
      "id": "rite-e1-28",
@@ -1211,7 +1211,7 @@
      ],
      "answer": "D",
      "explanation": "Modern-scanner CT within 6 hours of onset is ~99–100% sensitive for SAH and can reasonably exclude it in that window (Perry 2011); beyond 6 hours sensitivity falls and lumbar puncture is required to evaluate for persistent red cells across tubes and xanthochromia.",
-     "learning": "Send opening pressure, cell count in sequential tubes, and spectrophotometric xanthochromia. CT sensitivity for subarachnoid haemorrhage falls after about 6 hours, so a negative scan at 9 hours does not exclude it."
+     "learning": "Send opening pressure, cell count in sequential tubes, and spectrophotometric xanthochromia. CT sensitivity for subarachnoid hemorrhage falls after about 6 hours, so a negative scan at 9 hours does not exclude it."
     },
     {
      "id": "rite-e1-37",
@@ -1358,7 +1358,7 @@
      "options": [
       {
        "letter": "A",
-       "text": "Hypertensive haemorrhage"
+       "text": "Hypertensive hemorrhage"
       },
       {
        "letter": "B",
@@ -1400,7 +1400,7 @@
      "options": [
       {
        "letter": "A",
-       "text": "Vascular cognitive impairment (subcortical ischaemic type); vascular risk factor control"
+       "text": "Vascular cognitive impairment (subcortical ischemic type); vascular risk factor control"
       },
       {
        "letter": "B",
@@ -1412,7 +1412,7 @@
       },
       {
        "letter": "D",
-       "text": "Frontotemporal dementia (behavioural variant); SSRIs for behavioural symptoms"
+       "text": "Frontotemporal dementia (behavioral variant); SSRIs for behavioral symptoms"
       }
      ],
      "answer": "A",
@@ -1436,7 +1436,7 @@
       },
       {
        "letter": "C",
-       "text": "Anti-NMDAR (CSF cell-based assay); natalizumab with tumour surveillance"
+       "text": "Anti-NMDAR (CSF cell-based assay); natalizumab with tumor surveillance"
       },
       {
        "letter": "D",
@@ -1514,7 +1514,7 @@
       },
       {
        "letter": "B",
-       "text": "Early symmetric saddle anaesthesia with mixed upper and lower motor neuron signs"
+       "text": "Early symmetric saddle anesthesia with mixed upper and lower motor neuron signs"
       },
       {
        "letter": "C",
@@ -1925,22 +1925,22 @@
      "options": [
       {
        "letter": "A",
-       "text": "Karyotype"
+       "text": "Karyotype with high-resolution banding"
       },
       {
        "letter": "B",
-       "text": "Chromosomal microarray"
+       "text": "Chromosomal microarray for copy number variants"
       },
       {
        "letter": "C",
-       "text": "UBE3A sequencing"
+       "text": "DNA methylation analysis of the 15q11-q13 imprinting center"
       },
       {
        "letter": "D",
-       "text": "DNA methylation analysis of the 15q11-q13 imprinting center"
+       "text": "UBE3A sequencing with deletion/duplication analysis"
       }
      ],
-     "answer": "D",
+     "answer": "C",
      "explanation": "Prader-Willi syndrome results from loss of paternally expressed genes at 15q11-q13 (paternal deletion ~65%, maternal uniparental disomy ~30%, imprinting defect ~2–5%). Methylation testing detects >99% regardless of mechanism; microarray detects only deletion. Growth hormone improves body composition and development. Maternal UPD carries higher psychosis risk. The mirror-image disorder of Q25 (Angelman) reflects the parent-of-origin logic of imprinted loci."
     },
     {
@@ -2053,7 +2053,7 @@
      "options": [
       {
        "letter": "A",
-       "text": "Anti-NMDAR encephalitis; tumour search and first-line immunotherapy"
+       "text": "Anti-NMDAR encephalitis; tumor search and first-line immunotherapy"
       },
       {
        "letter": "B",
@@ -2061,7 +2061,7 @@
       },
       {
        "letter": "C",
-       "text": "Tic disorder; behavioural therapy and reassurance on natural history"
+       "text": "Tic disorder; behavioral therapy and reassurance on natural history"
       },
       {
        "letter": "D",
@@ -2622,26 +2622,26 @@
      "options": [
       {
        "letter": "A",
-       "text": "Nodular enhancement"
+       "text": "Periventricular FLAIR signal without enhancement"
       },
       {
        "letter": "B",
-       "text": "Calcified subependymal nodules"
+       "text": "Nodular leptomeningeal enhancement over the convexity"
       },
       {
        "letter": "C",
-       "text": "Periventricular FLAIR signal only"
+       "text": "Calcified subependymal nodules along the ventricle"
       },
       {
        "letter": "D",
-       "text": "Enhancing choroid plexus mass"
+       "text": "Layering intraventricular debris with restricted diffusion"
       },
       {
        "letter": "E",
-       "text": "Layering intraventricular debris with restricted diffusion"
+       "text": "Enhancing choroid plexus mass with hydrocephalus"
       }
      ],
-     "answer": "E",
+     "answer": "D",
      "explanation": "Layering intraventricular debris with restricted diffusion. Pyogenic ventriculitis produces smooth ependymal enhancement with DWI-bright pus; nodular enhancement suggests CSF tumor spread. Ependymal enhancement with intraventricular debris (DWI-bright layering) is the picture of pyogenic ventriculitis, typically after shunt/EVD infection or rupture of an abscess into the ventricle. Differential for ependymal enhancement: CSF dissemination of tumor (medulloblastoma, choroid plexus papilloma, ependymoma, lymphoma), TS subependymal nodules, and transependymal CSF flow (which is FLAIR signal, not enhancement).",
      "images": [
       "/rite/dacb2c9d888304ea0fdec9ffdd8232bc99cb1a7c.jpg"
@@ -2815,19 +2815,19 @@
      "options": [
       {
        "letter": "A",
-       "text": "Malignant transformation of the filum"
+       "text": "To prevent malignant transformation of the filum"
       },
       {
        "letter": "B",
-       "text": "To prevent meningitis"
+       "text": "To prevent the development of hydrocephalus"
       },
       {
        "letter": "C",
-       "text": "To allow normal vertebral growth"
+       "text": "To prevent recurrent bacterial meningitis"
       },
       {
        "letter": "D",
-       "text": "To prevent hydrocephalus"
+       "text": "To allow normal vertebral column growth to proceed"
       },
       {
        "letter": "E",
@@ -2959,7 +2959,7 @@
      ],
      "answer": "D",
      "explanation": "SIADH and cerebral salt wasting both produce hyponatremia with high urine sodium and osmolality; volume status is the discriminator. Fluid restriction in SAH-associated CSW precipitates delayed cerebral ischemia, so euvolemia with salt repletion is mandatory. SIADH is treated with fluid restriction, salt tablets, or urea; hypertonic saline for symptomatic severe hyponatremia in either.",
-     "learning": "Volume status is the discriminator between SIADH and cerebral salt wasting. Fluid restriction in salt wasting after subarachnoid haemorrhage precipitates delayed cerebral ischaemia."
+     "learning": "Volume status is the discriminator between SIADH and cerebral salt wasting. Fluid restriction in salt wasting after subarachnoid hemorrhage precipitates delayed cerebral ischemia."
     },
     {
      "id": "rite-e3-7",
@@ -3004,26 +3004,26 @@
      "options": [
       {
        "letter": "A",
-       "text": "SEGA"
+       "text": "Status epilepticus refractory to treatment"
       },
       {
        "letter": "B",
-       "text": "Lymphangioleiomyomatosis"
+       "text": "Cardiac rhabdomyoma causing outflow obstruction"
       },
       {
        "letter": "C",
-       "text": "Renal disease (angiomyolipoma hemorrhage, renal failure)"
+       "text": "Subependymal giant cell astrocytoma with hydrocephalus"
       },
       {
        "letter": "D",
-       "text": "Status epilepticus"
+       "text": "Lymphangioleiomyomatosis with respiratory failure"
       },
       {
        "letter": "E",
-       "text": "Cardiac rhabdomyoma"
+       "text": "Renal disease, from angiomyolipoma hemorrhage or failure"
       }
      ],
-     "answer": "C",
+     "answer": "E",
      "explanation": "Renal complications lead adult mortality; SUDEP and SEGA follow.",
      "imageAlt": "Large polygonal and ganglion-like cells with abundant glassy eosinophilic cytoplasm and prominent nucleoli in a fibrillary background. Marginal note: 7-year-old with developmental delay, headache, vomiting, 4 cm lateral ventricular mass.",
      "context": "A 7-year-old with developmental delay, headache, and a 4 cm lateral ventricular mass. Histology is shown. Diagnosis?",
@@ -3090,12 +3090,12 @@
       },
       {
        "letter": "D",
-       "text": "Meralgia paraesthetica from inguinal compression"
+       "text": "Meralgia paresthetica from inguinal compression"
       }
      ],
      "answer": "B",
      "explanation": "Diabetic amyotrophy is an ischemic radiculoplexopathy (mediated by microvasculitis) targeting the lumbosacral plexus, causing asymmetric thigh pain, quadriceps atrophy, weight loss, and loss of the knee jerk.",
-     "learning": "Also called diabetic amyotrophy. An ischaemic radiculoplexopathy from microvasculitis, with asymmetric thigh pain, quadriceps wasting, weight loss and loss of the knee jerk."
+     "learning": "Also called diabetic amyotrophy. An ischemic radiculoplexopathy from microvasculitis, with asymmetric thigh pain, quadriceps wasting, weight loss and loss of the knee jerk."
     },
     {
      "id": "rite-e3-10",
@@ -3145,7 +3145,7 @@
       },
       {
        "letter": "D",
-       "text": "Hypertensive haemorrhage extending into both thalami"
+       "text": "Hypertensive hemorrhage extending into both thalami"
       },
       {
        "letter": "E",
@@ -3158,7 +3158,7 @@
       "/rite/cdafffe25653611b1f762b2761fcc351b7f591f4.jpg"
      ],
      "imageAlt": "Coronal brain slice: bilateral parasagittal hemorrhagic cortical/subcortical infarcts plus hemorrhagic necrosis of the thalami and basal ganglia, and thrombus in the sagittal sinus.",
-     "learning": "Involves the internal cerebral veins and straight sinus. Bilateral thalamic oedema or haemorrhage with parasagittal infarcts is venous until proven otherwise; artery of Percheron is the arterial mimic."
+     "learning": "Involves the internal cerebral veins and straight sinus. Bilateral thalamic edema or hemorrhage with parasagittal infarcts is venous until proven otherwise; artery of Percheron is the arterial mimic."
     },
     {
      "id": "rite-e3-12",
@@ -3360,26 +3360,26 @@
      "options": [
       {
        "letter": "A",
-       "text": "Conus terminating at L1"
+       "text": "Enlarged epidural fat without cord displacement"
       },
       {
        "letter": "B",
-       "text": "Thickened filum with a low-lying conus and dorsal lipoma"
+       "text": "Disc protrusion at the lumbosacral junction"
       },
       {
        "letter": "C",
-       "text": "Enlarged epidural fat"
+       "text": "Thickened filum with a low-lying conus and dorsal lipoma"
       },
       {
        "letter": "D",
-       "text": "Syrinx"
+       "text": "Syrinx confined to the thoracic cord"
       },
       {
        "letter": "E",
-       "text": "Disc protrusion"
+       "text": "Conus terminating at the L1 vertebral level"
       }
      ],
-     "answer": "B",
+     "answer": "C",
      "explanation": "Thickened filum with a low-lying conus and dorsal lipoma. Tethered cord: conus below L2-L3 with a thick filum or lipoma; traction produces progressive bladder, gait and orthopedic deficits. The conus should lie at or above L2-L3 by about 3 months of age. Tethering produces progressive, traction-related deficits: gait change, bladder dysfunction, foot deformity, scoliosis, back pain. Cutaneous stigmata (sacral dimple above the gluteal cleft, hair tuft, hemangioma, lipoma) warrant imaging. Diastematomyelia and dermal sinus are associated.",
      "images": [
       "/rite/f2ecf96410ed4eacc60389a16412059bada7aeb7.jpg"
@@ -3587,23 +3587,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Valproate"
+       "text": "Propranolol or verapamil"
       },
       {
        "letter": "B",
-       "text": "Propranolol"
+       "text": "Carbamazepine or oxcarbazepine"
       },
       {
        "letter": "C",
-       "text": "Carbamazepine"
+       "text": "Valproate or topiramate"
       },
       {
        "letter": "D",
-       "text": "Isotretinoin (Vitamin A derivative) or Tetracyclines"
+       "text": "Isotretinoin or tetracycline antibiotics"
       }
      ],
      "answer": "D",
-     "explanation": "Idiopathic intracranial hypertension is associated with obesity, excess vitamin A/retinoids, tetracyclines, and growth hormone therapy. Acetazolamide plus weight loss is first-line (IIHTT); GLP-1 agonists are emerging."
+     "explanation": "Idiopathic intracranial hypertension is associated with obesity, excess vitamin A/retinoids, tetracyclines, and growth hormone therapy. Acetazolamide plus weight loss is first-line (IIHTT); GLP-1 agonists are emerging.",
+     "learning": "Isotretinoin is a vitamin A derivative; hypervitaminosis A is the shared mechanism."
     },
     {
      "id": "rite-e3-25",
@@ -3840,23 +3841,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Lateral > Medial > Superior > Inferior"
+       "text": "Oblique > Lateral > Superior > Medial > Inferior"
       },
       {
        "letter": "B",
-       "text": "Superior > Inferior > Medial > Lateral"
+       "text": "Lateral > Medial > Superior > Inferior > Oblique"
       },
       {
        "letter": "C",
-       "text": "Inferior > Medial > Superior > Lateral > Oblique (\"I'M SLOW\")"
+       "text": "Superior > Inferior > Medial > Lateral > Oblique"
       },
       {
        "letter": "D",
-       "text": "Oblique > Lateral > Superior > Medial"
+       "text": "Inferior > Medial > Superior > Lateral > Oblique"
       }
      ],
-     "answer": "C",
-     "explanation": "Graves ophthalmopathy affects muscles in the sequence \"I'M SLOW\": Inferior rectus > Medial rectus > Superior rectus > Lateral rectus > Oblique muscles, with tendon sparing."
+     "answer": "D",
+     "explanation": "Graves ophthalmopathy affects muscles in the sequence \"I'M SLOW\": Inferior rectus > Medial rectus > Superior rectus > Lateral rectus > Oblique muscles, with tendon sparing.",
+     "learning": "The mnemonic is \"I'M SLOW\" — Inferior, Medial, Superior, Lateral, Oblique."
     },
     {
      "id": "rite-e3-32",
@@ -4156,26 +4158,26 @@
      "options": [
       {
        "letter": "A",
-       "text": "Pronator syndrome"
+       "text": "Lower trunk brachial plexopathy"
       },
       {
        "letter": "B",
-       "text": "Normal study"
+       "text": "Normal study with no electrodiagnostic abnormality"
       },
       {
        "letter": "C",
-       "text": "Brachial plexopathy"
+       "text": "Pronator syndrome of the median nerve"
       },
       {
        "letter": "D",
-       "text": "Severe carpal tunnel syndrome with axon loss"
+       "text": "C8 radiculopathy with paraspinal changes"
       },
       {
        "letter": "E",
-       "text": "C8 radiculopathy"
+       "text": "Severe carpal tunnel syndrome with axon loss"
       }
      ],
-     "answer": "D",
+     "answer": "E",
      "explanation": "Severe median neuropathy at the wrist. Marked distal latency prolongation with reduced amplitude indicates severe median neuropathy at the wrist with secondary axon loss.",
      "images": [
       "/rite/6a799ce891c01cd5437d86619b7f4d730a689d6c.jpg"
@@ -4193,22 +4195,22 @@
      "options": [
       {
        "letter": "A",
-       "text": "Epigenetic promoter hypermethylation"
+       "text": "Maternal mitochondrial inheritance with heteroplasmy"
       },
       {
        "letter": "B",
-       "text": "Anticipation via CAG repeat expansion during spermatogenesis"
+       "text": "Epigenetic promoter hypermethylation silencing the allele"
       },
       {
        "letter": "C",
-       "text": "Maternal mitochondrial inheritance"
+       "text": "X-linked recessive inheritance with repeat expansion"
       },
       {
        "letter": "D",
-       "text": "X-linked recessive expansion"
+       "text": "Anticipation via CAG repeat expansion in spermatogenesis"
       }
      ],
-     "answer": "B",
+     "answer": "D",
      "explanation": "Huntington disease is an autosomal dominant CAG repeat disorder in HTT on chromosome 4p16 (≥40 repeats fully penetrant; 36–39 reduced penetrance). Paternal transmission involves meiotic instability and expansion, producing anticipation."
     },
     {
@@ -4247,22 +4249,22 @@
      "options": [
       {
        "letter": "A",
-       "text": "Ethinyl estradiol induces glucuronidation (UGT1A4), lowering lamotrigine levels by roughly half"
+       "text": "Lamotrigine induces CYP3A4, substantially reducing contraceptive efficacy"
       },
       {
        "letter": "B",
-       "text": "Lamotrigine induces CYP3A4, reducing contraceptive efficacy"
+       "text": "Progestin displaces lamotrigine from plasma protein binding sites"
       },
       {
        "letter": "C",
-       "text": "Estrogen directly antagonizes sodium channel blockade"
+       "text": "Estrogen directly antagonizes lamotrigine's sodium channel blockade"
       },
       {
        "letter": "D",
-       "text": "Progestin displaces lamotrigine from plasma proteins"
+       "text": "Ethinyl estradiol induces UGT1A4 glucuronidation, halving lamotrigine levels"
       }
      ],
-     "answer": "A",
+     "answer": "D",
      "explanation": "Estrogen-containing contraceptives induce lamotrigine glucuronidation, dropping levels ~50% (with rebound toxicity during the pill-free week). Conversely, valproate inhibits UGT and roughly doubles lamotrigine levels, mandating slow titration to limit rash risk. Enzyme-inducing ASMs (carbamazepine, phenytoin, phenobarbital, topiramate >200 mg) reduce contraceptive efficacy."
     },
     {
@@ -4385,22 +4387,22 @@
      "options": [
       {
        "letter": "A",
-       "text": "Argyll Robertson pupil"
+       "text": "Horner pupil with ptosis and anhidrosis"
       },
       {
        "letter": "B",
-       "text": "Holmes-Adie pupil"
-      },
-      {
-       "letter": "C",
        "text": "Relative afferent pupillary defect (Marcus Gunn pupil)"
       },
       {
+       "letter": "C",
+       "text": "Holmes-Adie tonic pupil with slow redilation"
+      },
+      {
        "letter": "D",
-       "text": "Horner pupil"
+       "text": "Argyll Robertson pupil with light-near dissociation"
       }
      ],
-     "answer": "C",
+     "answer": "B",
      "explanation": "A relative afferent pupillary defect indicates asymmetric optic nerve conduction (as in demyelinating optic neuritis); light in the affected eye generates less pupillomotor drive, causing bilateral dilation."
     },
     {
@@ -4412,22 +4414,22 @@
      "options": [
       {
        "letter": "A",
-       "text": "The deletion disrupts the open reading frame, producing no functional dystrophin"
+       "text": "Deletions in this gene always cause Duchenne dystrophy"
       },
       {
        "letter": "B",
-       "text": "Deletions always cause Duchenne"
+       "text": "The deletion spans more than five contiguous exons"
       },
       {
        "letter": "C",
-       "text": "The deletion involves the actin-binding domain"
+       "text": "The deletion involves the actin-binding domain of dystrophin"
       },
       {
        "letter": "D",
-       "text": "The deletion is larger than 5 exons"
+       "text": "The deletion disrupts the reading frame, so no dystrophin is made"
       }
      ],
-     "answer": "A",
+     "answer": "D",
      "explanation": "The reading-frame rule holds in >90% of cases: frameshifting deletions abolish dystrophin (Duchenne); in-frame deletions yield truncated but partially functional protein (Becker). Exons 45–50 deletion is out of frame and amenable to exon 51 skipping (eteplirsen). Corticosteroids (prednisone, deflazacort, vamorolone) prolong ambulation; cardiomyopathy and respiratory failure dominate later course. Delandistrogene moxeparvovec (micro-dystrophin gene therapy) received accelerated approval in 2023."
     },
     {
@@ -4439,19 +4441,19 @@
      "options": [
       {
        "letter": "A",
-       "text": "Amphotericin B and flucytosine"
+       "text": "Acyclovir with repeat CSF PCR in 3-7 days"
       },
       {
        "letter": "B",
-       "text": "Four-drug antituberculous therapy plus adjunctive dexamethasone"
+       "text": "Four-drug antituberculous therapy with adjunctive dexamethasone"
       },
       {
        "letter": "C",
-       "text": "Ceftriaxone and vancomycin"
+       "text": "Ceftriaxone and vancomycin with adjunctive dexamethasone"
       },
       {
        "letter": "D",
-       "text": "Acyclovir"
+       "text": "Amphotericin B with flucytosine and serial lumbar punctures"
       }
      ],
      "answer": "B",
@@ -4493,26 +4495,26 @@
      "options": [
       {
        "letter": "A",
-       "text": "Extension through a neural foramen"
+       "text": "T2 hyperintensity with homogeneous enhancement"
       },
       {
        "letter": "B",
-       "text": "Rapid interval growth with loss of the target sign and new pain"
+       "text": "A central low-signal target sign on T2"
       },
       {
        "letter": "C",
-       "text": "Multiplicity of lesions"
+       "text": "Multiplicity of lesions along one nerve"
       },
       {
        "letter": "D",
-       "text": "A central low-signal target sign"
+       "text": "Extension through a widened neural foramen"
       },
       {
        "letter": "E",
-       "text": "T2 hyperintensity"
+       "text": "Rapid interval growth with loss of the target sign and new pain"
       }
      ],
-     "answer": "B",
+     "answer": "E",
      "explanation": "Rapid interval growth with loss of the target sign and new pain. Target sign, foraminal extension, multiplicity and T2 brightness are all typical of benign neurofibromas; growth, pain, heterogeneity and loss of the target sign suggest MPNST and warrant FDG-PET. Neurofibromas are T1 dark, T2 bright, often with a central low-signal target sign (collagenous core; also seen in schwannoma and MPNST), heterogeneous enhancement. Usually asymptomatic or radicular pain; myelopathy only when large. Rapid growth, pain or loss of the target sign should prompt MPNST evaluation (FDG-PET).",
      "images": [
       "/rite/b876c336e85a39913fa0857b7c3fdfa63759318e.jpg"
@@ -4528,23 +4530,23 @@
      "options": [
       {
        "letter": "A",
-       "text": "Presence of calcification"
+       "text": "Communication of the cleft with the lateral ventricle"
       },
       {
        "letter": "B",
-       "text": "Absence of hydrocephalus"
+       "text": "Unilateral rather than bilateral location"
       },
       {
        "letter": "C",
-       "text": "Lining of gliotic white matter rather than heterotopic gray matter"
+       "text": "Lining of gliotic white matter rather than heterotopic gray"
       },
       {
        "letter": "D",
-       "text": "Unilateral location"
+       "text": "Absence of associated hydrocephalus"
       },
       {
        "letter": "E",
-       "text": "Communication with the ventricle"
+       "text": "Presence of calcification within the wall"
       }
      ],
      "answer": "C",
@@ -4700,22 +4702,22 @@
      "options": [
       {
        "letter": "A",
-       "text": "Neuronal tau tangles in the substantia nigra"
+       "text": "Cortical Lewy bodies in limbic and neocortical regions"
       },
       {
        "letter": "B",
-       "text": "Cortical Lewy bodies"
+       "text": "TDP-43 inclusions in motor neurons and frontal cortex"
       },
       {
        "letter": "C",
-       "text": "Alpha-synuclein glial cytoplasmic inclusions in oligodendrocytes"
+       "text": "Neuronal tau tangles in the substantia nigra and pons"
       },
       {
        "letter": "D",
-       "text": "TDP-43 inclusions"
+       "text": "Alpha-synuclein glial cytoplasmic inclusions in oligodendrocytes"
       }
      ],
-     "answer": "C",
+     "answer": "D",
      "explanation": "Multiple system atrophy (MSA-P and MSA-C) is an oligodendroglial synucleinopathy; autonomic failure (orthostatic drop ≥20/10 mm Hg, urogenital dysfunction) is required. RBD, stridor, and anterocollis are supportive. Alpha-synuclein seed amplification assays in CSF and skin biopsy are emerging biomarkers. Median survival is ~6–10 years."
     },
     {
@@ -4789,22 +4791,22 @@
      "options": [
       {
        "letter": "A",
-       "text": "Hyperventilation to reduce cerebral edema"
+       "text": "High-dose erythropoietin started within 6 hours of birth"
       },
       {
        "letter": "B",
-       "text": "High-dose erythropoietin"
+       "text": "Therapeutic hypothermia to 33.5°C for 72 hours, started within 6 hours"
       },
       {
        "letter": "C",
-       "text": "Prophylactic phenobarbital"
+       "text": "Hyperventilation to reduce cerebral edema, started within 6 hours"
       },
       {
        "letter": "D",
-       "text": "Therapeutic hypothermia to 33.5°C for 72 hours initiated within 6 hours of birth"
+       "text": "Prophylactic phenobarbital started within 6 hours of birth"
       }
      ],
-     "answer": "D",
+     "answer": "B",
      "explanation": "Whole-body or selective head cooling reduces death or major disability (NNT ~7) in infants ≥36 weeks with moderate-severe HIE (CoolCap, NICHD, TOBY). Deeper or longer cooling (NICHD optimizing trial) and adjunctive erythropoietin (HEAL) did not add benefit; cooling of mild HIE or preterm infants is unproven. MRI at day 4–7 (basal ganglia/thalamus and watershed patterns) guides prognosis; seizures are treated with phenobarbital first-line."
     },
     {
@@ -4851,26 +4853,26 @@
      "options": [
       {
        "letter": "A",
-       "text": "Cholinergic interneurons"
+       "text": "Medium spiny GABAergic neurons of the indirect pathway"
       },
       {
        "letter": "B",
-       "text": "Dopaminergic terminals"
+       "text": "Nitric oxide synthase striatal interneurons"
       },
       {
        "letter": "C",
-       "text": "Nitric oxide synthase interneurons"
+       "text": "Cholinergic interneurons of the striatum"
       },
       {
        "letter": "D",
-       "text": "Parvalbumin interneurons"
+       "text": "Dopaminergic terminals from the substantia nigra"
       },
       {
        "letter": "E",
-       "text": "Medium spiny GABAergic neurons of the indirect pathway"
+       "text": "Parvalbumin-positive striatal interneurons"
       }
      ],
-     "answer": "E",
+     "answer": "A",
      "explanation": "Medium spiny GABAergic neurons of the indirect pathway. Early loss of enkephalin/D2 indirect-pathway neurons explains chorea; CAG >=40 is fully penetrant. Selective loss of medium spiny GABAergic projection neurons (enkephalin/D2 indirect pathway first, explaining chorea) with sparing of large cholinergic interneurons until late. Caudate atrophy (boxcar ventricles) precedes putamen; Vonsattel grades 0-4. HTT CAG repeat >=40 fully penetrant, 36-39 reduced penetrance, 27-35 intermediate with paternal anticipation. Intranuclear huntingtin/ubiquitin inclusions on IHC.",
      "images": [
       "/rite/91b60eced31d4c2b89bf8a8a637ffe20755f3f1a.jpg"
@@ -4921,26 +4923,26 @@
      "options": [
       {
        "letter": "A",
-       "text": "NF1 and NF2"
+       "text": "PTCH1 and SUFU (Gorlin syndrome)"
       },
       {
        "letter": "B",
-       "text": "MLH1 and MSH2"
+       "text": "MLH1 and MSH2 (Lynch syndrome)"
       },
       {
        "letter": "C",
-       "text": "PTCH1 and SUFU"
-      },
-      {
-       "letter": "D",
        "text": "TSC1 (hamartin) and TSC2 (tuberin)"
       },
       {
+       "letter": "D",
+       "text": "NF1 and NF2 (neurofibromatosis)"
+      },
+      {
        "letter": "E",
-       "text": "VHL and PTEN"
+       "text": "VHL and PTEN (von Hippel-Lindau)"
       }
      ],
-     "answer": "D",
+     "answer": "C",
      "explanation": "Subependymal giant cell astrocytoma. SEGA is a tuberous sclerosis tumor from TSC1/TSC2 loss with mTORC1 activation.",
      "images": [
       "/rite/e910ffaa5b891e11e97824e86c1b2c711565e38c.jpg"
@@ -5200,26 +5202,26 @@
      "options": [
       {
        "letter": "A",
-       "text": "Cushing disease"
+       "text": "Prolactin co-secretion only, without growth hormone excess"
       },
       {
        "letter": "B",
-       "text": "Prolactin co-secretion only"
+       "text": "Cushing disease from corticotroph differentiation"
       },
       {
        "letter": "C",
-       "text": "Poorer somatostatin analog response and more aggressive behavior"
+       "text": "Excellent somatostatin analog response and indolent behavior"
       },
       {
        "letter": "D",
-       "text": "Spontaneous regression"
+       "text": "Spontaneous regression without any treatment"
       },
       {
        "letter": "E",
-       "text": "Excellent somatostatin analog response"
+       "text": "Poorer somatostatin analog response and more aggressive behavior"
       }
      ],
-     "answer": "C",
+     "answer": "E",
      "explanation": "Pituitary adenoma subtypes. Sparsely granulated somatotroph adenomas (cytokeratin fibrous bodies) respond less to somatostatin analogs.",
      "images": [
       "/rite/f9008f674ea01be3a40b9c33c987e07e78fb2239.jpg"
@@ -5522,22 +5524,22 @@
      "options": [
       {
        "letter": "A",
-       "text": "Pontine nuclei"
-      },
-      {
-       "letter": "B",
        "text": "Contralateral inferior olivary nucleus"
       },
       {
+       "letter": "B",
+       "text": "Contralateral pontine nuclei"
+      },
+      {
        "letter": "C",
-       "text": "Locus coeruleus"
+       "text": "Ipsilateral locus coeruleus"
       },
       {
        "letter": "D",
-       "text": "Red nucleus"
+       "text": "Ipsilateral red nucleus"
       }
      ],
-     "answer": "B",
+     "answer": "A",
      "explanation": "Climbing fibers arise exclusively from the contralateral inferior olivary complex in the medulla and project directly onto Purkinje cell dendritic trees."
     },
     {
@@ -5619,22 +5621,22 @@
      "options": [
       {
        "letter": "A",
-       "text": "Mechanical thrombectomy based on DAWN/DEFUSE-3 mismatch criteria"
+       "text": "Intravenous alteplase alone without thrombectomy"
       },
       {
        "letter": "B",
-       "text": "No reperfusion; beyond the 6-hour window"
+       "text": "No reperfusion, as she is beyond the 6-hour window"
       },
       {
        "letter": "C",
-       "text": "Intra-arterial urokinase"
+       "text": "Mechanical thrombectomy on DAWN/DEFUSE-3 mismatch criteria"
       },
       {
        "letter": "D",
-       "text": "Intravenous alteplase alone"
+       "text": "Intra-arterial urokinase without imaging selection"
       }
      ],
-     "answer": "A",
+     "answer": "C",
      "explanation": "DAWN (6–24 h, clinical-core mismatch) and DEFUSE-3 (6–16 h, perfusion mismatch) established thrombectomy for anterior-circulation large-vessel occlusion in selected late-window patients. Subsequent trials (SELECT2, ANGEL-ASPECT) extended benefit to large-core infarcts, and ATTENTION/BAOCHE to basilar occlusion."
     },
     {
@@ -5677,7 +5679,7 @@
       },
       {
        "letter": "B",
-       "text": "Weekly complete blood counts for aplastic anaemia and agranulocytosis"
+       "text": "Weekly complete blood counts for aplastic anemia and agranulocytosis"
       },
       {
        "letter": "C",
@@ -5728,26 +5730,26 @@
      "options": [
       {
        "letter": "A",
-       "text": "Normal"
+       "text": "Cushing disease from a corticotroph adenoma"
       },
       {
        "letter": "B",
-       "text": "Prolactinoma"
+       "text": "Normal variation in prolactin secretion"
       },
       {
        "letter": "C",
-       "text": "Cushing disease"
+       "text": "Prolactinoma with true hyperprolactinemia"
       },
       {
        "letter": "D",
-       "text": "Acromegaly"
+       "text": "Stalk effect from a non-functioning macroadenoma"
       },
       {
        "letter": "E",
-       "text": "Stalk effect from a non-functioning macroadenoma"
+       "text": "Acromegaly from a somatotroph adenoma"
       }
      ],
-     "answer": "E",
+     "answer": "D",
      "explanation": "Stalk effect from a non-functioning macroadenoma. Snowman sign and sellar expansion favor adenoma; modest prolactin elevation reflects stalk compression, whereas prolactinomas of this size run much higher. Soft adenomas indent at the diaphragma sellae, giving the snowman configuration; sellar expansion also favors adenoma over meningioma (which arises above the sella and has a dural base). Presents with bitemporal hemianopia (superior fields first), hypopituitarism, hyperprolactinemia from stalk effect (usually <100-200 ng/mL, versus higher in prolactinoma). Prolactinomas are treated medically with cabergoline; other macroadenomas transsphenoidally.",
      "images": [
       "/rite/21ea0a06a95400d8ca99c61c37dd09803f5cddb1.jpg"
@@ -5916,23 +5918,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Toward the right ear"
+       "text": "No deviation of either eye occurs"
       },
       {
        "letter": "B",
-       "text": "Toward the left ear (slow conjugate drift toward cold water)"
+       "text": "Toward the right ear, as a slow conjugate drift"
       },
       {
        "letter": "C",
-       "text": "No deviation occurs"
+       "text": "Toward the left ear, as a slow conjugate drift"
       },
       {
        "letter": "D",
-       "text": "Upward vertical deviation"
+       "text": "Upward vertical deviation of both eyes"
       }
      ],
-     "answer": "B",
-     "explanation": "Cold water reduces vestibular firing on that side, driving the eyes in a slow tonic phase toward the irrigated ear; the fast corrective nystagmus (COWS) is toward the opposite ear and requires an intact cortex, so comatose patients show only the tonic deviation."
+     "answer": "C",
+     "explanation": "Cold water reduces vestibular firing on that side, driving the eyes in a slow tonic phase toward the irrigated ear; the fast corrective nystagmus (COWS) is toward the opposite ear and requires an intact cortex, so comatose patients show only the tonic deviation.",
+     "learning": "Cold water drives the slow phase toward the irrigated ear (COWS: cold opposite, warm same, describing the fast phase)."
     },
     {
      "id": "rite-e5-16",
@@ -6015,26 +6018,26 @@
      "options": [
       {
        "letter": "A",
-       "text": "Polymyositis; T-cell cytotoxicity"
+       "text": "Polymyositis; T-cell mediated cytotoxicity of myofibers"
       },
       {
        "letter": "B",
-       "text": "Dermatomyositis; complement-mediated capillary injury"
+       "text": "Denervation atrophy; loss of motor units"
       },
       {
        "letter": "C",
-       "text": "Denervation; motor unit loss"
+       "text": "Immune-mediated necrotizing myopathy; antibody-mediated"
       },
       {
        "letter": "D",
-       "text": "IBM; degenerative"
+       "text": "Inclusion body myositis; degenerative and inflammatory"
       },
       {
        "letter": "E",
-       "text": "IMNM; antibody-mediated necrosis"
+       "text": "Dermatomyositis; complement-mediated capillary injury"
       }
      ],
-     "answer": "B",
+     "answer": "E",
      "explanation": "Dermatomyositis. Perifascicular atrophy reflects ischemia from C5b-9-mediated endomysial capillary loss in dermatomyositis.",
      "images": [
       "/rite/bf6533c6c03864f541360fe67b015d3a8c24c53d.jpg"
@@ -6087,22 +6090,22 @@
      "options": [
       {
        "letter": "A",
-       "text": "Sarcoidosis; prednisone"
+       "text": "Guillain-Barré syndrome; IVIG or plasma exchange"
       },
       {
        "letter": "B",
-       "text": "Early disseminated Lyme neuroborreliosis; ceftriaxone or oral doxycycline"
+       "text": "Bell palsy; prednisone with valacyclovir and eye care"
       },
       {
        "letter": "C",
-       "text": "Bell palsy; prednisone and valacyclovir"
+       "text": "Neurosarcoidosis; prednisone with a steroid-sparing agent"
       },
       {
        "letter": "D",
-       "text": "Guillain-Barré syndrome; IVIG"
+       "text": "Early disseminated Lyme neuroborreliosis; ceftriaxone or doxycycline"
       }
      ],
-     "answer": "B",
+     "answer": "D",
      "explanation": "Lyme neuroborreliosis (Borrelia burgdorferi) produces the triad of lymphocytic meningitis, cranial neuropathy (bilateral facial palsy is highly suggestive), and painful radiculoneuritis (Bannwarth syndrome). Diagnosis uses two-tier serology plus CSF antibody index. Oral doxycycline is now considered equivalent to IV ceftriaxone for most presentations. Late Lyme encephalomyelitis is rare in North America."
     },
     {
@@ -6114,23 +6117,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Prolonged prophylactic hyperventilation to PaCO2 25 mm Hg"
+       "text": "Prophylactic high-dose corticosteroids for cerebral edema"
       },
       {
        "letter": "B",
-       "text": "Prophylactic high-dose corticosteroids"
+       "text": "Prolonged prophylactic hyperventilation to a PaCO2 of 25 mm Hg"
       },
       {
        "letter": "C",
-       "text": "Hyperosmolar therapy with hypertonic saline or mannitol, targeting CPP 60–70 mm Hg"
+       "text": "Prophylactic hypothermia to 33°C for the first 48 hours"
       },
       {
        "letter": "D",
-       "text": "Prophylactic hypothermia to 33°C"
+       "text": "Hyperosmolar therapy with hypertonic saline, targeting CPP 60-70"
       }
      ],
-     "answer": "C",
-     "explanation": "Brain Trauma Foundation guidelines support hyperosmolar therapy (hypertonic saline is favored in hypovolemia or hyponatremia; mannitol requires osmolar gap monitoring), CSF drainage, and surgical decompression (RESCUEicp reduced mortality but increased vegetative survival). Hyperventilation is a brief bridge only (vasoconstriction lowers CBF). Corticosteroids increase mortality in TBI (CRASH). Prophylactic hypothermia (Eurotherm, POLAR) is not beneficial."
+     "answer": "D",
+     "explanation": "Brain Trauma Foundation guidelines support hyperosmolar therapy (hypertonic saline is favored in hypovolemia or hyponatremia; mannitol requires osmolar gap monitoring), CSF drainage, and surgical decompression (RESCUEicp reduced mortality but increased vegetative survival). Hyperventilation is a brief bridge only (vasoconstriction lowers CBF). Corticosteroids increase mortality in TBI (CRASH). Prophylactic hypothermia (Eurotherm, POLAR) is not beneficial.",
+     "learning": "Mannitol is the alternative osmotherapy."
     },
     {
      "id": "rite-e5-20",
@@ -6631,15 +6635,15 @@
      "options": [
       {
        "letter": "A",
-       "text": "Low urine copper"
+       "text": "High serum iron with an elevated ferritin"
       },
       {
        "letter": "B",
-       "text": "High serum iron"
+       "text": "Low 24-hour urine copper with normal ceruloplasmin"
       },
       {
        "letter": "C",
-       "text": "Elevated CSF 14-3-3"
+       "text": "Elevated serum ceruloplasmin with low urine copper"
       },
       {
        "letter": "D",
@@ -6647,7 +6651,7 @@
       },
       {
        "letter": "E",
-       "text": "Elevated serum ceruloplasmin"
+       "text": "Elevated CSF 14-3-3 with normal copper studies"
       }
      ],
      "answer": "D",
@@ -6803,23 +6807,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Inducible clonus, hyperreflexia, mydriasis, and onset within 24 hours of a serotonergic change"
+       "text": "Inducible clonus, hyperreflexia and mydriasis within 24 hours"
       },
       {
        "letter": "B",
-       "text": "Markedly elevated creatine kinase"
+       "text": "Bromocriptine and dantrolene responsiveness"
       },
       {
        "letter": "C",
-       "text": "Bromocriptine responsiveness"
+       "text": "Lead-pipe rigidity with hyporeflexia developing over days"
       },
       {
        "letter": "D",
-       "text": "Lead-pipe rigidity with hyporeflexia developing over days"
+       "text": "Markedly elevated creatine kinase with myoglobinuria"
       }
      ],
      "answer": "A",
-     "explanation": "Serotonin syndrome (Hunter criteria) is rapid in onset with neuromuscular hyperactivity (clonus, hyperreflexia, tremor), GI symptoms, and mydriasis; treat with cessation, benzodiazepines, and cyproheptadine. NMS evolves over days with bradykinetic \"lead-pipe\" rigidity, hyporeflexia, and very high CK; treat with cessation, dantrolene, bromocriptine, and supportive care. Both require aggressive cooling."
+     "explanation": "Serotonin syndrome (Hunter criteria) is rapid in onset with neuromuscular hyperactivity (clonus, hyperreflexia, tremor), GI symptoms, and mydriasis; treat with cessation, benzodiazepines, and cyproheptadine. NMS evolves over days with bradykinetic \"lead-pipe\" rigidity, hyporeflexia, and very high CK; treat with cessation, dantrolene, bromocriptine, and supportive care. Both require aggressive cooling.",
+     "learning": "The 24-hour timing relative to a serotonergic dose change is the key discriminator from neuroleptic malignant syndrome."
     }
    ]
   },
@@ -6862,26 +6867,26 @@
      "options": [
       {
        "letter": "A",
-       "text": "Visual evoked potentials"
+       "text": "CSF oligoclonal bands with an IgG index"
       },
       {
        "letter": "B",
-       "text": "Oligoclonal bands"
+       "text": "Muscle biopsy with electron microscopy"
       },
       {
        "letter": "C",
-       "text": "Anti-NMDA receptor antibodies"
+       "text": "Fluorescein angiography for branch retinal artery occlusion"
       },
       {
        "letter": "D",
-       "text": "Muscle biopsy"
+       "text": "Visual evoked potentials with pattern reversal"
       },
       {
        "letter": "E",
-       "text": "Fluorescein angiography for branch retinal artery occlusions"
+       "text": "Anti-NMDA receptor antibodies in serum and CSF"
       }
      ],
-     "answer": "E",
+     "answer": "C",
      "explanation": "Fluorescein angiography for branch retinal artery occlusions. Susac syndrome: brain, retina, cochlea endotheliopathy; callosal lesions are central, not on the undersurface as in MS. Autoimmune endotheliopathy of brain, retina and cochlea: encephalopathy, branch retinal artery occlusions (fluorescein angiography shows arterial wall hyperfluorescence), and low-frequency sensorineural hearing loss. Women 20-40. Central callosal lesions with sparing of the periphery and later central callosal holes distinguish it from MS (undersurface, Dawson fingers). Also leptomeningeal enhancement, deep gray lesions. Treat aggressively with steroids, IVIG, cyclophosphamide/mycophenolate.",
      "images": [
       "/rite/e4732cdce6d4e5060a7d43533f52a88521b4768b.jpg"
@@ -7292,26 +7297,26 @@
      "options": [
       {
        "letter": "A",
-       "text": "Hereditary neuropathy with liability to pressure palsies"
+       "text": "Giant axonal neuropathy with characteristic kinky hair"
       },
       {
        "letter": "B",
-       "text": "Familial amyloid polyneuropathy"
+       "text": "CMT2A axonal neuropathy from MFN2 variants"
       },
       {
        "letter": "C",
-       "text": "Dejerine-Sottas disease"
+       "text": "Hereditary neuropathy with liability to pressure palsies"
       },
       {
        "letter": "D",
-       "text": "Giant axonal neuropathy"
+       "text": "Familial amyloid polyneuropathy from TTR variants"
       },
       {
        "letter": "E",
-       "text": "CMT2A"
+       "text": "Dejerine-Sottas hypertrophic demyelinating neuropathy"
       }
      ],
-     "answer": "A",
+     "answer": "C",
      "explanation": "PMP22 deletion (reciprocal to the CMT1A duplication) causes HNPP.",
      "imageAlt": "Ulnar motor study recording abductor digiti minimi: wrist latency 8.8 ms, amplitude 8.4 mV; below-elbow 19.9 ms, 7.15 mV; above-elbow 29.4 ms, 6.15 mV. Conduction velocities 17.1 m/s (forearm) and 11.5 m/s (across elbow) with no conduction block or temporal dispersion. Marginal note: 13-year-old with foot drop.",
      "context": "Ulnar motor study in a 13-year-old with foot drop: distal latency 8.8 ms, CV 17 m/s forearm and 11.5 m/s across elbow, amplitudes preserved without block. Most likely diagnosis?",
@@ -7744,26 +7749,26 @@
      "options": [
       {
        "letter": "A",
-       "text": "Cochlear implant evaluation"
+       "text": "Start deferiprone as iron chelation therapy"
       },
       {
        "letter": "B",
-       "text": "Whole-neuraxis imaging to find a source of chronic subarachnoid bleeding"
+       "text": "Cochlear implant evaluation for the hearing loss"
       },
       {
        "letter": "C",
-       "text": "Steroid trial"
+       "text": "A trial of high-dose corticosteroids"
       },
       {
        "letter": "D",
-       "text": "Start deferiprone"
+       "text": "Whole-neuraxis imaging for a source of subarachnoid bleeding"
       },
       {
        "letter": "E",
-       "text": "Genetic testing for spinocerebellar ataxia"
+       "text": "Genetic testing for the spinocerebellar ataxias"
       }
      ],
-     "answer": "B",
+     "answer": "D",
      "explanation": "Whole-neuraxis imaging to find a source of chronic subarachnoid bleeding. Superficial siderosis arises from occult recurrent SAH: dural tears, ependymoma, vascular malformation. Hemosiderin deposition in the subpial layer from chronic or recurrent subarachnoid bleeding; presents with slowly progressive sensorineural hearing loss, cerebellar ataxia and myelopathy. Search the entire neuraxis for the source: dural tear/pseudomeningocele after spinal surgery or trauma, myxopapillary ependymoma, vascular malformation, prior hemispherectomy. GRE/SWI is the most sensitive sequence. Deferiprone has been tried; treat the source.",
      "images": [
       "/rite/70a84244b09fc735b65175d42802ebb53d9925e8.jpg"
@@ -8019,22 +8024,22 @@
      "options": [
       {
        "letter": "A",
-       "text": "A biallelic intronic pentanucleotide (AAGGG) repeat expansion in RFC1"
+       "text": "A missense variant in a coding exon of RFC1"
       },
       {
        "letter": "B",
-       "text": "A nonsense variant"
+       "text": "A canonical splice-site variant in RFC1"
       },
       {
        "letter": "C",
-       "text": "A missense variant in a coding exon"
+       "text": "A nonsense variant producing a premature stop"
       },
       {
        "letter": "D",
-       "text": "A canonical splice-site variant"
+       "text": "A biallelic intronic AAGGG pentanucleotide expansion in RFC1"
       }
      ],
-     "answer": "A",
+     "answer": "D",
      "explanation": "Short-read exome sequencing does not detect repeat expansions (RFC1 CANVAS, FXN, DMPK, C9orf72, HTT, ATXN genes, FMR1), deep intronic variants, low-level mosaicism, or some copy-number changes; targeted repeat-primed PCR or long-read sequencing is needed. CANVAS (cerebellar ataxia, neuropathy, vestibular areflexia syndrome) is a common cause of late-onset ataxia and was only genetically resolved in 2019. Negative exome in a strong phenotype warrants targeted testing, genome sequencing, and periodic reanalysis."
     },
     {
@@ -8046,19 +8051,19 @@
      "options": [
       {
        "letter": "A",
-       "text": "Herpes simplex encephalitis"
+       "text": "Cerebral venous sinus thrombosis of the superior sagittal sinus"
       },
       {
        "letter": "B",
-       "text": "Posterior reversible encephalopathy syndrome (PRES) due to eclampsia"
+       "text": "Posterior reversible encephalopathy syndrome from eclampsia"
       },
       {
        "letter": "C",
-       "text": "Cerebral venous sinus thrombosis"
+       "text": "Top-of-the-basilar embolism with bilateral infarction"
       },
       {
        "letter": "D",
-       "text": "Top-of-the-basilar embolism"
+       "text": "Herpes simplex encephalitis of the medial temporal lobes"
       }
      ],
      "answer": "B",
@@ -8073,23 +8078,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Large maternally transmitted CTG expansion (>1000 repeats) in the 3' UTR of DMPK"
+       "text": "Large maternally transmitted CTG expansion in DMPK"
       },
       {
        "letter": "B",
-       "text": "CNBP CCTG expansion inherited from the father"
+       "text": "SMN1 deletion with a low SMN2 copy number"
       },
       {
        "letter": "C",
-       "text": "SMN1 deletion"
+       "text": "Paternal DMPK CTG expansion of moderate size"
       },
       {
        "letter": "D",
-       "text": "Paternal DMPK expansion"
+       "text": "CNBP CCTG expansion inherited from the father"
       }
      ],
      "answer": "A",
-     "explanation": "Myotonic dystrophy type 1 shows anticipation; congenital DM1 nearly always results from maternal transmission of large expansions. Toxic CUG RNA sequesters MBNL splicing regulators. Adult DM1 features distal weakness, grip/percussion myotonia, cataracts, cardiac conduction block (major cause of death; annual ECG), insulin resistance, and hypersomnia. DM2 (CNBP) is proximal, milder, and without a congenital form."
+     "explanation": "Myotonic dystrophy type 1 shows anticipation; congenital DM1 nearly always results from maternal transmission of large expansions. Toxic CUG RNA sequesters MBNL splicing regulators. Adult DM1 features distal weakness, grip/percussion myotonia, cataracts, cardiac conduction block (major cause of death; annual ECG), insulin resistance, and hypersomnia. DM2 (CNBP) is proximal, milder, and without a congenital form.",
+     "learning": "Congenital myotonic dystrophy generally requires more than 1000 repeats in the 3' untranslated region, and essentially only occurs with maternal transmission."
     },
     {
      "id": "rite-e6-37",
@@ -8558,26 +8564,26 @@
      "options": [
       {
        "letter": "A",
-       "text": "Vestibulospinal tract"
+       "text": "Mossy fibers to the granule cell layer"
       },
       {
        "letter": "B",
-       "text": "Mossy fibers"
+       "text": "Vestibulospinal tract to the spinal cord"
       },
       {
        "letter": "C",
-       "text": "Spinothalamic relay"
+       "text": "Climbing fibers to the contralateral cerebellum"
       },
       {
        "letter": "D",
-       "text": "Corticospinal decussation"
+       "text": "Corticospinal decussation in the medulla"
       },
       {
        "letter": "E",
-       "text": "Climbing fibers to the contralateral cerebellum"
+       "text": "Spinothalamic relay in the thalamus"
       }
      ],
-     "answer": "E",
+     "answer": "C",
      "explanation": "Medulla at the level of the inferior olives, myelin stain: anatomy. The inferior olivary nucleus projects climbing fibers via the inferior cerebellar peduncle to contralateral Purkinje cells.",
      "images": [
       "/rite/ccb330ffef9530d5db216695513fd792984d634d.jpg"
@@ -8631,26 +8637,26 @@
      "options": [
       {
        "letter": "A",
-       "text": "Stalk effect from loss of dopaminergic inhibition"
+       "text": "Cushing disease from a corticotroph adenoma"
       },
       {
        "letter": "B",
-       "text": "Hook effect"
+       "text": "Hook effect from assay antibody saturation"
       },
       {
        "letter": "C",
-       "text": "Acromegaly"
+       "text": "Prolactinoma with true hyperprolactinemia"
       },
       {
        "letter": "D",
-       "text": "Prolactinoma"
+       "text": "Stalk effect from loss of dopaminergic inhibition"
       },
       {
        "letter": "E",
-       "text": "Cushing disease"
+       "text": "Acromegaly from a somatotroph adenoma"
       }
      ],
-     "answer": "A",
+     "answer": "D",
      "explanation": "Mild elevation (<150 to 200) with a macroadenoma reflects stalk compression; prolactinomas of this size produce very high levels. The hook effect causes falsely low values.",
      "imageAlt": "Coronal post-contrast T1: homogeneously enhancing mass arising from the sella and extending superiorly through the diaphragma sellae with a waist (snowman/figure-of-eight). Axial post-contrast: round suprasellar mass.",
      "context": "A 45-year-old man with bitemporal visual field loss and decreased libido. Post-contrast images are shown. Most likely diagnosis?",
@@ -8697,26 +8703,26 @@
      "options": [
       {
        "letter": "A",
-       "text": "Nuclear gene variants account for about three quarters of cases"
+       "text": "MT-ATP6 is the single most common cause overall"
       },
       {
        "letter": "B",
-       "text": "Trinucleotide repeat expansion is typical"
+       "text": "Nuclear gene variants account for about three quarters of cases"
       },
       {
        "letter": "C",
-       "text": "Most cases are maternally inherited"
+       "text": "Trinucleotide repeat expansion is the typical mechanism"
       },
       {
        "letter": "D",
-       "text": "MT-ATP6 is the most common cause overall"
+       "text": "It is X-linked in the majority of affected families"
       },
       {
        "letter": "E",
-       "text": "It is X-linked in most families"
+       "text": "Most cases are maternally inherited through mtDNA"
       }
      ],
-     "answer": "A",
+     "answer": "B",
      "explanation": "Nuclear gene variants account for about three quarters of cases. Leigh syndrome: nuclear genes (SURF1, complex I, PDHA1) ~75%; mtDNA (MT-ATP6, MT-ND) ~25%. Subacute necrotizing encephalomyelopathy: symmetric, often cavitating T2 lesions of putamen, caudate, periaqueductal gray, brainstem tegmentum, dentate, with lactate on MRS. Most common pediatric mitochondrial disease; nuclear genes in ~75% (SURF1, complex I subunits, PDHA1) and mtDNA in ~25% (MT-ATP6 m.8993T>G, MT-ND genes). Onset usually before age 2 with regression after intercurrent illness, hypotonia, dystonia, ophthalmoplegia, respiratory dysrhythmia. Distinguish from Wilson (thalami/putamen, older), CO poisoning (globus pallidus) and Fahr (calcification).",
      "images": [
       "/rite/90b51cdc7833173446bf0935e5f69d220f5c4538.jpg"
@@ -8981,15 +8987,15 @@
       },
       {
        "letter": "B",
-       "text": "Cingulum bundle"
+       "text": "Fornix from hippocampus to mammillary body"
       },
       {
        "letter": "C",
-       "text": "Stria terminalis"
+       "text": "Stria terminalis from the amygdala"
       },
       {
        "letter": "D",
-       "text": "Fornix"
+       "text": "Cingulum bundle to the entorhinal cortex"
       }
      ],
      "answer": "A",
@@ -9069,23 +9075,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Radial nerve in the spiral groove"
+       "text": "Median nerve at the pronator teres in the forearm"
       },
       {
        "letter": "B",
-       "text": "Ulnar nerve at Guyon's canal in the wrist"
+       "text": "Ulnar nerve within Guyon's canal at the wrist"
       },
       {
        "letter": "C",
-       "text": "Ulnar nerve at the retrocondylar groove / cubital tunnel of the elbow"
+       "text": "Radial nerve in the spiral groove of the humerus"
       },
       {
        "letter": "D",
-       "text": "Median nerve at the pronator teres"
+       "text": "Ulnar nerve at the retrocondylar groove of the elbow"
       }
      ],
-     "answer": "C",
-     "explanation": "The motor branches to FDP IV/V and flexor carpi ulnaris arise in the proximal forearm; their weakness localizes the ulnar lesion to the elbow rather than the wrist (Guyon's canal), as does involvement of the dorsal ulnar cutaneous territory."
+     "answer": "D",
+     "explanation": "The motor branches to FDP IV/V and flexor carpi ulnaris arise in the proximal forearm; their weakness localizes the ulnar lesion to the elbow rather than the wrist (Guyon's canal), as does involvement of the dorsal ulnar cutaneous territory.",
+     "learning": "The retrocondylar groove and the cubital tunnel just distal to it are the two elbow entrapment sites."
     },
     {
      "id": "rite-e7-26",
@@ -9347,19 +9354,19 @@
      "options": [
       {
        "letter": "A",
-       "text": "POLG-related disorder (Alpers-Huttenlocher syndrome)"
+       "text": "POLG-related Alpers-Huttenlocher syndrome"
       },
       {
        "letter": "B",
-       "text": "MECP2-related Rett syndrome"
+       "text": "MECP2-related Rett syndrome in a girl"
       },
       {
        "letter": "C",
-       "text": "Glucose transporter deficiency"
+       "text": "SCN1A-related Dravet syndrome of infancy"
       },
       {
        "letter": "D",
-       "text": "SCN1A-related Dravet syndrome"
+       "text": "Glucose transporter type 1 deficiency"
       }
      ],
      "answer": "A",
@@ -9374,23 +9381,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Irreversible oxidation and inactivation of the cobalt core of cobalamin (Vitamin B12)"
+       "text": "Irreversible oxidation of the cobalt core of cobalamin"
       },
       {
        "letter": "B",
-       "text": "Inactivation of copper transport proteins"
+       "text": "Blockade of voltage-gated sodium channels in axons"
       },
       {
        "letter": "C",
-       "text": "Competitive inhibition of thiamine pyrophosphokinase"
+       "text": "Inactivation of copper transport proteins in the gut"
       },
       {
        "letter": "D",
-       "text": "Blockade of voltage-gated sodium channels"
+       "text": "Competitive inhibition of thiamine pyrophosphokinase"
       }
      ],
      "answer": "A",
-     "explanation": "Nitrous oxide irreversibly oxidizes the monovalent cobalt of methylcobalamin, inactivating methionine synthase and producing a myeloneuropathy identical to B12 deficiency, often with normal B12 levels but elevated methylmalonic acid and homocysteine."
+     "explanation": "Nitrous oxide irreversibly oxidizes the monovalent cobalt of methylcobalamin, inactivating methionine synthase and producing a myeloneuropathy identical to B12 deficiency, often with normal B12 levels but elevated methylmalonic acid and homocysteine.",
+     "learning": "Cobalamin is vitamin B12; the result is a functional B12 deficiency with subacute combined degeneration despite a normal B12 level."
     },
     {
      "id": "rite-e7-36",
@@ -9418,7 +9426,7 @@
      ],
      "answer": "B",
      "explanation": "Rabies is nearly uniformly fatal after symptom onset; post-exposure prophylaxis is essentially 100% effective if begun promptly. Bat exposures warrant prophylaxis even without a recognized bite. A paralytic (GBS-like) form occurs in ~20%. The Milwaukee protocol has not been reproducibly successful.",
-     "learning": "Post-exposure prophylaxis is wound cleansing, rabies immune globulin infiltrated around the wound, and vaccine on days 0, 3, 7 and 14. It is essentially 100% effective if started promptly and useless once symptoms appear. Bat exposures warrant prophylaxis even without a recognised bite."
+     "learning": "Post-exposure prophylaxis is wound cleansing, rabies immune globulin infiltrated around the wound, and vaccine on days 0, 3, 7 and 14. It is essentially 100% effective if started promptly and useless once symptoms appear. Bat exposures warrant prophylaxis even without a recognized bite."
     },
     {
      "id": "rite-e7-37",
@@ -9429,23 +9437,23 @@
      "options": [
       {
        "letter": "A",
-       "text": "Psammoma bodies"
+       "text": "Brain invasion at the resection margin"
       },
       {
        "letter": "B",
-       "text": "CDKN2A/B homozygous deletion or TERT promoter mutation"
+       "text": "CDKN2A/B deletion or TERT promoter mutation"
       },
       {
        "letter": "C",
-       "text": "Hyperostosis"
+       "text": "Psammoma bodies with whorled architecture"
       },
       {
        "letter": "D",
-       "text": "Dural tail"
+       "text": "Hyperostosis of the overlying calvarium"
       },
       {
        "letter": "E",
-       "text": "Brain invasion"
+       "text": "A dural tail on contrast-enhanced imaging"
       }
      ],
      "answer": "B",
@@ -9491,7 +9499,7 @@
      "options": [
       {
        "letter": "A",
-       "text": "EEG with sleep"
+       "text": "CSF anti-NMDA receptor antibody by cell-based assay"
       },
       {
        "letter": "B",
@@ -9499,15 +9507,15 @@
       },
       {
        "letter": "C",
-       "text": "Serum anti-GQ1b antibody"
+       "text": "Serum anti-GQ1b ganglioside antibody testing"
       },
       {
        "letter": "D",
-       "text": "Brain MRI with contrast"
+       "text": "Brain MRI with and without gadolinium contrast"
       },
       {
        "letter": "E",
-       "text": "CSF anti-NMDA receptor antibody"
+       "text": "EEG with sleep and photic stimulation"
       }
      ],
      "answer": "B",
@@ -9589,26 +9597,26 @@
      "options": [
       {
        "letter": "A",
-       "text": "1p/19q codeletion alone"
+       "text": "TERT promoter mutation without IDH mutation"
       },
       {
        "letter": "B",
-       "text": "TERT promoter mutation"
+       "text": "IDH mutation alone with retained 1p/19q"
       },
       {
        "letter": "C",
-       "text": "MGMT methylation"
+       "text": "MGMT promoter methylation alone"
       },
       {
        "letter": "D",
-       "text": "IDH mutation plus whole-arm 1p/19q codeletion"
+       "text": "Whole-arm 1p/19q codeletion without IDH mutation"
       },
       {
        "letter": "E",
-       "text": "IDH mutation alone"
+       "text": "IDH mutation with whole-arm 1p/19q codeletion"
       }
      ],
-     "answer": "D",
+     "answer": "E",
      "explanation": "Oligodendroglioma. Oligodendroglioma is defined molecularly by both IDH mutation and 1p/19q codeletion.",
      "images": [
       "/rite/b1de30319c7e4ee564a1cc28ff44e33062007320.jpg"
@@ -9818,7 +9826,7 @@
       },
       {
        "letter": "D",
-       "text": "DYT1 (TOR1A) generalised dystonia of childhood onset"
+       "text": "DYT1 (TOR1A) generalized dystonia of childhood onset"
       }
      ],
      "answer": "C",
@@ -9834,23 +9842,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Argyll Robertson pupil"
+       "text": "Argyll Robertson pupil with light-near dissociation"
       },
       {
        "letter": "B",
-       "text": "Compressive third nerve palsy"
+       "text": "Holmes-Adie pupil from ciliary ganglion denervation"
       },
       {
        "letter": "C",
-       "text": "Pharmacologic mydriasis (atropine drops)"
+       "text": "Compressive third nerve palsy from an aneurysm"
       },
       {
        "letter": "D",
-       "text": "Holmes-Adie pupil (ciliary ganglion denervation supersensitivity)"
+       "text": "Pharmacologic mydriasis from atropinic drops"
       }
      ],
-     "answer": "D",
-     "explanation": "Adie tonic pupil results from postganglionic parasympathetic denervation of the ciliary ganglion, producing cholinergic supersensitivity demonstrated by constriction to dilute pilocarpine. A pharmacologically dilated pupil fails to constrict even to 1% pilocarpine."
+     "answer": "B",
+     "explanation": "Adie tonic pupil results from postganglionic parasympathetic denervation of the ciliary ganglion, producing cholinergic supersensitivity demonstrated by constriction to dilute pilocarpine. A pharmacologically dilated pupil fails to constrict even to 1% pilocarpine.",
+     "learning": "Denervation supersensitivity is why dilute pilocarpine constricts the affected pupil but not the normal one."
     },
     {
      "id": "rite-e8-11",
@@ -10048,23 +10057,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Inability to depress the right eye in adduction"
+       "text": "Failure of the right eye to adduct, with nystagmus of the abducting left eye"
       },
       {
        "letter": "B",
-       "text": "Bilateral gaze palsy"
+       "text": "Failure of the left eye to abduct, with normal movement of the right eye"
       },
       {
        "letter": "C",
-       "text": "Failure of the left eye to abduct, with normal right eye movement"
+       "text": "Bilateral horizontal gaze palsy with preserved vertical gaze"
       },
       {
        "letter": "D",
-       "text": "Failure of the right eye to adduct, with dissociated horizontal nystagmus of the abducting left eye"
+       "text": "Inability to depress the right eye when it is adducted"
       }
      ],
-     "answer": "D",
-     "explanation": "The right MLF carries conjugate gaze signals from the left abducens nucleus to the right oculomotor nucleus; its disruption prevents right eye adduction during leftward gaze, accompanied by abducting nystagmus in the left eye."
+     "answer": "A",
+     "explanation": "The right MLF carries conjugate gaze signals from the left abducens nucleus to the right oculomotor nucleus; its disruption prevents right eye adduction during leftward gaze, accompanied by abducting nystagmus in the left eye.",
+     "learning": "The nystagmus of the abducting eye is dissociated — that is what makes it an internuclear ophthalmoplegia rather than a nerve palsy."
     },
     {
      "id": "rite-e8-18",
@@ -10075,19 +10085,19 @@
      "options": [
       {
        "letter": "A",
-       "text": "Left paramedian branch of the basilar artery"
+       "text": "Left superior cerebellar artery branch"
       },
       {
        "letter": "B",
-       "text": "Left superior cerebellar artery (SCA)"
-      },
-      {
-       "letter": "C",
        "text": "Left anterior inferior cerebellar artery (AICA)"
       },
       {
+       "letter": "C",
+       "text": "Left paramedian branch of the basilar artery"
+      },
+      {
        "letter": "D",
-       "text": "Left posterior inferior cerebellar artery (PICA) or vertebral artery"
+       "text": "Left posterior inferior cerebellar or vertebral artery"
       }
      ],
      "answer": "D",
@@ -10306,7 +10316,7 @@
      ],
      "answer": "A",
      "explanation": "Annual ophthalmologic examination through age 8 (then every 2 years to 18) is the standard; screening MRI is not recommended because most NF1 optic pathway gliomas are asymptomatic, indolent, and never require treatment. Symptomatic or progressive tumors are treated with carboplatin/vincristine rather than radiation (secondary malignancy, moyamoya). Selumetinib (MEK inhibitor) is approved for inoperable symptomatic plexiform neurofibromas and is used off-label for progressive OPG.",
-     "learning": "The examination covers acuity, colour vision and fundoscopy, annually to age 8 and then every 2 years to 18."
+     "learning": "The examination covers acuity, color vision and fundoscopy, annually to age 8 and then every 2 years to 18."
     },
     {
      "id": "rite-e8-26",
@@ -10393,22 +10403,22 @@
      "options": [
       {
        "letter": "A",
-       "text": "Anti-Hu"
+       "text": "Anti-Hu paraneoplastic antibody"
       },
       {
        "letter": "B",
-       "text": "Anti-MOG IgG by live cell-based assay on serum"
+       "text": "Anti-MOG IgG on CSF only, not on serum"
       },
       {
        "letter": "C",
-       "text": "Anti-GQ1b"
+       "text": "Anti-GQ1b ganglioside antibody"
       },
       {
        "letter": "D",
-       "text": "Anti-MOG IgG on CSF only"
+       "text": "Anti-MOG IgG by live cell-based assay on serum"
       }
      ],
-     "answer": "B",
+     "answer": "D",
      "explanation": "MOG antibody-associated disease (MOGAD) favors children, bilateral anterior optic neuritis with disc edema, ADEM presentations, and conus-involving myelitis; it is highly steroid-responsive with relapse on rapid taper. Serum is the appropriate specimen; low titers on fixed assays lack specificity. Long-term therapy (IVIG, rituximab, mycophenolate) is for relapsing disease."
     },
     {
@@ -10448,22 +10458,22 @@
      "options": [
       {
        "letter": "A",
-       "text": "EGFR amplification"
+       "text": "Whole-arm 1p/19q codeletion with IDH mutation"
       },
       {
        "letter": "B",
-       "text": "TP53 mutation"
+       "text": "EGFR amplification with chromosome 7 gain"
       },
       {
        "letter": "C",
-       "text": "Combined whole-arm 1p/19q codeletion with IDH mutation"
+       "text": "BRAF V600E mutation with CDKN2A loss"
       },
       {
        "letter": "D",
-       "text": "BRAF V600E mutation"
+       "text": "TP53 mutation with loss of ATRX expression"
       }
      ],
-     "answer": "C",
+     "answer": "A",
      "explanation": "Under the 2021 WHO classification, oligodendroglioma is defined molecularly by IDH1/2 mutation and complete whole-arm codeletion of 1p and 19q."
     },
     {
@@ -10689,22 +10699,22 @@
      "options": [
       {
        "letter": "A",
-       "text": "Medial dorsal nuclei of the thalamus and mammillary bodies"
+       "text": "Bilateral primary motor cortices and corticospinal tracts"
       },
       {
        "letter": "B",
-       "text": "Bilateral primary motor cortices"
+       "text": "Neocortical frontal poles and orbitofrontal cortex"
       },
       {
        "letter": "C",
-       "text": "Neocortical frontal poles"
+       "text": "Caudate nuclei and putamen bilaterally"
       },
       {
        "letter": "D",
-       "text": "Caudate nuclei"
+       "text": "Medial dorsal thalamic nuclei and mammillary bodies"
       }
      ],
-     "answer": "A",
+     "answer": "D",
      "explanation": "Korsakoff amnestic syndrome develops from untreated or chronic thiamine deficiency, damaging the diencephalic memory circuits (mammillary bodies and mediodorsal/anterior thalamic nuclei)."
     },
     {
@@ -10926,7 +10936,7 @@
      "exam": 9,
      "num": 2,
      "part": "a",
-     "stem": "Muscle biopsy shows numerous small lipid droplets within the muscle fibres. This appearance is most consistent with:",
+     "stem": "Muscle biopsy shows numerous small lipid droplets within the muscle fibers. This appearance is most consistent with:",
      "options": [
       {
        "letter": "A",
@@ -11011,7 +11021,7 @@
       },
       {
        "letter": "C",
-       "text": "Ciliospinal centre of Budge, in the C8-T2 spinal cord"
+       "text": "Ciliospinal center of Budge, in the C8-T2 spinal cord"
       },
       {
        "letter": "D",
@@ -11020,7 +11030,7 @@
      ],
      "answer": "C",
      "explanation": "First-order neurons arise in the posterolateral hypothalamus and descend to the ciliospinal center of Budge (C8–T2); second-order preganglionic neurons travel over the lung apex to the superior cervical ganglion; third-order neurons follow the carotid. Facial anhidrosis implies a pre-ganglionic (first- or second-order) lesion.",
-     "learning": "The centre of Budge is the intermediolateral cell column of C8-T2. First-order neurons descend from the posterolateral hypothalamus; second-order preganglionic fibres then travel over the lung apex to the superior cervical ganglion, which is the segment a Pancoast tumour interrupts."
+     "learning": "The center of Budge is the intermediolateral cell column of C8-T2. First-order neurons descend from the posterolateral hypothalamus; second-order preganglionic fibers then travel over the lung apex to the superior cervical ganglion, which is the segment a Pancoast tumor interrupts."
     },
     {
      "id": "rite-e9-5",
@@ -11165,22 +11175,22 @@
      "options": [
       {
        "letter": "A",
-       "text": "Complete absence of F-waves"
+       "text": "Complete absence of F-waves in all nerves"
       },
       {
        "letter": "B",
-       "text": "Incremental response >100%"
+       "text": "Incremental response over 100% after exercise"
       },
       {
        "letter": "C",
-       "text": "Decremental response >10% between the 1st and 4th/5th CMAP"
+       "text": "Conduction velocity slowing of more than 40%"
       },
       {
        "letter": "D",
-       "text": "Conduction velocity slowing >40%"
+       "text": "Decremental response over 10% between the 1st and 4th CMAP"
       }
      ],
-     "answer": "C",
+     "answer": "D",
      "explanation": "Low-frequency (2–3 Hz) RNS depletes presynaptic ACh pools; in myasthenia gravis, reduced postsynaptic receptor density leads to failed transmission, producing a decrement of >10% by the fourth or fifth potential."
     },
     {
@@ -11321,7 +11331,7 @@
      ],
      "answer": "D",
      "explanation": "MGTX (Wolfe 2016) randomized non-thymomatous AChR+ generalized MG patients aged 18–65 to extended transsternal thymectomy plus prednisone versus prednisone alone, showing better QMG scores and lower steroid exposure. Thymoma is an absolute surgical indication; thymectomy is not recommended for MuSK-MG. Newer targeted agents include FcRn antagonists (efgartigimod, rozanolixizumab) and complement inhibitors (eculizumab, ravulizumab, zilucoplan).",
-     "learning": "MGTX also showed fewer hospitalisations over the three years. Thymoma is an absolute surgical indication; thymectomy is not recommended in MuSK-MG."
+     "learning": "MGTX also showed fewer hospitalizations over the three years. Thymoma is an absolute surgical indication; thymectomy is not recommended in MuSK-MG."
     },
     {
      "id": "rite-e9-14",
@@ -11369,22 +11379,22 @@
      "options": [
       {
        "letter": "A",
-       "text": "Somatic reversion"
+       "text": "Somatic reversion in the affected tissue"
       },
       {
        "letter": "B",
-       "text": "Skewed X-chromosome inactivation favoring the normal allele"
+       "text": "Anticipation across successive generations"
       },
       {
        "letter": "C",
-       "text": "Anticipation"
+       "text": "Reduced penetrance from an unlinked modifier gene"
       },
       {
        "letter": "D",
-       "text": "Reduced penetrance from a modifier gene"
+       "text": "Skewed X-inactivation favoring the normal allele"
       }
      ],
-     "answer": "B",
+     "answer": "D",
      "explanation": "Random XCI normally produces mosaic expression; skewing toward the wild-type allele can render carriers of X-linked dominant variants asymptomatic (also seen in CDKL5, PCDH19, X-ALD carriers, and DMD manifesting carriers when skewed adversely). Familial Rett is rare but classically involves an asymptomatic mother with favorable skewing. XCI assays on blood may not reflect brain."
     },
     {
@@ -11423,23 +11433,23 @@
      "options": [
       {
        "letter": "A",
-       "text": "Empiric pyrimethamine-sulfadiazine with reimaging at 2 weeks"
+       "text": "Empiric pyrimethamine-sulfadiazine, reimaging at 2 weeks"
       },
       {
        "letter": "B",
-       "text": "Stereotactic biopsy"
+       "text": "Stereotactic biopsy before any empiric therapy"
       },
       {
        "letter": "C",
-       "text": "High-dose methotrexate"
+       "text": "Amphotericin B, with reimaging at 2 weeks"
       },
       {
        "letter": "D",
-       "text": "Whole-brain radiation"
+       "text": "High-dose methotrexate, with reimaging at 2 weeks"
       },
       {
        "letter": "E",
-       "text": "Amphotericin B"
+       "text": "Whole-brain radiation, with reimaging at 2 weeks"
       }
      ],
      "answer": "A",
@@ -11753,22 +11763,22 @@
      "options": [
       {
        "letter": "A",
-       "text": "CLN3 (juvenile, Batten); intravenous enzyme replacement"
+       "text": "Lafora body disease; ketogenic diet with valproate"
       },
       {
        "letter": "B",
-       "text": "CLN1 (infantile); no treatment"
+       "text": "CLN2 (late-infantile NCL); intracerebroventricular cerliponase alfa"
       },
       {
        "letter": "C",
-       "text": "Lafora disease; ketogenic diet"
+       "text": "CLN3 (juvenile Batten); intravenous enzyme replacement therapy"
       },
       {
        "letter": "D",
-       "text": "CLN2 (late-infantile neuronal ceroid lipofuscinosis); intracerebroventricular cerliponase alfa"
+       "text": "CLN1 (infantile NCL); no disease-modifying treatment available"
       }
      ],
-     "answer": "D",
+     "answer": "B",
      "explanation": "CLN2 disease (TPP1) is the most treatable NCL; biweekly intraventricular cerliponase alfa slows motor and language decline substantially (Schulz 2018). Early seizures with ataxia in a 2–4-year-old should prompt enzyme assay. CLN3 (CLN3, 1-kb deletion) presents with vision loss first at 4–7 years with vacuolated lymphocytes; CLN1 (PPT1) presents in infancy. Curvilinear inclusions on electron microscopy characterize CLN2."
     },
     {
@@ -12173,7 +12183,7 @@
       },
       {
        "letter": "D",
-       "text": "Aneurysmal subarachnoid haemorrhage; requires coiling or surgical clipping"
+       "text": "Aneurysmal subarachnoid hemorrhage; requires coiling or surgical clipping"
       }
      ],
      "answer": "B",
@@ -12256,22 +12266,22 @@
      "options": [
       {
        "letter": "A",
-       "text": "Lifelong dependence on antiseizure medication"
+       "text": "Progression to Lennox-Gastaut syndrome in childhood"
       },
       {
        "letter": "B",
-       "text": "Evolution to mesial temporal sclerosis"
+       "text": "Evolution to mesial temporal sclerosis and refractory seizures"
       },
       {
        "letter": "C",
-       "text": "Spontaneous remission by mid-adolescence, often without treatment"
+       "text": "Lifelong dependence on antiseizure medication for control"
       },
       {
        "letter": "D",
-       "text": "Progression to Lennox-Gastaut syndrome"
+       "text": "Spontaneous remission by mid-adolescence, often untreated"
       }
      ],
-     "answer": "C",
+     "answer": "D",
      "explanation": "Self-limited epilepsy with centrotemporal spikes (SeLECTS, formerly benign rolandic epilepsy) is the most common childhood focal epilepsy; seizures are infrequent and nocturnal, and remission by age 15–16 is nearly universal. Treatment is optional; a minority evolve to the epileptic encephalopathy with spike-wave activation in sleep (EE-SWAS/CSWS)."
     },
     {
@@ -12283,22 +12293,22 @@
      "options": [
       {
        "letter": "A",
-       "text": "Anti-Jo-1; hydroxychloroquine"
+       "text": "Anti-HMGCR; steroids with IVIG or methotrexate"
       },
       {
        "letter": "B",
-       "text": "Anti-Mi-2; statin rechallenge"
+       "text": "Anti-Jo-1; hydroxychloroquine and sun avoidance"
       },
       {
        "letter": "C",
-       "text": "Anti-cN1A; observation"
+       "text": "Anti-Mi-2; statin rechallenge after a washout"
       },
       {
        "letter": "D",
-       "text": "Anti-HMGCR; immunosuppression (steroids plus IVIG or methotrexate)"
+       "text": "Anti-cN1A; observation without immunosuppression"
       }
      ],
-     "answer": "D",
+     "answer": "A",
      "explanation": "Immune-mediated necrotizing myopathy with anti-HMGCR antibodies is triggered by statin exposure in most adults but persists after withdrawal, distinguishing it from self-limited toxic statin myopathy; anti-SRP defines the other IMNM subtype with cardiac involvement. IVIG is particularly effective in anti-HMGCR disease. Anti-Jo-1 defines antisynthetase syndrome (ILD, mechanic's hands, arthritis)."
     },
     {
@@ -12434,7 +12444,7 @@
      "options": [
       {
        "letter": "A",
-       "text": "Discitis; bed rest with analgesia and outpatient orthopaedic follow-up"
+       "text": "Discitis; bed rest with analgesia and outpatient orthopedic follow-up"
       },
       {
        "letter": "B",
@@ -12446,7 +12456,7 @@
       },
       {
        "letter": "D",
-       "text": "Vertebral osteomyelitis; oral antibiotics and orthopaedic follow-up"
+       "text": "Vertebral osteomyelitis; oral antibiotics and orthopedic follow-up"
       }
      ],
      "answer": "B",
@@ -12647,15 +12657,15 @@
      "options": [
       {
        "letter": "A",
-       "text": "IV alteplase"
+       "text": "IV dextrose first, then thiamine once alert"
       },
       {
        "letter": "B",
-       "text": "IV dextrose then thiamine"
+       "text": "Lorazepam for presumed alcohol withdrawal"
       },
       {
        "letter": "C",
-       "text": "Naloxone"
+       "text": "Naloxone for presumed opioid overdose"
       },
       {
        "letter": "D",
@@ -12663,7 +12673,7 @@
       },
       {
        "letter": "E",
-       "text": "Lorazepam"
+       "text": "IV alteplase within the 4.5-hour window"
       }
      ],
      "answer": "D",
@@ -12809,26 +12819,26 @@
      "options": [
       {
        "letter": "A",
-       "text": "Leptomeningeal, follows sulci"
+       "text": "Pachymeningeal, sparing the sulci, from dural venous engorgement"
       },
       {
        "letter": "B",
-       "text": "Pachymeningeal, spares sulci, from dural venous engorgement"
+       "text": "Gyriform cortical enhancement of both hemispheres"
       },
       {
        "letter": "C",
-       "text": "Ependymal"
+       "text": "Ependymal enhancement lining the ventricles"
       },
       {
        "letter": "D",
-       "text": "Gyriform cortical"
+       "text": "Leptomeningeal, following the sulci and cisterns"
       },
       {
        "letter": "E",
-       "text": "Perivascular"
+       "text": "Perivascular enhancement in the basal ganglia"
       }
      ],
-     "answer": "B",
+     "answer": "A",
      "explanation": "Dural venous engorgement gives smooth, sulcus-sparing pachymeningeal enhancement; infectious and carcinomatous meningitis enhance the pia and sulci.",
      "imageAlt": "Sagittal T1 showing descent of the brainstem and cerebellar tonsils with effaced prepontine cistern; axial post-contrast T1 with smooth diffuse pachymeningeal enhancement; coronal post-contrast T1 with thick continuous dural enhancement including the tentorium.",
      "context": "A 52-year-old with orthostatic headache. Sagittal T1 and post-contrast axial and coronal images are shown. Diagnosis?",
@@ -12875,22 +12885,22 @@
      "options": [
       {
        "letter": "A",
-       "text": "Child 1: dyskinetic CP from thalamic injury; Child 2: spastic diplegia from PVL"
+       "text": "Both children: basal ganglia injury from a term hypoxic-ischemic insult"
       },
       {
        "letter": "B",
-       "text": "Child 1: spastic diplegia from periventricular leukomalacia; Child 2: dyskinetic CP from globus pallidus injury"
+       "text": "Both children: cortical dysplasia of prenatal onset"
       },
       {
        "letter": "C",
-       "text": "Both: cortical dysplasia"
+       "text": "Child 1: spastic diplegia from PVL; Child 2: dyskinetic CP from pallidal injury"
       },
       {
        "letter": "D",
-       "text": "Both: basal ganglia injury from HIE"
+       "text": "Child 1: dyskinetic CP from thalamic injury; Child 2: spastic diplegia from PVL"
       }
      ],
-     "answer": "B",
+     "answer": "C",
      "explanation": "PVL injures the periventricular corticospinal fibers to the legs in preterm oligodendrocyte-precursor-vulnerable white matter, producing spastic diplegia. Bilirubin toxicity targets the globus pallidus (with sensorineural hearing loss and upgaze palsy), while term HIE targets the putamen and thalamus; both cause dyskinetic CP. Cerebral palsy is a static motor disorder from early brain injury; regression should prompt a search for a genetic or metabolic mimic (e.g., dopa-responsive dystonia, hereditary spastic paraplegia)."
     },
     {
@@ -13026,15 +13036,15 @@
      "options": [
       {
        "letter": "A",
-       "text": "Subarachnoid hemorrhage"
+       "text": "Epidural hematoma with a lentiform shape"
       },
       {
        "letter": "B",
-       "text": "Epidural hematoma"
+       "text": "Cortical contusion of the frontal pole"
       },
       {
        "letter": "C",
-       "text": "Empyema"
+       "text": "Subarachnoid hemorrhage within the sulci"
       },
       {
        "letter": "D",
@@ -13042,7 +13052,7 @@
       },
       {
        "letter": "E",
-       "text": "Cortical contusion"
+       "text": "Subdural empyema with rim enhancement"
       }
      ],
      "answer": "D",
@@ -13063,23 +13073,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Intravenous heparin infusion"
+       "text": "Intravenous alteplase 0.9 mg/kg or tenecteplase within 4.5 hours"
       },
       {
        "letter": "B",
-       "text": "Immediate decompressive hemicraniectomy"
-      },
-      {
-       "letter": "C",
        "text": "She is outside the thrombolysis window; antiplatelet therapy only"
       },
       {
+       "letter": "C",
+       "text": "Intravenous heparin infusion without thrombolysis"
+      },
+      {
        "letter": "D",
-       "text": "Intravenous alteplase (0.9 mg/kg) or tenecteplase (0.25 mg/kg) within the 4.5-hour window"
+       "text": "Immediate decompressive hemicraniectomy without thrombolysis"
       }
      ],
-     "answer": "D",
-     "explanation": "ECASS III extended IV thrombolysis to 4.5 hours; relative exclusions in the 3–4.5 h window (age >80, NIHSS >25, oral anticoagulation, diabetes with prior stroke) have been progressively relaxed in guidelines. Tenecteplase is now an accepted alternative (AcT, TRACE-2). Blood pressure must be <185/110 before lysis. Wake-up strokes with DWI-FLAIR mismatch may also be treated (WAKE-UP)."
+     "answer": "A",
+     "explanation": "ECASS III extended IV thrombolysis to 4.5 hours; relative exclusions in the 3–4.5 h window (age >80, NIHSS >25, oral anticoagulation, diabetes with prior stroke) have been progressively relaxed in guidelines. Tenecteplase is now an accepted alternative (AcT, TRACE-2). Blood pressure must be <185/110 before lysis. Wake-up strokes with DWI-FLAIR mismatch may also be treated (WAKE-UP).",
+     "learning": "Tenecteplase is dosed at 0.25 mg/kg as a single bolus."
     },
     {
      "id": "rite-e10-27",
@@ -13404,26 +13415,26 @@
      "options": [
       {
        "letter": "A",
-       "text": "Amyloid angiopathy"
+       "text": "Cerebral amyloid angiopathy of the lobar vessels"
       },
       {
        "letter": "B",
-       "text": "Venous sinus thrombosis"
+       "text": "Coagulopathy from warfarin over-anticoagulation"
       },
       {
        "letter": "C",
-       "text": "Hypertensive arteriolosclerosis"
+       "text": "Venous sinus thrombosis with venous infarction"
       },
       {
        "letter": "D",
-       "text": "Rupture of mycotic aneurysms / hemorrhagic septic emboli"
+       "text": "Hypertensive arteriolosclerosis of deep perforators"
       },
       {
        "letter": "E",
-       "text": "Coagulopathy from warfarin"
+       "text": "Rupture of a mycotic aneurysm or septic embolus"
       }
      ],
-     "answer": "D",
+     "answer": "E",
      "explanation": "Multiple hemorrhages from septic emboli. Multiple simultaneous lobar and deep hemorrhages in endocarditis reflect septic emboli with mycotic aneurysm rupture or hemorrhagic transformation.",
      "images": [
       "/rite/2999743e28bb0834245ee9cca685dac9b8912a07.jpg"

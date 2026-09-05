@@ -1,6 +1,6 @@
 # Handoff — Child Neuro Handbook
 
-Last updated: 2026-09-05, through commit `1de68ab`. Written for whoever picks
+Last updated: 2026-09-05, through commit `079ef3f`. Written for whoever picks
 this project up next — a co-maintainer, a future chief resident, or future-you
 in six months.
 
@@ -39,6 +39,25 @@ than unmounted) so a part-finished exam isn't destroyed by that transition.
   exactly; a 43-question exam needs 26 / 29 / 32. There are tests pinning that.
   Sub-parts inherit the parent's image and carry its stem as `context`, because
   their own stems say "this patient" and are unanswerable alone.
+
+  **Item quality was audited after the first resident used it**, and the two
+  defects found were both systematic rather than one-off. First, the correct
+  answer was often far longer than every distractor — the single longest option
+  in 62% of items against a ~22% chance rate — making them answerable on format
+  alone. The fix expands the distractors to comparable specificity rather than
+  trimming the correct answer; clinical detail moved out of an option (drug
+  names, thresholds, trial figures) landed in that item's explanation or
+  learning points, so nothing was lost from the teaching side. Second, the
+  extraction had carried source-deck artifacts into resident-visible text:
+  slide citations in alt text, meta-commentary in explanations, and
+  cross-references to the deck's own exam numbering, which is not the 1–10 the
+  app shows.
+
+  Two invariants in `lib/rite/__tests__/scoring.test.ts` now pin this: no
+  correct answer may exceed its longest distractor by 20 characters, and no
+  letter may hold 35% or more of the answers. The second exists because a batch
+  rewrite once left all 63 edited answers on option A — a worse cue than the one
+  being fixed. If you rewrite options in bulk, reshuffle and re-check both.
 
   Figures live in `public/rite/` (20 MB, 206 JPEGs, content-hash filenames).
   Don't "optimise" them — they're already optimally compressed (re-encoding at
@@ -157,7 +176,7 @@ forget it's hand-authored JSON, not derived).
 2. Check `docs/goal-reports/` for pending clinician decisions before assuming
    a number is settled.
 3. Run `npm run test:run` and `npm run build` before and after any change —
-   319 tests as of this commit, all passing.
+   321 tests as of this commit, all passing.
 4. After editing any section's HTML, run `npm run build-search` or the
    consistency tests will fail.
 5. If Blob storage seems flaky, read the caching section above before "fixing"
