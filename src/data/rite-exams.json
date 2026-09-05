@@ -36,35 +36,37 @@
      "exam": 1,
      "num": 2,
      "part": "a",
-     "stem": "The sagittal T1 image shown demonstrates a destructive clival mass. Which immunostain confirms the suspected diagnosis?",
+     "stem": "The sagittal T1 image shows a destructive, lobulated midline mass centred on the clivus with posterior displacement of the brainstem. What is the most likely diagnosis?",
      "options": [
       {
        "letter": "A",
-       "text": "GFAP"
+       "text": "Chordoma"
       },
       {
        "letter": "B",
-       "text": "Brachyury"
+       "text": "Chondrosarcoma"
       },
       {
        "letter": "C",
-       "text": "Synaptophysin"
+       "text": "Clival meningioma"
       },
       {
        "letter": "D",
-       "text": "Chromogranin"
+       "text": "Pituitary macroadenoma"
       },
       {
        "letter": "E",
-       "text": "EMA"
+       "text": "Nasopharyngeal carcinoma"
       }
      ],
-     "answer": "B",
-     "explanation": "Brachyury. Chordoma: physaliphorous cells, nuclear brachyury (TBXT); treated with resection plus proton beam. Notochordal remnant tumor; sacrococcygeal, clival and vertebral sites. T2 markedly bright, heterogeneous enhancement, bone destruction on CT. Physaliphorous (bubble-bearing) cells and nuclear brachyury (TBXT) immunostaining confirm the diagnosis. Locally aggressive with high recurrence; treated with maximal resection plus proton beam. Differential: chondrosarcoma (off-midline, petro-occipital fissure), metastasis, plasmacytoma.",
+     "answer": "A",
+     "explanation": "Chordoma. A midline, destructive, lobulated clival mass that is markedly T2 bright and erodes bone is a chordoma until proven otherwise. Chordomas arise from notochordal remnants and occur at the clivus, sacrococcyx and vertebral bodies. The main mimic is chondrosarcoma, which is typically off-midline at the petro-occipital fissure. A clival meningioma is dural-based and causes hyperostosis rather than destruction; a macroadenoma is centred on the sella, not the clivus; nasopharyngeal carcinoma arises from the mucosa below and invades upward.",
      "images": [
       "/rite/9ec4639bb60cd5a813be334c75d110a1f7b9914a.jpg"
      ],
-     "imageAlt": "Sagittal T1: destructive, lobulated mass centered on the clivus with posterior displacement of the brainstem. (Neuroradiology deck, slide 130)"
+     "imageAlt": "Sagittal T1: destructive, lobulated mass centered on the clivus with posterior displacement of the brainstem. (Neuroradiology deck, slide 130)",
+     "salient": "Midline clivus + bone destruction + very bright T2 = chordoma. Off-midline at the petro-occipital fissure = chondrosarcoma.",
+     "learning": "Confirmed histologically by physaliphorous (bubble-bearing) cells and nuclear brachyury (TBXT) immunostaining. Locally aggressive with a high recurrence rate; treated with maximal resection plus proton beam radiotherapy."
     },
     {
      "id": "rite-e1-3",
@@ -547,35 +549,37 @@
      "exam": 1,
      "num": 18,
      "part": "a",
-     "stem": "A hematoma is bright on T1, T2 and DWI. Which event accounts for the change from the preceding stage?",
+     "stem": "An intraparenchymal haematoma is bright on T1 and bright on T2. Which stage of haemorrhage does this signal pattern represent?",
      "options": [
       {
        "letter": "A",
-       "text": "Macrophage uptake of iron into ferritin"
+       "text": "Hyperacute (under 24 hours)"
       },
       {
        "letter": "B",
-       "text": "Lysis of red cells releasing methemoglobin into the extracellular space"
+       "text": "Acute (1 to 3 days)"
       },
       {
        "letter": "C",
-       "text": "Dilution of clot by CSF"
+       "text": "Early subacute (3 to 7 days)"
       },
       {
        "letter": "D",
-       "text": "Oxidation of iron from Fe2+ to Fe3+"
+       "text": "Late subacute (1 to 2 weeks)"
       },
       {
        "letter": "E",
-       "text": "Conversion of oxyhemoglobin to deoxyhemoglobin"
+       "text": "Chronic (over 1 month)"
       }
      ],
-     "answer": "B",
-     "explanation": "Lysis of red cells releasing methemoglobin into the extracellular space. Loss of red-cell compartmentalization removes the susceptibility effect so T2 turns bright while T1 stays bright. RBC lysis releases metHb into the extracellular space; loss of compartmentalization removes the susceptibility effect so T2 turns bright while T1 stays bright. Mnemonic: Bleed Bleed. This is the stage most likely to be confused with a proteinaceous or fatty lesion on T1.",
+     "answer": "D",
+     "explanation": "Late subacute, roughly 1 to 2 weeks old. Red cells lyse and methaemoglobin spills into the extracellular space. Methaemoglobin keeps the blood T1 bright, and the loss of red-cell compartmentalisation removes the susceptibility effect that had been darkening T2 — so T2 turns bright while T1 stays bright. Bright-on-both is the only stage with that combination.",
      "images": [
       "/rite/b6cd0c94bdf88954bfe4be2c583db2e5eb2018c2.jpg"
      ],
-     "imageAlt": "Axial T1 bright, T2 bright, GRE bright center with dark rim, DWI bright. (Neuroradiology deck, slide 10)"
+     "imageAlt": "Axial T1 bright, T2 bright, GRE bright center with dark rim, DWI bright. (Neuroradiology deck, slide 10)",
+     "salient": "Work the T1/T2 pair in order — Iso-Bright, Iso-Dark, Bright-Dark, Bright-Bright, Dark-Dark (IB, ID, BD, BB, DD) — for hyperacute, acute, early subacute, late subacute, chronic.",
+     "learning": "Hyperacute (oxyhaemoglobin, <24 h): T1 iso, T2 bright. Acute (deoxyhaemoglobin, 1-3 d): T1 iso, T2 dark. Early subacute (intracellular methaemoglobin, 3-7 d): T1 bright, T2 dark. Late subacute (extracellular methaemoglobin, 1-2 wk): T1 bright, T2 bright. Chronic (haemosiderin, >1 mo): T1 dark, T2 dark. The T1 change tracks the appearance of methaemoglobin; the T2 change tracks whether that methaemoglobin is still inside intact red cells. GRE/SWI stays dark at the rim once haemosiderin forms, and DWI can appear bright here from T2 shine-through rather than true restriction."
     },
     {
      "id": "rite-e1-19",
