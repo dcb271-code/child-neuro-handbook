@@ -64,7 +64,7 @@
      "images": [
       "/rite/9ec4639bb60cd5a813be334c75d110a1f7b9914a.jpg"
      ],
-     "imageAlt": "Sagittal T1: destructive, lobulated mass centered on the clivus with posterior displacement of the brainstem. (Neuroradiology deck, slide 130)",
+     "imageAlt": "Sagittal T1: destructive, lobulated mass centered on the clivus with posterior displacement of the brainstem.",
      "salient": "Midline clivus + bone destruction + very bright T2 = chordoma. Off-midline at the petro-occipital fissure = chondrosarcoma.",
      "learning": "Confirmed histologically by physaliphorous (bubble-bearing) cells and nuclear brachyury (TBXT) immunostaining. Locally aggressive with a high recurrence rate; treated with maximal resection plus proton beam radiotherapy."
     },
@@ -101,7 +101,7 @@
      "images": [
       "/rite/8871eb9aeb9008a253acb0a6c841f0b0436d42c1.jpg"
      ],
-     "imageAlt": "Sagittal T1 lumbar spine: loss of the L2-L3 disc space with destruction and low signal of the adjacent endplates and vertebral bodies; ring enhancement on the post-contrast study. (Neuroradiology deck, slide 35)",
+     "imageAlt": "Sagittal T1 lumbar spine: loss of the L2-L3 disc space with destruction and low signal of the adjacent endplates and vertebral bodies; ring enhancement on the post-contrast study.",
      "learning": "Tumour spares the disc; infection crosses it. In children infection starts in the vascularised disc, in adults at the endplate."
     },
     {
@@ -133,11 +133,11 @@
       }
      ],
      "answer": "C",
-     "explanation": "KIAA1549-BRAF fusion. Posterior fossa pilocytic astrocytomas carry the BRAF fusion; the non-enhancing cyst wall lacks tumor, so nodule resection is curative. WHO grade 1, most common pediatric glioma and the histology of 80-85% of cerebellar astrocytomas (the deck\\'s phrasing, 80-85% of cerebellar tumors, overstates it; medulloblastoma is comparably common), peak 5-14 years; does not typically progress in grade. Posterior fossa tumors carry the KIAA1549-BRAF fusion; NF1-associated optic pathway gliomas are the same histology. Non-enhancing cyst wall lacks tumor, so nodule resection is curative; gross total resection is possible in >70%.",
+     "explanation": "KIAA1549-BRAF fusion. Posterior fossa pilocytic astrocytomas carry the BRAF fusion; the non-enhancing cyst wall lacks tumor, so nodule resection is curative. WHO grade 1, most common pediatric glioma and the histology of 80-85% of cerebellar astrocytomas, peak 5-14 years; does not typically progress in grade. Posterior fossa tumors carry the KIAA1549-BRAF fusion; NF1-associated optic pathway gliomas are the same histology. Non-enhancing cyst wall lacks tumor, so nodule resection is curative; gross total resection is possible in >70%.",
      "images": [
       "/rite/bcccd16bed56beefb6183863fd6748af1340bee5.jpg"
      ],
-     "imageAlt": "Coronal and axial post-contrast T1: cerebellar hemispheric cyst with a brightly enhancing mural nodule; the cyst wall does not enhance. (RITE Review deck, slide 6)"
+     "imageAlt": "Coronal and axial post-contrast T1: cerebellar hemispheric cyst with a brightly enhancing mural nodule; the cyst wall does not enhance."
     },
     {
      "id": "rite-e1-5",
@@ -174,7 +174,7 @@
      ],
      "imageAlt": "H&E: nodules of anucleate eosinophilic keratinized cells (wet keratin) with calcification and cholesterol clefts; peripheral palisading epithelium.",
      "salient": "Calcification in ~90%; CTNNB1; Papillary variant: adults, BRAF V600E, no calcification",
-     "learning": "Compare Exam 309 histology. Calcification in ~90% of adamantinomatous cases; papillary adults lack it. Endocrine deficits (growth failure, DI) and visual loss; hypothalamic injury after surgery."
+     "learning": "Calcification in ~90% of adamantinomatous cases; papillary adults lack it. Endocrine deficits (growth failure, DI) and visual loss; hypothalamic injury after surgery."
     },
     {
      "id": "rite-e1-6",
@@ -270,11 +270,11 @@
       }
      ],
      "answer": "B",
-     "explanation": "This combination is termed trilateral retinoblastoma and implies germline RB1 disease. Pineal calcification before age 2 is abnormal; germline carriers face lifelong second-cancer risk, especially after radiation. Calcification is the key discriminator of retinoblastoma from other leukocoria causes (Coats disease, PHPV, toxocariasis). Bilateral or multifocal disease implies a germline RB1 variant (13q14); a pineoblastoma in a germline carrier is trilateral retinoblastoma. Knudson\\'s two-hit hypothesis derived from this tumor. Germline carriers are at lifelong risk of osteosarcoma and other second cancers, especially after radiation. The deck\\'s point: pineal calcification before age 2 is abnormal.",
+     "explanation": "This combination is termed trilateral retinoblastoma and implies germline RB1 disease. Pineal calcification before age 2 is abnormal; germline carriers face lifelong second-cancer risk, especially after radiation. Calcification is the key discriminator of retinoblastoma from other leukocoria causes (Coats disease, PHPV, toxocariasis). Bilateral or multifocal disease implies a germline RB1 variant (13q14); a pineoblastoma in a germline carrier is trilateral retinoblastoma. Knudson's two-hit hypothesis derived from this tumor. Germline carriers are at lifelong risk of osteosarcoma and other second cancers, especially after radiation. pineal calcification before age 2 is abnormal.",
      "images": [
       "/rite/3654490e7d6db16f7a143e9b80c5d08822f34b95.jpg"
      ],
-     "imageAlt": "Axial CT orbits (A): calcified intraocular mass(es) arising from the retina. Axial CT brain (B): calcified pineal region mass. (Neuroradiology deck, slide 141)",
+     "imageAlt": "Axial CT orbits (A): calcified intraocular mass(es) arising from the retina. Axial CT brain (B): calcified pineal region mass.",
      "learning": "Pineal calcification before age 2 is abnormal. Germline RB1 carriers face lifelong second-cancer risk, especially after radiotherapy."
     },
     {
@@ -338,7 +338,7 @@
      "images": [
       "/rite/db60fc687ddc27ce2a9010ba485275ef43cecd67.jpg"
      ],
-     "imageAlt": "Sagittal T1 (A) and T2 (B) cervical spine and axial T2 (C): cerebellar tonsils herniated below the foramen magnum with a central CSF-signal cavity expanding the cervical cord. (Neuroradiology deck, slide 38)"
+     "imageAlt": "Sagittal T1 (A) and T2 (B) cervical spine and axial T2 (C): cerebellar tonsils herniated below the foramen magnum with a central CSF-signal cavity expanding the cervical cord."
     },
     {
      "id": "rite-e1-11",
@@ -546,7 +546,7 @@
      "images": [
       "/rite/624e1751c01f6e4d904f700e6e6069487ce7d9b8.jpg"
      ],
-     "imageAlt": "Axial T2 and post-contrast T1: cerebellar hemispheric cyst with an intensely enhancing mural nodule abutting the pial surface. (Neuroradiology deck, slide 133)"
+     "imageAlt": "Axial T2 and post-contrast T1: cerebellar hemispheric cyst with an intensely enhancing mural nodule abutting the pial surface."
     },
     {
      "id": "rite-e1-18",
@@ -581,7 +581,7 @@
      "images": [
       "/rite/b6cd0c94bdf88954bfe4be2c583db2e5eb2018c2.jpg"
      ],
-     "imageAlt": "Axial T1 bright, T2 bright, GRE bright center with dark rim, DWI bright. (Neuroradiology deck, slide 10)",
+     "imageAlt": "Axial T1 bright, T2 bright, GRE bright center with dark rim, DWI bright.",
      "salient": "Work the T1/T2 pair in order — Iso-Bright, Iso-Dark, Bright-Dark, Bright-Bright, Dark-Dark (IB, ID, BD, BB, DD) — for hyperacute, acute, early subacute, late subacute, chronic.",
      "learning": "Hyperacute (oxyhaemoglobin, <24 h): T1 iso, T2 bright. Acute (deoxyhaemoglobin, 1-3 d): T1 iso, T2 dark. Early subacute (intracellular methaemoglobin, 3-7 d): T1 bright, T2 dark. Late subacute (extracellular methaemoglobin, 1-2 wk): T1 bright, T2 bright. Chronic (haemosiderin, >1 mo): T1 dark, T2 dark. The T1 change tracks the appearance of methaemoglobin; the T2 change tracks whether that methaemoglobin is still inside intact red cells. GRE/SWI stays dark at the rim once haemosiderin forms, and DWI can appear bright here from T2 shine-through rather than true restriction."
     },
@@ -737,7 +737,7 @@
      "images": [
       "/rite/fe1a0ced6c081a1a247fce69b5170b1a9a30d9a2.jpg"
      ],
-     "imageAlt": "Top: axial FDG-PET normal, AD (temporoparietal hypometabolism, yellow arrows) and FTD (frontal hypometabolism, red arrows). Bottom: corresponding axial FLAIR showing frontal atrophy in FTD. (RITE Review deck, slide 109)"
+     "imageAlt": "Top: axial FDG-PET normal, AD (temporoparietal hypometabolism, yellow arrows) and FTD (frontal hypometabolism, red arrows). Bottom: corresponding axial FLAIR showing frontal atrophy in FTD."
     },
     {
      "id": "rite-e1-24",
@@ -768,11 +768,11 @@
       }
      ],
      "answer": "B",
-     "explanation": "Vigabatrin. Tuberous sclerosis (TSC1 9q34, TSC2 16p13.3): vigabatrin is first line for TSC-related spasms; everolimus for SEGA. TSC1 (9q34, hamartin) and TSC2 (16p13.3, tuberin), AD, \\~2/3 de novo; mTORC1 hyperactivation. Tubers cause the epilepsy; subependymal nodules near the foramen of Monro can transform into SEGA (obstructive hydrocephalus; everolimus). Vogt triad (seizures, intellectual disability, facial angiofibromas) is present in a minority. Other criteria: hypomelanotic macules, shagreen patch, ungual fibromas, cardiac rhabdomyoma, renal angiomyolipoma, LAM. Vigabatrin is first line for TSC-related infantile spasms.",
+     "explanation": "Vigabatrin. Tuberous sclerosis (TSC1 9q34, TSC2 16p13.3): vigabatrin is first line for TSC-related spasms; everolimus for SEGA. TSC1 (9q34, hamartin) and TSC2 (16p13.3, tuberin), AD, ~2/3 de novo; mTORC1 hyperactivation. Tubers cause the epilepsy; subependymal nodules near the foramen of Monro can transform into SEGA (obstructive hydrocephalus; everolimus). Vogt triad (seizures, intellectual disability, facial angiofibromas) is present in a minority. Other criteria: hypomelanotic macules, shagreen patch, ungual fibromas, cardiac rhabdomyoma, renal angiomyolipoma, LAM. Vigabatrin is first line for TSC-related infantile spasms.",
      "images": [
       "/rite/2a88a7040decb6278731c6085286174e68eb45d9.jpg"
      ],
-     "imageAlt": "Coronal brain slice: firm, pale, expanded gyri (cortical tubers) with blurring of the gray-white junction, and nodules protruding into the lateral ventricle (subependymal nodules, candle guttering). (Neuroradiology deck, slide 127)"
+     "imageAlt": "Coronal brain slice: firm, pale, expanded gyri (cortical tubers) with blurring of the gray-white junction, and nodules protruding into the lateral ventricle (subependymal nodules, candle guttering)."
     },
     {
      "id": "rite-e1-25",
@@ -990,7 +990,7 @@
      "images": [
       "/rite/46369398ef21b5f502705ec2813b1cdbaa07cc90.jpg"
      ],
-     "imageAlt": "Line drawing of a patient from behind with arms abducted: the scapulae wing and ride up laterally, with atrophy of the periscapular muscles and preservation of the deltoids. (RITE Review deck, slide 254)",
+     "imageAlt": "Line drawing of a patient from behind with arms abducted: the scapulae wing and ride up laterally, with atrophy of the periscapular muscles and preservation of the deltoids.",
      "learning": "Contraction of the D4Z4 repeat array on 4q35 derepresses DUX4, which is toxic to muscle — the mechanism of facioscapulohumeral dystrophy."
     },
     {
@@ -1269,11 +1269,11 @@
       }
      ],
      "answer": "D",
-     "explanation": "Medical management; complete occlusion is not a revascularization indication. Endarterectomy benefits symptomatic 70-99% stenosis; a chronically occluded ICA is managed medically. Deck teaching point: distinguish plaque-related occlusion from dissection (tapered flame-shaped occlusion, intramural hematoma on fat-sat T1) and note that a complete occlusion is not an endarterectomy indication. Symptomatic 70-99% stenosis benefits from CEA within 2 weeks of the event.",
+     "explanation": "Medical management; complete occlusion is not a revascularization indication. Endarterectomy benefits symptomatic 70-99% stenosis; a chronically occluded ICA is managed medically. distinguish plaque-related occlusion from dissection (tapered flame-shaped occlusion, intramural hematoma on fat-sat T1) and note that a complete occlusion is not an endarterectomy indication. Symptomatic 70-99% stenosis benefits from CEA within 2 weeks of the event.",
      "images": [
       "/rite/25c35292a967de0dd63b3a85a51a28e6ed40db69.jpg"
      ],
-     "imageAlt": "Carotid angiograms (A, lateral; B, magnified): irregular ulcerated plaque at the ICA origin with occlusion of the proximal ICA; distal vessels fill via collaterals. (Neuroradiology deck, slide 73)",
+     "imageAlt": "Carotid angiograms (A, lateral; B, magnified): irregular ulcerated plaque at the ICA origin with occlusion of the proximal ICA; distal vessels fill via collaterals.",
      "learning": "A complete occlusion is not a revascularisation target — endarterectomy benefit applies to high-grade stenosis, not total occlusion, and EC-IC bypass failed to show benefit in trials."
     },
     {
@@ -1582,11 +1582,11 @@
       }
      ],
      "answer": "B",
-     "explanation": "Intradural extramedullary. Widening of the SAS adjacent to the mass is the classic sign of an intradural extramedullary lesion; intramedullary lesions expand the cord, extradural lesions efface the SAS. Localization is the question: intramedullary (ependymoma, astrocytoma, hemangioblastoma) expands the cord; extradural lesions efface the SAS. Not lipoma, which would be T1 bright. Spinal meningiomas: 90% intradural extramedullary, \\~80% thoracic, strong female predominance, 98% solitary; multiple lesions or a pediatric case implies NF2.",
+     "explanation": "Intradural extramedullary. Widening of the SAS adjacent to the mass is the classic sign of an intradural extramedullary lesion; intramedullary lesions expand the cord, extradural lesions efface the SAS. Localization is the question: intramedullary (ependymoma, astrocytoma, hemangioblastoma) expands the cord; extradural lesions efface the SAS. Not lipoma, which would be T1 bright. Spinal meningiomas: 90% intradural extramedullary, ~80% thoracic, strong female predominance, 98% solitary; multiple lesions or a pediatric case implies NF2.",
      "images": [
       "/rite/a7953c017027cc0c0fff40a76f75a7a19f00abee.jpg"
      ],
-     "imageAlt": "Sagittal T1 thoracic spine: well-circumscribed intradural mass (arrow) displacing and compressing the cord with widening of the subarachnoid space above and below the lesion, the classic sign of an intradural extramedullary location. (Neuroradiology deck, slide 17)"
+     "imageAlt": "Sagittal T1 thoracic spine: well-circumscribed intradural mass (arrow) displacing and compressing the cord with widening of the subarachnoid space above and below the lesion, the classic sign of an intradural extramedullary location."
     },
     {
      "id": "rite-e2-8",
@@ -1621,7 +1621,7 @@
      "images": [
       "/rite/608fd4cbbe3d40f6ce3118c05cf51197f9ad84d4.jpg"
      ],
-     "imageAlt": "Axial FDG-PET, control versus AD: reduced tracer uptake in bilateral temporoparietal cortex with relatively preserved frontal, sensorimotor and occipital metabolism. (RITE Review deck, slide 74)"
+     "imageAlt": "Axial FDG-PET, control versus AD: reduced tracer uptake in bilateral temporoparietal cortex with relatively preserved frontal, sensorimotor and occipital metabolism."
     },
     {
      "id": "rite-e2-9",
@@ -1656,7 +1656,7 @@
      "images": [
       "/rite/c586d4b62f5ad71779ff1ece295d336455eb66e6.jpg"
      ],
-     "imageAlt": "Axial DWI (restricted diffusion in the anterior cord), axial T2 (bilateral anterior-horn hyperintensity, the snake-eyes or owl\\'s-eyes sign), and sagittal T2 (long-segment anterior cord signal). (Neuroradiology deck, slide 43)"
+     "imageAlt": "Axial DWI (restricted diffusion in the anterior cord), axial T2 (bilateral anterior-horn hyperintensity, the snake-eyes or owl's-eyes sign), and sagittal T2 (long-segment anterior cord signal)."
     },
     {
      "id": "rite-e2-10",
@@ -1728,7 +1728,7 @@
      "images": [
       "/rite/9060aecd601e9590bdedb109210dcb5bdfa941d8.jpg"
      ],
-     "imageAlt": "Lateral carotid angiogram: multifocal segmental narrowing and dilatation (beading) of medium and small intracranial arteries with distal irregularity. (Neuroradiology deck, slide 55)"
+     "imageAlt": "Lateral carotid angiogram: multifocal segmental narrowing and dilatation (beading) of medium and small intracranial arteries with distal irregularity."
     },
     {
      "id": "rite-e2-12",
@@ -1763,7 +1763,7 @@
      "images": [
       "/rite/fd816cdd2cbe90495e2e54d5551b6ab632d59e90.jpg"
      ],
-     "imageAlt": "Cortex (silver-type stain): extracellular spherical plaque 60-120 microns across with a dense amyloid core, a clear halo, and a corona of swollen, distorted dystrophic neurites. (RITE Review deck, slide 92)"
+     "imageAlt": "Cortex (silver-type stain): extracellular spherical plaque 60-120 microns across with a dense amyloid core, a clear halo, and a corona of swollen, distorted dystrophic neurites."
     },
     {
      "id": "rite-e2-13",
@@ -2094,11 +2094,11 @@
       }
      ],
      "answer": "B",
-     "explanation": "A hypointense rim on gradient-echo imaging. Hemosiderin-laden macrophages remain at the margin permanently; the cavity itself follows fluid signal and edema resolves. Ferritin/hemosiderin are superparamagnetic (10\\^3-10\\^4 unpaired electrons per aggregate) and remain in macrophages indefinitely; the GRE/SWI rim is permanent. Mnemonic: Die Die for the rim. Full sequence: I Bleed, I Die, Bleed Die, Bleed Bleed, Die Die.",
+     "explanation": "A hypointense rim on gradient-echo imaging. Hemosiderin-laden macrophages remain at the margin permanently; the cavity itself follows fluid signal and edema resolves. Ferritin/hemosiderin are superparamagnetic (10^3-10^4 unpaired electrons per aggregate) and remain in macrophages indefinitely; the GRE/SWI rim is permanent. Mnemonic: Die Die for the rim. Full sequence: I Bleed, I Die, Bleed Die, Bleed Bleed, Die Die.",
      "images": [
       "/rite/f2acbef1e832213d7b7ec1c05b1a398eebda970a.jpg"
      ],
-     "imageAlt": "Axial T1, T2, GRE, DWI: cavity is T1 dark / T2 bright (hemichromes and fluid, no paramagnetism); rim is dark on all sequences, most conspicuous on GRE. (Neuroradiology deck, slide 11)"
+     "imageAlt": "Axial T1, T2, GRE, DWI: cavity is T1 dark / T2 bright (hemichromes and fluid, no paramagnetism); rim is dark on all sequences, most conspicuous on GRE."
     },
     {
      "id": "rite-e2-24",
@@ -2160,7 +2160,7 @@
      "images": [
       "/rite/91e1f07f21dd9c490b5fd74dec4350136620e8fb.jpg"
      ],
-     "imageAlt": "Electron micrograph: a myelinated axon encircled by concentric lamellae of Schwann cell processes and collagen (onion bulb). (RITE Review deck, slide 256)"
+     "imageAlt": "Electron micrograph: a myelinated axon encircled by concentric lamellae of Schwann cell processes and collagen (onion bulb)."
     },
     {
      "id": "rite-e2-26",
@@ -2368,7 +2368,7 @@
      "images": [
       "/rite/c654f3408660fb540f0a4f572c94b2044d152b7b.jpg"
      ],
-     "imageAlt": "Axial CT and sagittal T1 images: severe, disproportionate atrophy of the frontal and anterior temporal lobes with knife-edge gyri and widened sylvian fissures; posterior cortex relatively preserved. (Neuroradiology deck, slide 95)"
+     "imageAlt": "Axial CT and sagittal T1 images: severe, disproportionate atrophy of the frontal and anterior temporal lobes with knife-edge gyri and widened sylvian fissures; posterior cortex relatively preserved."
     },
     {
      "id": "rite-e2-30",
@@ -2440,7 +2440,7 @@
      "images": [
       "/rite/18ff453275e9ccb84318c3d67337213fa4c18940.jpg"
      ],
-     "imageAlt": "Coronal post-contrast T1: smooth, diffuse, thick pachymeningeal (dural) enhancement with engorged venous sinuses. (Neuroradiology deck, slide 84)"
+     "imageAlt": "Coronal post-contrast T1: smooth, diffuse, thick pachymeningeal (dural) enhancement with engorged venous sinuses."
     },
     {
      "id": "rite-e2-32",
@@ -2539,7 +2539,7 @@
      "images": [
       "/rite/2bc71866fb3b8d89bbd294d7cd49555f704a2120.jpg"
      ],
-     "imageAlt": "H&E: serpiginous zones of necrosis bordered by densely packed, hyperchromatic tumor nuclei arranged in a palisade. (RITE Review deck, slide 23)"
+     "imageAlt": "H&E: serpiginous zones of necrosis bordered by densely packed, hyperchromatic tumor nuclei arranged in a palisade."
     },
     {
      "id": "rite-e2-35",
@@ -2634,11 +2634,11 @@
       }
      ],
      "answer": "E",
-     "explanation": "Layering intraventricular debris with restricted diffusion. Pyogenic ventriculitis produces smooth ependymal enhancement with DWI-bright pus; nodular enhancement suggests CSF tumor spread. Ependymal enhancement with intraventricular debris (DWI-bright layering) is the picture of pyogenic ventriculitis, typically after shunt/EVD infection or rupture of an abscess into the ventricle. Deck\\'s differential for ependymal enhancement: CSF dissemination of tumor (medulloblastoma, choroid plexus papilloma, ependymoma, lymphoma), TS subependymal nodules, and transependymal CSF flow (which is FLAIR signal, not enhancement).",
+     "explanation": "Layering intraventricular debris with restricted diffusion. Pyogenic ventriculitis produces smooth ependymal enhancement with DWI-bright pus; nodular enhancement suggests CSF tumor spread. Ependymal enhancement with intraventricular debris (DWI-bright layering) is the picture of pyogenic ventriculitis, typically after shunt/EVD infection or rupture of an abscess into the ventricle. Differential for ependymal enhancement: CSF dissemination of tumor (medulloblastoma, choroid plexus papilloma, ependymoma, lymphoma), TS subependymal nodules, and transependymal CSF flow (which is FLAIR signal, not enhancement).",
      "images": [
       "/rite/dacb2c9d888304ea0fdec9ffdd8232bc99cb1a7c.jpg"
      ],
-     "imageAlt": "Axial post-contrast T1: smooth linear enhancement of the ependymal lining of the lateral ventricles (arrow) with ventricular enlargement. (Neuroradiology deck, slide 131)"
+     "imageAlt": "Axial post-contrast T1: smooth linear enhancement of the ependymal lining of the lateral ventricles (arrow) with ventricular enlargement."
     },
     {
      "id": "rite-e2-38",
@@ -2831,7 +2831,7 @@
      "images": [
       "/rite/0ec932f2dbe64fe2a618637ac4ed3225da796936.jpg"
      ],
-     "imageAlt": "Sagittal T1 (A), T2 (B) and axial (C) lumbosacral spine: the conus is dragged into the sacrum and adheres to the posterior aspect of the canal. (Neuroradiology deck, slide 53)"
+     "imageAlt": "Sagittal T1 (A), T2 (B) and axial (C) lumbosacral spine: the conus is dragged into the sacrum and adheres to the posterior aspect of the canal."
     },
     {
      "id": "rite-e3-3",
@@ -3056,7 +3056,7 @@
      "images": [
       "/rite/dd2bd6aaf90048b98f594459d98df0dbdf38ab29.jpg"
      ],
-     "imageAlt": "Post-contrast T1 (A): ring-enhancing basal ganglia and hemispheric lesions. T2 (B): edema grossly out of proportion to lesion size. (Neuroradiology deck, slide 91)"
+     "imageAlt": "Post-contrast T1 (A): ring-enhancing basal ganglia and hemispheric lesions. T2 (B): edema grossly out of proportion to lesion size."
     },
     {
      "id": "rite-e3-9",
@@ -3145,7 +3145,7 @@
      "images": [
       "/rite/cdafffe25653611b1f762b2761fcc351b7f591f4.jpg"
      ],
-     "imageAlt": "Coronal brain slice: bilateral parasagittal hemorrhagic cortical/subcortical infarcts plus hemorrhagic necrosis of the thalami and basal ganglia, and thrombus in the sagittal sinus. (Neuroradiology deck, slide 82)"
+     "imageAlt": "Coronal brain slice: bilateral parasagittal hemorrhagic cortical/subcortical infarcts plus hemorrhagic necrosis of the thalami and basal ganglia, and thrombus in the sagittal sinus."
     },
     {
      "id": "rite-e3-12",
@@ -3370,7 +3370,7 @@
      "images": [
       "/rite/f2ecf96410ed4eacc60389a16412059bada7aeb7.jpg"
      ],
-     "imageAlt": "Sagittal T1/T2 (A-C) and axial (D) lumbosacral spine: low-lying conus extending into the sacrum, thickened filum, dorsal lipoma contiguous with subcutaneous fat, and a widened canal. (Neuroradiology deck, slide 51)"
+     "imageAlt": "Sagittal T1/T2 (A-C) and axial (D) lumbosacral spine: low-lying conus extending into the sacrum, thickened filum, dorsal lipoma contiguous with subcutaneous fat, and a widened canal."
     },
     {
      "id": "rite-e3-18",
@@ -3497,7 +3497,7 @@
      "images": [
       "/rite/189249337d91e888fca94e4b1706fc1113b9dc39.jpg"
      ],
-     "imageAlt": "AP and lateral MRV with structures A-F labeled. The deck\\'s question asks for D; the answer is the straight sinus. (Neuroradiology deck, slide 75)"
+     "imageAlt": "AP and lateral MR venogram with labelled structures A-F."
     },
     {
      "id": "rite-e3-22",
@@ -3619,11 +3619,11 @@
       }
      ],
      "answer": "B",
-     "explanation": "SLC20A2. Primary familial brain calcification: SLC20A2 most common (AD); PDGFB, PDGFRB, XPR1 AD; MYORG AR. Exclude hypoparathyroidism first. Diagnosis of exclusion after ruling out hypoparathyroidism/pseudohypoparathyroidism, hyperparathyroidism, mitochondrial disease, congenital infection, radiation and lead. Familial forms are AD: SLC20A2 (most common), PDGFB, PDGFRB, XPR1; AR MYORG. Parkinsonism, dystonia, chorea, psychiatric symptoms and dementia in mid-adulthood; calcification burden correlates poorly with symptoms. Deck\\'s contrast with Leigh: necrotic basal ganglia are hypodense on CT and T2 bright.",
+     "explanation": "SLC20A2. Primary familial brain calcification: SLC20A2 most common (AD); PDGFB, PDGFRB, XPR1 AD; MYORG AR. Exclude hypoparathyroidism first. Diagnosis of exclusion after ruling out hypoparathyroidism/pseudohypoparathyroidism, hyperparathyroidism, mitochondrial disease, congenital infection, radiation and lead. Familial forms are AD: SLC20A2 (most common), PDGFB, PDGFRB, XPR1; AR MYORG. Parkinsonism, dystonia, chorea, psychiatric symptoms and dementia in mid-adulthood; calcification burden correlates poorly with symptoms. Contrast with Leigh: necrotic basal ganglia are hypodense on CT and T2 bright.",
      "images": [
       "/rite/0f985b610ae179637372613da565b87bfdc06805.jpg"
      ],
-     "imageAlt": "Axial non-contrast CT: dense symmetric calcification of the basal ganglia and cerebellar dentate nuclei; axial T2 shows corresponding low signal. (Neuroradiology deck, slide 137)"
+     "imageAlt": "Axial non-contrast CT: dense symmetric calcification of the basal ganglia and cerebellar dentate nuclei; axial T2 shows corresponding low signal."
     },
     {
      "id": "rite-e3-26",
@@ -3930,7 +3930,7 @@
      "images": [
       "/rite/bf3b35b53bad6dadb4716cb89e80aa17446368d5.jpg"
      ],
-     "imageAlt": "Coronal T1 sections, control (left) versus AD (right): marked atrophy of the hippocampi and entorhinal cortex with dilated temporal horns and widened choroidal fissures. (RITE Review deck, slide 73)"
+     "imageAlt": "Coronal T1 sections, control (left) versus AD (right): marked atrophy of the hippocampi and entorhinal cortex with dilated temporal horns and widened choroidal fissures."
     },
     {
      "id": "rite-e3-35",
@@ -4019,7 +4019,7 @@
      "images": [
       "/rite/21c9ec0a01e92b12f03a80c29a3e87de14a26768.jpg"
      ],
-     "imageAlt": "H&E: delicate, acutely branching capillary-sized vessels forming an anastomosing network among tumor cells. (RITE Review deck, slide 30)"
+     "imageAlt": "H&E: delicate, acutely branching capillary-sized vessels forming an anastomosing network among tumor cells."
     },
     {
      "id": "rite-e3-38",
@@ -4054,7 +4054,7 @@
      "images": [
       "/rite/88d119f1bb49237f2c1ab0a65b7acd7077011957.jpg"
      ],
-     "imageAlt": "Axial T1, T2, GRE and DWI of a posterior (parieto-occipital) hematoma. T1 isointense, T2 mildly hyperintense, central restricted diffusion; GRE variable (thin dark rim as deoxy-Hb forms at the periphery). (Neuroradiology deck, slide 7)"
+     "imageAlt": "Axial T1, T2, GRE and DWI of a posterior (parieto-occipital) hematoma. T1 isointense, T2 mildly hyperintense, central restricted diffusion; GRE variable (thin dark rim as deoxy-Hb forms at the periphery)."
     },
     {
      "id": "rite-e3-39",
@@ -4089,7 +4089,7 @@
      "images": [
       "/rite/2af8afa3f62dd457d9a7986339672105db08a23d.jpg"
      ],
-     "imageAlt": "Two-channel EMG recording from the right deltoid: repetitive single-fiber discharges that wax and wane in amplitude and frequency (dive-bomber sound). (RITE Review deck, slide 276)"
+     "imageAlt": "Two-channel EMG recording from the right deltoid: repetitive single-fiber discharges that wax and wane in amplitude and frequency (dive-bomber sound)."
     },
     {
      "id": "rite-e3-40",
@@ -4124,7 +4124,7 @@
      "images": [
       "/rite/a762003fa432cee7647854d26b8248f9dbab3ede.jpg"
      ],
-     "imageAlt": "Coronal T1: bilateral full-thickness clefts extending from the cortical surface to the ventricle, lined by dysplastic (polymicrogyric) gray matter, with absent septum pellucidum and small optic nerves. (Neuroradiology deck, slide 119)"
+     "imageAlt": "Coronal T1: bilateral full-thickness clefts extending from the cortical surface to the ventricle, lined by dysplastic (polymicrogyric) gray matter, with absent septum pellucidum and small optic nerves."
     }
    ]
   },
@@ -4498,7 +4498,7 @@
      "images": [
       "/rite/b876c336e85a39913fa0857b7c3fdfa63759318e.jpg"
      ],
-     "imageAlt": "Coronal STIR/T2 (A, B) and axial T2 (C): innumerable bilateral, multilevel, hyperintense fusiform and dumbbell-shaped nerve-root and paraspinal masses extending through and widening the neural foramina. (Neuroradiology deck, slide 22)"
+     "imageAlt": "Coronal STIR/T2 (A, B) and axial T2 (C): innumerable bilateral, multilevel, hyperintense fusiform and dumbbell-shaped nerve-root and paraspinal masses extending through and widening the neural foramina."
     },
     {
      "id": "rite-e4-14",
@@ -4529,11 +4529,11 @@
       }
      ],
      "answer": "C",
-     "explanation": "Lining of gliotic white matter rather than heterotopic gray matter. Porencephaly is a destructive cavity lined by white matter; schizencephaly is a malformation lined by gray matter. Familial porencephaly suggests COL4A1. Encephaloclastic (destructive) lesion from a perinatal or fetal insult (arterial infarct, hemorrhage), lined by gliotic white matter. Familial porencephaly and infantile hemiparesis point to COL4A1/COL4A2 (also cataracts, retinal arterial tortuosity, adult ICH). The deck\\'s contrast: a schizencephalic cleft is lined by heterotopic gray matter, a porencephalic cyst is not.",
+     "explanation": "Lining of gliotic white matter rather than heterotopic gray matter. Porencephaly is a destructive cavity lined by white matter; schizencephaly is a malformation lined by gray matter. Familial porencephaly suggests COL4A1. Encephaloclastic (destructive) lesion from a perinatal or fetal insult (arterial infarct, hemorrhage), lined by gliotic white matter. Familial porencephaly and infantile hemiparesis point to COL4A1/COL4A2 (also cataracts, retinal arterial tortuosity, adult ICH). Contrast: a schizencephalic cleft is lined by heterotopic gray matter, a porencephalic cyst is not.",
      "images": [
       "/rite/ce4af9fbd0dc95ed2d018fb0ed85a8523013c7d5.jpg"
      ],
-     "imageAlt": "Axial T1 and gross specimen: smooth-walled CSF-density cavity in the cerebral hemisphere communicating with the ventricle and subarachnoid space. (Neuroradiology deck, slide 112)"
+     "imageAlt": "Axial T1 and gross specimen: smooth-walled CSF-density cavity in the cerebral hemisphere communicating with the ventricle and subarachnoid space."
     },
     {
      "id": "rite-e4-15",
@@ -4759,7 +4759,7 @@
      "images": [
       "/rite/6165341ed780c87dc346c0868ac5d4a15ce8d993.jpg"
      ],
-     "imageAlt": "Axial amyloid PET: AD (diffuse cortical retention, loss of gray-white contrast), cognitively normal amyloid-positive, and amyloid-negative (tracer confined to white matter). (RITE Review deck, slide 75)"
+     "imageAlt": "Axial amyloid PET: AD (diffuse cortical retention, loss of gray-white contrast), cognitively normal amyloid-positive, and amyloid-negative (tracer confined to white matter)."
     },
     {
      "id": "rite-e4-21",
@@ -4821,7 +4821,7 @@
      "images": [
       "/rite/452f800e382adc03a4d9647b601206c03c24eb58.jpg"
      ],
-     "imageAlt": "H&E (main panel) with normal white matter inset: monotonous sheets of cells with uniform round nuclei, fine chromatin and a clear perinuclear halo (fried-egg or honeycomb appearance). (RITE Review deck, slide 28)"
+     "imageAlt": "H&E (main panel) with normal white matter inset: monotonous sheets of cells with uniform round nuclei, fine chromatin and a clear perinuclear halo (fried-egg or honeycomb appearance)."
     },
     {
      "id": "rite-e4-23",
@@ -4856,7 +4856,7 @@
      "images": [
       "/rite/91b60eced31d4c2b89bf8a8a637ffe20755f3f1a.jpg"
      ],
-     "imageAlt": "H&E of putamen: rarefaction of the neuropil with gliosis and loss of small neurons; a spared large neuron is arrowed. (RITE Review deck, slide 158)"
+     "imageAlt": "H&E of putamen: rarefaction of the neuropil with gliosis and loss of small neurons; a spared large neuron is arrowed."
     },
     {
      "id": "rite-e4-24",
@@ -4887,11 +4887,11 @@
       }
      ],
      "answer": "A",
-     "explanation": "Pilocytic astrocytoma. Cyst with enhancing mural nodule in a child is pilocytic astrocytoma regardless of location; hemangioblastoma is an adult posterior fossa lesion; abscess is a complete ring with restricted diffusion. Cyst-with-nodule morphology in a child is pilocytic astrocytoma until proven otherwise; supratentorial location does not change that. Deck\\'s exclusions: hemangioblastoma would be in the posterior fossa of an adult; an abscess enhances as a complete ring with restricted diffusion. Enhancing nodule plus non-enhancing cyst wall means resection of the nodule alone suffices.",
+     "explanation": "Pilocytic astrocytoma. Cyst with enhancing mural nodule in a child is pilocytic astrocytoma regardless of location; hemangioblastoma is an adult posterior fossa lesion; abscess is a complete ring with restricted diffusion. Cyst-with-nodule morphology in a child is pilocytic astrocytoma until proven otherwise; supratentorial location does not change that. Excluded: hemangioblastoma would be in the posterior fossa of an adult; an abscess enhances as a complete ring with restricted diffusion. Enhancing nodule plus non-enhancing cyst wall means resection of the nodule alone suffices.",
      "images": [
       "/rite/80389fcc6b429c896cf687faf5732d91e9a9ffb6.jpg"
      ],
-     "imageAlt": "Axial contrast CT: large hypodense cyst occupying much of the hemisphere with an enhancing solid mural nodule. (Neuroradiology deck, slide 128)"
+     "imageAlt": "Axial contrast CT: large hypodense cyst occupying much of the hemisphere with an enhancing solid mural nodule."
     },
     {
      "id": "rite-e4-25",
@@ -5000,7 +5000,7 @@
      "images": [
       "/rite/c063b90c99d7da2203d06f164bc6e9c8ebdeb7ce.jpg"
      ],
-     "imageAlt": "H&E and modified Gomori trichrome: endomysial inflammation with fibers containing rimmed vacuoles (red-rimmed on trichrome, arrows). (RITE Review deck, slide 205)"
+     "imageAlt": "H&E and modified Gomori trichrome: endomysial inflammation with fibers containing rimmed vacuoles (red-rimmed on trichrome, arrows)."
     },
     {
      "id": "rite-e4-28",
@@ -5035,7 +5035,7 @@
      "images": [
       "/rite/9b7767e46b6ecf675221d0fe6f51e3de9219558a.jpg"
      ],
-     "imageAlt": "AP (A) and lateral (B) contrast myelogram: multilevel narrowing of the contrast-filled dural sac with a washboard/hourglass contour at the disc levels. (Neuroradiology deck, slide 47)"
+     "imageAlt": "AP (A) and lateral (B) contrast myelogram: multilevel narrowing of the contrast-filled dural sac with a washboard/hourglass contour at the disc levels."
     },
     {
      "id": "rite-e4-29",
@@ -5066,11 +5066,11 @@
       }
      ],
      "answer": "A",
-     "explanation": "Approximately 3 weeks. T1 and T2/FLAIR bright indicates extracellular methemoglobin, late subacute; subdural blood evolves more slowly than parenchymal blood, but the stage still dates it to weeks. T1 bright plus T2/FLAIR bright = extracellular methemoglobin, i.e. late subacute; the deck\\'s answer is roughly 20 days. Hemosiderin margins (gray T1, dark T2) appear in weeks 2-3. Subdural blood evolves more slowly than parenchymal blood (higher oxygen tension, less macrophage access), so intervals are approximate.",
+     "explanation": "Approximately 3 weeks. T1 and T2/FLAIR bright indicates extracellular methemoglobin, late subacute; subdural blood evolves more slowly than parenchymal blood, but the stage still dates it to weeks. T1 bright plus T2/FLAIR bright = extracellular methemoglobin, i.e. late subacute; roughly 20 days. Hemosiderin margins (gray T1, dark T2) appear in weeks 2-3. Subdural blood evolves more slowly than parenchymal blood (higher oxygen tension, less macrophage access), so intervals are approximate.",
      "images": [
       "/rite/b48262739f618ec83a8b1810a1c8abdfd0513c0d.jpg"
      ],
-     "imageAlt": "Axial FLAIR (top row) shows bilateral hyperintense subdural collections, larger on the left; coronal non-contrast T1 (bottom) shows the left collection to be T1 bright. (Neuroradiology deck, slide 13)"
+     "imageAlt": "Axial FLAIR (top row) shows bilateral hyperintense subdural collections, larger on the left; coronal non-contrast T1 (bottom) shows the left collection to be T1 bright."
     },
     {
      "id": "rite-e4-30",
@@ -5108,7 +5108,7 @@
      "imageAlt": "A: FLAIR with irregular, angulated lateral ventricular margins and periventricular signal change with CSF-isointense cavities merging with the ventricles. B: T2 with a large confluent CSF-intensity region contiguous with both ventricles and thinned overlying white matter.",
      "salient": "Spastic diplegia; oligodendrocyte precursor vulnerability; Malformations (schizencephaly) have gray-matter-lined clefts",
      "learning": "Destructive lesions (PVL, porencephaly, hydranencephaly, multicystic encephalomalacia) are distinguished from malformations (schizencephaly, holoprosencephaly) by the absence of gray matter lining and by irregular, gliotic margins. PVL: preterm white matter injury of oligodendrocyte precursors, spastic diplegia, later periventricular gliosis with wavy ventricular contours.",
-     "note": "Revised after review; original draft misread this as a butterfly glioma/lymphoma. Distinction from open-lip schizencephaly (Exam 269) rests on the absence of a gray-matter-lined cleft."
+     "note": "Revised after review; original draft misread this as a butterfly glioma/lymphoma. Distinction from open-lip schizencephaly rests on the absence of a gray-matter-lined cleft."
     },
     {
      "id": "rite-e4-31",
@@ -5143,7 +5143,7 @@
      "images": [
       "/rite/64cb8cbafb1abd71caa6d0a90168ed0f6258040b.jpg"
      ],
-     "imageAlt": "Axial non-contrast CT: subarachnoid hemorrhage filling the basal cisterns and interhemispheric fissure with a rounded density at the ACom region (arrow). (Neuroradiology deck, slide 72)"
+     "imageAlt": "Axial non-contrast CT: subarachnoid hemorrhage filling the basal cisterns and interhemispheric fissure with a rounded density at the ACom region (arrow)."
     },
     {
      "id": "rite-e4-32",
@@ -5432,7 +5432,7 @@
      "images": [
       "/rite/b0c05c5c158714e03a9c2cec76d846bf9ff08d3f.jpg"
      ],
-     "imageAlt": "Coronal T2 of a 6-year-old with developmental delay and focal epilepsy: nodules lining the lateral ventricles that are isointense to gray matter on all sequences and do not enhance. (Neuroradiology deck, slide 110)"
+     "imageAlt": "Coronal T2 of a 6-year-old with developmental delay and focal epilepsy: nodules lining the lateral ventricles that are isointense to gray matter on all sequences and do not enhance."
     },
     {
      "id": "rite-e4-40",
@@ -5553,7 +5553,7 @@
      "images": [
       "/rite/6cd7dc74d8896651381c72e20b6b70954e8fa079.jpg"
      ],
-     "imageAlt": "Coronal brain slice: CSF-filled space between the two leaves of the septum pellucidum, between the frontal horns. (Neuroradiology deck, slide 120)"
+     "imageAlt": "Coronal brain slice: CSF-filled space between the two leaves of the septum pellucidum, between the frontal horns."
     },
     {
      "id": "rite-e5-4",
@@ -5588,7 +5588,7 @@
      "images": [
       "/rite/d8c6f94b861d6cd78e93b635d11e0e9ebca0ca45.jpg"
      ],
-     "imageAlt": "Sagittal MRI, sagittal CT and coronal CT cervical spine: congenital fusion of multiple cervical vertebral bodies with hypoplastic or absent intervertebral discs. (Neuroradiology deck, slide 54)"
+     "imageAlt": "Sagittal MRI, sagittal CT and coronal CT cervical spine: congenital fusion of multiple cervical vertebral bodies with hypoplastic or absent intervertebral discs."
     },
     {
      "id": "rite-e5-5",
@@ -5731,7 +5731,7 @@
      "images": [
       "/rite/21ea0a06a95400d8ca99c61c37dd09803f5cddb1.jpg"
      ],
-     "imageAlt": "Coronal T1 (with schematic overlay) and sagittal T1: sellar mass >10 mm expanding the sella and rising into the suprasellar cistern, waisted at the diaphragma sellae. (RITE Review deck, slide 44)"
+     "imageAlt": "Coronal T1 (with schematic overlay) and sagittal T1: sellar mass >10 mm expanding the sella and rising into the suprasellar cistern, waisted at the diaphragma sellae."
     },
     {
      "id": "rite-e5-10",
@@ -5857,7 +5857,7 @@
      "images": [
       "/rite/b1025b93856125f7872290e4539de23d4d7df365.jpg"
      ],
-     "imageAlt": "Clinical photographs: heliotrope eyelid discoloration, periungual telangiectasia with ragged cuticles, Gottron papules over the knuckles/PIP joints, and truncal erythema. (RITE Review deck, slide 196)"
+     "imageAlt": "Clinical photographs: heliotrope eyelid discoloration, periungual telangiectasia with ragged cuticles, Gottron papules over the knuckles/PIP joints, and truncal erythema."
     },
     {
      "id": "rite-e5-14",
@@ -6147,7 +6147,7 @@
       "/rite/32ecfd4b9e04fd495017f04f71899c0684f76b71.jpg"
      ],
      "imageAlt": "Coronal T1: round, homogeneously hyperintense midline mass beneath the septum at the foramen of Monro. CT: hyperdense round lesion at the anterior third ventricle with dilated frontal horns. FLAIR: bright lesion; post-contrast T1: no significant enhancement. An additional calcified right periventricular lesion is present.",
-     "salient": "Sudden death from acute obstruction; positional headache; SEGA would enhance avidly (compare Exam 255)",
+     "salient": "Sudden death from acute obstruction; positional headache; SEGA would enhance avidly",
      "learning": "Classic cause of positional headache and sudden death from acute hydrocephalus. Treat symptomatic or enlarging cysts (endoscopic resection). Histology: simple ciliated columnar/cuboidal epithelium with mucinous content.",
      "note": "The right periventricular calcified lesion is unexplained by the image alone; SEGA/TSC would be a consideration if the midline lesion enhanced, which it does not appear to."
     },
@@ -6211,7 +6211,7 @@
      "images": [
       "/rite/f77e0ea5a76b35f2f6679fee4cbce2ead6ed8149.jpg"
      ],
-     "imageAlt": "Axial FDG-PET one year (top) and three years (bottom) after symptom onset: progressive hypometabolism of the frontal and anterior temporal lobes with relatively preserved posterior metabolism. (Neuroradiology deck, slide 97)"
+     "imageAlt": "Axial FDG-PET one year (top) and three years (bottom) after symptom onset: progressive hypometabolism of the frontal and anterior temporal lobes with relatively preserved posterior metabolism."
     },
     {
      "id": "rite-e5-23",
@@ -6246,7 +6246,7 @@
      "images": [
       "/rite/c0fe328243d0e9b063e0ca711cdcb83d59aeb54a.jpg"
      ],
-     "imageAlt": "Sagittal T1, T2, T2-CISS and spinal angiography: long-segment central cord T2 hyperintensity with expansion, serpentine dorsal intradural flow voids on T2/CISS, and the fistula on angiography. (Neuroradiology deck, slide 40)"
+     "imageAlt": "Sagittal T1, T2, T2-CISS and spinal angiography: long-segment central cord T2 hyperintensity with expansion, serpentine dorsal intradural flow voids on T2/CISS, and the fistula on angiography."
     },
     {
      "id": "rite-e5-24",
@@ -6319,7 +6319,7 @@
      "images": [
       "/rite/95a088363bf5c3f7710ccc22f4a1003d02ca425a.jpg"
      ],
-     "imageAlt": "Coronal T1 pre- and post-gadolinium and histology: smooth, non-enhancing intrasellar/suprasellar cyst without calcification; wall is a single layer of ciliated columnar epithelium. (RITE Review deck, slide 50)"
+     "imageAlt": "Coronal T1 pre- and post-gadolinium and histology: smooth, non-enhancing intrasellar/suprasellar cyst without calcification; wall is a single layer of ciliated columnar epithelium."
     },
     {
      "id": "rite-e5-26",
@@ -6418,7 +6418,7 @@
      "images": [
       "/rite/171c0a15dd85bb4700c8c38bf12f1b8dac3ea54f.jpg"
      ],
-     "imageAlt": "Labeled AP and lateral MRV: superior and inferior sagittal sinuses, internal cerebral veins, vein of Galen, straight sinus, confluence (torcular), transverse and sigmoid sinuses, cavernous sinus, superior ophthalmic vein, jugular. (Neuroradiology deck, slide 77)"
+     "imageAlt": "Labeled AP and lateral MRV: superior and inferior sagittal sinuses, internal cerebral veins, vein of Galen, straight sinus, confluence (torcular), transverse and sigmoid sinuses, cavernous sinus, superior ophthalmic vein, jugular."
     },
     {
      "id": "rite-e5-29",
@@ -6453,7 +6453,7 @@
      "images": [
       "/rite/21030860dd00b486138892fd121ccfdbe8d2b530.jpg"
      ],
-     "imageAlt": "Axial T1 bright, T2 dark, GRE dark, DWI dark. (Neuroradiology deck, slide 9)"
+     "imageAlt": "Axial T1 bright, T2 dark, GRE dark, DWI dark."
     },
     {
      "id": "rite-e5-30",
@@ -6629,11 +6629,11 @@
       }
      ],
      "answer": "D",
-     "explanation": "Low serum ceruloplasmin with high 24-hour urine copper. Wilson disease (ATP7B): putaminal/thalamic signal, face of the giant panda, Kayser-Fleischer rings. ATP7B, AR, hepatolenticular degeneration; onset adolescence to early adulthood with dysarthria, dystonia, wing-beating tremor, parkinsonism, psychiatric change, Kayser-Fleischer rings (near-universal with neurologic disease). Low ceruloplasmin, high 24-h urine copper, high hepatic copper. MRI: putamen, thalamus, midbrain (face of the giant panda), pons, dentate. Deck\\'s differential: CO poisoning affects globus pallidus only; Huntington shows caudate atrophy; PD is imaging-normal.",
+     "explanation": "Low serum ceruloplasmin with high 24-hour urine copper. Wilson disease (ATP7B): putaminal/thalamic signal, face of the giant panda, Kayser-Fleischer rings. ATP7B, AR, hepatolenticular degeneration; onset adolescence to early adulthood with dysarthria, dystonia, wing-beating tremor, parkinsonism, psychiatric change, Kayser-Fleischer rings (near-universal with neurologic disease). Low ceruloplasmin, high 24-h urine copper, high hepatic copper. MRI: putamen, thalamus, midbrain (face of the giant panda), pons, dentate. Differential: CO poisoning affects globus pallidus only; Huntington shows caudate atrophy; PD is imaging-normal.",
      "images": [
       "/rite/7452e4d58acbedf29a6952dda5d8a9dd3892946a.jpg"
      ],
-     "imageAlt": "Axial T2: symmetric hyperintensity of the bilateral putamina and thalami. (Neuroradiology deck, slide 123)"
+     "imageAlt": "Axial T2: symmetric hyperintensity of the bilateral putamina and thalami."
     },
     {
      "id": "rite-e5-36",
@@ -6695,7 +6695,7 @@
      "images": [
       "/rite/1ca4ca0f1b624bfc98bc0d197738b52ba13520c5.jpg"
      ],
-     "imageAlt": "Axial T2/FLAIR: confluent, symmetric periventricular and deep white matter hyperintensity sparing the subcortical U-fibers; radiating perivascular stripes (tigroid/leopard pattern) within the abnormal white matter. (Neuroradiology deck, slide 107)"
+     "imageAlt": "Axial T2/FLAIR: confluent, symmetric periventricular and deep white matter hyperintensity sparing the subcortical U-fibers; radiating perivascular stripes (tigroid/leopard pattern) within the abnormal white matter."
     },
     {
      "id": "rite-e5-38",
@@ -6864,7 +6864,7 @@
      "images": [
       "/rite/e4732cdce6d4e5060a7d43533f52a88521b4768b.jpg"
      ],
-     "imageAlt": "Axial T2 and sagittal FLAIR: multiple small hyperintense lesions in the central fibers of the corpus callosum (snowball lesions) with scattered subcortical white matter foci. (Neuroradiology deck, slide 138)"
+     "imageAlt": "Axial T2 and sagittal FLAIR: multiple small hyperintense lesions in the central fibers of the corpus callosum (snowball lesions) with scattered subcortical white matter foci."
     },
     {
      "id": "rite-e6-3",
@@ -6899,7 +6899,7 @@
      "images": [
       "/rite/bdbb8efcde6a8b7a51a3b61f538b24fb48849f40.jpg"
      ],
-     "imageAlt": "Sagittal T2 cervical spine (two cases): fusiform cord expansion with intramedullary T2 hyperintensity extending over several vertebral segments, with variable enhancement. (Neuroradiology deck, slide 45)"
+     "imageAlt": "Sagittal T2 cervical spine (two cases): fusiform cord expansion with intramedullary T2 hyperintensity extending over several vertebral segments, with variable enhancement."
     },
     {
      "id": "rite-e6-4",
@@ -6934,7 +6934,7 @@
      "images": [
       "/rite/3540a474df3260baf3646a972d075ed670a03b7e.jpg"
      ],
-     "imageAlt": "Axial FLAIR and T1: extra-axial, sharply marginated lesion that follows CSF signal on every sequence, remodeling adjacent bone and displacing brain without edema. (Neuroradiology deck, slide 101)"
+     "imageAlt": "Axial FLAIR and T1: extra-axial, sharply marginated lesion that follows CSF signal on every sequence, remodeling adjacent bone and displacing brain without edema."
     },
     {
      "id": "rite-e6-5",
@@ -6965,11 +6965,11 @@
       }
      ],
      "answer": "E",
-     "explanation": "Reassurance; no further work-up unless symptomatic. A lesion bright on both T1 and T2 is fat; intradural lipoma needs nothing unless it causes mass effect. The only common intradural lesion that is bright on T1 and T2 is fat (confirm with fat suppression; dermoid and hemorrhage are the mimics). The slide\\'s teaching point: recognize it and stop, no LP, cultures, neurosurgical or oncologic referral unless symptomatic from mass effect. Filar lipomas are often associated with tethering.",
+     "explanation": "Reassurance; no further work-up unless symptomatic. A lesion bright on both T1 and T2 is fat; intradural lipoma needs nothing unless it causes mass effect. The only common intradural lesion that is bright on T1 and T2 is fat (confirm with fat suppression; dermoid and hemorrhage are the mimics). The slide's teaching point: recognize it and stop, no LP, cultures, neurosurgical or oncologic referral unless symptomatic from mass effect. Filar lipomas are often associated with tethering.",
      "images": [
       "/rite/b2e5fb6da0030559ccd92c57d695cd7738fed092.jpg"
      ],
-     "imageAlt": "Sagittal T1 (A) and T2 (B) lumbar spine: well-defined intradural mass at L4-L5 that is hyperintense on both sequences. (Neuroradiology deck, slide 50)"
+     "imageAlt": "Sagittal T1 (A) and T2 (B) lumbar spine: well-defined intradural mass at L4-L5 that is hyperintense on both sequences."
     },
     {
      "id": "rite-e6-6",
@@ -7132,7 +7132,7 @@
      "images": [
       "/rite/36c327c406abe502e855f85ce33dc5f023d6e6ea.jpg"
      ],
-     "imageAlt": "H&E of cortex: round, well-demarcated, slightly basophilic cytoplasmic inclusions displacing the nucleus in swollen neurons. (RITE Review deck, slide 113)"
+     "imageAlt": "H&E of cortex: round, well-demarcated, slightly basophilic cytoplasmic inclusions displacing the nucleus in swollen neurons."
     },
     {
      "id": "rite-e6-11",
@@ -7167,7 +7167,7 @@
      "images": [
       "/rite/bfa8d29bdb96f3d8c5ba4b7ce9854b7de647fffd.jpg"
      ],
-     "imageAlt": "Lateral carotid angiogram: the ICA opacifies and the anterior cerebral artery fills, but no MCA branches are seen. (Neuroradiology deck, slide 64)"
+     "imageAlt": "Lateral carotid angiogram: the ICA opacifies and the anterior cerebral artery fills, but no MCA branches are seen."
     },
     {
      "id": "rite-e6-12",
@@ -7396,7 +7396,7 @@
      "images": [
       "/rite/30b1567055d8218d6a2d4e9209959e6cb3fade36.jpg"
      ],
-     "imageAlt": "Post-contrast T1 (two cases), non-contrast CT and T1: cortically based frontal masses with patchy enhancement; CT shows coarse calcification. (RITE Review deck, slide 26)"
+     "imageAlt": "Post-contrast T1 (two cases), non-contrast CT and T1: cortically based frontal masses with patchy enhancement; CT shows coarse calcification."
     },
     {
      "id": "rite-e6-18",
@@ -7485,7 +7485,7 @@
      "images": [
       "/rite/4f61e3c24c6b3fcb4ac80b35694a5667655a7656.jpg"
      ],
-     "imageAlt": "Axial FLAIR at three levels: expansile, infiltrative T2/FLAIR hyperintensity involving the left frontal lobe and insula with mass effect, without a discrete enhancing component. (RITE Review deck, slide 20)"
+     "imageAlt": "Axial FLAIR at three levels: expansile, infiltrative T2/FLAIR hyperintensity involving the left frontal lobe and insula with mass effect, without a discrete enhancing component."
     },
     {
      "id": "rite-e6-21",
@@ -7745,7 +7745,7 @@
      "images": [
       "/rite/70a84244b09fc735b65175d42802ebb53d9925e8.jpg"
      ],
-     "imageAlt": "Axial T2 (three levels) and sagittal T1: a thin rim of low signal coating the cerebellar folia, brainstem and cranial nerves VIII, with cerebellar atrophy. (Neuroradiology deck, slide 140)"
+     "imageAlt": "Axial T2 (three levels) and sagittal T1: a thin rim of low signal coating the cerebellar folia, brainstem and cranial nerves VIII, with cerebellar atrophy."
     },
     {
      "id": "rite-e6-27",
@@ -7910,7 +7910,7 @@
      "images": [
       "/rite/a7a74b9eca8da71eac1a89d1380784ae69332204.jpg"
      ],
-     "imageAlt": "Clinical photographs: bilateral symmetric ptosis with facial weakness in one patient; ptosis with ophthalmoparesis in another. (RITE Review deck, slide 211)"
+     "imageAlt": "Clinical photographs: bilateral symmetric ptosis with facial weakness in one patient; ptosis with ophthalmoparesis in another."
     },
     {
      "id": "rite-e6-32",
@@ -8101,7 +8101,7 @@
      "images": [
       "/rite/d9107296d87149fc3b90da7da52486863d4a1da3.jpg"
      ],
-     "imageAlt": "Axial T1, T2, GRE and DWI: hematoma isointense on T1, dark on T2, markedly dark on GRE and DWI, with surrounding edema. (Neuroradiology deck, slide 8)"
+     "imageAlt": "Axial T1, T2, GRE and DWI: hematoma isointense on T1, dark on T2, markedly dark on GRE and DWI, with surrounding edema."
     },
     {
      "id": "rite-e6-38",
@@ -8483,7 +8483,7 @@
      "images": [
       "/rite/97e95e68fb0638d88db4c7d484af21c4001dbe40.jpg"
      ],
-     "imageAlt": "Sagittal post-contrast T1 lumbar spine: rounded, avidly and homogeneously enhancing intradural mass at the conus/filum terminale. (Neuroradiology deck, slide 26)"
+     "imageAlt": "Sagittal post-contrast T1 lumbar spine: rounded, avidly and homogeneously enhancing intradural mass at the conus/filum terminale."
     },
     {
      "id": "rite-e7-10",
@@ -8518,7 +8518,7 @@
      "images": [
       "/rite/74db6584cdb187e3eb5e02cd7ac71acd15b4e3f6.jpg"
      ],
-     "imageAlt": "AP (A) and lateral (B) carotid angiograms: string-of-beads appearance of the mid-to-distal cervical ICA. (Neuroradiology deck, slide 61)"
+     "imageAlt": "AP (A) and lateral (B) carotid angiograms: string-of-beads appearance of the mid-to-distal cervical ICA."
     },
     {
      "id": "rite-e7-11",
@@ -8688,11 +8688,11 @@
       }
      ],
      "answer": "A",
-     "explanation": "Nuclear gene variants account for about three quarters of cases. Leigh syndrome: nuclear genes (SURF1, complex I, PDHA1) \\~75%; mtDNA (MT-ATP6, MT-ND) \\~25%. Subacute necrotizing encephalomyelopathy: symmetric, often cavitating T2 lesions of putamen, caudate, periaqueductal gray, brainstem tegmentum, dentate, with lactate on MRS. Most common pediatric mitochondrial disease; nuclear genes in \\~75% (SURF1, complex I subunits, PDHA1) and mtDNA in \\~25% (MT-ATP6 m.8993T>G, MT-ND genes). Onset usually before age 2 with regression after intercurrent illness, hypotonia, dystonia, ophthalmoplegia, respiratory dysrhythmia. Distinguish from Wilson (thalami/putamen, older), CO poisoning (globus pallidus) and Fahr (calcification).",
+     "explanation": "Nuclear gene variants account for about three quarters of cases. Leigh syndrome: nuclear genes (SURF1, complex I, PDHA1) ~75%; mtDNA (MT-ATP6, MT-ND) ~25%. Subacute necrotizing encephalomyelopathy: symmetric, often cavitating T2 lesions of putamen, caudate, periaqueductal gray, brainstem tegmentum, dentate, with lactate on MRS. Most common pediatric mitochondrial disease; nuclear genes in ~75% (SURF1, complex I subunits, PDHA1) and mtDNA in ~25% (MT-ATP6 m.8993T>G, MT-ND genes). Onset usually before age 2 with regression after intercurrent illness, hypotonia, dystonia, ophthalmoplegia, respiratory dysrhythmia. Distinguish from Wilson (thalami/putamen, older), CO poisoning (globus pallidus) and Fahr (calcification).",
      "images": [
       "/rite/90b51cdc7833173446bf0935e5f69d220f5c4538.jpg"
      ],
-     "imageAlt": "Axial FLAIR and DWI: symmetric hyperintensity and restricted diffusion of the putamina and caudate heads. (Neuroradiology deck, slide 114)"
+     "imageAlt": "Axial FLAIR and DWI: symmetric hyperintensity and restricted diffusion of the putamina and caudate heads."
     },
     {
      "id": "rite-e7-15",
@@ -8826,11 +8826,11 @@
       }
      ],
      "answer": "A",
-     "explanation": "New enlargement after age 10 with mass effect. FASI peak around age 10 and regress; growth beyond that, enhancement, T1 signal or mass effect suggest tumor. FASI are not a diagnostic criterion. Most common MRI finding in NF1 (up to \\~85% of children), typically basal ganglia, thalamus, brainstem, cerebellar white matter and dentate; histologically vacuolar myelinopathy, not tumor. They increase in number until about age 10 and then regress; new or enlarging lesions after 10, enhancement, T1 signal or mass effect should raise concern for glioma. FASI are not among the NIH/2021 revised diagnostic criteria.",
+     "explanation": "New enlargement after age 10 with mass effect. FASI peak around age 10 and regress; growth beyond that, enhancement, T1 signal or mass effect suggest tumor. FASI are not a diagnostic criterion. Most common MRI finding in NF1 (up to ~85% of children), typically basal ganglia, thalamus, brainstem, cerebellar white matter and dentate; histologically vacuolar myelinopathy, not tumor. They increase in number until about age 10 and then regress; new or enlarging lesions after 10, enhancement, T1 signal or mass effect should raise concern for glioma. FASI are not among the NIH/2021 revised diagnostic criteria.",
      "images": [
       "/rite/3e8d070490622a09e1dc67db2fc5216c1adeaf8a.jpg"
      ],
-     "imageAlt": "Axial FLAIR: bilateral symmetric hyperintense foci in the globus pallidus/basal ganglia without mass effect, edema or enhancement. (Neuroradiology deck, slide 87)"
+     "imageAlt": "Axial FLAIR: bilateral symmetric hyperintense foci in the globus pallidus/basal ganglia without mass effect, edema or enhancement."
     },
     {
      "id": "rite-e7-19",
@@ -8865,7 +8865,7 @@
      "images": [
       "/rite/87fe4a60466b6d75c440b90851865abadcf64dbb.jpg"
      ],
-     "imageAlt": "Anti-phosphorylated tau immunostain: a pyramidal neuron with a dense brown flame-shaped cytoplasmic tangle and dystrophic neurites, plus dispersed pretangle granules in neighboring cells. (RITE Review deck, slide 86)"
+     "imageAlt": "Anti-phosphorylated tau immunostain: a pyramidal neuron with a dense brown flame-shaped cytoplasmic tangle and dystrophic neurites, plus dispersed pretangle granules in neighboring cells."
     },
     {
      "id": "rite-e7-20",
@@ -8937,7 +8937,7 @@
      "images": [
       "/rite/62ff499f08ea366c87008f026add9a089e71545d.jpg"
      ],
-     "imageAlt": "Coronal and sagittal post-contrast T1: suprasellar mass with both cystic (yellow arrows) and enhancing solid (red arrows) components; blue arrows mark the superior extent of the lesion against the third ventricle. (RITE Review deck, slide 48)"
+     "imageAlt": "Coronal and sagittal post-contrast T1: suprasellar mass with both cystic (yellow arrows) and enhancing solid (red arrows) components; blue arrows mark the superior extent of the lesion against the third ventricle."
     },
     {
      "id": "rite-e7-22",
@@ -9118,7 +9118,7 @@
      "images": [
       "/rite/0bf4a61b2951f9fc67bedfc6642185378dfbc278.jpg"
      ],
-     "imageAlt": "Line cancellation task with omitted lines on the left, and a clock drawing with all numerals crowded onto the right half. (RITE Review deck, slide 175)"
+     "imageAlt": "Line cancellation task with omitted lines on the left, and a clock drawing with all numerals crowded onto the right half."
     },
     {
      "id": "rite-e7-28",
@@ -9153,7 +9153,7 @@
      "images": [
       "/rite/d10bcd2cd4276cebda305497fba83c5361beee70.jpg"
      ],
-     "imageAlt": "Coronal TOF MRA (A, B): the vertebrobasilar system is not visualized; the carotid circulation and its distal branches fill normally. (Neuroradiology deck, slide 65)"
+     "imageAlt": "Coronal TOF MRA (A, B): the vertebrobasilar system is not visualized; the carotid circulation and its distal branches fill normally."
     },
     {
      "id": "rite-e7-29",
@@ -9188,7 +9188,7 @@
      "images": [
       "/rite/fd07c579260ab3a5c0923cb5e5e5efebf7612462.jpg"
      ],
-     "imageAlt": "Coronal brain slice of a preterm infant: hemorrhage in the subependymal germinal matrix at the caudothalamic groove with extension into dilated lateral ventricles and into periventricular white matter. (Neuroradiology deck, slide 142)"
+     "imageAlt": "Coronal brain slice of a preterm infant: hemorrhage in the subependymal germinal matrix at the caudothalamic groove with extension into dilated lateral ventricles and into periventricular white matter."
     },
     {
      "id": "rite-e7-30",
@@ -9418,11 +9418,11 @@
       }
      ],
      "answer": "B",
-     "explanation": "CDKN2A/B homozygous deletion or TERT promoter mutation. Brain invasion or 4+ mitoses defines atypical (grade 2); CDKN2A/B loss or TERT mutation defines anaplastic; NF2 for multiple. Extra-axial clues: CSF cleft, buckled gray-white interface, dural tail (reactive, not tumor), hyperostosis on CT. Arachnoid cap cell origin; more common in women (progesterone receptors), after radiation, and multiple in NF2 (22q, merlin). Non-NF2 drivers: TRAF7, KLF4, AKT1, SMO, PIK3CA. Grade 1 in \\~80%; atypical (grade 2) by mitoses 4+/10 HPF or brain invasion; CDKN2A/B loss or TERT promoter mutation defines grade 3 in WHO 2021. Psammoma bodies and whorls on histology.",
+     "explanation": "CDKN2A/B homozygous deletion or TERT promoter mutation. Brain invasion or 4+ mitoses defines atypical (grade 2); CDKN2A/B loss or TERT mutation defines anaplastic; NF2 for multiple. Extra-axial clues: CSF cleft, buckled gray-white interface, dural tail (reactive, not tumor), hyperostosis on CT. Arachnoid cap cell origin; more common in women (progesterone receptors), after radiation, and multiple in NF2 (22q, merlin). Non-NF2 drivers: TRAF7, KLF4, AKT1, SMO, PIK3CA. Grade 1 in ~80%; atypical (grade 2) by mitoses 4+/10 HPF or brain invasion; CDKN2A/B loss or TERT promoter mutation defines grade 3 in WHO 2021. Psammoma bodies and whorls on histology.",
      "images": [
       "/rite/b2f11e9bca1904287e0f0ef6e3ebb5bb0847d8a7.jpg"
      ],
-     "imageAlt": "Axial (A) and coronal (B) post-contrast T1: homogeneously, avidly enhancing extra-axial mass with a broad dural base and dural tail (arrows), compressing but not invading the adjacent brain. (RITE Review deck, slide 43)"
+     "imageAlt": "Axial (A) and coronal (B) post-contrast T1: homogeneously, avidly enhancing extra-axial mass with a broad dural base and dural tail (arrows), compressing but not invading the adjacent brain."
     },
     {
      "id": "rite-e7-38",
@@ -9515,7 +9515,7 @@
      "images": [
       "/rite/24e0732eef8b188137d9404d4f061ed05451d69f.jpg"
      ],
-     "imageAlt": "Axial T2 of a 4-year-old with developmental delay and epilepsy: thickened cortex with few, broad, shallow gyri and a smooth cortical surface; shallow sylvian fissures give a figure-of-eight configuration. (Neuroradiology deck, slide 104)"
+     "imageAlt": "Axial T2 of a 4-year-old with developmental delay and epilepsy: thickened cortex with few, broad, shallow gyri and a smooth cortical surface; shallow sylvian fissures give a figure-of-eight configuration."
     }
    ]
   },
@@ -9673,7 +9673,7 @@
      "images": [
       "/rite/0e63a59e6d35115880ad8aead94383030224f2ee.jpg"
      ],
-     "imageAlt": "Gross coronal slice and coronal post-contrast T1: hemorrhagic, necrotic tumor crossing the corpus callosum into both frontal lobes. (RITE Review deck, slide 24)"
+     "imageAlt": "Gross coronal slice and coronal post-contrast T1: hemorrhagic, necrotic tumor crossing the corpus callosum into both frontal lobes."
     },
     {
      "id": "rite-e8-6",
@@ -9731,11 +9731,11 @@
       }
      ],
      "answer": "E",
-     "explanation": "Posterior cingulate/precuneus. Posterior cingulate hypometabolism precedes atrophy in Alzheimer disease. Posterior cingulate/precuneus hypometabolism is the earliest and most characteristic PET change in AD, preceding atrophy. The deck\\'s contrast set: DLB adds occipital hypometabolism; CBD is asymmetric; semantic dementia is left temporal tip. Amyloid PET in the companion deck separates amyloid deposition from neurodegeneration.",
+     "explanation": "Posterior cingulate/precuneus. Posterior cingulate hypometabolism precedes atrophy in Alzheimer disease. Posterior cingulate/precuneus hypometabolism is the earliest and most characteristic PET change in AD, preceding atrophy. Contrast: DLB adds occipital hypometabolism; CBD is asymmetric; semantic dementia is left temporal tip. Amyloid PET separates amyloid deposition from neurodegeneration.",
      "images": [
       "/rite/839e98bdd0cc3ed6fec8354f8c0d3ed2a529ff06.jpg"
      ],
-     "imageAlt": "3D stereotactic surface projections: bilateral hypometabolism of the parietal and temporal association cortices and the retrosplenial/posterior cingulate region, sparing primary sensorimotor and occipital cortex. (Neuroradiology deck, slide 99)"
+     "imageAlt": "3D stereotactic surface projections: bilateral hypometabolism of the parietal and temporal association cortices and the retrosplenial/posterior cingulate region, sparing primary sensorimotor and occipital cortex."
     },
     {
      "id": "rite-e8-8",
@@ -9905,7 +9905,7 @@
      "images": [
       "/rite/0bbad0e256ca914c83a9208430d6744c6d4ec89c.jpg"
      ],
-     "imageAlt": "Axial T2: diffuse, symmetric hyperintensity of cerebral white matter extending into the subcortical U-fibers, with macrocephaly. (Neuroradiology deck, slide 102)"
+     "imageAlt": "Axial T2: diffuse, symmetric hyperintensity of cerebral white matter extending into the subcortical U-fibers, with macrocephaly."
     },
     {
      "id": "rite-e8-14",
@@ -9940,7 +9940,7 @@
      "images": [
       "/rite/3c68bc39a2672680a82547093677af13da7d19c8.jpg"
      ],
-     "imageAlt": "H&E of cortex: neuron (arrow) with a poorly demarcated, homogeneous eosinophilic cytoplasmic inclusion lacking the halo of the brainstem form. (RITE Review deck, slide 142)"
+     "imageAlt": "H&E of cortex: neuron (arrow) with a poorly demarcated, homogeneous eosinophilic cytoplasmic inclusion lacking the halo of the brainstem form."
     },
     {
      "id": "rite-e8-15",
@@ -10002,7 +10002,7 @@
      "images": [
       "/rite/c32d62ae75a57e84f6ed641efd9220e6d70ff9e2.jpg"
      ],
-     "imageAlt": "Coronal non-contrast and post-contrast T1 and sagittal post-contrast T1: enlarged sellar mass with a central non-enhancing (necrotic/hemorrhagic) component compressing the optic chiasm. (Neuroradiology deck, slide 129)"
+     "imageAlt": "Coronal non-contrast and post-contrast T1 and sagittal post-contrast T1: enlarged sellar mass with a central non-enhancing (necrotic/hemorrhagic) component compressing the optic chiasm."
     },
     {
      "id": "rite-e8-17",
@@ -10199,7 +10199,7 @@
      "images": [
       "/rite/6adc81e36eeb5c600ecd9fce2ec096504ddcc729.jpg"
      ],
-     "imageAlt": "Sagittal T2 lumbosacral spine: multiple rounded intradural/foraminal nerve-root masses along the cauda equina with a capacious thecal sac and posterior vertebral scalloping. (Neuroradiology deck, slide 23)"
+     "imageAlt": "Sagittal T2 lumbosacral spine: multiple rounded intradural/foraminal nerve-root masses along the cauda equina with a capacious thecal sac and posterior vertebral scalloping."
     },
     {
      "id": "rite-e8-24",
@@ -10534,7 +10534,7 @@
      ],
      "imageAlt": "Cyst wall of simple cuboidal to columnar, partly ciliated epithelium on a fibrous capsule containing dense proteinaceous material.",
      "salient": "T1 bright/CT dense; positional headache and sudden death; Endoscopic resection when symptomatic or enlarging",
-     "learning": "Endodermal origin; anterior third ventricle at the foramen of Monro; intermittent obstructive hydrocephalus and sudden death. T1 bright and CT hyperdense from cholesterol/protein. Correlate with Exam 239/241 imaging."
+     "learning": "Endodermal origin; anterior third ventricle at the foramen of Monro; intermittent obstructive hydrocephalus and sudden death. T1 bright and CT hyperdense from cholesterol/protein."
     },
     {
      "id": "rite-e8-33",
@@ -10569,7 +10569,7 @@
      "images": [
       "/rite/5d936745f8decc09591dcdec27bd928301b53423.jpg"
      ],
-     "imageAlt": "H&E: biphasic pattern of compact fibrillary areas alternating with loose microcystic areas; brightly eosinophilic corkscrew Rosenthal fibers (small arrows) and microvascular proliferation (large arrow). (RITE Review deck, slide 9)"
+     "imageAlt": "H&E: biphasic pattern of compact fibrillary areas alternating with loose microcystic areas; brightly eosinophilic corkscrew Rosenthal fibers (small arrows) and microvascular proliferation (large arrow)."
     },
     {
      "id": "rite-e8-34",
@@ -10604,7 +10604,7 @@
      "images": [
       "/rite/986034a7d4ab18718d1a2f5355ee8d5a2551b84f.jpg"
      ],
-     "imageAlt": "Myelin-stained transverse sections of spinal cord: symmetric pallor of the lateral corticospinal tracts (and the smaller anterior tracts), with preserved dorsal columns. (Neuroradiology deck, slide 58)"
+     "imageAlt": "Myelin-stained transverse sections of spinal cord: symmetric pallor of the lateral corticospinal tracts (and the smaller anterior tracts), with preserved dorsal columns."
     },
     {
      "id": "rite-e8-35",
@@ -10635,11 +10635,11 @@
       }
      ],
      "answer": "D",
-     "explanation": "Perforator infarcts of the basal ganglia. Tuberculous basilar meningitis: hydrocephalus, cranial neuropathies and lenticulostriate infarcts. Basal predominance is the hallmark of TB, fungal (cryptococcal, coccidioidal) and sarcoid meningitis, versus convexity predominance in bacterial meningitis. Complications: communicating hydrocephalus, cranial neuropathies (VI most common), and infarcts from arteritis of the lenticulostriate/perforator vessels. CSF: lymphocytic, very low glucose, high protein; AFB smear insensitive, PCR/culture and ADA help. Deck\\'s contrast: intracranial hypotension gives smooth pachymeningeal (dural), not leptomeningeal, enhancement.",
+     "explanation": "Perforator infarcts of the basal ganglia. Tuberculous basilar meningitis: hydrocephalus, cranial neuropathies and lenticulostriate infarcts. Basal predominance is the hallmark of TB, fungal (cryptococcal, coccidioidal) and sarcoid meningitis, versus convexity predominance in bacterial meningitis. Complications: communicating hydrocephalus, cranial neuropathies (VI most common), and infarcts from arteritis of the lenticulostriate/perforator vessels. CSF: lymphocytic, very low glucose, high protein; AFB smear insensitive, PCR/culture and ADA help. Contrast: intracranial hypotension gives smooth pachymeningeal (dural), not leptomeningeal, enhancement.",
      "images": [
       "/rite/941bf32927014c7df38d310165ca1ce3d5d89d55.jpg"
      ],
-     "imageAlt": "Axial contrast CT: thick enhancement of the basal cisterns and leptomeninges overlying the cerebellar folia and vermis. (Neuroradiology deck, slide 136)"
+     "imageAlt": "Axial contrast CT: thick enhancement of the basal cisterns and leptomeninges overlying the cerebellar folia and vermis."
     },
     {
      "id": "rite-e8-36",
@@ -10734,11 +10734,11 @@
       }
      ],
      "answer": "D",
-     "explanation": "Anterior communicating/ACA complex. About 90% are anterior circulation: ACom/ACA 30-40%, ICA/PCom \\~30%, MCA 20-30%. Deck teaching point: the aneurysm sits on the distal ACA below the genu, so it is not a pericallosal-segment aneurysm. Distribution of intracranial aneurysms: \\~90% anterior circulation (ACom/ACA 30-40%, supraclinoid ICA and PCom \\~30%, MCA bifurcation 20-30%); \\~10% posterior (basilar tip, SCA, PICA). Two or more affected first-degree relatives confers a roughly 30% chance of harboring an aneurysm; ADPKD, Ehlers-Danlos IV and coarctation are associations.",
+     "explanation": "Anterior communicating/ACA complex. About 90% are anterior circulation: ACom/ACA 30-40%, ICA/PCom ~30%, MCA 20-30%. the aneurysm sits on the distal ACA below the genu, so it is not a pericallosal-segment aneurysm. Distribution of intracranial aneurysms: ~90% anterior circulation (ACom/ACA 30-40%, supraclinoid ICA and PCom ~30%, MCA bifurcation 20-30%); ~10% posterior (basilar tip, SCA, PICA). Two or more affected first-degree relatives confers a roughly 30% chance of harboring an aneurysm; ADPKD, Ehlers-Danlos IV and coarctation are associations.",
      "images": [
       "/rite/17b1cf89bd965c3b08caea5bdb2abdaebb04d922.jpg"
      ],
-     "imageAlt": "Coronal and sagittal CTA reconstructions: rounded outpouching from the ACA anterior to the genu of the corpus callosum. (Neuroradiology deck, slide 70)"
+     "imageAlt": "Coronal and sagittal CTA reconstructions: rounded outpouching from the ACA anterior to the genu of the corpus callosum."
     },
     {
      "id": "rite-e8-39",
@@ -10887,7 +10887,7 @@
      "exam": 9,
      "num": 2,
      "part": "a",
-     "stem": "Handout panels grouped under Duchenne include a trichrome-type section with intrafiber red droplets. That panel is most consistent with:",
+     "stem": "Muscle biopsy shows numerous small lipid droplets within the muscle fibres. This appearance is most consistent with:",
      "options": [
       {
        "letter": "A",
@@ -10918,7 +10918,7 @@
      "imageAlt": "H&E and trichrome: fiber size variation, rounded fibers, degenerating and regenerating fibers, increased endomysial connective tissue and fatty replacement. The third panel shows fibers packed with red lipid-type droplets on a trichrome-type stain.",
      "salient": "Oil red O confirms lipid; MADD (ETFDH) is riboflavin-responsive; The other two panels show classic dystrophic change",
      "learning": "Dystrophin immunostaining absent; utrophin upregulated; secondary reduction of sarcoglycans. Becker: reduced or truncated dystrophin, in-frame deletions. Female carriers may show mosaic dystrophin staining.",
-     "note": "The third panel (intrafiber lipid droplets) is more typical of a lipid storage myopathy (carnitine deficiency, multiple acyl-CoA dehydrogenase deficiency) than of dystrophinopathy; it is grouped under Duchenne in the source handout and is flagged here."
+     "note": "Filed under Duchenne in the source material, but the histology is that of a lipid storage myopathy rather than a dystrophinopathy."
     },
     {
      "id": "rite-e9-3",
@@ -10953,7 +10953,7 @@
      "images": [
       "/rite/a6bf615bbff01f816e46b8e8df5f5a8b455d362c.jpg"
      ],
-     "imageAlt": "Bielschowsky silver impregnation of hippocampal dentate gyrus: dense black spherical inclusions in nearly every granule cell. (RITE Review deck, slide 114)"
+     "imageAlt": "Bielschowsky silver impregnation of hippocampal dentate gyrus: dense black spherical inclusions in nearly every granule cell."
     },
     {
      "id": "rite-e9-4",
@@ -11083,11 +11083,11 @@
       }
      ],
      "answer": "D",
-     "explanation": "Occlusion or very slow flow in the internal carotid artery. Flowing blood is black on spin-echo; loss of the flow void implies occlusion, to be confirmed with MRA/CTA. A vessel with flowing blood is black on spin-echo T1/T2; loss of the flow void means occlusion or slow flow (confirm with MRA or CTA). Deck\\'s exclusions: not a sellar/suprasellar mass, optic glioma or mesial temporal sclerosis. A cavernous ICA occlusion can present with an ipsilateral MCA/ACA stroke or be silent with good circle of Willis collateral.",
+     "explanation": "Occlusion or very slow flow in the internal carotid artery. Flowing blood is black on spin-echo; loss of the flow void implies occlusion, to be confirmed with MRA/CTA. A vessel with flowing blood is black on spin-echo T1/T2; loss of the flow void means occlusion or slow flow (confirm with MRA or CTA). Excluded: not a sellar/suprasellar mass, optic glioma or mesial temporal sclerosis. A cavernous ICA occlusion can present with an ipsilateral MCA/ACA stroke or be silent with good circle of Willis collateral.",
      "images": [
       "/rite/9c0b2107b0988f0b68f0dd90486e3a43216e2d06.jpg"
      ],
-     "imageAlt": "Coronal T1 through the sella: the normal signal void of the left cavernous ICA is replaced by intermediate/hyperintense signal, while the right cavernous carotid retains its flow void. (Neuroradiology deck, slide 132)"
+     "imageAlt": "Coronal T1 through the sella: the normal signal void of the left cavernous ICA is replaced by intermediate/hyperintense signal, while the right cavernous carotid retains its flow void."
     },
     {
      "id": "rite-e9-7",
@@ -11443,7 +11443,7 @@
      "images": [
       "/rite/c6f10073ba2e5cf77d02210ff0d97a839374ab1b.jpg"
      ],
-     "imageAlt": "Palmgren silver impregnation of cerebral cortex: a neuritic plaque (center, amyloid core appears as a pale yellow background) surrounded by dystrophic neurites, with flame-shaped neurofibrillary tangles in adjacent neurons. (RITE Review deck, slide 85)"
+     "imageAlt": "Palmgren silver impregnation of cerebral cortex: a neuritic plaque (center, amyloid core appears as a pale yellow background) surrounded by dystrophic neurites, with flame-shaped neurofibrillary tangles in adjacent neurons."
     },
     {
      "id": "rite-e9-19",
@@ -11478,7 +11478,7 @@
      "images": [
       "/rite/1969dea5eb463dea0175c72069581830c93e987a.jpg"
      ],
-     "imageAlt": "Axial and coronal T1 and T2 orbit and brain: homogeneous, T2-hypointense soft-tissue masses that mold around the globe and orbital wall rather than invading them, with enhancement. (Neuroradiology deck, slide 135)"
+     "imageAlt": "Axial and coronal T1 and T2 orbit and brain: homogeneous, T2-hypointense soft-tissue masses that mold around the globe and orbital wall rather than invading them, with enhancement."
     },
     {
      "id": "rite-e9-20",
@@ -11513,7 +11513,7 @@
      "images": [
       "/rite/08284638508e0accddfedd9a82480887f8209729.jpg"
      ],
-     "imageAlt": "Axial CT (A): right posterior frontal parasagittal hemorrhage with edema. Axial FLAIR (B): cortical/subcortical edema in the same region. MRV (C): loss of flow in the superior sagittal and right transverse sinuses with reduced parasagittal cortical vein signal. (Neuroradiology deck, slide 78)"
+     "imageAlt": "Axial CT (A): right posterior frontal parasagittal hemorrhage with edema. Axial FLAIR (B): cortical/subcortical edema in the same region. MRV (C): loss of flow in the superior sagittal and right transverse sinuses with reduced parasagittal cortical vein signal."
     },
     {
      "id": "rite-e9-21",
@@ -11639,7 +11639,7 @@
      "images": [
       "/rite/80e05d0cbdad08f460eccedcbbb0c2f6a639f428.jpg"
      ],
-     "imageAlt": "Axial post-contrast T1: left temporo-occipital mass with thick irregular rim enhancement around a non-enhancing necrotic center and surrounding low signal (edema and infiltrating tumor). (RITE Review deck, slide 19)"
+     "imageAlt": "Axial post-contrast T1: left temporo-occipital mass with thick irregular rim enhancement around a non-enhancing necrotic center and surrounding low signal (edema and infiltrating tumor)."
     },
     {
      "id": "rite-e9-25",
@@ -11701,7 +11701,7 @@
      "images": [
       "/rite/9e976fa756731d3935b057cbc785310ced8e7d6e.jpg"
      ],
-     "imageAlt": "Sagittal T1 (A) and axial (B) thoracic spine: loculated fluid collection in the posterior epidural space spanning several mid-thoracic levels, compressing the thecal sac. (Neuroradiology deck, slide 29)"
+     "imageAlt": "Sagittal T1 (A) and axial (B) thoracic spine: loculated fluid collection in the posterior epidural space spanning several mid-thoracic levels, compressing the thecal sac."
     },
     {
      "id": "rite-e9-27",
@@ -11983,7 +11983,7 @@
      "images": [
       "/rite/397499ef80e2b9ede1f20d6c8e10e7b883550fcc.jpg"
      ],
-     "imageAlt": "Coronal T2: agenesis of the corpus callosum with parallel lateral ventricles and colpocephaly, polymicrogyria/heterotopia, and interhemispheric cysts. (Neuroradiology deck, slide 108)"
+     "imageAlt": "Coronal T2: agenesis of the corpus callosum with parallel lateral ventricles and colpocephaly, polymicrogyria/heterotopia, and interhemispheric cysts."
     },
     {
      "id": "rite-e9-35",
@@ -12041,11 +12041,11 @@
       }
      ],
      "answer": "E",
-     "explanation": "MLC1. MLC1 causes \\~75% of megalencephalic leukoencephalopathy with subcortical cysts; ASPA is Canavan, GFAP Alexander, GCDH glutaric aciduria I, ATP7A Menkes. MLC1 (75%) or HEPACAM (GlialCAM) variants; astrocytic water/ion homeostasis defect. Macrocephaly in the first year, then surprisingly slow decline with ataxia, spasticity, seizures. Deck\\'s macrocephaly-leukodystrophy list: Alexander, Canavan, MLC; also Menkes (X-linked copper transport, subdural effusions) and glutaric aciduria I (widened sylvian fissures, subdural collections).",
+     "explanation": "MLC1. MLC1 causes ~75% of megalencephalic leukoencephalopathy with subcortical cysts; ASPA is Canavan, GFAP Alexander, GCDH glutaric aciduria I, ATP7A Menkes. MLC1 (75%) or HEPACAM (GlialCAM) variants; astrocytic water/ion homeostasis defect. Macrocephaly in the first year, then surprisingly slow decline with ataxia, spasticity, seizures. Macrocephaly with leukodystrophy: Alexander, Canavan, MLC; also Menkes (X-linked copper transport, subdural effusions) and glutaric aciduria I (widened sylvian fissures, subdural collections).",
      "images": [
       "/rite/6c9229b0b170e55bfb132908114fc6a0b70062f3.jpg"
      ],
-     "imageAlt": "Axial T1 (two levels): diffuse swelling and low T1 signal of the cerebral white matter with anterior temporal subcortical cysts in a macrocephalic child. (Neuroradiology deck, slide 105)"
+     "imageAlt": "Axial T1 (two levels): diffuse swelling and low T1 signal of the cerebral white matter with anterior temporal subcortical cysts in a macrocephalic child."
     },
     {
      "id": "rite-e9-37",
@@ -12107,7 +12107,7 @@
      "images": [
       "/rite/adc1694fdf65ac7972dfc145305ca9f13769700c.jpg"
      ],
-     "imageAlt": "Clinical photographs of the lower limbs: distal tapering with atrophy of the posterior calf (gastrocnemius) compartment. (RITE Review deck, slide 208)"
+     "imageAlt": "Clinical photographs of the lower limbs: distal tapering with atrophy of the posterior calf (gastrocnemius) compartment."
     },
     {
      "id": "rite-e9-39",
@@ -12201,7 +12201,7 @@
      "images": [
       "/rite/21af8086166294c4e366f1620ee1769d2838efb5.jpg"
      ],
-     "imageAlt": "Lateral angiogram: massively dilated midline venous sac (the embryonic median prosencephalic vein of Markowski) with multiple enlarged arterial feeders. (Neuroradiology deck, slide 68)"
+     "imageAlt": "Lateral angiogram: massively dilated midline venous sac (the embryonic median prosencephalic vein of Markowski) with multiple enlarged arterial feeders."
     },
     {
      "id": "rite-e10-2",
@@ -12290,7 +12290,7 @@
      "images": [
       "/rite/4cb9339c4d170814b40cc00494a909ee5e4bcbf7.jpg"
      ],
-     "imageAlt": "Axial and sagittal T1: cystic dilatation of the fourth ventricle communicating with an enlarged posterior fossa, hypoplastic and upwardly rotated vermis, elevated torcula and tentorium. (Neuroradiology deck, slide 117)"
+     "imageAlt": "Axial and sagittal T1: cystic dilatation of the fourth ventricle communicating with an enlarged posterior fossa, hypoplastic and upwardly rotated vermis, elevated torcula and tentorium."
     },
     {
      "id": "rite-e10-5",
@@ -12379,7 +12379,7 @@
      "images": [
       "/rite/886d6acc7e66a58cb06203fcdea3b59db83da506.jpg"
      ],
-     "imageAlt": "Axial T2: multiple clustered, CSF-bright, non-enhancing cystic lesions in the bilateral basal ganglia (dilated perivascular spaces packed with organisms). (Neuroradiology deck, slide 93)"
+     "imageAlt": "Axial T2: multiple clustered, CSF-bright, non-enhancing cystic lesions in the bilateral basal ganglia (dilated perivascular spaces packed with organisms)."
     },
     {
      "id": "rite-e10-8",
@@ -12510,7 +12510,7 @@
      "images": [
       "/rite/b5e893a561a1290b8762dcc631a4cb198074b4d5.jpg"
      ],
-     "imageAlt": "Muscle biopsy: perifascicular atrophy (small fibers at the fascicle periphery) with perivascular and perimysial inflammatory infiltrate. (RITE Review deck, slide 204)"
+     "imageAlt": "Muscle biopsy: perifascicular atrophy (small fibers at the fascicle periphery) with perivascular and perimysial inflammatory infiltrate."
     },
     {
      "id": "rite-e10-12",
@@ -12784,7 +12784,7 @@
      ],
      "answer": "B",
      "explanation": "Dural venous engorgement gives smooth, sulcus-sparing pachymeningeal enhancement; infectious and carcinomatous meningitis enhance the pia and sulci.",
-     "imageAlt": "Exam 280: sagittal T1 with descent of the brainstem and cerebellar tonsils and effaced prepontine cistern; axial post-contrast T1 with smooth, diffuse pachymeningeal enhancement. Exam 300 coronal T1 post: thick continuous dural enhancement including the tentorium. Marginal notes: orthostatic headache with normal exam; headache after lumbar puncture that resolves lying flat.",
+     "imageAlt": "Sagittal T1 showing descent of the brainstem and cerebellar tonsils with effaced prepontine cistern; axial post-contrast T1 with smooth diffuse pachymeningeal enhancement; coronal post-contrast T1 with thick continuous dural enhancement including the tentorium.",
      "context": "A 52-year-old with orthostatic headache. Sagittal T1 and post-contrast axial and coronal images are shown. Diagnosis?",
      "images": [
       "/rite/d5aacb9e6b8c5ab82cb604f5711409c49caac6c9.jpg",
@@ -12876,11 +12876,11 @@
       }
      ],
      "answer": "C",
-     "explanation": "Subacute subdural hematoma. T1-bright methemoglobin in a crescent that crosses sutures but not the falx; epidural is lenticular and bounded by sutures. T1 bright = methemoglobin, subacute. Subdural crosses sutures but not dural reflections (falx); epidural is lenticular, bounded by sutures, and can cross the midline. Deck\\'s exclusions: hygroma (CSF signal), empyema (rim enhancement, DWI bright), en plaque meningioma (T1 iso/hypointense, enhances). In an elderly or anticoagulated patient a subacute SDH can present with isolated cognitive decline or fluctuating focal signs.",
+     "explanation": "Subacute subdural hematoma. T1-bright methemoglobin in a crescent that crosses sutures but not the falx; epidural is lenticular and bounded by sutures. T1 bright = methemoglobin, subacute. Subdural crosses sutures but not dural reflections (falx); epidural is lenticular, bounded by sutures, and can cross the midline. Excluded: hygroma (CSF signal), empyema (rim enhancement, DWI bright), en plaque meningioma (T1 iso/hypointense, enhances). In an elderly or anticoagulated patient a subacute SDH can present with isolated cognitive decline or fluctuating focal signs.",
      "images": [
       "/rite/5bb22684e6028161d0d2abbac51a295fa4a194a6.jpg"
      ],
-     "imageAlt": "Axial T1: crescentic, T1-hyperintense extra-axial collection over the left convexity that crosses suture lines and does not cross the midline, with sulcal effacement and mild midline shift. (Neuroradiology deck, slide 126)"
+     "imageAlt": "Axial T1: crescentic, T1-hyperintense extra-axial collection over the left convexity that crosses suture lines and does not cross the midline, with sulcal effacement and mild midline shift."
     },
     {
      "id": "rite-e10-22",
@@ -12969,7 +12969,7 @@
      "images": [
       "/rite/5056ef38b555d7894a83579ea68b9d9f9cd69d16.jpg"
      ],
-     "imageAlt": "Sagittal T1 (A), T2 (B) and post-contrast T1 (C) cervical spine: cluster of intramedullary and extramedullary flow voids with a nidus at C5-C6 and a large posterior draining vein. (Neuroradiology deck, slide 41)"
+     "imageAlt": "Sagittal T1 (A), T2 (B) and post-contrast T1 (C) cervical spine: cluster of intramedullary and extramedullary flow voids with a nidus at C5-C6 and a large posterior draining vein."
     },
     {
      "id": "rite-e10-25",
@@ -13095,7 +13095,7 @@
      "images": [
       "/rite/7e52befb10d49125edbb0e72fe7bebf057c429da.jpg"
      ],
-     "imageAlt": "H&E: thick-walled cortical and leptomeningeal arterioles with homogeneous, glassy eosinophilic wall replacement. (RITE Review deck, slide 93)"
+     "imageAlt": "H&E: thick-walled cortical and leptomeningeal arterioles with homogeneous, glassy eosinophilic wall replacement."
     },
     {
      "id": "rite-e10-29",
@@ -13167,7 +13167,7 @@
      "images": [
       "/rite/e9fe65466270b55bf7f983dd833c8536dc9cb56c.jpg"
      ],
-     "imageAlt": "Axial DWI, patient (top) versus control (bottom): restricted diffusion in the caudate heads and anterior putamina with asymmetric cortical ribboning. (Neuroradiology deck, slide 139)"
+     "imageAlt": "Axial DWI, patient (top) versus control (bottom): restricted diffusion in the caudate heads and anterior putamina with asymmetric cortical ribboning."
     },
     {
      "id": "rite-e10-31",
@@ -13347,7 +13347,7 @@
      "images": [
       "/rite/a5f5b88c155b39c91f56f454f476d3359d87858c.jpg"
      ],
-     "imageAlt": "H&E of substantia nigra: residual pigmented neurons containing round eosinophilic inclusions with a dense core and a pale halo (classic brainstem Lewy bodies); a pale body is also present. (RITE Review deck, slide 141)"
+     "imageAlt": "H&E of substantia nigra: residual pigmented neurons containing round eosinophilic inclusions with a dense core and a pale halo (classic brainstem Lewy bodies); a pale body is also present."
     },
     {
      "id": "rite-e10-37",
@@ -13419,7 +13419,7 @@
      "images": [
       "/rite/c3f73b8417b04d3b40fb9171dd994236b428c364.jpg"
      ],
-     "imageAlt": "H&E: tumor cells radially arranged around a blood vessel with a nucleus-free zone of fibrillary processes surrounding the vessel wall. (RITE Review deck, slide 34)"
+     "imageAlt": "H&E: tumor cells radially arranged around a blood vessel with a nucleus-free zone of fibrillary processes surrounding the vessel wall."
     },
     {
      "id": "rite-e10-39",
