@@ -77,15 +77,15 @@
      "options": [
       {
        "letter": "A",
-       "text": "Involvement of two adjacent vertebral bodies with the intervening disc"
+       "text": "Two adjacent vertebral bodies with the disc"
       },
       {
        "letter": "B",
-       "text": "Ring enhancement"
+       "text": "Ring enhancement of the paraspinal soft tissue"
       },
       {
        "letter": "C",
-       "text": "Epidural extension"
+       "text": "Epidural extension compressing the thecal sac"
       },
       {
        "letter": "D",
@@ -93,7 +93,7 @@
       },
       {
        "letter": "E",
-       "text": "Low T1 signal in bone"
+       "text": "Low T1 signal throughout the vertebral body"
       }
      ],
      "answer": "A",
@@ -101,7 +101,8 @@
      "images": [
       "/rite/8871eb9aeb9008a253acb0a6c841f0b0436d42c1.jpg"
      ],
-     "imageAlt": "Sagittal T1 lumbar spine: loss of the L2-L3 disc space with destruction and low signal of the adjacent endplates and vertebral bodies; ring enhancement on the post-contrast study. (Neuroradiology deck, slide 35)"
+     "imageAlt": "Sagittal T1 lumbar spine: loss of the L2-L3 disc space with destruction and low signal of the adjacent endplates and vertebral bodies; ring enhancement on the post-contrast study. (Neuroradiology deck, slide 35)",
+     "learning": "Tumour spares the disc; infection crosses it. In children infection starts in the vascularised disc, in adults at the endplate."
     },
     {
      "id": "rite-e1-4",
@@ -249,23 +250,23 @@
      "options": [
       {
        "letter": "A",
-       "text": "Pineal calcification is normal at this age"
+       "text": "Pineal calcification is expected at this age"
       },
       {
        "letter": "B",
-       "text": "This combination is termed trilateral retinoblastoma and implies germline RB1 disease"
+       "text": "Trilateral retinoblastoma with germline RB1 disease"
       },
       {
        "letter": "C",
-       "text": "Calcification excludes retinoblastoma"
+       "text": "Calcification effectively excludes retinoblastoma"
       },
       {
        "letter": "D",
-       "text": "The pineal lesion is likely a germinoma"
+       "text": "The pineal lesion is most likely a germinoma"
       },
       {
        "letter": "E",
-       "text": "Radiation is the preferred treatment"
+       "text": "Radiation is the preferred first-line treatment"
       }
      ],
      "answer": "B",
@@ -273,7 +274,8 @@
      "images": [
       "/rite/3654490e7d6db16f7a143e9b80c5d08822f34b95.jpg"
      ],
-     "imageAlt": "Axial CT orbits (A): calcified intraocular mass(es) arising from the retina. Axial CT brain (B): calcified pineal region mass. (Neuroradiology deck, slide 141)"
+     "imageAlt": "Axial CT orbits (A): calcified intraocular mass(es) arising from the retina. Axial CT brain (B): calcified pineal region mass. (Neuroradiology deck, slide 141)",
+     "learning": "Pineal calcification before age 2 is abnormal. Germline RB1 carriers face lifelong second-cancer risk, especially after radiotherapy."
     },
     {
      "id": "rite-e1-9",
@@ -284,23 +286,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "CP; iron chelation"
+       "text": "CP; iron chelation with deferoxamine"
       },
       {
        "letter": "B",
-       "text": "ATP7A; copper histidinate"
+       "text": "ATP7A; subcutaneous copper histidinate"
       },
       {
        "letter": "C",
-       "text": "ATP7B; chelation (trientine or penicillamine) or zinc, with awareness that chelation can transiently worsen neurologic symptoms"
+       "text": "ATP7B; trientine, penicillamine, or zinc"
       },
       {
        "letter": "D",
-       "text": "SLC30A10; manganese chelation"
+       "text": "SLC30A10; manganese chelation with EDTA"
       }
      ],
      "answer": "C",
-     "explanation": "Wilson disease (autosomal recessive ATP7B) impairs biliary copper excretion and ceruloplasmin incorporation; Kayser-Fleischer rings are present in nearly all neurologic cases. Diagnosis: low ceruloplasmin, elevated 24-hour urine copper, Leipzig score, sequencing. Neurologic worsening occurs in up to 20–30% starting penicillamine; trientine or zinc are often preferred initially. Liver transplant cures the hepatic phenotype."
+     "explanation": "Wilson disease (autosomal recessive ATP7B) impairs biliary copper excretion and ceruloplasmin incorporation; Kayser-Fleischer rings are present in nearly all neurologic cases. Diagnosis: low ceruloplasmin, elevated 24-hour urine copper, Leipzig score, sequencing. Neurologic worsening occurs in up to 20–30% starting penicillamine; trientine or zinc are often preferred initially. Liver transplant cures the hepatic phenotype.",
+     "learning": "Chelation can transiently worsen neurologic symptoms early in treatment. Kayser-Fleischer rings are present in nearly all neurologic Wilson disease; diagnosis rests on low ceruloplasmin and raised 24-hour urinary copper."
     },
     {
      "id": "rite-e1-10",
@@ -373,23 +376,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Albendazole (with or without praziquantel) plus corticosteroids and antiseizure medication for viable cysts; calcified lesions need no antiparasitic therapy"
+       "text": "Albendazole with corticosteroids and antiseizure medication"
       },
       {
        "letter": "B",
-       "text": "Ivermectin"
+       "text": "Ivermectin with corticosteroids and antiseizure medication"
       },
       {
        "letter": "C",
-       "text": "Antiseizure medication only"
+       "text": "Antiseizure medication alone, without antiparasitic therapy"
       },
       {
        "letter": "D",
-       "text": "Surgical excision of all lesions"
+       "text": "Surgical excision of all lesions followed by antiseizure medication"
       }
      ],
      "answer": "A",
-     "explanation": "Neurocysticercosis (Taenia solium) is the leading cause of acquired epilepsy worldwide. Antiparasitic therapy accelerates cyst resolution and reduces seizure recurrence but induces inflammation, so steroids are given concurrently; ocular and subarachnoid disease and hydrocephalus require special handling. Calcified lesions can still seed seizures via perilesional edema."
+     "explanation": "Neurocysticercosis (Taenia solium) is the leading cause of acquired epilepsy worldwide. Antiparasitic therapy accelerates cyst resolution and reduces seizure recurrence but induces inflammation, so steroids are given concurrently; ocular and subarachnoid disease and hydrocephalus require special handling. Calcified lesions can still seed seizures via perilesional edema.",
+     "learning": "Calcified lesions are dead and need no antiparasitic therapy. Steroids are given because antiparasitic-induced cyst death provokes inflammation."
     },
     {
      "id": "rite-e1-13",
@@ -590,23 +594,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Epidural hematoma"
+       "text": "Spinal epidural hematoma"
       },
       {
        "letter": "B",
-       "text": "Anterior spinal artery syndrome (infarction in the territory of the artery of Adamkiewicz)"
+       "text": "Anterior spinal artery syndrome"
       },
       {
        "letter": "C",
-       "text": "Guillain-Barré syndrome"
+       "text": "Guillain-Barre syndrome"
       },
       {
        "letter": "D",
-       "text": "Transverse myelitis"
+       "text": "Acute transverse myelitis"
       }
      ],
      "answer": "B",
-     "explanation": "The single anterior spinal artery supplies the anterior two-thirds of the cord; the great radicular artery of Adamkiewicz (usually T9–L2, left) is vulnerable during aortic surgery, dissection, or hypotension. Dorsal columns (paired posterior spinal arteries) are spared. CSF drainage and MAP augmentation are used perioperatively. Fibrocartilaginous embolism and surfer's myelopathy are other vascular etiologies in young patients."
+     "explanation": "The single anterior spinal artery supplies the anterior two-thirds of the cord; the great radicular artery of Adamkiewicz (usually T9–L2, left) is vulnerable during aortic surgery, dissection, or hypotension. Dorsal columns (paired posterior spinal arteries) are spared. CSF drainage and MAP augmentation are used perioperatively. Fibrocartilaginous embolism and surfer's myelopathy are other vascular etiologies in young patients.",
+     "learning": "The territory is that of the artery of Adamkiewicz. Dorsal columns are spared because they are supplied by the posterior spinal arteries."
     },
     {
      "id": "rite-e1-20",
@@ -850,23 +855,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Risk of severe hypotension during infusion"
+       "text": "Severe infusion-related hypotension requiring inpatient monitoring"
       },
       {
        "letter": "B",
-       "text": "Risk of hepatotoxicity requiring LFT monitoring"
+       "text": "Hepatotoxicity requiring serial liver function monitoring"
       },
       {
        "letter": "C",
-       "text": "Risk of QT prolongation"
+       "text": "QT prolongation requiring baseline and serial ECGs"
       },
       {
        "letter": "D",
-       "text": "Substantially increased risk of amyloid-related imaging abnormalities (ARIA-E edema and ARIA-H hemorrhage), requiring MRI surveillance; anticoagulation increases hemorrhage risk"
+       "text": "Amyloid-related imaging abnormalities requiring MRI surveillance"
       }
      ],
      "answer": "D",
-     "explanation": "Anti-amyloid monoclonal antibodies (lecanemab, CLARITY-AD; donanemab, TRAILBLAZER-ALZ 2) slow cognitive decline by roughly 25–35% over 18 months in early symptomatic AD. ARIA is most frequent in APOE ε4 homozygotes (lecanemab ARIA-E ~33% vs ~5% in non-carriers), most cases asymptomatic; baseline MRI with >4 microbleeds, CAA, or anticoagulation are exclusions. Plasma p-tau217 is emerging as a screening biomarker."
+     "explanation": "Anti-amyloid monoclonal antibodies (lecanemab, CLARITY-AD; donanemab, TRAILBLAZER-ALZ 2) slow cognitive decline by roughly 25–35% over 18 months in early symptomatic AD. ARIA is most frequent in APOE ε4 homozygotes (lecanemab ARIA-E ~33% vs ~5% in non-carriers), most cases asymptomatic; baseline MRI with >4 microbleeds, CAA, or anticoagulation are exclusions. Plasma p-tau217 is emerging as a screening biomarker.",
+     "learning": "ARIA-E is vasogenic edema and ARIA-H is haemorrhage; APOE e4 homozygotes carry substantially the highest risk, which is why genotyping informs consent."
     },
     {
      "id": "rite-e1-27",
@@ -881,7 +887,7 @@
       },
       {
        "letter": "B",
-       "text": "Surgical revascularization (direct or indirect bypass such as EDAS)"
+       "text": "Surgical revascularisation"
       },
       {
        "letter": "C",
@@ -893,7 +899,8 @@
       }
      ],
      "answer": "B",
-     "explanation": "Moyamoya (Japanese for \"puff of smoke\") is a progressive occlusive arteriopathy of the circle of Willis; associations include Down syndrome, NF1, sickle cell disease, prior cranial irradiation, and RNF213 variants in East Asians. Hyperventilation-induced hypocapnic vasoconstriction provokes ischemia. Revascularization surgery reduces stroke recurrence; avoid hypotension and hyperventilation perioperatively."
+     "explanation": "Moyamoya (Japanese for \"puff of smoke\") is a progressive occlusive arteriopathy of the circle of Willis; associations include Down syndrome, NF1, sickle cell disease, prior cranial irradiation, and RNF213 variants in East Asians. Hyperventilation-induced hypocapnic vasoconstriction provokes ischemia. Revascularization surgery reduces stroke recurrence; avoid hypotension and hyperventilation perioperatively.",
+     "learning": "Direct or indirect bypass, such as encephaloduroarteriosynangiosis (EDAS). Moyamoya is markedly more common in Down syndrome; hyperventilation provokes ischaemia by lowering PaCO2 and constricting collaterals."
     },
     {
      "id": "rite-e1-28",
@@ -931,23 +938,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Repeat genetic testing at 6 months"
+       "text": "Repeat genetic testing at 6 months of age"
       },
       {
        "letter": "B",
-       "text": "Muscle biopsy to confirm diagnosis"
+       "text": "Muscle biopsy to confirm the diagnosis"
       },
       {
        "letter": "C",
-       "text": "Serial examination and treat at symptom onset"
+       "text": "Serial examination, treating at symptom onset"
       },
       {
        "letter": "D",
-       "text": "Immediate initiation of disease-modifying therapy (onasemnogene abeparvovec, nusinersen, or risdiplam)"
+       "text": "Immediate disease-modifying therapy"
       }
      ],
      "answer": "D",
-     "explanation": "SMN2 copy number inversely predicts severity (2 copies = expected type 1). Presymptomatic treatment (NURTURE, SPR1NT) yields near-normal motor milestones, so infants with ≤3 copies should be treated immediately. Onasemnogene is an AAV9 gene replacement (single IV dose, hepatotoxicity risk); nusinersen is an intrathecal splice-switching ASO; risdiplam is an oral splicing modifier."
+     "explanation": "SMN2 copy number inversely predicts severity (2 copies = expected type 1). Presymptomatic treatment (NURTURE, SPR1NT) yields near-normal motor milestones, so infants with ≤3 copies should be treated immediately. Onasemnogene is an AAV9 gene replacement (single IV dose, hepatotoxicity risk); nusinersen is an intrathecal splice-switching ASO; risdiplam is an oral splicing modifier.",
+     "learning": "Options are onasemnogene abeparvovec, nusinersen, or risdiplam. Two SMN2 copies predict severe (type 1) disease, and pre-symptomatic treatment gives markedly better motor outcomes than waiting for symptoms."
     },
     {
      "id": "rite-e1-30",
@@ -958,7 +966,7 @@
      "options": [
       {
        "letter": "A",
-       "text": "D4Z4 repeat contraction derepressing DUX4"
+       "text": "D4Z4 repeat contraction"
       },
       {
        "letter": "B",
@@ -982,7 +990,8 @@
      "images": [
       "/rite/46369398ef21b5f502705ec2813b1cdbaa07cc90.jpg"
      ],
-     "imageAlt": "Line drawing of a patient from behind with arms abducted: the scapulae wing and ride up laterally, with atrophy of the periscapular muscles and preservation of the deltoids. (RITE Review deck, slide 254)"
+     "imageAlt": "Line drawing of a patient from behind with arms abducted: the scapulae wing and ride up laterally, with atrophy of the periscapular muscles and preservation of the deltoids. (RITE Review deck, slide 254)",
+     "learning": "Contraction of the D4Z4 repeat array on 4q35 derepresses DUX4, which is toxic to muscle — the mechanism of facioscapulohumeral dystrophy."
     },
     {
      "id": "rite-e1-31",
@@ -993,23 +1002,23 @@
      "options": [
       {
        "letter": "A",
-       "text": "Radical resection"
+       "text": "Radical surgical resection"
       },
       {
        "letter": "B",
-       "text": "Observation"
+       "text": "Observation with serial MRI"
       },
       {
        "letter": "C",
-       "text": "Radiation (with or without chemotherapy)"
+       "text": "Radiation with or without chemotherapy"
       },
       {
        "letter": "D",
-       "text": "Temozolomide"
+       "text": "Temozolomide monotherapy"
       },
       {
        "letter": "E",
-       "text": "Bevacizumab"
+       "text": "Bevacizumab monotherapy"
       }
      ],
      "answer": "C",
@@ -1019,7 +1028,7 @@
      ],
      "imageAlt": "Sagittal T1 post-contrast: enhancing pineal region mass. H&E: two-cell population of large polygonal neoplastic cells with clear cytoplasm and prominent nucleoli mixed with small mature lymphocytes.",
      "salient": "PLAP, OCT4, c-KIT; AFP indicates nongerminomatous elements; Suprasellar site: DI, hypopituitarism; bifocal disease",
-     "learning": "Most common pineal tumor; also suprasellar (DI, visual loss, hypopituitarism); adolescent males; bifocal disease. Markers: PLAP, OCT4, c-KIT (CD117); beta-hCG mildly elevated in syncytiotrophoblastic variant; AFP indicates nongerminomatous elements. Exquisitely radiosensitive; Parinaud syndrome from tectal compression."
+     "learning": "Most common pineal tumor; also suprasellar (DI, visual loss, hypopituitarism); adolescent males; bifocal disease. Markers: PLAP, OCT4, c-KIT (CD117); beta-hCG mildly elevated in syncytiotrophoblastic variant; AFP indicates nongerminomatous elements. Exquisitely radiosensitive; Parinaud syndrome from tectal compression. Large clear cells with a lymphocytic infiltrate is germinoma, which is exquisitely radiosensitive; biopsy for diagnosis rather than radical resection."
     },
     {
      "id": "rite-e1-32",
@@ -1185,23 +1194,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Repeat head CT in 24 hours"
+       "text": "Repeat non-contrast head CT in 24 hours"
       },
       {
        "letter": "B",
-       "text": "Discharge home with oral triptans"
+       "text": "Discharge home with oral triptan therapy"
       },
       {
        "letter": "C",
-       "text": "Brain MRI without contrast"
+       "text": "Non-contrast brain MRI within 24 hours"
       },
       {
        "letter": "D",
-       "text": "Lumbar puncture for opening pressure, cell count, and spectrophotometric xanthochromia"
+       "text": "Lumbar puncture for xanthochromia"
       }
      ],
      "answer": "D",
-     "explanation": "Modern-scanner CT within 6 hours of onset is ~99–100% sensitive for SAH and can reasonably exclude it in that window (Perry 2011); beyond 6 hours sensitivity falls and lumbar puncture is required to evaluate for persistent red cells across tubes and xanthochromia."
+     "explanation": "Modern-scanner CT within 6 hours of onset is ~99–100% sensitive for SAH and can reasonably exclude it in that window (Perry 2011); beyond 6 hours sensitivity falls and lumbar puncture is required to evaluate for persistent red cells across tubes and xanthochromia.",
+     "learning": "Send opening pressure, cell count in sequential tubes, and spectrophotometric xanthochromia. CT sensitivity for subarachnoid haemorrhage falls after about 6 hours, so a negative scan at 9 hours does not exclude it."
     },
     {
      "id": "rite-e1-37",
@@ -1251,7 +1261,7 @@
       },
       {
        "letter": "D",
-       "text": "Medical management; complete occlusion is not a revascularization indication"
+       "text": "Medical management alone"
       },
       {
        "letter": "E",
@@ -1263,7 +1273,8 @@
      "images": [
       "/rite/25c35292a967de0dd63b3a85a51a28e6ed40db69.jpg"
      ],
-     "imageAlt": "Carotid angiograms (A, lateral; B, magnified): irregular ulcerated plaque at the ICA origin with occlusion of the proximal ICA; distal vessels fill via collaterals. (Neuroradiology deck, slide 73)"
+     "imageAlt": "Carotid angiograms (A, lateral; B, magnified): irregular ulcerated plaque at the ICA origin with occlusion of the proximal ICA; distal vessels fill via collaterals. (Neuroradiology deck, slide 73)",
+     "learning": "A complete occlusion is not a revascularisation target — endarterectomy benefit applies to high-grade stenosis, not total occlusion, and EC-IC bypass failed to show benefit in trials."
     },
     {
      "id": "rite-e1-39",
@@ -1308,23 +1319,23 @@
      "options": [
       {
        "letter": "A",
-       "text": "Bone marrow biopsy"
+       "text": "Bone marrow aspiration"
       },
       {
        "letter": "B",
-       "text": "EMG"
+       "text": "Nerve conduction study"
       },
       {
        "letter": "C",
-       "text": "Audiometry"
+       "text": "Formal audiometry"
       },
       {
        "letter": "D",
-       "text": "Slit-lamp/fundoscopic examination for ocular cysticercosis"
+       "text": "Fundoscopic examination"
       },
       {
        "letter": "E",
-       "text": "Echocardiography"
+       "text": "Transthoracic echocardiography"
       }
      ],
      "answer": "D",
@@ -1335,7 +1346,7 @@
       "/rite/bf05b184494d0c8c2497638c0722b37b3b8794ad.jpg"
      ],
      "salient": "Stages: vesicular (scolex), colloidal (ring), granular-nodular, calcified; Albendazole plus steroids for viable cysts; intraventricular cysts need endoscopic removal; exclude ocular disease",
-     "learning": "Stages: vesicular (scolex, no edema), colloidal vesicular (ring enhancement, edema, seizures), granular nodular, calcified. Albendazole with corticosteroids for viable parenchymal cysts; calcified lesions need no antiparasitic therapy but can still seed seizures. Intraventricular and subarachnoid (racemose) disease: endoscopic removal or prolonged therapy, shunting for hydrocephalus. Ophthalmologic examination before treatment.",
+     "learning": "Stages: vesicular (scolex, no edema), colloidal vesicular (ring enhancement, edema, seizures), granular nodular, calcified. Albendazole with corticosteroids for viable parenchymal cysts; calcified lesions need no antiparasitic therapy but can still seed seizures. Intraventricular and subarachnoid (racemose) disease: endoscopic removal or prolonged therapy, shunting for hydrocephalus. Ophthalmologic examination before treatment. Ocular cysticercosis must be excluded before albendazole: killing an intraocular cyst provokes inflammation that can cause irreversible vision loss.",
      "note": "Low confidence; no clinical data beyond age."
     },
     {
@@ -1347,11 +1358,11 @@
      "options": [
       {
        "letter": "A",
-       "text": "Hypertensive hemorrhage"
+       "text": "Hypertensive haemorrhage"
       },
       {
        "letter": "B",
-       "text": "Coup/contrecoup contusions against the skull base"
+       "text": "Contusions against the skull base"
       },
       {
        "letter": "C",
@@ -1373,7 +1384,7 @@
      ],
      "imageAlt": "Inferior surface of the brain with hemorrhagic discoloration of the orbitofrontal gyri and temporal poles.",
      "salient": "Contusions involve gyral crests; infarcts involve sulcal depths; Old contusions: golden-brown plaques jaunes",
-     "learning": "Brain impacts the rough anterior and middle fossa floors; contrecoup contusions are typically larger than coup. Contusions involve the crests of gyri (versus infarcts, which involve depths). Old contusions become golden-brown plaques jaunes."
+     "learning": "Brain impacts the rough anterior and middle fossa floors; contrecoup contusions are typically larger than coup. Contusions involve the crests of gyri (versus infarcts, which involve depths). Old contusions become golden-brown plaques jaunes. Coup/contrecoup contusions collect where brain strikes irregular bone — orbitofrontal and anterior temporal surfaces."
     }
    ]
   },
