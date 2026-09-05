@@ -1400,23 +1400,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Vascular cognitive impairment (subcortical ischemic/Binswanger type); aggressive vascular risk factor control"
+       "text": "Vascular cognitive impairment (subcortical ischaemic type); vascular risk factor control"
       },
       {
        "letter": "B",
-       "text": "Normal pressure hydrocephalus; shunting"
+       "text": "Normal pressure hydrocephalus; high-volume lumbar puncture then shunting"
       },
       {
        "letter": "C",
-       "text": "Alzheimer disease; donepezil"
+       "text": "Alzheimer disease (medial temporal predominant); donepezil and memantine"
       },
       {
        "letter": "D",
-       "text": "Frontotemporal dementia; SSRIs"
+       "text": "Frontotemporal dementia (behavioural variant); SSRIs for behavioural symptoms"
       }
      ],
      "answer": "A",
-     "explanation": "Vascular cognitive impairment is the second most common dementia and commonly coexists with AD pathology. Executive slowing predominates over amnesia; the hippocampus is relatively spared. SPRINT-MIND showed intensive BP control reduces MCI. Cholinesterase inhibitors have marginal benefit. Consider CADASIL in early-onset cases without risk factors."
+     "explanation": "Vascular cognitive impairment is the second most common dementia and commonly coexists with AD pathology. Executive slowing predominates over amnesia; the hippocampus is relatively spared. SPRINT-MIND showed intensive BP control reduces MCI. Cholinesterase inhibitors have marginal benefit. Consider CADASIL in early-onset cases without risk factors.",
+     "learning": "Also called Binswanger type. SPRINT-MIND showed intensive blood-pressure lowering reduces incident mild cognitive impairment."
     },
     {
      "id": "rite-e2-2",
@@ -1427,23 +1428,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Anti-MOG IgG; interferon-beta"
+       "text": "Anti-MOG IgG (cell-based assay); interferon-beta or glatiramer acetate"
       },
       {
        "letter": "B",
-       "text": "Anti-GAD65; IVIG"
+       "text": "Anti-GAD65 (serum and CSF); IVIG then long-term immunosuppression"
       },
       {
        "letter": "C",
-       "text": "Anti-NMDAR; natalizumab"
+       "text": "Anti-NMDAR (CSF cell-based assay); natalizumab with tumour surveillance"
       },
       {
        "letter": "D",
-       "text": "Anti-AQP4 IgG (cell-based assay); eculizumab, inebilizumab, satralizumab, or rituximab"
+       "text": "Anti-AQP4 IgG (cell-based assay); eculizumab, inebilizumab or satralizumab"
       }
      ],
      "answer": "D",
-     "explanation": "NMOSD is an astrocytopathy driven by AQP4-IgG; area postrema syndrome (hiccups/vomiting) is a core feature. Interferon-beta, natalizumab, fingolimod, and alemtuzumab worsen NMOSD. Acute attacks receive IV methylprednisolone and early plasma exchange; approved maintenance agents target complement (eculizumab, ravulizumab), CD19 (inebilizumab), or IL-6R (satralizumab)."
+     "explanation": "NMOSD is an astrocytopathy driven by AQP4-IgG; area postrema syndrome (hiccups/vomiting) is a core feature. Interferon-beta, natalizumab, fingolimod, and alemtuzumab worsen NMOSD. Acute attacks receive IV methylprednisolone and early plasma exchange; approved maintenance agents target complement (eculizumab, ravulizumab), CD19 (inebilizumab), or IL-6R (satralizumab).",
+     "learning": "Rituximab remains widely used off-label. Interferon-beta, natalizumab, fingolimod and alemtuzumab all worsen NMOSD, which is why the prior interferon exposure in the stem matters."
     },
     {
      "id": "rite-e2-3",
@@ -1454,19 +1456,19 @@
      "options": [
       {
        "letter": "A",
-       "text": "All three are similarly effective (~45–47% seizure cessation at 60 minutes) with similar safety"
+       "text": "All three are similarly effective, about 45-47% cessation at 60 minutes"
       },
       {
        "letter": "B",
-       "text": "Fosphenytoin is superior in seizure cessation"
+       "text": "Fosphenytoin is superior in cessation and in adverse-event profile"
       },
       {
        "letter": "C",
-       "text": "Valproate is superior in children"
+       "text": "Valproate is superior in children, fosphenytoin superior in adults"
       },
       {
        "letter": "D",
-       "text": "Levetiracetam is superior with fewer adverse events"
+       "text": "Levetiracetam is superior, with fewer cardiovascular adverse events"
       }
      ],
      "answer": "A",
@@ -1508,23 +1510,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Strictly lower motor neuron signs with late bladder involvement"
+       "text": "Strictly lower motor neuron signs with late, asymmetric bladder involvement"
       },
       {
        "letter": "B",
-       "text": "Early and symmetric saddle anesthesia with early sphincter dysfunction and mixed upper and lower motor neuron signs"
+       "text": "Early symmetric saddle anaesthesia with mixed upper and lower motor neuron signs"
       },
       {
        "letter": "C",
-       "text": "Preserved perianal sensation"
+       "text": "Preserved perianal sensation with symmetric loss of ankle reflexes"
       },
       {
        "letter": "D",
-       "text": "Asymmetric, severe radicular leg pain with early onset"
+       "text": "Asymmetric severe radicular leg pain with early onset of foot drop"
       }
      ],
      "answer": "B",
-     "explanation": "The conus (L1–L2 vertebral level) contains sacral segments, so lesions cause early, symmetric saddle anesthesia and sphincter failure, sparing leg strength but adding Babinski signs. Cauda equina lesions compress lumbosacral roots asymmetrically with prominent radicular pain, areflexia, and later sphincter dysfunction. Both are surgical emergencies; decompression within 48 hours improves bladder outcome."
+     "explanation": "The conus (L1–L2 vertebral level) contains sacral segments, so lesions cause early, symmetric saddle anesthesia and sphincter failure, sparing leg strength but adding Babinski signs. Cauda equina lesions compress lumbosacral roots asymmetrically with prominent radicular pain, areflexia, and later sphincter dysfunction. Both are surgical emergencies; decompression within 48 hours improves bladder outcome.",
+     "learning": "Sphincter dysfunction is early in conus lesions and late in cauda equina lesions."
     },
     {
      "id": "rite-e2-6",
@@ -1535,23 +1538,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Liposomal amphotericin B plus flucytosine induction; serial therapeutic lumbar punctures for elevated pressure; defer ART 4–6 weeks to avoid IRIS"
+       "text": "Liposomal amphotericin B with flucytosine; serial therapeutic lumbar punctures; defer ART"
       },
       {
        "letter": "B",
-       "text": "Fluconazole alone; start ART immediately"
+       "text": "Fluconazole monotherapy; acetazolamide for pressure control; start ART immediately"
       },
       {
        "letter": "C",
-       "text": "Acetazolamide and immediate ART"
+       "text": "Acetazolamide for pressure control; fluconazole consolidation; start ART immediately"
       },
       {
        "letter": "D",
-       "text": "Voriconazole; immediate ventriculoperitoneal shunt"
+       "text": "Voriconazole with flucytosine; immediate ventriculoperitoneal shunt; defer ART"
       }
      ],
      "answer": "A",
-     "explanation": "Cryptococcal meningitis mortality is driven by intracranial hypertension; LP to reduce pressure is therapeutic. Single high-dose liposomal amphotericin with flucytosine and fluconazole (AMBITION) is now WHO-preferred. Early ART increases mortality via IRIS (COAT trial), so ART is deferred 4–6 weeks. Serum CrAg screening at CD4 <100 identifies preclinical infection."
+     "explanation": "Cryptococcal meningitis mortality is driven by intracranial hypertension; LP to reduce pressure is therapeutic. Single high-dose liposomal amphotericin with flucytosine and fluconazole (AMBITION) is now WHO-preferred. Early ART increases mortality via IRIS (COAT trial), so ART is deferred 4–6 weeks. Serum CrAg screening at CD4 <100 identifies preclinical infection.",
+     "learning": "ART is deferred 4-6 weeks to avoid immune reconstitution inflammatory syndrome. Single high-dose liposomal amphotericin with flucytosine and fluconazole (AMBITION) is now an accepted induction regimen."
     },
     {
      "id": "rite-e2-7",
@@ -1811,23 +1815,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Phenobarbital"
+       "text": "Phenobarbital, phenytoin, or levetiracetam"
       },
       {
        "letter": "B",
-       "text": "Carbamazepine"
+       "text": "Carbamazepine, oxcarbazepine, or lamotrigine"
       },
       {
        "letter": "C",
-       "text": "Lamotrigine"
+       "text": "Lamotrigine, valproate, or topiramate"
       },
       {
        "letter": "D",
-       "text": "Adrenocorticotropic hormone (ACTH), high-dose oral prednisolone, or vigabatrin"
+       "text": "ACTH, high-dose oral prednisolone, or vigabatrin"
       }
      ],
      "answer": "D",
-     "explanation": "Infantile epileptic spasms syndrome (West syndrome) features spasms, developmental regression, and hypsarrhythmia. ACTH or high-dose prednisolone are first-line; vigabatrin is first-line when tuberous sclerosis is the cause."
+     "explanation": "Infantile epileptic spasms syndrome (West syndrome) features spasms, developmental regression, and hypsarrhythmia. ACTH or high-dose prednisolone are first-line; vigabatrin is first-line when tuberous sclerosis is the cause.",
+     "learning": "Vigabatrin is first-line when the cause is tuberous sclerosis complex; it requires visual field monitoring for irreversible peripheral constriction."
     },
     {
      "id": "rite-e2-15",
@@ -1892,23 +1897,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "C9orf72 GGGGCC hexanucleotide expansion; tofersen for SOD1-ALS"
+       "text": "C9orf72 hexanucleotide repeat expansion; no approved gene-targeted therapy"
       },
       {
        "letter": "B",
-       "text": "FUS; nusinersen"
+       "text": "FUS mutation; intrathecal nusinersen as gene-targeted therapy"
       },
       {
        "letter": "C",
-       "text": "SOD1; edaravone"
+       "text": "SOD1 mutation; intrathecal tofersen as gene-targeted therapy"
       },
       {
        "letter": "D",
-       "text": "TARDBP; riluzole"
+       "text": "TARDBP mutation; oral riluzole as gene-targeted therapy"
       }
      ],
      "answer": "A",
-     "explanation": "C9orf72 repeat expansion is the most common cause of familial ALS and FTD (~40% of familial ALS in European populations); it is missed by exome sequencing. Tofersen, an intrathecal ASO against SOD1, received accelerated approval in 2023 based on neurofilament reduction. Riluzole extends survival by ~3 months; edaravone and sodium phenylbutyrate-taurursodiol have modest or contested benefit (the latter was withdrawn in 2024 after PHOENIX failed)."
+     "explanation": "C9orf72 repeat expansion is the most common cause of familial ALS and FTD (~40% of familial ALS in European populations); it is missed by exome sequencing. Tofersen, an intrathecal ASO against SOD1, received accelerated approval in 2023 based on neurofilament reduction. Riluzole extends survival by ~3 months; edaravone and sodium phenylbutyrate-taurursodiol have modest or contested benefit (the latter was withdrawn in 2024 after PHOENIX failed).",
+     "learning": "Tofersen is a real therapy but for SOD1-ALS, not C9orf72. The C9orf72 GGGGCC expansion is the commonest cause of familial ALS and of ALS-FTD, and is missed by exome sequencing — it needs repeat-primed PCR."
     },
     {
      "id": "rite-e2-18",
@@ -2047,23 +2053,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Anti-NMDAR encephalitis; tumor search"
+       "text": "Anti-NMDAR encephalitis; tumour search and first-line immunotherapy"
       },
       {
        "letter": "B",
-       "text": "Wilson disease; chelation"
+       "text": "Wilson disease; chelation with trientine and slit-lamp examination"
       },
       {
        "letter": "C",
-       "text": "Tic disorder; behavioral therapy"
+       "text": "Tic disorder; behavioural therapy and reassurance on natural history"
       },
       {
        "letter": "D",
-       "text": "Sydenham chorea; echocardiography and secondary penicillin prophylaxis to prevent rheumatic carditis"
+       "text": "Sydenham chorea; echocardiography and secondary penicillin prophylaxis"
       }
      ],
      "answer": "D",
-     "explanation": "Sydenham chorea is a major Jones criterion of acute rheumatic fever, mediated by antibodies cross-reacting with basal ganglia antigens (dopamine D2 receptor, lysoganglioside); chorea alone establishes the diagnosis. It is usually self-limited over months, with recurrence in ~20%. Chorea is treated with valproate, carbamazepine, or dopamine blockers; steroids or IVIG for severe cases. Prophylactic penicillin continues at least until age 21."
+     "explanation": "Sydenham chorea is a major Jones criterion of acute rheumatic fever, mediated by antibodies cross-reacting with basal ganglia antigens (dopamine D2 receptor, lysoganglioside); chorea alone establishes the diagnosis. It is usually self-limited over months, with recurrence in ~20%. Chorea is treated with valproate, carbamazepine, or dopamine blockers; steroids or IVIG for severe cases. Prophylactic penicillin continues at least until age 21.",
+     "learning": "Prophylaxis is to prevent rheumatic carditis. Chorea alone satisfies the Jones criteria for acute rheumatic fever."
     },
     {
      "id": "rite-e2-23",
@@ -2109,23 +2116,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "PaCO2 ≥60 mm Hg (or ≥20 mm Hg above baseline) with pH <7.30 and no respiratory effort"
+       "text": "PaCO2 at least 60 mm Hg with pH below 7.30 and no respiratory effort"
       },
       {
        "letter": "B",
-       "text": "Any decrease in oxygen saturation"
+       "text": "Any decrease in oxygen saturation during the observation period"
       },
       {
        "letter": "C",
-       "text": "PaCO2 ≥45 mm Hg"
+       "text": "PaCO2 at least 45 mm Hg with a normal pH and no respiratory effort"
       },
       {
        "letter": "D",
-       "text": "PaO2 <60 mm Hg"
+       "text": "PaO2 below 60 mm Hg with respiratory effort absent throughout"
       }
      ],
      "answer": "A",
-     "explanation": "The 2023 AAN/AAP/CNS/SCCM consensus requires a known catastrophic irreversible cause, exclusion of confounders (hypothermia, drugs, severe metabolic derangement), coma, absent brainstem reflexes, and apnea with adequate hypercapnic stimulus. Ancillary tests (catheter angiography, nuclear perfusion, TCD) are reserved for when clinical examination or apnea testing cannot be completed; EEG is no longer recommended."
+     "explanation": "The 2023 AAN/AAP/CNS/SCCM consensus requires a known catastrophic irreversible cause, exclusion of confounders (hypothermia, drugs, severe metabolic derangement), coma, absent brainstem reflexes, and apnea with adequate hypercapnic stimulus. Ancillary tests (catheter angiography, nuclear perfusion, TCD) are reserved for when clinical examination or apnea testing cannot be completed; EEG is no longer recommended.",
+     "learning": "A rise of at least 20 mm Hg above baseline also satisfies the threshold, which matters in chronic CO2 retainers."
     },
     {
      "id": "rite-e2-25",
@@ -2869,23 +2877,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "COL4A1; porencephaly"
+       "text": "COL4A1; porencephaly with retinal arterial tortuosity"
       },
       {
        "letter": "B",
-       "text": "NOTCH3; granular osmiophilic material in vascular smooth muscle on skin biopsy"
+       "text": "NOTCH3; granular osmiophilic material on skin biopsy"
       },
       {
        "letter": "C",
-       "text": "APP; vascular amyloid"
+       "text": "APP; vascular amyloid with lobar microbleeds"
       },
       {
        "letter": "D",
-       "text": "HTRA1; arteriolar hyalinosis"
+       "text": "HTRA1; arteriolar hyalinosis with spondylosis and alopecia"
       }
      ],
      "answer": "B",
-     "explanation": "CADASIL is the most common monogenic small-vessel disease, caused by cysteine-altering NOTCH3 variants in EGF-like repeats. Anterior temporal pole involvement is highly specific. Genetic testing has largely replaced skin biopsy. Biallelic HTRA1 causes CARASIL (alopecia, spondylosis)."
+     "explanation": "CADASIL is the most common monogenic small-vessel disease, caused by cysteine-altering NOTCH3 variants in EGF-like repeats. Anterior temporal pole involvement is highly specific. Genetic testing has largely replaced skin biopsy. Biallelic HTRA1 causes CARASIL (alopecia, spondylosis).",
+     "learning": "The deposits sit in vascular smooth muscle. Anterior temporal pole white matter involvement is highly specific for CADASIL; genetic testing has largely replaced skin biopsy."
     },
     {
      "id": "rite-e3-5",
@@ -2933,23 +2942,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "SIADH; fluid restriction"
+       "text": "SIADH; fluid restriction with tolvaptan if refractory"
       },
       {
        "letter": "B",
-       "text": "Diabetes insipidus; desmopressin"
+       "text": "Diabetes insipidus; desmopressin and free water replacement"
       },
       {
        "letter": "C",
-       "text": "Adrenal insufficiency; hydrocortisone"
+       "text": "Adrenal insufficiency; hydrocortisone and volume resuscitation"
       },
       {
        "letter": "D",
-       "text": "Cerebral salt wasting; isotonic or hypertonic saline replacement and fludrocortisone"
+       "text": "Cerebral salt wasting; isotonic saline and fludrocortisone"
       }
      ],
      "answer": "D",
-     "explanation": "SIADH and cerebral salt wasting both produce hyponatremia with high urine sodium and osmolality; volume status is the discriminator. Fluid restriction in SAH-associated CSW precipitates delayed cerebral ischemia, so euvolemia with salt repletion is mandatory. SIADH is treated with fluid restriction, salt tablets, or urea; hypertonic saline for symptomatic severe hyponatremia in either."
+     "explanation": "SIADH and cerebral salt wasting both produce hyponatremia with high urine sodium and osmolality; volume status is the discriminator. Fluid restriction in SAH-associated CSW precipitates delayed cerebral ischemia, so euvolemia with salt repletion is mandatory. SIADH is treated with fluid restriction, salt tablets, or urea; hypertonic saline for symptomatic severe hyponatremia in either.",
+     "learning": "Volume status is the discriminator between SIADH and cerebral salt wasting. Fluid restriction in salt wasting after subarachnoid haemorrhage precipitates delayed cerebral ischaemia."
     },
     {
      "id": "rite-e3-7",
@@ -3032,23 +3042,23 @@
      "options": [
       {
        "letter": "A",
-       "text": "High-dose methotrexate"
+       "text": "High-dose methotrexate with reimaging in 10-14 days"
       },
       {
        "letter": "B",
-       "text": "Amphotericin B"
+       "text": "Amphotericin B with serial therapeutic lumbar punctures"
       },
       {
        "letter": "C",
-       "text": "Stereotactic biopsy"
+       "text": "Stereotactic biopsy before starting any empiric therapy"
       },
       {
        "letter": "D",
-       "text": "Whole-brain radiation"
+       "text": "Whole-brain radiation with adjunctive corticosteroids"
       },
       {
        "letter": "E",
-       "text": "Empiric pyrimethamine-sulfadiazine with reimaging in 10-14 days"
+       "text": "Empiric pyrimethamine-sulfadiazine, reimaging in 10-14 days"
       }
      ],
      "answer": "E",
@@ -3056,7 +3066,8 @@
      "images": [
       "/rite/dd2bd6aaf90048b98f594459d98df0dbdf38ab29.jpg"
      ],
-     "imageAlt": "Post-contrast T1 (A): ring-enhancing basal ganglia and hemispheric lesions. T2 (B): edema grossly out of proportion to lesion size."
+     "imageAlt": "Post-contrast T1 (A): ring-enhancing basal ganglia and hemispheric lesions. T2 (B): edema grossly out of proportion to lesion size.",
+     "learning": "Failure to respond by 10-14 days prompts biopsy for primary CNS lymphoma."
     },
     {
      "id": "rite-e3-9",
@@ -3067,23 +3078,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Common fibular neuropathy"
+       "text": "Common fibular neuropathy at the fibular head"
       },
       {
        "letter": "B",
-       "text": "Diabetic lumbosacral radiculoplexus neuropathy (diabetic amyotrophy)"
+       "text": "Diabetic lumbosacral radiculoplexus neuropathy"
       },
       {
        "letter": "C",
-       "text": "S1 radiculopathy"
+       "text": "S1 radiculopathy from lumbar disc herniation"
       },
       {
        "letter": "D",
-       "text": "Meralgia paresthetica"
+       "text": "Meralgia paraesthetica from inguinal compression"
       }
      ],
      "answer": "B",
-     "explanation": "Diabetic amyotrophy is an ischemic radiculoplexopathy (mediated by microvasculitis) targeting the lumbosacral plexus, causing asymmetric thigh pain, quadriceps atrophy, weight loss, and loss of the knee jerk."
+     "explanation": "Diabetic amyotrophy is an ischemic radiculoplexopathy (mediated by microvasculitis) targeting the lumbosacral plexus, causing asymmetric thigh pain, quadriceps atrophy, weight loss, and loss of the knee jerk.",
+     "learning": "Also called diabetic amyotrophy. An ischaemic radiculoplexopathy from microvasculitis, with asymmetric thigh pain, quadriceps wasting, weight loss and loss of the knee jerk."
     },
     {
      "id": "rite-e3-10",
@@ -3121,23 +3133,23 @@
      "options": [
       {
        "letter": "A",
-       "text": "Basilar tip embolus"
+       "text": "Basilar tip embolus with bilateral perforator infarction"
       },
       {
        "letter": "B",
-       "text": "Artery of Percheron occlusion"
+       "text": "Artery of Percheron occlusion with midbrain involvement"
       },
       {
        "letter": "C",
-       "text": "Deep cerebral venous (internal cerebral vein/straight sinus) thrombosis"
+       "text": "Deep cerebral venous thrombosis of the internal cerebral veins"
       },
       {
        "letter": "D",
-       "text": "Hypertensive hemorrhage"
+       "text": "Hypertensive haemorrhage extending into both thalami"
       },
       {
        "letter": "E",
-       "text": "Bilateral PCA infarction"
+       "text": "Bilateral posterior cerebral artery territory infarction"
       }
      ],
      "answer": "C",
@@ -3145,7 +3157,8 @@
      "images": [
       "/rite/cdafffe25653611b1f762b2761fcc351b7f591f4.jpg"
      ],
-     "imageAlt": "Coronal brain slice: bilateral parasagittal hemorrhagic cortical/subcortical infarcts plus hemorrhagic necrosis of the thalami and basal ganglia, and thrombus in the sagittal sinus."
+     "imageAlt": "Coronal brain slice: bilateral parasagittal hemorrhagic cortical/subcortical infarcts plus hemorrhagic necrosis of the thalami and basal ganglia, and thrombus in the sagittal sinus.",
+     "learning": "Involves the internal cerebral veins and straight sinus. Bilateral thalamic oedema or haemorrhage with parasagittal infarcts is venous until proven otherwise; artery of Percheron is the arterial mimic."
     },
     {
      "id": "rite-e3-12",
@@ -3156,23 +3169,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Immediate HSCT in infancy"
+       "text": "Immediate allogeneic HSCT in infancy, before any imaging or adrenal change"
       },
       {
        "letter": "B",
-       "text": "Brain MRI every 6 months beginning by ~12–18 months of age, adrenal function monitoring, and allogeneic HSCT or gene therapy at the earliest sign of cerebral disease"
+       "text": "Six-monthly brain MRI from 12-18 months, with HSCT at the first cerebral change"
       },
       {
        "letter": "C",
-       "text": "Annual VLCFA levels only"
+       "text": "Annual VLCFA levels alone, with imaging only once symptoms develop"
       },
       {
        "letter": "D",
-       "text": "Lorenzo's oil to prevent cerebral disease; no imaging needed"
+       "text": "Lorenzo's oil with annual adrenal testing and no routine neuroimaging"
       }
      ],
      "answer": "B",
-     "explanation": "~35% of boys develop childhood cerebral ALD (peak onset 4–10 years); HSCT halts progression only when performed early (Loes ≤9, limited gadolinium enhancement, preserved function). Elivaldogene autotemcel (lentiviral gene therapy) was approved in 2022, with subsequent reports of hematologic malignancy prompting label restriction. Adrenal insufficiency affects ~80% of males and is treated with hydrocortisone. Adrenomyeloneuropathy affects adults of both sexes. Lorenzo's oil does not prevent cerebral disease."
+     "explanation": "~35% of boys develop childhood cerebral ALD (peak onset 4–10 years); HSCT halts progression only when performed early (Loes ≤9, limited gadolinium enhancement, preserved function). Elivaldogene autotemcel (lentiviral gene therapy) was approved in 2022, with subsequent reports of hematologic malignancy prompting label restriction. Adrenal insufficiency affects ~80% of males and is treated with hydrocortisone. Adrenomyeloneuropathy affects adults of both sexes. Lorenzo's oil does not prevent cerebral disease.",
+     "learning": "Adrenal function needs monitoring in parallel, since adrenal insufficiency can precede cerebral disease. About 35% of boys develop childhood cerebral ALD, peaking at 4-10 years; HSCT or elivaldogene autotemcel halts progression only when done early (Loes score 9 or less)."
     },
     {
      "id": "rite-e3-13",
@@ -3545,23 +3559,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Scheduled lorazepam"
+       "text": "Scheduled lorazepam overnight with as-needed diphenhydramine for sleep"
       },
       {
        "letter": "B",
-       "text": "Physical restraints and diphenhydramine for sleep"
+       "text": "Physical restraints overnight with diphenhydramine for sedation"
       },
       {
        "letter": "C",
-       "text": "Identify precipitants (infection, drugs, retention, pain), nonpharmacologic reorientation and sleep hygiene, and low-dose antipsychotic only for dangerous agitation"
+       "text": "Identify precipitants, reorientation and sleep hygiene, antipsychotic only for danger"
       },
       {
        "letter": "D",
-       "text": "Start donepezil"
+       "text": "Start donepezil and continue it through the remainder of the admission"
       }
      ],
      "answer": "C",
-     "explanation": "Delirium (CAM criteria) is a marker of underlying illness and increases mortality and subsequent dementia. Benzodiazepines and anticholinergics worsen it except in alcohol/benzodiazepine withdrawal. Antipsychotics do not shorten delirium (MIND-USA) and are reserved for safety. Multicomponent prevention (HELP) reduces incidence by ~30%."
+     "explanation": "Delirium (CAM criteria) is a marker of underlying illness and increases mortality and subsequent dementia. Benzodiazepines and anticholinergics worsen it except in alcohol/benzodiazepine withdrawal. Antipsychotics do not shorten delirium (MIND-USA) and are reserved for safety. Multicomponent prevention (HELP) reduces incidence by ~30%.",
+     "learning": "Precipitants to hunt for include infection, culprit drugs, urinary retention and untreated pain. Benzodiazepines and anticholinergics worsen delirium except in alcohol or benzodiazepine withdrawal."
     },
     {
      "id": "rite-e3-24",
@@ -3968,23 +3983,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Catheter cerebral angiogram"
+       "text": "Catheter cerebral angiography with venous phase imaging"
       },
       {
        "letter": "B",
-       "text": "EEG"
+       "text": "Routine interictal EEG with photic stimulation"
       },
       {
        "letter": "C",
-       "text": "24-hour video-EEG monitoring"
+       "text": "24-hour video-EEG monitoring with sleep capture"
       },
       {
        "letter": "D",
-       "text": "High-volume lumbar puncture (spinal tap test) or extended lumbar drainage"
+       "text": "High-volume lumbar puncture or extended lumbar drainage"
       }
      ],
      "answer": "D",
-     "explanation": "Normal pressure hydrocephalus is managed by identifying gait improvement following high-volume (30–50 mL) lumbar CSF removal or 72-hour lumbar drainage, predicting successful ventriculoperitoneal shunting. Gait responds best; cognition least."
+     "explanation": "Normal pressure hydrocephalus is managed by identifying gait improvement following high-volume (30–50 mL) lumbar CSF removal or 72-hour lumbar drainage, predicting successful ventriculoperitoneal shunting. Gait responds best; cognition least.",
+     "learning": "Removing 30-50 mL of CSF, or 72 hours of lumbar drainage, and looking for gait improvement predicts shunt response."
     },
     {
      "id": "rite-e3-37",
@@ -4258,23 +4274,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Concomitant vitamin D deficiency"
+       "text": "Vitamin D deficiency, low body mass index, and duration under 1 year"
       },
       {
        "letter": "B",
-       "text": "Positive JC virus antibody with high index, prior immunosuppressant use, and treatment duration beyond 2 years"
+       "text": "High-index JC virus antibody, prior immunosuppressant use, and duration over 2 years"
       },
       {
        "letter": "C",
-       "text": "Female sex, age under 40, and low EDSS"
+       "text": "Female sex, age under 40, and a low EDSS score at treatment initiation"
       },
       {
        "letter": "D",
-       "text": "Negative JC virus antibody and prior interferon use"
+       "text": "Negative JC virus antibody, prior interferon use, and duration over 2 years"
       }
      ],
      "answer": "B",
-     "explanation": "Natalizumab (anti-alpha4 integrin) PML risk stratifies by JCV serostatus/index (>1.5 highest), prior immunosuppression, and duration >24 months, reaching >1% in the highest-risk stratum. Extended-interval dosing lowers risk. PML presents with subacute cognitive, visual, or motor decline with non-enhancing subcortical U-fiber lesions and CSF JCV PCR."
+     "explanation": "Natalizumab (anti-alpha4 integrin) PML risk stratifies by JCV serostatus/index (>1.5 highest), prior immunosuppression, and duration >24 months, reaching >1% in the highest-risk stratum. Extended-interval dosing lowers risk. PML presents with subacute cognitive, visual, or motor decline with non-enhancing subcortical U-fiber lesions and CSF JCV PCR.",
+     "learning": "A JCV index above 1.5 marks the highest-risk stratum, where PML risk exceeds 1%. Extended-interval dosing lowers risk without losing efficacy."
     },
     {
      "id": "rite-e4-6",
@@ -4285,23 +4302,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Ipsilateral corticospinal involvement above the decussation is impossible; the imaging must be mislabeled"
+       "text": "Corticospinal injury above the decussation from a second, contralateral lesion"
       },
       {
        "letter": "B",
-       "text": "Concomitant spinal cord injury"
+       "text": "Concomitant cervical spinal cord injury sustained in the same event"
       },
       {
        "letter": "C",
-       "text": "Kernohan notch phenomenon: compression of the contralateral cerebral peduncle against the tentorial edge produces a false localizing ipsilateral hemiparesis"
+       "text": "Kernohan notch: the contralateral peduncle is compressed against the tentorial edge"
       },
       {
        "letter": "D",
-       "text": "Postictal Todd paralysis"
+       "text": "Postictal Todd paralysis following an unwitnessed focal seizure"
       }
      ],
      "answer": "C",
-     "explanation": "Uncal herniation classically produces an ipsilateral CN III palsy (pupil first, from peripheral parasympathetic fiber compression) and contralateral hemiparesis; when the midline shift compresses the opposite peduncle, hemiparesis becomes ipsilateral to the lesion. Central herniation produces progressive rostral-caudal deterioration with Cheyne-Stokes respiration and Duret hemorrhages."
+     "explanation": "Uncal herniation classically produces an ipsilateral CN III palsy (pupil first, from peripheral parasympathetic fiber compression) and contralateral hemiparesis; when the midline shift compresses the opposite peduncle, hemiparesis becomes ipsilateral to the lesion. Central herniation produces progressive rostral-caudal deterioration with Cheyne-Stokes respiration and Duret hemorrhages.",
+     "learning": "This is the classic false localizing sign. Uncal herniation normally gives an ipsilateral CN III palsy (pupil first) with contralateral hemiparesis; when midline shift pushes the opposite peduncle into the tentorium, the weakness ends up ipsilateral to the mass."
     },
     {
      "id": "rite-e4-7",
@@ -4312,23 +4330,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Chiari II malformation with hydrocephalus; folic acid 4 mg daily preconception and through the first trimester"
+       "text": "Chiari II malformation with hydrocephalus; folic acid 4 mg daily from preconception"
       },
       {
        "letter": "B",
-       "text": "Holoprosencephaly; avoidance of alcohol"
+       "text": "Holoprosencephaly; avoidance of alcohol from preconception onward"
       },
       {
        "letter": "C",
-       "text": "Chiari I malformation; iron supplementation"
+       "text": "Chiari I malformation; iron supplementation from preconception onward"
       },
       {
        "letter": "D",
-       "text": "Dandy-Walker malformation; vitamin B12"
+       "text": "Dandy-Walker malformation; vitamin B12 from preconception onward"
       }
      ],
      "answer": "A",
-     "explanation": "Chiari II (hindbrain herniation, beaked tectum, small posterior fossa, hydrocephalus) accompanies nearly all open myelomeningoceles. Standard-risk women take 0.4 mg folate; those with a prior affected pregnancy take 4 mg. Valproate and carbamazepine exposure raise NTD risk. The MOMS trial showed fetal surgery reduces shunt requirement and improves motor outcome at the cost of prematurity. Latex allergy and tethered cord are long-term concerns."
+     "explanation": "Chiari II (hindbrain herniation, beaked tectum, small posterior fossa, hydrocephalus) accompanies nearly all open myelomeningoceles. Standard-risk women take 0.4 mg folate; those with a prior affected pregnancy take 4 mg. Valproate and carbamazepine exposure raise NTD risk. The MOMS trial showed fetal surgery reduces shunt requirement and improves motor outcome at the cost of prematurity. Latex allergy and tethered cord are long-term concerns.",
+     "learning": "Folate is continued through the first trimester. Standard-risk women take 0.4 mg daily; the 4 mg dose applies after a prior affected pregnancy."
     },
     {
      "id": "rite-e4-8",
@@ -4939,23 +4958,23 @@
      "options": [
       {
        "letter": "A",
-       "text": "Microglial nodule and perivascular lymphocytic cuffing of viral encephalitis"
+       "text": "Microglial nodules with perivascular lymphocytic cuffing"
       },
       {
        "letter": "B",
-       "text": "Neurofibrillary degeneration"
+       "text": "Neurofibrillary degeneration with adjacent neuritic plaques"
       },
       {
        "letter": "C",
-       "text": "Granulomatous vasculitis"
+       "text": "Granulomatous vasculitis with multinucleated giant cells"
       },
       {
        "letter": "D",
-       "text": "Toxoplasma cysts"
+       "text": "Toxoplasma bradyzoite cysts with surrounding necrosis"
       },
       {
        "letter": "E",
-       "text": "Prion spongiform change"
+       "text": "Spongiform change with astrogliosis and no inflammation"
       }
      ],
      "answer": "A",
@@ -4965,7 +4984,7 @@
      ],
      "imageAlt": "A: cortical section with a focal cluster of microglia and lymphocytes (microglial nodule). B: perivascular lymphocytic cuff around a small vessel. Marginal note: mesial temporal lobe.",
      "salient": "HSV-1: hemorrhagic necrosis of medial temporal, insular, orbitofrontal cortex; Cowdry A inclusions; Empiric acyclovir; CSF PCR may be negative in the first 72 hours",
-     "learning": "HSV-1: hemorrhagic necrotizing encephalitis of medial temporal, orbitofrontal, and insular cortex; Cowdry A intranuclear inclusions in neurons and glia. Microglial nodules and neuronophagia are generic to viral encephalitides (arboviral, rabies, HIV). Treat empirically with acyclovir."
+     "learning": "HSV-1: hemorrhagic necrotizing encephalitis of medial temporal, orbitofrontal, and insular cortex; Cowdry A intranuclear inclusions in neurons and glia. Microglial nodules and neuronophagia are generic to viral encephalitides (arboviral, rabies, HIV). Treat empirically with acyclovir. This pattern in mesial temporal cortex, with fever and aphasia, indicates HSV encephalitis."
     },
     {
      "id": "rite-e4-27",
@@ -5475,23 +5494,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "QT prolongation via hERG blockade"
+       "text": "QT prolongation from hERG potassium channel blockade"
       },
       {
        "letter": "B",
-       "text": "Bradycardia and atrioventricular block from S1P receptor agonism on atrial myocytes"
+       "text": "Bradycardia and atrioventricular block from S1P receptor agonism"
       },
       {
        "letter": "C",
-       "text": "Coronary vasospasm"
+       "text": "Coronary vasospasm from endothelial S1P3 activation"
       },
       {
        "letter": "D",
-       "text": "Acute hypertensive crisis"
+       "text": "Acute hypertensive crisis from catecholamine release"
       }
      ],
      "answer": "B",
-     "explanation": "Fingolimod (nonselective S1P receptor modulator) sequesters lymphocytes in lymph nodes; S1P1/S1P3 activation on cardiomyocytes causes transient bradycardia and rarely AV block after the first dose. Other concerns include macular edema, VZV reactivation (verify immunity), and rebound on discontinuation. Newer S1P agents (siponimod, ozanimod, ponesimod) reduce but do not eliminate first-dose effects."
+     "explanation": "Fingolimod (nonselective S1P receptor modulator) sequesters lymphocytes in lymph nodes; S1P1/S1P3 activation on cardiomyocytes causes transient bradycardia and rarely AV block after the first dose. Other concerns include macular edema, VZV reactivation (verify immunity), and rebound on discontinuation. Newer S1P agents (siponimod, ozanimod, ponesimod) reduce but do not eliminate first-dose effects.",
+     "learning": "S1P1 and S1P3 activation on atrial myocytes causes transient bradycardia and, rarely, AV block after the first dose. The drug's therapeutic effect is lymphocyte sequestration in lymph nodes."
     },
     {
      "id": "rite-e5-2",
@@ -5653,23 +5673,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Serum sodium for hyponatremia"
+       "text": "Serum sodium monitoring for symptomatic hyponatraemia and seizure worsening"
       },
       {
        "letter": "B",
-       "text": "Weekly CBC for aplastic anemia"
+       "text": "Weekly complete blood counts for aplastic anaemia and agranulocytosis"
       },
       {
        "letter": "C",
-       "text": "Serial ophthalmologic examination and, when feasible, visual field testing for bilateral concentric field constriction"
+       "text": "Serial ophthalmologic examination with visual field testing where feasible"
       },
       {
        "letter": "D",
-       "text": "Serial liver function tests for hepatotoxicity"
+       "text": "Serial liver function tests for idiosyncratic hepatotoxicity and hyperammonaemia"
       }
      ],
      "answer": "C",
-     "explanation": "Vigabatrin (irreversible GABA-transaminase inhibitor) causes permanent bilateral concentric peripheral visual field constriction in roughly a third of exposed patients, cumulative-dose dependent, prompting REMS enrollment and baseline plus periodic ophthalmologic assessment (ERG in infants). It also produces transient symmetric T2/DWI signal in basal ganglia and thalami in infants."
+     "explanation": "Vigabatrin (irreversible GABA-transaminase inhibitor) causes permanent bilateral concentric peripheral visual field constriction in roughly a third of exposed patients, cumulative-dose dependent, prompting REMS enrollment and baseline plus periodic ophthalmologic assessment (ERG in infants). It also produces transient symmetric T2/DWI signal in basal ganglia and thalami in infants.",
+     "learning": "What you are watching for is bilateral concentric peripheral field constriction, which is permanent, cumulative-dose dependent, and affects roughly a third of those exposed."
     },
     {
      "id": "rite-e5-8",
@@ -6187,23 +6208,23 @@
      "options": [
       {
        "letter": "A",
-       "text": "Left temporal pole hypometabolism"
+       "text": "Left temporal pole hypometabolism with anterior insular sparing"
       },
       {
        "letter": "B",
-       "text": "Bilateral hippocampal hypermetabolism"
+       "text": "Bilateral hippocampal hypermetabolism with occipital sparing"
       },
       {
        "letter": "C",
-       "text": "Diffuse cerebellar hypometabolism"
+       "text": "Diffuse cerebellar hypometabolism with brainstem sparing"
       },
       {
        "letter": "D",
-       "text": "Occipital hypometabolism with a preserved posterior cingulate (cingulate island sign)"
+       "text": "Occipital hypometabolism with a preserved posterior cingulate"
       },
       {
        "letter": "E",
-       "text": "Asymmetric frontoparietal hypometabolism"
+       "text": "Asymmetric frontoparietal hypometabolism with basal ganglia sparing"
       }
      ],
      "answer": "D",
@@ -6211,7 +6232,8 @@
      "images": [
       "/rite/f77e0ea5a76b35f2f6679fee4cbce2ead6ed8149.jpg"
      ],
-     "imageAlt": "Axial FDG-PET one year (top) and three years (bottom) after symptom onset: progressive hypometabolism of the frontal and anterior temporal lobes with relatively preserved posterior metabolism."
+     "imageAlt": "Axial FDG-PET one year (top) and three years (bottom) after symptom onset: progressive hypometabolism of the frontal and anterior temporal lobes with relatively preserved posterior metabolism.",
+     "learning": "The preserved posterior cingulate against hypometabolic occipital and precuneus cortex is the cingulate island sign. For contrast: FTD hits frontal and anterior temporal cortex, AD temporoparietal and posterior cingulate, CBD asymmetric frontoparietal."
     },
     {
      "id": "rite-e5-23",
@@ -7523,23 +7545,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "X-linked modifier genes"
+       "text": "X-linked modifier genes acting on the mitochondrial genome"
       },
       {
        "letter": "B",
-       "text": "Paternal mtDNA contribution"
+       "text": "Paternal mtDNA contribution varying between siblings at fertilisation"
       },
       {
        "letter": "C",
-       "text": "The mitochondrial genetic bottleneck during oogenesis produces widely varying heteroplasmy levels in offspring"
+       "text": "The mitochondrial bottleneck in oogenesis varies offspring heteroplasmy"
       },
       {
        "letter": "D",
-       "text": "Anticipation"
+       "text": "Anticipation, with heteroplasmy rising in each successive generation"
       }
      ],
      "answer": "C",
-     "explanation": "mtDNA is strictly maternally inherited; a small number of mtDNA molecules populate each primordial oocyte, so offspring heteroplasmy can differ dramatically from the mother's. For m.8993, <~70% mutant load is often asymptomatic or NARP, whereas >90% produces maternally inherited Leigh syndrome. Threshold effects also explain tissue-specific expression."
+     "explanation": "mtDNA is strictly maternally inherited; a small number of mtDNA molecules populate each primordial oocyte, so offspring heteroplasmy can differ dramatically from the mother's. For m.8993, <~70% mutant load is often asymptomatic or NARP, whereas >90% produces maternally inherited Leigh syndrome. Threshold effects also explain tissue-specific expression.",
+     "learning": "Only a small number of mtDNA molecules populate each primordial oocyte, so offspring heteroplasmy can differ dramatically from the mother's. For m.8993, roughly 70-90% heteroplasmy gives NARP and above ~90% gives Leigh syndrome."
     },
     {
      "id": "rite-e6-23",
@@ -8112,23 +8135,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "CSF hypocretin-1 is expected to be <110 pg/mL; HLA-DQB1*06:02 is present in ~98%; sodium oxybate treats both cataplexy and sleepiness"
+       "text": "CSF hypocretin-1 below 110 pg/mL, with HLA-DQB1*06:02 present in about 98%"
       },
       {
        "letter": "B",
-       "text": "Tricyclics are contraindicated"
+       "text": "Tricyclic antidepressants are contraindicated because they worsen cataplexy"
       },
       {
        "letter": "C",
-       "text": "The condition is caused by autoimmune destruction of pineal melatonin neurons"
+       "text": "The condition results from autoimmune destruction of pineal melatonin neurons"
       },
       {
        "letter": "D",
-       "text": "CSF hypocretin-1 is expected to be elevated"
+       "text": "CSF hypocretin-1 is expected to be elevated, with HLA typing unhelpful"
       }
      ],
      "answer": "A",
-     "explanation": "Narcolepsy type 1 results from loss of lateral hypothalamic hypocretin (orexin) neurons, likely T-cell mediated (association with H1N1 infection/Pandemrix). Cataplexy is REM atonia intruding into wakefulness. Diagnosis requires MSLT with mean latency ≤8 min and ≥2 SOREMPs (one may be from preceding PSG) or low CSF hypocretin. Treatments: modafinil/armodafinil, solriamfetol, pitolisant (H3 inverse agonist, treats cataplexy), sodium or lower-sodium oxybate, and venlafaxine/tricyclics for cataplexy."
+     "explanation": "Narcolepsy type 1 results from loss of lateral hypothalamic hypocretin (orexin) neurons, likely T-cell mediated (association with H1N1 infection/Pandemrix). Cataplexy is REM atonia intruding into wakefulness. Diagnosis requires MSLT with mean latency ≤8 min and ≥2 SOREMPs (one may be from preceding PSG) or low CSF hypocretin. Treatments: modafinil/armodafinil, solriamfetol, pitolisant (H3 inverse agonist, treats cataplexy), sodium or lower-sodium oxybate, and venlafaxine/tricyclics for cataplexy.",
+     "learning": "Sodium oxybate treats both the cataplexy and the sleepiness. Narcolepsy type 1 is loss of lateral hypothalamic hypocretin neurons, probably T-cell mediated; tricyclics in fact suppress cataplexy."
     },
     {
      "id": "rite-e6-39",
@@ -8198,23 +8222,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "KCNQ2; sodium channel blockers such as carbamazepine or oxcarbazepine are particularly effective"
+       "text": "KCNQ2; sodium channel blockers such as carbamazepine are especially effective"
       },
       {
        "letter": "B",
-       "text": "STXBP1; ketogenic diet"
+       "text": "STXBP1; ketogenic diet, with poor response to sodium channel blockers"
       },
       {
        "letter": "C",
-       "text": "SCN1A; avoid carbamazepine"
+       "text": "SCN1A; avoid carbamazepine, which worsens seizures caused by this gene"
       },
       {
        "letter": "D",
-       "text": "ALDH7A1; pyridoxine"
+       "text": "ALDH7A1; pyridoxine, together with a lifelong lysine-restricted diet"
       }
      ],
      "answer": "A",
-     "explanation": "Self-limited familial neonatal epilepsy is autosomal dominant with KCNQ2 (or KCNQ3) loss-of-function reducing the M-current; de novo dominant-negative KCNQ2 variants cause a severe developmental and epileptic encephalopathy with burst-suppression. Both respond preferentially to sodium channel blockers. Ezogabine (retigabine), a KCNQ opener, has been reformulated (XEN496) for KCNQ2-DEE trials. The other classic neonatal-onset DEE genes include KCNT1, SCN2A (gain-of-function, also responds to Na-blockers), and STXBP1."
+     "explanation": "Self-limited familial neonatal epilepsy is autosomal dominant with KCNQ2 (or KCNQ3) loss-of-function reducing the M-current; de novo dominant-negative KCNQ2 variants cause a severe developmental and epileptic encephalopathy with burst-suppression. Both respond preferentially to sodium channel blockers. Ezogabine (retigabine), a KCNQ opener, has been reformulated (XEN496) for KCNQ2-DEE trials. The other classic neonatal-onset DEE genes include KCNT1, SCN2A (gain-of-function, also responds to Na-blockers), and STXBP1.",
+     "learning": "Self-limited familial neonatal epilepsy is autosomal dominant, from KCNQ2 or KCNQ3 loss of function reducing the M-current. De novo dominant-negative KCNQ2 variants instead cause a severe developmental and epileptic encephalopathy."
     },
     {
      "id": "rite-e7-2",
@@ -8351,23 +8376,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Hepatic encephalopathy; lactulose"
+       "text": "Hepatic encephalopathy; lactulose and rifaximin with ammonia monitoring"
       },
       {
        "letter": "B",
-       "text": "Marchiafava-Bignami disease; abstinence"
+       "text": "Marchiafava-Bignami disease; abstinence with thiamine and folate repletion"
       },
       {
        "letter": "C",
-       "text": "Osmotic demyelination syndrome; limit sodium correction to ≤8 mEq/L per 24 hours in high-risk patients"
+       "text": "Osmotic demyelination; limit sodium correction to 8 mEq/L per 24 hours"
       },
       {
        "letter": "D",
-       "text": "Wernicke encephalopathy; thiamine before glucose"
+       "text": "Wernicke encephalopathy; parenteral thiamine before any glucose load"
       }
      ],
      "answer": "C",
-     "explanation": "Osmotic demyelination (central pontine and extrapontine myelinolysis) follows overly rapid correction of chronic hyponatremia, especially with alcoholism, malnutrition, hypokalemia, or liver disease. MRI changes may lag by 1–2 weeks. Overcorrection is treated with desmopressin and D5W relowering."
+     "explanation": "Osmotic demyelination (central pontine and extrapontine myelinolysis) follows overly rapid correction of chronic hyponatremia, especially with alcoholism, malnutrition, hypokalemia, or liver disease. MRI changes may lag by 1–2 weeks. Overcorrection is treated with desmopressin and D5W relowering.",
+     "learning": "The 8 mEq/L ceiling applies to high-risk patients — alcohol use disorder, malnutrition, hypokalaemia, liver disease. Osmotic demyelination covers both central pontine and extrapontine myelinolysis."
     },
     {
      "id": "rite-e7-6",
@@ -8378,23 +8404,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Myotonic discharges"
+       "text": "Myotonic discharges at rest with waxing and waning frequency and amplitude"
       },
       {
        "letter": "B",
-       "text": "Fibrillation potentials and positive sharp waves at rest with reduced recruitment of normal-morphology motor units"
+       "text": "Fibrillation potentials and positive sharp waves with reduced recruitment"
       },
       {
        "letter": "C",
-       "text": "Complex repetitive discharges only"
+       "text": "Complex repetitive discharges alone, with normal motor unit recruitment"
       },
       {
        "letter": "D",
-       "text": "Small, short-duration, polyphasic motor units with early recruitment"
+       "text": "Small, short-duration polyphasic motor units with early recruitment"
       }
      ],
      "answer": "B",
-     "explanation": "After axon loss, spontaneous fibrillations/PSWs appear at 2–3 weeks (paraspinals first, distal muscles last), while reduced recruitment appears immediately. Reinnervation over months produces large-amplitude, long-duration polyphasic MUAPs. Myopathic units are small, short, polyphasic with early/full recruitment. Radiculopathy is distinguished from plexopathy by paraspinal involvement and preserved SNAPs (dorsal root ganglion is distal to the lesion)."
+     "explanation": "After axon loss, spontaneous fibrillations/PSWs appear at 2–3 weeks (paraspinals first, distal muscles last), while reduced recruitment appears immediately. Reinnervation over months produces large-amplitude, long-duration polyphasic MUAPs. Myopathic units are small, short, polyphasic with early/full recruitment. Radiculopathy is distinguished from plexopathy by paraspinal involvement and preserved SNAPs (dorsal root ganglion is distal to the lesion).",
+     "learning": "At 4 weeks the surviving motor units still look normal in morphology — large polyphasic reinnervation potentials take months. Fibrillations and positive sharp waves appear at 2-3 weeks (paraspinals first, distal muscles last); reduced recruitment is immediate."
     },
     {
      "id": "rite-e7-7",
@@ -8405,23 +8432,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Disregard the result entirely"
+       "text": "Disregard the result entirely and pursue an unrelated metabolic workup"
       },
       {
        "letter": "B",
-       "text": "Treat the child as having KCNQ2 encephalopathy and counsel a 50% recurrence risk"
+       "text": "Treat as KCNQ2 encephalopathy and counsel a 50% sibling recurrence risk"
       },
       {
        "letter": "C",
-       "text": "Pursue parental segregation testing, phenotype correlation, and periodic reclassification; do not base irreversible clinical or reproductive decisions on a VUS"
+       "text": "Pursue parental segregation and phenotype correlation, with reclassification"
       },
       {
        "letter": "D",
-       "text": "Order repeat sequencing in a different lab"
+       "text": "Order repeat sequencing at a second laboratory and act on that result"
       }
      ],
      "answer": "C",
-     "explanation": "ACMG/AMP classification integrates population frequency (gnomAD), computational prediction, functional data, segregation, and de novo status; a de novo occurrence in a well-matched phenotype (PS2) can upgrade a VUS. Laboratories reclassify variants over time, and clinicians should request reanalysis every 1–2 years. Gene-specific resources (ClinGen expert panels, RettBASE, CDKL5 databases) and functional assays for channels (patch clamp) increasingly resolve uncertainty."
+     "explanation": "ACMG/AMP classification integrates population frequency (gnomAD), computational prediction, functional data, segregation, and de novo status; a de novo occurrence in a well-matched phenotype (PS2) can upgrade a VUS. Laboratories reclassify variants over time, and clinicians should request reanalysis every 1–2 years. Gene-specific resources (ClinGen expert panels, RettBASE, CDKL5 databases) and functional assays for channels (patch clamp) increasingly resolve uncertainty.",
+     "learning": "The rule with a variant of uncertain significance is that no irreversible clinical or reproductive decision rests on it. ACMG/AMP classification weighs population frequency, computational prediction, functional data, segregation, and de novo status."
     },
     {
      "id": "rite-e7-8",
@@ -8432,23 +8460,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Oral appliance; peripheral neuropathy"
+       "text": "Oral appliance; increased risk of peripheral neuropathy and neuropathic pain"
       },
       {
        "letter": "B",
-       "text": "Uvulopalatopharyngoplasty; migraine"
+       "text": "Uvulopalatopharyngoplasty; increased risk of migraine with aura and epilepsy"
       },
       {
        "letter": "C",
-       "text": "Continuous positive airway pressure; increased risk of stroke and AF recurrence, with reduced daytime sleepiness and BP on treatment"
+       "text": "Continuous positive airway pressure; increased risk of stroke and AF recurrence"
       },
       {
        "letter": "D",
-       "text": "Modafinil alone; dementia"
+       "text": "Modafinil alone; increased risk of dementia and progressive cognitive decline"
       }
      ],
      "answer": "C",
-     "explanation": "OSA is severe at AHI ≥30 and moderate at 15–30. CPAP improves sleepiness, blood pressure, and AF recurrence; SAVE did not show reduced cardiovascular events overall, likely due to poor adherence. Hypoglossal nerve stimulation is an option for CPAP-intolerant patients with BMI <32–35 without concentric collapse. Tirzepatide was approved for OSA with obesity in 2024. Untreated OSA worsens epilepsy control and idiopathic intracranial hypertension."
+     "explanation": "OSA is severe at AHI ≥30 and moderate at 15–30. CPAP improves sleepiness, blood pressure, and AF recurrence; SAVE did not show reduced cardiovascular events overall, likely due to poor adherence. Hypoglossal nerve stimulation is an option for CPAP-intolerant patients with BMI <32–35 without concentric collapse. Tirzepatide was approved for OSA with obesity in 2024. Untreated OSA worsens epilepsy control and idiopathic intracranial hypertension.",
+     "learning": "CPAP reduces daytime sleepiness, blood pressure, and AF recurrence. SAVE did not show a reduction in cardiovascular events overall, probably reflecting poor adherence. OSA is severe at an AHI of 30 or more, moderate at 15-30."
     },
     {
      "id": "rite-e7-9",
@@ -9129,23 +9158,23 @@
      "options": [
       {
        "letter": "A",
-       "text": "Amaurosis fugax"
+       "text": "Amaurosis fugax with a normal fundoscopic examination between events"
       },
       {
        "letter": "B",
-       "text": "Coma or locked-in state with quadriparesis and crossed cranial nerve signs"
+       "text": "Coma or locked-in state with quadriparesis and crossed cranial signs"
       },
       {
        "letter": "C",
-       "text": "Isolated aphasia"
+       "text": "Isolated expressive aphasia with intact strength and sensation"
       },
       {
        "letter": "D",
-       "text": "Pure motor hemiparesis"
+       "text": "Pure motor hemiparesis of face, arm and leg without sensory loss"
       },
       {
        "letter": "E",
-       "text": "Wernicke aphasia"
+       "text": "Wernicke aphasia with a right superior quadrantanopia"
       }
      ],
      "answer": "B",
@@ -9153,7 +9182,8 @@
      "images": [
       "/rite/d10bcd2cd4276cebda305497fba83c5361beee70.jpg"
      ],
-     "imageAlt": "Coronal TOF MRA (A, B): the vertebrobasilar system is not visualized; the carotid circulation and its distal branches fill normally."
+     "imageAlt": "Coronal TOF MRA (A, B): the vertebrobasilar system is not visualized; the carotid circulation and its distal branches fill normally.",
+     "learning": "Basilar occlusion produces bilateral brainstem signs. Thrombectomy windows are extended relative to the anterior circulation."
     },
     {
      "id": "rite-e7-29",
@@ -9371,23 +9401,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Spongiform change; no intervention exists"
+       "text": "Spongiform change with astrogliosis; no effective intervention exists"
       },
       {
        "letter": "B",
-       "text": "Negri bodies in Purkinje cells and hippocampal pyramidal neurons; wound cleansing, rabies immune globulin infiltrated at the wound, and vaccine on days 0, 3, 7, 14"
+       "text": "Negri bodies in Purkinje and hippocampal neurons; immune globulin and vaccine"
       },
       {
        "letter": "C",
-       "text": "Owl-eye inclusions; ganciclovir"
+       "text": "Owl-eye intranuclear inclusions; intravenous ganciclovir with foscarnet"
       },
       {
        "letter": "D",
-       "text": "Cowdry A inclusions; oral acyclovir"
+       "text": "Cowdry type A intranuclear inclusions; high-dose intravenous acyclovir"
       }
      ],
      "answer": "B",
-     "explanation": "Rabies is nearly uniformly fatal after symptom onset; post-exposure prophylaxis is essentially 100% effective if begun promptly. Bat exposures warrant prophylaxis even without a recognized bite. A paralytic (GBS-like) form occurs in ~20%. The Milwaukee protocol has not been reproducibly successful."
+     "explanation": "Rabies is nearly uniformly fatal after symptom onset; post-exposure prophylaxis is essentially 100% effective if begun promptly. Bat exposures warrant prophylaxis even without a recognized bite. A paralytic (GBS-like) form occurs in ~20%. The Milwaukee protocol has not been reproducibly successful.",
+     "learning": "Post-exposure prophylaxis is wound cleansing, rabies immune globulin infiltrated around the wound, and vaccine on days 0, 3, 7 and 14. It is essentially 100% effective if started promptly and useless once symptoms appear. Bat exposures warrant prophylaxis even without a recognised bite."
     },
     {
      "id": "rite-e7-37",
@@ -9622,23 +9653,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Empiric pyrimethamine-sulfadiazine (or TMP-SMX) with reassessment imaging in 10–14 days"
+       "text": "Empiric pyrimethamine-sulfadiazine with reassessment imaging in 10-14 days"
       },
       {
        "letter": "B",
-       "text": "Stereotactic brain biopsy"
+       "text": "Stereotactic brain biopsy before starting any antimicrobial therapy"
       },
       {
        "letter": "C",
-       "text": "Whole-brain radiation for presumed lymphoma"
+       "text": "Whole-brain radiation for presumed primary CNS lymphoma, with steroids"
       },
       {
        "letter": "D",
-       "text": "High-dose dexamethasone alone"
+       "text": "High-dose dexamethasone alone, with reassessment imaging in 10-14 days"
       }
      ],
      "answer": "A",
-     "explanation": "Multiple lesions with positive toxoplasma serology warrant empiric therapy; clinical-radiologic response within 2 weeks confirms the diagnosis. Primary CNS lymphoma favors solitary periventricular lesions with CSF EBV PCR positivity and increased thallium/FDG uptake, and is biopsied if no response. PML (JC virus) causes non-enhancing white matter lesions without mass effect; CMV causes ventriculitis and polyradiculitis."
+     "explanation": "Multiple lesions with positive toxoplasma serology warrant empiric therapy; clinical-radiologic response within 2 weeks confirms the diagnosis. Primary CNS lymphoma favors solitary periventricular lesions with CSF EBV PCR positivity and increased thallium/FDG uptake, and is biopsied if no response. PML (JC virus) causes non-enhancing white matter lesions without mass effect; CMV causes ventriculitis and polyradiculitis.",
+     "learning": "TMP-SMX is an accepted alternative regimen. A clinical and radiologic response within two weeks confirms toxoplasmosis; primary CNS lymphoma instead favours a solitary periventricular lesion."
     },
     {
      "id": "rite-e8-5",
@@ -9688,19 +9720,20 @@
       },
       {
        "letter": "B",
-       "text": "IVIG (2 g/kg over 2–5 days) and plasma exchange are equally effective; combining them adds no benefit; corticosteroids are ineffective"
+       "text": "IVIG 2 g/kg and plasma exchange are equally effective; steroids are ineffective"
       },
       {
        "letter": "C",
-       "text": "Intravenous methylprednisolone alone improves outcome"
+       "text": "Intravenous methylprednisolone alone improves outcome when given early"
       },
       {
        "letter": "D",
-       "text": "Plasma exchange is superior to IVIG"
+       "text": "Plasma exchange is superior to IVIG and should be attempted first"
       }
      ],
      "answer": "B",
-     "explanation": "Trials showed equivalence of IVIG and PLEX, no added benefit from sequential therapy, and no benefit of steroids alone or added to IVIG. Treat within 2–4 weeks of onset in non-ambulatory patients. Monitor FVC and NIF (intubate for FVC <20 mL/kg, \"20/30/40 rule\"), dysautonomia, and cardiac arrhythmia. AMAN (anti-GM1/GD1a) follows Campylobacter and lacks sensory involvement."
+     "explanation": "Trials showed equivalence of IVIG and PLEX, no added benefit from sequential therapy, and no benefit of steroids alone or added to IVIG. Treat within 2–4 weeks of onset in non-ambulatory patients. Monitor FVC and NIF (intubate for FVC <20 mL/kg, \"20/30/40 rule\"), dysautonomia, and cardiac arrhythmia. AMAN (anti-GM1/GD1a) follows Campylobacter and lacks sensory involvement.",
+     "learning": "IVIG is given as 2 g/kg over 2-5 days. Combining IVIG with plasma exchange adds no benefit, and steroids help neither alone nor added to IVIG. Treat within 2-4 weeks of onset in non-ambulatory patients."
     },
     {
      "id": "rite-e8-7",
@@ -9773,23 +9806,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Cerebral palsy with spastic diplegia"
+       "text": "Cerebral palsy with spastic diplegia from periventricular injury"
       },
       {
        "letter": "B",
-       "text": "Juvenile Parkinson disease (PRKN)"
+       "text": "Juvenile parkinsonism from biallelic PRKN (parkin) variants"
       },
       {
        "letter": "C",
-       "text": "Dopa-responsive dystonia (Segawa disease) due to autosomal dominant GCH1 deficiency"
+       "text": "Dopa-responsive dystonia from autosomal dominant GCH1 deficiency"
       },
       {
        "letter": "D",
-       "text": "DYT1 (TOR1A) dystonia"
+       "text": "DYT1 (TOR1A) generalised dystonia of childhood onset"
       }
      ],
      "answer": "C",
-     "explanation": "GTP cyclohydrolase 1 deficiency impairs tetrahydrobiopterin and thus tyrosine hydroxylase; the phenotype includes diurnal fluctuation, parkinsonism, and spasticity-like signs, and responds permanently to low-dose levodopa without dyskinesia. Any childhood-onset dystonia deserves a levodopa trial. Recessive forms (tyrosine hydroxylase, sepiapterin reductase deficiency) are more severe with CSF neurotransmitter abnormalities."
+     "explanation": "GTP cyclohydrolase 1 deficiency impairs tetrahydrobiopterin and thus tyrosine hydroxylase; the phenotype includes diurnal fluctuation, parkinsonism, and spasticity-like signs, and responds permanently to low-dose levodopa without dyskinesia. Any childhood-onset dystonia deserves a levodopa trial. Recessive forms (tyrosine hydroxylase, sepiapterin reductase deficiency) are more severe with CSF neurotransmitter abnormalities.",
+     "learning": "Also called Segawa disease. GTP cyclohydrolase 1 deficiency impairs tetrahydrobiopterin and so tyrosine hydroxylase, giving diurnal fluctuation, parkinsonism, and spasticity-like signs that respond dramatically to low-dose levodopa."
     },
     {
      "id": "rite-e8-10",
@@ -9827,23 +9861,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Approximately 1–2%, because of possible parental germline (gonadal) mosaicism"
+       "text": "Approximately 1-2%, from possible parental germline (gonadal) mosaicism"
       },
       {
        "letter": "B",
-       "text": "25%"
+       "text": "25%, the recurrence risk for an autosomal recessive condition"
       },
       {
        "letter": "C",
-       "text": "Essentially zero"
+       "text": "Essentially zero, since neither parent carries the variant"
       },
       {
        "letter": "D",
-       "text": "50%"
+       "text": "50%, the recurrence risk for an autosomal dominant condition"
       }
      ],
      "answer": "A",
-     "explanation": "Apparent de novo variants may arise from a mosaic parental germline undetectable in blood; empirical recurrence is ~1–2% (higher, ~4–5%, for some genes). Prenatal or preimplantation testing can be offered. Deep sequencing of parental blood or sperm can sometimes detect low-level mosaicism and refine risk. Paternal age drives most de novo SNVs."
+     "explanation": "Apparent de novo variants may arise from a mosaic parental germline undetectable in blood; empirical recurrence is ~1–2% (higher, ~4–5%, for some genes). Prenatal or preimplantation testing can be offered. Deep sequencing of parental blood or sperm can sometimes detect low-level mosaicism and refine risk. Paternal age drives most de novo SNVs.",
+     "learning": "A mosaic parental germline is undetectable in blood, which is why the risk is not zero. Empirical recurrence is 1-2%, and higher (about 4-5%) for some genes. Prenatal or preimplantation testing can be offered."
     },
     {
      "id": "rite-e8-12",
@@ -10067,23 +10102,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Lumbar puncture is mandatory"
+       "text": "Lumbar puncture is mandatory in every child under 2 years of age"
       },
       {
        "letter": "B",
-       "text": "No routine imaging or EEG; evaluate the source of fever; counsel that recurrence is ~30% and epilepsy risk is only modestly elevated (~2%)"
+       "text": "No routine imaging or EEG; evaluate the fever source and counsel on recurrence"
       },
       {
        "letter": "C",
-       "text": "Begin daily phenobarbital prophylaxis"
+       "text": "Begin daily phenobarbital prophylaxis and continue it until age 5"
       },
       {
        "letter": "D",
-       "text": "Emergent MRI and EEG; start levetiracetam"
+       "text": "Emergent MRI and EEG, followed by maintenance levetiracetam"
       }
      ],
      "answer": "B",
-     "explanation": "Simple febrile seizures (generalized, <15 min, no recurrence in 24 h, age 6 mo–5 y) require no EEG, imaging, or ASM (AAP guideline). LP is considered under 12 months with incomplete immunization, meningeal signs, or pretreatment with antibiotics. Risk of later epilepsy rises with complex features, family history of epilepsy, and neurodevelopmental abnormality. Prolonged febrile seizures may be the first sign of Dravet or lead to mesial temporal sclerosis (FEBSTAT). Rectal diazepam or intranasal midazolam is prescribed for prolonged recurrences."
+     "explanation": "Simple febrile seizures (generalized, <15 min, no recurrence in 24 h, age 6 mo–5 y) require no EEG, imaging, or ASM (AAP guideline). LP is considered under 12 months with incomplete immunization, meningeal signs, or pretreatment with antibiotics. Risk of later epilepsy rises with complex features, family history of epilepsy, and neurodevelopmental abnormality. Prolonged febrile seizures may be the first sign of Dravet or lead to mesial temporal sclerosis (FEBSTAT). Rectal diazepam or intranasal midazolam is prescribed for prolonged recurrences.",
+     "learning": "The counselling numbers are roughly 30% recurrence and only a modestly elevated (~2%) epilepsy risk. Lumbar puncture is considered under 12 months with incomplete immunisation, meningeal signs, or antibiotic pretreatment — not mandatory in all."
     },
     {
      "id": "rite-e8-20",
@@ -10121,23 +10157,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Add a second dopamine agonist"
+       "text": "Add a second dopamine agonist in the afternoon alongside pramipexole"
       },
       {
        "letter": "B",
-       "text": "Start an SSRI"
+       "text": "Start an SSRI for the associated mood and sleep-onset symptoms"
       },
       {
        "letter": "C",
-       "text": "Increase pramipexole dose"
+       "text": "Increase the pramipexole dose and move the dose earlier in the day"
       },
       {
        "letter": "D",
-       "text": "Recognize augmentation; taper the dopamine agonist, transition to an alpha-2-delta ligand (gabapentin enacarbil or pregabalin), and replete iron to ferritin >75 ng/mL"
+       "text": "Recognise augmentation; taper the agonist, switch to an alpha-2-delta ligand"
       }
      ],
      "answer": "D",
-     "explanation": "Augmentation (earlier onset, spread, shorter latency at rest) occurs in a majority of patients on long-term dopaminergic therapy, so alpha-2-delta ligands are now first-line pharmacotherapy (AASM 2024). Iron deficiency is central to pathophysiology (low CSF ferritin, dopaminergic dysregulation); oral or IV iron is indicated for ferritin <75 ng/mL. Antidopaminergics, antihistamines, and SSRIs exacerbate RLS. MEIS1 is the strongest genetic association."
+     "explanation": "Augmentation (earlier onset, spread, shorter latency at rest) occurs in a majority of patients on long-term dopaminergic therapy, so alpha-2-delta ligands are now first-line pharmacotherapy (AASM 2024). Iron deficiency is central to pathophysiology (low CSF ferritin, dopaminergic dysregulation); oral or IV iron is indicated for ferritin <75 ng/mL. Antidopaminergics, antihistamines, and SSRIs exacerbate RLS. MEIS1 is the strongest genetic association.",
+     "learning": "The ligand is gabapentin enacarbil or pregabalin, and iron should be repleted to a ferritin above 75 ng/mL — hers is 40. Antidopaminergics, antihistamines and SSRIs all exacerbate restless legs, which is why option B makes things worse."
     },
     {
      "id": "rite-e8-22",
@@ -10248,27 +10285,28 @@
      "options": [
       {
        "letter": "A",
-       "text": "Annual ophthalmologic examination (acuity, color vision, fundoscopy) through at least age 8, with MRI only for abnormal findings"
+       "text": "Annual ophthalmologic examination through age 8, MRI only if abnormal"
       },
       {
        "letter": "B",
-       "text": "No screening; optic gliomas in NF1 are always symptomatic"
+       "text": "No screening, since optic pathway gliomas in NF1 are always symptomatic"
       },
       {
        "letter": "C",
-       "text": "Visual evoked potentials every 6 months"
+       "text": "Visual evoked potentials every 6 months until at least age 18"
       },
       {
        "letter": "D",
-       "text": "Baseline MRI and repeat only for visual symptoms"
+       "text": "Baseline brain MRI, repeated only if visual symptoms develop"
       },
       {
        "letter": "E",
-       "text": "Annual brain MRI until age 18"
+       "text": "Annual brain MRI until age 18 regardless of the eye examination"
       }
      ],
      "answer": "A",
-     "explanation": "Annual ophthalmologic examination through age 8 (then every 2 years to 18) is the standard; screening MRI is not recommended because most NF1 optic pathway gliomas are asymptomatic, indolent, and never require treatment. Symptomatic or progressive tumors are treated with carboplatin/vincristine rather than radiation (secondary malignancy, moyamoya). Selumetinib (MEK inhibitor) is approved for inoperable symptomatic plexiform neurofibromas and is used off-label for progressive OPG."
+     "explanation": "Annual ophthalmologic examination through age 8 (then every 2 years to 18) is the standard; screening MRI is not recommended because most NF1 optic pathway gliomas are asymptomatic, indolent, and never require treatment. Symptomatic or progressive tumors are treated with carboplatin/vincristine rather than radiation (secondary malignancy, moyamoya). Selumetinib (MEK inhibitor) is approved for inoperable symptomatic plexiform neurofibromas and is used off-label for progressive OPG.",
+     "learning": "The examination covers acuity, colour vision and fundoscopy, annually to age 8 and then every 2 years to 18."
     },
     {
      "id": "rite-e8-26",
@@ -10382,23 +10420,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Retinal disease; SSEPs localize brainstem strokes"
+       "text": "Retinal disease; SSEPs are used to localise brainstem strokes"
       },
       {
        "letter": "B",
-       "text": "Cortical blindness; SSEPs assess sacral roots"
+       "text": "Cortical blindness; SSEPs are used to assess sacral nerve roots"
       },
       {
        "letter": "C",
-       "text": "Demyelination of the anterior visual pathway; bilaterally absent cortical N20 responses ≥24 hours after cardiac arrest reliably predict poor neurologic outcome"
+       "text": "Anterior visual pathway demyelination; absent N20 predicts poor outcome"
       },
       {
        "letter": "D",
-       "text": "Axonal loss; SSEPs diagnose carpal tunnel syndrome"
+       "text": "Axonal loss; SSEPs are used to diagnose carpal tunnel syndrome"
       }
      ],
      "answer": "C",
-     "explanation": "Latency prolongation with preserved amplitude signals demyelination (VEPs may be the only evidence of a prior subclinical optic neuritis in MS work-up); axonal or retinal disease reduces amplitude. Bilateral absence of median N20 responses after cardiac arrest has a false-positive rate near zero for poor outcome when recorded off sedation and hypothermia; brainstem auditory evoked potentials are used for acoustic neuroma screening and intraoperative monitoring."
+     "explanation": "Latency prolongation with preserved amplitude signals demyelination (VEPs may be the only evidence of a prior subclinical optic neuritis in MS work-up); axonal or retinal disease reduces amplitude. Bilateral absence of median N20 responses after cardiac arrest has a false-positive rate near zero for poor outcome when recorded off sedation and hypothermia; brainstem auditory evoked potentials are used for acoustic neuroma screening and intraoperative monitoring.",
+     "learning": "Specifically, bilaterally absent cortical N20 responses at 24 hours or more after cardiac arrest, recorded off sedation and hypothermia, reliably predict poor neurologic outcome."
     },
     {
      "id": "rite-e8-30",
@@ -10964,23 +11003,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Hypothalamus"
+       "text": "Posterolateral hypothalamus, as the first-order neuron"
       },
       {
        "letter": "B",
-       "text": "Superior cervical ganglion"
+       "text": "Superior cervical ganglion, at the carotid bifurcation"
       },
       {
        "letter": "C",
-       "text": "Ciliospinal center of Budge (intermediolateral cell column of C8–T2)"
+       "text": "Ciliospinal centre of Budge, in the C8-T2 spinal cord"
       },
       {
        "letter": "D",
-       "text": "Edinger-Westphal nucleus"
+       "text": "Edinger-Westphal nucleus, in the rostral midbrain"
       }
      ],
      "answer": "C",
-     "explanation": "First-order neurons arise in the posterolateral hypothalamus and descend to the ciliospinal center of Budge (C8–T2); second-order preganglionic neurons travel over the lung apex to the superior cervical ganglion; third-order neurons follow the carotid. Facial anhidrosis implies a pre-ganglionic (first- or second-order) lesion."
+     "explanation": "First-order neurons arise in the posterolateral hypothalamus and descend to the ciliospinal center of Budge (C8–T2); second-order preganglionic neurons travel over the lung apex to the superior cervical ganglion; third-order neurons follow the carotid. Facial anhidrosis implies a pre-ganglionic (first- or second-order) lesion.",
+     "learning": "The centre of Budge is the intermediolateral cell column of C8-T2. First-order neurons descend from the posterolateral hypothalamus; second-order preganglionic fibres then travel over the lung apex to the superior cervical ganglion, which is the segment a Pancoast tumour interrupts."
     },
     {
      "id": "rite-e9-5",
@@ -11264,23 +11304,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Benefit only in patients with thymoma"
+       "text": "Benefit only in patients with a coexisting thymoma on imaging"
       },
       {
        "letter": "B",
-       "text": "Benefit only in MuSK-positive disease"
+       "text": "Benefit only in MuSK-antibody-positive disease, not AChR-positive"
       },
       {
        "letter": "C",
-       "text": "No benefit of thymectomy over prednisone alone"
+       "text": "No benefit of thymectomy over prednisone alone at three years"
       },
       {
        "letter": "D",
-       "text": "Thymectomy plus prednisone improved clinical status and reduced prednisone requirement and hospitalizations over 3 years"
+       "text": "Thymectomy plus prednisone improved status and cut the steroid dose"
       }
      ],
      "answer": "D",
-     "explanation": "MGTX (Wolfe 2016) randomized non-thymomatous AChR+ generalized MG patients aged 18–65 to extended transsternal thymectomy plus prednisone versus prednisone alone, showing better QMG scores and lower steroid exposure. Thymoma is an absolute surgical indication; thymectomy is not recommended for MuSK-MG. Newer targeted agents include FcRn antagonists (efgartigimod, rozanolixizumab) and complement inhibitors (eculizumab, ravulizumab, zilucoplan)."
+     "explanation": "MGTX (Wolfe 2016) randomized non-thymomatous AChR+ generalized MG patients aged 18–65 to extended transsternal thymectomy plus prednisone versus prednisone alone, showing better QMG scores and lower steroid exposure. Thymoma is an absolute surgical indication; thymectomy is not recommended for MuSK-MG. Newer targeted agents include FcRn antagonists (efgartigimod, rozanolixizumab) and complement inhibitors (eculizumab, ravulizumab, zilucoplan).",
+     "learning": "MGTX also showed fewer hospitalisations over the three years. Thymoma is an absolute surgical indication; thymectomy is not recommended in MuSK-MG."
     },
     {
      "id": "rite-e9-14",
@@ -11905,23 +11946,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Continue empiric IV acyclovir 10 mg/kg every 8 hours and repeat CSF HSV PCR in 3–7 days"
+       "text": "Continue IV acyclovir 10 mg/kg every 8 hours, repeat CSF PCR in 3-7 days"
       },
       {
        "letter": "B",
-       "text": "Switch to ganciclovir"
+       "text": "Switch to intravenous ganciclovir and repeat CSF PCR in 3-7 days"
       },
       {
        "letter": "C",
-       "text": "Stop acyclovir since PCR is negative"
+       "text": "Stop acyclovir, since the CSF PCR is negative, and observe off therapy"
       },
       {
        "letter": "D",
-       "text": "Start high-dose corticosteroids alone"
+       "text": "Start high-dose corticosteroids alone and repeat CSF PCR in 3-7 days"
       }
      ],
      "answer": "A",
-     "explanation": "HSV-1 encephalitis PCR may be falsely negative within the first 72 hours; clinical-radiologic suspicion mandates continued acyclovir for 14–21 days with repeat testing. Untreated mortality exceeds 70%. Post-HSV anti-NMDAR encephalitis occurs in ~25% of children with relapse weeks later. Neonatal HSV-2 disease is treated with 21 days of high-dose acyclovir followed by oral suppression."
+     "explanation": "HSV-1 encephalitis PCR may be falsely negative within the first 72 hours; clinical-radiologic suspicion mandates continued acyclovir for 14–21 days with repeat testing. Untreated mortality exceeds 70%. Post-HSV anti-NMDAR encephalitis occurs in ~25% of children with relapse weeks later. Neonatal HSV-2 disease is treated with 21 days of high-dose acyclovir followed by oral suppression.",
+     "learning": "CSF HSV PCR can be falsely negative in the first 72 hours, so a compatible clinical and imaging picture mandates continued acyclovir for 14-21 days with repeat testing."
     },
     {
      "id": "rite-e9-33",
@@ -12060,19 +12102,20 @@
       },
       {
        "letter": "B",
-       "text": "IV methylprednisolone accelerated visual recovery without changing final acuity, while oral prednisone alone increased recurrent optic neuritis"
+       "text": "IV methylprednisolone hastened recovery without changing final acuity"
       },
       {
        "letter": "C",
-       "text": "Oral prednisone was equivalent to IV methylprednisolone"
+       "text": "Oral prednisone was equivalent to IV methylprednisolone in all outcomes"
       },
       {
        "letter": "D",
-       "text": "Steroids reduced conversion to MS at 15 years"
+       "text": "Steroids reduced conversion to multiple sclerosis at fifteen years"
       }
      ],
      "answer": "B",
-     "explanation": "ONTT (Beck 1992) showed IV methylprednisolone hastened recovery and delayed (for 2 years) clinically definite MS in patients with MRI lesions, but did not alter 1-year visual outcome; standard-dose oral prednisone alone doubled recurrence and is therefore avoided. Baseline MRI lesion burden was the strongest predictor of MS conversion."
+     "explanation": "ONTT (Beck 1992) showed IV methylprednisolone hastened recovery and delayed (for 2 years) clinically definite MS in patients with MRI lesions, but did not alter 1-year visual outcome; standard-dose oral prednisone alone doubled recurrence and is therefore avoided. Baseline MRI lesion burden was the strongest predictor of MS conversion.",
+     "learning": "Oral prednisone alone increased the rate of recurrent optic neuritis, which is why it is not used. IV methylprednisolone delayed clinically definite MS for about two years in patients with MRI lesions but did not change the one-year visual outcome."
     },
     {
      "id": "rite-e9-38",
@@ -12118,23 +12161,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Giant cell arteritis; requires high-dose prednisone"
+       "text": "Giant cell arteritis; requires high-dose prednisone and temporal artery biopsy"
       },
       {
        "letter": "B",
-       "text": "Reversible cerebral vasoconstriction syndrome; angiographic resolution within 3 months, often treated with nimodipine"
+       "text": "Reversible cerebral vasoconstriction; resolves angiographically within 3 months"
       },
       {
        "letter": "C",
-       "text": "Primary CNS vasculitis; requires cyclophosphamide"
+       "text": "Primary CNS vasculitis; requires cyclophosphamide and biopsy confirmation"
       },
       {
        "letter": "D",
-       "text": "Aneurysmal subarachnoid hemorrhage; requires coiling"
+       "text": "Aneurysmal subarachnoid haemorrhage; requires coiling or surgical clipping"
       }
      ],
      "answer": "B",
-     "explanation": "RCVS is triggered by the postpartum state, vasoactive drugs (SSRIs, triptans, cannabis, decongestants), and sexual activity; recurrent thunderclap headache is the hallmark. Complications include convexity SAH, PRES, and infarcts. Glucocorticoids are associated with worse outcomes. Normal CSF distinguishes it from primary CNS vasculitis."
+     "explanation": "RCVS is triggered by the postpartum state, vasoactive drugs (SSRIs, triptans, cannabis, decongestants), and sexual activity; recurrent thunderclap headache is the hallmark. Complications include convexity SAH, PRES, and infarcts. Glucocorticoids are associated with worse outcomes. Normal CSF distinguishes it from primary CNS vasculitis.",
+     "learning": "Nimodipine is commonly used. Triggers include the postpartum state, vasoactive drugs (SSRIs, triptans, cannabis, decongestants) and sexual activity; recurrent thunderclap headache is the hallmark."
     },
     {
      "id": "rite-e9-40",
@@ -12390,23 +12434,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Discitis; bed rest"
+       "text": "Discitis; bed rest with analgesia and outpatient orthopaedic follow-up"
       },
       {
        "letter": "B",
-       "text": "Spinal epidural abscess (usually Staphylococcus aureus); emergent contrast MRI, blood cultures, IV antibiotics, and surgical decompression with drainage"
+       "text": "Spinal epidural abscess; emergent contrast MRI, IV antibiotics, decompression"
       },
       {
        "letter": "C",
-       "text": "Transverse myelitis; IV methylprednisolone"
+       "text": "Transverse myelitis; IV methylprednisolone with plasma exchange if refractory"
       },
       {
        "letter": "D",
-       "text": "Vertebral osteomyelitis; oral antibiotics"
+       "text": "Vertebral osteomyelitis; oral antibiotics and orthopaedic follow-up"
       }
      ],
      "answer": "B",
-     "explanation": "The classic triad (back pain, fever, neurologic deficit) is present in a minority at presentation, so risk factors (IV drug use, diabetes, immunosuppression, recent spinal procedure, bacteremia) should trigger MRI. Cord injury results from compression and venous infarction; outcomes depend on pre-operative deficit duration (<24–36 hours). Medical management alone is reserved for patients without deficit or with prohibitive surgical risk."
+     "explanation": "The classic triad (back pain, fever, neurologic deficit) is present in a minority at presentation, so risk factors (IV drug use, diabetes, immunosuppression, recent spinal procedure, bacteremia) should trigger MRI. Cord injury results from compression and venous infarction; outcomes depend on pre-operative deficit duration (<24–36 hours). Medical management alone is reserved for patients without deficit or with prohibitive surgical risk.",
+     "learning": "Usually Staphylococcus aureus, and blood cultures should be drawn before antibiotics. Surgical decompression with drainage is part of the emergent management; outcome depends on how long the deficit has been present (under 24-36 hours)."
     },
     {
      "id": "rite-e10-9",
@@ -12674,23 +12719,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Ceftriaxone alone; dexamethasone after CSF results"
+       "text": "Ceftriaxone alone; dexamethasone once CSF culture results are available"
       },
       {
        "letter": "B",
-       "text": "Vancomycin plus ceftriaxone; dexamethasone at 48 hours"
+       "text": "Vancomycin plus ceftriaxone; dexamethasone starting at 48 hours of therapy"
       },
       {
        "letter": "C",
-       "text": "Meropenem alone; no steroids"
+       "text": "Meropenem alone, with no adjunctive corticosteroids at any point"
       },
       {
        "letter": "D",
-       "text": "Vancomycin plus ceftriaxone plus ampicillin; dexamethasone 10 mg IV given before or with the first antibiotic dose"
+       "text": "Vancomycin, ceftriaxone and ampicillin; dexamethasone with the first dose"
       }
      ],
      "answer": "D",
-     "explanation": "Adults >50, immunocompromised, or pregnant require ampicillin for Listeria; vancomycin covers resistant pneumococcus. Adjunctive dexamethasone (de Gans 2002) reduces mortality and hearing loss in pneumococcal meningitis when started before or with antibiotics and is continued only if pneumococcus is confirmed. Do not delay antibiotics for imaging or LP; obtain blood cultures first."
+     "explanation": "Adults >50, immunocompromised, or pregnant require ampicillin for Listeria; vancomycin covers resistant pneumococcus. Adjunctive dexamethasone (de Gans 2002) reduces mortality and hearing loss in pneumococcal meningitis when started before or with antibiotics and is continued only if pneumococcus is confirmed. Do not delay antibiotics for imaging or LP; obtain blood cultures first.",
+     "learning": "Dexamethasone is 10 mg IV, given before or together with the first antibiotic dose — not after. Ampicillin covers Listeria in adults over 50, the immunocompromised, and in pregnancy; vancomycin covers resistant pneumococcus."
     },
     {
      "id": "rite-e10-17",
@@ -13467,23 +13513,24 @@
      "options": [
       {
        "letter": "A",
-       "text": "Real-time quaking-induced conversion (RT-QuIC) for prion seeding activity"
+       "text": "Real-time quaking-induced conversion (RT-QuIC) assay"
       },
       {
        "letter": "B",
-       "text": "14-3-3 protein"
+       "text": "CSF 14-3-3 protein by Western immunoassay"
       },
       {
        "letter": "C",
-       "text": "Total tau"
+       "text": "CSF total tau by enzyme immunoassay"
       },
       {
        "letter": "D",
-       "text": "Neuron-specific enolase"
+       "text": "CSF neuron-specific enolase level"
       }
      ],
      "answer": "A",
-     "explanation": "RT-QuIC has ~92% sensitivity and ~99% specificity for sporadic CJD and is now in CDC diagnostic criteria; 14-3-3 and tau are sensitive but nonspecific (positive in stroke, encephalitis). DWI is the most sensitive imaging sign (>90%). Codon 129 methionine homozygosity influences phenotype. Variant CJD shows the pulvinar sign and prion in lymphoid tissue."
+     "explanation": "RT-QuIC has ~92% sensitivity and ~99% specificity for sporadic CJD and is now in CDC diagnostic criteria; 14-3-3 and tau are sensitive but nonspecific (positive in stroke, encephalitis). DWI is the most sensitive imaging sign (>90%). Codon 129 methionine homozygosity influences phenotype. Variant CJD shows the pulvinar sign and prion in lymphoid tissue.",
+     "learning": "RT-QuIC detects prion seeding activity and is about 92% sensitive and 99% specific for sporadic CJD, now part of the CDC diagnostic criteria. 14-3-3 and tau are sensitive but nonspecific, rising in stroke and encephalitis too."
     }
    ]
   }

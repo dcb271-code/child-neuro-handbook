@@ -118,6 +118,25 @@ describe('rite-exams.json integrity', () => {
     }
   });
 
+  it('never lets the correct answer give itself away by length', () => {
+    // A correct answer much longer than every distractor is answerable without
+    // knowing any neurology. The original extraction had 49 items where the gap
+    // exceeded 40 characters; the fix expands distractors rather than gutting
+    // the correct answer, so the cap is on the gap, not on answer length.
+    const offenders = data.exams.flatMap((e) =>
+      e.questions
+        .map((q) => {
+          const len = (l: string) => q.options.find((o) => o.letter === l)!.text.length;
+          const longestWrong = Math.max(
+            ...q.options.filter((o) => o.letter !== q.answer).map((o) => o.text.length),
+          );
+          return { id: q.id, gap: len(q.answer) - longestWrong };
+        })
+        .filter((x) => x.gap >= 40),
+    );
+    expect(offenders).toEqual([]);
+  });
+
   it('keeps every exam within the benchmark-able size range', () => {
     for (const e of data.exams) {
       expect(e.questions.length).toBeGreaterThanOrEqual(40);
