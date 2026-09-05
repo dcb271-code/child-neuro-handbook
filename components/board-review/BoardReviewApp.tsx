@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { Question, Dim1Category, Difficulty, ModuleId } from '@/lib/board-review/types';
 import { DIM1_LABEL, DIM1_COLOR, MODULE_IDS } from '@/lib/board-review/types';
 import QuestionCard from './QuestionCard';
@@ -8,6 +8,8 @@ import ResultsScreen from './ResultsScreen';
 import WhoAmI from '@/components/identity/WhoAmI';
 import { useIdentity } from '@/lib/identity/useIdentity';
 import { submitAttempts } from '@/lib/progress/submitAttempts';
+import { computeProgress, type Attempt } from '@/lib/progress/calculator';
+import QuizProgressSection from '@/components/progress/QuizProgressSection';
 
 type Phase = 'idle' | 'active' | 'complete';
 
@@ -54,6 +56,18 @@ export default function BoardReviewApp({ questions: allQuestions }: { questions:
   const [selections, setSelections] = useState<(number | null)[]>([]);
   const [current, setCurrent] = useState(0);
   const { name: identityName } = useIdentity();
+
+  // Progress is fetched client-side (not passed down from the server page,
+  // which stays force-static) so this stays in sync when a session completes
+  // without needing the board-review page itself to become dynamic.
+  const [progress, setProgress] = useState(() => computeProgress([]));
+  const refetchProgress = useCallback(() => {
+    fetch('/api/progress/attempts/', { cache: 'no-store' })
+      .then((r) => r.json())
+      .then((d: { attempts?: Attempt[] }) => setProgress(computeProgress(d.attempts ?? [])))
+      .catch((err) => console.error('[progress] fetch failed:', err));
+  }, []);
+  useEffect(() => { refetchProgress(); }, [refetchProgress]);
 
   const dim1Counts = useMemo(() => {
     const counts: Partial<Record<Dim1Category, number>> = {};
@@ -129,6 +143,8 @@ export default function BoardReviewApp({ questions: allQuestions }: { questions:
             };
           }),
         );
+        // Give the write a moment to land before pulling it back.
+        setTimeout(refetchProgress, 1500);
       }
       setPhase('complete');
     } else {
@@ -180,6 +196,35 @@ export default function BoardReviewApp({ questions: allQuestions }: { questions:
         </p>
         <WhoAmI className="mt-2" />
       </div>
+
+      {/* My Progress — tucked away, collapsed by default so it doesn't compete
+          with starting a quiz. Covers both board review and the homepage's
+          daily question, since both are opt-in self-tracked quiz progress. */}
+      <details className="mb-4 group/details">
+        <summary className="flex items-center gap-2.5 cursor-pointer select-none py-2 text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors">
+          <svg className="w-3 h-3 transition-transform details-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+          </svg>
+          <span className="text-xs font-semibold uppercase tracking-widest">My Progress</span>
+          <div className="flex-1 h-px bg-slate-200 dark:bg-slate-700 ml-2" />
+        </summary>
+        <div className="pt-3 pb-1">
+          <p className="text-xs text-slate-400 dark:text-slate-500 mb-3">
+            Opt-in and self-identified — pick your name above to start showing up here. Anyone can pick any
+            name; this is not a login.
+          </p>
+          <QuizProgressSection
+            title="Daily Question"
+            blurb="One attempt logged per day — the first question you see, whether right or wrong."
+            progress={progress.daily}
+          />
+          <QuizProgressSection
+            title="Board Review"
+            blurb="Every question answered in a session, across all sessions."
+            progress={progress['board-review']}
+          />
+        </div>
+      </details>
 
       {/* Topic — includes "Adult" as a folded pill at the end */}
       <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/40 p-5 mb-4">
