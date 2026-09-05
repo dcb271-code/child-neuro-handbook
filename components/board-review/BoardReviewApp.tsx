@@ -10,6 +10,9 @@ import { useIdentity } from '@/lib/identity/useIdentity';
 import { submitAttempts } from '@/lib/progress/submitAttempts';
 import { computeProgress, type Attempt } from '@/lib/progress/calculator';
 import QuizProgressSection from '@/components/progress/QuizProgressSection';
+import RiteExamApp from '@/components/rite/RiteExamApp';
+import riteData from '@/src/data/rite-exams.json';
+import type { RiteData } from '@/lib/rite/types';
 
 type Phase = 'idle' | 'active' | 'complete';
 
@@ -61,6 +64,11 @@ export default function BoardReviewApp({ questions: allQuestions }: { questions:
   // which stays force-static) so this stays in sync when a session completes
   // without needing the board-review page itself to become dynamic.
   const [progress, setProgress] = useState(() => computeProgress([]));
+  // True while a RITE exam is being taken, so the rest of this page steps
+  // aside. The RITE component stays mounted either way — hiding rather than
+  // unmounting keeps in-progress answers alive.
+  const [riteActive, setRiteActive] = useState(false);
+  const [riteOpen, setRiteOpen] = useState(false);
   const refetchProgress = useCallback(() => {
     fetch('/api/progress/attempts/', { cache: 'no-store' })
       .then((r) => r.json())
@@ -186,8 +194,8 @@ export default function BoardReviewApp({ questions: allQuestions }: { questions:
   );
 
   return (
-    <div className="max-w-2xl mx-auto py-4 sm:py-6">
-      <div className="mb-6">
+    <div className={`${riteActive ? 'max-w-3xl' : 'max-w-2xl'} mx-auto py-4 sm:py-6`}>
+      <div className={riteActive ? 'hidden' : 'mb-6'}>
         <h1 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight mb-1">
           Board Review
         </h1>
@@ -197,6 +205,35 @@ export default function BoardReviewApp({ questions: allQuestions }: { questions:
         <WhoAmI className="mt-2" />
       </div>
 
+      {/* RITE Practice Exams — full-length exams, distinct from the
+          instant-feedback quiz builder below. Kept mounted while active so a
+          part-finished exam is never lost; the page's own chrome hides
+          instead. */}
+      <div className={riteActive ? '' : 'mb-4'}>
+        {!riteActive && (
+          <button
+            type="button"
+            onClick={() => setRiteOpen((o) => !o)}
+            aria-expanded={riteOpen}
+            className="w-full flex items-center gap-2.5 select-none py-2 text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors"
+          >
+            <svg className={`w-3 h-3 transition-transform ${riteOpen ? 'rotate-90' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+            </svg>
+            <span className="text-xs font-semibold uppercase tracking-widest">RITE Practice Exams</span>
+            <div className="flex-1 h-px bg-slate-200 dark:bg-slate-700 ml-2" />
+          </button>
+        )}
+        <div className={!riteActive && !riteOpen ? 'hidden' : 'pt-3 pb-1'}>
+          <RiteExamApp
+            data={riteData as RiteData}
+            onAttemptsSubmitted={refetchProgress}
+            onPhaseChange={setRiteActive}
+          />
+        </div>
+      </div>
+
+      <div className={riteActive ? 'hidden' : ''}>
       {/* My Progress — tucked away, collapsed by default so it doesn't compete
           with starting a quiz. Covers both board review and the homepage's
           daily question, since both are opt-in self-tracked quiz progress. */}
@@ -405,6 +442,7 @@ export default function BoardReviewApp({ questions: allQuestions }: { questions:
           ? 'No questions match these filters'
           : `Start ${effectiveCount}-question quiz →`}
       </button>
+      </div>
     </div>
   );
 }

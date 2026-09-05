@@ -3,11 +3,12 @@
 
 import { MEMBERS, memberByName } from '@/lib/roster';
 
-export type QuizId = 'daily' | 'board-review';
+export type QuizId = 'daily' | 'board-review' | 'rite';
 
 export const QUIZZES: { id: QuizId; label: string }[] = [
   { id: 'daily', label: 'Daily Question' },
   { id: 'board-review', label: 'Board Review' },
+  { id: 'rite', label: 'RITE Practice Exams' },
 ];
 
 export type Attempt = {
@@ -100,10 +101,9 @@ function emptyQuizProgress(quiz: QuizId): QuizProgress {
 }
 
 export function computeProgress(attempts: Attempt[]): ProgressBoard {
-  const board = {
-    daily: emptyQuizProgress('daily'),
-    'board-review': emptyQuizProgress('board-review'),
-  } as ProgressBoard;
+  const board = Object.fromEntries(
+    QUIZZES.map((q) => [q.id, emptyQuizProgress(q.id)]),
+  ) as ProgressBoard;
 
   for (const a of attempts) {
     const member = memberByName(a.member);
