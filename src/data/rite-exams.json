@@ -36,7 +36,7 @@
      "exam": 1,
      "num": 2,
      "part": "a",
-     "stem": "The sagittal T1 image shows a destructive, lobulated midline mass centerd on the clivus with posterior displacement of the brainstem. What is the most likely diagnosis?",
+     "stem": "The sagittal T1 image shows a destructive, lobulated midline mass centered on the clivus with posterior displacement of the brainstem. What is the most likely diagnosis?",
      "options": [
       {
        "letter": "A",
@@ -60,7 +60,7 @@
       }
      ],
      "answer": "A",
-     "explanation": "Chordoma. A midline, destructive, lobulated clival mass that is markedly T2 bright and erodes bone is a chordoma until proven otherwise. Chordomas arise from notochordal remnants and occur at the clivus, sacrococcyx and vertebral bodies. The main mimic is chondrosarcoma, which is typically off-midline at the petro-occipital fissure. A clival meningioma is dural-based and causes hyperostosis rather than destruction; a macroadenoma is centerd on the sella, not the clivus; nasopharyngeal carcinoma arises from the mucosa below and invades upward.",
+     "explanation": "Chordoma. A midline, destructive, lobulated clival mass that is markedly T2 bright and erodes bone is a chordoma until proven otherwise. Chordomas arise from notochordal remnants and occur at the clivus, sacrococcyx and vertebral bodies. The main mimic is chondrosarcoma, which is typically off-midline at the petro-occipital fissure. A clival meningioma is dural-based and causes hyperostosis rather than destruction; a macroadenoma is centered on the sella, not the clivus; nasopharyngeal carcinoma arises from the mucosa below and invades upward.",
      "images": [
       "/rite/9ec4639bb60cd5a813be334c75d110a1f7b9914a.jpg"
      ],
@@ -102,7 +102,7 @@
       "/rite/8871eb9aeb9008a253acb0a6c841f0b0436d42c1.jpg"
      ],
      "imageAlt": "Sagittal T1 lumbar spine: loss of the L2-L3 disc space with destruction and low signal of the adjacent endplates and vertebral bodies; ring enhancement on the post-contrast study.",
-     "learning": "Tumor spares the disc; infection crosses it. In children infection starts in the vascularised disc, in adults at the endplate."
+     "learning": "Tumor spares the disc; infection crosses it. In children infection starts in the vascularized disc, in adults at the endplate."
     },
     {
      "id": "rite-e1-4",
@@ -577,13 +577,13 @@
       }
      ],
      "answer": "D",
-     "explanation": "Late subacute, roughly 1 to 2 weeks old. Red cells lyse and methaemoglobin spills into the extracellular space. Methaemoglobin keeps the blood T1 bright, and the loss of red-cell compartmentalisation removes the susceptibility effect that had been darkening T2 — so T2 turns bright while T1 stays bright. Bright-on-both is the only stage with that combination.",
+     "explanation": "Late subacute, roughly 1 to 2 weeks old. Red cells lyse and methemoglobin spills into the extracellular space. Methemoglobin keeps the blood T1 bright, and the loss of red-cell compartmentalization removes the susceptibility effect that had been darkening T2 — so T2 turns bright while T1 stays bright. Bright-on-both is the only stage with that combination.",
      "images": [
       "/rite/b6cd0c94bdf88954bfe4be2c583db2e5eb2018c2.jpg"
      ],
      "imageAlt": "Axial T1 bright, T2 bright, GRE bright center with dark rim, DWI bright.",
      "salient": "Work the T1/T2 pair in order — Iso-Bright, Iso-Dark, Bright-Dark, Bright-Bright, Dark-Dark (IB, ID, BD, BB, DD) — for hyperacute, acute, early subacute, late subacute, chronic.",
-     "learning": "Hyperacute (oxyhaemoglobin, <24 h): T1 iso, T2 bright. Acute (deoxyhaemoglobin, 1-3 d): T1 iso, T2 dark. Early subacute (intracellular methaemoglobin, 3-7 d): T1 bright, T2 dark. Late subacute (extracellular methaemoglobin, 1-2 wk): T1 bright, T2 bright. Chronic (haemosiderin, >1 mo): T1 dark, T2 dark. The T1 change tracks the appearance of methaemoglobin; the T2 change tracks whether that methaemoglobin is still inside intact red cells. GRE/SWI stays dark at the rim once haemosiderin forms, and DWI can appear bright here from T2 shine-through rather than true restriction."
+     "learning": "Hyperacute (oxyhemoglobin, <24 h): T1 iso, T2 bright. Acute (deoxyhemoglobin, 1-3 d): T1 iso, T2 dark. Early subacute (intracellular methemoglobin, 3-7 d): T1 bright, T2 dark. Late subacute (extracellular methemoglobin, 1-2 wk): T1 bright, T2 bright. Chronic (hemosiderin, >1 mo): T1 dark, T2 dark. The T1 change tracks the appearance of methemoglobin; the T2 change tracks whether that methemoglobin is still inside intact red cells. GRE/SWI stays dark at the rim once hemosiderin forms, and DWI can appear bright here from T2 shine-through rather than true restriction."
     },
     {
      "id": "rite-e1-19",
@@ -887,7 +887,7 @@
       },
       {
        "letter": "B",
-       "text": "Surgical revascularisation"
+       "text": "Surgical revascularization"
       },
       {
        "letter": "C",
@@ -1274,7 +1274,7 @@
       "/rite/25c35292a967de0dd63b3a85a51a28e6ed40db69.jpg"
      ],
      "imageAlt": "Carotid angiograms (A, lateral; B, magnified): irregular ulcerated plaque at the ICA origin with occlusion of the proximal ICA; distal vessels fill via collaterals.",
-     "learning": "A complete occlusion is not a revascularisation target — endarterectomy benefit applies to high-grade stenosis, not total occlusion, and EC-IC bypass failed to show benefit in trials."
+     "learning": "A complete occlusion is not a revascularization target — endarterectomy benefit applies to high-grade stenosis, not total occlusion, and EC-IC bypass failed to show benefit in trials."
     },
     {
      "id": "rite-e1-39",
@@ -1893,7 +1893,7 @@
      "exam": 2,
      "num": 17,
      "part": "a",
-     "stem": "A 55-year-old man with asymmetric limb weakness, fasciculations, and brisk reflexes has a sister with similar disease and a father who died with behavioral-variant FTD. What is the most likely genetic cause, and which approved therapy targets a different familial ALS gene?",
+     "stem": "A 55-year-old man with asymmetric limb weakness, fasciculations, and brisk reflexes has a sister with similar disease and a father who died with behavioral-variant FTD. What is the most likely genetic cause, and is an approved gene-targeted therapy available for it?",
      "options": [
       {
        "letter": "A",
@@ -5675,7 +5675,7 @@
      "options": [
       {
        "letter": "A",
-       "text": "Serum sodium monitoring for symptomatic hyponatraemia and seizure worsening"
+       "text": "Serum sodium monitoring for symptomatic hyponatremia and seizure worsening"
       },
       {
        "letter": "B",
@@ -5687,7 +5687,7 @@
       },
       {
        "letter": "D",
-       "text": "Serial liver function tests for idiosyncratic hepatotoxicity and hyperammonaemia"
+       "text": "Serial liver function tests for idiosyncratic hepatotoxicity and hyperammonemia"
       }
      ],
      "answer": "C",
@@ -7554,7 +7554,7 @@
       },
       {
        "letter": "B",
-       "text": "Paternal mtDNA contribution varying between siblings at fertilisation"
+       "text": "Paternal mtDNA contribution varying between siblings at fertilization"
       },
       {
        "letter": "C",
@@ -8399,7 +8399,7 @@
      ],
      "answer": "C",
      "explanation": "Osmotic demyelination (central pontine and extrapontine myelinolysis) follows overly rapid correction of chronic hyponatremia, especially with alcoholism, malnutrition, hypokalemia, or liver disease. MRI changes may lag by 1–2 weeks. Overcorrection is treated with desmopressin and D5W relowering.",
-     "learning": "The 8 mEq/L ceiling applies to high-risk patients — alcohol use disorder, malnutrition, hypokalaemia, liver disease. Osmotic demyelination covers both central pontine and extrapontine myelinolysis."
+     "learning": "The 8 mEq/L ceiling applies to high-risk patients — alcohol use disorder, malnutrition, hypokalemia, liver disease. Osmotic demyelination covers both central pontine and extrapontine myelinolysis."
     },
     {
      "id": "rite-e7-6",
@@ -10129,7 +10129,7 @@
      ],
      "answer": "B",
      "explanation": "Simple febrile seizures (generalized, <15 min, no recurrence in 24 h, age 6 mo–5 y) require no EEG, imaging, or ASM (AAP guideline). LP is considered under 12 months with incomplete immunization, meningeal signs, or pretreatment with antibiotics. Risk of later epilepsy rises with complex features, family history of epilepsy, and neurodevelopmental abnormality. Prolonged febrile seizures may be the first sign of Dravet or lead to mesial temporal sclerosis (FEBSTAT). Rectal diazepam or intranasal midazolam is prescribed for prolonged recurrences.",
-     "learning": "The counselling numbers are roughly 30% recurrence and only a modestly elevated (~2%) epilepsy risk. Lumbar puncture is considered under 12 months with incomplete immunisation, meningeal signs, or antibiotic pretreatment — not mandatory in all."
+     "learning": "The counselling numbers are roughly 30% recurrence and only a modestly elevated (~2%) epilepsy risk. Lumbar puncture is considered under 12 months with incomplete immunization, meningeal signs, or antibiotic pretreatment — not mandatory in all."
     },
     {
      "id": "rite-e8-20",
@@ -10179,7 +10179,7 @@
       },
       {
        "letter": "D",
-       "text": "Recognise augmentation; taper the agonist, switch to an alpha-2-delta ligand"
+       "text": "Recognize augmentation; taper the agonist, switch to an alpha-2-delta ligand"
       }
      ],
      "answer": "D",
@@ -10430,7 +10430,7 @@
      "options": [
       {
        "letter": "A",
-       "text": "Retinal disease; SSEPs are used to localise brainstem strokes"
+       "text": "Retinal disease; SSEPs are used to localize brainstem strokes"
       },
       {
        "letter": "B",
