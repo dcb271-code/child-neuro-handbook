@@ -1,6 +1,6 @@
 # Handoff — Child Neuro Handbook
 
-Last updated: 2026-09-06, through commit `0b17f4b`. Written for whoever picks
+Last updated: 2026-09-06, through commit `fff77f0`. Written for whoever picks
 this project up next — a co-maintainer, a future chief resident, or future-you
 in six months.
 
@@ -103,8 +103,11 @@ Opt-in and self-identified. A resident picks their name once
 (`lib/identity/useIdentity.ts` + `components/identity/WhoAmI.tsx`), stored in
 localStorage on that device. **This is not authentication** — anyone can pick
 anyone's name, an accepted tradeoff matching how Family Points already works.
-The picker appears on the board-review idle screen and in the daily-challenge
-header, and never gates either quiz; skipping it just means you aren't tracked.
+The picker lives on the board-review idle screen only — it was removed from the
+daily-challenge header to keep the front door uncluttered. The identity is in
+localStorage, so the daily question still attributes attempts for anyone who
+has set a name on Board Review; a resident who never opens Board Review is
+simply untracked. It never gates either quiz.
 
 Four quizzes feed it (`lib/progress/calculator.ts`): the daily question,
 board review, RITE, and the pediatrics quizzes. Daily logs exactly one attempt per calendar day — the
@@ -154,6 +157,37 @@ pending), The Narcos 35, Connectome Crew 0, Highly Functional 0.
   tracker spreadsheet. Defaults to a dry run; reads roster/tasks from config so
   it can't drift; refuses to guess when a cell looks like a miskeyed point
   total rather than a count. Usage is in the file header.
+
+## Resources uploads go browser → Blob directly
+
+Uploads used to POST the file as multipart form data to
+`/api/resources/upload`, which forwarded it with `put()`. That fails as a bare
+**"Network error"** in the browser for two platform reasons, neither obvious
+from the code: the route cannot resolve `req.formData()` until the whole body
+has arrived, so **upload time counts against the function's execution budget**
+(10s on Hobby, and no `maxDuration` was set), and Vercel caps serverless request
+bodies at 4.5 MB — which is why `MAX_FILE_BYTES` sat just under it at 4 MB.
+
+The route now only mints a short-lived client token (`handleUpload`) and the
+browser uploads straight to Blob storage with `upload()` from
+`@vercel/blob/client`, multipart so a dropped packet retries rather than losing
+the transfer. Neither limit applies any more, and `MAX_FILE_BYTES` is now a
+product choice (100 MB), not a platform one.
+
+Two consequences worth knowing:
+
+- **The browser now chooses the pathname**, so `isUploadablePath` in
+  `lib/resources/paths.ts` is the security boundary — it keeps writes inside
+  `resources/<subsection>/` and off `_metadata.json`. Those helpers live in
+  `paths.ts` rather than `metadata.ts` because the client cannot import the
+  latter (it pulls in the server-only Blob SDK).
+- **`onUploadCompleted` is not used** to record the file title. It arrives as a
+  webhook from Vercel, so it never fires against localhost and carries no
+  session cookie; the client PATCHes `/api/resources/file` once `upload()`
+  resolves instead.
+
+Note `/resources` returns 500 locally without `BLOB_READ_WRITE_TOKEN` in
+`.env.local`. That is expected, not a regression.
 
 ## The Blob caching bug — read before touching either store
 
@@ -214,7 +248,7 @@ forget it's hand-authored JSON, not derived).
 2. Check `docs/goal-reports/` for pending clinician decisions before assuming
    a number is settled.
 3. Run `npm run test:run` and `npm run build` before and after any change —
-   352 tests as of this commit, all passing.
+   360 tests as of this commit, all passing.
 4. After editing any section's HTML, run `npm run build-search` or the
    consistency tests will fail.
 5. If Blob storage seems flaky, read the caching section above before "fixing"

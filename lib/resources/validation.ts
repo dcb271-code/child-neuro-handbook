@@ -19,7 +19,11 @@ export type Subsection = (typeof ALLOWED_SUBSECTIONS)[number];
 // the multipart envelope so we don't surface infrastructure-layer 413s to users.
 // To raise this, migrate uploads to client-side direct upload via @vercel/blob's
 // handleUpload pattern (which bypasses the function body limit).
-export const MAX_FILE_BYTES = 4 * 1024 * 1024; // 4 MB
+// 4 MB used to be a platform ceiling, not a choice: uploads were proxied
+// through a serverless function and Vercel caps those request bodies at 4.5 MB.
+// Uploads now go browser -> Blob directly (see app/api/resources/upload), so
+// this is purely a product limit and can move freely.
+export const MAX_FILE_BYTES = 100 * 1024 * 1024; // 100 MB
 
 export function validateMime(mime: string): boolean {
   return (ALLOWED_MIME as readonly string[]).includes(mime);

@@ -1,5 +1,10 @@
 import { put, list } from '@vercel/blob';
 import type { Subsection } from './validation';
+// Path helpers moved to paths.ts (importable from client components, which
+// cannot pull in the @vercel/blob server SDK above). Re-exported so existing
+// callers of these from metadata.ts keep working.
+import { slugify, blobPathFor } from './paths';
+export { slugify, blobPathFor } from './paths';
 
 export type LinkRecord = {
   id: string;
@@ -15,19 +20,6 @@ export type Metadata = {
 
 export const METADATA_PATH = 'resources/_metadata.json';
 export const EMPTY_METADATA: Metadata = Object.freeze({ links: [], fileTitles: {} }) as Metadata;
-
-export function slugify(name: string): string {
-  // Drop the extension if present
-  const dot = name.lastIndexOf('.');
-  const base = dot > 0 ? name.slice(0, dot) : name;
-
-  const cleaned = base
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-
-  return cleaned || 'file';
-}
 
 export function resolveTitle(pathname: string, md: Metadata): string {
   const override = md.fileTitles[pathname];
@@ -80,14 +72,6 @@ export async function writeMetadata(md: Metadata): Promise<void> {
     contentType: 'application/json',
     cacheControlMaxAge: 60,
   });
-}
-
-export function blobPathFor(sub: Subsection, originalName: string): string {
-  const dot = originalName.lastIndexOf('.');
-  const ext = dot > 0 ? originalName.slice(dot + 1).toLowerCase().replace(/[^a-z0-9]/g, '') : '';
-  const slug = slugify(originalName);
-  const ts = Date.now();
-  return `resources/${sub}/${ts}__${slug}${ext ? `.${ext}` : ''}`;
 }
 
 export function newLinkId(): string {

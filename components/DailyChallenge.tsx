@@ -3,7 +3,9 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import questions from '@/src/data/questions.json';
 import factoids from '@/src/data/factoids.json';
-import WhoAmI from '@/components/identity/WhoAmI';
+// No name picker on this screen by design — the identity lives in localStorage
+// and is set on Board Review, so the daily question still attributes attempts
+// for anyone who has picked a name there. Keeps the front door uncluttered.
 import { useIdentity } from '@/lib/identity/useIdentity';
 import { submitAttempts } from '@/lib/progress/submitAttempts';
 
@@ -167,7 +169,6 @@ export default function DailyChallenge({ children }: { children: React.ReactNode
           <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">
             Answer correctly to enter the handbook
           </p>
-          <WhoAmI className="justify-center mt-2" />
         </div>
 
         {/* Factoid of the day */}

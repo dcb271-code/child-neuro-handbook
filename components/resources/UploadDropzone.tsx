@@ -2,7 +2,9 @@
 
 import { useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { upload } from '@vercel/blob/client';
 import { MAX_FILE_BYTES } from '@/lib/resources/validation';
+import { blobPathFor } from '@/lib/resources/paths';
 import RenameModal from './RenameModal';
 
 const ACCEPT = '.pdf,.ppt,.pptx,.doc,.docx,.png,.jpg,.jpeg';
@@ -40,30 +42,46 @@ export default function UploadDropzone({ subsection }: { subsection: 'conference
     const file = pendingFile;
     setPendingFile(null);
     setPendingTitle('');
-
-    const fd = new FormData();
-    fd.append('file', file);
-    fd.append('subsection', subsection);
-    if (title.trim()) fd.append('title', title.trim());
-
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', '/api/resources/upload');
-    xhr.upload.onprogress = (e) => {
-      if (e.lengthComputable) setProgress(Math.round((e.loaded / e.total) * 100));
-    };
-    xhr.onload = () => {
-      setProgress(null);
-      if (xhr.status >= 200 && xhr.status < 300) {
-        router.refresh();
-      } else {
-        let msg = 'Upload failed';
-        try { msg = JSON.parse(xhr.responseText).error || msg; } catch {}
-        setError(msg);
-      }
-    };
-    xhr.onerror = () => { setProgress(null); setError('Network error'); };
     setProgress(0);
-    xhr.send(fd);
+
+    // Straight to Blob storage. The API route only mints a token, so the bytes
+    // never pass through a serverless function — which is what used to fail as
+    // a bare "Network error" once a file took longer to send than the
+    // function's execution budget.
+    const pathname = blobPathFor(subsection, file.name);
+    try {
+      await upload(pathname, file, {
+        access: 'public',
+        // Trailing slash on purpose: next.config sets trailingSlash, and this URL
+        // is also handed to the Blob service, so a 308 mid-exchange is worth avoiding.
+        handleUploadUrl: '/api/resources/upload/',
+        contentType: file.type,
+        multipart: true, // chunks + retries, so a dropped packet is not a lost upload
+        onUploadProgress: ({ percentage }) => setProgress(Math.round(percentage)),
+      });
+    } catch (err) {
+      setProgress(null);
+      setError(err instanceof Error ? err.message : 'Upload failed');
+      return;
+    }
+
+    // Title is recorded separately; the upload itself has already succeeded, so
+    // a failure here is not worth discarding the file over.
+    const trimmed = title.trim();
+    if (trimmed) {
+      try {
+        await fetch('/api/resources/file', {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ pathname, title: trimmed }),
+        });
+      } catch (err) {
+        console.error('[resources/upload] naming the file failed:', err);
+      }
+    }
+
+    setProgress(null);
+    router.refresh();
   }
 
   return (
