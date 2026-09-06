@@ -830,7 +830,7 @@ ANSWER KEY AND EXPLANATIONS
 
 10. E. Lower motor neuron signs at the cervical level with upper motor neuron signs below localize to the cervical cord; bladder involvement and progression demand urgent MRI.
 
-11. D. Early handedness is pathologic. Perinatal arterial stroke is often multifactorial, but prothrombotic evaluation (factor V Leiden, prothrombin G20210A, protein C and S, antithrombin, antiphospholipid antibodies, lipoprotein(a)) is standard.
+11. D. Early handedness is pathologic. Perinatal arterial stroke is often multifactorial, and the source keys a prothrombotic evaluation (factor V Leiden, prothrombin G20210A, protein C and S, antithrombin, antiphospholipid antibodies, lipoprotein(a)). (Current: thrombophilia panels are now sent selectively rather than reflexively in perinatal arterial ischemic stroke - the yield is low, recurrence risk is very low, and results rarely change management. Antiphospholipid antibodies, maternal included, remain worth checking. The stem's point stands: this is a remote perinatal infarct, not an acute presentation, so imaging alone will not give the cause.)
 
 12. B. Guillain-Barre: albuminocytologic dissociation, areflexia, symmetric ascending weakness, prolonged F waves early; IVIG. Campylobacter (also CMV, EBV, Mycoplasma) is the classic antecedent; ganglioside molecular mimicry.
 
@@ -894,7 +894,7 @@ ANSWER KEY AND EXPLANATIONS
 
 42. A. MPS II (iduronate-2-sulfatase), the only X-linked mucopolysaccharidosis; clear corneas and slower course than MPS I. Dysostosis multiplex, coronary and valvular disease are shared MPS features. Urine GAGs then enzyme assay.
 
-43. C. 10^3 or greater for catheterized specimens; 10^5 or greater for clean-catch midstream void.
+43. C. 10^3 or greater for catheterized specimens; 10^5 or greater for clean-catch midstream void. (Dated threshold: the 2011 AAP guideline, reaffirmed since, requires pyuria plus at least 50,000 CFU/mL of a single uropathogen from catheterization or suprapubic aspiration to diagnose UTI in a child 2-24 mo. None of the options offered here matches that number, so treat 50,000 as the figure to carry forward.)
 
 44. E. Arylsulfatase A deficiency (ARSA), autosomal recessive; the combination of central white matter disease with a demyelinating peripheral neuropathy (areflexia, slowed NCV, high CSF protein) is the tell; Krabbe shares it. Metachromatic granules in urine sediment and sural nerve. (Presymptomatic HSCT and lentiviral gene therapy now alter outcome.)
 
@@ -1729,7 +1729,7 @@ ANSWER KEY AND EXPLANATIONS
 
 6. D. 4-6 Hz polyspike-wave, often photosensitive; valproate or levetiracetam; lifelong treatment is usual and carbamazepine can aggravate.
 
-7. B. Repeated early crystalloid boluses; transfuse as blood loss becomes evident. Abdominal CT with IV contrast is the standard study in stable blunt trauma.
+7. B. Repeated early crystalloid boluses; transfuse as blood loss becomes evident. Abdominal CT with IV contrast is the standard study in stable blunt trauma. (Current: damage-control resuscitation limits crystalloid and moves to blood early - ATLS now favors a single 20 mL/kg bolus, then balanced blood-product transfusion in a child still shocked from hemorrhage, since large-volume crystalloid worsens coagulopathy. Of the options given, a second bolus remains the best next step; giving PRBC would also be defensible today.)
 
 8. A. NF1-associated optic pathway gliomas (pilocytic, about 15% of patients) are usually indolent; treatment (carboplatin-vincristine, or selumetinib) is reserved for visual decline or progression, and radiation is avoided because of secondary malignancy and moyamoya risk.
 

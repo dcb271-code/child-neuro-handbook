@@ -1,6 +1,6 @@
 # Handoff — Child Neuro Handbook
 
-Last updated: 2026-09-06, through commit `cbc358f`. Written for whoever picks
+Last updated: 2026-09-06, through commit `ffd12fe`. Written for whoever picks
 this project up next — a co-maintainer, a future chief resident, or future-you
 in six months.
 
@@ -69,6 +69,16 @@ Four 50-question quizzes for the PGY1–2 pediatrics years, sitting in a second
 collapsed disclosure below RITE. Each is mixed 30% neurology / 20%
 genetics-metabolism / 50% general pediatrics — that ratio is pinned by a test,
 since it's the whole point of the set.
+
+  **Every one of the 200 items was read against its stem, distractors and
+  explanation** after import: all 200 answer keys are correct and the
+  transcription is verbatim against the source. Three items carried 2004-era
+  guidance the source had not annotated, and now carry a flag — the UTI
+  catheter colony count (AAP now wants 50,000 CFU/mL), thrombophilia testing
+  after perinatal stroke, and crystalloid volume in pediatric trauma. The
+  flags live in the markdown source so regeneration reproduces them, and a
+  test in `lib/peds-quiz/__tests__/` fails if they go missing. Keys were not
+  changed — the flags annotate, they never re-key.
 
   Two things to know. They carry **no passing mark**: the RITE benchmarks belong
   to a different exam and none is published for these, so the runner shows a
@@ -198,7 +208,7 @@ forget it's hand-authored JSON, not derived).
 2. Check `docs/goal-reports/` for pending clinician decisions before assuming
    a number is settled.
 3. Run `npm run test:run` and `npm run build` before and after any change —
-   335 tests as of this commit, all passing.
+   339 tests as of this commit, all passing.
 4. After editing any section's HTML, run `npm run build-search` or the
    consistency tests will fail.
 5. If Blob storage seems flaky, read the caching section above before "fixing"

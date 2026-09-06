@@ -118,3 +118,29 @@ describe('topicSummary', () => {
     }
   });
 });
+
+describe('dated-content flags', () => {
+  // A full read of all 200 items found every answer key correct, but three
+  // carried 2004-era guidance the source had not annotated. The notes live in
+  // scripts/sources/peds-practice-quizzes.md so `npm run build-peds-quizzes`
+  // reproduces them; this test is what catches it if someone regenerates from
+  // an older copy of the source and silently drops them.
+  const flagged: [string, RegExp][] = [
+    ['peds-q2-43', /50,000 CFU\/mL/],        // AAP 2011 catheter threshold
+    ['peds-q2-11', /selectively rather than reflexively/], // perinatal stroke thrombophilia
+    ['peds-q4-7', /damage-control resuscitation/],         // trauma crystalloid limits
+  ];
+
+  it.each(flagged)('%s explains where current practice has moved', (id, pattern) => {
+    const q = all.find((x) => x.id === id);
+    expect(q, `${id} missing from the bank`).toBeDefined();
+    expect(q!.explanation).toMatch(pattern);
+  });
+
+  it('leaves the original answer keys untouched', () => {
+    // The flags annotate; they never re-key. These are the source's own answers.
+    expect(all.find((q) => q.id === 'peds-q2-43')!.answer).toBe('C');
+    expect(all.find((q) => q.id === 'peds-q2-11')!.answer).toBe('D');
+    expect(all.find((q) => q.id === 'peds-q4-7')!.answer).toBe('B');
+  });
+});

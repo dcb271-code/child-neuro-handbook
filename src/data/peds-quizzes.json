@@ -1835,7 +1835,7 @@
       }
      ],
      "answer": "D",
-     "explanation": "Early handedness is pathologic. Perinatal arterial stroke is often multifactorial, but prothrombotic evaluation (factor V Leiden, prothrombin G20210A, protein C and S, antithrombin, antiphospholipid antibodies, lipoprotein(a)) is standard."
+     "explanation": "Early handedness is pathologic. Perinatal arterial stroke is often multifactorial, and the source keys a prothrombotic evaluation (factor V Leiden, prothrombin G20210A, protein C and S, antithrombin, antiphospholipid antibodies, lipoprotein(a)). (Current: thrombophilia panels are now sent selectively rather than reflexively in perinatal arterial ischemic stroke - the yield is low, recurrence risk is very low, and results rarely change management. Antiphospholipid antibodies, maternal included, remain worth checking. The stem's point stands: this is a remote perinatal infarct, not an acute presentation, so imaging alone will not give the cause.)"
     },
     {
      "id": "peds-q2-12",
@@ -2755,7 +2755,7 @@
       }
      ],
      "answer": "C",
-     "explanation": "10^3 or greater for catheterized specimens; 10^5 or greater for clean-catch midstream void."
+     "explanation": "10^3 or greater for catheterized specimens; 10^5 or greater for clean-catch midstream void. (Dated threshold: the 2011 AAP guideline, reaffirmed since, requires pyuria plus at least 50,000 CFU/mL of a single uropathogen from catheterization or suprapubic aspiration to diagnose UTI in a child 2-24 mo. None of the options offered here matches that number, so treat 50,000 as the figure to carry forward.)"
     },
     {
      "id": "peds-q2-44",
@@ -4651,7 +4651,7 @@
       }
      ],
      "answer": "B",
-     "explanation": "Repeated early crystalloid boluses; transfuse as blood loss becomes evident. Abdominal CT with IV contrast is the standard study in stable blunt trauma."
+     "explanation": "Repeated early crystalloid boluses; transfuse as blood loss becomes evident. Abdominal CT with IV contrast is the standard study in stable blunt trauma. (Current: damage-control resuscitation limits crystalloid and moves to blood early - ATLS now favors a single 20 mL/kg bolus, then balanced blood-product transfusion in a child still shocked from hemorrhage, since large-volume crystalloid worsens coagulopathy. Of the options given, a second bolus remains the best next step; giving PRBC would also be defensible today.)"
     },
     {
      "id": "peds-q4-8",
