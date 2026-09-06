@@ -1,6 +1,6 @@
 # Handoff — Child Neuro Handbook
 
-Last updated: 2026-09-05, through commit `079ef3f`. Written for whoever picks
+Last updated: 2026-09-06, through commit `cbc358f`. Written for whoever picks
 this project up next — a co-maintainer, a future chief resident, or future-you
 in six months.
 
@@ -14,9 +14,9 @@ password-gated file-sharing area (`/resources`), a team points leaderboard
 auto-deploys on push to `main`. Full architecture and conventions are in
 `CLAUDE.md` — read that first for anything not covered here.
 
-## Board Review — three things live under one page
+## Board Review — four things live under one page
 
-`/board-review` now hosts three related features. The page itself stays
+`/board-review` now hosts four related features. The page itself stays
 `force-static`; anything needing live data fetches it client-side.
 
 **1. The original quiz builder.** Filter the 350-question bank by topic,
@@ -64,7 +64,27 @@ than unmounted) so a part-finished exam isn't destroyed by that transition.
   q82 made them *larger*) and they're diagnostic radiology/histology where the
   detail carries the answer.
 
-**3. My Progress** — see below. Both RITE and My Progress are collapsed
+**3. Pediatrics In-Service Practice Quizzes** (`src/data/peds-quizzes.json`).
+Four 50-question quizzes for the PGY1–2 pediatrics years, sitting in a second
+collapsed disclosure below RITE. Each is mixed 30% neurology / 20%
+genetics-metabolism / 50% general pediatrics — that ratio is pinned by a test,
+since it's the whole point of the set.
+
+  Two things to know. They carry **no passing mark**: the RITE benchmarks belong
+  to a different exam and none is published for these, so the runner shows a
+  score and says so explicitly rather than inventing one. And the source is
+  **Nelson 17th ed., which is from 2004** — the supplied explanations carry
+  current-practice notes where the original answer key has since been
+  superseded. Those notes are what make a 20-year-old bank safe to study from,
+  so don't edit them out.
+
+  RITE and pediatrics share one runner (`components/quiz-runner/`), which was
+  generalised out of the old `components/rite/` in the same commit. It works
+  against `lib/quiz-runner/types.ts` and never imports either concrete data
+  type; `lib/quiz-runner/adapters.ts` does the mapping. A third bank is an
+  adapter, not a runner change.
+
+**4. My Progress** — see below. Both RITE and My Progress are collapsed
 disclosures on the idle screen so they don't compete with starting a quiz.
 
 ## Quiz progress tracking
@@ -76,12 +96,14 @@ anyone's name, an accepted tradeoff matching how Family Points already works.
 The picker appears on the board-review idle screen and in the daily-challenge
 header, and never gates either quiz; skipping it just means you aren't tracked.
 
-Three quizzes feed it (`lib/progress/calculator.ts`): the daily question,
-board review, and RITE. Daily logs exactly one attempt per calendar day — the
+Four quizzes feed it (`lib/progress/calculator.ts`): the daily question,
+board review, RITE, and the pediatrics quizzes. Daily logs exactly one attempt per calendar day — the
 first question seen, right or wrong — since a wrong answer cycles to a new
 question and retries shouldn't inflate "days completed". Board review and RITE
 log every question in a session as a batch on completion. Results are shown
-grouped by PGY year rather than as a flat 17-person ranking.
+grouped by PGY year rather than as a flat 17-person ranking. All four are now
+rendered in the My Progress panel — RITE attempts had been logged but never
+displayed until the pediatrics work went in.
 
 Attempts are a flat JSON log in Vercel Blob (`lib/progress/store.ts`).
 `POST /api/progress/attempts` has **no password gate**, unlike family-points
@@ -176,7 +198,7 @@ forget it's hand-authored JSON, not derived).
 2. Check `docs/goal-reports/` for pending clinician decisions before assuming
    a number is settled.
 3. Run `npm run test:run` and `npm run build` before and after any change —
-   321 tests as of this commit, all passing.
+   335 tests as of this commit, all passing.
 4. After editing any section's HTML, run `npm run build-search` or the
    consistency tests will fail.
 5. If Blob storage seems flaky, read the caching section above before "fixing"

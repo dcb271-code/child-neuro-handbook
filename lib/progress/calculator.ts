@@ -3,12 +3,13 @@
 
 import { MEMBERS, memberByName } from '@/lib/roster';
 
-export type QuizId = 'daily' | 'board-review' | 'rite';
+export type QuizId = 'daily' | 'board-review' | 'rite' | 'peds';
 
 export const QUIZZES: { id: QuizId; label: string }[] = [
   { id: 'daily', label: 'Daily Question' },
   { id: 'board-review', label: 'Board Review' },
   { id: 'rite', label: 'RITE Practice Exams' },
+  { id: 'peds', label: 'Pediatrics In-Service Quizzes' },
 ];
 
 export type Attempt = {

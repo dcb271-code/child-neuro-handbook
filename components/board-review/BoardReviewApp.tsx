@@ -10,9 +10,13 @@ import { useIdentity } from '@/lib/identity/useIdentity';
 import { submitAttempts } from '@/lib/progress/submitAttempts';
 import { computeProgress, type Attempt } from '@/lib/progress/calculator';
 import QuizProgressSection from '@/components/progress/QuizProgressSection';
-import RiteExamApp from '@/components/rite/RiteExamApp';
+import QuizRunner from '@/components/quiz-runner/QuizRunner';
 import riteData from '@/src/data/rite-exams.json';
 import type { RiteData } from '@/lib/rite/types';
+import pedsData from '@/src/data/peds-quizzes.json';
+import type { PedsQuizData } from '@/lib/peds-quiz/types';
+import { RITE_CONFIG, riteSets, riteLocator, PEDS_CONFIG, pedsSets, pedsLocator }
+  from '@/lib/quiz-runner/adapters';
 
 type Phase = 'idle' | 'active' | 'complete';
 
@@ -69,6 +73,10 @@ export default function BoardReviewApp({ questions: allQuestions }: { questions:
   // unmounting keeps in-progress answers alive.
   const [riteActive, setRiteActive] = useState(false);
   const [riteOpen, setRiteOpen] = useState(false);
+  const [pedsActive, setPedsActive] = useState(false);
+  const [pedsOpen, setPedsOpen] = useState(false);
+  // Either runner taking over the page hides the rest of the chrome.
+  const runnerActive = riteActive || pedsActive;
   const refetchProgress = useCallback(() => {
     fetch('/api/progress/attempts/', { cache: 'no-store' })
       .then((r) => r.json())
@@ -194,8 +202,8 @@ export default function BoardReviewApp({ questions: allQuestions }: { questions:
   );
 
   return (
-    <div className={`${riteActive ? 'max-w-3xl' : 'max-w-2xl'} mx-auto py-4 sm:py-6`}>
-      <div className={riteActive ? 'hidden' : 'mb-6'}>
+    <div className={`${runnerActive ? 'max-w-3xl' : 'max-w-2xl'} mx-auto py-4 sm:py-6`}>
+      <div className={runnerActive ? 'hidden' : 'mb-6'}>
         <h1 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight mb-1">
           Board Review
         </h1>
@@ -209,8 +217,8 @@ export default function BoardReviewApp({ questions: allQuestions }: { questions:
           instant-feedback quiz builder below. Kept mounted while active so a
           part-finished exam is never lost; the page's own chrome hides
           instead. */}
-      <div className={riteActive ? '' : 'mb-4'}>
-        {!riteActive && (
+      <div className={riteActive ? '' : pedsActive ? 'hidden' : 'mb-4'}>
+        {!runnerActive && (
           <button
             type="button"
             onClick={() => setRiteOpen((o) => !o)}
@@ -225,15 +233,48 @@ export default function BoardReviewApp({ questions: allQuestions }: { questions:
           </button>
         )}
         <div className={!riteActive && !riteOpen ? 'hidden' : 'pt-3 pb-1'}>
-          <RiteExamApp
-            data={riteData as RiteData}
+          <QuizRunner
+            sets={riteSets(riteData as RiteData)}
+            config={RITE_CONFIG}
+            locator={riteLocator}
             onAttemptsSubmitted={refetchProgress}
             onPhaseChange={setRiteActive}
           />
         </div>
       </div>
 
-      <div className={riteActive ? 'hidden' : ''}>
+      {/* Pediatrics in-service quizzes — for the PGY1-2 pediatrics years, so
+          they sit below RITE and carry no PGY benchmark. Same runner, same
+          stay-mounted treatment. */}
+      <div className={pedsActive ? '' : riteActive ? 'hidden' : 'mb-4'}>
+        {!runnerActive && (
+          <button
+            type="button"
+            onClick={() => setPedsOpen((o) => !o)}
+            aria-expanded={pedsOpen}
+            className="w-full flex items-center gap-2.5 select-none py-2 text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors"
+          >
+            <svg className={`w-3 h-3 transition-transform ${pedsOpen ? 'rotate-90' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+            </svg>
+            <span className="text-xs font-semibold uppercase tracking-widest text-left">
+              Pediatrics In-Service Practice Quizzes
+            </span>
+            <div className="flex-1 h-px bg-slate-200 dark:bg-slate-700 ml-2" />
+          </button>
+        )}
+        <div className={!pedsActive && !pedsOpen ? 'hidden' : 'pt-3 pb-1'}>
+          <QuizRunner
+            sets={pedsSets(pedsData as PedsQuizData)}
+            config={PEDS_CONFIG}
+            locator={pedsLocator}
+            onAttemptsSubmitted={refetchProgress}
+            onPhaseChange={setPedsActive}
+          />
+        </div>
+      </div>
+
+      <div className={runnerActive ? 'hidden' : ''}>
       {/* My Progress — tucked away, collapsed by default so it doesn't compete
           with starting a quiz. Covers both board review and the homepage's
           daily question, since both are opt-in self-tracked quiz progress. */}
@@ -259,6 +300,16 @@ export default function BoardReviewApp({ questions: allQuestions }: { questions:
             title="Board Review"
             blurb="Every question answered in a session, across all sessions."
             progress={progress['board-review']}
+          />
+          <QuizProgressSection
+            title="RITE Practice Exams"
+            blurb="Every question in a completed practice exam."
+            progress={progress.rite}
+          />
+          <QuizProgressSection
+            title="Pediatrics In-Service Quizzes"
+            blurb="Every question in a completed pediatrics quiz."
+            progress={progress.peds}
           />
         </div>
       </details>

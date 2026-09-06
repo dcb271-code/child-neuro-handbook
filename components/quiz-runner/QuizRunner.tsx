@@ -1,40 +1,53 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import type { RiteData, RiteQuestion } from '@/lib/rite/types';
+import type { RunnerConfig, RunnerQuestion, RunnerSet } from '@/lib/quiz-runner/types';
 import { scoreExam, passMark, BENCHMARK_PGYS } from '@/lib/rite/scoring';
 import { useIdentity } from '@/lib/identity/useIdentity';
 import { memberByName } from '@/lib/roster';
 import { submitAttempts } from '@/lib/progress/submitAttempts';
-import RiteQuestionCard from './RiteQuestionCard';
-import RiteResults from './RiteResults';
+import RunnerQuestionCard from './RunnerQuestionCard';
+import RunnerResults from './RunnerResults';
 
 type Phase = 'list' | 'active' | 'complete';
 
-export default function RiteExamApp({ data, onAttemptsSubmitted, onPhaseChange }: {
-  data: RiteData;
+/**
+ * Shared runner for full-length, answers-at-the-end quiz sets. Drives both the
+ * RITE practice exams and the pediatrics in-service quizzes; the difference
+ * between them is entirely in `config` and the adapted data passed in.
+ */
+export default function QuizRunner({
+  sets, config, locator, onAttemptsSubmitted, onPhaseChange,
+}: {
+  sets: RunnerSet[];
+  config: RunnerConfig;
+  /** Per-question locator line, e.g. "Exam 3 · item 12b". */
+  locator: (q: RunnerQuestion, setNumber: number) => string;
   onAttemptsSubmitted?: () => void;
-  /** Lets the page hide its own chrome while an exam is in progress. */
-  onPhaseChange?: (inExam: boolean) => void;
+  /** Lets the page hide its own chrome while a set is in progress. */
+  onPhaseChange?: (inSet: boolean) => void;
 }) {
   const [phase, setPhase] = useState<Phase>('list');
-  const [examNo, setExamNo] = useState<number | null>(null);
-  const [questions, setQuestions] = useState<RiteQuestion[]>([]);
+  const [setNo, setSetNo] = useState<number | null>(null);
+  const [questions, setQuestions] = useState<RunnerQuestion[]>([]);
   const [answers, setAnswers] = useState<(string | null)[]>([]);
   const [current, setCurrent] = useState(0);
 
   const { name: identityName } = useIdentity();
-  const pgy = identityName ? memberByName(identityName)?.pgy ?? null : null;
+  const rosterPgy = identityName ? memberByName(identityName)?.pgy ?? null : null;
+  // Sets without published marks are never scored against a PGY benchmark,
+  // whatever year the resident is in.
+  const pgy = config.benchmarks ? rosterPgy : null;
 
   const result = useMemo(
     () => scoreExam(answers, questions.map((q) => q.answer), pgy),
     [answers, questions, pgy],
   );
 
-  function start(exam: number) {
-    const found = data.exams.find((e) => e.exam === exam);
+  function start(n: number) {
+    const found = sets.find((s) => s.number === n);
     if (!found) return;
-    setExamNo(exam);
+    setSetNo(n);
     setQuestions(found.questions);
     setAnswers(new Array(found.questions.length).fill(null));
     setCurrent(0);
@@ -61,7 +74,7 @@ export default function RiteExamApp({ data, onAttemptsSubmitted, onPhaseChange }
       submitAttempts(
         questions.map((q, i) => ({
           member: identityName,
-          quiz: 'rite' as const,
+          quiz: config.quizId,
           questionId: q.id,
           correct: answers[i] === q.answer,
         })),
@@ -72,9 +85,9 @@ export default function RiteExamApp({ data, onAttemptsSubmitted, onPhaseChange }
     window.scrollTo({ top: 0 });
   }
 
-  if (phase === 'active' && examNo !== null) {
+  if (phase === 'active' && setNo !== null) {
     return (
-      <RiteQuestionCard
+      <RunnerQuestionCard
         question={questions[current]}
         index={current}
         total={questions.length}
@@ -84,53 +97,59 @@ export default function RiteExamApp({ data, onAttemptsSubmitted, onPhaseChange }
         onNext={next}
         isFirst={current === 0}
         isLast={current + 1 === questions.length}
+        locator={locator(questions[current], setNo)}
+        label={config.label}
       />
     );
   }
 
-  if (phase === 'complete' && examNo !== null) {
+  if (phase === 'complete' && setNo !== null) {
     return (
-      <RiteResults
-        exam={examNo}
+      <RunnerResults
+        setNumber={setNo}
         questions={questions}
         answers={answers}
         result={result}
         pgy={pgy}
-        onRetake={() => start(examNo)}
+        onRetake={() => start(setNo)}
         onBack={() => { setPhase('list'); onPhaseChange?.(false); window.scrollTo({ top: 0 }); }}
+        label={config.label}
+        locator={(i) => locator(questions[i], setNo)}
+        benchmarks={config.benchmarks}
       />
     );
   }
 
-  // ── exam picker ──────────────────────────────────────────────────────
+  // ── set picker ───────────────────────────────────────────────────────
   return (
     <div>
       <p className="text-xs text-slate-500 dark:text-slate-400 mb-3">
-        Ten full-length practice exams. Answers are hidden until you finish, then every
-        item is shown with its explanation.
-        {pgy && BENCHMARK_PGYS.includes(pgy)
-          ? ` Scored against the PGY${pgy} benchmark.`
-          : ' Pick your name above to be scored against your PGY benchmark.'}
+        {config.intro}
+        {config.benchmarks && (
+          rosterPgy && BENCHMARK_PGYS.includes(rosterPgy)
+            ? ` Scored against the PGY${rosterPgy} benchmark.`
+            : ' Pick your name above to be scored against your PGY benchmark.'
+        )}
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-        {data.exams.map((e) => {
-          const n = e.questions.length;
-          const withImages = e.questions.filter((q) => q.images?.length).length;
+        {sets.map((s) => {
+          const n = s.questions.length;
           return (
             <button
-              key={e.exam}
+              key={s.number}
               type="button"
-              onClick={() => start(e.exam)}
+              onClick={() => start(s.number)}
               className="group text-left rounded-xl border border-slate-200 dark:border-slate-700 hover:border-indigo-300 dark:hover:border-indigo-600 bg-white dark:bg-slate-800/60 hover:shadow-sm transition-all px-4 py-3 min-h-[56px] flex items-center gap-3"
             >
               <div className="flex-1 min-w-0">
                 <div className="font-semibold text-sm text-slate-800 dark:text-slate-100 group-hover:text-indigo-700 dark:group-hover:text-indigo-400">
-                  Practice Exam {e.exam}
+                  {config.label} {s.number}
                 </div>
                 <div className="text-xs text-slate-400 dark:text-slate-500 mt-0.5 tabular-nums">
-                  {n} questions · {withImages} with images
-                  {pgy && passMark(n, pgy) !== null && <> · pass {passMark(n, pgy)}</>}
+                  {n} questions
+                  {s.detail && <> · {s.detail}</>}
+                  {config.benchmarks && pgy && passMark(n, pgy) !== null && <> · pass {passMark(n, pgy)}</>}
                 </div>
               </div>
               <svg className="w-4 h-4 text-slate-300 dark:text-slate-600 group-hover:text-indigo-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -140,6 +159,10 @@ export default function RiteExamApp({ data, onAttemptsSubmitted, onPhaseChange }
           );
         })}
       </div>
+
+      {config.source && (
+        <p className="text-xs text-slate-400 dark:text-slate-500 mt-3 leading-relaxed">{config.source}</p>
+      )}
     </div>
   );
 }

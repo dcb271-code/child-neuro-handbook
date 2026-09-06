@@ -31,7 +31,9 @@ Each of the 20 sections is a single JSON file, `src/data/<slug>.json`:
 
 `src/data/index.json` lists the sections in site order with their icon, colour, and a
 copy of the counts. `src/data/board-review.json` and `factoids.json` are separate data
-sets with their own shapes (board-review is a top-level array, not an object).
+sets with their own shapes (board-review is a top-level array, not an object). So are the
+two quiz banks rendered by the shared runner — `rite-exams.json` and `peds-quizzes.json`
+(see below).
 
 ### Derived files — never hand-edit
 
@@ -69,6 +71,35 @@ calculator means touching that registry, the component map, and the section's `t
 
 Each has pure logic in `calculator.ts` with real unit tests in `__tests__/`. Keep the
 logic pure and test it there rather than in the component.
+
+### Quiz banks and the shared runner
+
+Three quiz experiences live under `/board-review`, and two of them share one runner:
+
+| Bank | Data | Adapter | Benchmarks |
+|---|---|---|---|
+| Board review builder | `board-review.json` | own components | n/a (instant feedback) |
+| RITE practice exams | `rite-exams.json` | `riteSets` / `riteLocator` | per-PGY, 3–5 |
+| Pediatrics in-service | `peds-quizzes.json` | `pedsSets` / `pedsLocator` | **none** |
+
+`components/quiz-runner/` drives the latter two. It knows nothing about either concrete
+type — it works against `RunnerQuestion` / `RunnerSet` / `RunnerConfig` in
+`lib/quiz-runner/types.ts`, and `lib/quiz-runner/adapters.ts` maps each bank onto them.
+Adding a third bank means writing an adapter, not editing the runner.
+
+The pediatrics quizzes are for the PGY1–2 pediatrics years: 4 × 50 questions, mixed 30%
+neurology / 20% genetics-metabolism / 50% general pediatrics, from the **Nelson 17th ed.**
+self-assessment sets. That edition is from 2004; the supplied explanations carry
+current-practice notes where the original key has been superseded. **Preserve those notes
+verbatim** — they are the mechanism keeping dated content safe to study from.
+
+They deliberately carry **no passing mark**. The RITE benchmarks are for a different exam,
+and no published mark exists for these, so the runner shows a score and nothing else.
+Don't add one.
+
+Regenerate with `node scripts/build-peds-quizzes.mjs`; the markdown source is kept at
+`scripts/sources/peds-practice-quizzes.md`. It must stay out of `public/` — it contains
+the answer key in plain text.
 
 ### Family Points
 
@@ -117,7 +148,8 @@ safe to edit by hand. This accounts for most of the recent commit history.
 
 Live: `extract.mjs` (all sections from .docx), `re-extract-sections.mjs <slug>...`
 (named sections), `cleanup-html.mjs`, `build-search-index.mjs`, `build-call-schedule.mjs`
-(CI), `build-icons.mjs` (PWA icons; needs `sharp` installed ad hoc).
+(CI), `build-icons.mjs` (PWA icons; needs `sharp` installed ad hoc),
+`build-peds-quizzes.mjs` (pediatrics quiz bank from `scripts/sources/`).
 
 Everything in `scripts/archive/` is a spent one-off — see the README there. Most reference
 `C:/Users/dylan/Child Neuro Handbook Word/`, a Windows path that does not exist on this

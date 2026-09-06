@@ -1,9 +1,9 @@
 'use client';
 
-import type { RiteQuestion } from '@/lib/rite/types';
+import type { RunnerQuestion } from '@/lib/quiz-runner/types';
 
 type Props = {
-  question: RiteQuestion;
+  question: RunnerQuestion;
   index: number;
   total: number;
   selected: string | null;
@@ -12,18 +12,21 @@ type Props = {
   onNext: () => void;
   isFirst: boolean;
   isLast: boolean;
+  /** Right-aligned locator, e.g. "Exam 3 · item 12b" or "Quiz 2 · question 7". */
+  locator: string;
+  /** Singular noun for one sitting — used on the finish button. */
+  label: string;
 };
 
-export default function RiteQuestionCard({
+export default function RunnerQuestionCard({
   question, index, total, selected, onSelect, onPrev, onNext, isFirst, isLast,
+  locator, label,
 }: Props) {
   return (
     <div className="max-w-3xl mx-auto py-4 sm:py-6">
       <div className="flex items-center justify-between gap-2 text-xs text-slate-500 dark:text-slate-400 mb-2 flex-wrap">
         <span className="tabular-nums">Question {index + 1} of {total}</span>
-        <span className="tabular-nums">
-          Exam {question.exam} · item {question.num}{question.part !== 'a' ? question.part : ''}
-        </span>
+        <span className="tabular-nums">{locator}</span>
       </div>
 
       <div className="h-1 rounded-full bg-slate-100 dark:bg-slate-700/60 mb-4 overflow-hidden">
@@ -47,7 +50,7 @@ export default function RiteQuestionCard({
           <img
             key={src}
             src={src}
-            alt={question.imageAlt ?? 'Exam figure'}
+            alt={question.imageAlt ?? 'Figure'}
             className="w-full h-auto rounded-lg border border-slate-200 dark:border-slate-700 mb-4 bg-white"
           />
         ))}
@@ -92,12 +95,12 @@ export default function RiteQuestionCard({
           onClick={onNext}
           className="text-sm px-5 py-2 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white font-medium min-h-[44px]"
         >
-          {isLast ? 'Finish exam' : 'Next →'}
+          {isLast ? `Finish ${label.toLowerCase()}` : 'Next →'}
         </button>
       </div>
 
-      {/* Answers stay hidden until the whole exam is submitted — this is a
-          timed-exam simulation, not the instant-feedback board review mode. */}
+      {/* Answers stay hidden until the whole set is submitted — this is an
+          exam simulation, not the instant-feedback board review mode. */}
       <p className="text-xs text-slate-400 dark:text-slate-500 text-center mt-3">
         Answers and explanations are shown after you finish.
       </p>
