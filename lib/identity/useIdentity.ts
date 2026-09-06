@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
-import { memberByName } from '@/lib/roster';
+import { identityByName } from '@/lib/roster';
 
 const STORAGE_KEY = 'neuro-identity';
 
@@ -19,7 +19,7 @@ export function useIdentity() {
   useEffect(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored && memberByName(stored)) setNameState(stored);
+      if (stored && identityByName(stored)) setNameState(stored);
     } catch {
       // localStorage unavailable (private mode, etc.) — stay anonymous
     }
@@ -27,7 +27,7 @@ export function useIdentity() {
   }, []);
 
   const setName = useCallback((next: string) => {
-    if (!memberByName(next)) return;
+    if (!identityByName(next)) return;
     try {
       localStorage.setItem(STORAGE_KEY, next);
     } catch {}

@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react';
 import type { RunnerConfig, RunnerQuestion, RunnerSet } from '@/lib/quiz-runner/types';
 import { scoreExam, passMark, BENCHMARK_PGYS } from '@/lib/rite/scoring';
 import { useIdentity } from '@/lib/identity/useIdentity';
-import { memberByName } from '@/lib/roster';
+import { identityByName } from '@/lib/roster';
 import { submitAttempts } from '@/lib/progress/submitAttempts';
 import RunnerQuestionCard from './RunnerQuestionCard';
 import RunnerResults from './RunnerResults';
@@ -34,7 +34,7 @@ export default function QuizRunner({
   const [current, setCurrent] = useState(0);
 
   const { name: identityName } = useIdentity();
-  const rosterPgy = identityName ? memberByName(identityName)?.pgy ?? null : null;
+  const rosterPgy = identityName ? identityByName(identityName)?.pgy ?? null : null;
   // Sets without published marks are never scored against a PGY benchmark,
   // whatever year the resident is in.
   const pgy = config.benchmarks ? rosterPgy : null;

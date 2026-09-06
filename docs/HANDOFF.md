@@ -1,6 +1,6 @@
 # Handoff — Child Neuro Handbook
 
-Last updated: 2026-09-06, through commit `ffd12fe`. Written for whoever picks
+Last updated: 2026-09-06, through commit `0b17f4b`. Written for whoever picks
 this project up next — a co-maintainer, a future chief resident, or future-you
 in six months.
 
@@ -121,6 +121,12 @@ entries — it's self-tracking, not competitive scoring.
 
 `/progress` is a redirect to `/board-review/`, kept only for old bookmarks.
 
+**`BrockTest` is a test identity**, not a resident. It lives in `TEST_MEMBERS`
+in `lib/roster.ts` rather than `MEMBERS`, so it can be picked for progress
+tracking without joining a Family Points team or skewing a PGY cohort — it gets
+its own "Test" group, sorted last. Family Points rejects it outright. Add more
+test accounts there, never to `MEMBERS`.
+
 **As of this writing: 0 attempts logged.** Nobody has opted in yet. The empty
 states are wired and render cleanly, but the feature is unproven in real use.
 
@@ -208,7 +214,7 @@ forget it's hand-authored JSON, not derived).
 2. Check `docs/goal-reports/` for pending clinician decisions before assuming
    a number is settled.
 3. Run `npm run test:run` and `npm run build` before and after any change —
-   339 tests as of this commit, all passing.
+   352 tests as of this commit, all passing.
 4. After editing any section's HTML, run `npm run build-search` or the
    consistency tests will fail.
 5. If Blob storage seems flaky, read the caching section above before "fixing"

@@ -101,6 +101,22 @@ Regenerate with `node scripts/build-peds-quizzes.mjs`; the markdown source is ke
 `scripts/sources/peds-practice-quizzes.md`. It must stay out of `public/` — it contains
 the answer key in plain text.
 
+### Roster vs. test identities
+
+`lib/roster.ts` holds two lists. `MEMBERS` is the real 17-resident roster and
+drives Family Points team rosters, PGY standings, and entry validation — a name in
+it appears on the leaderboard. `TEST_MEMBERS` (currently just `BrockTest`) is
+selectable in the progress picker but deliberately outside that list.
+
+The split is enforced by which lookup a caller uses: `memberByName` resolves
+residents only and is what Family Points validates against, while
+`identityByName` resolves both and is what progress tracking, the identity
+picker, and the quiz runner use. Widening `memberByName` would let test entries
+pass Family Points validation and then vanish for having no team. Test
+identities sit at `TEST_PGY` (0), rendered as "Test" via `pgyLabel` and sorted
+last via `comparePgy`, so they get their own progress group instead of skewing a
+real cohort.
+
 ### Family Points
 
 `/family-points` is a standalone dynamic page (like `/resources`, not a content

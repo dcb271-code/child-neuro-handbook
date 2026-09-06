@@ -1,4 +1,5 @@
 import type { QuizProgress } from '@/lib/progress/calculator';
+import { pgyLabel } from '@/lib/roster';
 
 /**
  * One quiz's progress card: overall completed/accuracy, then a PGY-grouped
@@ -34,7 +35,7 @@ export default function QuizProgressSection({ title, blurb, progress }: {
               <svg className="w-3 h-3 shrink-0 text-slate-400 transition-transform details-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
               </svg>
-              <span className="font-medium flex-1">PGY{g.pgy}</span>
+              <span className="font-medium flex-1">{pgyLabel(g.pgy)}</span>
               <span className="text-xs text-slate-400 dark:text-slate-500">
                 {g.completed === 0 ? 'no attempts' : `${g.completed} answered`}
               </span>

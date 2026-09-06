@@ -211,3 +211,21 @@ describe('entriesToCsv', () => {
     expect(csv).toContain('"Other procedure (sutures, splints, staples, etc)"');
   });
 });
+
+describe('test identities are not Family Points members', () => {
+  it('rejects an entry authored by a test identity', () => {
+    // Progress tracking accepts BrockTest; the leaderboard must not, since it
+    // has no team and the entry would be silently dropped from team totals.
+    expect(validateNewEntry({
+      member: 'BrockTest', taskId: TASKS[0].id, count: 1, date: '2026-09-06',
+    })).toMatch(/unknown member/i);
+  });
+
+  it('leaves team rosters at the real roster size', () => {
+    const totalOnTeams = TEAMS.reduce(
+      (s, t) => s + MEMBERS.filter((m) => m.teamId === t.id).length, 0,
+    );
+    expect(totalOnTeams).toBe(MEMBERS.length);
+    expect(MEMBERS.length).toBe(17);
+  });
+});

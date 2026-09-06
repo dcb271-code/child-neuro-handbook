@@ -5,7 +5,7 @@ import {
   MAX_ATTEMPT_BATCH,
   type Attempt,
 } from '../calculator';
-import { MEMBERS } from '@/lib/roster';
+import { MEMBERS, IDENTITIES, TEST_MEMBERS } from '@/lib/roster';
 
 function attempt(partial: Partial<Attempt>): Attempt {
   return {
@@ -51,8 +51,10 @@ describe('computeProgress', () => {
     expect(board.daily.pct).toBe(0); // not NaN
     expect(board['board-review'].completed).toBe(0);
 
+    // Residents plus test identities — the picker offers both, so both are listed.
     const totalListed = board.daily.pgys.reduce((s, g) => s + g.members.length, 0);
-    expect(totalListed).toBe(MEMBERS.length);
+    expect(totalListed).toBe(IDENTITIES.length);
+    expect(IDENTITIES.length).toBe(MEMBERS.length + TEST_MEMBERS.length);
   });
 
   it('credits an attempt to the right quiz, cohort, and member', () => {
@@ -127,5 +129,32 @@ describe('computeProgress', () => {
 describe('MAX_ATTEMPT_BATCH', () => {
   it('matches the board-review session cap (largest session size)', () => {
     expect(MAX_ATTEMPT_BATCH).toBeGreaterThanOrEqual(50);
+  });
+});
+
+describe('test identities', () => {
+  it('tracks a test identity like any other name', () => {
+    const board = computeProgress([
+      attempt({ member: 'BrockTest', quiz: 'rite', correct: true }),
+      attempt({ member: 'BrockTest', quiz: 'rite', correct: false }),
+    ]);
+    expect(board.rite.completed).toBe(2);
+    expect(board.rite.correct).toBe(1);
+    const group = board.rite.pgys.find((g) => g.pgy === TEST_MEMBERS[0].pgy)!;
+    expect(group.members.find((m) => m.name === 'BrockTest')!.completed).toBe(2);
+  });
+
+  it('keeps test identities out of every real PGY cohort', () => {
+    const board = computeProgress([]);
+    for (const g of board.daily.pgys) {
+      if (g.pgy === TEST_MEMBERS[0].pgy) continue;
+      expect(g.members.map((m) => m.name)).not.toContain('BrockTest');
+    }
+  });
+
+  it('accepts a test identity as a valid attempt author', () => {
+    expect(validateNewAttempt({
+      member: 'BrockTest', quiz: 'rite', questionId: 'rite-e1-1', correct: true,
+    })).toBeNull();
   });
 });

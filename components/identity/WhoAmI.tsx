@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { MEMBERS } from '@/lib/roster';
+import { IDENTITIES, pgyLabel, comparePgy } from '@/lib/roster';
 import { useIdentity } from '@/lib/identity/useIdentity';
 
-const PGYS = [...new Set(MEMBERS.map((m) => m.pgy))].sort((a, b) => a - b);
+const PGYS = [...new Set(IDENTITIES.map((m) => m.pgy))].sort(comparePgy);
 
 /**
  * Compact "who are you" status + picker, dropped into the daily challenge and
@@ -50,8 +50,8 @@ export default function WhoAmI({ className = '' }: { className?: string }) {
       >
         <option value="">Select your name…</option>
         {PGYS.map((pgy) => (
-          <optgroup key={pgy} label={`PGY${pgy}`}>
-            {MEMBERS.filter((m) => m.pgy === pgy).map((m) => (
+          <optgroup key={pgy} label={pgyLabel(pgy)}>
+            {IDENTITIES.filter((m) => m.pgy === pgy).map((m) => (
               <option key={m.name} value={m.name}>{m.name}</option>
             ))}
           </optgroup>

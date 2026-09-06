@@ -1,7 +1,7 @@
 // Pure scoring logic for quiz-progress tracking. No I/O here — the store and
 // API wrap this, same split as family-points/calculator.ts.
 
-import { MEMBERS, memberByName } from '@/lib/roster';
+import { IDENTITIES, identityByName, comparePgy } from '@/lib/roster';
 
 export type QuizId = 'daily' | 'board-review' | 'rite' | 'peds';
 
@@ -33,7 +33,7 @@ export function validateNewAttempt(input: unknown): string | null {
   if (typeof input !== 'object' || input === null) return 'attempt must be an object';
   const a = input as Record<string, unknown>;
 
-  if (typeof a.member !== 'string' || !memberByName(a.member)) {
+  if (typeof a.member !== 'string' || !identityByName(a.member)) {
     return `unknown member: ${String(a.member)}`;
   }
   if (typeof a.quiz !== 'string' || !QUIZ_IDS.has(a.quiz as QuizId)) {
@@ -79,7 +79,7 @@ function pct(correct: number, completed: number): number {
 }
 
 function emptyQuizProgress(quiz: QuizId): QuizProgress {
-  const pgyNums = [...new Set(MEMBERS.map((m) => m.pgy))].sort((a, b) => a - b);
+  const pgyNums = [...new Set(IDENTITIES.map((m) => m.pgy))].sort(comparePgy);
   return {
     quiz,
     completed: 0,
@@ -90,7 +90,7 @@ function emptyQuizProgress(quiz: QuizId): QuizProgress {
       completed: 0,
       correct: 0,
       pct: 0,
-      members: MEMBERS.filter((m) => m.pgy === pgy).map((m) => ({
+      members: IDENTITIES.filter((m) => m.pgy === pgy).map((m) => ({
         name: m.name,
         pgy: m.pgy,
         completed: 0,
@@ -107,7 +107,7 @@ export function computeProgress(attempts: Attempt[]): ProgressBoard {
   ) as ProgressBoard;
 
   for (const a of attempts) {
-    const member = memberByName(a.member);
+    const member = identityByName(a.member);
     const quiz = board[a.quiz];
     if (!member || !quiz) continue; // roster/quiz drift — skip rather than crash
 
