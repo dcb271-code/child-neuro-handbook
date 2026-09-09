@@ -3,13 +3,15 @@
 import { useState } from 'react';
 import { IDENTITIES, TEST_MEMBERS, pgyLabel, comparePgy } from '@/lib/roster';
 import { useIdentity } from '@/lib/identity/useIdentity';
+import { useProgressIdentity } from '@/lib/identity/useProgressIdentity';
 
 const PGYS = [...new Set(IDENTITIES.map((m) => m.pgy))].sort(comparePgy);
 const TEST_NAMES = new Set(TEST_MEMBERS.map((m) => m.name));
 
 type Pending =
-  | { kind: 'switch'; name: string }   // resident -> different resident
-  | { kind: 'admin'; name: string }    // selecting a test/admin identity
+  | { kind: 'switch'; name: string }    // resident -> different resident
+  | { kind: 'admin'; name: string }     // selecting a test/admin identity
+  | { kind: 'password'; name: string }  // resident who set their own password
   | null;
 
 /**
@@ -27,8 +29,12 @@ type Pending =
  *     actually unlocks the by-name view of everyone (see progress/adminAuth.ts).
  *     Being *named* BrockTest grants nothing on its own.
  */
-export default function WhoAmI({ className = '' }: { className?: string }) {
+export default function WhoAmI({ className = '', onIdentityChange }: {
+  className?: string;
+  onIdentityChange?: () => void;
+}) {
   const { name, loaded, setName, clear } = useIdentity();
+  const { protectedNames, refresh } = useProgressIdentity();
   const [picking, setPicking] = useState(false);
   const [pending, setPending] = useState<Pending>(null);
   const [typed, setTyped] = useState('');
@@ -49,8 +55,37 @@ export default function WhoAmI({ className = '' }: { className?: string }) {
     setError(null);
     setTyped('');
     if (TEST_NAMES.has(next)) setPending({ kind: 'admin', name: next });
+    // A resident who set a password must enter it — this is the whole point of
+    // the opt-in, and it takes precedence over the type-the-name friction.
+    else if (protectedNames.includes(next)) setPending({ kind: 'password', name: next });
     else if (name) setPending({ kind: 'switch', name: next });
-    else { setName(next); reset(); }
+    else { setName(next); reset(); onIdentityChange?.(); }
+  }
+
+  async function confirmPassword() {
+    if (!pending) return;
+    setBusy(true);
+    setError(null);
+    try {
+      const res = await fetch('/api/progress/identity/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'verify', name: pending.name, password: typed }),
+      });
+      if (!res.ok) {
+        const d = await res.json().catch(() => ({}));
+        setError(d.error ?? 'Incorrect password');
+        return;
+      }
+      setName(pending.name);
+      reset();
+      await refresh();
+      onIdentityChange?.();
+    } catch {
+      setError('Could not reach the server');
+    } finally {
+      setBusy(false);
+    }
   }
 
   function confirmSwitch() {
@@ -61,8 +96,14 @@ export default function WhoAmI({ className = '' }: { className?: string }) {
     }
     // Stepping down from an admin identity gives up the admin view too.
     fetch('/api/progress/admin/', { method: 'DELETE' }).catch(() => {});
+    fetch('/api/progress/identity/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'signout' }),
+    }).catch(() => {});
     setName(pending.name);
     reset();
+    onIdentityChange?.();
   }
 
   async function confirmAdmin() {
@@ -82,6 +123,7 @@ export default function WhoAmI({ className = '' }: { className?: string }) {
       }
       setName(pending.name);
       reset();
+      onIdentityChange?.();
     } catch {
       setError('Could not reach the server');
     } finally {
@@ -92,12 +134,17 @@ export default function WhoAmI({ className = '' }: { className?: string }) {
   // ── confirmation step ───────────────────────────────────────────────
   if (pending) {
     const isAdmin = pending.kind === 'admin';
+    const isOwnPassword = pending.kind === 'password';
+    const secret = isAdmin || isOwnPassword;
+    const submit = isAdmin ? confirmAdmin : isOwnPassword ? confirmPassword : confirmSwitch;
     return (
       <div className={`text-xs ${className}`}>
         <div className="inline-block text-left rounded-lg border border-amber-300 dark:border-amber-700/60 bg-amber-50 dark:bg-amber-900/20 p-3 max-w-sm">
           <p className="text-slate-700 dark:text-slate-200 mb-2">
             {isAdmin ? (
               <>Enter the admin password to track as <strong>{pending.name}</strong> and see all residents by name.</>
+            ) : isOwnPassword ? (
+              <><strong>{pending.name}</strong> has set a password on this site. Enter it to track as them.</>
             ) : (
               <>
                 Switching to <strong>{pending.name}</strong> will attribute future attempts to them and
@@ -109,12 +156,12 @@ export default function WhoAmI({ className = '' }: { className?: string }) {
             // Remount when the mode changes so a typed name never survives
             // into the password field (or vice versa).
             key={pending.kind}
-            type={isAdmin ? 'password' : 'text'}
+            type={secret ? 'password' : 'text'}
             value={typed}
             onChange={(e) => setTyped(e.target.value)}
-            onKeyDown={(e) => { if (e.key === 'Enter') isAdmin ? confirmAdmin() : confirmSwitch(); }}
-            placeholder={isAdmin ? 'Admin password' : pending.name}
-            autoComplete={isAdmin ? 'current-password' : 'off'}
+            onKeyDown={(e) => { if (e.key === 'Enter') submit(); }}
+            placeholder={isAdmin ? 'Admin password' : isOwnPassword ? 'Your password' : pending.name}
+            autoComplete={secret ? 'current-password' : 'off'}
             className="w-full rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-2 py-1.5 text-xs mb-2"
           />
           {error && <p className="text-red-600 dark:text-red-400 mb-2">{error}</p>}
@@ -122,7 +169,7 @@ export default function WhoAmI({ className = '' }: { className?: string }) {
             <button
               type="button"
               disabled={busy}
-              onClick={isAdmin ? confirmAdmin : confirmSwitch}
+              onClick={submit}
               className="px-3 py-1.5 rounded-md bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white font-medium"
             >
               {busy ? 'Checking…' : 'Confirm'}
@@ -148,7 +195,17 @@ export default function WhoAmI({ className = '' }: { className?: string }) {
         </button>
         <button
           type="button"
-          onClick={() => { fetch('/api/progress/admin/', { method: 'DELETE' }).catch(() => {}); clear(); }}
+          onClick={() => {
+            fetch('/api/progress/admin/', { method: 'DELETE' }).catch(() => {});
+            fetch('/api/progress/identity/', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ action: 'signout' }),
+            }).catch(() => {});
+            clear();
+            refresh();
+            onIdentityChange?.();
+          }}
           className="text-slate-400 hover:underline"
         >
           stop tracking

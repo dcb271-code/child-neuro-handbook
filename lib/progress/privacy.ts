@@ -19,6 +19,7 @@
 
 import { pgyLabel, TEST_MEMBERS } from '@/lib/roster';
 import type { ProgressBoard, QuizProgress } from './calculator';
+import { findCredential, type IdentityRecords } from './identityLimits';
 
 /** Bumping this reshuffles every pseudonym; keep it stable. */
 const PSEUDONYM_SALT = 'neuro-progress-v1';
@@ -67,17 +68,22 @@ function pct(correct: number, completed: number): number {
   return completed > 0 ? Math.round((correct / completed) * 100) : 0;
 }
 
-function redactQuiz(quiz: QuizProgress, viewer: string | null): QuizProgress {
+function redactQuiz(
+  quiz: QuizProgress,
+  viewer: string | null,
+  chosen: Map<string, string>,
+): QuizProgress {
   const pgys = quiz.pgys
     // Test accounts are an admin tool; residents have no reason to see them.
     .filter((g) => !g.members.every((m) => TEST_NAMES.has(m.name)))
     .map((g) => {
       const real = g.members.filter((m) => !TEST_NAMES.has(m.name));
-      const names = assignPseudonyms(real.map((m) => m.name), g.pgy);
+      const generated = assignPseudonyms(real.map((m) => m.name), g.pgy);
       const members = real.map((m) =>
         m.name === viewer
           ? { ...m, isViewer: true }
-          : { ...m, name: names.get(m.name) ?? pgyLabel(g.pgy), isViewer: false },
+          // A resident's own chosen pseudonym wins over the generated letter.
+          : { ...m, name: chosen.get(m.name) ?? generated.get(m.name) ?? pgyLabel(g.pgy), isViewer: false },
       );
       // Recompute from the rows that survived, so a dropped test account
       // cannot leave its attempts behind in the cohort total.
@@ -104,11 +110,31 @@ export function redactBoard(
   board: ProgressBoard,
   viewer: string | null,
   isAdmin: boolean,
+  /** name -> resident-chosen pseudonym, replacing the generated letter. */
+  chosen: Map<string, string> = new Map(),
 ): ProgressBoard {
   if (isAdmin) return board;
   const out = {} as ProgressBoard;
   for (const [quizId, quiz] of Object.entries(board)) {
-    out[quizId as keyof ProgressBoard] = redactQuiz(quiz, viewer);
+    out[quizId as keyof ProgressBoard] = redactQuiz(quiz, viewer, chosen);
   }
   return out;
+}
+
+/**
+ * Which resident's rows a request may see unredacted.
+ *
+ * This is the rule that gives an opt-in password its teeth. `claimed` is the
+ * `?as=` parameter — a *claim*, since identity is a name picked from a
+ * dropdown. A claim is honoured only for a name nobody has protected; once a
+ * resident sets a password, only their verified cookie resolves to them.
+ */
+export function resolveViewer(
+  records: IdentityRecords,
+  claimed: string | null,
+  verified: string | null,
+): string | null {
+  if (verified) return verified;
+  if (!claimed) return null;
+  return findCredential(records, claimed)?.hash ? null : claimed;
 }

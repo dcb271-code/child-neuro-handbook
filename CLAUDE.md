@@ -111,6 +111,29 @@ board and never the raw attempt log. It used to return every attempt with real
 names to any caller, which made UI-level hiding decoration — the JSON was one
 URL away. Don't reintroduce a raw-attempts response.
 
+**Residents can opt in to more.** `PrivacyOptions` offers two independent,
+optional things (`lib/progress/identity.ts` + `identityLimits.ts`, stored in
+Blob at `progress/identities.json`):
+
+- A **chosen display name** replacing the generated letter. Cosmetic.
+- A **password**, which is the part with teeth. `resolveViewer` in `privacy.ts`
+  treats `?as=` as a *claim* and honours it only for names nobody has
+  protected; once a resident sets a password, only their verified cookie
+  resolves to them. `POST` enforces it too, so nobody can log attempts as a
+  protected resident. Claiming is first-come — there is no better option
+  without real accounts — and an admin can clear a claim via
+  `DELETE /api/progress/identity?name=…`.
+
+Three cookies now share `RESOURCES_COOKIE_SECRET` (resources, progress-admin,
+progress-identity). Each HMAC is namespaced with a purpose string so one
+cannot be replayed as another, and the identity cookie carries the resident
+name *inside* the signed payload so it cannot be re-pointed. There are tests
+for both.
+
+`lib/progress/identity.ts` imports `node:crypto` — never import it from a
+client component, or the webpack build fails outright. Constants and pure
+validators live in `identityLimits.ts` for that reason.
+
 Admin is gated on `PROGRESS_ADMIN_PASSWORD` (`lib/progress/adminAuth.ts`), not
 on which name is picked — being *named* BrockTest grants nothing. It fails
 closed: unset password means nobody is admin. The cookie signature is

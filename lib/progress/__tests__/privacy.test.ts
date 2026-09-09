@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { computeProgress, type Attempt } from '../calculator';
-import { redactBoard, assignPseudonyms, pseudonymLetter } from '../privacy';
+import { redactBoard, assignPseudonyms, pseudonymLetter, resolveViewer } from '../privacy';
 import { MEMBERS, TEST_MEMBERS } from '@/lib/roster';
 
 let seq = 0;
@@ -146,5 +146,78 @@ describe('redactBoard', () => {
       const names = quiz.pgys.flatMap((g) => g.members.map((m) => m.name));
       expect(names).not.toContain('Sean Woods');
     }
+  });
+});
+
+describe('resolveViewer', () => {
+  const records = { residents: [
+    { name: 'Cambri Fox', salt: 's', hash: 'h', updatedAt: 1 },        // password set
+    { name: 'Sean Woods', salt: '', hash: '', pseudonym: 'Kite', updatedAt: 2 }, // alias only
+  ]};
+
+  it('honours a claim for an unprotected name', () => {
+    // Unchanged behaviour for residents who have not opted in.
+    expect(resolveViewer(records, 'Gabriella Tison-Brandon', null)).toBe('Gabriella Tison-Brandon');
+    expect(resolveViewer(records, 'Sean Woods', null)).toBe('Sean Woods');
+  });
+
+  it('refuses a claim for a password-protected name', () => {
+    // This is the whole point: selecting Cambri in the dropdown no longer
+    // reveals her rows once she has set a password.
+    expect(resolveViewer(records, 'Cambri Fox', null)).toBeNull();
+  });
+
+  it('honours the verified cookie over any claim', () => {
+    expect(resolveViewer(records, 'Cambri Fox', 'Cambri Fox')).toBe('Cambri Fox');
+    expect(resolveViewer(records, 'Sean Woods', 'Cambri Fox')).toBe('Cambri Fox');
+  });
+
+  it('resolves to nobody with neither a claim nor a cookie', () => {
+    expect(resolveViewer(records, null, null)).toBeNull();
+  });
+
+  it('does not treat an admin-reset credential as protected', () => {
+    // A reset blanks salt/hash but keeps the row (and the pseudonym), so the
+    // name must become claimable again.
+    expect(resolveViewer(records, 'Sean Woods', null)).toBe('Sean Woods');
+  });
+});
+
+describe('chosen pseudonyms', () => {
+  const attempts2 = [
+    attempt({ member: 'Casey Rutledge', correct: true }),
+    attempt({ member: 'Ellora Amrit', correct: false }),
+  ];
+  const board2 = computeProgress(attempts2);
+  const chosen = new Map([['Casey Rutledge', 'Owl']]);
+
+  it('uses a resident’s chosen name instead of the generated letter', () => {
+    const out = redactBoard(board2, 'Ellora Amrit', false, chosen);
+    const pgy3 = out.rite.pgys.find((g) => g.pgy === 3)!;
+    const names = pgy3.members.map((m) => m.name);
+    expect(names).toContain('Owl');
+    expect(names).toContain('Ellora Amrit'); // the viewer, by name
+    expect(names).not.toContain('Casey Rutledge');
+  });
+
+  it('still generates a letter for residents who chose nothing', () => {
+    const out = redactBoard(board2, 'Casey Rutledge', false, chosen);
+    const pgy3 = out.rite.pgys.find((g) => g.pgy === 3)!;
+    const others = pgy3.members.filter((m) => !m.isViewer).map((m) => m.name);
+    expect(others.some((n) => /^PGY3 · [A-Z]+$/.test(n))).toBe(true);
+  });
+
+  it('never overrides the viewer’s own row with their pseudonym', () => {
+    // You should see your real name, even having set an alias for others.
+    const out = redactBoard(board2, 'Casey Rutledge', false, chosen);
+    const mine = out.rite.pgys.flatMap((g) => g.members).find((m) => m.isViewer)!;
+    expect(mine.name).toBe('Casey Rutledge');
+  });
+
+  it('is ignored entirely for an admin', () => {
+    const out = redactBoard(board2, 'BrockTest', true, chosen);
+    const names = out.rite.pgys.flatMap((g) => g.members.map((m) => m.name));
+    expect(names).toContain('Casey Rutledge');
+    expect(names).not.toContain('Owl');
   });
 });

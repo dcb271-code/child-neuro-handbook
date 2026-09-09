@@ -6,6 +6,7 @@ import { DIM1_LABEL, DIM1_COLOR, MODULE_IDS } from '@/lib/board-review/types';
 import QuestionCard from './QuestionCard';
 import ResultsScreen from './ResultsScreen';
 import WhoAmI from '@/components/identity/WhoAmI';
+import PrivacyOptions from '@/components/identity/PrivacyOptions';
 import { useIdentity } from '@/lib/identity/useIdentity';
 import { submitAttempts } from '@/lib/progress/submitAttempts';
 import { computeProgress, type ProgressBoard } from '@/lib/progress/calculator';
@@ -217,7 +218,8 @@ export default function BoardReviewApp({ questions: allQuestions }: { questions:
         <p className="text-slate-500 dark:text-slate-400 text-sm">
           {allQuestions.length} questions · ABPN child-neurology blueprint · instant feedback with all-option rationales.
         </p>
-        <WhoAmI className="mt-2" />
+        <WhoAmI className="mt-2" onIdentityChange={refetchProgress} />
+        <PrivacyOptions onChange={refetchProgress} />
       </div>
 
       {/* RITE Practice Exams — full-length exams, distinct from the

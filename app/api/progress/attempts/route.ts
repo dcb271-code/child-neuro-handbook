@@ -2,40 +2,45 @@ import { NextResponse } from 'next/server';
 import {
   validateNewAttempt,
   MAX_ATTEMPT_BATCH,
+  computeProgress,
   type Attempt,
   type NewAttempt,
 } from '@/lib/progress/calculator';
-import { computeProgress } from '@/lib/progress/calculator';
-import { redactBoard } from '@/lib/progress/privacy';
+import { redactBoard, resolveViewer } from '@/lib/progress/privacy';
 import { isProgressAdmin } from '@/lib/progress/adminAuth';
+import { verifiedResident } from '@/lib/progress/identityAuth';
+import { findCredential, pseudonymMap, type IdentityRecords } from '@/lib/progress/identityLimits';
+import { readIdentities } from '@/lib/progress/identityStore';
 import { readAttempts, writeAttempts, newAttemptId } from '@/lib/progress/store';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
-// No password gate here, unlike /api/family-points/entries. Identity itself
-// is just a name picked client-side (see lib/identity/useIdentity.ts) — this
-// is self-tracking, not a competitive scoring system, so the same "very
-// simply" tradeoff applies one level further: no barrier to logging your own
-// quiz attempts at all.
+// Logging an attempt needs no password, unlike /api/family-points/entries —
+// this is self-tracking, not competitive scoring. The one exception is a name
+// whose owner has set a password: see requireOwnership below.
 
-// Returns a computed board, never the raw attempt log.
-//
-// It used to return every attempt with real names to any caller, which meant
-// any redaction in the UI was decoration — the JSON was one URL away. The board
-// is now assembled and redacted here, so a resident's browser is never sent the
-// mapping from another resident to their scores.
-//
-// `?as=` is the caller's claimed identity. It is spoofable, because identity is
-// a picked name rather than a login; what it buys is that seeing the whole
-// roster at once now needs the admin password, not just a different selection
-// in the dropdown.
 export async function GET(req: Request) {
-  const attempts = await readAttempts();
   const admin = isProgressAdmin();
-  const viewer = new URL(req.url).searchParams.get('as');
-  const board = redactBoard(computeProgress(attempts), viewer, admin);
-  return NextResponse.json({ board, admin });
+  const claimed = new URL(req.url).searchParams.get('as');
+  const verified = verifiedResident();
+
+  let records: IdentityRecords;
+  try {
+    records = await readIdentities();
+  } catch (err) {
+    // Deny rather than degrade: empty records would read as "nobody is
+    // protected" and hand out every protected row.
+    console.error('[progress] readIdentities failed:', err);
+    if (!admin) return NextResponse.json({ error: 'unavailable, try again' }, { status: 503 });
+    records = { residents: [] };
+  }
+
+  const attempts = await readAttempts();
+  const viewer = admin ? verified : resolveViewer(records, claimed, verified);
+  const board = redactBoard(computeProgress(attempts), viewer, admin, pseudonymMap(records));
+
+  return NextResponse.json({ board, admin, viewer, protectedName: !!(viewer && findCredential(records, viewer)?.hash) });
 }
 
 export async function POST(req: Request) {
@@ -53,6 +58,23 @@ export async function POST(req: Request) {
   for (const a of incoming) {
     const err = validateNewAttempt(a);
     if (err) return NextResponse.json({ error: err }, { status: 400 });
+  }
+
+  // A protected name may only be written to by its holder — otherwise anyone
+  // could pad or poison a colleague's stats even though they can't read them.
+  const members = new Set(incoming.map((a) => a.member));
+  let records: IdentityRecords;
+  try {
+    records = await readIdentities();
+  } catch (err) {
+    console.error('[progress] readIdentities failed:', err);
+    return NextResponse.json({ error: 'unavailable, try again' }, { status: 503 });
+  }
+  const verified = verifiedResident();
+  for (const m of members) {
+    if (findCredential(records, m)?.hash && verified !== m) {
+      return NextResponse.json({ error: `${m} is password-protected on this site` }, { status: 403 });
+    }
   }
 
   const existing = await readAttempts();

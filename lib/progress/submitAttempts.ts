@@ -13,7 +13,17 @@ export function submitAttempts(attempts: NewAttempt[]): void {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify({ attempts }),
-  }).catch((err) => {
-    console.error('[progress] submitAttempts failed:', err);
-  });
+  })
+    .then(async (res) => {
+      // fetch only rejects on network failure, so a 403 or 400 used to vanish
+      // without a trace — including "this name is password-protected", which
+      // is now a reachable outcome.
+      if (!res.ok) {
+        const detail = await res.json().catch(() => ({}));
+        console.error('[progress] submitAttempts rejected:', res.status, detail?.error ?? '');
+      }
+    })
+    .catch((err) => {
+      console.error('[progress] submitAttempts failed:', err);
+    });
 }

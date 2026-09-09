@@ -1,6 +1,6 @@
 # Handoff — Child Neuro Handbook
 
-Last updated: 2026-09-08, through commit `d0d6982`. Written for whoever picks
+Last updated: 2026-09-08, through commit `59bb5e4`. Written for whoever picks
 this project up next — a co-maintainer, a future chief resident, or future-you
 in six months.
 
@@ -127,7 +127,14 @@ else as a cohort pseudonym ("PGY3 · B"); the real mapping needs the admin
 password. This is enforced on the server — `GET /api/progress/attempts` returns
 a redacted, already-computed board, never the attempt log, because the log used
 to be readable by anyone at that URL. Set **`PROGRESS_ADMIN_PASSWORD`** in
-Vercel or the admin view is simply unavailable (it fails closed). Selecting a
+Vercel or the admin view is simply unavailable (it fails closed) — there is no
+default and nothing is committed.
+
+**Residents can opt in to more**, both optional: a chosen display name instead
+of the cohort letter, and a password that stops anyone else selecting their
+name (or logging attempts as them). Credentials are scrypt hashes in Blob at
+`progress/identities.json`. Claiming is first-come; clear a forgotten one with
+`DELETE /api/progress/identity?name=…` as admin. Selecting a
 test identity in the picker prompts for it; switching between residents asks
 you to type the new name, so flipping the dropdown is no longer a way to read
 someone else's scores. See `lib/progress/privacy.ts` for the honest limits —
@@ -259,7 +266,7 @@ forget it's hand-authored JSON, not derived).
 2. Check `docs/goal-reports/` for pending clinician decisions before assuming
    a number is settled.
 3. Run `npm run test:run` and `npm run build` before and after any change —
-   380 tests as of this commit, all passing.
+   406 tests as of this commit, all passing.
 4. After editing any section's HTML, run `npm run build-search` or the
    consistency tests will fail.
 5. If Blob storage seems flaky, read the caching section above before "fixing"
