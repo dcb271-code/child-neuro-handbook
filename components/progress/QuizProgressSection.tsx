@@ -30,7 +30,13 @@ export default function QuizProgressSection({ title, blurb, progress }: {
         <p className="text-xs text-slate-400 dark:text-slate-500 py-2">No tracked attempts yet.</p>
       ) : (
         progress.pgys.map((g) => (
-          <details key={g.pgy} className="group border-b border-slate-100 dark:border-slate-700/60 last:border-0">
+          <details
+            key={g.pgy}
+            // Open the viewer's own cohort — otherwise their row is behind a
+            // collapsed accordion and reads as "nothing was recorded".
+            open={g.members.some((m) => m.isViewer)}
+            className="group border-b border-slate-100 dark:border-slate-700/60 last:border-0"
+          >
             <summary className="flex items-center gap-2.5 cursor-pointer select-none py-2.5 text-sm text-slate-700 dark:text-slate-200 min-h-[44px]">
               <svg className="w-3 h-3 shrink-0 text-slate-400 transition-transform details-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
@@ -46,7 +52,11 @@ export default function QuizProgressSection({ title, blurb, progress }: {
             <ul className="pb-3 pl-8 space-y-1.5">
               {g.members.map((m) => (
                 <li key={m.name} className="flex items-baseline justify-between gap-3 text-sm">
-                  <span className="text-slate-700 dark:text-slate-200">{m.name}</span>
+                  <span className={m.isViewer
+                    ? 'font-semibold text-indigo-700 dark:text-indigo-300'
+                    : 'text-slate-700 dark:text-slate-200'}>
+                    {m.name}{m.isViewer && ' (you)'}
+                  </span>
                   <span className="flex items-baseline gap-2 shrink-0 tabular-nums text-slate-500 dark:text-slate-400">
                     {m.completed === 0 ? (
                       <span className="text-slate-300 dark:text-slate-600">no attempts</span>

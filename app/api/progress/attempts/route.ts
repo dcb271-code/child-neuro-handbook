@@ -5,6 +5,9 @@ import {
   type Attempt,
   type NewAttempt,
 } from '@/lib/progress/calculator';
+import { computeProgress } from '@/lib/progress/calculator';
+import { redactBoard } from '@/lib/progress/privacy';
+import { isProgressAdmin } from '@/lib/progress/adminAuth';
 import { readAttempts, writeAttempts, newAttemptId } from '@/lib/progress/store';
 
 export const runtime = 'nodejs';
@@ -16,9 +19,23 @@ export const dynamic = 'force-dynamic';
 // simply" tradeoff applies one level further: no barrier to logging your own
 // quiz attempts at all.
 
-export async function GET() {
+// Returns a computed board, never the raw attempt log.
+//
+// It used to return every attempt with real names to any caller, which meant
+// any redaction in the UI was decoration — the JSON was one URL away. The board
+// is now assembled and redacted here, so a resident's browser is never sent the
+// mapping from another resident to their scores.
+//
+// `?as=` is the caller's claimed identity. It is spoofable, because identity is
+// a picked name rather than a login; what it buys is that seeing the whole
+// roster at once now needs the admin password, not just a different selection
+// in the dropdown.
+export async function GET(req: Request) {
   const attempts = await readAttempts();
-  return NextResponse.json({ attempts });
+  const admin = isProgressAdmin();
+  const viewer = new URL(req.url).searchParams.get('as');
+  const board = redactBoard(computeProgress(attempts), viewer, admin);
+  return NextResponse.json({ board, admin });
 }
 
 export async function POST(req: Request) {

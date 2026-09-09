@@ -101,6 +101,33 @@ Regenerate with `node scripts/build-peds-quizzes.mjs`; the markdown source is ke
 `scripts/sources/peds-practice-quizzes.md`. It must stay out of `public/` — it contains
 the answer key in plain text.
 
+### Progress board privacy
+
+Residents see their own row by name and everyone else as a cohort pseudonym
+("PGY3 · B"); only an admin sees the real mapping. **The redaction is
+server-side** (`lib/progress/privacy.ts`, applied in
+`GET /api/progress/attempts`): that route returns a computed, already-redacted
+board and never the raw attempt log. It used to return every attempt with real
+names to any caller, which made UI-level hiding decoration — the JSON was one
+URL away. Don't reintroduce a raw-attempts response.
+
+Admin is gated on `PROGRESS_ADMIN_PASSWORD` (`lib/progress/adminAuth.ts`), not
+on which name is picked — being *named* BrockTest grants nothing. It fails
+closed: unset password means nobody is admin. The cookie signature is
+namespaced with a purpose string because it shares `RESOURCES_COOKIE_SECRET`
+with the resources cookie, which every resident holds; without the namespacing
+that cookie could be replayed to unlock the by-name board. There's a test for
+exactly that.
+
+Redaction also **recomputes totals from the rows that survive**, so hidden test
+attempts don't inflate the programme-wide number a resident sees.
+
+Known limits, stated in the file header too: identity is a picked name, not a
+login, so a resident can claim to be someone else and see that one person's
+row — what's prevented is reading the whole roster's scores at once. Cohorts
+are 3-4 people, so a pseudonym is guessable from context. The roster itself
+already ships in the client bundle; what's protected is person → score.
+
 ### Roster vs. test identities
 
 `lib/roster.ts` holds two lists. `MEMBERS` is the real 17-resident roster and

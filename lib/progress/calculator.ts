@@ -49,7 +49,10 @@ export function validateNewAttempt(input: unknown): string | null {
 }
 
 export type MemberQuizStats = {
+  /** Real name, or a cohort pseudonym once redacted for a non-admin viewer. */
   name: string;
+  /** True on the row belonging to whoever is looking (see progress/privacy.ts). */
+  isViewer?: boolean;
   pgy: number;
   completed: number;
   correct: number;

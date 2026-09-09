@@ -8,7 +8,7 @@ import ResultsScreen from './ResultsScreen';
 import WhoAmI from '@/components/identity/WhoAmI';
 import { useIdentity } from '@/lib/identity/useIdentity';
 import { submitAttempts } from '@/lib/progress/submitAttempts';
-import { computeProgress, type Attempt } from '@/lib/progress/calculator';
+import { computeProgress, type ProgressBoard } from '@/lib/progress/calculator';
 import QuizProgressSection from '@/components/progress/QuizProgressSection';
 import QuizRunner from '@/components/quiz-runner/QuizRunner';
 import riteData from '@/src/data/rite-exams.json';
@@ -67,7 +67,10 @@ export default function BoardReviewApp({ questions: allQuestions }: { questions:
   // Progress is fetched client-side (not passed down from the server page,
   // which stays force-static) so this stays in sync when a session completes
   // without needing the board-review page itself to become dynamic.
-  const [progress, setProgress] = useState(() => computeProgress([]));
+  // The board arrives already redacted for whoever is looking — the raw attempt
+  // log is never sent to the browser. See lib/progress/privacy.ts.
+  const [progress, setProgress] = useState<ProgressBoard>(() => computeProgress([]));
+  const [isAdminView, setIsAdminView] = useState(false);
   // True while a RITE exam is being taken, so the rest of this page steps
   // aside. The RITE component stays mounted either way — hiding rather than
   // unmounting keeps in-progress answers alive.
@@ -78,11 +81,15 @@ export default function BoardReviewApp({ questions: allQuestions }: { questions:
   // Either runner taking over the page hides the rest of the chrome.
   const runnerActive = riteActive || pedsActive;
   const refetchProgress = useCallback(() => {
-    fetch('/api/progress/attempts/', { cache: 'no-store' })
+    const qs = identityName ? `?as=${encodeURIComponent(identityName)}` : '';
+    fetch(`/api/progress/attempts/${qs}`, { cache: 'no-store' })
       .then((r) => r.json())
-      .then((d: { attempts?: Attempt[] }) => setProgress(computeProgress(d.attempts ?? [])))
+      .then((d: { board?: ProgressBoard; admin?: boolean }) => {
+        if (d.board) setProgress(d.board);
+        setIsAdminView(!!d.admin);
+      })
       .catch((err) => console.error('[progress] fetch failed:', err));
-  }, []);
+  }, [identityName]);
   useEffect(() => { refetchProgress(); }, [refetchProgress]);
 
   const dim1Counts = useMemo(() => {
@@ -288,8 +295,10 @@ export default function BoardReviewApp({ questions: allQuestions }: { questions:
         </summary>
         <div className="pt-3 pb-1">
           <p className="text-xs text-slate-400 dark:text-slate-500 mb-3">
-            Opt-in and self-identified — pick your name above to start showing up here. Anyone can pick any
-            name; this is not a login.
+            Opt-in and self-identified — pick your name above to start showing up here.{' '}
+            {isAdminView
+              ? 'Admin view: all residents shown by name.'
+              : 'Your own row is shown by name; everyone else appears as a cohort letter.'}
           </p>
           <QuizProgressSection
             title="Daily Question"
