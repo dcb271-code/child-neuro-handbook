@@ -1,6 +1,6 @@
 # Handoff — Child Neuro Handbook
 
-Last updated: 2026-09-08, through commit `59bb5e4`. Written for whoever picks
+Last updated: 2026-09-14, through commit `a0ee90e`. Written for whoever picks
 this project up next — a co-maintainer, a future chief resident, or future-you
 in six months.
 
@@ -101,8 +101,10 @@ disclosures on the idle screen so they don't compete with starting a quiz.
 
 Opt-in and self-identified. A resident picks their name once
 (`lib/identity/useIdentity.ts` + `components/identity/WhoAmI.tsx`), stored in
-localStorage on that device. **This is not authentication** — anyone can pick
-anyone's name, an accepted tradeoff matching how Family Points already works.
+localStorage on that device. **By default this is not authentication** — anyone
+can pick anyone's name, an accepted tradeoff matching how Family Points works.
+A resident who wants more can set their own password (below), after which their
+name is the one thing here that *is* enforced.
 The picker lives on the board-review idle screen only — it was removed from the
 daily-challenge header to keep the front door uncluttered. The identity is in
 localStorage, so the daily question still attributes attempts for anyone who
@@ -120,25 +122,40 @@ displayed until the pediatrics work went in.
 
 Attempts are a flat JSON log in Vercel Blob (`lib/progress/store.ts`).
 `POST /api/progress/attempts` has **no password gate**, unlike family-points
-entries — it's self-tracking, not competitive scoring.
+entries — it's self-tracking, not competitive scoring. The one exception is a
+name whose owner has set a password: nobody else can log against it, so a
+colleague can neither read nor pad your stats.
 
 **Who sees whose scores.** A resident sees their own row by name and everyone
 else as a cohort pseudonym ("PGY3 · B"); the real mapping needs the admin
 password. This is enforced on the server — `GET /api/progress/attempts` returns
 a redacted, already-computed board, never the attempt log, because the log used
-to be readable by anyone at that URL. Set **`PROGRESS_ADMIN_PASSWORD`** in
-Vercel or the admin view is simply unavailable (it fails closed) — there is no
-default and nothing is committed.
+to be readable by anyone at that URL.
+
+The admin view needs **`PROGRESS_ADMIN_PASSWORD`** in Vercel, which **is now
+set** (confirmed 2026-09-14). Nothing is committed and there is no default, so
+if it ever goes missing the admin view fails closed rather than opening up. To
+tell which state you're in without guessing, POST a deliberately wrong password
+to `/api/progress/admin`: **503** means the variable isn't live, **401** means
+it is and the gate works. Deliberately *not* `RESOURCES_PASSWORD` — every
+resident holds that to upload files.
 
 **Residents can opt in to more**, both optional: a chosen display name instead
 of the cohort letter, and a password that stops anyone else selecting their
 name (or logging attempts as them). Credentials are scrypt hashes in Blob at
-`progress/identities.json`. Claiming is first-come; clear a forgotten one with
-`DELETE /api/progress/identity?name=…` as admin. Selecting a
-test identity in the picker prompts for it; switching between residents asks
-you to type the new name, so flipping the dropdown is no longer a way to read
-someone else's scores. See `lib/progress/privacy.ts` for the honest limits —
-this raises the bar on casual snooping, it is not authentication.
+`progress/identities.json`. Claiming is first-come — there's no better option
+without real accounts — so clear a forgotten or mis-claimed one with
+`DELETE /api/progress/identity?name=…` as admin.
+
+Two bits of friction guard the picker itself: selecting a test identity asks
+for the admin password, and switching between residents asks you to type the
+new name, so flipping the dropdown is no longer a casual way to read a
+colleague's scores.
+
+Read the header of `lib/progress/privacy.ts` before relying on any of this. It
+states the limits plainly: cohorts are 3–4 people so a pseudonym is guessable
+from context, and a resident who hasn't set a password can still be selected by
+anyone.
 
 `/progress` is a redirect to `/board-review/`, kept only for old bookmarks.
 
@@ -148,8 +165,18 @@ tracking without joining a Family Points team or skewing a PGY cohort — it get
 its own "Test" group, sorted last. Family Points rejects it outright. Add more
 test accounts there, never to `MEMBERS`.
 
-**As of this writing: 0 attempts logged.** Nobody has opted in yet. The empty
-states are wired and render cleanly, but the feature is unproven in real use.
+**As of 2026-09-14, in real use but lightly.** The visible board shows 20
+board-review answers (65%) and 1 daily answer; RITE and pediatrics read 0
+*in the resident view* because the only attempts against them came from
+BrockTest, and test-account rows — and their contribution to the totals — are
+stripped for non-admins. Sign in as admin to see those. **No resident has yet
+set a password or a display name** (`protected` is empty), so the opt-in half
+is wired and tested but unexercised by a real user.
+
+One thing worth confirming rather than inheriting: the BrockTest RITE run
+logged **43/43, 100%**. The results screen and the logged attempts share the
+same comparison, so if that score wasn't genuine they are wrong together and
+there is a scoring bug to find. It was never confirmed either way.
 
 ## Family Points
 
@@ -258,6 +285,17 @@ forget it's hand-authored JSON, not derived).
   (pun-first, standalone, no borrowed sports-logo conventions).
 - `RESOURCES_PASSWORD` in Vercel gates both `/resources` uploads and Family
   Points entry — one shared secret across two features, low-stakes by design.
+  It appeared in a chat transcript during development, so rotate it if that
+  ever matters.
+- **Three cookies share `RESOURCES_COOKIE_SECRET`** (`resources-auth`,
+  `progress-admin`, `progress-identity`). Each HMAC is namespaced with its own
+  purpose string so one cannot be replayed as another — without that, the
+  resources cookie every resident already holds would unlock the admin board.
+  Tests pin it; don't "simplify" the signing helpers into one.
+- **Env vars in Vercel**: `BLOB_READ_WRITE_TOKEN`, `RESOURCES_PASSWORD`,
+  `RESOURCES_COOKIE_SECRET`, `PROGRESS_ADMIN_PASSWORD`. Only the first three
+  exist in `.env.local`, which is why `/resources` 500s and the progress board
+  503s when run locally — expected, not a regression.
 
 ## If you're picking this up cold
 
@@ -271,3 +309,7 @@ forget it's hand-authored JSON, not derived).
    consistency tests will fail.
 5. If Blob storage seems flaky, read the caching section above before "fixing"
    it again.
+6. Several behaviours here look like bugs but are deliberate and documented
+   above: RITE/peds showing 0 in the resident progress view, `/resources`
+   failing locally, and the pediatrics quizzes having no pass mark. Check this
+   file before changing any of them.
