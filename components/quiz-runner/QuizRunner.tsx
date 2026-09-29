@@ -78,8 +78,7 @@ export default function QuizRunner({
           questionId: q.id,
           correct: answers[i] === q.answer,
         })),
-      );
-      if (onAttemptsSubmitted) setTimeout(onAttemptsSubmitted, 1500);
+      ).then(() => onAttemptsSubmitted?.());
     }
     setPhase('complete');
     window.scrollTo({ top: 0 });

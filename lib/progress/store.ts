@@ -1,40 +1,29 @@
-// Quiz-attempt log persistence in Vercel Blob. Same pattern as
-// family-points/store.ts — including the cache-busting, which is load-bearing:
-// see the comment inline before changing it.
+// Quiz-attempt log persistence in Vercel Blob. The concurrency and
+// cache-busting rules live in lib/blob/jsonList.ts — read its header before
+// adding another way to write this blob.
 
-import { put, list } from '@vercel/blob';
+import { readJsonList, updateJsonList } from '@/lib/blob/jsonList';
 import type { Attempt } from './calculator';
 
 export const ATTEMPTS_PATH = 'progress/attempts.json';
 
-export async function readAttempts(): Promise<Attempt[]> {
-  try {
-    const { blobs } = await list({ prefix: ATTEMPTS_PATH });
-    const hit = blobs.find((b) => b.pathname === ATTEMPTS_PATH);
-    if (!hit) return [];
-    // Cache-bust per request — the pathname is stable across overwrites and
-    // Blob content URLs sit behind a CDN. See family-points/store.ts for why
-    // `uploadedAt` doesn't work as a version stamp and `cache: 'no-store'`
-    // alone isn't enough.
-    const bust = `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 8)}`;
-    const res = await fetch(`${hit.url}?v=${bust}`, { cache: 'no-store' });
-    if (!res.ok) return [];
-    const data = (await res.json()) as { attempts?: Attempt[] };
-    return Array.isArray(data?.attempts) ? data.attempts : [];
-  } catch (err) {
-    console.error('[progress] readAttempts failed:', err);
-    return [];
-  }
+/** For display. Soft-fails to []. */
+export function readAttempts(): Promise<Attempt[]> {
+  return readJsonList<Attempt>(ATTEMPTS_PATH, 'attempts');
 }
 
-export async function writeAttempts(attempts: Attempt[]): Promise<void> {
-  await put(ATTEMPTS_PATH, JSON.stringify({ attempts }), {
-    access: 'public',
-    addRandomSuffix: false,
-    allowOverwrite: true,
-    contentType: 'application/json',
-    cacheControlMaxAge: 60,
-  });
+/**
+ * Appends to the log; returns how many were written. Throws on failure — the
+ * caller must report it rather than claim success.
+ *
+ * `batchId` makes a client retry idempotent: if a previous request with the
+ * same id already landed (its response was lost), nothing is appended twice.
+ */
+export async function appendAttempts(added: Attempt[], batchId?: string): Promise<number> {
+  const result = await updateJsonList<Attempt>(ATTEMPTS_PATH, 'attempts', (current) =>
+    batchId && current.some((a) => a.batch === batchId) ? null : [...current, ...added],
+  );
+  return result === null ? 0 : added.length;
 }
 
 export function newAttemptId(): string {

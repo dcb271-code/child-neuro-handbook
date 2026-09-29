@@ -166,9 +166,7 @@ export default function BoardReviewApp({ questions: allQuestions }: { questions:
               correct: sel !== null && !!q.options[sel]?.isCorrect,
             };
           }),
-        );
-        // Give the write a moment to land before pulling it back.
-        setTimeout(refetchProgress, 1500);
+        ).then(refetchProgress);
       }
       setPhase('complete');
     } else {

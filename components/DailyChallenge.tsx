@@ -120,12 +120,19 @@ export default function DailyChallenge({ children }: { children: React.ReactNode
           try {
             localStorage.setItem(loggedKey, '1');
           } catch {}
+          // Claimed up front so a second answer can't double-log while this
+          // is in flight; released if the save fails so the day isn't lost.
           submitAttempts([{
             member: identityName,
             quiz: 'daily',
             questionId: String(currentQuestion.id),
             correct: isCorrect,
-          }]);
+          }]).then((ok) => {
+            if (ok) return;
+            try {
+              localStorage.removeItem(loggedKey);
+            } catch {}
+          });
         }
       }
     },

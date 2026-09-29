@@ -167,6 +167,16 @@ identities sit at `TEST_PGY` (0), rendered as "Test" via `pgyLabel` and sorted
 last via `comparePgy`, so they get their own progress group instead of skewing a
 real cohort.
 
+### Blob-backed logs
+
+The progress attempt log and the Family Points entry log are each one JSON blob
+that every submit rewrites. **Write them only through `updateJsonList` in
+`lib/blob/jsonList.ts`**, which does a conditional (`ifMatch` ETag) write and
+retries on conflict. A bare read-then-`put` silently drops whichever of two
+concurrent submits lands first, and because the display read soft-fails to
+`[]`, a failed read fed into a write erases the whole log. Residents reported
+attempts failing to record before this helper existed.
+
 ### Family Points
 
 `/family-points` is a standalone dynamic page (like `/resources`, not a content

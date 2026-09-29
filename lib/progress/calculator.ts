@@ -20,6 +20,8 @@ export type Attempt = {
   questionId: string;
   correct: boolean;
   createdAt: number;
+  /** Client batch id, so a retried submit is not logged twice. */
+  batch?: string;
 };
 
 export type NewAttempt = Pick<Attempt, 'member' | 'quiz' | 'questionId' | 'correct'>;

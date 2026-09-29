@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { isAuthed } from '@/lib/resources/auth';
 import { validateNewEntry, type Entry, type NewEntry } from '@/lib/family-points/calculator';
-import { readEntries, writeEntries, newEntryId } from '@/lib/family-points/store';
+import { readEntries, appendEntries, deleteEntry, newEntryId } from '@/lib/family-points/store';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -44,7 +44,6 @@ export async function POST(req: Request) {
     if (err) return NextResponse.json({ error: err }, { status: 400 });
   }
 
-  const existing = await readEntries();
   const now = Date.now();
   const added: Entry[] = incoming.map((e) => ({
     id: newEntryId(),
@@ -54,7 +53,12 @@ export async function POST(req: Request) {
     count: e.count,
     createdAt: now,
   }));
-  await writeEntries([...existing, ...added]);
+  try {
+    await appendEntries(added);
+  } catch (err) {
+    console.error('[family-points] appendEntries failed:', err);
+    return NextResponse.json({ error: 'could not save, try again' }, { status: 503 });
+  }
 
   return NextResponse.json({ ok: true, added: added.length });
 }
@@ -73,12 +77,14 @@ export async function DELETE(req: Request) {
     return NextResponse.json({ error: 'id required' }, { status: 400 });
   }
 
-  const existing = await readEntries();
-  const next = existing.filter((e) => e.id !== body.id);
-  if (next.length === existing.length) {
-    return NextResponse.json({ error: 'not found' }, { status: 404 });
+  let found: boolean;
+  try {
+    found = await deleteEntry(body.id);
+  } catch (err) {
+    console.error('[family-points] deleteEntry failed:', err);
+    return NextResponse.json({ error: 'could not save, try again' }, { status: 503 });
   }
-  await writeEntries(next);
+  if (!found) return NextResponse.json({ error: 'not found' }, { status: 404 });
 
   return NextResponse.json({ ok: true });
 }

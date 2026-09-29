@@ -1,42 +1,29 @@
-// Entry log persistence in Vercel Blob, following the resources metadata pattern.
+// Entry log persistence in Vercel Blob. The concurrency and cache-busting
+// rules live in lib/blob/jsonList.ts — read its header before adding another
+// way to write this blob.
 
-import { put, list } from '@vercel/blob';
+import { readJsonList, updateJsonList } from '@/lib/blob/jsonList';
 import type { Entry } from './calculator';
 
 export const ENTRIES_PATH = 'family-points/entries.json';
 
-export async function readEntries(): Promise<Entry[]> {
-  try {
-    // list+fetch pattern — Blob has no direct GET-by-path
-    const { blobs } = await list({ prefix: ENTRIES_PATH });
-    const hit = blobs.find((b) => b.pathname === ENTRIES_PATH);
-    if (!hit) return [];
-    // The pathname is stable across overwrites and Blob content URLs sit behind
-    // a CDN, so a read after a write can return the previous list. `uploadedAt`
-    // is NOT a usable version stamp — it does not reliably change on overwrite,
-    // which pins reads to a stale copy for the whole cache lifetime and makes
-    // read-modify-write destroy entries saved in the interim. A token that is
-    // unique per request forces an origin fetch every time. `cache: 'no-store'`
-    // alone only bypasses Next's cache, not the CDN's.
-    const bust = `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 8)}`;
-    const res = await fetch(`${hit.url}?v=${bust}`, { cache: 'no-store' });
-    if (!res.ok) return [];
-    const data = (await res.json()) as { entries?: Entry[] };
-    return Array.isArray(data?.entries) ? data.entries : [];
-  } catch (err) {
-    console.error('[family-points] readEntries failed:', err);
-    return [];
-  }
+/** For display. Soft-fails to []. */
+export function readEntries(): Promise<Entry[]> {
+  return readJsonList<Entry>(ENTRIES_PATH, 'entries');
 }
 
-export async function writeEntries(entries: Entry[]): Promise<void> {
-  await put(ENTRIES_PATH, JSON.stringify({ entries }), {
-    access: 'public',
-    addRandomSuffix: false,
-    allowOverwrite: true,
-    contentType: 'application/json',
-    cacheControlMaxAge: 60, // minimum the API allows; the ?v= stamp does the real work
+/** Throws on failure. */
+export async function appendEntries(added: Entry[]): Promise<void> {
+  await updateJsonList<Entry>(ENTRIES_PATH, 'entries', (current) => [...current, ...added]);
+}
+
+/** Resolves false if no entry has that id. Throws on failure. */
+export async function deleteEntry(id: string): Promise<boolean> {
+  const result = await updateJsonList<Entry>(ENTRIES_PATH, 'entries', (current) => {
+    const next = current.filter((e) => e.id !== id);
+    return next.length === current.length ? null : next;
   });
+  return result !== null;
 }
 
 export function newEntryId(): string {

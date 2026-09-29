@@ -11,7 +11,7 @@ import { isProgressAdmin } from '@/lib/progress/adminAuth';
 import { verifiedResident } from '@/lib/progress/identityAuth';
 import { findCredential, pseudonymMap, type IdentityRecords } from '@/lib/progress/identityLimits';
 import { readIdentities } from '@/lib/progress/identityStore';
-import { readAttempts, writeAttempts, newAttemptId } from '@/lib/progress/store';
+import { readAttempts, appendAttempts, newAttemptId } from '@/lib/progress/store';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -44,7 +44,7 @@ export async function GET(req: Request) {
 }
 
 export async function POST(req: Request) {
-  let body: { attempts?: NewAttempt[] };
+  let body: { attempts?: NewAttempt[]; batchId?: unknown };
   try {
     body = await req.json();
   } catch {
@@ -77,7 +77,8 @@ export async function POST(req: Request) {
     }
   }
 
-  const existing = await readAttempts();
+  const batchId =
+    typeof body.batchId === 'string' && /^[\w-]{8,64}$/.test(body.batchId) ? body.batchId : undefined;
   const now = Date.now();
   const added: Attempt[] = incoming.map((a) => ({
     id: newAttemptId(),
@@ -86,8 +87,18 @@ export async function POST(req: Request) {
     questionId: a.questionId,
     correct: a.correct,
     createdAt: now,
+    ...(batchId ? { batch: batchId } : {}),
   }));
-  await writeAttempts([...existing, ...added]);
 
-  return NextResponse.json({ ok: true, added: added.length });
+  let written: number;
+  try {
+    written = await appendAttempts(added, batchId);
+  } catch (err) {
+    // A 5xx tells the client to retry; it used to get { ok: true } whether or
+    // not anything was saved.
+    console.error('[progress] appendAttempts failed:', err);
+    return NextResponse.json({ error: 'could not save, try again' }, { status: 503 });
+  }
+
+  return NextResponse.json({ ok: true, added: written });
 }
