@@ -247,9 +247,26 @@ reads stayed pinned to a stale copy. This once caused a delete to read a
 pre-write copy of the list and wipe out 11 entries that had just been added
 (recovered same session; see `27a6af9`).
 
-The current fix uses a **per-request random token** on the read URL. It looks
-redundant next to `cache: 'no-store'` but isn't — that only bypasses Next's
-cache, not the CDN's. Do not simplify it away.
+A second fix used a **per-request random token** on the read URL. On 21 Oct
+2026 that was shown not to work either: after a write, the overwritten
+pathname kept serving the previous body with `x-vercel-cache: HIT` and an
+`age` well past its 60s max-age, and nothing bypasses that cache for a fixed
+pathname — the CDN normalises query strings and Range headers, percent-encoded
+path variants are inconsistent, and the SDK's `useCache: false` (`?cache=0`)
+returns 400 on a public store. Two production bugs surfaced the same day: the
+conditional write passed the CDN's weak `W/"…"` validator to `ifMatch`, which
+the API rejects, so every write failed with "ETag mismatch"; and once that
+was fixed, any write while the CDN lagged burned its retries on the stale
+copy and failed with 503.
+
+The current design in `lib/blob/jsonList.ts`: every write also stores the
+body at **`<path>.v/<md5>.json`**, which is never overwritten and so can
+never be served stale, and reads find the current md5 through the API-served
+`list()` (which does not go through the CDN). The fixed pathname stays as the
+conditional-write anchor and the fallback. The header comment in that file is
+the full account; the two logs were seeded with their first copies by hand
+the day it shipped. `lib/resources/metadata.ts` still overwrites a fixed path
+without this protection — low traffic, but the same hazard.
 
 ## Epilepsy: Neonatal Acute Symptomatic Seizures in HIE
 
