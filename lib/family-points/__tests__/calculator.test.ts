@@ -38,10 +38,10 @@ describe('config integrity', () => {
     expect(new Set(MEMBERS.map((m) => m.name)).size).toBe(MEMBERS.length);
   });
 
-  it('spreadsheet parity: 17 residents, 5 teams, 18 tasks', () => {
+  it('spreadsheet parity: 17 residents, 5 teams, 20 tasks', () => {
     expect(MEMBERS.length).toBe(17);
     expect(TEAMS.length).toBe(5);
-    expect(TASKS.length).toBe(18);
+    expect(TASKS.length).toBe(20);
   });
 
   it('monthForDate maps calendar dates into academic-year months', () => {
@@ -208,7 +208,7 @@ describe('entriesToCsv', () => {
 
   it('quotes fields containing commas', () => {
     const csv = entriesToCsv([entry({ taskId: 'other-procedure' })], NOW);
-    expect(csv).toContain('"Other procedure (sutures, splints, staples, etc)"');
+    expect(csv).toContain('"Other procedure (sutures, splints, staples, MT, TNK)"');
   });
 });
 

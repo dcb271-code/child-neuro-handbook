@@ -40,7 +40,7 @@ export type Task = {
 export const TASKS: Task[] = [
   { id: 'champagne-tap',           label: 'Champagne tap',                                   points: 20 },
   { id: 'lp',                      label: 'LP',                                              points: 5 },
-  { id: 'other-procedure',         label: 'Other procedure (sutures, splints, staples, etc)', points: 5 },
+  { id: 'other-procedure',         label: 'Other procedure (sutures, splints, staples, MT, TNK)', points: 5 },
   { id: 'instagram-takeover',      label: 'Instagram takeover (>2x in 24h)',                 points: 10 },
   { id: 'meet-and-greet',          label: 'Meet and greet',                                  points: 10 },
   { id: 'wellness-lunch',          label: 'Wellness lunch / mentor meetup (25 each resident)', points: 25 },
@@ -55,6 +55,8 @@ export const TASKS: Task[] = [
   { id: 'chapter',                 label: 'Published chapter',                               points: 75 },
   { id: 'elective-lecture',        label: 'Electively prepared lecture (not assigned)',      points: 25 },
   { id: 'med-school-teaching',     label: 'Formal medical school teaching (per session)',    points: 5 },
+  { id: 'read-book',               label: 'Read book for pleasure (max 4 per year)',          points: 10 },
+  { id: 'shoutout',                label: 'Shoutout for outstanding work by non-mentor attending', points: 10 },
   { id: 'advocacy',                label: 'Advocacy event',                                  points: 10 },
 ];
 

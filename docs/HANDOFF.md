@@ -188,7 +188,7 @@ shared resources password; viewing is open. **In active use** — 17 entries.
 pending), The Narcos 35, Connectome Crew 0, Highly Functional 0.
 
 - Roster lives in `lib/roster.ts` (shared with progress tracking, re-exported
-  from `family-points/config.ts` for compatibility). Teams and the 18-task
+  from `family-points/config.ts` for compatibility). Teams and the 20-task
   point catalog stay in `lib/family-points/config.ts`. Adding a loggable
   activity is a one-line edit there; it propagates to the entry panel,
   validation, breakdowns, and CSV export. Two gotchas are noted in that file:

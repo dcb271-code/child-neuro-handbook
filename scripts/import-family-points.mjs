@@ -54,14 +54,15 @@ function parseCsv(text) {
   return rows;
 }
 
-/** Read the roster and task catalog straight out of config.ts — single source of truth. */
+/** Read the roster (roster.ts) and task catalog (config.ts) straight out of source — single source of truth. */
 function readConfig() {
+  const roster = readFileSync(new URL('../lib/roster.ts', import.meta.url), 'utf8');
   const src = readFileSync(new URL('../lib/family-points/config.ts', import.meta.url), 'utf8');
-  const members = [...src.matchAll(/\{ name: '([^']+)',\s*pgy: \d+, teamId: '([^']+)' \}/g)]
+  const members = [...roster.matchAll(/\{ name: '([^']+)',\s*pgy: \d+, teamId: '([^']+)' \}/g)]
     .map((m) => m[1]);
   const tasks = [...src.matchAll(/\{ id: '([^']+)',\s*label: '([^']+)',\s*points: (\d+) \}/g)]
     .map((m) => ({ id: m[1], label: m[2], points: Number(m[3]) }));
-  if (!members.length || !tasks.length) throw new Error('could not parse config.ts');
+  if (!members.length || !tasks.length) throw new Error('could not parse roster.ts / config.ts');
   return { members, tasks };
 }
 
@@ -121,8 +122,12 @@ const live = (await res.json()).entries ?? [];
 const liveKeys = new Set(live.map(key));
 const csvKeys = new Set(entries.map(key));
 
-const toAdd = entries.filter((e) => !liveKeys.has(key(e)));
-const stale = live.filter((e) => !csvKeys.has(key(e)));
+const liveCount = new Map(live.map((e) => [key(e), e.count]));
+const csvCount = new Map(entries.map((e) => [key(e), e.count]));
+// A live row whose count differs from the sheet is replaced: listed as stale
+// (deleted with --prune) and re-added with the sheet's count.
+const toAdd = entries.filter((e) => !liveKeys.has(key(e)) || liveCount.get(key(e)) !== e.count);
+const stale = live.filter((e) => !csvKeys.has(key(e)) || csvCount.get(key(e)) !== e.count);
 
 console.log(`\ntarget      ${origin}`);
 console.log(`csv         ${entries.length} entries`);
@@ -174,15 +179,24 @@ if (has('--prune')) {
   }
 }
 
-if (toAdd.length) {
+// The route accepts at most 50 entries per POST, so larger syncs go in chunks,
+// sequentially, with the same settle pause as the deletes.
+const MAX_BATCH = 50;
+for (let i = 0; i < toAdd.length; i += MAX_BATCH) {
+  const chunk = toAdd.slice(i, i + MAX_BATCH);
+  if (i > 0) await settle();
   const post = await fetch(`${origin}/api/family-points/entries/`, {
     method: 'POST',
     headers: { 'content-type': 'application/json', cookie },
-    body: JSON.stringify({ entries: toAdd }),
+    body: JSON.stringify({ entries: chunk }),
   });
   const body = await post.json().catch(() => ({}));
-  if (!post.ok) { console.error(`\nadd failed: ${post.status} ${JSON.stringify(body)}`); process.exit(1); }
-  console.log(`\nadded ${body.added}`);
+  if (!post.ok) {
+    console.error(`\nadd failed on entries ${i + 1}–${i + chunk.length}: ${post.status} ${JSON.stringify(body)}`);
+    if (i > 0) console.error(`(${i} entries from earlier chunks were already written — rerun the dry run to see what remains)`);
+    process.exit(1);
+  }
+  console.log(`\nadded ${body.added} (${i + chunk.length}/${toAdd.length})`);
 }
 
 // Confirm what actually landed rather than trusting the write response.
