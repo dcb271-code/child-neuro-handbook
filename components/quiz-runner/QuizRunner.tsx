@@ -6,6 +6,7 @@ import { scoreExam, passMark, BENCHMARK_PGYS } from '@/lib/rite/scoring';
 import { useIdentity } from '@/lib/identity/useIdentity';
 import { identityByName } from '@/lib/roster';
 import { submitAttempts } from '@/lib/progress/submitAttempts';
+import TrackingStatus from '@/components/identity/TrackingStatus';
 import RunnerQuestionCard from './RunnerQuestionCard';
 import RunnerResults from './RunnerResults';
 
@@ -86,6 +87,8 @@ export default function QuizRunner({
 
   if (phase === 'active' && setNo !== null) {
     return (
+      <>
+      <TrackingStatus context="question" className="mt-4 -mb-2" />
       <RunnerQuestionCard
         question={questions[current]}
         index={current}
@@ -99,11 +102,14 @@ export default function QuizRunner({
         locator={locator(questions[current], setNo)}
         label={config.label}
       />
+      </>
     );
   }
 
   if (phase === 'complete' && setNo !== null) {
     return (
+      <>
+      <TrackingStatus context="results" className="mt-4 -mb-2" />
       <RunnerResults
         setNumber={setNo}
         questions={questions}
@@ -116,6 +122,7 @@ export default function QuizRunner({
         locator={(i) => locator(questions[i], setNo)}
         benchmarks={config.benchmarks}
       />
+      </>
     );
   }
 

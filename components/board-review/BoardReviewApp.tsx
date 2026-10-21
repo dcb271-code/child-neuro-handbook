@@ -9,6 +9,7 @@ import WhoAmI from '@/components/identity/WhoAmI';
 import PrivacyOptions from '@/components/identity/PrivacyOptions';
 import { useIdentity } from '@/lib/identity/useIdentity';
 import { submitAttempts } from '@/lib/progress/submitAttempts';
+import TrackingStatus from '@/components/identity/TrackingStatus';
 import { computeProgress, type ProgressBoard } from '@/lib/progress/calculator';
 import QuizProgressSection from '@/components/progress/QuizProgressSection';
 import QuizRunner from '@/components/quiz-runner/QuizRunner';
@@ -178,6 +179,8 @@ export default function BoardReviewApp({ questions: allQuestions }: { questions:
   if (phase === 'active') {
     const q = session[current];
     return (
+      <>
+      <TrackingStatus context="question" className="max-w-3xl mx-auto mt-4 -mb-2" />
       <QuestionCard
         question={q}
         questionIndex={current}
@@ -187,18 +190,22 @@ export default function BoardReviewApp({ questions: allQuestions }: { questions:
         onNext={handleNext}
         isLast={current + 1 === session.length}
       />
+      </>
     );
   }
 
   // ── COMPLETE ─────────────────────────────────────────────────────────
   if (phase === 'complete') {
     return (
+      <>
+      <TrackingStatus context="results" className="max-w-2xl mx-auto mt-6 px-2 -mb-4" />
       <ResultsScreen
         questions={session}
         selections={selections}
         onRetake={retakeSame}
         onNewQuiz={newQuiz}
       />
+      </>
     );
   }
 

@@ -101,7 +101,14 @@ disclosures on the idle screen so they don't compete with starting a quiz.
 
 Opt-in and self-identified. A resident picks their name once
 (`lib/identity/useIdentity.ts` + `components/identity/WhoAmI.tsx`), stored in
-localStorage on that device. **By default this is not authentication** — anyone
+localStorage on that device **and in a server-set cookie** (`/api/identity`,
+`lib/identity/cookie.ts`). The cookie exists because Safari deletes a site's
+localStorage after seven days without a visit: a resident on an iPhone picked
+her name in September, was silently anonymous by October, and did ~150 board
+questions that were never recorded. Server-set cookies survive that purge and
+re-seed localStorage. The quiz screens now also show "Recording as …" or an
+amber "not being recorded" notice (`components/identity/TrackingStatus.tsx`),
+so the state is visible where the work happens. **By default this is not authentication** — anyone
 can pick anyone's name, an accepted tradeoff matching how Family Points works.
 A resident who wants more can set their own password (below), after which their
 name is the one thing here that *is* enforced.
