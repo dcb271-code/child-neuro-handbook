@@ -127,8 +127,12 @@ that day, and no attempt is logged for a bypassed visit.
 Four quizzes feed it (`lib/progress/calculator.ts`): the daily question,
 board review, RITE, and the pediatrics quizzes. Daily logs exactly one attempt per calendar day — the
 first question seen, right or wrong — since a wrong answer cycles to a new
-question and retries shouldn't inflate "days completed". Board review and RITE
-log every question in a session as a batch on completion. Results are shown
+question and retries shouldn't inflate "days completed". Board review logs
+each question the moment it is answered (the card reveals the answer on
+selection); RITE and pediatrics log each question the first time the resident
+moves past it, and going back to change an answer does not re-log. Both used
+to send one batch on the final "Next", so an abandoned session recorded
+nothing — that was part of why a resident's work went missing. Results are shown
 grouped by PGY year rather than as a flat 17-person ranking. All four are now
 rendered in the My Progress panel — RITE attempts had been logged but never
 displayed until the pediatrics work went in.

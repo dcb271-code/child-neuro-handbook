@@ -146,29 +146,32 @@ export default function BoardReviewApp({ questions: allQuestions }: { questions:
     setCurrent(0);
   }
 
+  // Each answer is logged the moment it is chosen — the card reveals the
+  // answer on selection, so that is the first look — rather than as one batch
+  // on the last "Next". A session abandoned halfway used to record nothing.
   function handleSelect(optionIndex: number) {
+    if (selections[current] !== null) return; // already answered; the card locks too
     setSelections((prev) => {
       const next = prev.slice();
       next[current] = optionIndex;
       return next;
     });
+    if (identityName) {
+      const q = session[current];
+      submitAttempts([{
+        member: identityName,
+        quiz: 'board-review',
+        questionId: q.id,
+        correct: !!q.options[optionIndex]?.isCorrect,
+      }]);
+    }
   }
 
   function handleNext() {
     if (current + 1 >= session.length) {
-      if (identityName) {
-        submitAttempts(
-          session.map((q, i) => {
-            const sel = selections[i];
-            return {
-              member: identityName,
-              quiz: 'board-review' as const,
-              questionId: q.id,
-              correct: sel !== null && !!q.options[sel]?.isCorrect,
-            };
-          }),
-        ).then(refetchProgress);
-      }
+      // The last answer's write is usually done by now; a refetch picks up the
+      // whole session for the progress board below the results.
+      refetchProgress();
       setPhase('complete');
     } else {
       setCurrent((c) => c + 1);

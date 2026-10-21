@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import type { RunnerConfig, RunnerQuestion, RunnerSet } from '@/lib/quiz-runner/types';
 import { scoreExam, passMark, BENCHMARK_PGYS } from '@/lib/rite/scoring';
 import { useIdentity } from '@/lib/identity/useIdentity';
@@ -13,7 +13,7 @@ import RunnerResults from './RunnerResults';
 type Phase = 'list' | 'active' | 'complete';
 
 /**
- * Shared runner for full-length, answers-at-the-end quiz sets. Drives both the
+ * Shared runner for full-length, scored-at-the-end quiz sets. Drives both the
  * RITE practice exams and the pediatrics in-service quizzes; the difference
  * between them is entirely in `config` and the adapted data passed in.
  */
@@ -52,6 +52,7 @@ export default function QuizRunner({
     setQuestions(found.questions);
     setAnswers(new Array(found.questions.length).fill(null));
     setCurrent(0);
+    logged.current = new Set();
     setPhase('active');
     onPhaseChange?.(true);
     window.scrollTo({ top: 0 });
@@ -65,22 +66,33 @@ export default function QuizRunner({
     });
   }
 
+  // Each question is logged the first time the resident moves past it, so a
+  // set abandoned halfway still counts the questions that were done. (It used
+  // to be one batch on Finish, and an unfinished set recorded nothing.) Going
+  // back and changing an answer does not re-log it — this is a first-look
+  // record, the same rule the daily question uses.
+  const logged = useRef(new Set<number>());
+
+  function logCurrent(): Promise<unknown> {
+    if (!identityName || logged.current.has(current)) return Promise.resolve();
+    logged.current.add(current);
+    const q = questions[current];
+    return submitAttempts([{
+      member: identityName,
+      quiz: config.quizId,
+      questionId: q.id,
+      correct: answers[current] === q.answer,
+    }]);
+  }
+
   function next() {
-    if (current + 1 >= questions.length) finish();
+    const sent = logCurrent();
+    if (current + 1 >= questions.length) finish(sent);
     else { setCurrent((c) => c + 1); window.scrollTo({ top: 0 }); }
   }
 
-  function finish() {
-    if (identityName) {
-      submitAttempts(
-        questions.map((q, i) => ({
-          member: identityName,
-          quiz: config.quizId,
-          questionId: q.id,
-          correct: answers[i] === q.answer,
-        })),
-      ).then(() => onAttemptsSubmitted?.());
-    }
+  function finish(lastSent: Promise<unknown>) {
+    lastSent.then(() => onAttemptsSubmitted?.());
     setPhase('complete');
     window.scrollTo({ top: 0 });
   }
