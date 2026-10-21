@@ -8,6 +8,7 @@ import factoids from '@/src/data/factoids.json';
 // for anyone who has picked a name there. Keeps the front door uncluttered.
 import { useIdentity } from '@/lib/identity/useIdentity';
 import { submitAttempts } from '@/lib/progress/submitAttempts';
+import { isOvernightBypass } from '@/lib/daily-challenge/overnight';
 
 type Question = {
   id: number;
@@ -79,8 +80,14 @@ export default function DailyChallenge({ children }: { children: React.ReactNode
 
   const currentQuestion = shuffled[questionIndex % shuffled.length];
 
-  // Check localStorage on mount
+  // Check localStorage on mount. Overnight (11 pm – 5:59 am Eastern) the gate
+  // is skipped outright for whoever is on call; it does not count as having
+  // answered, so the question is back at 6 am unless it was passed earlier.
   useEffect(() => {
+    if (isOvernightBypass()) {
+      setPassed(true);
+      return;
+    }
     try {
       const stored = localStorage.getItem('daily-challenge-passed');
       if (stored === today) {

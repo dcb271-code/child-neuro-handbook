@@ -111,6 +111,12 @@ localStorage, so the daily question still attributes attempts for anyone who
 has set a name on Board Review; a resident who never opens Board Review is
 simply untracked. It never gates either quiz.
 
+**The daily question is skipped overnight**, 11:00 pm – 5:59 am Eastern
+(`lib/daily-challenge/overnight.ts`, America/New_York so DST is handled),
+at the residents' request for on-call use. The bypass does not count as
+having answered: at 6 am the question is back unless it was passed earlier
+that day, and no attempt is logged for a bypassed visit.
+
 Four quizzes feed it (`lib/progress/calculator.ts`): the daily question,
 board review, RITE, and the pediatrics quizzes. Daily logs exactly one attempt per calendar day — the
 first question seen, right or wrong — since a wrong answer cycles to a new
