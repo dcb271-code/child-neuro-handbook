@@ -1,48 +1,58 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { createHash } from 'node:crypto';
 import type { Attempt } from '@/lib/progress/calculator';
 import type { Entry } from '@/lib/family-points/calculator';
 
-// In-memory stand-in for Blob pathnames with ETag semantics.
-type Obj = { body: string; version: number; prev: { body: string; version: number } | null };
+// In-memory stand-in for the Blob store. Objects are keyed by pathname; the
+// API's ETag is the quoted md5 of the body, as in production. The CDN in
+// front of an *overwritten* pathname can lag: `staleReads` makes fetches of
+// such a path serve the previous body (and its ETag) that many times.
+// Content-addressed copies (`<path>.v/<md5>.json`) are never overwritten and
+// so never stale.
+type Obj = { body: string; prev: string | null };
+const md5 = (s: string) => `"${createHash('md5').update(s).digest('hex')}"`;
 const store = vi.hoisted(() => ({
   objs: new Map<string, Obj>(),
-  staleReads: 0, // serve the previous body+etag this many times, like a lagging CDN
+  staleReads: 0,
   failFetch: false,
   weakEtags: false, // serve W/"…" validators, as the real CDN does to Node's fetch
+  noVersions: false, // simulate a store written before versioned copies existed
 }));
 
 vi.mock('@vercel/blob', () => {
   class BlobPreconditionFailedError extends Error {}
   return {
     BlobPreconditionFailedError,
-    list: async ({ prefix }: { prefix: string }) => {
-      const cur = store.objs.get(prefix);
-      // The listing is served by the API, so its etag is always current.
-      return { blobs: cur ? [{ pathname: prefix, url: `https://x.blob/${prefix}`, etag: `"v${cur.version}"` }] : [] };
-    },
+    list: async ({ prefix }: { prefix: string }) => ({
+      blobs: [...store.objs.entries()]
+        .filter(([p]) => p.startsWith(prefix))
+        .map(([p, o]) => ({ pathname: p, url: `https://x.blob/${p}`, etag: md5(o.body) })),
+    }),
     put: async (path: string, body: string, opts: { ifMatch?: string; allowOverwrite?: boolean }) => {
       const cur = store.objs.get(path);
       if (opts.allowOverwrite === false && cur) throw new Error('This blob already exists');
-      if (opts.ifMatch && opts.ifMatch !== `"v${cur?.version}"`) throw new BlobPreconditionFailedError();
-      store.objs.set(path, {
-        body,
-        version: (cur?.version ?? 0) + 1,
-        prev: cur ? { body: cur.body, version: cur.version } : null,
-      });
-      return {};
+      if (opts.ifMatch && opts.ifMatch !== md5(cur?.body ?? '')) throw new BlobPreconditionFailedError();
+      if (store.noVersions && path.includes('.v/')) return { etag: md5(body) };
+      store.objs.set(path, { body, prev: cur?.body ?? null });
+      return { etag: md5(body) };
+    },
+    del: async (urls: string[]) => {
+      for (const u of urls) store.objs.delete(new URL(u).pathname.slice(1));
     },
   };
 });
 
 vi.stubGlobal('fetch', async (url: string) => {
   if (store.failFetch) return new Response('boom', { status: 500 });
-  const obj = store.objs.get(new URL(url).pathname.slice(1))!;
-  let { body, version } = obj;
-  if (store.staleReads > 0 && obj.prev) {
+  const path = new URL(url).pathname.slice(1);
+  const obj = store.objs.get(path);
+  if (!obj) return new Response('gone', { status: 404 });
+  let body = obj.body;
+  if (!path.includes('.v/') && store.staleReads > 0 && obj.prev !== null) {
     store.staleReads -= 1;
-    ({ body, version } = obj.prev);
+    body = obj.prev;
   }
-  const etag = `${store.weakEtags ? 'W/' : ''}"v${version}"`;
+  const etag = `${store.weakEtags ? 'W/' : ''}${md5(body)}`;
   return new Response(body, { status: 200, headers: { etag } });
 });
 
@@ -54,32 +64,14 @@ const att = (id: string, batch?: string): Attempt => ({
 });
 const entry = (id: string): Entry => ({ id, member: 'X', taskId: 't', month: 'September', count: 1, createdAt: 0 });
 const ids = (xs: { id: string }[]) => xs.map((x) => x.id).sort();
+const versionPaths = () => [...store.objs.keys()].filter((p) => p.includes('.v/'));
 
 beforeEach(() => {
   store.objs.clear();
   store.staleReads = 0;
   store.failFetch = false;
   store.weakEtags = false;
-});
-
-describe('etag handling', () => {
-  it('writes when the CDN serves a weak validator', async () => {
-    // Regression: production rejected every write with "ETag mismatch"
-    // because W/"…" was passed through to ifMatch verbatim.
-    store.weakEtags = true;
-    await appendEntries([entry('a')]);
-    await appendEntries([entry('b')]);
-    expect(ids(await readEntries())).toEqual(['a', 'b']);
-  });
-
-  it('still refuses a stale copy when validators are weak', async () => {
-    store.weakEtags = true;
-    await appendEntries([entry('one')]);
-    await appendEntries([entry('two')]);
-    store.staleReads = 1;
-    await appendEntries([entry('three')]);
-    expect(ids(await readEntries())).toEqual(['one', 'three', 'two']);
-  });
+  store.noVersions = false;
 });
 
 describe('progress attempts', () => {
@@ -97,18 +89,9 @@ describe('progress attempts', () => {
   it('does not build on a stale CDN copy', async () => {
     await appendAttempts([att('one')]);
     await appendAttempts([att('two')]);
-    store.staleReads = 1; // next read sees only ['one'] with its old etag
+    store.staleReads = 10; // the overwritten pathname is stuck on ['one'] for good
     await appendAttempts([att('three')]);
     expect(ids(await readAttempts())).toEqual(['one', 'three', 'two']);
-  });
-
-  it('a display read re-fetches past a stale CDN copy', async () => {
-    // Seen in production: a read right after a write returned the previous
-    // list with x-vercel-cache HIT despite the cache-busting token.
-    await appendAttempts([att('one')]);
-    await appendAttempts([att('two')]);
-    store.staleReads = 2;
-    expect(ids(await readAttempts())).toEqual(['one', 'two']);
   });
 
   it('throws instead of wiping the log when the read fails', async () => {
@@ -123,6 +106,67 @@ describe('progress attempts', () => {
     await appendAttempts([att('a', 'batch-123456')], 'batch-123456');
     expect(await appendAttempts([att('a2', 'batch-123456')], 'batch-123456')).toBe(0);
     expect(await readAttempts()).toHaveLength(1);
+  });
+});
+
+describe('versioned copies', () => {
+  it('reads the current version even when the CDN never catches up', async () => {
+    // Seen in production: minutes after a write, the overwritten pathname
+    // still served the previous body with x-vercel-cache HIT.
+    await appendEntries([entry('one')]);
+    await appendEntries([entry('two')]);
+    store.staleReads = 10;
+    expect(ids(await readEntries())).toEqual(['one', 'two']);
+  });
+
+  it('keeps exactly one immutable copy, of the current version', async () => {
+    await appendEntries([entry('a')]);
+    await appendEntries([entry('b')]);
+    await deleteEntry('a');
+    const current = store.objs.get('family-points/entries.json')!.body;
+    expect(versionPaths()).toEqual([
+      `family-points/entries.json.v/${md5(current).replace(/"/g, '')}.json`,
+    ]);
+  });
+
+  it('falls back to the overwritten pathname when no copy exists', async () => {
+    store.noVersions = true;
+    await appendEntries([entry('a')]);
+    await appendEntries([entry('b')]);
+    expect(versionPaths()).toEqual([]);
+    store.staleReads = 1; // first read is stale, the re-fetch is fresh
+    expect(ids(await readEntries())).toEqual(['a', 'b']);
+  });
+
+  it('still refuses to build on a stale copy in the fallback path', async () => {
+    store.noVersions = true;
+    await appendEntries([entry('one')]);
+    await appendEntries([entry('two')]);
+    store.staleReads = 1;
+    await appendEntries([entry('three')]);
+    expect(ids(await readEntries())).toEqual(['one', 'three', 'two']);
+  });
+});
+
+describe('etag handling', () => {
+  it('writes when the CDN serves a weak validator', async () => {
+    // Regression: production rejected every write with "ETag mismatch"
+    // because W/"…" was passed through to ifMatch verbatim.
+    store.noVersions = true; // force the fallback path, where the header ETag is used
+    store.weakEtags = true;
+    await appendEntries([entry('a')]);
+    await appendEntries([entry('b')]);
+    expect(ids(await readEntries())).toEqual(['a', 'b']);
+  });
+
+  it('still refuses a stale copy when validators are weak', async () => {
+    store.noVersions = true;
+    store.weakEtags = true;
+    await appendEntries([entry('one')]);
+    await appendEntries([entry('two')]);
+    store.staleReads = 1;
+    await appendEntries([entry('three')]);
+    expect(ids(await readEntries())).toEqual(['one', 'three', 'two']);
   });
 });
 
