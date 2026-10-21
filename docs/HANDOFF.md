@@ -182,10 +182,11 @@ there is a scoring bug to find. It was never confirmed either way.
 
 Replaces a SharePoint spreadsheet tracking a team points competition. Live at
 `/family-points`, gated behind the daily-question quiz. Entry requires the
-shared resources password; viewing is open. **In active use** — 17 entries.
+shared resources password; viewing is open. **In active use** — 79 entries
+after the 21 Oct 2026 sync from the tracker sheet.
 
-**Current standings**: Nucleotide Ninjas 115, Stroke of Genius 100 (+25
-pending), The Narcos 35, Connectome Crew 0, Highly Functional 0.
+**Current standings** (21 Oct 2026): The Narcos 400, Nucleotide Ninjas 365,
+Stroke of Genius 230 (+60 pending), Connectome Crew 155, Highly Functional 115.
 
 - Roster lives in `lib/roster.ts` (shared with progress tracking, re-exported
   from `family-points/config.ts` for compatibility). Teams and the 20-task

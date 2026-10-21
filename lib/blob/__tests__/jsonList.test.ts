@@ -15,9 +15,11 @@ vi.mock('@vercel/blob', () => {
   class BlobPreconditionFailedError extends Error {}
   return {
     BlobPreconditionFailedError,
-    list: async ({ prefix }: { prefix: string }) => ({
-      blobs: store.objs.has(prefix) ? [{ pathname: prefix, url: `https://x.blob/${prefix}` }] : [],
-    }),
+    list: async ({ prefix }: { prefix: string }) => {
+      const cur = store.objs.get(prefix);
+      // The listing is served by the API, so its etag is always current.
+      return { blobs: cur ? [{ pathname: prefix, url: `https://x.blob/${prefix}`, etag: `"v${cur.version}"` }] : [] };
+    },
     put: async (path: string, body: string, opts: { ifMatch?: string; allowOverwrite?: boolean }) => {
       const cur = store.objs.get(path);
       if (opts.allowOverwrite === false && cur) throw new Error('This blob already exists');
@@ -98,6 +100,15 @@ describe('progress attempts', () => {
     store.staleReads = 1; // next read sees only ['one'] with its old etag
     await appendAttempts([att('three')]);
     expect(ids(await readAttempts())).toEqual(['one', 'three', 'two']);
+  });
+
+  it('a display read re-fetches past a stale CDN copy', async () => {
+    // Seen in production: a read right after a write returned the previous
+    // list with x-vercel-cache HIT despite the cache-busting token.
+    await appendAttempts([att('one')]);
+    await appendAttempts([att('two')]);
+    store.staleReads = 2;
+    expect(ids(await readAttempts())).toEqual(['one', 'two']);
   });
 
   it('throws instead of wiping the log when the read fails', async () => {

@@ -14,25 +14,46 @@ import { put, list, BlobPreconditionFailedError } from '@vercel/blob';
 
 type Snapshot<T> = { items: T[]; etag: string | null; exists: boolean };
 
+/** How many times to re-fetch a CDN copy that is older than the version the API reports. */
+const STALE_REFETCHES = 4;
+
 async function readSnapshot<T>(path: string, key: string): Promise<Snapshot<T>> {
   const { blobs } = await list({ prefix: path });
   const hit = blobs.find((b) => b.pathname === path);
   if (!hit) return { items: [], etag: null, exists: false };
+  // The listing comes from the API, not the CDN, so its ETag is the current
+  // version. (Older SDK typings omit it; treat it as optional.)
+  const current = strongEtag((hit as { etag?: string }).etag ?? null);
+
   // The pathname is stable across overwrites and Blob content URLs sit behind
-  // a CDN, so a read after a write can return the previous list. `uploadedAt`
-  // is NOT a usable version stamp — it does not reliably change on overwrite.
-  // A token that is unique per request forces an origin fetch every time.
-  // `cache: 'no-store'` alone only bypasses Next's cache, not the CDN's.
-  const bust = `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 8)}`;
-  const res = await fetch(`${hit.url}?v=${bust}`, { cache: 'no-store' });
-  if (!res.ok) throw new Error(`${path} fetch ${res.status}`);
-  const data = (await res.json()) as Record<string, unknown>;
-  const items = data?.[key];
-  if (!Array.isArray(items)) throw new Error(`${path} malformed`);
-  // The ETag comes from the same response as the body (as the SDK's get()
-  // does it), so a stale CDN copy carries a stale ETag and the conditional
-  // write rejects it instead of clobbering newer data.
-  return { items: items as T[], etag: strongEtag(res.headers.get('etag')), exists: true };
+  // a CDN, so a read after a write can return the previous list for up to the
+  // blob's max-age. `uploadedAt` is NOT a usable version stamp — it does not
+  // reliably change on overwrite. `cache: 'no-store'` only bypasses Next's
+  // cache, and a unique query token is honoured by some edge nodes and ignored
+  // by others (seen in production: `?v=…` returning x-vercel-cache HIT with a
+  // body one write behind). So: compare the body's ETag with the API's, and
+  // re-fetch a few times while they differ. If the CDN never catches up, the
+  // stale snapshot is returned anyway — a display read shows slightly old
+  // data, and a write built on it is rejected by the conditional put rather
+  // than clobbering the newer version.
+  for (let i = 0; ; i++) {
+    const bust = `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 8)}`;
+    const res = await fetch(`${hit.url}?v=${bust}`, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`${path} fetch ${res.status}`);
+    const data = (await res.json()) as Record<string, unknown>;
+    const items = data?.[key];
+    if (!Array.isArray(items)) throw new Error(`${path} malformed`);
+    // The ETag comes from the same response as the body (as the SDK's get()
+    // does it), so a stale CDN copy carries a stale ETag and the conditional
+    // write rejects it instead of clobbering newer data.
+    const etag = strongEtag(res.headers.get('etag'));
+    const stale = current !== null && etag !== null && etag !== current;
+    if (!stale || i >= STALE_REFETCHES) {
+      if (stale) console.warn(`[blob] ${path}: CDN copy still stale after ${i + 1} reads`);
+      return { items: items as T[], etag, exists: true };
+    }
+    await new Promise((r) => setTimeout(r, 150 * (i + 1)));
+  }
 }
 
 /**
