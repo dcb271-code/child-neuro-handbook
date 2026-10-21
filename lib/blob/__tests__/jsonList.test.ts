@@ -8,6 +8,7 @@ const store = vi.hoisted(() => ({
   objs: new Map<string, Obj>(),
   staleReads: 0, // serve the previous body+etag this many times, like a lagging CDN
   failFetch: false,
+  weakEtags: false, // serve W/"…" validators, as the real CDN does to Node's fetch
 }));
 
 vi.mock('@vercel/blob', () => {
@@ -39,7 +40,8 @@ vi.stubGlobal('fetch', async (url: string) => {
     store.staleReads -= 1;
     ({ body, version } = obj.prev);
   }
-  return new Response(body, { status: 200, headers: { etag: `"v${version}"` } });
+  const etag = `${store.weakEtags ? 'W/' : ''}"v${version}"`;
+  return new Response(body, { status: 200, headers: { etag } });
 });
 
 const { appendAttempts, readAttempts } = await import('@/lib/progress/store');
@@ -55,6 +57,27 @@ beforeEach(() => {
   store.objs.clear();
   store.staleReads = 0;
   store.failFetch = false;
+  store.weakEtags = false;
+});
+
+describe('etag handling', () => {
+  it('writes when the CDN serves a weak validator', async () => {
+    // Regression: production rejected every write with "ETag mismatch"
+    // because W/"…" was passed through to ifMatch verbatim.
+    store.weakEtags = true;
+    await appendEntries([entry('a')]);
+    await appendEntries([entry('b')]);
+    expect(ids(await readEntries())).toEqual(['a', 'b']);
+  });
+
+  it('still refuses a stale copy when validators are weak', async () => {
+    store.weakEtags = true;
+    await appendEntries([entry('one')]);
+    await appendEntries([entry('two')]);
+    store.staleReads = 1;
+    await appendEntries([entry('three')]);
+    expect(ids(await readEntries())).toEqual(['one', 'three', 'two']);
+  });
 });
 
 describe('progress attempts', () => {

@@ -32,7 +32,18 @@ async function readSnapshot<T>(path: string, key: string): Promise<Snapshot<T>> 
   // The ETag comes from the same response as the body (as the SDK's get()
   // does it), so a stale CDN copy carries a stale ETag and the conditional
   // write rejects it instead of clobbering newer data.
-  return { items: items as T[], etag: res.headers.get('etag'), exists: true };
+  return { items: items as T[], etag: strongEtag(res.headers.get('etag')), exists: true };
+}
+
+/**
+ * The CDN serves a weak validator (`W/"…"`) to Node's fetch — it negotiates
+ * content encoding, and curl gets the strong form for the same object. The
+ * Blob API compares `ifMatch` against the strong ETag only, so the weak prefix
+ * made every conditional write fail with "ETag mismatch" in production.
+ */
+export function strongEtag(header: string | null): string | null {
+  if (!header) return null;
+  return header.replace(/^W\//i, '');
 }
 
 /** For display only. Soft-fails to [] — never feed this into a write. */
