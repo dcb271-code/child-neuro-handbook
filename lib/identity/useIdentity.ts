@@ -39,7 +39,20 @@ export function useIdentity() {
         } catch {}
       }
     }
-    if (stored) setNameState(stored);
+    if (stored) {
+      setNameState(stored);
+      // Names picked before the cookie existed live only in localStorage, one
+      // Safari purge from being lost. Back them up the first time we see one.
+      const cookieName = parseNameCookie(typeof document === 'undefined' ? null : document.cookie);
+      if (cookieName !== stored) {
+        fetch('/api/identity/', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ name: stored }),
+          keepalive: true,
+        }).catch(() => {});
+      }
+    }
     setLoaded(true);
   }, []);
 
