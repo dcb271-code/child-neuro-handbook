@@ -42,9 +42,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center gap-3 sm:gap-6">
             {/* Brand */}
-            <a href="/" className="flex flex-col shrink-0 leading-tight min-w-0">
-              <span className="text-white font-bold text-xs sm:text-sm tracking-wide whitespace-nowrap">Child Neurology Handbook</span>
-              <span className="text-blue-300 text-[10px] sm:text-xs whitespace-nowrap hidden sm:block">UofL Neurology Residency</span>
+            <a href="/" className="flex items-center gap-2.5 shrink-0 min-w-0">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/icon.svg" alt="" width={36} height={36} className="hidden sm:block w-9 h-9 rounded-lg ring-1 ring-white/15 shrink-0" />
+              <span className="flex flex-col leading-tight min-w-0">
+                <span className="text-white font-bold text-xs sm:text-sm tracking-wide whitespace-nowrap">Child Neurology Handbook</span>
+                <span className="text-blue-300 text-[10px] sm:text-xs whitespace-nowrap hidden sm:block">UofL Neurology Residency</span>
+              </span>
             </a>
 
             {/* Search — takes remaining space */}
